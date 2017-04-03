@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AllDayChemist</title>
+</head>
+
+<body style="margin:0;">
+<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="font-size:0;">
+  <tr>
+    <td align="left" valign="top" style="padding:10px 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left"><a href="{{store url=''}}"><img src='{{skin url="images/logo.jpg" _area="frontend" _package="allday" _theme="medicine"}}' width="202" alt="logo" style="display:block; border:none; font-size:14px;" /></a></td>
+            <td align="right" style="font-family:Tahoma, Geneva, sans-serif; font-size:11px; color:#000000;">Toll Free: Tel +1(855) 840-0584<br />
+              Fax: +1(760) 284-5903<br />
+              Calling Hours 6.00 AM to 6.00 PM (PST)<br />
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:0 20px 10px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href="{{store url=''}}rewardpoints/index/referral/">Refer A Friend</a></td>
+            <td align="left">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="center" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href="{{store url=''}}offers.html">Offer Zone</a></td>
+                  </tr>
+                </table>
+            </td>
+            <td align="right" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href="{{store url=''}}/support/tickets/new">Contact Us</a></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><a href="{{store url=''}}sales/order/history/"><img src='{{skin url="images/shipped_banner.jpg" _area="frontend" _package="allday" _theme="medicine"}}' width="600" alt="We’ve packed your order" style="display:block; border:none; font-size:14px;" /></a></td>
+  </tr>
+  <tr>
+    <td style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:10px; color:#505050; padding:12px 20px 0;">This is an automated message and for your knowledge only. For any query, please send your query through Contact Us form.</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:20px 40px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#000000;">Dear <strong style="color:#4f6b05;">{{htmlescape var=$order.getCustomerName()}},</strong></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#000000; padding:12px 0 0;">We would like to inform you that {{if completeShipment}}part of your {{else}}your {{/if}} order No. {{htmlescape var=$order.getCustomerOrderIncrementId()}} has been shipped. You will receive the tracking details with in 2-3 days</td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+<tr>
+    <td align="left" valign="top" style="">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td align="left" valign="top" style="background-color:#d5ea9e;padding:34px 0;"><img src='{{skin url="images/process_new4.jpg" _area="frontend" _package="allday" _theme="medicine"}}' width="600" alt="process" style="border:none; font-size:14px;" /></td>
+        </tr>
+      </table>      
+     </td>
+ </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:10px 0;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top" style="background-color:#d1d1d1; padding:10px 20px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#4b4b4b;padding:0 0 10px 0"><strong style="border-bottom:1px solid #565656;">Order Info</strong></td>
+                  </tr>
+                 {{if track_no}}
+                  <tr>
+                    <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#4b4b4b;padding:0 0 10px 0;"><strong>Shipping By:</strong> <strong style="font-size:12px;"><a style="color:#4b4b4b; text-decoration:none;">{{var carrier}}</a></strong></td>
+                  </tr>
+                  {{else}}
+                   <tr></tr>
+                  {{/if}}
+                  <tr>
+                    <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:10px; color:#4b4b4b; padding:0 0 10px 0;"><strong style="font-size:12px;">Shipping Address:{{var order.getShippingAddress().getStreetFull()}},{{var order.getShippingAddress().getCity()}},{{if order.getShippingAddress().getRegion()}},{{var order.getShippingAddress().getRegion()}}, 
+                                {{/if}}{{var order.getShippingAddress().getPostcode()}},{{var order.getShippingAddress().getCountryModel().getName()}}
+.</strong></td>
+                  </tr>
+                  {{if dispatcher_message}}
+                  <tr>
+                    <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#4b4b4b;padding:0 0 10px 0"><b><strong>Charge Name:</strong> {{var dispatcher_message}}</b></td>
+                  </tr>
+                  {{else}}
+                  <tr></tr>
+                  {{/if}}
+                </table>
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  {{if shippedProducts}}
+  <tr>
+    <td align="left" valign="top" style="padding:0 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 0;">Product Name</td>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">Pack Size</td>
+             <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">Bonus (If any)</td>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">No. of Packs</td>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">Total Quantity</td>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">Sub Total</td>
+          </tr>
+          {{var shippedProducts}}
+        </table>
+    </td>
+  </tr>
+  {{else}}
+  <tr></tr>
+  {{/if}}
+ {{if recommendedproducts}}
+  <tr>
+    <td align="center" valign="top" style="padding:20px 0 10px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#6b6b6b; background-color:#dadada; padding:8px 0;"><strong>Recommended Products</strong></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:0 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top" style="border-bottom:1px solid #dcdcdc; padding:0 0 8px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    {{var recommendedproducts}}
+                  </tr>
+                </table>
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  {{else}}
+  <tr></tr>
+  {{/if}}
+  <tr>
+    <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#333333; padding:20px 0 20px 40px;">In case of any trouble please email us at david@alldaychemist.com or give us a call at our Toll Free Number +1(855) 840 -0584 between 6.00 am to 6.00 pm as per PST (Pacific Standard Time)</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:0 0 20px 40px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#333333;">Warm Regards,<br />
+    <strong>Team AllDayChemist</strong></td>
+  </tr>
+</table>
+{{customVar code=new_emailer_footer}}
+</body>
+</html>

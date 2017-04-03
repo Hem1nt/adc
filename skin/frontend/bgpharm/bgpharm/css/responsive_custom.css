@@ -1,0 +1,1373 @@
+.customer-account-edit .page-title  {
+	border: 0;
+}
+
+.my-account .page-head, 
+.customer-account-index .box-account.box-recent .box-head, 
+.customer-account-index .head.box-title, 
+.customer-account-index .col2-set,
+.customer-account-index .box-account.box-reviews .box-head h2,
+.customer-account-index .box-account.box-rewardp .box-head h2,
+.customer-account-index .box-account.box-tags .box-head h2,
+.customer-account-edit .page-title,
+.customer-account-edit #more_info h1, 
+.customer-address-index .page-title,
+.customer-address-index .col-2.addresses-additional h1,
+.refillreminder-view-index .col-main .page-title,
+.review-customer-index .page-title,
+.tag-customer-index .col-main .my-account .page-title,
+.wishlist-index-index .page-title,
+.newsletter-manage-index .pr-newsletter-subscription .page-title,
+.importorder-index-index .box-account .box-head,
+.rewardpoints-index-points .main-container .col-main .page-head,
+.rewardpoints-index-referral .page-title,
+.sales-order-history .my-account .page-title   {
+	position: relative;
+}
+
+.my-account .page-head h3, 
+.customer-account-index .box-account.box-recent .box-head h2, 
+.customer-account-index .head.box-title h3, 
+.customer-account-index .col2-set h3.address-book,
+.customer-account-index .box-account.box-reviews .box-head h2,
+.customer-account-index .box-account.box-rewardp .box-head h2,
+.customer-account-index .box-account.box-tags .box-head h2,
+.customer-account-edit .page-title h1,
+.customer-account-edit #more_info h1, 
+.customer-address-index .page-title,
+.customer-address-index .col-2.addresses-additional h1,
+.refillreminder-view-index .col-main .page-title,
+.review-customer-index .page-title,
+.tag-customer-index .col-main .my-account .page-title,
+.wishlist-index-index .page-title,
+.newsletter-manage-index .pr-newsletter-subscription .page-title,
+.importorder-index-index .box-account .box-head,
+.rewardpoints-index-points .main-container .col-main .page-head h3,
+.rewardpoints-index-referral .page-title,
+.sales-order-history .my-account .page-title {
+	border-bottom: 2px solid #363636; 
+	color: #293e8f;
+}
+
+.my-account .page-head h3:after, 
+.customer-account-index .box-account.box-recent .box-head h2:after, 
+.customer-account-index .head.box-title h3:after, 
+.customer-account-index .col2-set h3.address-book:after,
+.customer-account-index .box-account.box-reviews .box-head h2:after,
+.customer-account-index .box-account.box-rewardp .box-head h2:after,
+.customer-account-edit .page-title h1:after,
+.customer-account-edit #more_info h1:after, 
+.customer-address-index .page-title:after,
+.customer-address-index .col-2.addresses-additional h1:after,
+.refillreminder-view-index .col-main .page-title:after,
+.review-customer-index .page-title:after,
+.tag-customer-index .col-main .my-account .page-title:after,
+.wishlist-index-index .page-title:after,
+.newsletter-manage-index .pr-newsletter-subscription .page-title:after,
+.importorder-index-index .box-account .box-head:after,
+.rewardpoints-index-points .main-container .col-main .page-head h3:after,
+.rewardpoints-index-referral .page-title:after,
+.sales-order-history .my-account .page-title:after,
+.box-account.box-tags .box-head h2:after, .customer-account-index .box-account.box-fd-recent-tickets .box-head h2:after
+ {
+  content: "";
+  width: 30%;
+  height: 2px;
+  background: #1cab57;
+  display: inline-block;
+  left: 0;
+  position: absolute;
+  bottom: 0;
+}
+ .customer-account-index .box-account.box-fd-recent-tickets .box-head h2:after{
+ 	bottom: -2px;
+ }
+
+.customer-account-index .box-account.box-recent .box-head h2:after,
+.customer-account-index .box-account.box-rewardp .box-head h2:after, 
+.customer-account-index .box-account.box-tags .box-head h2:after, 
+.customer-account-index .box-account.box-reviews .box-head h2:after,
+.customer-account-edit #more_info h1:after{ 
+	content:"";
+	bottom: inherit;
+	top: 45px;
+}
+
+.customer-account-index .box-account.box-tags .box-head h2:after {
+	top: 43px;
+}
+
+.importorder-index-index .box-account .box-head:after {
+	content:"";
+	bottom: inherit;
+	top: 44px;
+}
+
+.customer-address-index .page-title,
+.refillreminder-view-index .col-main .page-title,
+.review-customer-index .page-title, 
+.tag-customer-index .col-main .my-account .page-title,
+.wishlist-index-index .page-title,
+.newsletter-manage-index .pr-newsletter-subscription .page-title,
+.rewardpoints-index-referral .page-title,
+.sales-order-history .my-account .page-title {
+	overflow: visible;
+	height: 42px;
+}
+
+.customer-address-index .page-title:after,
+.customer-address-index .col-2.addresses-additional h1:after,
+.refillreminder-view-index .col-main .page-title:after,
+.review-customer-index .page-title:after,
+.tag-customer-index .col-main .my-account .page-title:after,
+.wishlist-index-index .page-title:after,
+.newsletter-manage-index .pr-newsletter-subscription .page-title:after,
+.rewardpoints-index-referral .page-title:after,
+.sales-order-history .my-account .page-title:after {
+	content:"";
+	bottom: inherit;
+	top: 42px;
+}
+
+.importorder-index-index .box-account .box-head h2 {
+	float: none;
+	text-align: left;
+}
+
+.customer-account-index .box-account .box-head h2 {
+  width: auto;
+  float: none;	
+}
+
+.my-account {
+  color: #7b7b7b;
+  font: normal 14px 'Open Sans', sans-serif !important;
+}
+
+.my-account .form-list label {
+	font-weight: normal !important;
+	line-height: 31px !important;
+}
+
+.customer-account-index #my-orders-table.data-table thead th, .sales-order-history .my-account .data-table th {
+	width: 20%;
+}
+
+.customer-account-index #my-orders-table.data-table .link-reorder, .sales-order-history .my-account .data-table .link-reorder {
+  font-weight: normal;
+  color: #d59b2d !important;
+}
+
+.customer-account-index #my-orders-table.data-table .link-vieworder, .sales-order-history .my-account .data-table .link-vieworder {
+  font-weight: normal !important;
+  color: #1cab57 !important;
+}
+
+.customer-account-index .box-address .box-content .col-1, 
+.customer-account-index .box-address .box-content .col-2 {
+  width: 48.5%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+
+.customer-account-index .box-address .box-content .col-1 address, 
+.customer-account-index .box-address .box-content .col-2 address {
+	line-height: 24px;
+}
+
+.customer-account-edit .form-list li, .customer-account-edit .form-list.edit-pswd .field {
+	margin-bottom: 20px;
+}
+
+.customer-account-edit .fieldset li.control label.change-pswd {
+	margin: 0px;
+}
+
+.my-account  input.checkbox + label:before {
+	margin-top: 9px;
+}
+
+.my-account .input-box span {
+	line-height: 30px;
+}
+
+.customer-account-edit #more_info .form-list select {
+	min-width: 80px;
+}
+
+.customer-address-index .my-account .button.button {
+  bottom: 5px;
+  position: relative;
+}
+
+.addresses-list li.item {
+	margin: 0 3% 20px 0;
+	width: 48.5%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box; 
+}
+
+.addresses-list li.item:last-child{
+	margin: 0 0 20px 0;
+	float: right;
+}
+
+.addresses-list li.item:first-child{
+	float: left;
+}
+
+.addresses-list address {
+	line-height: 24px;
+}
+
+.customer-account-edit .fieldset .legend, .customer-address-form .main-container .fieldset .legend {
+	color: #293e8f;
+	font-weight: bold;
+    width: 100%;
+}
+
+.customer-address-index .addresses-list .addresses-additional li.item {
+	position: relative;
+}
+
+.customer-address-index .addresses-list .addresses-additional li.item .edit_wrap {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+	width: auto;
+}
+
+.customer-address-index .addresses-list .addresses-additional li.item .edit_wrap .separator {
+	display: none;
+}
+
+.customer-address-index .addresses-list .addresses-additional li.item .edit_wrap a {
+	display: block;
+	clear: both;
+}
+
+.customer-address-index .addresses-list .addresses-additional li.item address {
+	padding-right: 70px;
+}
+
+.customer-address-form .form-list label {
+	margin-bottom: 0;
+}
+
+.sb_block p.sb_lable label {
+	font-weight: normal;
+}
+
+.sb_block p.sb_lable label em{
+	color: #F44336; 
+}
+
+.first_img_td {
+	display: none;
+}
+
+/*.refillreminder-view-index .data-table {
+	margin-bottom: 20px;
+}*/
+
+.wishlist-index-index .buttons-set p.back-link a {
+	margin: 7px 0 0 0 !important;
+}
+
+
+.wishlist-index-index .buttons-set p.back-link a {
+  padding: 5px 15px !important;
+}
+
+.importorder-index-index .info {
+  font-size: 15px;
+  line-height: 27px;
+}
+
+.importorder-index-index .custom_pager {
+	text-align: center;
+	line-height: 30px;
+}
+
+.importorder-index-index .custom_pagination {
+	width: auto;
+}
+
+.rewardpoints-index-referral .buttons-set p.back-link a {
+  float: left;
+  margin-bottom: 20px;
+}
+
+.rewardpoints-index-points .data-table#reward-points-table td {
+	min-height: 34px;
+	color: #7b7b7b;
+	font-size: 14px;
+}
+
+.my-account .pager {
+	color: #7b7b7b;
+	font-size: 14px;
+}
+
+/*Cms Pages*/
+
+.cms-content-88-order-online.cms-page-view .col-main .std div img {
+	width: 100% !important;
+}
+
+.cms-content-88-order-online.cms-page-view .col-main .std div.place-order, 
+.cms-order-by-email.cms-page-view .col-main .std div.place-order, 
+.cms-order-by-telephone.cms-page-view .col-main .std div.place-order {
+	text-align: center !important;
+	border-bottom: 0 !important;
+	margin-bottom: 30px;
+}
+
+.cms-content-88-order-online.cms-page-view .col-main .std > div{
+	margin-bottom: 20px;
+	padding-bottom: 20px !important;
+	border-bottom: 1px solid #ccc;
+}
+
+.cms-page-view .col-main .std div.place-order .clr {
+	text-align: center !important;
+}
+
+.cms-page-view .col-main .std div.left_side_bar_cms_fax{
+	margin: 0px; padding: 0px; float: left; font-size: 14px; width: 67%;
+	padding-right: 20px !important;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	font-size: 0.85em !important;
+	text-align: justify !important;
+}
+
+.cms-page-view .col-main .std div.left_side_bar_cms_fax p{
+	margin-bottom: 5px !important;
+}
+
+.cms-page-view .col-main .std div.fx_form {
+	margin: 0px; padding: 0px; text-decoration: none; outline: none; border: none; color: #000000;
+}
+
+.cms-page-view .col-main .std div.right_side_bar_cms_fax {
+	margin: 0px; width: 33%; text-align: center; float: right;
+}
+
+a.home_icon {
+  float: left;
+  line-height: 54px;
+  background-color: #293e8f;
+  padding: 0 10px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+a.home_icon img {
+  vertical-align: middle;
+}
+
+a.home_icon.in_nav {
+	display: none;
+}
+
+#my-orders-summary {
+	clear: both;
+}
+
+.sales-order-view .testimonial-date {
+  clear: both !important;
+  display: block !important;
+}
+
+.trackorder-index-index div#oderinfo {
+  margin-top: 20px;
+}
+
+.trackorder-index-index .form-list li {
+  margin: 0 0 8px;
+  width: 48% !important;
+  display: inline-block;
+  margin-right: 19px;
+}
+
+.trackorder-index-index .form-list .buttons-set .button {
+	float: left;
+	margin-left: 0;
+}
+
+.trackorder-index-index .col1-layout .col-main {
+	padding: 0 !important
+}
+
+.trackorder-index-index div.form-list {
+  padding: 20px;
+  /*background-color: #f5f5f5;*/
+  /*border: 1px solid #f0f0f0;*/
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+   -webkit-box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+  -moz-box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+  box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+}
+
+.trackorder-index-index .form-list label {
+	width: auto !important;
+}
+
+.trackorder-index-index .form-list label.required em {
+  right: -7px;
+}
+
+@media all and (max-width:1024px) {
+		a.home_icon {
+		line-height: 45px;
+		margin-left: 10px;
+	}
+
+	.block .block-title strong.all-categories {
+		position: absolute;
+		left: 55px;
+	}
+}
+@media all and (max-width:860px) {
+
+	.customer-account-index .dashboard-points {
+		padding: 20px 0;
+	}
+	.customer-account-index #my-rewardpoints-table thead th {
+		width: 25%;
+		vertical-align: top;
+		white-space: normal;
+	}
+
+	.refillreminder-view-index .data-table thead th, 
+	.refillreminder-view-index .data-table tbody td {
+		margin-right: 0;
+	}
+
+	.my-account {
+		margin-bottom: 20px;
+	}
+
+	.newsletter-manage-index .buttons-set button.button {
+		float: right;
+	}
+
+	.cms-page-view .place-order a.order-online-block.mid {
+		margin: 0 5%;
+	}
+
+
+}
+
+@media all and (max-width:840px) {
+	.col-left.sidebar .block-title.sb_title {
+		display: block;
+	}	
+
+	.sb_block .sbox_form {
+		padding: 20px;
+	}
+
+	.customer-address-form .acc-pages-icons {
+		float: left;
+		clear: none;
+		display: inline-block;
+	}
+}
+
+@media all and (max-width: 736px){
+	a.home_icon {
+		display: none;
+	}
+
+	a.home_icon.in_nav {
+		display: block;
+		position: absolute;
+		top: 69px;
+		left: 0;
+		width: 100%;
+		padding: 0 !important;
+		margin: 0;
+		color: #fff;
+		background-color: #666;
+		line-height: 45px !important;
+		text-align: left;
+		box-sizing: border-box;
+		padding-left: 27px !important;
+	}
+
+	a.home_icon.in_nav img {
+		vertical-align: middle;
+		display: inline-block;
+		margin-right: 15px;
+	}
+
+	a.home_icon.in_nav span.lable_home {
+		display: inline-block !important;
+		width: auto;
+		height: auto !important;
+		white-space: nowrap;
+		line-height: 30px;
+		vertical-align: middle;
+		text-transform: uppercase;
+		color: #fff;
+		font-size: 0.85em;
+		margin-top: 4px;
+	}
+
+	.sb_block .input-box.sinput input {
+	   margin-bottom: 10px; 
+	}
+
+	.customer-account-edit .fieldset li.control label.change-pswd {
+	  margin: 22px 0px 0 0;
+	}
+
+	.my-account .form-list label, 
+	.customer-account-edit .form-list .input-box,
+	.customer-account-edit .form-list.edit-pswd li.fields, 
+	.customer-account-edit .form-list.edit-pswd li{
+		width: 100%;
+	}
+
+	.my-account #more_info .form-list label {
+		width: auto;
+	}
+
+	.com_hide{
+		display: none;
+	}
+
+	.com_visible {
+		display: block;
+	}
+
+	/* CMs Pages */
+
+	.cms-page-view .place-order span.telephone-order-icon {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -7px -7px / auto;
+		display: block;
+		height: 97px;
+		margin: 20px 0 0 17px;
+		width: 100px;
+		background-size: 339px !important;
+	}
+
+	.cms-page-view .place-order span.telephone-order-icon-selected, .cms-page-view .place-order span.telephone-order-icon:hover {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -7px -107px / auto;
+	}
+
+	.cms-page-view .place-order span.order-online-text {
+		font-size: 14px;
+	}
+
+	.cms-page-view .place-order span.midcart-order-icon {
+	  background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -118px -7px / auto;
+	  height: 97px;
+	  margin: 20px 0 0 17px;
+	  width: 100px;
+	  background-size: 339px !important;
+	}
+
+	.cms-page-view .place-order span.midcart-order-icon-selected, .cms-page-view .place-order span.midcart-order-icon:hover {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -118px -106px / auto;
+	}
+
+	.cms-page-view .place-order span.mail-fax-order-icon {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -232px -7px / auto;
+		display: block;
+		height: 97px;
+		margin: 20px 0 0 17px;
+		width: 100px;
+		background-size: 339px !important;
+	}
+
+	.cms-page-view .place-order span.mail-fax-order-icon-selected, .cms-page-view .place-order span.mail-fax-order-icon:hover {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -232px -107px / auto;
+	}
+
+	.cms-page-view .place-order a.order-online-block.mid {
+		margin: 0 1%;
+	}
+
+	.cms-page-view .main-container .col-main p, .cms-page-view .main-container .col-main li {
+		font-size: 1em;
+		line-height: 1.7em;
+	}
+}
+
+@media all and (max-width:670px) {
+	.col2-set .col-1, 
+	.col2-set .col-2, 
+	.customer-account-index .box-address .box-content .col-1, 
+	.customer-account-index .box-address .box-content .col-2 {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+
+	.customer-account-index #my-rewardpoints-table thead,
+	.customer-account-index #my-rewardpoints-table tbody {
+		display: inline-block;
+		width: 50%;
+		vertical-align: top;
+	}
+
+	.customer-account-index #my-rewardpoints-table thead th,
+	.customer-account-index .dashboard-points .data-table td {
+		text-align: left;
+		padding: 5px 15px;
+		vertical-align: top;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		float: left;
+		width: 100%;
+		border: 0;
+	}
+
+	.customer-account-index .dashboard-points .data-table tr {
+		float: left;
+		width: 100%;
+	}
+
+	.customer-account-index .dashboard-points .data-table td:before {
+		content: ":";
+		position:relative;
+		margin-right: 10px;
+	} 
+
+	.customer-account-index #my_recent_reviews li span.number {
+		display: inline-block;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		padding: 0;
+		background-color: #CDCDCD;
+		color: #fff;
+		text-align: center;
+		margin-right: 2%;
+		min-width: 20px;
+		height: 25px;
+		line-height: 25px;
+		float: left;
+	}
+
+	.customer-account-index #my_recent_reviews .details {
+		width: 90%;
+		float: left;
+	}
+
+	.customer-account-index #my-orders-table.data-table thead, 
+	.sales-order-history .my-account .data-table thead, 
+	.review-customer-index .data-table#my-reviews-table thead,
+	.wishlist-index-index .data-table#wishlist-table thead,
+	.importorder-index-index .data-table#my-orders-table thead,
+	.rewardpoints-index-referral .data-table#referred-friends-table thead,
+	.rewardpoints-index-points .data-table#reward-points-table thead {
+		display: none;
+	}
+
+	.customer-account-index #my-orders-table.data-table, 
+	.sales-order-history .my-account .data-table, 
+	.review-customer-index .data-table#my-reviews-table,
+	.wishlist-index-index .data-table#wishlist-table,
+	.importorder-index-index .data-table#my-orders-table,
+	.rewardpoints-index-referral .data-table#referred-friends-table,
+	.rewardpoints-index-points .data-table#reward-points-table {
+		border: 1px solid #ccc ;
+	}
+
+	.customer-account-index #my-orders-table.data-table td, 
+	.sales-order-history .my-account .data-table td, 
+	.review-customer-index .data-table#my-reviews-table td,
+	.wishlist-index-index .data-table#wishlist-table td,
+	.importorder-index-index .data-table#my-orders-table td,
+	.rewardpoints-index-referral .data-table#referred-friends-table td,
+	.rewardpoints-index-points .data-table#reward-points-table td{
+		width: 100%;
+		display: inline-block;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-o-box-sizing: border-box;
+	}
+
+	.review-customer-index .data-table#my-reviews-table td,
+	.wishlist-index-index .data-table#wishlist-table td,
+	.importorder-index-index .data-table#my-orders-table td,
+	.rewardpoints-index-referral .data-table#referred-friends-table td,
+	.rewardpoints-index-points .data-table#reward-points-table td {
+		padding: 5px 10px;
+	}
+
+	.customer-account-index #my-orders-table.data-table td .pr-recent-actions-order, 
+	.sales-order-history .my-account .data-table td .view-re-order {
+		/*padding-left: 110px;*/
+		display: inline-block;
+  		float: right;
+  		margin-top: 0;
+	}
+
+	.customer-account-index #my-orders-table.data-table td:before, 
+	.sales-order-history .my-account .data-table td:before, 
+	.review-customer-index .data-table#my-reviews-table td:before,
+	.wishlist-index-index .data-table#wishlist-table td:before,
+	.importorder-index-index .data-table#my-orders-table td:before,
+	.rewardpoints-index-referral .data-table#referred-friends-table td:before,
+	.rewardpoints-index-points .data-table#reward-points-table td:before {
+		content: "";
+		margin-right: 10px;
+		display: inline-block;
+		width: 100px;
+		text-transform: capitalize;		
+	}
+
+	.review-customer-index .data-table#my-reviews-table td:before, 
+	.wishlist-index-index .data-table#wishlist-table td:before{ 
+		width: 120px;
+	}
+
+	.importorder-index-index .data-table#my-orders-table td:before,
+	.rewardpoints-index-referral .data-table#referred-friends-table td:before,
+	.rewardpoints-index-points .data-table#reward-points-table td:before { 
+		width: 130px;
+	}
+
+	.review-customer-index .data-table#my-reviews-table td .rating-box, 
+	.review-customer-index .data-table#my-reviews-table td .product-name{ 
+		display: inline-block;
+	}
+
+	.customer-account-index #my-orders-table.data-table td:first-child,
+	.sales-order-history .my-account .data-table td:first-child,
+	.importorder-index-index .data-table#my-orders-table td:first-child,
+	.rewardpoints-index-points .data-table#reward-points-table td:first-child {
+		padding-top: 10px;
+	}
+
+	.customer-account-index #my-orders-table.data-table td:last-child,
+	.sales-order-history .my-account .data-table td:last-child,
+	.importorder-index-index .data-table#my-orders-table td:last-child,
+	.rewardpoints-index-points .data-table#reward-points-table td:last-child {
+		padding-bottom: 10px;
+		text-align: left !important;
+	}
+
+	.customer-account-index #my-orders-table.data-table td:first-child:before,
+	.sales-order-history .my-account .data-table td:first-child:before {
+		content: "Order# :";
+	}
+
+	.customer-account-index #my-orders-table.data-table td:nth-child(2):before,
+	.sales-order-history .my-account .data-table td:nth-child(2):before {
+		content: "Date :";
+	}
+	
+	.customer-account-index #my-orders-table.data-table td:nth-child(3):before,
+	.sales-order-history .my-account .data-table td:nth-child(3):before {
+		content: "Ship to :";
+	}
+	
+	.customer-account-index #my-orders-table.data-table td:nth-child(4):before,
+	.sales-order-history .my-account .data-table td:nth-child(4):before {
+		content: "Order Total :";
+	}
+
+
+	.customer-account-index #my-orders-table.data-table td:nth-child(5):before,
+	.sales-order-history .my-account .data-table td:nth-child(5):before {
+		content: "Status :";
+	}
+
+	.review-customer-index .data-table#my-reviews-table td:first-child:before{
+		content:"Date :";
+	}
+
+	.review-customer-index .data-table#my-reviews-table td:nth-child(2):before {
+		content: "Product Name :";
+	}
+
+	.review-customer-index .data-table#my-reviews-table td:nth-child(3):before {
+		content: "Rating :";
+	}
+
+	.review-customer-index .data-table#my-reviews-table td:nth-child(4):before {
+		content: "Review :";
+	}
+
+	.review-customer-index .data-table#my-reviews-table td:nth-child(5):before {
+		content: "Details :";
+	}
+
+
+	.customer-account-edit #more_info .form-list li:last-child .input-box   {
+		width: 100%;
+	}
+
+	.addresses-list li.item {
+		width: 100%;
+		box-sizing: border-box;
+		margin: 0 0 20px 0;
+	}
+
+	.customer-address-index .addresses-list .col-2.addresses-additional .empty p {
+		text-align: left;
+		float: none;
+	}
+
+	.refillreminder-view-index .data-table {
+		border: 1px solid #ccc;
+	}
+
+	.refillreminder-view-index .data-table thead {
+		display: none;
+	}
+
+	.refillreminder-view-index .data-table tbody td {
+		border-bottom: 0;
+		border-right: 0;
+		width: 100%;
+		display: inline-block;
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-o-box-sizing: border-box;
+	}
+
+	.refillreminder-view-index .data-table tbody td:before {
+		content: "";
+		margin-right: 20px;
+		width: 200px;
+		margin-right: 10px;
+		display: inline-block;
+	}
+
+	.refillreminder-view-index .data-table tbody td.first_img_td {
+		display: block;
+		text-align: center;
+		padding-bottom: 50px;
+		padding-top: 20px;
+	}
+
+	.refillreminder-view-index .data-table tbody td:first-child:before,
+	.wishlist-index-index .data-table#wishlist-table td:before {
+		display: none;
+	}
+
+	.refillreminder-view-index .data-table tbody td:nth-child(2):before{
+		content: "Sku :";
+	}
+
+	.refillreminder-view-index .data-table tbody td:nth-child(3):before{
+		content: "Product Name :";
+	}
+
+	.refillreminder-view-index .data-table tbody td:nth-child(4):before{
+		content: "Pack Size :";
+	}
+
+	.refillreminder-view-index .data-table tbody td:nth-child(5):before{
+		content: "Product Image :";
+	}
+
+	.refillreminder-view-index .data-table tbody td:nth-child(6):before{
+		content: "Remind In :";
+	}
+
+	.refillreminder-view-index .data-table tbody td:nth-child(7):before{
+		content: "Next Reminder :";
+	}
+
+	.refillreminder-view-index .data-table tbody td:last-child{
+		padding-bottom: 20px;
+	}
+
+	.refillreminder-view-index .data-table tbody td.mid_img_td {
+		display: none;
+	}
+
+	.refillreminder-view-index .data-table td .refill-action {
+		bottom: 40px;
+		width: 100%;
+	}
+
+	.wishlist-index-index .data-table#wishlist-table td,
+	.rewardpoints-index-referral .data-table#referred-friends-table td,
+	.rewardpoints-index-points .data-table#reward-points-table td {
+		padding-left: 130px;
+		box-sizing: border-box;
+	}
+
+	.wishlist-index-index .data-table#wishlist-table td:nth-child(2):before {
+		content: "Product Details and Comment : ";
+		display: inline-block;
+		position: absolute;
+		margin-left: -120px;
+		font-size: 14px;
+		line-height: 19px;
+	}
+	
+	.wishlist-index-index .data-table#wishlist-table td .price-box:before,
+	.wishlist-index-index .data-table#wishlist-table td .add-to-cart-alt:before,
+	.wishlist-index-index .data-table td.last .btn-remove:before {
+		content: "Price : ";
+		display: inline-block;
+		position: absolute;
+		margin-left: -120px;
+		font-size: 14px;
+		line-height: 19px;
+		width: 120px;
+		left: 0;
+		color: #7b7b7b;
+	}
+
+	.importorder-index-index .data-table#my-orders-table td:before, 
+	.rewardpoints-index-referral .data-table#referred-friends-table td:before,
+	.rewardpoints-index-points .data-table#reward-points-table td:before  {
+		position: absolute;
+		margin-left: -130px;
+	}
+
+	.importorder-index-index .data-table#my-orders-table td, 
+	.rewardpoints-index-referral .data-table#referred-friends-table td,
+	.rewardpoints-index-points .data-table#reward-points-table td {
+		padding-left: 140px;
+		white-space: normal;
+		word-break: break-all;
+	}
+
+	.wishlist-index-index .data-table#wishlist-table td .add-to-cart-alt:before {
+		content: "Unit : ";
+		text-align: left;
+	}
+
+	.wishlist-index-index .data-table td.last .btn-remove:before {
+		content: "Delete :";
+		text-align: left;
+	}
+
+	.wishlist-index-index .data-table td .cart-cell {
+		text-align: left;
+	}
+
+	.wishlist-index-index .data-table td .price-box {
+		position: relative;
+	}
+
+	.wishlist-index-index .data-table td .add-to-cart-alt, .wishlist-index-index .data-table td input.qty {
+		float: left;
+		position: relative;
+		width: 100%;
+	}
+	.wishlist-index-index .data-table td .add-to-cart-alt a {
+	    display: inline-block;
+	    margin-top: 0;
+	    float: right;
+	}
+
+	.wishlist-index-index .data-table td textarea {
+		margin-top: 20px;
+	}
+
+	.wishlist-index-index .data-table td.last {
+		position: relative;
+	}
+
+	/*.wishlist-index-index .data-table td.last .btn-remove {
+		position: absolute;
+		right: 0;
+		top: 
+	}*/
+
+	.wishlist-index-index .data-table td.last .btn-remove {
+		top: ;
+		text-indent: 0.01em;
+		width: auto;
+		height: auto;
+		line-height: 20px;
+		background: transparent;
+		position: relative;
+		overflow: visible;
+	}
+
+	.importorder-index-index .data-table#my-orders-table td:first-child:before{
+		content: "Order# :"
+	}
+
+	.importorder-index-index .data-table#my-orders-table td:nth-child(2):before{
+		content: "Date :"
+	}
+
+	.importorder-index-index .data-table#my-orders-table td:nth-child(3):before{
+		content: "Details :"
+	}
+
+	.importorder-index-index .data-table#my-orders-table td:nth-child(4):before{
+		content: "Order Total :"
+	}
+
+	.importorder-index-index .data-table#my-orders-table td:nth-child(5):before{
+		content: "Payment Method :"
+	}
+
+	.importorder-index-index .data-table#my-orders-table td:nth-child(6):before{
+		content: "Status :"
+	}
+
+	.rewardpoints-index-referral .data-table#referred-friends-table td:first-child:before{
+		content: "Full Name :"
+	}
+
+	.rewardpoints-index-referral .data-table#referred-friends-table td:nth-child(2):before{
+		content: "Email :"
+	}
+
+	.rewardpoints-index-referral .data-table#referred-friends-table td:nth-child(3):before{
+		content: "First Order :"
+	}
+
+	.rewardpoints-index-points .data-table#reward-points-table td:first-child:before{
+		content: "Type of Point :"
+	}
+
+	.rewardpoints-index-points .data-table#reward-points-table td:nth-child(2):before{
+		content: "Points Added :"
+	}
+
+	.rewardpoints-index-points .data-table#reward-points-table td:nth-child(3):before{
+		content: "Point Used :"
+	}
+
+	.rewardpoints-index-points .data-table#reward-points-table td:nth-child(4):before{
+		content: "Obtention Date :"
+	}
+
+	.rewardpoints-index-points .data-table#reward-points-table td:nth-child(5):before{
+		content: "Valid Until :"
+	}
+
+	.my-account .pager .amount, 
+	.importorder-index-index p.custom_amount, 
+	.rewardpoints-index-points .main-container .col-main .pager .amount{
+		float: left;
+		margin: 0;
+		width: 100%;
+		text-align: left;
+		padding: 0 0 10px 0;
+		margin-bottom: 10px;
+		border-bottom: 1px dashed #ccc;
+	}
+
+	.my-account .pager .limiter,
+	.importorder-index-index .custom_pagination,
+	.rewardpoints-index-points .main-container .col-main .pager .limiter {
+		float: left;
+		text-align: left;
+	}
+
+	.my-account .pager .pages,
+	.importorder-index-index .custom_limiter,
+	.rewardpoints-index-points .main-container .col-main .pager .pages {
+		margin: 0;
+		float: right;
+	}
+
+	.rewardpoints-index-referral .col-main .form-list li {
+		margin: 5px 0;
+		position: relative;
+		margin-bottom: 20px;
+		border-bottom: 1px dashed #ccc;
+		padding-bottom: 20px;
+	}
+
+	.rewardpoints-index-referral .col-main .form-list .field.j2t-rewardpoints-name label, 
+	.rewardpoints-index-referral .col-main .form-list .field.j2t-rewardpoints-email label {
+		width: 100%;
+	}
+
+	.rewardpoints-index-referral .col-main .form-list .field.j2t-rewardpoints-email .validation-advice, .rewardpoints-index-referral .col-main .form-list .field.j2t-rewardpoints-name .validation-advice{
+		padding-left: 14px;
+	}
+
+	.rewardpoints-index-referral .col-main .validation-advice {
+		text-align: left;
+		padding-top: 3px;
+		background: url(../images/validation_advice_bg.gif) 2px 0 no-repeat;
+		padding-left: 17px;
+	}
+
+
+
+}
+
+@media all and (max-width:580px) {
+
+	.refillreminder-view-index .data-table tbody td {
+		padding-left: 160px;
+	}
+
+	.refillreminder-view-index .data-table tbody td:before {
+		width: 150px;
+		position: absolute;
+		margin-left: -150px;
+	}
+
+	.refillreminder-view-index .data-table tbody td.first_img_td {
+		padding-left: 0;
+	}
+
+	.cms-page-view .col-main .std div.left_side_bar_cms_fax {
+		width: 100%;
+		padding-right: 0 !important;
+	}
+
+	.cms-page-view .col-main .std div.right_side_bar_cms_fax {
+		width: 100%
+	}
+
+	.cms-page-view .col-main .std div.right_side_bar_cms_fax img {
+		width: 57% !important;
+		margin: 20px auto !important;
+	}
+
+	.cms-page-view .col-main .std div.right_side_bar_cms_fax .buttons-set {
+		text-align: center !important;
+	}
+
+}
+
+@media all and (max-width:480px) {
+	.customer-account-index .col2-set .box .box-content {
+		font-size: 14px;
+	}
+
+	.customer-account-index #my-rewardpoints-table thead th,
+	.customer-account-index .dashboard-points .data-table td {
+		min-height: 46px;
+		font-size: 13px;
+	}
+
+	.customer-account-index #my_recent_reviews .details {
+		width: 85%;		
+		padding-left: 5px;
+	}
+
+	.customer-account-index .col2-set a.manage-address{
+		font-size: 0;
+	}
+	.customer-account-index .col2-set a.manage-address:before {
+		content: "";
+		display: inline-block;
+		width: 25px;
+		height: 28px;
+		background: url(../images/edit_ico.png) no-repeat 0 0;
+		position: relative;
+		bottom: 5px;	
+		right: 3px;
+	}
+	.customer-account-index #my-orders-table.data-table td .pr-recent-actions-order,
+	.sales-order-history .my-account .data-table td .view-re-order {
+		padding-left: 110px;
+		display: block;
+  		float: left;
+	}
+
+	 .sales-order-history .my-account .data-table td .view-re-order {
+	 	margin-top: 10px;
+	 }
+
+	.customer-account-edit .form-list .customer-name .field.name-firstname, 
+	.customer-account-edit .form-list li, 
+	.customer-account-edit .form-list .customer-name .field.name-lastname,
+	.customer-address-form .field.name-firstname,
+	.customer-address-form .field.name-lastname,
+	.customer-address-form .form-list .field {
+		width: 100%;
+	}
+
+	.customer-address-index .page-title button.button span {
+		background: transparent; 
+		font-size: 0;
+		margin: 0;
+		padding: 0 !important;
+	}
+
+	.customer-address-index .my-account .button.button{
+		bottom: 0;
+	}
+
+	.customer-address-index .page-title button.button span span {
+	    height: 27px;
+	    line-height: 27px!important;
+	    display: inline-block;
+	    margin: 0;
+	    padding: 0 8px!important;
+	}
+
+	.refillreminder-view-index .data-table tbody td {
+		padding-left: 125px;
+	}
+
+	.refillreminder-view-index .data-table tbody td:before {
+		width: 115px;
+		position: absolute;
+		margin-left: -115px;
+	}
+
+	.refillreminder-view-index .data-table tbody td.first_img_td {
+		padding-left: 0;
+	}
+
+	.review-customer-index .data-table#my-reviews-table tbody td {
+		padding-left: 135px;
+	}
+
+	.review-customer-index .data-table#my-reviews-table tbody td:before {
+		width: 125px;
+		position: absolute;
+		margin-left: -125px;
+	}
+
+	.review-customer-index .data-table#my-reviews-table tbody td.first_img_td {
+		padding-left: 0;
+	}
+
+	.my-account .pager .amount ,
+	.my-account .pager .limiter ,
+	.my-account .pager .pages,
+	.rewardpoints-index-points .main-container .col-main .pager .amount ,
+	.rewardpoints-index-points .main-container .col-main .pager .limiter ,
+	.rewardpoints-index-points .main-container .col-main .pager .pages,
+	.importorder-index-index p.custom_amount,
+	.importorder-index-index .custom_pagination,
+	.importorder-index-index .custom_limiter,
+	.importorder-index-index .custom_pager center{
+		width: 100%;
+		float: left;
+		text-align: center;
+		padding: 0 0 10px 0;
+		margin-bottom: 10px;
+		border-bottom: 1px dashed #ccc;
+	}
+
+	.my-account .pager .pages, .importorder-index-index .custom_limiter { 
+		margin: 0;		
+		border: 0;
+	}
+
+	/* CMs Pages */
+
+	.cms-page-view .place-order span.telephone-order-icon {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -5px -4px / auto;
+		display: block;
+		height: 60px;
+		width: 60px;
+		background-size: 205px !important;
+	}
+
+	.cms-page-view .place-order span.telephone-order-icon-selected, .cms-page-view .place-order span.telephone-order-icon:hover {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -5px -64px / auto;
+	}
+
+	.cms-page-view .place-order span.order-online-text {
+		font-size: 14px;
+	}
+
+	.cms-page-view .place-order span.midcart-order-icon {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -72px -4px / auto;
+		height: 60px;
+		width: 60px;
+		background-size: 205px !important;
+		margin: 20px 0 0 0;
+	}
+
+	.cms-page-view .place-order span.midcart-order-icon-selected, .cms-page-view .place-order span.midcart-order-icon:hover {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -72px -64px / auto;
+	}
+
+	.cms-page-view .place-order span.mail-fax-order-icon {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -141px -4px / auto;
+		display: block;
+		height: 60px;
+		width: 60px;
+		background-size: 205px !important;
+	}
+
+	.cms-page-view .place-order span.mail-fax-order-icon-selected, .cms-page-view .place-order span.mail-fax-order-icon:hover {
+		background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -141px -64px / auto;
+	}
+
+	.cms-page-view .place-order a.order-online-block.mid {
+		margin: 0 1%;
+	}
+	
+	.cms-page-view .place-order span.order-online-text {
+		font-size: 10px;
+	}
+	
+	.cms-page-view .place-order a.order-online-block.mid {
+		margin: 0 2%;
+	}
+
+	.cms-content-88-order-online.cms-page-view .col1-layout .col-main, 
+	.cms-order-by-email.cms-page-view .col1-layout .col-main, 
+	.cms-order-by-telephone.cms-page-view .col1-layout .col-main {
+		padding: 0;
+	}
+	.customer-account-edit .form-list li, .customer-account-edit .form-list.edit-pswd .field {
+	    margin-bottom: 5px;
+	}
+	.customer-name-middlename .field.name-firstname, .customer-name-middlename .name-middlename{
+		margin: 0 0 5px 0;
+	}
+
+}
+
+@media all and (max-width:420px) {
+	a.home_icon.in_nav img {
+		margin-right: 6px;
+	}
+
+	a.home_icon.in_nav {
+		padding-left: 9px !important;
+	}
+
+}
+
+
+@media all and (max-width:375px) {
+	.addresses-additional h1 {
+		font-size: 17px;
+	}
+
+	.rewardpoints-index-referral .pager {
+		padding: 20px 8px;
+	}
+
+	.rewardpoints-index-referral .pager .amount	{
+		border-bottom: 1px dashed #ccc;
+	}
+
+}
+
+*a.home_icon {
+	float: left;
+}

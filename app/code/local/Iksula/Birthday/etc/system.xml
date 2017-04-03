@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+  <sections>
+    <birthday_offer translate="label comment" module="birthday">
+      <tab>systemconfig</tab>
+      <groups>
+        <birthday_group translate="label comment">
+          <label>Birthday Section</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <status translate="label comment" module="birthday">
+              <label>Status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <comment></comment>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </status>
+            <cron_notify_email translate="label comment" module="birthday">
+              <label>Cron Notify Email Address</label>
+              <frontend_type>text</frontend_type>
+              <comment>Please add email address in comma seperated format</comment>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </cron_notify_email>
+            <debug_mode translate="label comment" module="birthday">
+              <label>Debug Mode Enable ?</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <comment></comment>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </debug_mode>
+          </fields>
+        </birthday_group>
+      </groups>
+    </birthday_offer>
+  </sections> 
+</config>

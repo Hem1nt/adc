@@ -1,0 +1,143 @@
+
+<?php 
+/*-------------- Start of Order Ratio----------------*/ 
+$now = Mage::getModel('core/date')->timestamp(time()); 
+$dateStart = '2013-06-27 00:00:00'; 
+$dateEnd = date('Y-m-d' . ' 23:59:00', $now); 
+
+$orderCollection = Mage::getModel('sales/order')->getCollection(); 
+$orderCollection->addFieldToFilter('created_at', array('from' => $dateStart, 'to' => $dateEnd)); 
+$orderCount =count($orderCollection->getData());
+$oldcustomercount = 0;
+$newcustomercount = 0;
+$notloggedincustomercount = 0;
+foreach ($orderCollection->getData() as $userData) {
+  //get customer id from order  and load customer
+ $customerdata = Mage::getModel('customer/customer')->load($userData['customer_id']); 
+ $customerdata['created_at'];
+ $customercreationdate = $customerdata['created_at'];
+ if($userData['customer_group_id']=='1'){
+   if(strtotime($customercreationdate)>=strtotime($dateStart)){
+     $newcustomercount++;
+   }
+   else{
+    $oldcustomercount++;
+  }	
+}
+else{		
+ $notloggedincustomercount++;
+}
+}
+// echo 'New Customer :'.$newcustomercount;
+// echo '<br />';
+// echo 'Old Customer :'.$oldcustomercount;
+// echo '<br />';
+// echo 'Not Logged In Customer :'.$notloggedincustomercount;
+/*-------------- End of Order Ratio----------------*/ 
+
+/*---------------Start of Customer Count-----------*/
+$newcustomer = 0;
+$oldcustomer = 0;
+// $newcustomer = 0;
+$customercount = Mage::getModel('customer/customer')->getCollection();
+foreach ($customercount->getData() as $user) {
+  $customercreation = $user['created_at'];
+ // print_r($user['group_id']);
+  if(strtotime($customercreation)>=strtotime($dateStart)){
+    $newcustomer++;
+  }
+  else{
+    $oldcustomer++;
+  } 
+
+}
+// echo '<br />';
+// echo $newcustomer;
+// echo '<br />';
+// echo $oldcustomer;
+/*---------------End of Customer Count-------------*/
+
+
+?>
+
+<html>
+<head>
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Old Customer Order', <?php echo $oldcustomercount; ?>],
+          ['New Customer Order', <?php echo $newcustomercount;?>],
+          ['Not Logged In customer Order', <?php echo $notloggedincustomercount;?>],
+          ]);
+
+        // Set chart options
+        var options = {'title':'Old Customer Order V/S New Customer Order V/S Not Logged In Customer Order',
+        'width':1000,
+        'height':500};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+      </script>
+    </head>
+
+    <body>
+      <!--Div that will hold the pie chart-->
+      <div id="chart_div"></div>
+    </body>
+    </html>
+
+    <html>
+    <head>
+      <!--Load the AJAX API-->
+      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Old Customer', <?php echo $oldcustomer; ?>],
+          ['New Customer', <?php echo $newcustomer;?>],
+          ['Not Logged In customer Order', <?php echo $notloggedincustomercount;?>],
+          ]);
+
+        // Set chart options
+        var options = {'title':'Old Customer V/S New Customer V/S Not Logged In Customer',
+        'width':1000,
+        'height':500};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+        chart.draw(data, options);
+      }
+      </script>
+    </head>
+
+    <body>
+      <!--Div that will hold the pie chart-->
+      <div id="chart_div2"></div>
+    </body>
+    </html>

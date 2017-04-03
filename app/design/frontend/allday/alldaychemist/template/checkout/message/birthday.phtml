@@ -1,0 +1,104 @@
+<?php
+    $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+    $order = Mage::getSingleton('sales/order');
+    $order->load($lastOrderId);
+    $_totalData = $order->getData();
+    $email = $_totalData['customer_email'];   //Retrieves guest e-mail
+    $name = $order->getBillingAddress()->getName();
+?>
+<div id= "checkout-form">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+    <link rel="stylesheet" href="<?php echo $this->getSkinUrl('css/jquery.datepick.css', array('_secure'=>true)) ?>"/>
+    <link rel="stylesheet" href="<?php echo $this->getSkinUrl('css').'/jquery.datepick.css'?>"/>
+    <script src="<?php echo $this->getSkinUrl('js/jquery-ui.js', array('_secure'=>true)) ?>"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src ="<?php echo $this->getSkinUrl('js').'/jquery.datepick.js'?>"></script>
+    <div id="formwrapper">
+        <form name="ajaxform" id="ajaxform" onclick="return false" method="POST"/>
+          <h2>Would you mind giving us following details about yourself? We will surprise you! </h2>
+          <input type="hidden" name="customer_name" id="customer_name" value="<?php echo $name?>"/>
+          <input type="hidden" name="email" id="email" value="<?php echo $email?>"/>
+          <div style="padding-top:10px">
+              <label for="dob" style="padding-right:20px">Birthdate: </label><input name="dob" id="dob" type="text" class=" input-text" style="width:170px !important;"/>
+          </div>
+          <div style="padding-top:10px;padding-bottom:20px;">
+              <label for="anniversary">Anniversary: </label><input name="anniversary" id="anniversary" type="text" style="width:170px !important;" class=" input-text"/>
+          </div>
+          <input type="submit" id="customerinfo-button" value="Submit"/>
+        </form>
+    </div>
+    <div class="greeting_msg"></div>
+    <div id='loading' style='display: none'>
+      <img src="<?php echo $this->getSkinUrl().'images/ajax-loader.gif'?>" title="Loading" />
+    </div></div>
+
+     <script type="text/javascript">
+      jQuery(function($) {
+            $('#dob').datepick({
+              changeMonth: true,
+              changeYear: true,
+              yearRange: "1930:1995",
+              dateFormat: "dd-mm-yyyy",
+              defaultDate: '01-01-1995',
+            });
+
+            $('#anniversary').datepick({
+              changeMonth: true,
+              changeYear: true,
+              yearRange: "1960:2014",
+              dateFormat: "dd-mm-yyyy",
+              defaultDate: '01-01-2014',
+            });
+            
+            $('#customerinfo-button').click(function(){
+              $('#loading').show();
+              $('#formwrapper').hide();
+              var postData = $("#ajaxform").serialize();
+              var formURL = "<?php echo $this->getUrl('customerinfo/index/savecustomerinfo',array('_secure'=>true));?>";
+              $.ajax({
+                url : formURL,
+                type: "POST",
+                data : postData,
+                success:function(data){  
+                  $('#loading').hide();
+                  $('.greeting_msg').show(data);
+                  $('#formwrapper').html(data);
+                  $('#formwrapper').show();
+                },
+                  error: function(jqXHR, textStatus, errorThrown){
+                }
+              });
+            });
+        });
+    </script>
+    <style type="text/css">
+      #customerinfo-button{
+        background-color: #809d01 !important;
+        color: #fff;
+        border: none;
+        padding: 5px;
+        font-weight: bold;
+        font-size: 14px;
+        border-radius: 5px;
+      }
+
+        #customerinfo{
+        background: -webkit-linear-gradient(top, #f35782 0%, #fd326a 100%);
+        border-radius: 5px !important;
+        height: 30px !important;
+        width: 90px !important;
+        }
+        #checkout-form{
+            color:#000;
+        }
+        #formwrapper{
+          padding: 10px;
+          background-color: #CCC
+        }
+
+        #checkout-form #formwrapper input#customerinfo-button {
+         width: 69px !important;
+        }
+        .greeting_msg{display: none;}
+    </style>

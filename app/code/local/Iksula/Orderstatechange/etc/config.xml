@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Orderstatechange>
+      <version>0.1.0</version>
+    </Iksula_Orderstatechange>
+  </modules>
+  <frontend>
+    <routers>
+      <orderstatechange>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Orderstatechange</module>
+            <frontName>orderstatechange</frontName>
+          </args>
+      </orderstatechange>
+
+    </routers>
+	<layout>
+      <updates>
+        <orderstatechange>
+          <file>orderstatechange.xml</file>
+        </orderstatechange>
+      </updates>
+    </layout>
+  </frontend>
+  <global>
+   <helpers>
+      <orderstatechange> <class>Iksula_Orderstatechange_Helper</class> </orderstatechange>
+    </helpers>
+	<events>
+        <checkout_submit_all_after>
+            <observers>
+                <geraldonline_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Orderstatechange_Model_Sales_Order_Observer</class>
+                    <method>sales_order_place_before</method>
+                </geraldonline_observer>
+            </observers>
+        </checkout_submit_all_after>
+		
+			<sales_order_invoice_save_after>  
+                <observers>
+                    <iksula_orderstatechange_sales_order_save_after>
+                        <type>singleton</type>
+                        <class>Iksula_Orderstatechange_Model_Sales_Order_Observer</class>
+                        <method>salesOrderInvoiceSaveAfter</method>
+                    </iksula_orderstatechange_sales_order_save_after>
+                </observers>
+            </sales_order_invoice_save_after>
+			<sales_order_invoice_save_commit_after>  
+                <observers>
+                    <iksula_orderstatechange_sales_order_save_after>
+                        <type>singleton</type>
+                        <class>Iksula_Orderstatechange_Model_Sales_Order_Observer</class>
+                        <method>salesOrderInvoiceSaveCommitAfter</method>
+                    </iksula_orderstatechange_sales_order_save_after>
+                </observers>
+            </sales_order_invoice_save_commit_after>
+			
+			  <sales_order_shipment_save_after>
+                <observers>
+                    <iksula_orderstatechange_sales_order_shipment_after>
+                        <type>singleton</type>
+                        <class>Iksula_Orderstatechange_Model_Sales_Order_Observer</class>
+                        <method>salesOrderShipmentSaveAfter</method>
+                    </iksula_orderstatechange_sales_order_shipment_after>
+                   
+                </observers>
+            </sales_order_shipment_save_after>
+			
+			<sales_order_shipment_save_commit_after>
+                <observers>
+                    <iksula_orderstatechange_sales_order_shipment_after>
+                        <type>singleton</type>
+                        <class>Iksula_Orderstatechange_Model_Sales_Order_Observer</class>
+                        <method>salesOrderShipmentSaveCommitAfter</method>
+                    </iksula_orderstatechange_sales_order_shipment_after>
+                   
+                </observers>
+            </sales_order_shipment_save_commit_after>
+			
+    </events>
+  <sales>
+	
+    <order>
+                <!-- /**
+                      * @depraceted after 1.4.2, statuses are saved into sales_order_status table
+                      */
+                -->
+				<statuses>
+                    <pending translate="label">
+                        <label>Pending</label>
+                    </pending>
+                    <pending_payment translate="label" >
+                        <label>Pending Payment</label>
+                    </pending_payment>
+                    <processing translate="label">
+                        <label>Processing</label>
+                    </processing>
+                    <holded translate="label">
+                        <label>On Hold</label>
+                    </holded>
+                    <complete translate="label">
+                        <label>Complete</label>
+                    </complete>
+                    <closed translate="label">
+                        <label>Closed</label>
+                    </closed>
+                    <canceled translate="label">
+                        <label>Canceled</label>
+                    </canceled>
+                    <fraud translate="label">
+                        <label>Suspected Fraud</label>
+                    </fraud>
+                    <payment_review translate="label">
+                        <label>Payment Review</label>
+                    </payment_review>
+                </statuses>
+                <states>
+                    <pending_stock translate="label">
+                        <label>Pending Stock</label>
+                        <statuses>
+                            <pending_stock default="1"/>
+                        </statuses>
+                        <visible_on_front>1</visible_on_front>
+                    </pending_stock>
+					
+					<send_to_casting translate="label">
+                        <label>Send To Casting</label>
+                        <statuses>
+                            <send_to_casting default="1"/>
+                        </statuses>
+                        <visible_on_front>1</visible_on_front>
+                    </send_to_casting>
+					<send_to_setting translate="label">
+                        <label>Send To Setting</label>
+                        <statuses>
+                            <send_to_setting default="1"/>
+                        </statuses>
+                        <visible_on_front>1</visible_on_front>
+                    </send_to_setting>
+                    <unprocessed_refund translate="label">
+                        <label>Unprocessed Refund</label>
+                        <statuses>
+                            <unprocessed_refund default="1"/>
+                        </statuses>
+                        <visible_on_front>1</visible_on_front>
+                    </unprocessed_refund>
+					<shipped_refund translate="label">
+                        <label>Shipped Refund</label>
+                        <statuses>
+                            <shipped_refund default="1"/>
+                        </statuses>
+                        <visible_on_front>1</visible_on_front>
+                    </shipped_refund>
+                </states>
+            </order>
+			</sales>
+			<models>
+				<sales>
+					<rewrite>
+						<!--order>Iksula_Orderstatechange_Model_Sales_Order</order-->
+						<order_pdf_invoice>Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice</order_pdf_invoice>
+						<order_pdf_shipment>Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment</order_pdf_shipment>
+					</rewrite>
+				</sales>
+			</models>
+ </global>
+  
+</config> 

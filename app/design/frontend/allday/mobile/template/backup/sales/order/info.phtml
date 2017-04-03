@@ -1,0 +1,228 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
+<?php
+$_order = $this->getOrder();
+// echo "<pre>";
+// print_r($_order->getData());
+// exit;
+$billing_address = $_order->getBillingAddress();
+// echo "<pre>"; print_r($billing_address->getData());
+// exit;
+
+$billingName = $billing_address->getFirstname().' '.$billing_address->getLastname();
+$billingComapany = $billing_address->getCompany();
+$billingStreetaddress = $billing_address->getStreetFull();
+$billingRegion = $billing_address->getRegion();
+$billingCity = $billing_address->getCity();
+$billingPostcode = $billing_address->getPostcode();
+$billingTelephone = $billing_address->getTelephone();
+$billingCountry_code = $billing_address->getCountry_id();
+$billingCountry = Mage::app()->getLocale()->getCountryTranslation($billingCountry_code);
+
+$shipping_address = $_order->getShippingAddress();
+
+$shippingName = $shipping_address->getFirstname().' '.$shipping_address->getLastname();
+$shippingComapany = $shipping_address->getCompany();
+$shippingStreetaddress = $shipping_address->getStreetFull();
+$shippingRegion = $shipping_address->getRegion();
+$shippingCity = $shipping_address->getCity();
+$shippingPostcode = $shipping_address->getPostcode();
+$shippingTelephone = $shipping_address->getTelephone();
+$shippingCountry_code = $shipping_address->getCountry_id();
+$shippingCountry = Mage::app()->getLocale()->getCountryTranslation($shippingCountry_code);
+
+?>
+<?php //echo get_class($this);
+ $frontendHelper = Mage::helper('frontend');
+
+?>
+<?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+ <!-- <div class="buttons-set">
+    <p class="back-link"><a href="<?php //echo $frontendHelper->getBackUrl() ?>"><small>&laquo; </small><?php //echo $frontendHelper->getBackTitle() ?></a></p>
+</div> -->
+<div class="order_details">
+    
+    <div class="order_summary">
+
+        <div class="summary_left">
+            <div class="order-title">
+                <h2><?php echo $this->__('Order Details') ?></h2>
+                <?php //echo $this->getChildHtml('buttons') ?>
+            </div>
+            <ul>
+                <li>
+                    <label><?php echo $this->__('Order ID:') ?></label>
+                    <span class="left_info">
+                        <span class="adc-font-17"><?php echo '#'.$_order->getRealOrderId() ?></span>
+                        <?php
+                            $cart_qty = floatval($_order->getTotalQtyOrdered());
+                            if( $cart_qty == 1 ) {
+                                $cart_qty = '('.$cart_qty.' item)';
+                            }
+                            else {
+                                $cart_qty = '('.$cart_qty.' items)';
+                            }
+                        ?>
+                        <span class="orange"><?php echo $cart_qty; ?></span>
+                    </span>
+                </li>
+                <li>
+                    <label><?php echo $this->__('Order Date:') ?></label>
+                    <span class="left_info">
+                        <span><?php echo $this->formatDate($_order->getCreatedAtStoreDate(), 'long') ?></span>
+                    </span>
+                </li>
+                <!-- <li> -->
+                    <!-- <label class="adc-middle"><?php// echo $this->__('Shipping Method:') ?></label>
+                    <?php //if ($_order->getShippingDescription()): ?>
+                        <span class="left_info">
+                            <span><?php //echo $this->escapeHtml($_order->getShippingDescription()) ?></span>
+                        </span>
+                    <?php //else: ?>
+                        <span class="left_info">
+                            <span><?php //echo $this->helper('sales')->__('No shipping information available'); ?></span>
+                        </span>
+                    <?php //endif; ?> -->
+                <!-- </li> -->
+                <li>
+                    <label class="adc-middle"><?php echo $this->__('Payment Method:') ?></label>
+                    <span class="left_info">
+                        <?php if($_order->getData('paymentinfo_message')) {?>
+                            <span class="adc-inline"><?php echo $_order->getData('paymentinfo_message'); ?></span>
+                        <?php }else {?>
+                            <span class="adc-inline"><?php echo $this->getPaymentInfoHtml() ?></span>
+                        <?php } ?>
+                    </span>
+                </li>
+                <?php if($_order->getData('dispatcher_message')) { ?>
+                <li>
+                    <label class="adc-middle"><?php echo $this->__('Descriptor:') ?></label>
+                    <span class="left_info">
+                        <span class="adc-inline"><?php echo $_order->getData('dispatcher_message'); ?></span>
+                    </span>
+                </li>
+                <?php } ?>
+                <li>
+                    <label><?php echo $this->__('Total:') ?></label>
+                    <span class="left_info">
+                        <span class="adc-font-17"><?php echo Mage::helper('core')->currency($_order->getGrandTotal(),true,false) ?></span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="summary_right">
+            <div class="col2-set order_info_box">
+                <div class="shipping_address">
+                    <div class="box">
+                        <div class="box-title">
+                            <h2><?php echo $this->__('Shipping Address') ?></h2>
+                        </div>
+                        <div class="box-content">
+                            <ul>
+                                <li>
+                                    <span class="adc-font-20"><?php echo $shippingName ?></span>
+                                    <span> (Tel: <?php echo $shippingTelephone ?>)</span>
+                                </li>
+                                <li>
+                                    <span><?php echo $shippingStreetaddress ?></span>
+                                </li>
+                                <li>
+                                    <span><?php echo $shippingCity.', '.$shippingRegion.', '.$shippingPostcode ?></span>
+                                </li>
+                                <li>
+                                    <span><?php echo $shippingCountry ?></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="billing_address">
+                    <div class="box">
+                        <div class="box-title">
+                            <h2><?php echo $this->__('Billing Address') ?></h2>
+                        </div>
+                        <div class="box-content">
+                            <ul>
+                                <li>
+                                    <span class="adc-font-20"><?php echo $billingName ?></span>
+                                    <span> (Tel: <?php echo $billingTelephone ?>)</span>
+                                </li>
+                                <li>
+                                    <span><?php echo $billingStreetaddress ?></span>
+                                </li>
+                                <li>
+                                    <span><?php echo $billingCity.', '.$billingRegion.', '.$billingPostcode ?></span>
+                                </li>
+                                <li>
+                                    <span><?php echo $billingCountry ?></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo $this->getStatusHistoryRssUrl($_order) ?>
+
+<div class="order_actions_tab">
+    <div class="tab_title">MANAGE ORDER</div>
+    <ul class="action_nav">
+        <li class="action_list">
+            <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
+                <a href="<?php echo $this->getReorderUrl($_order) ?>" >
+                    <i id="reorder"></i>
+                    <?php echo $this->__('Reorder') ?>
+                </a>
+            <?php endif ?>
+        </li>
+        <li class="action_list">
+            <a href="<?php echo $this->getPrintUrl($_order) ?>" class="print_order" onclick="this.target='_blank';">
+                <i id="print"></i>
+                <?php echo $this->__('Print Order') ?>
+            </a>
+        </li>
+        <li class="action_list">
+            <a onclick="setLocation('<?php echo $this->getBaseUrl() ?>contactcustom/index/customernewdelete?orderid=<?php echo  $_order->getData('entity_id'); ?>')" class="download_invoice">
+                <i id="invoice"></i>
+                <?php echo $this->__('Download Pdf') ?>
+            </a>
+        </li>
+        <li class="action_list last">
+            <a href="<?php echo $this->getBaseUrl() ?>contacts">
+                <i id="contact_us"></i>
+                <?php echo $this->__('Contact US') ?>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<style type="text/css">
+
+</style>

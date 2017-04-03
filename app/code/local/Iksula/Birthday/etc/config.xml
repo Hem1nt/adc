@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Birthday>
+      <version>0.1.0</version>
+    </Iksula_Birthday>
+  </modules>
+    <frontend>
+    <routers>
+      <birthday>
+        <use>standard</use>
+          <args>
+            <module>>Iksula_Birthday</module>
+            <frontName>birthday</frontName>
+          </args>
+      </birthday>
+    </routers>
+		<layout>
+		  <updates>
+			<birthday>
+			  <file>birthday.xml</file>
+			</birthday>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+    <helpers>
+      <birthday>
+        <class>Iksula_Birthday_Helper</class>
+      </birthday>
+    </helpers>
+	<blocks>
+	  <birthday>
+		<class>Iksula_Birthday_Block</class>
+	  </birthday>
+	</blocks>
+	<models>
+	  <birthday>
+		<class>Iksula_Birthday_Model</class>
+		<resourceModel>birthday_mysql4</resourceModel>
+	  </birthday>
+	  <birthday_mysql4>
+		<class>Iksula_Birthday_Model_Mysql4</class>
+		<entities>		  
+			  <birthday>
+				<table>birthday</table>
+			  </birthday>
+        </entities>
+	  </birthday_mysql4>
+	</models>
+	<resources>
+	  <birthday_setup>
+		<setup>
+		  <module>Iksula_Birthday</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </birthday_setup>
+	  <birthday_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </birthday_write>
+	  <birthday_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </birthday_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <birthday>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Birthday</module>
+		  <frontName>birthday</frontName>
+		</args>
+	  </birthday>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <birthday module="birthday">
+		<title>Birthday</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <birthday module="birthday">
+		    <title>Manage Birthday</title>
+			<sort_order>0</sort_order>
+			<action>birthday/adminhtml_birthday</action>
+		  </birthday>
+		  <!-- <send_coupon module="birthday">
+		    <title>Send Birthday Coupon</title>
+			<sort_order>1</sort_order>
+			<action>birthday/adminhtml_birthday/sendCoupon</action>
+		  </send_coupon> -->
+		</children>
+	  </birthday>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<birthday translate="title" module="birthday">
+			  <title>Birthday</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <birthday translate="title">
+			<title>Manage Birthday</title>
+			<sort_order>0</sort_order>
+		  </birthday>
+			  </children>
+			</birthday>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<birthday>
+		  <file>birthday.xml</file>
+		</birthday>
+	  </updates>
+	</layout>
+  </adminhtml>    
+    <crontab>
+        <jobs>            
+			<birthday_sendbirthdaycoupon>
+                <schedule><cron_expr>0 13 * * *</cron_expr></schedule>
+                <run><model>birthday/observer::sendbirthdayCoupon</model></run>
+            </birthday_sendbirthdaycoupon>
+        </jobs>
+    </crontab>
+</config> 

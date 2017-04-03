@@ -1,0 +1,109 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+$storeId = Mage::app()->getStore()->getStoreId();
+$freshdeskStatus = Mage::getStoreConfig('freshdesk/account/enable_freshdesk',$storeId);
+if($freshdeskStatus==1){
+    $contatusUrl = Mage::getStoreConfig('freshdesk/account/support_url',$storeId);
+    if(empty($contatusUrl)){
+        $contatusUrl = Mage::getUrl('contacts');
+    }   
+}else{
+    $contatusUrl = Mage::getUrl('contacts');
+}
+?>
+
+<!-- <div class="not_available">
+    Please note that our website would be down between 3.00 am to 6.00 am EST due to maintenance work. We sincerely apologize for the inconvenience caused to you.
+</div> -->
+<div class="fix-header-block">
+<div class="header-container">
+    <div class="header-top-block">
+    <div class="header-top-block-content">
+        <div class="h-left">
+            <ul>
+                <li><a href="<?php echo Mage::getUrl('aboutus');?>">About Us</a></li>
+                <li><a href="<?php echo Mage::getUrl('Article');?>">Articles</a></li>
+                <li><a href="<?php echo Mage::getUrl('guarantee');?>">Guarantee</a></li>
+                <li><a href="<?php echo Mage::getUrl('faq');?>">FAQ</a></li>
+                <li><a href="<?php echo Mage::getUrl('fight_spam');?>">AntiSpam Policy</a></li>
+                <li><a href="<?php echo Mage::getUrl('sales/order/history');?>">Order Status</a></li>
+                <li><a href="<?php echo $contatusUrl; ?>">Contact Us</a></li>
+                <li><a href="<?php echo Mage::getUrl('trackorder');?>">Track Order</a></li>
+            </ul>
+        </div>
+        <?php echo $this->getChildHtml('user-section') ?>
+    </div>
+    </div>
+<div class="overlay-header"></div>
+    <div class="header">
+        <div class="mobile-pr-category-icon"></div>
+        <?php if ($this->getIsHomePage()):?>
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+        <div class="mob-right-icons">
+            <div class="mobile-pr-search-icon"></div>
+            <div class="mobile-pr-cart-icon">
+                <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
+                <span><?php
+                    echo $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount(); 
+                    //echo $this->getChildHtml('topLinksMobile') 
+                ?>
+                    </span>
+                </a>
+
+            </div>
+            <div class="mobile-pr-login-icon"><?php echo $this->getChildHtml('user-section') ?></div>
+        </div>
+        <div class="quick-access">
+            <?php echo $this->getChildHtml('topSearch') ?>
+            <!-- <p class="welcome-msg"><?php //echo $this->getWelcome() ?> <?php //echo $this->getAdditionalHtml() ?></p> -->
+            <?php echo $this->getChildHtml('topLinks') ?>
+            <?php echo $this->getChildHtml('miniCart') ?>
+            <?php echo $this->getChildHtml('store_language') ?>
+        </div>
+        <?php echo $this->getChildHtml('topContainer'); ?>
+    </div>
+</div>
+<?php echo $this->getChildHtml('topMenu') ?>
+</div>
+
+<style type="text/css">
+  /*  .not_available{
+        background: #2a4b36;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+        letter-spacing: 0.6px;
+        text-align: center;
+        padding: 15px;
+        text-transform: uppercase;
+    }*/
+</style>

@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+function mysubmit()
+{
+	var sort=document.getElementById('sort').value;
+	document.getElementById('sort_code').value=sort;
+}
+</script>
+<!-- <form action="old_manojapi.php" method="get">
+	Category_id:<input type="text" name="category_id"><br>
+	<input type="hidden" name="filter[0][code]" value="price">
+	Price:<input type="text" name="filter[0][value]" id="price"><br>
+	<input type="hidden" name="filter[1][code]" value="type_id">
+	Type_id:<input type="text" name="filter[1][value]" ><br>
+	<input type="hidden" name="sort[0][code]" id="sort_code">
+	Sort_By:<select  id="sort">
+		<option> select</option>
+		<option value="position">Position</option>
+		<option value="name">Name</option>
+		<option value="price">Price</option>
+		<option value="manufacturer">Manufacturer</option>
+		<option value="generic_name">Generic Name</option>
+	</select>
+	<select name="sort[0][value]">
+		<option> select</option>
+		<option value="asc">ASC</option>
+		<option value="desc">DESC</option>
+	</select>
+	<br>
+	<input type="submit" value="submit" onclick="mysubmit()">
+</form> -->
+<div style="overflow:hidden">
+<form class="form-inline" method="get" action=<?php Mage::getBaseUrl();?>"/mobileapp/catalog/filter">
+  <div class="form-group">
+    <label for="exampleInputName2">Category_id</label>
+   </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="inputPassword2" name="category_id" placeholder="Category_id">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="exampleInputName2">Price</label>
+   </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="price" name="filter[0][value]" placeholder="Price">
+    <input type="hidden" name="filter[0][code]" value="price">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="exampleInputName2">Type_id</label>
+   </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="type_id" name="filter[1][value]" placeholder="type_id">
+    <input type="hidden" name="filter[1][code]" value="type_id">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="exampleInputName2">Sort_By</label>
+   </div>
+  <div class="form-group">
+  <input type="hidden" name="sort[0][code]" id="sort_code">
+    <select  id="sort">
+		<option> select</option>
+		<option value="position">Position</option>
+		<option value="name">Name</option>
+		<option value="price">Price</option>
+		<option value="manufacturer">Manufacturer</option>
+		<option value="generic_name">Generic Name</option>
+	</select>
+    <select name="sort[0][value]">
+		<option> select</option>
+		<option value="asc">ASC</option>
+		<option value="desc">DESC</option>
+	</select>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-default" onclick="mysubmit()">Confirm</button>
+</form>
+</div>
+<?php 
+//echo Mage::registry('categoryColllection');
+?>

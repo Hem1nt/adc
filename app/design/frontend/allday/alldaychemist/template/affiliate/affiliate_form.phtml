@@ -1,0 +1,106 @@
+
+
+<div class="col-main">
+	<div class="account-create">
+		<div class="page-title">
+			<h1>Create an Affiliate Account</h1>
+		</div>
+		<form action="<?php echo Mage::getUrl('frontend/index/affiliatesubmit');?>" method="post" id="affilate-form-validate">
+			<div class="fieldset">
+				<input type="hidden" name="success_url" value="">
+				<input type="hidden" name="error_url" value="">
+				<h2 class="legend">Personal Information</h2>
+				<ul class="form-list">
+					<li class="fields">
+						<div class="customer-name">
+							<div class="field name-firstname">
+								<label for="firstname" class="required"><em>*</em>First Name</label>
+								<div class="input-box">
+									<input type="text" id="firstname" name="firstname" value="" title="First Name" maxlength="255" class="input-text required-entry">
+								</div>
+							</div>
+							<div class="field name-lastname">
+								<label for="lastname" class="required"><em>*</em>Last Name</label>
+								<div class="input-box">
+									<input type="text" id="lastname" name="lastname" value="" title="Last Name" maxlength="255" class="input-text required-entry">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<label for="email_address" class="required"><em>*</em>Email Address</label>
+						<div class="input-box">
+							<input type="text" name="email" id="email_address" value="" title="Email Address" class="input-text validate-email required-entry">
+						</div>
+					</li>
+					<li><label for="month" class="required"><em>*</em>Date of Birth</label>
+						<div class="input-box customer-dob">
+							<div class="dob-full">
+								<input type="text" class="datepicker input-text required-entry hasDatepicker" id="dob" name="dob">
+							</div>
+
+
+							<div class="validation-advice" style="display:none;"></div>
+						</div>
+
+						<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+						<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+						<script type="text/javascript">
+//<![CDATA[
+    //var customer_dob = new Varien.DOB('.customer-dob', true, '%m/%e/%Y');
+//]]>
+jQuery(document).ready(function($){
+	$( ".datepicker" ).datepicker({
+		dateFormat: "m/d/yy",
+		changeMonth: true,
+		changeYear: true,
+		yearRange: '1910:2014'
+	});
+})
+</script>
+</li>
+<li><label for="gender">Gender</label>
+	<div class="input-box">
+		<select id="gender" name="gender" title="Gender">
+			<option value="" selected="selected"></option>
+			<option value="1">Male</option>
+			<option value="2">Female</option>
+		</select>
+	</div>
+</li>
+
+</ul>
+</div>
+
+<div class="fieldset">
+	<h2 class="legend">Login Information</h2>
+	<ul class="form-list">
+		<li class="fields">
+			<div class="field">
+				<label for="password" class="required"><em>*</em>Password</label>
+				<div class="input-box">
+					<input type="password" name="password" id="password" title="Password" class="input-text required-entry validate-password">
+				</div>
+			</div>
+			<div class="field">
+				<label for="confirmation" class="required"><em>*</em>Confirm Password</label>
+				<div class="input-box">
+					<input type="password" name="confirmation" title="Confirm Password" id="confirmation" class="input-text required-entry validate-cpassword">
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+<div class="buttons-set">
+	<p class="required">* Required Fields</p>
+	<p class="back-link"><a href="<?php echo Mage::getUrl('affliate.html');?>" class="back-link"><small>« </small>Back</a></p>
+	<button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button>
+</div>
+</form>
+<script type="text/javascript">
+    //<![CDATA[
+    var dataForm = new VarienForm('affilate-form-validate', true);
+    //]]>
+    </script>
+   </div>
+  </div>

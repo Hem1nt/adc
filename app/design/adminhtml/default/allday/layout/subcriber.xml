@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <outofstocksubscription_adminhtml_subscriber_index>
+        <reference name="content">
+            <block type="outofstocksubscription/adminhtml_subcriber" name="subcriber" />
+        </reference>
+    </outofstocksubscription_adminhtml_subscriber_index>
+</layout>

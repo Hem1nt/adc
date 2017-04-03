@@ -1,0 +1,20 @@
+<config>    
+    <modules>
+        <Rx_Productimport>
+            <version>0.1.0</version>
+        </Rx_Productimport>
+		 
+    </modules>
+	<frontend>
+        <routers>
+            <productimport>
+                <use>standard</use>
+                <args>
+                    <module>Rx_Productimport</module>
+                    <frontName>productimport</frontName>
+                </args>
+            </productimport>
+			
+        </routers>  
+    </frontend>
+</config>   

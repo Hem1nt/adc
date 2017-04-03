@@ -1,0 +1,1038 @@
+<?xml version="1.0"?>
+<config>
+  <tabs>
+    <systemconfig translate="label">
+      <label>Custom Configuration</label>
+      <sort_order>0</sort_order>
+    </systemconfig>
+  </tabs>
+  <sections>
+    <hide_attribute_frontend>
+      <label>Hide Product Attribute</label>
+      <tab>systemconfig</tab>
+      <sort_order>300</sort_order>
+      <frontend_type>text</frontend_type>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <hide_attribute_additional translate="label">
+          <label>Hide Attribute From Additional Information</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <attribute_list translate="label">
+              <label>Attribute List</label>
+              <frontend_type>multiselect</frontend_type>
+              <source_model>configfile/system_config_source_attribute_list</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </attribute_list>
+          </fields>
+        </hide_attribute_additional>
+      </groups>
+    </hide_attribute_frontend>
+    <custom_snippet>
+      <label>Configuration</label>
+      <tab>systemconfig</tab>
+      <sort_order>400</sort_order>
+      <frontend_type>text</frontend_type>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <zipcode_upload translate="label">
+          <label>Upload Zipcode CSV</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <upload translate="label">
+              <label>Upload Zipcode CSV</label>
+              <comment>Please Upload CSV File</comment>
+              <frontend_type>file</frontend_type>
+              <backend_model>adminhtml/system_config_backend_file</backend_model>
+              <upload_dir>media/zipcode</upload_dir>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </upload>
+          </fields>
+        </zipcode_upload>
+        <affiliate_tabs translate="label">
+          <label>Affiliate Email Id</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <affiliate_email translate="label">
+              <label>Affiliate Email Address: </label>
+              <comment>Email Ids</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </affiliate_email>
+          </fields>
+        </affiliate_tabs>
+
+        <elasticsearch_tabs translate="label">
+          <label>ElasticSearch Settings</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <elasticsearch_options translate="label">
+              <label>Enable the Type of Search</label>
+              <frontend_type>select</frontend_type>
+              <source_model>configfile/system_config_source_elastic_options</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </elasticsearch_options>
+            <elasticsearch_manufacture translate="label">
+              <label>Show Manufacture Attribute in Elastic Filter</label>
+              <frontend_type>select</frontend_type>
+              <source_model>configfile/system_config_source_elastic_template</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </elasticsearch_manufacture>
+            <elasticsearch_price translate="label">
+              <label>Show Price Attribute in Elastic Filter</label>
+              <frontend_type>select</frontend_type>
+              <source_model>configfile/system_config_source_elastic_template</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </elasticsearch_price>
+            <elasticsearch_strength translate="label">
+              <label>Show Strength Attribute in Elastic Filter</label>
+              <frontend_type>select</frontend_type>
+              <source_model>configfile/system_config_source_elastic_template</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </elasticsearch_strength>
+            <elasticsearch_activeingredient translate="label">
+              <label>Show Active Ingredient Attribute in Elastic Filter</label>
+              <frontend_type>select</frontend_type>
+              <source_model>configfile/system_config_source_elastic_template</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </elasticsearch_activeingredient>
+          </fields>
+        </elasticsearch_tabs>
+
+        <limitedsupply_tabs translate="label">
+          <label>Limitedsupply Email Id</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <limitedsupply_email translate="label">
+              <label>Limited Supply Email Address: </label>
+              <comment>Email Ids</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </limitedsupply_email>
+          </fields>
+        </limitedsupply_tabs>
+
+        <homepage_tabs translate="label">
+          <label>Homepage Tabs Category</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <offers_product translate="label">
+              <label>Offers Category Id: </label>
+              <comment>Enter Offers Category Id</comment>
+              <frontend_type>text</frontend_type>
+              <validate>validate-digits</validate>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </offers_product>
+            <category_product translate="label">
+              <label>Default Category Id: </label>
+              <comment>Enter Category Id</comment>
+              <frontend_type>text</frontend_type>
+              <validate>validate-digits</validate>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </category_product>
+            <featured_product translate="label">
+              <label>Featured Category Id: </label>
+              <comment>Enter Featured Category Id</comment>
+              <frontend_type>text</frontend_type>
+              <validate>validate-digits</validate>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </featured_product>
+          </fields>
+        </homepage_tabs>
+        <referral_id translate="label">
+          <label>Referral Rule Id</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <referral_rule translate="label">
+              <label>Referral Rule Id: </label>
+              <comment>Enter Referral Rule Id</comment>
+              <frontend_type>text</frontend_type>
+              <validate>validate-digits</validate>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </referral_rule>
+            <infographics translate="label">
+              <label>Infographics Sku: </label>
+              <comment>Enter Product Sku</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </infographics>
+          </fields>
+        </referral_id>
+        <true_client translate="label">
+          <label>True Client Ip</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <country_logo translate="label comment">
+              <label>Country Logo</label>
+              <comment>Allowed file types: jpeg, gif, png.</comment>
+              <frontend_type>image</frontend_type>
+              <backend_model>adminhtml/system_config_backend_image</backend_model>
+              <upload_dir config="system/filesystem/media" scope_info="1">theme</upload_dir>
+              <base_url type="media" scope_info="1">theme</base_url>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </country_logo>
+            <country_dropdown translate="label">
+              <label>Country:</label>
+              <comment>Dropdown with country option</comment>
+              <frontend_type>multiselect</frontend_type>
+              <source_model>configfile/system_config_source_country_list</source_model>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </country_dropdown>
+          </fields>
+        </true_client>
+        <dynamic_status translate="label">
+          <label>Status Mapping</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+                      <!-- <country_logo translate="label comment">
+                        <label>Country Logo</label>
+                        <comment>Allowed file types: jpeg, gif, png.</comment>
+                        <frontend_type>image</frontend_type>
+                        <backend_model>adminhtml/system_config_backend_image</backend_model>
+                        <upload_dir config="system/filesystem/media" scope_info="1">theme</upload_dir>
+                        <base_url type="media" scope_info="1">theme</base_url>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </country_logo> -->
+                     <!--  <country_dropdown translate="label">
+                        <label>Country:</label>
+                        <comment>Dropdown with country option</comment>
+                        <frontend_type>multiselect</frontend_type>
+                        <source_model>configfile/system_config_source_country_list</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </country_dropdown> -->
+                      <!-- <offers_product translate="label">
+                        <label>Offers Category Id: </label>
+                        <comment>Enter Offers Category Id</comment>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-digits</validate>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </offers_product>
+                      <category_product translate="label">
+                        <label>Default Category Id: </label>
+                        <comment>Enter Category Id</comment>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-digits</validate>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </category_product>
+                      <featured_product translate="label">
+                        <label>Featured Category Id: </label>
+                        <comment>Enter Featured Category Id</comment>
+                        <frontend_type>text</frontend_type>
+                        <validate>validate-digits</validate>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </featured_product> -->
+                        <!-- <referral_rule translate="label">
+                          <label>Referral Rule Id: </label>
+                          <comment>Enter Referral Rule Id</comment>
+                          <frontend_type>text</frontend_type>
+                          <validate>validate-digits</validate>
+                          <sort_order>20</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                        </referral_rule> -->
+                        <!-- <affiliate_email translate="label">
+                          <label>Affiliate Email Address: </label>
+                          <comment>Email Ids</comment>
+                          <frontend_type>text</frontend_type>
+                          <sort_order>20</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                        </affiliate_email> -->
+                        <orderstatus_state translate="label">
+                          <label>Order Status Mapping</label>
+                          <frontend_model>configfile/adminhtml_system_config_dolist_orderstatusmapping</frontend_model>
+                          <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                          <sort_order>1</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first status mapping</comment>
+                        </orderstatus_state>
+                        <incomplete_state translate="label">
+                          <label>Incomplete State</label>
+                          <frontend_type>multiselect</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>1</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </incomplete_state>
+                        <approval_state translate="label">
+                          <label>Approval State</label>
+                          <frontend_type>multiselect</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>1</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </approval_state>
+                        <approval_status translate="label">
+                          <label>Approval Status Bar</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>1</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </approval_status>
+                        <approval_status_failure translate="label">
+                          <label>Approval Status Bar with Failure Meassage</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>1</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </approval_status_failure>
+                        <processing_state translate="label">
+                          <label>Processing State</label>
+                          <frontend_type>multiselect</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>2</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </processing_state>
+                        <processing_status translate="label">
+                          <label>Processing Status Bar</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>2</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </processing_status>
+                        <processing_status_failure translate="label">
+                          <label>Processing Status Bar with done meassage</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>2</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </processing_status_failure>
+                        <processing_status_none translate="label">
+                          <label>Processing Status N/A</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>2</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </processing_status_none>
+                        <shipping_state translate="label">
+                          <label>Shipping State</label>
+                          <frontend_type>multiselect</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>3</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </shipping_state>
+                        <shipping_status translate="label">
+                          <label>Shipping Status Bar Without tracking Number</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>3</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </shipping_status>
+                        <shipping_status_failure translate="label">
+                          <label>Shipping Status Bar Without tracking Number with failure message</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>3</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </shipping_status_failure>
+                        <shipping_status_1 translate="label">
+                          <label>Shipping Status Bar With tracking Number</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>3</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </shipping_status_1>
+                        <shipping_status_1_failure translate="label">
+                          <label>Shipping Status Bar With tracking Number with failure message</label>
+                          <frontend_type>text</frontend_type>
+                          <source_model>configfile/system_config_source_status_list</source_model>
+                          <sort_order>3</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                          <comment>Save configuration before adding first template mapping</comment>
+                        </shipping_status_1_failure>
+                      </fields>
+                    </dynamic_status>
+                    <free_shipping translate="label">
+                      <label>Free Shipping</label>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <fields>
+                       <shipping_status translate="label comment">
+                        <label>Free Shipping Status</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </shipping_status>
+                      <shipping_content translate="label">
+                        <label>Free Shipping Description</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>100</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </shipping_content>
+                      <shipping_price translate="label">
+                        <label>Shipping Shipping Atomwise</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>110</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </shipping_price>
+                    </fields>
+                  </free_shipping>
+                  <guest_register translate="label">
+                    <label>Guest Customer To Register</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <sender_email translate="label">
+                        <label>Sender Email Id</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </sender_email>
+                      <sender_name translate="label">
+                        <label>Sender Name</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>2</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </sender_name>
+                      <template_id translate="label">
+                        <label>Email Template Id For New Registration</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>3</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </template_id>
+                    </fields>
+                  </guest_register>
+                  <custom_orderid translate="label">
+                    <label>Custom Order Increment Id Extension</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <ext_name translate="label">
+                        <label>Extension Label</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>3</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </ext_name>
+                    </fields>
+                  </custom_orderid>
+                  <best_value translate="label">
+                    <label>Best value listing</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <listing_order translate="label">
+                        <label>Listing Order</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>configfile/system_config_source_best_template</source_model>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </listing_order>
+                      <best_value_listing_order translate="label">
+                        <label>Best Value Listing Order</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>2</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </best_value_listing_order>
+                      <per_unit translate="label">
+                        <label>Per Unit</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>3</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </per_unit>
+                    </fields>
+                  </best_value>
+                  <snippet translate="label">
+                    <label>Custom List</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <paymentlink translate="label">
+                        <label>Payment Link</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Payment Link</comment>
+                      </paymentlink>
+                      <paymentlinkorderstatus translate="label">
+                        <label>Status Not to Update</label>
+                        <frontend_type>multiselect</frontend_type>
+                        <source_model>configfile/system_config_source_status_list</source_model>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Payment Link</comment>
+                      </paymentlinkorderstatus>
+                      <email translate="label">
+                        <label>Email</label>
+                        <frontend_model>configfile/adminhtml_system_config_dolist_templatemapping</frontend_model>
+                        <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                        <sort_order>3</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Save configuration before adding first template mapping</comment>
+                      </email>
+                      <default_template translate="label">
+                        <label>Default template</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>configfile/system_config_source_email_template</source_model>
+                        <sort_order>2</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </default_template>
+                      <company_name translate="label">
+                        <label>Company Name for Outside US Customer</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </company_name>
+                      <company_us_name translate="label">
+                        <label>Company Name for US Customer</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </company_us_name>
+                      <derricwood_address translate="label">
+                        <label>DerricWood Address for Outside US Customer</label>
+                        <frontend_type>textarea</frontend_type>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </derricwood_address>
+                      <derricwood_us_address translate="label">
+                        <label>DerricWood Address for US Customer</label>
+                        <frontend_type>textarea</frontend_type>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </derricwood_us_address>
+                      <default_email translate="label">
+                        <label>Default Contact Email</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>5</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </default_email>
+                      <contactus_template translate="label">
+                        <label>Contact Us Template</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>configfile/system_config_source_email_template</source_model>
+                        <sort_order>6</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </contactus_template>
+                      <query_type translate="label">
+                        <label>Query Type</label>
+                        <frontend_model>configfile/adminhtml_system_config_dolist_querytype</frontend_model>
+                        <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                        <sort_order>7</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </query_type>
+                      <query_mail_select translate="label">
+                        <label>Send Mail According to Query Type</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>8</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </query_mail_select>
+                      <query_email translate="label">
+                        <label>Query Email</label>
+                        <frontend_model>configfile/adminhtml_system_config_dolist_queryemail</frontend_model>
+                        <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                        <sort_order>9</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </query_email>
+                      <paymentlink translate="label">
+                        <label>Payment Link</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Payment Link</comment>
+                      </paymentlink>
+                      <payment_encrypt_method translate="label">
+                        <label>Payment Encrypt Method</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>11</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>payment_encrypt_method</comment>
+                      </payment_encrypt_method>
+                      <payment_secret_key translate="label">
+                        <label>Payment Secret Key</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>12</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>payment_secret_key</comment>
+                      </payment_secret_key>
+                      <payment_secret_iv translate="label">
+                        <label>Payment Secret iv</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>13</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Payment secret iv</comment>
+                      </payment_secret_iv>
+                    </fields>
+
+                  </snippet>
+                </groups>
+              </custom_snippet>
+              <custom_snippet_email>
+                <label>NotifyOutofStock Email Address</label>
+                <tab>systemconfig</tab>
+                <sort_order>401</sort_order>
+                <frontend_type>text</frontend_type>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <groups>
+                  <notifyoutofstock_group translate="label">
+                    <label>NotifyOutofStock Email Address</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                      <notifyoutofstock_input translate="label">
+                        <label>Email Address: </label>
+                        <comment>Email Ids</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </notifyoutofstock_input>
+                    </fields>
+                  </notifyoutofstock_group>
+                </groups>
+              </custom_snippet_email>
+              <customer>
+                <groups>
+                  <snippet translate="label">
+                    <label>Hide Attribute from Frontend</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <skip_customattribute translate="label">
+                        <label>Skip Attribute From Frontend</label>
+                        <frontend_type>multiselect</frontend_type>
+                        <source_model>configfile/system_config_source_customerattribute_list</source_model>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <comment>Save configuration before adding first template mapping</comment>
+                      </skip_customattribute>
+                    </fields>
+                  </snippet>
+                </groups>
+              </customer>
+              <dynamic_metatags>
+                <label>Dynamic Meta Tags</label>
+                <tab>systemconfig</tab>
+                <sort_order>500</sort_order>
+                <frontend_type>text</frontend_type>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <groups>
+                  <metatags_details translate="label">
+                    <label>Meta Tags Details</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <offer_metatags_status translate="label">
+                        <label>Offer Meta Tags Status: </label>
+                        <comment>Please Specify Yes to Enable Offer Meta Tags</comment>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>5</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </offer_metatags_status>
+                      <dynamic_metatags_status translate="label">
+                        <label>Dynamic Meta Tags Status: </label>
+                        <comment>Please Specify Yes to Enable Dynamic Meta Tags</comment>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>6</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </dynamic_metatags_status>
+                      <default_metatitle translate="label">
+                        <label>Default Meta Title: </label>
+                        <comment>Please Specify Meta Title if Title is Empty</comment>
+                        <frontend_type>textarea</frontend_type>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </default_metatitle>
+                      <default_metadescription translate="label">
+                        <label>Default Meta Description: </label>
+                        <comment>Please Specify Meta Description if Title is Empty</comment>
+                        <frontend_type>textarea</frontend_type>
+                        <sort_order>11</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </default_metadescription>
+                      <default_metakeyward translate="label">
+                        <label>Default Meta Keywards: </label>
+                        <comment>Please Specify Meta Keywards if Title is Empty</comment>
+                        <frontend_type>textarea</frontend_type>
+                        <sort_order>12</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </default_metakeyward>
+                      <offer_metatitle translate="label">
+                        <label>Offer Meta Title: </label>
+                        <comment>Please Specify Meta Keywards if Title is Empty</comment>
+                        <frontend_type>textarea</frontend_type>
+                        <sort_order>7</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </offer_metatitle>
+                      <offer_metadescription translate="label">
+                        <label>Offer Meta Description: </label>
+                        <comment>Please Specify Meta Description if Title is Empty</comment>
+                        <frontend_type>textarea</frontend_type>
+                        <sort_order>8</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </offer_metadescription>
+                      <offer_metakeywards translate="label">
+                        <label>Offer Meta Keywards: </label>
+                        <comment>Please Specify Meta Keywards if Title is Empty</comment>
+                        <frontend_type>textarea</frontend_type>
+                        <sort_order>9</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </offer_metakeywards>
+                    </fields>
+                  </metatags_details>
+                </groups>
+              </dynamic_metatags>
+              <birthday_offer>
+                <label>Birthday Offer</label>
+                <tab>systemconfig</tab>
+                <sort_order>500</sort_order>
+                <frontend_type>text</frontend_type>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <groups>
+                  <birthday_details translate="label">
+                    <label>Birthday Offer</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <birthday_rule translate="label">
+                        <label>Birthday Offer Rule Id</label>
+                        <comment>Please Specify Rule Id</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>5</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </birthday_rule>
+                    </fields>
+                  </birthday_details>
+                </groups>
+              </birthday_offer>
+              <best_seller>
+                <label>Best Selling Section</label>
+                <tab>systemconfig</tab>
+                <sort_order>900</sort_order>
+                <frontend_type>text</frontend_type>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <groups>
+                  <best_seller_details translate="label">
+                    <label>Our Best Selling Product Details</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <best_seller_catid translate="label">
+                        <label>Best Selling Category ID (MOBILE)</label>
+                        <comment>Please specify Category ID whos product will be displayed in "our best selling category MOBILE</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>5</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </best_seller_catid>
+                      <best_seller_productlimit translate="label">
+                        <label>Best Selling Product Limit (MOBILE)</label>
+                        <comment>Mention how many poduct you want to be displayed in best selling section MOBILE</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>5</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </best_seller_productlimit>
+                    </fields>
+                  </best_seller_details>
+                </groups>
+                <groups>
+                  <best_seller_category translate="label">
+                    <label>Our Best Selling Category Details</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <best_seller_mobile_active translate="label">
+                        <label>Active On Moile</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>5</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </best_seller_mobile_active>
+                      <best_seller_cat_mobile translate="label">
+                        <label>Number of best selling Category (MOBILE)</label>
+                        <comment>Mention number of banner to be displayed in home page under best selling category section  MOBILE</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>6</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </best_seller_cat_mobile>
+                      <best_seller_desktop_active translate="label">
+                        <label>Active On Desktop</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>7</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </best_seller_desktop_active>
+                      <best_seller_cat_desktop translate="label">
+                        <label>Number of best selling Category (DESKTOP)</label>
+                        <comment>Mention number of banner to be displayed in home page under best selling category section  DESKTOP</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>8</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </best_seller_cat_desktop>
+                    </fields>
+                  </best_seller_category>
+                </groups>
+              </best_seller>
+            </sections>
+            
+          </config>

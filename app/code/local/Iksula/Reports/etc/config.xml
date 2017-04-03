@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Iksula_Reports>
+            <version>0.1.0</version>
+            <depends>
+                <Mage_Adminhtml />
+                <Mage_Sales />
+            </depends>
+        </Iksula_Reports>
+    </modules>
+
+   <global>
+        <models>
+            <iksula_reports>
+                <class>Iksula_Reports_Model</class>
+                <resourceModel>iksula_reports_mysql4</resourceModel>
+            </iksula_reports>
+            <iksula_reports_mysql4>
+                <class>Iksula_Reports_Model_Mysql4</class>
+            </iksula_reports_mysql4>
+        </models>
+        <helpers>
+            <iksula_reports>
+                <class>Iksula_Reports_Helper</class>
+            </iksula_reports>
+        </helpers>
+        <blocks>
+            <iksula_reports>
+                <class>Iksula_Reports_Block</class>
+            </iksula_reports>
+        </blocks>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Iksula_Reports before="Mage_Adminhtml">Iksula_Reports_Adminhtml</Iksula_Reports>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <iksula_reports>
+                    <file>iksula_reports.xml</file>
+                </iksula_reports>
+            </updates>
+        </layout>
+    </adminhtml>
+
+</config>

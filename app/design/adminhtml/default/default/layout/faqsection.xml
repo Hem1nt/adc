@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <faqsection_adminhtml_faqsection_index>
+	<reference name="content">
+	  <block type="faqsection/adminhtml_faqsection" name="faqsection" />
+	</reference>
+  </faqsection_adminhtml_faqsection_index>
+  <faqsection_adminhtml_faqquestions_index>
+	<reference name="content">
+	  <block type="faqsection/adminhtml_faqquestions" name="faqquestions" />
+	</reference>
+  </faqsection_adminhtml_faqquestions_index>
+</layout>

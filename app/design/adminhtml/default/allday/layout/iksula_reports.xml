@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_iksula_reports_index>
+        <reference name="content">
+            <block type="iksula_reports/adminhtml_report" template="report/grid/container.phtml" name="my_reports_report_grid_container">
+                <block type="iksula_reports/adminhtml_filter_form" name="grid.filter.form" />
+            </block>
+        </reference>
+    </adminhtml_iksula_reports_index>
+
+    <adminhtml_iksula_reports_view>
+        <reference name="content">
+            <block type="iksula_reports/adminhtml_reportview" name="my_reportview_report_grid_container">
+            </block>
+        </reference>
+    </adminhtml_iksula_reports_view>
+</layout>

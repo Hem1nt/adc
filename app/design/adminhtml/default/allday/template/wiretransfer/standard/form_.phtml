@@ -1,0 +1,68 @@
+<head>
+<style>
+.form-list1 li span
+{ 
+    float:left;
+	font-weight: bold;
+	margin-right:5px;
+}
+.form-list1 li
+{
+	list-style: disc outside none;
+	margin: 0 0 7px 20px;
+}
+</style>
+</head>
+<fieldset class="form-list1">
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+		<p style="color:red;">Discount:</p>
+		   
+		   <?php //echo $this->__('Discount:');echo "<br>"; ?>
+            <p style="font-weight: bold;">Offering US$ 5.00 discount if the order value is less than US$ 100.00 and if the order value is more than US$ 100.00 than US$ 15.00 discount. </p>
+     	
+		  <P style="font-weight: bold;"> <?php echo $this->__('Please send us a Wire Transfer with:');echo "<br>"; ?></P>
+          <P style="font-weight: bold;"> <?php echo $this->__('To the Following Bank Account:') ?></P>
+        		
+		<li>
+            <p><span>Name on Account :</span> Derric Wood</p>
+        </li>
+		<li>
+            <p><span>Bank Name :</span> Citibank, N.A.</p>
+        </li>
+		<li>
+            <p><span>Bank Address : </span> Jeevan Bharti Building, 124, Connaught Circus</p>
+        </li>
+		<li>
+            <p><span>Bank City :</span> New Delhi</p>
+        </li>
+		<li>
+            <p><span>Bank State :</span> New Delhi</p>
+        </li>
+		<li>
+            <p><span>Bank Country :</span> India</p>
+        </li>
+		<li>
+            <p><span>Bank Zip :</span> 110001</p>
+        </li>
+		<li>
+            <p><span>Branch :</span> New Delhi</p>
+        </li>		
+		<li>
+            <p><span>Account Number :</span> 007284225</p>
+        </li>
+		<li>
+            <p><span>Routing Number/E-Band/Swift :</span> Swift: CITIINBX Routing Code : 021000089</p>
+        </li>		
+		
+			<div>
+			 <p>Please e-mail the scan copy of your wire transfer receipt to info@alldaychemist.com. This will help us to find your payment.</p>
+			</div>	
+
+			<p>Your order will be sent as soon as we receive your settlement. </p>
+
+			<p>For any questions or for further information, please contact our Customer Support.</p>
+		
+	</ul>
+   
+</fieldset>

@@ -1,0 +1,48 @@
+<config> 
+	 <sections>
+        <categorylist_section translate="label" module="leftmenu">
+            <label>Category Menu Configuration</label>
+            <tab>general</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>   
+			<groups>
+				<categorylist_group translate="label">
+						<label>Configuration Options</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>1</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					   <fields>
+						<cateorylist_left>
+										<label>Show on left sidebars</label>
+										<frontend_type>select</frontend_type>
+										<source_model>adminhtml/system_config_source_yesno</source_model>
+										<comment>Choose Yes/No</comment> 
+										<default>1</default>
+										<sort_order>2</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>                    
+						</cateorylist_left>
+						<cateorylist_right>
+										<label>Show on right sidebars</label>
+										<frontend_type>select</frontend_type>
+										<source_model>adminhtml/system_config_source_yesno</source_model>
+										<comment>Choose Yes/No</comment> 
+										<default>1</default>
+										<sort_order>3</sort_order>
+										<show_in_default>1</show_in_default>
+										<show_in_website>1</show_in_website>
+										<show_in_store>1</show_in_store>                   
+						</cateorylist_right>
+						
+					</fields>               
+				</categorylist_group>
+            </groups>                 
+        </categorylist_section>
+    </sections> 
+</config>

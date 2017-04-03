@@ -1,0 +1,132 @@
+<?php $_product = $this->getProduct(); ?>
+<?php //@nil for tabular packsize ?>
+<?php
+
+
+if($_product->isConfigurable()) {
+	//$productModel = Mage::getModel('catalog/product');
+
+	$proModel = Mage::getModel('catalog/product');
+	$cartHelper = Mage::helper('checkout/cart');
+	$conProduct = $proModel->load($_product->getId());
+	$customStockStatus = $conProduct->getCustomStockStatus();
+	$attributeText = $proModel->getResource()->getAttribute('custom_stock_status');
+    $attributeLabel = $attributeText->getSource()->getOptionText($customStockStatus);
+    //Mage::log($attributeLabel,null,'coming_soon.log');
+    //Mage::log($attributeText,null,'coming_soon_attributeText.log');
+	$currencyFormat = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+	$childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $conProduct);
+	$attr = $proModel->getResource()->getAttribute("pharmaceutical_form");
+	$attrPackSize = $proModel->getResource()->getAttribute("pack_size");
+	$url = $this->getUrl();
+	foreach($childProducts as $child) {
+			       $proChild = Mage::getModel('catalog/product')->load($child['entity_id']);
+			       if($proChild->getData('status')==1) {
+			           $newChildProducts[$attrPackSize->getSource()->getOptionText($child->getData('pack_size'))] = $proChild;
+			       }
+			   }
+
+	ksort($newChildProducts);
+	echo "<table class=\"new_product_list\" valign=\"center\">
+			<tr>
+				<th><strong>Pack Size</strong></th>
+				<th><strong>Qty</strong></th>
+				<th><strong>Price Per Pill or Unit</strong></th>
+				<th><strong>Price</strong></th>
+				<th></th>
+				<th></th>
+			</tr>";
+	$i=0;
+	$bestValue = $_product->getBestValue();
+	//$bestValueListingOrder = Mage::getStoreConfig('custom_snippet/best_value/best_value_listing'); 
+	$productCounter = 0;
+	// echo "<pre>";
+	foreach($newChildProducts as $child) {
+		//print_r();
+		$childCategories = $child->getCategoryIds();
+		if ($attr->usesSource()) {
+			$pharmaceuticalForm = $attr->getSource()->getOptionText($conProduct->getData('pharmaceutical_form'));
+		}
+		if ($attrPackSize->usesSource()) {
+			$packSizeLabel = $attrPackSize->getSource()->getOptionText($child->getData('pack_size'))." ".$pharmaceuticalForm."&nbsp;";
+		}
+		$packUnitsize = $attrPackSize->getSource()->getOptionText($child->getData('pack_size'));
+		if($child->getData('bonus')) {
+			$packSizeLabel = $child->getData('bonus')." + ".$packSizeLabel." Free";
+			$packUnitsize = $packUnitsize + $child->getData('bonus');
+		}
+		$childPrice = Mage::helper('core')->currency($child->getPrice(),true,false);
+		$childSpecialPrice = Mage::helper('core')->currency($child->getSpecialPrice(),true,false);
+		//$priceLabel = $currencyFormat."&nbsp;".number_format($child->getPrice(), 2, '.', '');
+		if($child->getSpecialPrice()) {
+			$priceLabel = '<span class="old-price">'.$childPrice.'</span>
+					<span class="special-price">'.$childSpecialPrice.'</span>';
+		}else{
+			$priceLabel = '<span class="price">'.$childPrice.'</span>';
+		}
+		if($i==count($newChildProducts)) {
+			echo "<tr class=\"last\">";
+		} else {
+			echo "<tr>";
+		}
+		if($child->getSpecialPrice()){
+			$perUnit = $child->getSpecialPrice()/$packUnitsize;
+		}else{
+			$perUnit = $child->getPrice()/$packUnitsize;
+		}
+		$perUnitCost = Mage::helper('core')->currency($perUnit,true,false);
+		$recommended = $recommendeclass = '';
+			if(!empty($bestValue)){
+				if($productCounter==($bestValue-1)){
+				$recommended = '<span class="recomend-text">( Recommended )</span>';
+				$recommendeclass = 'packsize_recommended';
+			}
+		}else{
+			if($productCounter==2){
+				$recommended = '<span class="recomend-text">( Recommended )</span>';
+				$recommendeclass = 'packsize_recommended';
+			}
+		}
+
+
+		echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended."</td>";
+		echo "<td class='qty_value'><select id='p-".$child->getId()."'>";
+		for($i=1; $i<=5; $i++) {
+			echo "<option value='$i'>$i</option>";
+		}
+		echo "</select></td>";
+		echo "<td class='price_value'>".$perUnitCost."</td>";
+		echo "<td class='price_value'>".$priceLabel."</td>";
+		if($attributeLabel == 'Coming Soon'){
+			echo '<td class="coming_soon pr-link-notify ">Coming Soon</td>';
+		}else{
+		echo '<td class="add_to_cart_button"><a id="s-'.$child->getId().'" class="related-buy-now" href="'.$url.'checkout/cart/add/product/'.$child->getId().'/?super_attribute[140]='.$child->getPackSize().'&mainid='.$conProduct->getId().'"> | Add to cart</a></td>';
+		}
+		//echo '<td class="simple_wishlist"><a class="refill_reminder_open" href="refillreminder?product_id='.$child->getId().'">Wishlist</a></td>';
+		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'">Wishlist</a></td>';
+		echo "</tr>";
+		$productCounter++;
+	}
+	echo "</table>";
+} else {
+	echo $this->getChildHtml('', true, true);
+}
+
+?>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery(".related-buy-now").click(function(event){
+			var id = this.id.split("-");
+			var value = jQuery("#p-"+id[1]).val();
+			event.preventDefault();
+			window.location.href = jQuery(this).attr("href")+"&qty="+value;
+
+		});
+		// jQuery(".refill_reminder_open").fancybox({
+		// 	type: "iframe",
+		// 	width: "300px",
+		// 	height: "300px"
+		// });
+	});
+</script>
+<?php //@nil for tabular packsize end ?>

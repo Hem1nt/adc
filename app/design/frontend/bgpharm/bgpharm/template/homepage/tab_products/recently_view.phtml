@@ -1,0 +1,100 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$_newHelper = $this->helper('frontend');
+$_frontendHelper = $this->helper('frontend/data');
+$_productCollection = $_newHelper->getRecentProducts();
+foreach ($_productCollection as $key) {
+    $productsCollection = Mage::getModel('catalog/product')->load($key);
+}
+?>
+<div class="slider-block recent-view-block">
+
+        <ul class="products-grid bxslider" id="recently_view-category1">
+            <?php foreach ($_productCollection as $key) { 
+                $productsCollection = Mage::getModel('catalog/product')->load($key);
+            ?>
+            <li class="item" style="float: left; list-style: none; position: relative; width: 400px;">
+                <div class="inner_wrapper">
+                    <div class="grid-inner">
+                        <a href="<?php echo $productsCollection->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($productsCollection, 'small_image'), null, true) ?>" class="product-image">
+                        <img src="<?php echo $this->helper('catalog/image')->init($productsCollection, 'small_image')->keepFrame(false)->resize(100,100); ?>" alt="image alt text">
+                        </a>
+                    </div>
+
+                    <h2 class="product-name product-name-height">
+                        <a href="<?php echo $productsCollection->getProductUrl();?>">
+                            <?php
+                                $pName = $_helper->productAttribute($productsCollection, $productsCollection->getName(), 'name');
+                                echo Mage::helper('core/string')->truncate($pName, 50);
+                            ?>
+                        </a>
+                    </h2>
+
+                    <?php if(!$productsCollection->isSaleable()):
+                        $custom_stock_status = $_frontendHelper->getCustomStockStatus($productsCollection);
+                        if($custom_stock_status!='No' && $custom_stock_status!=''){ ?>
+                            <h3 class="pr-out-of-stock-index">
+                                <span><?php echo $this->__($custom_stock_status) ?></span>
+                            </h3>
+                        <?php } else{ ?>
+                            <h3 class="pr-out-of-stock-index">
+                                <span><?php echo $this->__('Out of stock') ?></span>
+                            </h3>
+                        <?php }
+                        endif;
+                    ?>
+                    
+                    <div class="desc std">
+                        <?php echo $_frontendHelper->getGenericInfo($productsCollection);?>                
+                    </div>
+                    
+                    <div class="generic_for">
+                        <?php
+                            $usbrandName = $_frontendHelper->getUsBrandInfo($productsCollection);
+                            if(!empty($usbrandName)):
+                                echo $this->__('Generic for ');
+                                echo $usbrandName;
+                            endif;
+                        ?>                    
+                    </div>
+                    
+                    <div class="wrapper">
+                        <div class="list-reviews grid-manufacturer">
+                            <?php
+                                $manufacturedby = $_frontendHelper->getManufacturerInfo($productsCollection);
+                                if(!empty($manufacturedby)):
+                                    echo $this->__('Manufactured by : ');
+                                    echo $manufacturedby;
+                                endif;
+                            ?>                  
+                        </div>
+                    </div>
+                    <?php
+                        $firstChildInfo = $_frontendHelper->getFirstChildPrice($productsCollection);
+                        if(!empty($firstChildInfo)):
+                            echo $firstChildInfo;
+                        endif;
+                    ?>
+            </li>
+            <?php } ?>
+        </ul>
+    <!-- <div class="view-all-products"><a href="http://192.168.1.113/alldaygit/asthma.html">View all products</a></div> -->
+</div>
+
+
+
+
+
+
+
+<script>
+jQuery('#recently_view-category1').bxSlider({
+      minSlides: 1,
+      maxSlides: 4,
+      slideWidth: 400,
+      slideMargin: 0,
+      infiniteLoop :false,
+      // hideControlOnEnd: true,
+      moveSlides: 1
+});
+</script>

@@ -1,0 +1,70 @@
+<?php 
+$orderdata  = $this->getCustomer();
+Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+
+$customer_id = $this->getData('customer_id');
+$customerData = Mage::getModel('customer/customer')->load($customer_id)->getData();
+$orderCollection = Mage::getModel('sales/order')->getCollection()->setOrder('increment_id','desc');
+$orderCollection->addFieldToFilter('customer_email',$customerData['email']);
+//$orderCollection->addFieldToFilter('customer_email','customer@email.com');
+
+$count = 1;
+$totalcount= count($orderCollection->getData());
+$nocount=0;
+foreach ($orderCollection as $value) {
+	// if($value['physicianname']!='' && $value['physiciantelephone']!=''  && $value['drug_allergies']!=''  && $value['current_medications']!=''  && $value['current_treatments']!=''):
+	 if($count==1){
+		 echo '<table style="border-collapse:collapse;padding:10px;" cellspacing="10">
+		 <tr><td colspan="8" align="center" style="font-size:16px;background: #E7E7E7;"><b>Medical History</b></td></tr>
+		 <tr style="background: #E7EFEF;">
+ 			<td width="8%"><b>Order #</b></td>
+ 			<td width ="10%"><b>Physicians Name</b></td>
+ 			<td width ="8%"><b><!--Physicians--> Tel. No</b></td>
+ 			<td width="14%"><b>Drug Allergies</b></td>
+ 			<td width="14%"><b>Current Meditation</b></td>
+ 			<td width="14%"><b>Current Treatement</b></td>
+ 			<td width ="4%"><b>Do You Smoke?</b></td>
+ 			<td width ="4%"><b>Do You Drink?</b></td>
+ 		</tr>';
+	}
+	if($value['increment_id']==''){$value['increment_id']='None';}
+	if($value['physicianname']==''){$value['physicianname']='None';}
+	if($value['physiciantelephone']==''){$value['physiciantelephone']='None';}
+	if($value['drug_allergies']==''){$value['drug_allergies']='None';}
+	if($value['current_medications']==''){$value['current_medications']='None';}
+	if($value['current_treatments']==''){$value['current_treatments']='None';}
+	if($value['smoke']==''){$value['smoke']='None';}
+	if($value['drink']==''){$value['drink']='None';}
+	if($value['physicianname']=='' && $value['physiciantelephone']==''  && $value['drug_allergies']==''  && $value['current_medications']==''  && $value['current_treatments']==''){
+		$value['smoke']='None';
+		$value['drink']='None';
+	}
+ 	$nocount++;
+	 echo '<tr><td>'.$value['increment_id'].'</td><td>'.$value['physicianname'].'</td><td>'.$value['physiciantelephone'].'</td><td>'.$value['drug_allergies'].'</td><td>'.$value['current_medications'].'</td><td>'.$value['current_treatments'].'</td><td>'.$value['smoke'].'</td><td>'.$value['drink'].'</td></tr>';
+	//  endif;
+	//print_r($value);
+	//  if($count==$totalcount){
+	  
+	//}
+	  $count++;
+	  // else:
+	  // 	echo '<h2>No Medical History found</h2>';
+	//  endif;
+}
+echo '</table>';
+if($nocount==0){echo '<h2>No Medical History found</h2>';}
+
+?>
+<style type="text/css">
+td {
+padding: 0;
+vertical-align: middle;
+height: 30px;
+padding: 0 2% 0 1%;
+}
+tr {
+border-bottom: 1px solid #c2c2c2;
+text-align:left;
+}
+
+</style>

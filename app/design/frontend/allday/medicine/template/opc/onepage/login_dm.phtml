@@ -1,0 +1,246 @@
+<?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<p class="text-login"><?php //echo $this->__('Already registered?') ?> <a class="login-trigger signin-modal" data-modal="modal-login"><?php //echo $this->__('LOGIN HERE')?></a></p>
+<div class="guest-customer" id="new_user">
+	<form id="guest-form" action="<?php //echo $this->getPostActionUrl() ?>" method="post">
+        <?php //echo $this->getBlockHtml('formkey'); ?>
+        <?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <div class="custom_radio2">
+			<input type="radio" name="has_account_no" id="has_account_no" value="no" class="checkout_tiny_inputs" checked="checked" />
+			<label for="has_account_no" class="step_1_account_radio_label">Continue without password  </label>
+		</div>
+		<p class="checkout_small_note">(You can checkout as a guest)</p>
+		<div class="form_fields input-container" id="hasnoaccount">
+			<div class="full fulldetaillabel">
+				<label for="emailid" class="required"><em>*</em>
+					<?php echo $this->__('Email ID') ?>
+				</label>
+				<div class="data_area">
+					<input type="text" name="emailid" id="emailid" class="input-text required-entry validate-email" />
+				</div>
+			</div>
+		</div>
+		
+	</form>
+</div>
+<div class="clear"></div>
+<div id="modal-login">
+	<div class="md-content">
+			<div class="md-modal-header">
+				<div class="custom_radio2">
+					<input type="radio" name="has_account_yes" id="has_account_yes" value="yes" class="checkout_tiny_inputs" />
+					<label for="has_account_yes" class="step_1_account_radio_label"><?php echo $this->__('I have an account and password') ?></label>
+				</div>
+				<p class="checkout_small_note"><?php echo $this->__('(Login to checkout faster)') ?></p>
+			</div>	
+			<div class="md-content-wrapper" id="hasaccount">
+			<div id="login-msg"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+				<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form" name="login-form">
+		      		<?php echo $this->getBlockHtml('formkey'); ?>
+			        <div>
+						<ul class="form-list">
+							<li>
+								<label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+								<div class="input-box">
+									<input type="text" id="email" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+								</div>
+							</li>
+						<li>
+							<label for="pass" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+							<div class="input-box">
+								<input type="password" id="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+							</div>
+						</li>
+						
+						</ul>				
+					</div>
+					<input name="context" type="hidden" value="checkout" />
+				</form>
+				
+				<?php echo $this->getChildhtml('forgotPassword');?>
+			</div>
+			<div class="md-modal-footer">
+				<div id="login-button-set">						  
+					<div id="login" style="display:none;float:left;">      
+					<button type="button" id="login-btn" onclick="onepageLogin(this)" class="continue button happy_button"><span><span><?php echo $this->__('Login') ?></span></span></button>
+					<a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left restore-account"><?php echo $this->__('Forgot Your Password?') ?></a>
+					</div>
+				</div>	
+		   </div>
+	</div>
+</div>
+<!-- <div class="buttons-set" id="continue" style="float:left;">
+	<button type="button" class="continue button guestcheckout_button" id="guest-continue" onclick="onepageGuestLogin(this);"><?php //echo $this->__('continue') ?></button>
+</div> -->
+
+<script type="text/javascript">
+//<![CDATA[
+
+    var loginForm = new VarienForm('login-form', true);
+
+    //jQuery('login-email').observe('keypress', bindLoginPost);
+    //jQuery('login-password').observe('keypress', bindLoginPost);
+    function bindLoginPost(evt){
+        if (evt.keyCode == Event.KEY_RETURN) {
+            loginForm.submit();
+        }
+    }
+
+    function onepageLogin(button){
+        if(loginForm.validator &&  loginForm.validator.validate()){
+            button.disabled = true;
+            loginForm.submit();        
+        }
+
+    }     
+    
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+    var guestForm = new VarienForm('guest-form', true);
+    //jQuery('emailid').observe('keypress', bindGuestLoginPost);
+    //$('login-password').observe('keypress', bindLoginPost);
+    function bindGuestLoginPost(evt){
+        if (evt.keyCode == Event.KEY_RETURN) {
+            guestForm.submit();
+        }
+    }
+    function ajaxcallback(emailid,postUrl,button)
+  	{
+  		jQuery.ajax({
+  			url: postUrl,
+  			type: "POST",
+  			data:  {email:emailid},
+  			success: function(data){
+	 					// alert(data);
+	 					if(data.status==0){
+	 						alert(data.message.emailAddressInvalidHostname);
+	 						// callbackFn(data.status);
+	 						// return 'manoj';
+	 					}else{
+	 						guestnextButton(button);
+	 						jQuery('#billing\\:email').val(emailid);
+
+	 					}
+	 				},
+	 				error: function(){}             
+	 			});
+  }
+
+    function guestnextButton (button) {
+	button.disabled = false;
+	var getClass = jQuery(button).attr('class');
+		if(jQuery(button).hasClass('tab_btn_login next')){
+			var closest_par = jQuery(button).closest('div');
+			var current_div = jQuery(closest_par).attr('id');
+			var updated_div = jQuery(closest_par).next().attr('id');  
+			jQuery(".tab-content").stop(true,true).hide();      
+			jQuery("#" + updated_div).stop(true,true).show();
+			jQuery(".checkouttabs li").removeClass("current");
+			jQuery("li[data-tab='"+ current_div +"']").addClass("pass");
+			jQuery("li[data-tab='"+ updated_div +"']").addClass("current");
+		}
+	}  
+
+    function onepageGuestLogin(button){
+ 		/* */
+ 		var emailid = jQuery('#emailid').val();
+ 		var postUrl = "<?php echo $this->getBaseUrl().'onepage/index/emailcheck' ?>";
+        if(guestForm.validator &&  guestForm.validator.validate()){
+			var ajaxcall = ajaxcallback(emailid,postUrl,button);	
+        }
+    }
+//]]>
+</script>
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function (){
+		// jQuery('#billing\\:create_account').prop("checked", true).trigger("click");
+		// jQuery('#convert_guest_to_user').trigger("click");
+	 /*jQuery("#login-btn").click(function (e) {
+	 	var a = jQuery('input:radio[name=has_account_yes]:checked').val();
+	 	jQuery("#has_account_yes").prop("enabled",true);
+	 	//alert('aaaaaaaaa');
+	 	//jQuery('#has_account_yes').attr('checked', true);
+	 });*/
+		// jQuery('#has_account_yes').attr('checked', true);
+		 //jQuery('#has_account_no').attr('checked', false);
+	
+	  jQuery('#hasaccount').hide();
+	    jQuery("#has_account_no").click(function () {
+	      jQuery('#has_account_yes').attr('checked', false);
+	      jQuery('#hasaccount').hide();
+	      jQuery("#login").css("display","none");
+
+	      var current_width = jQuery(window).width();
+
+	      //alert(current_width);
+	      if(current_width <= 500){
+		    	jQuery(".tab_btn_login.mobile_login_btn").css("display","block");
+		    	jQuery(".tab_btn_login.desktop_login_btn").css("display","none");
+		    }
+		    else{
+		    	jQuery(".tab_btn_login.mobile_login_btn").css("display","none");
+		    	jQuery(".tab_btn_login.desktop_login_btn").css("display","block");
+		    }
+
+	      //jQuery("#forgotpassword-button-set").hide();
+	      //jQuery(".tab_btn_login").css("display","block");
+
+	        if (jQuery(this).prop('checked') === true) {
+	         jQuery('#hasnoaccount').show();
+	        } else {
+	         jQuery('#hasnoaccount').hide();
+	         jQuery("#has_account_yes").prop("enabled",true);
+	         jQuery("#forgotpassword-button-set").css("display","block");
+	        }
+	});
+
+	jQuery("#has_account_yes").click(function () {
+	   jQuery('#hasnoaccount').hide();
+	   jQuery("#login").css("display","block");
+	   jQuery(".tab_btn_login").css("display","none");
+	    jQuery('#has_account_no').attr('checked', false);
+	     if (jQuery(this).prop('checked') === true) {
+	         jQuery('#hasaccount').show();
+	     } else {
+	         jQuery('#hasaccount').hide();
+	         jQuery("#forgotpassword-button-set").css("display","block");
+	     }
+	});
+    
+
+jQuery( window ).resize(function() {
+	var current_width = jQuery(window).width();
+
+  	//alert(current_width);
+  	if(current_width <= 500){
+    	jQuery(".tab_btn_login.mobile_login_btn").css("display","block");
+    	jQuery(".tab_btn_login.desktop_login_btn").css("display","none");
+    }
+    else{
+    	jQuery(".tab_btn_login.mobile_login_btn").css("display","none");
+    	jQuery(".tab_btn_login.desktop_login_btn").css("display","block");
+    }
+});
+
+</script>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		if(jQuery('.messages .error-msg').html()){
+		console.log(jQuery('.messages .error-msg').html());
+			jQuery("input#has_account_yes").prop("checked", true).trigger("click");
+		}
+	});
+</script>
+<div class="md-overlay"></div>	
+	
+	
+<!--<script type="text/javascript">
+    //<![CDATA[
+        var dataForm1 = new VarienForm('login-form', true);
+    //]]>
+</script>-->
+<div class="clear move-columns"></div>
+
+

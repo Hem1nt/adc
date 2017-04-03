@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <shipmentinfo_adminhtml_shipmentinfobackend_index>
+	<reference name="content">
+	  <block type="shipmentinfo/adminhtml_shipmentinfobackend" name="shipmentinfobackend" template="shipmentinfo/shipmentinfobackend.phtml"/>
+	</reference>
+  </shipmentinfo_adminhtml_shipmentinfobackend_index>
+  <shipmentinfo_adminhtml_shipmentinfo_index>
+	<reference name="content">
+	  <block type="shipmentinfo/adminhtml_shipmentinfo" name="shipmentinfo" />
+	</reference>
+  </shipmentinfo_adminhtml_shipmentinfo_index>
+</layout>

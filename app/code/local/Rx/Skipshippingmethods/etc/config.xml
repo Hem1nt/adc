@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Rx_Skipshippingmethods>
+      <version>0.1.0</version>
+    </Rx_Skipshippingmethods>
+  </modules>
+  <global>
+    <helpers>
+      <skipshippingmethods>
+        <class>Rx_Skipshippingmethods_Helper</class>
+      </skipshippingmethods>
+	<!--   <checkout>
+            <rewrite>
+                 <data>Rx_Skipshippingmethods_Helper_Data</data>
+			</rewrite>
+        </checkout> -->
+    </helpers>
+<!-- 	
+	<blocks>
+		<checkout>
+            <rewrite>
+                 <onepage>Rx_Skipshippingmethods_Block_Checkout_Onepage</onepage>
+			</rewrite>
+        </checkout>
+    </blocks>    -->
+
+<!-- 	<models>
+		<checkout>
+			<rewrite>
+				<type_onepage>Rx_Skipshippingmethods_Model_Type_Onepage</type_onepage>
+			</rewrite>
+		</checkout>
+	</models> -->
+</global>
+  <frontend>
+ <!--  <routers>
+			<checkout>  
+					<args>  
+						<modules>  
+						  <Rx_Skipshippingmethods before="Mage_Checkout">Rx_Skipshippingmethods_Checkout</Rx_Skipshippingmethods>  
+						</modules>  
+					</args>  
+			</checkout> 
+	</routers> -->
+  </frontend>
+</config> 

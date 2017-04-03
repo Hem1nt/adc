@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Configfile>
+      <version>0.1.0</version>
+    </Iksula_Configfile>
+  </modules>
+  <global>
+    <blocks>
+      <configfile>
+         <class>Iksula_Configfile_Block</class>
+      </configfile>
+    </blocks>
+    <helpers>
+      <configfile>
+        <class>Iksula_Configfile_Helper</class>
+      </configfile>
+    </helpers>
+    <models>
+      <configfile>
+        <class>Iksula_Configfile_Model</class>
+      </configfile>
+    </models>
+  </global>
+</config> 

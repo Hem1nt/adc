@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+
+  <tabs>
+    <optimisewebconfig translate="label comment" module="redirects">
+      <label>Optimise Web</label>
+      <sort_order>0</sort_order>
+    </optimisewebconfig>
+  </tabs>
+
+  <sections>
+    <optimisewebredirects translate="label comment" module="redirects">
+      <label>Mass 301 Redirects</label>
+      <tab>optimisewebconfig</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>99999</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+
+        <general translate="label comment">
+          <label>Upload / Download CSV File</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <upload translate="label comment">
+              <label>Upload Redirects File</label>
+              <comment>If you have already uploaded a CSV file and wish to add or edit the URLs, please download the current CSV file and reupload that file after making the changes.</comment>
+              <frontend_type>file</frontend_type>
+              <backend_model>adminhtml/system_config_backend_file</backend_model>
+              <upload_dir config="system/filesystem/media">optimiseweb/redirects</upload_dir>
+              <base_url type="media">optimiseweb/redirects</base_url>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </upload>
+            <download translate="label comment">
+              <label>Download Redirects File</label>
+              <comment>Right click on this link and click on 'Save Link As...'</comment>
+              <frontend_model>redirects/system_config_backend_download</frontend_model>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </download>
+          </fields>
+        </general>
+
+      </groups>
+    </optimisewebredirects>
+  </sections>
+
+</config>

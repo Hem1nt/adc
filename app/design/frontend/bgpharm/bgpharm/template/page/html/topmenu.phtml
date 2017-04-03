@@ -1,0 +1,75 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+<?php $_menu = $this->getHtml('level-top') ?>
+<?php if($_menu): ?>
+<div class="nav-container block">
+	
+	<div class="block-title">
+		<div class="nav-content-header">
+			<a href="<?php echo $this->getBaseUrl(); ?>" class="home_icon"><img src="<?php echo $this->getSkinUrl();?>images/home_ico.png" alt= "home" /></a>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('nav_left_categories_bg')->toHtml(); ?>
+			<div class="categories-right-hom">
+		        <strong class="all-categories"><span><?php echo $this->__('All Categories') ?></span></strong>
+		        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('nav_right_categories_bg')->toHtml(); ?>
+		        <div class="tab-category-icons">
+		        	<div class="fiter-icon"></div>
+		        	<div class="compare-icon"></div>
+		        </div>
+		        <div class="acc-pages-icons">
+			        <div class="compare-acc-icon"></div>
+			        <div class="my-account-icon"></div>
+		    	</div>
+		    </div> 
+        </div>
+    </div>
+    <div class="all_categories_list"> 
+    	<a href="<?php echo $this->getBaseUrl(); ?>" class="home_icon in_nav"><img src="<?php echo $this->getSkinUrl();?>images/home_ico.png" alt= "home" /><span class="lable_home">Go to BlueGreenPharmacy</a>
+    	<!-- Refer js/categor.nav.js for custom restructuring -->
+	    <ul id="nav">
+        	<?php echo $_menu ?>
+		        <!-- Elements are opened into topmenu.php -->
+		    <!-- Elements are opened into topmenu.php -->
+	        
+	        <li class="mob-menu-topmenu"><a href="<?php echo $this->getBaseUrl(''); ?>testimonial">Testimonials</a></li>
+	        <li class="mob-menu-topmenu"><a href="<?php echo $this->getBaseUrl(''); ?>Article/">Articles</a></li>
+	        <li class="mob-menu-topmenu"><a href="<?php echo $this->getBaseUrl(''); ?>faq/">FAQs</a></li>
+	        <li class="mob-menu-topmenu"><a href="<?php echo $this->getBaseUrl(''); ?>contacts/">Contact Us</a></li>
+	        <li class="mob-menu-topmenu"><a href="<?php echo $this->getBaseUrl(''); ?>content/4-aboutus/">About Us</a></li>
+	        <li class="mob-menu-topmenu"><a href="<?php echo $this->getBaseUrl(''); ?>guarantee/">Guarantee</a></li>
+	        <li class="mob-menu-topmenu"><a href="<?php echo $this->getBaseUrl(''); ?>fight_spam/">AntiSpam Policy</a></li>
+	    </ul>
+	    <p class="scroll-category">Scroll for more categories</p>
+    </div>
+</div>
+<?php endif ?>

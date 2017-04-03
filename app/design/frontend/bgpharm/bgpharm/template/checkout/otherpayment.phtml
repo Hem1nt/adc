@@ -1,0 +1,27 @@
+<div class="pr-row1">
+	<div class="success-img">
+                <img src="<?php echo $this->getSkinUrl('images/pr-success-icon.png') ?>" alt="" />
+    </div>
+    <div class="success-text">
+                <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+                <h2 class="sub-title"><?php echo $this->__('Congratulations User') ?></h2>
+                
+                <span>Thanks for Shopping with <span class="grn">BlueGreenPharmacy</span></span>
+                <?php if ($this->getCutomOrderId()):?>
+                <?php if ($this->getCanViewOrder()) :?>
+                    <p class="order-id"><?php echo $this->__('Your order Id is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getCutomOrderId()))) ?></p>
+                <?php  else :?>
+                    <p class="order-id"><?php echo $this->__('Your Order Id is: %s.', $this->escapeHtml($this->getCutomOrderId())) ?></p>
+                <?php endif;?>
+                <?php endif;?>
+                    <p><?php echo $this->__('Our customer support team will contact you through our registered Toll Free Number +1(855) 840-0584 to verify your order details. Once your order verification is done, they will send you the secure payment link through which you can make the payment.') ?></p>
+                    <p><?php echo $this->__('You can also complete the verification process by calling us at +1(855) 840-0584 between 6.00 amto 6.00 pm as per PST (Pacific Standard Time)') ?></p>
+                    <p><?php echo $this->__('Please note that we never asked our customers to provide the card details over the phone. Please always share the card details through the payment link sent through info@bluegreenpharmacy.vu.') ?></p>
+                    <p><?php echo $this->__('In case of any confusion, please feel free to contact us.') ?></p>
+                    <b><p><?php echo $this->__('With warm regards,') ?></p></b>
+                    <b><p><?php echo $this->__('BlueGreenPharmacy Billing Department') ?></p></b>
+                    <b><p><?php echo $this->__('Tel: + 1(855) 840-0584') ?></p></b>
+
+                
+    </div>
+</div>

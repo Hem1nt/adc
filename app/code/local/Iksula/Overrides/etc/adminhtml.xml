@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <acl>
+    <resources>
+      <all>
+        <title>Allow Everything</title>
+      </all>
+      <admin>
+        <children>       
+          <system>
+            <children>
+              <config>
+                <children>
+                  <iksulaoverrides translate="title" module="redirects">
+                    <title>Iksula Overrides - System Configuration Group</title>
+                  </iksulaoverrides>
+                  <productredirect translate="title" module="redirects">
+                    <title>Mass Product Redirects</title>
+                  </productredirect>
+                  <admin_all_countries translate="title" module="overrides">
+                    <title>Backend Order Country</title>
+                  </admin_all_countries> 
+                  <payment_ip_restriction translate="title" module="overrides">
+                    <title>Payment Restriction Country</title>
+                  </payment_ip_restriction>
+                </children>
+              </config>
+            </children>
+          </system>
+        </children>
+      </admin>
+    </resources>
+  </acl>
+</config>

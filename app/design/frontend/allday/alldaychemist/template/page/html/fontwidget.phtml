@@ -1,0 +1,46 @@
+<div class="font_class_area">
+	<p>FONT<br/>SIZE</p>
+<ul>
+	    <li class="font_class_li" id="font_li_1">
+	    	<span class="left_font_arrow"></span>
+	    	<a href="#" class="font_class" id="a1" style="font-size:14px"><div class="left_font">A</div></a>
+	    	
+	    </li>
+        <li class="font_class_li" id="font_li_2">
+        	<span class="left_font_arrow"></span>
+        	<a href="#" class="font_class" id="a2" style="font-size:16px"><div class="left_font">A+</div></a>
+        	
+        </li>
+        <li class="font_class_li" id="font_li_3">
+        	<span class="left_font_arrow"></span>
+        	<a href="#" class="font_class" id="a3" style="font-size:18px"><div class="left_font">A++</div></a>
+        	
+        </li>
+</ul>
+</div>
+<style type="text/css">
+.body-18 .category_select ,.body-16 .category_select {margin-right: 0%;height: 62px;}
+.body-16 .new_offers ,.body-18 .new_offers{
+margin: -19px 1.5% 0 0;
+}
+.cms-index-index .category_select {margin-right: 8%;height: 62px;}
+.checkout-onepage-index .font_class_area p {color: #fff !important;}
+</style>
+<script type="text/javascript">
+var fontCookie = get_cookie('fontclass');
+// alert(fontCookie);
+if(fontCookie=='body-16'){
+	jQuery("#font_li_2").find('.left_font_arrow').addClass("current_font" );
+}
+if(fontCookie==''){
+	jQuery("#font_li_1").find('.left_font_arrow').addClass("current_font" );
+}
+if(fontCookie=='body-18'){
+	jQuery("#font_li_3").find('.left_font_arrow').addClass("current_font" );
+}
+
+jQuery('.font_class_li').click(function () {
+	jQuery('.left_font_arrow').removeClass("current_font");
+	jQuery('#'+this.id).find('.left_font_arrow').addClass("current_font" );
+});
+</script>

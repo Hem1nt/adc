@@ -1,0 +1,213 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * One page checkout payment methods
+ *
+ * @see Mage_Checkout_Block_Onepage_Payment_Methods
+ */
+?>
+<?php
+#=====<@ code added by nilesh
+
+//$countryCode = Mage::getSingleton('checkout/type_onepage')->getQuote()->getBillingAddress()->getCountryId();
+$ip = Mage::helper('core/http')->getRemoteAddr(true);
+$countryCodeAPI = file_get_contents("http://api.hostip.info/country.php?ip=".$ip);
+$customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+#====<@ code end
+##################################   added by nilesh to show visa option for old customer
+if($customerLoggedIn) {
+     $customerData = Mage::getSingleton('customer/session')->getCustomer();
+      //echo $customerData->getId();
+    $customer_id = $customerData->getId(); // set this to the ID of the customer.
+    $customer_data = Mage::getModel('customer/customer')->load($customer_id);
+    //echo "<pre>"; print_r($customer_data->getData());
+    $limitDate = date('26-06-2013');
+    $customerDate = date('d-m-Y', strtotime($customer_data->getData('created_at')));
+    //$customerDate = date('27-06-2013');
+    if(strtotime($limitDate) < strtotime($customerDate))
+    {
+        //echo "not show visa";
+        $showVisa = false;
+    }
+    else
+    {
+        //echo "show visa";
+        $showVisa = true;
+    }
+ }
+ else {
+    //echo "not show visa";
+    $showVisa = false;
+ }
+//visa show code end
+?>
+<dl class="sp-methods" id="checkout-payment-method-load">
+<?php
+    $methods = $this->getMethods();
+    $oneMethod = count($methods) <= 1;
+?>
+<?php
+    $i=1;
+    foreach ($methods as $_method):
+        $_code = $_method->getCode();
+        $_methodCode[] = $_method->getCode();
+        $_methodall[] = $_method;
+        //$var="pay_method".$i.".jpg";
+        $var="pay_method_".$_code.".jpg";
+        $i++;
+?>
+    <!--dt-->
+    <dt <?php if(($_code == "gspay_acc" && $showVisa==false) ||($_code == "pay" && $showVisa!=false)) { echo 'class="hidden"'; /*added by nilesh to show visa to old customer*/ } ?>>
+    <?php if(!$oneMethod): ?>
+        <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+        <img src="<?php echo $this->getSkinUrl('images/'.$var) ?>" alt="<?php //echo $this->htmlEscape($_method->getTitle()) ?>" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" class="v-middle" style="width:170px;height:40px"/>
+    <?php else: ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <?php $oneMethod = $_code; ?>
+    <?php endif; ?>
+        <label for="p_method_<?php echo $_code ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+    </dt>
+    <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+    <dd>
+        <?php
+            //echo "###".$_code."###";
+            if($_code=="checkmo" && $countryCodeAPI=="US") {
+                $html = '<dd>
+                <style>
+                .form-list1 li span
+                { 
+                float:left;
+                font-weight: bold;
+                margin-right:5px;
+                }
+                .form-list1 li
+                {
+                list-style: disc outside none;
+                margin: 0 0 7px 20px;
+                }
+                </style>
+                <fieldset class="form-list1">
+                    <ul id="payment_form_checkmo" style="display:none">
+                    <p style="color:red;">Discount:</p>
+                    <p style="font-weight: bold;">Offering US$ 5.00 discount</p>
+                    <p style="font-weight: bold;">Please make the Check / Pay Order / Bank Draft payable to INTERNET MERCHANT TRANSACTIONS. Kindly ensure the following points before mailing the same:<br></p>
+                    <li>
+                    <p>You have sufficient funds in your account (in case of check).</p>
+                    </li>
+                    <li>
+                    <p>Date should be in the format of MM/DD/YYYY</p>
+                    </li>
+                    <li>
+                    <p>It is in the favor of our company \'INTERNET MERCHANT TRANSACTIONS\'</p>
+                    </li>
+                    <li>
+                    <p>The amount in words and figures should match.</p>
+                    </li>
+                    <li>
+                    <p>You have signed the Check</p>
+                    </li>
+                    <li>
+                    <p>There is no over writing on the check.</p>
+                    </li>
+                    <li>
+                    <p>Order number is written on the Check</p>
+                    </li>
+                    <li>
+                    <p>Please mail the Check / Pay Order / Bank Draft to:</p>
+                    </li>
+                    <p>INTERNET MERCHANT TRANSACTIONS</p>
+                    <p>2764 N GREEN VALLEY PKWY STE 537</p>
+                    <p>HENDERSON NEVADA 89014</p>
+                    <p>USA</p>
+                    <p style="color:red;">Please send the scan copy of your filled Check/ Money order to info@alldaychemist.com so that we can ensure that you have filled all the information correctly.</p> 
+                    <p style="color:red;">This will help us to process your order as soon as possible.</p>
+                    <p>Regards</p>
+                    <p>AllDayChemist Sales Team</p>
+                    </ul>
+                </fieldset></dd>';
+            }
+            echo $html;
+        ?>
+    </dd>
+    <?php endif; ?>
+     <!--Nilesh change-->
+    <?php //@nilesh added for temp use VISA payment
+        if($_code == 'pay')
+        {
+            $CustomerName = "Customer";
+            if($customerLoggedIn)
+            {
+                $CustomerDataArr = $customerData->getData();
+                if($CustomerDataArr['firstname'] != "")
+                {
+                    $CustomerName = $CustomerDataArr['firstname'];
+                }
+            }
+            
+    ?>
+        <dd>
+            <ul class="form-list" id="payment_form_pay" style="<?php if($this->getSelectedMethodCode()!=$_code){ echo "display:none"; } ?>">
+                <li>
+                <p style="font-size: 15px;">Dear <?php echo $CustomerName; ?>,<br><br>
+                Thank you for visiting our site <a href="http://www.alldaychemist.com/">www.alldaychemist.com</a><br>
+                Please note that the payment processing bank is currently down due to some technical issues. Please however note that we can charge your card manually over the phone. If you wish to utilize this option, please press <strong style="font-size: 18px;">continue</strong> button your order and you will get a phone call within one working day. You can also give us a call between 9.00 am to 5.00 pm as per PST (Pacific Standard Time) to confirm your purchase.<br><br>
+                With warm regards,<br>AllDayChemist Billing Department<br>
+                Tel:+ 1(855) 840-0584<br>
+                <span style="visibility:hidden">Tel:</span>+ 1(213) 291-2588</p>
+                </li>
+            </ul>
+
+        </dd>
+    <?php
+        }
+    //VISA temp end?>
+<?php endforeach; ?>
+    <dt>
+        <?php if(!$oneMethod){
+            $methodName = "Pay by Cash (Money Gram)";?>
+            <input id="p_method_epayworxs_standard" value="epayworxs_standard" type="radio" name="payment[method]" title="Pay by Cash (Money Gram)" onclick="payment.switchMethod('epayworxs_standardnew')"<?php if($this->getSelectedMethodCode()=="epayworxs_standard"): ?> checked="checked"<?php endif; ?> class="radio" />
+            <img src="<?php echo $this->getSkinUrl('images/pay_method6.jpg') ?>" alt="Pay by Cash (Money Gram)" title="Pay by Cash (Money Gram)" class="v-middle" style="width:170px;height:40px"/>
+        <?php }?>
+        <label for="p_method_<?php echo $_methodCode[0] ?>"><?php echo $this->escapeHtml($methodName) ?></label>
+    </dt>
+<?php if ($html = $this->getPaymentMethodFormHtml($_methodall[0])): ?>
+    <dd>
+        <?php echo $html; ?>
+    </dd>
+    <?php endif; ?>
+</dl>
+<?php echo $this->getChildChildHtml('additional'); ?>
+<script type="text/javascript">
+//<![CDATA[
+<?php echo $this->getChildChildHtml('scripts'); ?>
+payment.init();
+<?php if (is_string($oneMethod)): ?>
+    payment.switchMethod('<?php echo $oneMethod ?>');
+<?php endif; ?>
+//]]>
+</script>

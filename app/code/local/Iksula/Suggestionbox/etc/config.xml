@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Suggestionbox>
+      <version>0.1.1</version>
+    </Iksula_Suggestionbox>
+  </modules>
+    <frontend>
+    <routers>
+      <suggestionbox>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Suggestionbox</module>
+            <frontName>suggestionbox</frontName>
+          </args>
+      </suggestionbox>
+    </routers>
+		<layout>
+		  <updates>
+			<suggestionbox>
+			  <file>suggestionbox.xml</file>
+			</suggestionbox>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+  	<template>
+		<email>
+			<suggestionboxsent>
+                <label>Suggestion Sent</label>
+                <file>suggestionbox/suggestionboxsent.html</file>
+                <type>html</type>
+            </suggestionboxsent>
+		</email>
+	</template>
+    <helpers>
+      <suggestionbox>
+        <class>Iksula_Suggestionbox_Helper</class>
+      </suggestionbox>
+    </helpers>
+	<blocks>
+	  <suggestionbox>
+		<class>Iksula_Suggestionbox_Block</class>
+	  </suggestionbox>
+	</blocks>
+	<models>
+	  <suggestionbox>
+		<class>Iksula_Suggestionbox_Model</class>
+		<resourceModel>suggestionbox_mysql4</resourceModel>
+	  </suggestionbox>
+	  <suggestionbox_mysql4>
+		<class>Iksula_Suggestionbox_Model_Mysql4</class>
+		<entities>		  
+			  <suggestionbox>
+				<table>suggestionbox</table>
+			  </suggestionbox>
+        </entities>
+	  </suggestionbox_mysql4>
+	</models>
+	<resources>
+	  <suggestionbox_setup>
+		<setup>
+		  <module>Iksula_Suggestionbox</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </suggestionbox_setup>
+	  <suggestionbox_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </suggestionbox_write>
+	  <suggestionbox_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </suggestionbox_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <suggestionbox>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Suggestionbox</module>
+		  <frontName>suggestionbox</frontName>
+		</args>
+	  </suggestionbox>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <suggestionbox module="suggestionbox">
+		<title>Suggestion Box</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <suggestionbox module="suggestionbox">
+		    <title>Manage Suggestion Box</title>
+			<sort_order>0</sort_order>
+			<action>suggestionbox/adminhtml_suggestionbox</action>
+		  </suggestionbox>
+		</children>
+	  </suggestionbox>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<suggestionbox translate="title" module="suggestionbox">
+			  <title>Suggestion Box</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <suggestionbox translate="title">
+			<title>Manage Productrequest</title>
+			<sort_order>0</sort_order>
+		  </suggestionbox>
+			  </children>
+			</suggestionbox>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<suggestionbox>
+		  <file>suggestionbox.xml</file>
+		</suggestionbox>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

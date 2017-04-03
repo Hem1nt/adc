@@ -1,0 +1,26 @@
+<?php
+    //echo "new adc";exit;
+
+    $_helper    = $this->helper('catalog/output');
+    $_category  = $this->getCurrentCategory();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+    
+?>
+
+<?php if($_description=$this->getCurrentCategory()->getBottomdescription()): ?>
+    <div class="more_details_area category_bottom_description_footer std" id="category_bottom_description_footer">
+        <h1>More Information</h1>
+        <div class="desc_area_content">
+            <?php echo $_helper->categoryAttribute($_category, $_description, 'bottomdescription') ?>
+        </div>
+    </div>
+<?php endif; ?>
+<style type="text/css">
+.footer .category_bottom_description_footer{
+    background: #f0f0f0;
+}
+</style>

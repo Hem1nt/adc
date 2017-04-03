@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Iksula_Medicalhistory>
+			<version>0.1.0</version>
+		</Iksula_Medicalhistory>
+	</modules>
+	<frontend>
+		<routers>
+			<Iksula_Medicalhistory>
+				<use>standard</use>
+				<args>
+					<module>Iksula_Medicalhistory</module>
+					 <frontName>medicalhistory</frontName>
+				</args>
+			</Iksula_Medicalhistory>
+	    </routers>
+		
+	</frontend>
+
+	<global>
+        <blocks>
+			<medicalhistory>
+				<class>Iksula_Medicalhistory_Block</class>
+			</medicalhistory>
+		</blocks>
+		<helpers>
+			<medicalhistory>
+				<class>Iksula_Medicalhistory_Helper</class>
+			</medicalhistory>
+		</helpers>
+		
+		<models>
+				<medicalhistory>
+					<class>Iksula_Medicalhistory_Model</class>
+					<resourceModel>medicalhistory_mysql4</resourceModel>
+				</medicalhistory>
+				<medicalhistory_mysql4>
+					 <class>Iksula_Medicalhistory_Model_Mysql4</class>
+					<entities>		  
+					  <medicalhistory>
+						<table>sales_order_medicalhistory</table>
+					  </medicalhistory>	
+					   <medicalquestion>
+								<table>sales_order_medical_question</table>
+					   </medicalquestion>						  
+					</entities>
+				</medicalhistory_mysql4>
+	    </models>
+	
+	</global>
+
+
+</config>

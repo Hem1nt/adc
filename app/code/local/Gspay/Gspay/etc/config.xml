@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Gspay
+ * @package     Gspay_Gspay
+ * @copyright   Copyright (c) 2011 Gspay Medien GmbH & Co. KG (http://www.gspay-medien.de)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Gspay_Gspay>
+            <version>1.6.0.0</version>
+        </Gspay_Gspay>
+    </modules>
+    <global>
+        <models>
+            <gspay>
+                <class>Gspay_Gspay_Model</class>
+            </gspay>
+        </models>
+        <helpers>
+            <gspay>
+                <class>Gspay_Gspay_Helper</class>
+            </gspay>
+        </helpers>
+        <resources>
+            <gspay_setup>
+                <setup>
+                    <module>Gspay_Gspay</module>
+                </setup>
+            </gspay_setup>
+        </resources>
+        <blocks>
+            <gspay><class>Gspay_Gspay_Block</class></gspay>
+        </blocks>
+        <template>
+            <email>
+               <gspay_activateemail>
+                   <label>Gspay activate email</label>
+                   <file>gspay_activateemail.html</file>
+                   <type>html</type>
+               </gspay_activateemail>
+            </email>
+        </template>
+        <payment>
+            <groups>
+                <gsp>VISA</gsp>
+            </groups>
+        </payment>
+    </global>
+    <frontend>
+        <secure_url>
+            <gspay_processing>/gspay/processing</gspay_processing>
+        </secure_url>
+        <routers>
+            <gspay>
+                <use>standard</use>
+                <args>
+                    <module>Gspay_Gspay</module>
+                    <frontName>gspay</frontName>
+                </args>
+            </gspay>
+        </routers>
+        <translate>
+            <modules>
+                <Gspay_Gspay>
+                    <files>
+                        <default>Gspay_Gspay.csv</default>
+                    </files>
+                </Gspay_Gspay>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <gspay>
+                    <file>gspay.xml</file>
+                </gspay>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+         <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <gspay after="Mage_Adminhtml">Gspay_Gspay</gspay>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Gspay_Gspay>
+                    <files>
+                        <default>Gspay_Gspay.csv</default>
+                    </files>
+                </Gspay_Gspay>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <gspay>
+                    <file>gspay.xml</file>
+                </gspay>
+            </updates>
+        </layout>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <gspay translate="title" module="gspay">
+                                            <title>Gspay Settings</title>
+                                        </gspay>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <gspay>
+        <gspay>
+            <verify_url>http://www.gspay-medien.de/index.php?id=105</verify_url>
+        </gspay>
+    </gspay>
+    <default>
+        <payment>
+            <gspay_acc>
+                <group>gsp</group>
+                <active>0</active>
+                <model>gspay/acc</model>
+                <title>Pay by VISA Credit/ Debit Card</title>
+                <allowspecific>0</allowspecific>
+            </gspay_acc>
+        </payment>
+        <gspay>
+            <settings>
+                <activationstatus>0</activationstatus>
+            </settings>
+        </gspay>
+    </default>
+</config>

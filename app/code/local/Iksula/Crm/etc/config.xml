@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Crm>
+      <version>0.1.0</version>
+    </Iksula_Crm>
+  </modules>
+  <frontend>
+    <routers>
+      <crm>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Crm</module>
+            <frontName>crm</frontName>
+          </args>
+      </crm>
+    </routers>
+        <layout>
+          <updates>
+            <crm>
+              <file>crm.xml</file>
+            </crm>
+          </updates>
+        </layout>
+  </frontend>
+  <global>
+    <helpers>
+      <crm>
+        <class>Iksula_Crm_Helper</class>
+      </crm>
+    </helpers>
+    <blocks>
+      <crm>
+        <class>Iksula_Crm_Block</class>
+      </crm>
+    </blocks>
+<!-- order insert crm -->
+  <events>
+        <!-- order place after -->
+        <sales_order_place_after>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>insertOrders</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </sales_order_place_after>
+        <!-- order place after ends-->
+        <!-- Invoice Generate TESTED WORKING FINE-->
+        <sales_order_invoice_save_after>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>insert_after_invoice_generate</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </sales_order_invoice_save_after>
+        <!-- Invoice Generate ends -->
+        <!-- Credit Memo Generate TESTED WORKING FINE-->
+        <sales_order_creditmemo_save_after>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>insert_after_creditmemo_generate</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </sales_order_creditmemo_save_after>
+        <!-- Credit Memo Generate ends-->
+        <!-- Shipment create TESTED WORKING FINE-->
+        <sales_order_shipment_save_after>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>insert_after_shipment_create</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </sales_order_shipment_save_after>
+        <!-- Shipment Create Ends -->
+        <!-- status update. TESTED WORKING FINE
+        @@ Custom Event triggered in app/code/local/Amasty/Oaction/Model/Command/Status.php Line 248,
+        && in app/code/core/Mage/Adminhtml/controllers/Sales/OrderController.php Line 288  -->
+        <!--  app/code/community/EM/DeleteOrder/controllers/Adminhtml/Sales/OrderController.php Line 38 -->
+        <insert_after_order_status_update>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateStatus</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </insert_after_order_status_update>
+        <!--custom event for email change in order view in app/code/local/Iksula/Customerdelete/controllers/Adminhtml/CustomerdeletebackendController.php Line 56-->
+        <insert_after_order_email_update>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateOrderEmail</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </insert_after_order_email_update>
+        <!--custom event for email change in order view end-->
+
+        <!-- status update Ends -->
+        <!-- @@ tested and insert is working fine -->
+        <!--order address update. TESTED WORKING FINE
+            @@ Custom Event triggered in /app/code/core/Mage/Adminhtml/controllers/Sales/OrderController.php Line 722-->
+        <insert_after_order_address_update>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateOrderAddress</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </insert_after_order_address_update>
+        <!-- address update Ends -->
+
+        <!-- Customer insert -->
+        <!-- @@ tested and insert is working fine -->
+        <customer_register_success>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>insertCustomerCrm</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </customer_register_success>
+        <!-- Customer insert -->
+
+        <!-- customer update -->
+        <customer_save_after>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateCustomer</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </customer_save_after>
+        <!-- customer update-->
+        <!--file: app/code/local/Rx/Productimport/controllers/Adminhtml/indexController.php line 29 -->
+        <upload_tracking_info>
+            <observers>
+                <iksula_crm_order_observers>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>shippTracking</method>
+                </iksula_crm_order_observers>
+            </observers>
+        </upload_tracking_info>
+        <!-- event after uploading order status csv-->
+        <!--file: app/code/local/Addons/Skipshippingmethods/controllers/Checkout/OnepageController.php line 148 -->
+        <save_echeckid_after>
+            <observers>
+                <iksula_crm_order_observers>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateEcheckId</method>
+                </iksula_crm_order_observers>
+            </observers>
+        </save_echeckid_after>
+        <!-- faq_save_after -->
+        <!--file: app/code/local/Iksula/Backendfaq/controllers/Adminhtml/BackendfaqController.php line 85 -->
+        <faq_save_after>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>addNewFaq</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </faq_save_after>
+        <!-- faq_save_after end -->
+         <adminhtml_customer_save_after>
+           <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>adminCustomerInsert</method>
+                </iksula_crm_order_observer>
+            </observers>
+       </adminhtml_customer_save_after>
+        <sales_order_payment_cancel>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>orderCancel</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </sales_order_payment_cancel>
+         <!--custom event for supply_issue_data in order view in app/code/local/Iksula/Customerdelete/controllers/Adminhtml/CustomerdeletebackendController.php Line 60-->
+        <insert_supply_issue_data>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateSupplyIssue</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </insert_supply_issue_data>
+        <!--custom event for supply_issue_datain order view end-->
+        <!--custom event for dispatcher_message in order view in app/code/local/Iksula/Customerdelete/controllers/Adminhtml/CustomerdeletebackendController.php Line 69-->
+        <insert_dispatcher_message>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateDispatcher</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </insert_dispatcher_message>
+        <insert_fromdate_message>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateFromdate</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </insert_fromdate_message>
+        <insert_todate_message>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updateTodate</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </insert_todate_message>
+        <insert_paymentinfo_message>
+            <observers>
+                <iksula_crm_order_observer>
+                    <type>singleton</type>
+                    <class>Iksula_Crm_Model_Order_Observer</class>
+                    <method>updatePaymentinfo</method>
+                </iksula_crm_order_observer>
+            </observers>
+        </insert_paymentinfo_message>
+
+        <!--custom event for dispatcher_message in order view end-->
+    </events>
+    <!-- end events -->
+  </global>
+</config>

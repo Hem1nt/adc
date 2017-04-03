@@ -1,0 +1,54 @@
+<?php 
+
+$_rootCatId     = 2;
+$_rootCategory  = Mage::getModel('catalog/category')->load($_rootCatId);
+$_catName       = $_rootCategory->getName();
+if($_rootCategory->hasChildren()) 
+{
+$_collection = Mage::getResourceModel('catalog/category_collection')
+                ->addAttributeToFilter('is_active', 1)
+                ->addAttributeToSort('position', 'asc')
+                ->joinUrlRewrite()
+                ->addIdFilter($_rootCategory->getChildren())
+                ->load();
+
+foreach($_collection AS $_sub)
+{
+    $_subCat    = Mage::getModel('catalog/category')->load($_sub->getId());
+
+    if($_subCat->hasChildren()) 
+    {   
+        echo '<li class="leve10 nav-'. $_subCat->getId() .'">';
+            echo '<a id="subCatLink">';
+                echo '<span>'. $this->htmlEscape($_subCat->getName()) .'</span>
+                </a>
+         </li>';
+        echo '<ul id="subCatUl" style="padding:0px 13px;">';
+        $__collection = Mage::getResourceModel('catalog/category_collection')
+                ->addAttributeToFilter('is_active', 1)
+                ->addAttributeToSort('position', 'asc')
+                ->joinUrlRewrite()
+                ->addIdFilter($_subCat->getChildren())
+                ->load();
+
+        foreach($__collection AS $__sub)
+        {
+            $__subCat   = Mage::getModel('catalog/category')->load($__sub->getId());
+            echo '<li class="leve20 nav-'. $__subCat->getId() .'">
+                    <a href="'. $this->getCategoryUrl($__subCat) .'">
+                     <span>'. $this->htmlEscape($__subCat->getName()) .'</span>
+                    </a>
+                 </li>';
+        }
+        echo '</ul>';
+    }
+    else
+    {
+        echo '<li class="leve10 nav-'. $_subCat->getId() .'">
+            <a href="'. $this->getCategoryUrl($_subCat) .'">
+             <span>'. $this->htmlEscape($_subCat->getName()) .'</span>
+            </a>
+         </li>';
+    }
+}
+}

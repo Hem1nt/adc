@@ -1,0 +1,28 @@
+<?php 
+
+$orderid =  Mage::getSingleton('core/session')->getcustomOrderid();
+$order = Mage::getModel('sales/order')->loadByIncrementId($orderid);
+Mage::getSingleton('core/session')->unsPaymentMethosUsed();
+Mage::getSingleton('core/session')->unscustomOrderid();
+$customer_name = $order->getCustomerName();
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+<p><?php echo 'Order Number : '.$orderid; ?></p>
+<br>
+<p style="font-weight: bold;"><?php echo "Dear ".$customer_name?></p>
+<br>
+<p>Thank you for placing an order with us.</p>
+<br>
+<p>Please note that your Bank information has been submitted via SSL secured encrypted page. Theecheck.com, E-check provider will contact you within 48 hours on your personal numbers FOR THE VERIFICATION. Theecheck.com, E-check provider will ask for the authorization of the following details like <span style="font-weight: bold;"> ROUTING NUMBER, CHECK NUMBER, BANK NAME AND THE CHECK AMOUNT </span>. In case you missed their call, please call them at +1-855-403-3855 between 9.00 AM to 9.00 PM (EST) and press 1 to reach verification process.</p>
+<br>
+<p>Once the charge is approved, it will show as ‘Health Matters OR Health Products’ on your Bank statement.</p>  
+<br>
+<p>We appreciate your patience and the patronage of our pharmacy.</p>
+<br>
+<p>With warm regards</p>
+<br>
+<p>AllDayChemist Billing Department</p>
+<br>
+<p>Tel (US): +1-213-291-2588</p>

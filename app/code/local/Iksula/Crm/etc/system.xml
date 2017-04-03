@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config>
+  <tabs>
+    <crm_api translate="label" module="crm">
+      <label>Crm Api</label>
+      <sort_order>0</sort_order>
+    </crm_api>
+  </tabs>
+  <sections>
+    <crm_api_credentails  translate="label" module="crm">                    
+      <label>Api Credentials</label>
+      <tab>crm_api</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>0</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>            
+      <groups>
+        <crm_api_credentails_details translate="label"> 
+          <label>Api credential Details</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <api_url translate="label">
+              <label>Api Url</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>0</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Enter url for crm</comment>
+            </api_url>
+            <api_username translate="label">
+              <label>Api Username</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Enter username</comment>
+            </api_username>
+            <api_password translate="label">
+              <label>Api Password</label>
+              <frontend_type>password</frontend_type>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Enter Password</comment>
+            </api_password>
+            <api_key translate="label">
+              <label>Api Key</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Enter Api Key</comment>
+            </api_key>
+          </fields>
+        </crm_api_credentails_details>
+      </groups>
+    </crm_api_credentails>
+  </sections>
+</config>

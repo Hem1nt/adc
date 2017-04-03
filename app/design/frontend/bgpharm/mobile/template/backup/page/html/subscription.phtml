@@ -1,0 +1,248 @@
+<?php
+$getSession = Mage::getSingleton('core/session')->getOrderReminderSuccess();
+?>
+<?php if($getSession): ?>
+<div id="order_reminder_success">
+	<span><?php echo $getSession; ?></span>
+</div>
+<?php endif; ?>
+	<input type="hidden" id="reminderurl" value="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>refillreminder/index/remindersessionpost">
+ <div id="toTop">
+
+    <div class="subscribe">
+        <div class="subscribe-innerdiv">
+        Subscribe to our Newsletter <span class="xtra-txt">&amp; never miss a latest product or offer</span>
+        <div class="subscribe-input-go">
+	        <input type="text" id="txtEmailDiv" placeholder="Please enter E-mail address" class="subs"
+	        onblur="return showText(this, 'Please enter E-mail address')" onfocus="return hideText(this, 'Please enter E-mail address')">
+	        <input type="button" id="subscribebtn" value="Go">
+       </div>
+    </div>
+
+</div>
+<div class="subscribe_msg" style="display:none;">
+ <div class="subscribe-innerdiv">Thank you for Subscribing us.</div>
+</div>
+	<a id="show_subs" class="subs_a" onclick="" style="display:none; bottom: 15px; color: #FFFFFF; position: fixed; left: 4px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">&gt;</a>
+    <a id="close_subs" class="subs_a" onclick="" style="bottom: 15px; color: #FFFFFF; position: fixed; left: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">X</a>
+</div>
+
+<style type="text/css">
+.subs_a {cursor: pointer;}
+#toTop{width: 100%; position: relative; bottom: 0px; position: fixed; background-color: #ccc; padding: 10px; margin: 0px auto; left: 0px; z-index: 190;}
+.subscribe,.subscribe_msg{text-align: center;}
+.subscribe_msg{padding: 5px;}
+.subscribe-innerdiv{margin:auto;width:100%; display: inline-block;}
+#toTop {
+position: fixed;
+bottom: 0px;
+cursor: default;
+color: #fff;
+font-size: 11px;
+text-align: center;
+width: 100%;
+height:30px;
+background: #000000 !important;
+font-size: 14px;
+font-weight: bold;
+padding: 5px 0;
+left: 0;
+z-index: 500;
+}
+
+#toTop input.subs {
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+border: 0px solid #ccc;
+padding: 5px;
+width: 200px;
+margin-left: 10px;
+font-size: 12px;
+}
+
+#subscribebtn {
+-webkit-align-items: flex-start;
+text-align: center;
+cursor: default;
+color: buttontext;
+padding: 2px 10px 3px;
+border: 2px outset buttonface;
+border-image-source: initial;
+border-image-slice: initial;
+border-image-width: initial;
+border-image-outset: initial;
+border-image-repeat: initial;
+background-color: buttonface;
+box-sizing: border-box;
+}
+
+div#order_reminder_success {
+	position: fixed;
+	display: block;
+	bottom: 52px;
+	cursor: default;
+	color: #fff;
+	font-size: 11px;
+	text-align: center;
+	width: 100%;
+	height: 30px;
+	background: #000000 !important;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0;
+	left: 0;
+	z-index: 500;
+}
+
+
+</style>
+ <script type="text/javascript">
+
+jQuery(document).ready(function(){
+	//console.log(jQuery.browser);
+	// alert('ready');
+	jQuery("#hello").html(window.location.protocol);
+	var subsclose_val = get_cookie("subsclose");
+
+	if(subsclose_val=="yes") {
+		CloseSubscription(1);
+	}
+	jQuery("#close_subs").click(function(){
+		CloseSubscription();
+	});
+	jQuery("#show_subs").click(function(){
+		ShowSubscription();
+	});
+
+
+	jQuery('#txtEmailDiv').click(function(){
+		jQuery('#txtEmailDiv').val('');
+	});
+
+	jQuery('#subscribebtn').click(function(){
+		if(jQuery('#txtEmailDiv').val()==''){
+	       // alert('please enter the email id');
+	       jQuery('#txtEmailDiv').val('Please enter your email address here');
+	    }
+	    else{
+	        var emailid = jQuery('#txtEmailDiv').val();
+	        var check = IsEmail(emailid);
+
+	        if(check){
+				var url = 'http://' + window.location.hostname + '/';
+				if (window.location.protocol === 'https:') {
+					url = 'https://' + window.location.hostname + '/';
+				}
+				var url = url+'newsletter/subscriber/newSub';
+
+				jQuery.ajax({
+					type: 'POST',
+					url: url,
+					data: {email:emailid},
+					success: function(resultData) {
+						jQuery('.subscribe').css('display','none');
+						jQuery('.subscribe_msg').html(resultData).css('display','block');
+						setTimeout(function(){
+							jQuery('.subscribe_msg').animate({display: "none"}, 500, function(){
+								jQuery('.subscribe').show(); jQuery('#toTop #txtEmailDiv').val('');
+								if(resultData == "Thank you for your subscription.") {
+									CloseSubscription();
+								}
+							});
+						}, 2000);
+					}
+				});
+	        }
+	        else{
+	       		alert("Please enter valid email.");
+	       		jQuery('#txtEmailDiv').val('Please enter your email address here').focus();
+	        }
+
+	   	}
+    });
+});
+
+function IsEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+function hideText(element, defaultVal) {
+	if (element.value == defaultVal || element.value == "Invalid Email Address" || element.value == "Please enter a valid email address" || element.value == "Thank You" || element.value == "Already Subscribed") {
+		element.value = '';
+	}
+}
+function showText(element, defaultVal) {
+	if (element.value == '') {
+		element.value = defaultVal;
+	}
+}
+function CloseSubscription(val) {
+		//alert(val);
+		jQuery('#toTop .subscribe').hide(); jQuery('#toTop .subscribe_msg').hide();
+		if(val==1) {
+			jQuery('#toTop').css('width', '35px'); jQuery('#close_subs').hide(); jQuery('#show_subs').show();
+		} else {
+			jQuery('#toTop').animate({width: "35px"}, 500, function(){
+				jQuery('#close_subs').hide(); jQuery('#show_subs').show();
+			});
+		}
+		var cookie_status = get_cookie('subsclose');
+		if(cookie_status != "yes") {
+			var now = new Date();
+			var time = now.getTime();
+			time += 3600 * 1000 * 700;
+			now.setTime(time);
+			document.cookie =
+			'subsclose=yes' +
+			'; expires=' + now.toGMTString() +
+			'; path=/';
+		}
+	}
+	function ShowSubscription() {
+		jQuery('#toTop').animate({width: window.innerWidth}, 500, function(){
+			jQuery('#toTop .subscribe').show(); jQuery('#close_subs').show(); jQuery('#show_subs').hide();
+		});
+		document.cookie =
+		'subsclose=no' +
+		'; expires=Thu, 01 Jan 1970 00:00:01 GMT'
+		'; path=/';
+	}
+	function get_cookie(Name) {
+		var search = Name + "="
+		var returnvalue = "";
+		if (document.cookie.length > 0) {
+			offset = document.cookie.indexOf(search)
+			// if cookie exists
+			if (offset != -1) {
+				offset += search.length
+				// set index of beginning of value
+				end = document.cookie.indexOf(";", offset);
+				// set index of end of cookie value
+				if (end == -1) end = document.cookie.length;
+				returnvalue=unescape(document.cookie.substring(offset, end))
+			}
+		}
+		return returnvalue;
+	}
+
+
+
+
+
+	var xSeconds = 10000; // 1 second
+
+	setTimeout(function() {
+	   jQuery('#order_reminder_success').hide();
+	   var url = jQuery('#reminderurl').val()
+	   jQuery.ajax({
+			type: 'POST',
+			url: url,
+			success: function(resultData) {
+
+			}
+		});
+
+
+	}, xSeconds);
+ </script>

@@ -1,0 +1,101 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+// echo get_class($this);
+?>
+<?php $_order = $this->getOrder() ?>
+<table width="100%" id="my-orders-summary" summary="<?php echo $this->__('Items Ordered') ?>">
+    <thead>
+        <tr>
+            <th colspan="4">
+                <div class="tab_title head">
+                    <div class="heading product">
+                        <span class="title_text">ORDER STATUS</span>
+                    </div>
+                    <div class="heading status">
+                        <div class="status_approval">APPROVAL</div>
+                        <div class="status_processing">DISPENSING</div>
+                        <div class="status_shipping">SHIPPING</div>
+                    </div>
+                    <div class="heading delivery">
+                        <span class="title_text">DELIVERY</span>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            echo $this->getLayout()->createBlock('sales/order_view')->setTemplate('sales/order/orderstatus.phtml')->toHtml();
+        ?>
+    </tbody>
+</table>
+<table width="100%" id="my-orders-summary-items" summary="<?php echo $this->__('Items Ordered') ?>">
+    <thead>
+        <tr>
+            <th colspan="4">
+                <div class="tab_title head">
+                    <div class="heading product">
+                        <span class="title_text">PRODUCT DETAILS</span>
+                    </div>
+                    <div class="heading date">
+                        <span class="title_text">ESTIMATED DELIVERY DATE</span>
+                    </div>
+                    <div class="heading subtotal">
+                        <span class="title_text">SUBTOTAL</span>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </thead>
+        <?php $_items = $_order->getItemsCollection(); ?>
+        <?php $_index = 0; ?>
+        <?php $_count = $_items->count(); ?>
+        <tbody>
+            <?php foreach ($_items as $_item): ?>
+            <?php if ($_item->getParentItem()) continue; ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach; ?>
+        </tbody>
+</table>
+<table width="100%" style="margin-top: 15px;">
+<?php echo $this->getLayout()->createBlock('sales/order_totals')->setTemplate('sales/order/customtotals.phtml')->toHtml(); ?>
+ </table>
+
+<script>
+decorateTable('my-orders-summary', {'tbody' : ['odd', 'even'], 'tbody tr' : ['first', 'last']})
+</script>
+
+<script>
+jQuery(document).ready(function(){
+    // alert("here");
+    var img_url = "<?php echo Mage::getDesign()->getSkinUrl('images',array('_area'=>'frontend')) ?>"+'/j2t_add_one.png';
+    more_discount = jQuery(".data_discount").prepend('<span class="more_offers"><img src="'+img_url+'" style="height:100%"/></span>');
+    jQuery('.data_discount').click(function(){
+        jQuery('.discount_block').toggle();
+    });
+
+});
+</script>

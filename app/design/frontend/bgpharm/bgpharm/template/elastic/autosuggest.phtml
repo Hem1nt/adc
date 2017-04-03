@@ -1,0 +1,98 @@
+<?php
+$elasticSearch = $this->getModel();
+$searchText = $this->getSearchText();
+$resultSet = $this->getResult();
+$searchResponseType = $this->getSearchResponseType();
+$searchResponseSuggestion = $this->getSearchResponseSuggestion();
+
+?>
+<?php if($searchResponseType == $elasticSearch::RESULT_TYPE_SUGGESTION): ?>
+
+	<ul class="autosuggest-results">
+		<li id="search-closest-match">
+			<a href="<?php echo $this->helper('elastic')->getCorrectedUrl($searchResponseSuggestion); ?>" class="table search_no_products">
+				<div class="table-cell pl-10">
+					<span>
+						Did you mean <b class="correction"><?php echo $searchResponseSuggestion; ?></b>?
+					</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+	<ul class="autosuggest-results">
+		<li>
+			<span class="autosuggest_prod_count">Number of Results : <?php echo count($resultSet); ?></span>
+		</li>
+	</ul>
+	<ul class="autosuggest-results response">
+		<?php if(count($resultSet) > 0): ?>
+			<?php foreach($resultSet as $product): ?>
+				<li>
+					<a href="<?php echo $product['url']; ?>" class="table autolink">
+						<!-- <div class="table-cell image-cell">
+							<img src="<?php //echo $product['thumbnail']; ?>" data-original="<?php //echo $product['thumbnail']; ?>"/>
+						</div> -->
+						<div class="table-cell pl-10">
+							<span class="autosuggest_prod_name"><?php echo preg_replace('/\b' . preg_quote($searchText, "/") . '\b/i', "<b>\$0</b>", $product['name']); ?>
+							</span>
+						<!-- </br> -->
+						<!-- <span class="autosugges_price">
+							<?php// echo Mage::helper('core')->currency($product['price'], true, false); ?>
+						</span> -->
+						</div>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		<?php endif; ?>
+	</ul>
+
+
+<?php elseif($searchResponseType == $elasticSearch::RESULT_TYPE_FAILED): ?>
+
+	<ul class="autosuggest-results">
+		<li id="search-no-match">
+			<a href="#" class="table search_no_products">
+				<div class="table-cell pl-10">
+					<span>
+						No results found for <b><?php echo $searchText; ?></b>
+					</span>
+				</div>
+			</a>
+		</li>
+	</ul>
+
+<?php else: ?>
+	<ul class="autosuggest-results">
+		<li>
+			<span class="autosuggest_prod_count">Number of Results : <?php echo count($resultSet); ?></span>
+		</li>
+	</ul>
+	<ul class="autosuggest-results response">
+		<?php if(count($resultSet) > 0): ?>
+			<?php foreach($resultSet as $product): ?>
+				<li>
+					<a href="<?php echo $product['url']; ?>" class="table autolink">
+						<!-- <div class="table-cell image-cell">
+							<img src="<?php //echo $product['thumbnail']; ?>" data-original="<?php //echo $product['thumbnail']; ?>"/>
+						</div> -->
+						<div class="table-cell pl-10">
+							<span class="autosuggest_prod_name"><?php echo preg_replace('/\b' . preg_quote($searchText, "/") . '\b/i', "<b>\$0</b>", $product['name']); ?>
+							</span>
+						<!-- </br>
+						<span class="autosugges_price">
+							<?php //echo Mage::helper('core')->currency($product['price'], true, false); ?>
+						</span> -->
+						</div>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		<?php endif; ?>
+	</ul>
+
+	<script type="text/javascript">decorateGeneric($$('.autosuggest-results li'), ['', '', 'first', 'last'])</script>
+
+	<script type="text/javascript">
+	//jQuery('.autosuggest-results img').lazyload();
+	</script>
+
+<?php endif; ?>

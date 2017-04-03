@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Addons_Skipshippingmethods>
+         <version>0.1.0</version>
+      </Addons_Skipshippingmethods>
+   </modules>
+   
+	<global>
+		<models>
+			<skipshippingmethods>
+				<class>Addons_Skipshippingmethods_Model</class>
+			</skipshippingmethods>
+			
+           <!--  <checkout>
+                <rewrite>
+                    <type_onepage>Addons_Skipshippingmethods_Model_Type_Onepage</type_onepage>
+                </rewrite>
+            </checkout>   --> 
+            
+	        <addonsadminthemecontroller>
+	             <class>Addons_Skipshippingmethods_Controller</class>
+	        </addonsadminthemecontroller>            
+                			
+		</models>
+          
+		<helpers>
+			<skipshippingmethods>
+				<class>Addons_Skipshippingmethods_Helper</class>
+			</skipshippingmethods>
+		</helpers>
+        
+        <blocks>        
+            <checkout>
+                <rewrite>
+                    <onepage>Addons_Skipshippingmethods_Block_Onepage</onepage>
+                </rewrite>
+            </checkout>        
+        
+            <skipshippingmethods>
+                <class>Addons_Skipshippingmethods_Block</class>
+            </skipshippingmethods>  
+            
+            <skipshippingmethodsonepage>
+                <class>Addons_Skipshippingmethods_Block_Onepage</class>
+            </skipshippingmethodsonepage>                                
+        </blocks>
+
+		<!-- <rewrite>
+		  <addons_skipshippingmethods_onepage>
+		  	<from><![CDATA[#^/checkout/onepage/#]]></from>
+		    <to>/skipshippingmethods/onepage/</to>
+		  </addons_skipshippingmethods_onepage>
+		</rewrite> -->
+                
+        
+        <resources>
+            <skipshippingmethods_setup>
+	            <setup>
+	               <module>Addons_Skipshippingmethods</module>
+					<class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+	            </setup>
+	            <connection>
+	               <use>core_setup</use>
+	            </connection>
+        	</skipshippingmethods_setup>
+        </resources>
+        
+        <events>
+			<!-- START Adds the Admin theme switcher, enables to avoid modify admin themes -->
+		      <adminhtml_controller_action_predispatch_start>
+		        <observers>
+		          <addons_themeoverride_observer>
+		            <type>singleton</type>
+		            <!-- Addonsadminthemecontroller/observer  -->
+		            <class>Addons_skipshippingmethods_Controller_Observer</class>
+		            <method>overrideTheme</method>
+		          </addons_themeoverride_observer>
+		        </observers>
+		      </adminhtml_controller_action_predispatch_start>
+		      <!-- END Adds the Admin theme switcher, enables to avoid modify admin themes -->          
+        </events>
+        
+        
+   </global>
+
+
+			<checkout>  
+					<args>  
+						<modules>  
+						  <Addons_Skipshippingmethods before="Mage_Checkout">Addons_Skipshippingmethods_Checkout</Addons_Skipshippingmethods>  
+						</modules>  
+					</args>  
+			</checkout> 
+	
+    <frontend>
+    
+		<routers>
+			<addons_skipshippingmethods>
+			<use>standard</use>
+				<args>
+					<module>Addons_Skipshippingmethods</module>
+					<frontName>skipshippingmethods</frontName>
+				</args>
+			</addons_skipshippingmethods>
+
+			<checkout>  
+					<args>  
+						<modules>  
+						  <Addons_Skipshippingmethods before="Mage_Checkout">Addons_Skipshippingmethods_Checkout</Addons_Skipshippingmethods>  
+						</modules>  
+					</args>  
+			</checkout> 
+
+		</routers>    
+    
+      <events>
+		<!-- START Custom added by Branko Ajzele: Hooks into order save event -->
+		<checkout_onepage_controller_success_action>
+			<observers>
+				<hooksystem_order_success>
+					<type>singleton</type>
+					<class>skipshippingmethods/observer</class>
+					<method>hookToOrderSaveEvent</method>
+				</hooksystem_order_success>
+			</observers>
+		</checkout_onepage_controller_success_action>
+		<!-- END Custom added by Branko Ajzele: Hooks into order save event -->
+		
+		
+		
+		
+      </events>
+      
+      <layout>
+		<updates>
+			<Skipshippingmethods>
+				<file>skipshippingmethods.xml</file>
+            </Skipshippingmethods>
+        </updates>
+	 </layout>      
+      
+   </frontend> 
+</config>

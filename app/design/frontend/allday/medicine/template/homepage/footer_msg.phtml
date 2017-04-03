@@ -1,0 +1,58 @@
+<div class="footer-our-partners">
+	<span class="our-partner-text">Our Partners:</span>
+	<a rel="nofollow" href="https://www.mcafeesecure.com/RatingVerify?ref=www.alldaychemist.com" id="mcaffee_logo" class="footer_logos" onclick="window.open(this.href, 'mcafee_new',
+		'width=1000,height=500,toolbar=1,resizable=0'); return false;">
+		<span class="op1"></span>
+	</a>
+	<a  href="https://seal.godaddy.com/verifySeal?sealID=516304681046fb4bc11011f1400b8da37d719429464659303720420694" rel="nofollow" style="cursor: pointer" id="godaddy_logo" onclick="window.open(this.href, 'godaddy_new',
+		'width=700,height=500,toolbar=1,resizable=0'); return false;" class="footer_logos">
+		<span class="op2"></span>
+	</a>
+	<a href="http://www.copyscape.com/dmca-copyright-protection/" rel="nofollow" id="copyscap_logo" class="footer_logos target_blank">
+		<span class="op3"></span>
+	</a>
+</div>
+
+<div class="footer_imp_msg">
+	<div>
+		<p class="footer_content">Please note that not all medications, including any referenced on this page, are dispensed from our affiliated Indian pharmacy. The medications in your order may be filled and shipped from an approved International fulfilment center located in a country other than India. In addition to dispensing medications from our Indian pharmacy, medication orders are also filled and shipped from international fulfilment centers that are approved by the regulatory bodies from their respective countries.
+			<br><br>
+		Medication orders are filled and shipped from approved fulfilment centers around the world including, but not limited to, India, United Kingdom, New Zealand, Mauritius and the United States. The items in your order may be filled and shipped from any one of the above jurisdictions. The products are sourced from various countries as well as those listed above. All of our affiliated fulfilment centers have been approved by the regulatory bodies from their respective countries.
+			<!-- <a href="#show_footer_txt_readmore" class="show_footer_txt" id="footer_readmore">Read More</a> -->
+		</p>
+
+		<!-- <p id="show_footer_txt_readmore">
+			Medication orders are filled and shipped from approved fulfilment centers around the world including, but not limited to, India, United Kingdom, New Zealand and the United States. The items in your order may be filled and shipped from any one of the above jurisdictions. The products are sourced from various countries as well as those listed above. All of our affiliated fulfilment centers have been approved by the regulatory bodies from their respective countries.
+		<a href="#footer_imp_msg" class="show_footer_txt" id="footer_less">Less</a>
+		</p> -->
+	</div>
+</div>
+<style type="text/css">
+.footer .footer_links_area .footer_imp_msg p{text-align: justify;text-indent: 0px;color: #333;}
+.footer .footer_links_area .footer_imp_msg{border: 1px solid #ccc;padding: 10px 10px 10px 10px;}
+.footer .footer_links_area .footer_imp_msg .show_footer_txt{color: #819d01;}
+.footer_imp_msg{margin-bottom:10px; }
+.show_footer_txt{font-weight: bold;margin-left:5px;}
+/*.footer_content{margin-bottom:10px; }*/
+</style>
+
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	jQuery('#show_footer_txt_readmore').hide();
+	jQuery('.show_footer_txt').click(function () {
+		jQuery('#show_footer_txt_readmore').slideDown( "slow");
+		jQuery('.footer_content').css({'margin-bottom':'10px'});
+		jQuery('#footer_readmore').hide();
+		jQuery('#footer_less').show();
+
+	});
+
+	jQuery('#footer_less').click(function () {
+		jQuery('#show_footer_txt_readmore').slideUp( "slow");
+		jQuery('#footer_readmore').show();
+		jQuery('#footer_less').hide();
+		jQuery('.footer_content').css({'margin-bottom':'0px'});
+	});
+});
+
+</script>

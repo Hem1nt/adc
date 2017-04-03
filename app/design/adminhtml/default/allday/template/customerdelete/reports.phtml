@@ -1,0 +1,77 @@
+<div style="width:100%; float:left; margin-bottom:18px;">
+	<!--   <label style="margin:0px;">Export Product Wise Sold Qty</label> -->
+<!-- <table>
+<tr><td>Slot 1 </td><td>Slot 2 </td><td>Slot 3 </td><td>Slot 4 </td></tr>
+<tr><td>Slot 5 </td><td>Slot 6  </td><td>Slot 7 </td><td>Slot 8 </td></tr>
+
+</table> -->
+<style type="text/css">
+.product_wise_sale{border: 1px solid #ccc;
+padding:95px 50px 100px 50px;
+/*height: 120px;*/
+float: left;
+margin-right: 25px;
+}
+#stockstatement{margin-left: 50px;
+margin-top: 15px;}
+.para-text{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+.product_wise_report{
+border: 1px solid #ccc;
+padding:85px 50px 85px 50px;
+/*height: 120px;*/
+float: left;
+}
+.date_label {
+display: inline-block;
+width: 64px;
+font-weight: bold;
+}
+</style>
+<div class="product_wise_sale">
+	<p class="para-text">Product and Categorywise<br/> Wise Sold Quantity </p>
+<form action="<?php echo $this->getUrl('*/adminhtml_customerdeletebackend/reportstock');?>" method="post" >
+<span class="date_label">From  : </span><span class="date_input"><input type="text" name="fromdatestock" id="from-datepicker-stock" /></span></p><p>
+<span class="date_label">To : </span><span class="date_input"><input type="text" name="todatestock" id="to-datepicker-stock" /></span></p></b>
+
+	<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" /> 
+	<button class="print" style="float:left;" id="stockstatement" type="submit" >Product Sold Report</button>
+
+</form>
+</div>
+
+
+<!-- <form action="<?php echo $this->getUrl('*/adminhtml_customerdeletebackend/reportstockstatement');?>" method="post" >
+<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" /> 
+<button class="print" style="margin-left:15px;" id="customer-reportstockstatement" type="submit" >
+		Customer Report
+	</button>
+
+</form> -->
+<div class="product_wise_report">
+<form action="<?php echo $this->getUrl('*/adminhtml_customerdeletebackend/customerreport');?>" method="post" ><p>
+<span class="date_label">From  : </span><span class="date_input"><input type="text" name="fromdate" id="from-datepicker" /></span></p><p>
+<span class="date_label">To : </span><span class="date_input"><input type="text" name="todate" id="to-datepicker" /></span></p></br/>
+<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" /> 
+<button class="print" style="margin-left:15px;" id="customer-report" type="submit" >
+		Customer Report With Date Filters
+	</button>
+
+</form>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery("#from-datepicker").datepicker();
+	jQuery("#to-datepicker").datepicker();
+	jQuery("#from-datepicker-stock").datepicker();
+	jQuery("#to-datepicker-stock").datepicker();
+
+});
+
+</script>
+
+</div>

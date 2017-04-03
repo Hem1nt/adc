@@ -1,0 +1,260 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_item = $this->getItem() ?>
+<?php
+    $_order = $this->getItem()->getOrder();
+    $frontendHelper = Mage::helper('frontend');
+
+  if ($_order->hasInvoices()) {
+
+    $invIncrementIDs = array();
+    foreach ($_order->getInvoiceCollection() as $inv) {
+        $invIncrementIDs[] = $inv->getIncrementId();
+    //other invoice details...
+    } Mage::log($invIncrementIDs);
+    $invoice = Mage::getModel('sales/order_invoice')->loadByIncrementId($invIncrementIDs);
+    // print_r($invoice->getCreatedAt());
+  }
+
+  /** status from backend **/
+
+    $config_incomplete_state = Mage::getStoreConfig('custom_snippet/dynamic_status/incomplete_state');
+    $config_approval_state = Mage::getStoreConfig('custom_snippet/dynamic_status/approval_state');
+    $config_processing_state = Mage::getStoreConfig('custom_snippet/dynamic_status/processing_state');
+    $config_shipping_state = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_state');
+
+    $incomplete_state = explode(",",$config_incomplete_state);
+    $approval_state = explode(",",$config_approval_state);
+    $processing_state = explode(",",$config_processing_state);
+    $shipping_state = explode(",",$config_shipping_state);
+
+    $config_approval_status = Mage::getStoreConfig('custom_snippet/dynamic_status/approval_status');
+    $config_approval_status_failure = Mage::getStoreConfig('custom_snippet/dynamic_status/approval_status_failure');
+    $config_processing_status = Mage::getStoreConfig('custom_snippet/dynamic_status/processing_status');
+    $config_processing_status_done = Mage::getStoreConfig('custom_snippet/dynamic_status/processing_status_failure');
+    $config_processing_status_none = Mage::getStoreConfig('custom_snippet/dynamic_status/processing_status_none');
+    $config_shipping_status_with_trackno = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_status');
+
+    $config_shipping_status_with_trackno_failure = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_status_failure');
+    $config_shipping_status_without_trackno_failure = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_status_1_failure');
+    $config_shipping_status_without_trackno = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_status_1');
+
+
+?>
+<tr>
+<?php
+  $simpleProductId = $_item->getProductId();
+  $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleProductId);
+  $_childproduct = Mage::getModel('catalog/product')->load($simpleProductId);
+  if(!empty($parentIds)){
+    $_product = Mage::getModel('catalog/product')->load($parentIds[0]);
+  }else{
+    $_product = $_childproduct;    
+  }
+//added for sending image with order
+  $product = Mage::getModel('catalog/product')
+  ->setStoreId($_item->getOrder()->getStoreId())
+  ->load($_item->getProductId());  
+
+  $itemArr = $_item->getData();
+  $attr = $product->getResource()->getAttribute("pharmaceutical_form");
+  $pharmaceuticalformId = $product->getPharmaceuticalForm();
+  $pharm = $attr->getSource()->getOptionText($pharmaceuticalformId);
+  $item_sku = explode("-",$itemArr['sku']);
+  $p_packagesize = trim($item_sku[1])." ".$pharm;
+  $p_bonus=$product->getBonus();
+  $qty = number_format($_item->getQtyOrdered());
+  $total_pills = (trim($item_sku[1]) * $qty)+$p_bonus;
+  // echo "<pre>";
+  // print_r($itemArr);
+  $price = Mage::helper('core')->currency($itemArr['row_total'],true,false);//"$".sprintf ("%.2f", $itemArr['price']);
+  $total_price = Mage::helper('core')->currency($itemArr['row_total_incl_tax'],true,false);//"$".sprintf ("%.2f", $itemArr['row_total_incl_tax']);
+
+  $arrival_statusArray  = $approval_state;
+  $processing_statusArray  = $processing_state;
+  $shipping_statusArray1  = array('Order Shipped');
+  $shipping_statusArray2  = $shipping_state;
+  $failure_statusArray = $incomplete_state;
+  $dispensing_message = $config_processing_status_none;
+  $arrival_message = $config_approval_status;
+
+
+  if(in_array($_order->getStatus(),$arrival_statusArray)){
+    $arrival_status = 'processed-current';
+    $processing_status = 'pending';
+    $shipping_status = 'pending';
+}
+//echo $_order->getStatus();
+if(in_array($_order->getStatus(),$failure_statusArray)){
+    $arrival_status = 'incomplete';
+    $arrival_message = 'Your order has been placed but payment is not successful';
+    $processing_status = 'pending';
+    $shipping_status = 'pending';
+}
+
+if(in_array($_order->getStatus(),$processing_statusArray)){
+    $arrival_status = 'processed';
+
+    $processing_status1 = 'processed';
+    if($_order->getStatus()=='dispensing'){
+        $processing_status1 = 'processed-current';
+        $dispensing_message = 'Order items are ready to dispatch';
+    }
+
+    $processing_status2 = 'processed-current';
+    $shipping_status1 = 'pending';
+    $shipping_status2 = 'pending';
+}
+
+if(in_array($_order->getStatus(),$shipping_statusArray2)){
+    $arrival_status = 'processed';
+    $processing_status1 = 'processed';
+    $processing_status2 = 'processed';
+    $shipping_status1 = 'processed';
+    $shipping_status2 = 'processed';
+}
+
+$shipmentCollection = Mage::getResourceModel('sales/order_shipment_track_collection')
+->setOrderFilter($_order)
+->getData();
+
+foreach ($shipmentCollection as $trackvalue) {
+    $tracktitle['track_number'] = $trackvalue['track_number'];
+    $tracktitle['title'] = $trackvalue['title'];
+    $tracktitle['updated_at'] = Mage::getModel('core/date')->timestamp($trackvalue['updated_at']);
+    $tracktitle['created_at'] = date('Y-m-d',$currentTimestamp);
+    $tracktitle['assign_date'] = $trackvalue['assign_date'];
+}
+
+if($tracktitle['track_number']){
+    $shipping_status2 = 'processed-current';
+    switch ($tracktitle['title']) {
+        case 'United States Postal Service':
+            $html = '<a href="https://tools.usps.com/go/TrackConfirmAction_input">'.$tracktitle['track_number'].'</a>';
+           break;
+        default:
+            break;
+    }
+    $shipping_status2_message = 'Order has been shipped.Tracking number/s '.$html;
+}else{
+    $shipping_status2_message = 'N/A';
+}
+
+if($_order->getStatus()=='Order Shipped'){
+    $dispensing_message = 'Order items are already dispatched';
+    $shipping_status1_message = 'Order has been shipped.Tracking number/s awaiting';
+
+    if($tracktitle['track_number']){
+     $shipping_status1 = 'processed';
+ }else{
+     $shipping_status1 = 'processed-current';
+ }
+}else{
+    $shipping_status1_message = 'N/A';
+}
+
+ if($_order->getData('fromdate_message') & $_order->getData('todate_message') & !(in_array($_order->getStatus(),$failure_statusArray))) {
+        $deliveryDate = Mage::getModel('core/date')->date('F d', strtotime($_order->getData('fromdate_message')));;
+        $deliveryDate2 = Mage::getModel('core/date')->date('F d, Y', strtotime($_order->getData('todate_message')));
+    } else if(in_array($_order->getStatus(),$shipping_statusArray1) || in_array($_order->getStatus(),$shipping_statusArray2)) {
+        $shippedstatus = Mage::getModel('sales/order_status_history')->getCollection()
+        ->addFieldToFilter('status', 'Order Shipped')
+        ->addFieldToFilter('parent_id', $_order->getId());
+        $array = end($shippedstatus->getData('created_at'));
+        $shippingDate = Mage::getModel('core/date')->date('D, F d, Y', strtotime($array['created_at']));
+
+        $deliveryDate = Mage::getModel('core/date')->date('F d', strtotime($shippingDate."+10 days"));
+        $deliveryDate2 = Mage::getModel('core/date')->date('F d, Y', strtotime($deliveryDate."+10 days"));
+    }
+?>
+	<!--td align="left" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">
+		<p align="center"><img src="<?php //echo Mage::helper('catalog/image')->init($_product, 'image')->resize(50); ?>" width="50" height="50" alt="" /></p>
+	</td-->
+    <td align="left" class="item-details">
+    	<div>
+    		<div>
+    			<p><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></p>
+    			<p>Qty: <?php echo $this->htmlEscape($qty) ?></p>
+          <?php if(!empty($p_packagesize)):?>
+          <p>Pack Size: <?php echo $this->htmlEscape($p_packagesize) ?></p>
+          <?php endif;?>
+    		</div>
+    	</div>
+    </td>
+    <!-- <td align="left" width="45%" class="item-shipment"> -->
+        <!-- <strong style="font-size:11px;"><?php //echo $this->htmlEscape($p_packagesize) ?></strong> -->
+
+
+    <!-- </td> -->
+    <!-- <td align="left" width="15%" class="item-shipment"> -->
+        <!-- <strong style="font-size:11px;"><?php// echo $this->htmlEscape($qty) ?></strong> -->
+         <td colspan="2" align="left" class="item-shipment">
+        <!-- <strong style="font-size:11px;"><?php //echo $this->htmlEscape($qty) ?></strong> -->
+        <div class="delivery_graph">
+            <div class="left_graph">&nbsp;</div>
+            <div class="dates">
+              <?php if($deliveryDate && $deliveryDate2) { ?>
+                <p class="delivery_date est-date">Between <?php echo $deliveryDate;?> to <?php echo $deliveryDate2;?></p>
+                <?php } ?>
+            </div>
+        </div>
+    </td>
+    <!-- </td> -->
+    <td align="right" class="item-details">
+        <span class="row_total"><?php echo $this->htmlEscape($price) ?></span>
+    </td>
+    <!--<td align="center" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php //echo $_item->getQtyOrdered()*1 ?></td-->
+
+</tr>
+<tr>
+    <td>
+        <div class="review_product">
+            <a href="<?php echo $frontendHelper->getReviewLink($_product->getId());?>#review-form" data-url="<?php echo $frontendHelper->getReviewLink($_product->getProductId());?>">Review Product</a>
+        </div>
+    </td>
+</tr>
+<tr class="order_dashed_line"><td colspan="5"><div class="button_container"></div></td></tr>
+<?php if ($_item->getGiftMessageId() && $_giftMessage = $this->helper('giftmessage/message')->getGiftMessage($_item->getGiftMessageId())): ?>
+    <tr>
+        <td colspan="4" style=" border-bottom:2px solid #CCCCCC; padding:3px 9px;">
+            <strong style="color:#444444; font-size:11px;"><?php echo $this->__('Gift Message') ?></strong>
+            <?php echo $this->__('From:'); ?> <?php echo $this->htmlEscape($_giftMessage->getSender()) ?><br />
+            <?php echo $this->__('To:'); ?> <?php echo $this->htmlEscape($_giftMessage->getRecipient()) ?><br />
+            <strong><?php echo $this->__('Message:'); ?></strong><br /><?php echo $this->htmlEscape($_giftMessage->getMessage()) ?>
+        </td>
+    </tr>
+<?php endif; ?>
+<script type="text/javascript">
+    var step_id = 0;
+    jQuery('.status_step').hover(function(){
+     step_id = jQuery(this).attr('data-index');
+     step_datarow = jQuery(this).attr('data-row');
+     jQuery('.box'+step_datarow).hide();
+     jQuery('.outer_box'+step_datarow+step_id).show();
+
+ });
+</script>

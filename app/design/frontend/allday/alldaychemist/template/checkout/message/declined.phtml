@@ -1,0 +1,56 @@
+<?php 
+
+$orderid =  Mage::getSingleton('core/session')->getcustomOrderid();
+
+$order = Mage::getModel('sales/order')->loadByIncrementId($orderid);
+$paymentMethosUsed = Mage::getSingleton('core/session')->getPaymentMethosUsed();
+Mage::getSingleton('core/session')->unsPaymentMethosUsed();
+Mage::getSingleton('core/session')->unscustomOrderid();
+$customer_name = $order->getCustomerName();
+if($paymentMethosUsed=='anytrans'){
+	$paymentMethosUsed = 'anyBilling';
+}
+$last_order_id = $order->getId();
+$connection = Mage::getSingleton('core/resource')->getConnection('core_write');
+$connection->beginTransaction();
+Mage::log($last_order_id.'-----------', null, 'order_failure.log');
+
+if($last_order_id):
+$msg = 'Payment Placed with '.$paymentMethosUsed;
+$delete = $connection->query("DELETE FROM sales_flat_order_status_history WHERE parent_id=".$last_order_id);
+// $order->addStatusToHistory($msg);
+$orderState = "transaction_declined";
+$orderStatus = "transaction_declined";
+$order->setState($orderState, $orderStatus, "", true);
+$order->addStatusToHistory($order->getStatus(),$msg , true);
+$order->save();
+endif;
+?>
+<div class="paymentmessage">
+	<div class="sorrytitle">
+		<h1>Sorry</h1>
+	</div>	
+	<div class="paymentstatustitle">
+		<h1>Transaction Declined</h1>
+	</div>
+</div>
+
+<p>ORDER NUMBER: <?php echo $orderid;?></p><br/>
+<p>Please note that the transaction of your order was declined.</p><br/>
+<p>This could be because of one of the following reasons:</p>
+<ul>
+<li>1. Invalid CVV or Expiry Date</li>
+<li>2. Incorrect Billing address</li>
+<li>3. Insufficient Funds</li>
+<p>Other major reason of the declined transaction may be due to the origination of the charge from a foreign country. Please inform your bank that you are expecting a charge from a foreign country and that you have approved the same. Once you do this, please try again or you can easily complete the transaction over the phone.</p></br>
+<p>Please note that all personal information is submitted via SSL secured encrypted page and that there is no risk of fraud.</p></br>
+<p>We appreciate your patience and also your patronage of our pharmacy.</p></br>
+
+<p>With warm regards</p></br>
+<p>AllDayChemist Billing Department</p>
+<p>Toll Free Tel +1 (855) 840-0584</p>
+<style type="text/css">
+.sorrytitle h1{font-size:56px;color: #f00;font-weight: bold;}
+.paymentstatustitle h1{font-size:36px;color: #00f;margin-bottom: 20px;font-weight: bold;}
+
+</style>

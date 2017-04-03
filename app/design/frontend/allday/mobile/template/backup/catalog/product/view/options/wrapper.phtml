@@ -1,0 +1,89 @@
+<?php $_product = $this->getProduct(); ?>
+<?php //@nil for tabular packsize ?>
+<?php
+
+if($_product->isConfigurable()) {
+	//$productModel = Mage::getModel('catalog/product');
+
+	$proModel = Mage::getModel('catalog/product');
+	$cartHelper = Mage::helper('checkout/cart');
+	$conProduct = $proModel->load($_product->getId());
+	$currencyFormat = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+	$childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $conProduct);
+	$attr = $proModel->getResource()->getAttribute("pharmaceutical_form");
+	$attrPackSize = $proModel->getResource()->getAttribute("pack_size");
+	$url = $this->getUrl();
+	foreach($childProducts as $child) {
+		if($child->getData('status')) {
+			$newChildProducts[$attrPackSize->getSource()->getOptionText($child->getData('pack_size'))] = $child;
+		}
+	}
+	ksort($newChildProducts);
+	echo "<table class=\"new_product_list\" valign=\"center\">
+			<tr>
+				<th><strong>Pack Size</strong></th>
+				<th><strong>Qty</strong></th>
+				<th><strong>Price</strong></th>
+				<th></th>
+				<th></th>
+			</tr>";
+	$i=0;
+	// echo "<pre>";
+	foreach($newChildProducts as $child) {
+		//print_r();
+		if ($attr->usesSource()) {
+			$pharmaceuticalForm = $attr->getSource()->getOptionText($conProduct->getData('pharmaceutical_form'));
+		}
+		if ($attrPackSize->usesSource()) {
+			$packSizeLabel = $attrPackSize->getSource()->getOptionText($child->getData('pack_size'))." ".$pharmaceuticalForm."&nbsp;";
+		}
+		if($child->getData('bonus')) {
+			$packSizeLabel = $child->getData('bonus')." + ".$packSizeLabel." Free";
+		}
+		$priceLabel = Mage::helper('core')->currency($child->getPrice(),true,false);
+		$childSpecialPrice = Mage::helper('core')->currency($child->getSpecialPrice(),true,false);
+		//$priceLabel = $currencyFormat."&nbsp;".number_format($child->getPrice(), 2, '.', '');
+		if($child->getSpecialPrice()) {
+			$priceLabel = '<span class="old-price">'.$childPrice.'</span>
+					<span class="special-price">'.$childSpecialPrice.'</span>';
+		}
+		if($i==count($newChildProducts)) {
+			echo "<tr class=\"last\">";
+		} else {
+			echo "<tr>";
+		}
+		echo "<td class='pack_size_value'>".$packSizeLabel."</td>";
+		echo "<td class='qty_value'><select id='p-".$child->getId()."'>";
+		for($i=1; $i<=5; $i++) {
+			echo "<option value='$i'>$i</option>";
+		}
+		echo "</select></td>";
+		echo "<td class='price_value'>".$priceLabel."</td>";
+		echo '<td class="add_to_cart_button"><a id="s-'.$child->getId().'" class="related-buy-now" href="'.$url.'checkout/cart/add/product/'.$child->getId().'/?super_attribute[140]='.$child->getPackSize().'&mainid='.$conProduct->getId().'"> | Add to cart</a></td>';
+		//echo '<td class="simple_wishlist"><a class="refill_reminder_open" href="refillreminder?product_id='.$child->getId().'">Wishlist</a></td>';
+		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'">Wishlist</a></td>';
+		echo "</tr>";
+	}
+	echo "</table>";
+} else {
+	echo $this->getChildHtml('', true, true);
+}
+
+?>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery(".related-buy-now").click(function(event){
+			var id = this.id.split("-");
+			var value = jQuery("#p-"+id[1]).val();
+			event.preventDefault();
+			window.location.href = jQuery(this).attr("href")+"&qty="+value;
+
+		});
+		// jQuery(".refill_reminder_open").fancybox({
+		// 	type: "iframe",
+		// 	width: "300px",
+		// 	height: "300px"
+		// });
+	});
+</script>
+<?php //@nil for tabular packsize end ?>

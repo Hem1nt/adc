@@ -1,0 +1,127 @@
+/*main container left drugsearch start........................*/
+.drugSearch{
+height:239px;
+width:258px;
+background:url(../images/search-grad.png) repeat-x;
+padding-top:40px;
+border-radius:7px;
+position:relative;
+left:-7px;
+}
+
+.drugSearch ul{
+margin:0;
+padding:0 23px;
+}
+.drugSearch li{
+list-style:none;
+padding-bottom:5px;
+font-family:Arial, Helvetica, sans-serif;
+font-size:85%;
+font-weight:700;
+}
+.drugSearch li span{
+color: rgb(47,47,47);
+font-size:12px;
+}
+.drugSearch select{
+margin:0;
+padding:5px 7px 5px 18px;
+width:225px;
+border:1px solid #849F02;
+background:url(../images/arrow.jpg) 198px 4px no-repeat #fff;
+color:#999;
+/*-webkit-appearance:none;*/
+}
+.drugSearch input{
+width:205px;
+height:30px;
+padding-left:20px;
+border:1px solid #849F02;
+}
+.drugSearch button{
+background:url(../images/searchButtonNew.jpg) no-repeat;
+margin-top:10px;
+border:none;
+width:121px;
+height:37px;
+color:#FFF;
+font-weight:bolder;
+}
+.drug-text{
+color:#fff;
+font-size:25px;
+font-weight:bold;
+display:inline-block;
+padding:0px 0 0 24px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+position:relative;
+top:-20px;
+}
+/*main container left drugsearch end........................*/
+/*main container left drugindexsearch start........................*/
+.drugindexsearch{
+background:url(../images/button-grad.png) repeat-x;
+width:259px;
+height:120px;
+border-radius:7px;
+position:relative;
+top:10px;
+left:-7px;
+}
+
+.drug-search-text{
+color:#fff;
+font-size:25px;
+font-weight:bold;
+display:inline-block;
+padding:10px 0 0 24px;
+font-family:Verdana, Arial, Helvetica, sans-serif
+}
+/*main container left drugindexsearch End........................*/
+.alphabets{
+display:inline-block;
+font-size:20px;
+color:#fff;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+padding:5px;
+font-weight:bold;
+}
+.alphabets-div
+{
+width:255px;
+text-align:center;
+}
+#nav
+{
+position:relative;
+left:-7px;
+width:218px;
+}
+.block.nav-container .block-title
+{
+position:relative;
+left:-7px;
+width:239px;
+}
+.block-cart
+{
+width:258px;
+position:relative;
+left:-7px;	
+}
+.header .form-search .input-text{width:304px;}
+.heders-links-bg
+{
+/*margin: -87px 0 0 -30px !important;	*/
+margin: 0px 0 0 -30px !important;
+}
+.header .logo {
+    float: left;
+    left: -3px !important;
+    position: relative;
+    text-decoration: none !important;
+    top: -43px !important;
+    z-index: 5;
+	
+}

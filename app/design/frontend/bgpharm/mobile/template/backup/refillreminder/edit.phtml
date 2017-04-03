@@ -1,0 +1,96 @@
+<style type="text/css">
+body {
+	min-width: 0px
+}
+</style>
+<?php
+	$remind_id = $this->getRequest()->getParam('remind_id');
+	$customerSession = Mage::getSingleton('customer/session');
+	$refillModel = Mage::getModel('refillreminder/refillreminder');
+	$email = "";
+	if($customerSession->isLoggedIn()) {
+		$email = $customerSession->getCustomer()->getEmail();
+	}
+	$collection = $refillModel->getCollection();
+	$collection->addFieldToFilter('reminder_id', $remind_id);
+	$collection->addFieldToFilter('customer_email', $email);
+	$product = $collection->getData();
+?>
+<div class="reminder-container">
+	<h1 class="edit-reminder-setting">Edit Reminder Settings</h1>
+	<!-- <span class="reminder-close-btn">
+        <img src="http://adc.iksulalive.com/skin/frontend/allday/medicine/images/notify-close.png" alt="">
+    </span> -->
+	<form id="form_refill_reminder" action="<?php echo $this->getUrl(); ?>refillreminder/edit/save" name="form_refill_remind" method="post">
+		<ul>
+			<input class="required-entry" type="hidden" name="txtRemindId" id="txtRemindId" value="<?php echo $remind_id; ?>" />
+			<li><label>Telephone</label></li>
+			<li><input class="input-text required-entry validate-phone" name="txtphone" id="txtphone" value="<?php echo $product[0]['customer_telephone']; ?>" /></li>
+			<li><label>Remind in</label></li>
+			<li>
+				<select id="remind_count">
+					<?php
+					$days = $product[0]['reminder_days']; $month = false; $opt = "";
+					if($days>30) {
+						$days = $days/30; $month = true;
+					}
+					for($i=1; $i<=30; $i++) {
+						if($i==$days) {
+							$opt.='<option value="'.$i.'" selected>'.$i.'</option>';
+						} else {
+							$opt.='<option value="'.$i.'">'.$i.'</option>';
+						}
+					}
+					echo $opt;
+					?>
+				</select>
+				<select id="remind_type">
+					<option value="d">Day(s)</option>
+					<option <?php if($month) { echo 'selected'; } ?> value="m">Month(s)</option>
+				</select></li>
+			<li><button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button></li>
+		</ul>
+	</form>
+</div>
+<script type="text/javascript">
+var valReminder = new Validation('form_refill_reminder');
+jQuery("#form_refill_reminder").submit(function(){
+	if(valReminder.validate())
+	{
+		var url = jQuery(this).attr('action'), days;
+		var rType = jQuery("#remind_type").val();
+		if(rType=="d") {
+			days = jQuery("#remind_count").val();
+		}
+		else {
+			days = jQuery("#remind_count").val()*30;
+		}
+		//var values = jQuery(this).serialize();
+		var values = {'txtRemindId':jQuery("#txtRemindId").val(), 'remind_days': days, 'txtPhone': jQuery("#txtphone").val()};
+		//return false;
+		jQuery.ajax({
+			url: url,
+			type: "post",
+			data: values,
+			success: function(data){
+				alert(data);
+				parent.location.reload();
+			},
+			error:function(){
+				alert("failure");
+			}
+		});
+		return false;
+	}
+});
+jQuery("#remind_count,#remind_type").click(function(){ CheckDays(); });
+
+function CheckDays() {
+	//alert(jQuery(this).val());
+	if(jQuery("#remind_count").val()>12) {
+		jQuery("#remind_type").val("d").attr('disabled', true).css('background','#eee');
+	} else {
+		jQuery("#remind_type").attr('disabled', false).css('background','#fff');
+	}
+}
+</script>

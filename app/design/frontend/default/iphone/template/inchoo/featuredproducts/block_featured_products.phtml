@@ -1,0 +1,127 @@
+<?php
+/**
+ * @category     Inchoo
+ * @package     Inchoo Featured Products
+ * @author        Domagoj Potkoc, Inchoo Team <web@inchoo.net>
+ * @modified    Mladen Lotar <mladen.lotar@surgeworks.com>, Vedran Subotic <vedran.subotic@surgeworks.com>
+ */
+?>
+<?php $image_size = (int) Mage::getStoreConfig("featuredproducts/cmspage/max_image_dimension") ?>
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+    <h3><?php echo $this->__($this->getBlockLabel()) ?></h3>
+
+
+            <?php
+            $i = 0;
+            $row = 0;
+            foreach ($_products->getItems() as $_product):
+                ?>
+
+                    <?php if ($i == 0): ?>
+                        <?php $row++; ?>
+                   
+        <?php endif; ?>
+                  <div class="featured_thumb_area">
+
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+                            <img class="product-img" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300, 300) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+                        </a>
+                        <div class="product-description">
+                            <p class="fproduct_name">
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>)">
+                            <?php echo $this->htmlEscape($_product->getName()) ?>
+                                </a>
+                            </p>
+							<!--coded by nilesh-->
+							<?php
+								$childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
+								$child = $childProducts[0];
+								$pack_size = $child->getResource()->getAttribute('pack_size')->getFrontend()->getValue($child);
+								if($pack_size != "NA" && !empty($pack_size))
+								{
+									echo '<p class="custom_price">';
+										echo '<span class="custom_child_1">'.$child->getResource()->getAttribute('pack_size')->getFrontend()->getValue($child).'</span>';
+										echo '<span class="custom_child_2"> '.$_product->getResource()->getAttribute('pharmaceutical_form')->getFrontend()->getValue($_product).'</span>';
+										echo '<span class="custom_child_3"> - US$ '.number_format($child->getPrice(), 2, '.', '').'</span>';
+									echo "</p>";
+								}
+							?>
+							<!--end-->
+                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+
+                            <?php if (Mage::getStoreConfig('featuredproducts/general/price_visible')): ?>
+
+                                <?php //Remove by programmer echo $this->getPriceHtml($_product, true, '-new')  ?>
+
+                                <?php if ($_product->isSaleable()): ?>
+                                    <button type="button" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                <?php else: ?>
+                                    <div class="out-of-stock"><?php echo $this->__('Out of stock') ?></div>
+                                       <div class="request-for-quote"><a href="<?php echo $this->getBaseUrl().'contacts/'.'?productid='.$_product->getId().'&queryid=1'?>"><?php echo $this->__('Request for Quote') ?></a>
+                                       </div>
+                                <?php endif; ?>
+
+        <?php endif; ?>
+
+                        </div>
+                    </div>
+
+                    <?php $i++;
+                    if ($i == $this->getItemsPerRow()):
+                        ?>
+                    <?php $i = 0; ?>
+                    </tr>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+
+<?php endif; ?>
+<!-- <div id="toTop">
+
+    <div class="subscribe">
+        <div class="subscribe-innerdiv">
+        Subscribe to our Newsletter &amp; never miss a latest product or offer
+        <input type="text" id="txtEmailDiv" placeholder="Please enter your email address here" class="subs" onblur="return showText(this, 'Please enter your email address here')" onfocus="return hideText(this, 'Please enter your email address here')">
+        <input type="button" value="Subscribe" style="width: 110px; height: 30px; margin-left: 10px" onclick="InsNewsSub('txtEmailDiv', 'RegDiv');">
+    </div>
+    
+</div>
+<div class="subscribe_msg" style="display:none;"> <div class="subscribe-innerdiv">Thank you for subscring Us</div></div>
+    <a href="javascript:void(0);" onclick="document.getElementById('toTop').style.display='none';jQuery.cookie('NewsSub', 'HideNewsSub');" style="bottom: 7px; color: #FFFFFF; position: fixed; right: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 2px">X</a>
+</div>
+<style type="text/css">
+#toTop{width: 100%;
+position: relative;
+bottom: 0px;
+position: fixed;
+background-color: #ccc;
+padding: 10px;
+margin: 0px auto;
+left: 0px;
+z-index: 999;}
+.subscribe,.subscribe_msg{text-align: center;}
+.subscribe-innerdiv{margin:auto;width:100%; display: inline-block;}
+ </style>
+ <script type="text/javascript">
+function InsNewsSub(txtEmailDiv,RegDiv)
+{
+    if(jQuery('#txtEmailDiv').val()==''){
+        alert('please enter the email id');
+        //magento form validation
+    }
+    else{
+        var emailid = jQuery('#txtEmailDiv').val();
+        //validate email id
+        //check email id in database
+        // $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($email);
+        // if($subscriber->getId())
+        // {
+        //    //put your logic 
+        // }
+        var url ="<?php //echo Mage::getBaseUrl() ?>"+'newsletter/subscriber/new';
+        jQuery.post(url,{email:emailid},function(data){alert(data);});
+        jQuery('.subscribe').css('display','none');
+        jQuery('.subscribe_msg').css('display','block');
+    }
+}
+ </script> -->

@@ -1,0 +1,39 @@
+<?php 
+
+$skinUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN);
+$baseUrl = Mage::getBaseUrl();
+
+$currentUrl = $this->helper('core/url')->getCurrentUrl();
+if (strpos($currentUrl, "order-by-telephone")!==false){
+	$telephone_class = "telephone-order-icon-selected";
+}
+if (strpos($currentUrl, "88-Order-Online")!==false){
+	$order_online_class = "midcart-order-icon-selected";
+}
+
+if (strpos($currentUrl, "order-by-email")!==false){
+	$email_fax_class = "mail-fax-order-icon-selected";
+}
+
+?>
+<div class="clr">
+
+<a href="<?php echo $baseUrl.'order-by-telephone'; ?>" class="order-online-block">
+	<span class="telephone-order-icon <?php echo $telephone_class;?>"></span>
+	<span class="order-online-text">Order by Telephone</span>
+</a>
+
+<a href="<?php echo $baseUrl.'content/88-Order-Online'; ?>" class="order-online-block mid">
+	<span class="midcart-order-icon <?php echo $order_online_class;?>"></span>
+	<span class="order-online-text">Order Online</span>
+	<!-- <img src="http://192.168.1.157/allday/skin/frontend/allday/alldaychemist/images/adcorderdelieveryicons.png" alt=""/> -->
+</a>
+
+<a href="<?php echo $baseUrl.'order-by-email'; ?>" class="order-online-block">
+	<span class="mail-fax-order-icon <?php echo $email_fax_class;?>"></span>
+	<span class="order-online-text">Order by Email / Fax</span>
+	<!-- <img src="http://192.168.1.157/allday/skin/frontend/allday/alldaychemist/images/adcorderdelieveryicons.png" alt="" /> -->
+</a>
+
+</div>
+

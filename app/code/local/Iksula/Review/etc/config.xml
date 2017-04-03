@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Review>
+      <version>0.1.0</version>
+    </Iksula_Review>
+  </modules>
+  <frontend>
+    <routers>
+      <review>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Review</module>
+            <frontName>review</frontName>
+          </args>
+      </review>
+      <review>
+        <args>
+          <modules>
+            <iksula_review_review_productcontroller before="Mage_Review">Iksula_Review_Review_ProductController</iksula_review_review_productcontroller>
+          </modules>
+        </args>
+      </review>
+    </routers>
+  </frontend>
+  <global>
+		<!-- <rewrite>         -->
+            <!-- <iksula_review_review_productcontroller> -->
+                <!-- <from><![CDATA[#^/review/product/#]]></from> --> <!-- Mage_Review_ProductController  -->
+                <to>/review/review_product/</to> Iksula_Review_Review_ProductController 
+            <!-- </iksula_review_review_productcontroller> -->
+		<!-- </rewrite> -->
+    
+  </global>
+  <admin>
+	<routers>
+	  <review>
+	    <use>admin</use>
+  		<args>
+		  <module>Iksula_Review</module>
+		  <frontName>review</frontName>
+		</args>
+	  </review>
+	</routers>
+  </admin>
+</config> 

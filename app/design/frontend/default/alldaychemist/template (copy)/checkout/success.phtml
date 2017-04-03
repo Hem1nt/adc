@@ -1,0 +1,135 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+ //Mage::getSingleton('core/session')->setEchecksuccess('1');
+ $order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());
+ $customer_name = $order->getCustomerName();
+ //echo "asf--".Mage::getSingleton('core/session')->getEchecksuccess();
+ //Mage::getSingleton('core/session')->unsEchecksuccess();
+ //exit;
+?>
+<?php if(Mage::getSingleton('core/session')->getGspaysuccess() == '1'){?>
+	<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+	</div>
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+	<h2 class="sub-title"><?php //echo $this->__('Thank you for your purchase!') ?></h2>
+
+	<?php if ($this->getOrderId()):?>
+	<?php //if($this->getCanViewOrder()) :?>
+		<p><?php //echo $this->__('Order Number : ', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+	<?php //else :?>
+		<p><?php echo 'Order Number : '.$this->getOrderId(); ?></p>
+	<?php //endif;?>
+	<br>
+	<p style="font-weight: bold;"><?php echo "Dear ".$customer_name?></p>
+	<br>
+	<p>We confirm the receipt of your payment. Our charge will appear as <span style="font-weight: bold;">“A-Pharmacy”</span> on your card statement.</p>
+	<br>
+	<p>The order copy has been sent to your registered e-mail id. You can also check your status by log in “My Account’ area.</p>
+	<br>
+	<p>With warm regards</p>
+	<br>
+	<p>AllDayChemist Billing Department</p>
+	<br>
+	<p>Tel (US): +1-213-291-2588</p>
+	<?php endif;?>
+<?php Mage::getSingleton('core/session')->unsGspaysuccess();}elseif(Mage::getSingleton('core/session')->getEchecksuccess() == '1'){?>
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php //echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+<?php //if($this->getCanViewOrder()) :?>
+    <p><?php //echo $this->__('Order Number : ', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php //else :?>
+    <p><?php echo 'Order Number : '.$this->getOrderId(); ?></p>
+<?php //endif;?>
+<br>
+<p style="font-weight: bold;"><?php echo "Dear ".$customer_name?></p>
+<br>
+<p>Thank you for placing an order with us.</p>
+<br>
+<p>Please note that your Bank information has been submitted via SSL secured encrypted page. Theecheck.com, E-check provider will contact you within 48 hours on your personal numbers FOR THE VERIFICATION. Theecheck.com, E-check provider will ask for the authorization of the following details like <span style="font-weight: bold;"> ROUTING NUMBER, CHECK NUMBER, BANK NAME AND THE CHECK AMOUNT </span>. In case you missed their call, please call them at +1-855-403-3855 between 9.00 AM to 9.00 PM (EST) and press 1 to reach verification process.</p>
+<br>
+<p>Once the charge is approved, it will show as ‘Health Matters OR Health Products’ on your Bank statement.</p>  
+<br>
+<p>We appreciate your patience and the patronage of our pharmacy.</p>
+<br>
+<p>With warm regards</p>
+<br>
+<p>AllDayChemist Billing Department</p>
+<br>
+<p>Tel (US): +1-213-291-2588</p>
+<?php endif;?>
+
+<?php Mage::getSingleton('core/session')->unsEchecksuccess();
+  }else{?>
+  
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+<?php //if($this->getCanViewOrder()) :?>
+    <p><?php //echo $this->__('Order Number : ', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php //else :?>
+    <p><?php echo 'Your order # is: '.$this->getOrderId(); ?></p>
+<?php //endif;?>
+<br>
+<!--p style="font-weight: bold;"><?php echo "Dear ".$customer_name?></p-->
+<br>
+<p>You will receive an order confirmation email with details of your order in few minutes at your registered e-mail address.</p>
+<br>
+<p>In case of any questions, please feel free to contact us.</p>
+<br>
+<p>With warm regards</p>
+<br>
+<p>AllDayChemist Customer Support</p>
+<br>
+<p>Tel: +1 +1(855) 840-0584</p>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+<?php }?>
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>

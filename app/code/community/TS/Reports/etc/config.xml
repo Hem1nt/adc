@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<modules>
+	    <TS_Reports>
+	      <version>1.4.7</version>
+	    </TS_Reports>
+	</modules>
+	
+    <admin>
+        <routers>
+            <ts_reports>
+                <use>admin</use>
+                <args>
+                    <module>TS_Reports</module>
+                    <frontName>ts_reports</frontName>
+                </args>
+            </ts_reports>
+        </routers>
+    </admin>
+	
+	<global>
+		<helpers>
+			<ts_reports>
+				<class>TS_Reports_Helper</class>
+			</ts_reports>
+		</helpers>
+		<blocks>
+            <ts_reports>
+                <class>TS_Reports_Block</class>
+            </ts_reports>
+        </blocks>
+        <models>
+			<ts_reports>
+				<class>TS_Reports_Model</class>
+				<resourceModel>ts_reports_resource</resourceModel>
+			</ts_reports>
+            <ts_reports_resource>
+                <class>TS_Reports_Model_Resource</class>
+				<entities>
+					<reportitem>
+						<table>ts_reports_item</table>
+					</reportitem>
+					<orderitem>
+						<table>ts_reports_order_item</table>
+					</orderitem>
+					<order_aggregated>
+						<table>ts_reports_order_aggregated</table>
+					</order_aggregated>
+				</entities>
+            </ts_reports_resource>
+        </models>
+		
+		<resources>
+			<ts_reports_setup>
+				<setup>
+					<module>TS_Reports</module>
+				</setup>
+			</ts_reports_setup>
+		</resources>
+		
+		<events>
+			<sales_order_place_after>
+				<observers>
+					<ts_reports_new_order_observer>
+						<class>TS_Reports_Model_Init_Reportitems</class>
+						<method>initOrderObserve</method>
+					</ts_reports_new_order_observer>
+				</observers>
+			</sales_order_place_after>
+		</events>
+	</global>
+	
+	<crontab>
+        <jobs>
+            <ts_reports_refresh_statistics>
+                <schedule>
+                    <cron_expr>10 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>ts_reports/init_statistics::init</model>
+                </run>
+            </ts_reports_refresh_statistics>
+        </jobs>
+    </crontab>
+	
+	<adminhtml>
+        <layout>
+            <updates>
+                <ts_reports>
+                    <file>ts/reports.xml</file>
+                </ts_reports>
+            </updates>
+        </layout>
+    </adminhtml>
+	
+	
+	<default>
+		<ts_reports>
+			<general>
+				<enabled>1</enabled>
+				<csv_enclosure><![CDATA[']]></csv_enclosure>
+				<csv_delimiter><![CDATA[,]]></csv_delimiter>
+				<pricerange_defaults><![CDATA[0-2
+0-5
+5-10
+10-20
+20-]]></pricerange_defaults>
+			</general>
+		</ts_reports>
+	</default>
+	
+</config> 

@@ -1,0 +1,35 @@
+<div style="width:48.5%">
+  <div class="entry-edit">
+    <div class="entry-edit-head">
+      <h4>Bulk Upload Prescription File With Order Id</h4>
+    </div>
+    <fieldset>
+      <div id="order_history_block">
+        <div id="history_form" class="order-history-form">
+          <form method="POST" enctype="multipart/form-data" action="<?php echo $this->getUrl('prescription/adminhtml_prescriptionbackend/bulkPrescripionFileOrderIdImport') ?>">
+            <input id="form_key" name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+            <table cellspacing="0" class="form-list">
+              <tr>
+                <th width="200" align="center"><?php echo $this->__('File'); ?></th>
+                <th><input type="file" name="orderid_import" id="orderid_import"></th>
+              </tr>
+              <tr><td>&nbsp</td></tr>
+              <tr>
+                <th width="200" align="center"></th>
+                <td colspan="2">
+                 <button  title="Submit Comment" type="button" class="scalable save" onclick="this.form.submit()">
+                    <span>
+                      <span>
+                        <span>Import</span>
+                      </span>
+                    </span>
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+   </fieldset>
+  </div>
+ </div>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <prescription_adminhtml_prescriptionbackend_index>
+	<reference name="content">
+	  <block type="prescription/adminhtml_prescriptionbackend" name="prescriptionbackend" template="prescription/prescriptionbackend.phtml"/>
+	</reference>
+  </prescription_adminhtml_prescriptionbackend_index>
+  <prescription_adminhtml_prescription_index>
+	<reference name="content">
+	  <block type="prescription/adminhtml_prescription" name="prescription" />
+	</reference>
+  </prescription_adminhtml_prescription_index>
+  <prescription_adminhtml_prescriptionbackend_bulkprescripionimport>
+	<reference name="content">
+	  <block type="prescription/adminhtml_prescriptionbackend" name="prescriptionbackend1" template="prescription/bulkPrescripionImport.phtml"/>
+	</reference>
+  </prescription_adminhtml_prescriptionbackend_bulkprescripionimport>
+   <prescription_adminhtml_prescriptionbackend_bulkprescripionorderidimport>
+	<reference name="content">
+	  <block type="prescription/adminhtml_prescriptionbackend" name="prescriptionbackend2" template="prescription/bulkPrescripionOrderIdImport.phtml"/>
+	</reference>
+  </prescription_adminhtml_prescriptionbackend_bulkprescripionorderidimport>
+</layout>

@@ -1,0 +1,48 @@
+<?php $catalogSearchHelper =  $this->helper('catalogsearch');
+
+?>
+<form id="search_sidebar_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
+
+<div class="drugSearch">
+	<ul>					
+		<?php echo $this->getLayout()->createBlock('frontend/homesearch')->allbrands(); ?>
+		<li>
+			<span>Product Search </span><br /> 
+			<input type="text" id="searchtext"/>
+			<input id="searchquery" type="hidden" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText(); ?>" />
+		</li>
+		<li>
+			<button type="submit" title="<?php echo $this->__('Search') ?>" >
+				<span class="btn_arrow"><?php echo $this->__('Search') ?></span>
+			</button>
+		</li>
+		<li>
+			<a href="<?php echo Mage::getBaseUrl().'catalogsearch/result/?q=A&let=A';?>"><span>Alphabetical Search</span></a>
+		</li>
+	</ul>
+</div>
+</form>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		var query = "";
+		jQuery('#dropdown1').change(function(){	
+			jQuery("#dropdown1 option:selected").each(function () {
+				jQuery('#searchquery').val($(this).text());
+				jQuery('#search_sidebar_form').submit();
+			});
+		});
+		jQuery('#dropdown2').change(function(){	
+			jQuery("#dropdown2 option:selected").each(function () {
+				
+				var active=$(this).text().split(' ');
+				jQuery('#searchquery').val($(this).text());
+				jQuery('#search_sidebar_form').submit();
+			});
+		});
+		jQuery("#searchtext").keyup(function () {
+				 query = $(this).val();
+				jQuery('#searchquery').val(query);							
+		});
+		
+	})
+</script>

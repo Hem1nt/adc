@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Backendfaq>
+      <version>0.1.0</version>
+    </Iksula_Backendfaq>
+  </modules>
+  <global>
+    <helpers>
+      <backendfaq>
+        <class>Iksula_Backendfaq_Helper</class>
+      </backendfaq>
+    </helpers>
+	<blocks>
+	  <backendfaq>
+		<class>Iksula_Backendfaq_Block</class>
+	  </backendfaq>
+	</blocks>
+	<models>
+	  <backendfaq>
+		<class>Iksula_Backendfaq_Model</class>
+		<resourceModel>backendfaq_mysql4</resourceModel>
+	  </backendfaq>
+	  <backendfaq_mysql4>
+		<class>Iksula_Backendfaq_Model_Mysql4</class>
+		<entities>		  
+			  <backendfaq>
+				<table>backendfaq</table>
+			  </backendfaq>
+        </entities>
+	  </backendfaq_mysql4>
+	</models>
+	<resources>
+	  <backendfaq_setup>
+		<setup>
+		  <module>Iksula_Backendfaq</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </backendfaq_setup>
+	  <backendfaq_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </backendfaq_write>
+	  <backendfaq_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </backendfaq_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <backendfaq>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Backendfaq</module>
+		  <frontName>backendfaq</frontName>
+		</args>
+	  </backendfaq>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <backendfaq module="backendfaq">
+		<title>Backendfaq</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <backendfaqbackend module="backendfaq">
+			<title>Backend FAQ</title>
+			<sort_order>0</sort_order>
+			<action>backendfaq/adminhtml_backendfaqbackend</action>
+		  </backendfaqbackend>
+		  <backendfaq module="backendfaq">
+		    <title>Manage Backendfaq</title>
+			<sort_order>0</sort_order>
+			<action>backendfaq/adminhtml_backendfaq</action>
+		  </backendfaq>
+		</children>
+	  </backendfaq>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<backendfaq translate="title" module="backendfaq">
+			  <title>Backendfaq</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <backendfaqbackend translate="title">
+			<title>Backend FAQ</title>
+		  </backendfaqbackend>
+		  <backendfaq translate="title">
+			<title>Manage Backendfaq</title>
+			<sort_order>0</sort_order>
+		  </backendfaq>
+			  </children>
+			</backendfaq>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<backendfaq>
+		  <file>backendfaq.xml</file>
+		</backendfaq>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

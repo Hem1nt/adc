@@ -1,0 +1,59 @@
+.header-container{
+    background-image: url('../images/header-newyearadc-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.header-container .header{
+	position: relative;
+}
+
+.logo{
+	margin: 0px 0 0 0 !important;
+}
+
+ul.links{
+    background-color: transparent;
+}
+
+.snowman-pan{
+	position: absolute;
+	left: 230px;
+	top: 18px;
+}
+.tree-pan{
+	position: fixed;
+	right: 20px;
+	top: 60px;
+}
+
+.tree-pan img {
+	width: 50%;
+}
+
+
+@media all and (max-width:1366px) {
+	.tree-pan {
+	    right: 0;
+    	top: 75px;
+    	position: absolute;
+	}
+	.tree-pan img {
+	    width: 30%;
+	}
+}
+
+
+@media all and (max-width:736px) {
+	.tree-pan {
+	    right: 50%;
+	    top: 12px;
+	    margin-right: -100px;
+	    position: absolute;
+	}
+}
+@media all and (max-width:480px) {
+	.snowman-pan, .tree-pan{
+		display: none;
+	}
+}

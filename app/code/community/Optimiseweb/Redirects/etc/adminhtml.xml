@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <acl>
+    <resources>
+      <all>
+        <title>Allow Everything</title>
+      </all>
+      <admin>
+        <children>
+          <optimiseweball translate="title" module="redirects">
+            <title>Optimise Web - Menu Group</title>
+            <sort_order>10</sort_order>
+            <children>
+              <redirects translate="title" module="redirects">
+                <title>Optimise Web - Mass 301 Redirects</title>
+                <sort_order>10</sort_order>
+              </redirects>
+            </children>
+          </optimiseweball>
+          <system>
+            <children>
+              <config>
+                <children>
+                  <optimisewebconfig translate="title" module="redirects">
+                    <title>Optimise Web - System Configuration Group</title>
+                  </optimisewebconfig>
+                  <optimisewebredirects translate="title" module="redirects">
+                    <title>Optimise Web - Mass 301 Redirects</title>
+                  </optimisewebredirects>
+                </children>
+              </config>
+            </children>
+          </system>
+        </children>
+      </admin>
+    </resources>
+  </acl>
+</config>

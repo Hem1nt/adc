@@ -1,0 +1,101 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_item = $this->getItem() ?>
+<?php $_order = $this->getItem()->getOrder(); ?>
+<tr>
+<?php
+	$simpleProductId = $_item->getProductId();
+	 $parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleProductId);
+	 $_product = Mage::getModel('catalog/product')->load($parentIds[0]);
+
+	//added for sending image with order
+	$product = Mage::getModel('catalog/product')
+			->setStoreId($_item->getOrder()->getStoreId())
+			->load($_item->getProductId());
+
+	$itemArr = $_item->getData();
+	$attr = $product->getResource()->getAttribute("pharmaceutical_form");
+	$pharmaceuticalformId = $product->getPharmaceuticalForm();
+	$pharm = $attr->getSource()->getOptionText($pharmaceuticalformId);
+	$item_sku = explode("-",$itemArr['sku']);
+	$p_packagesize = trim($item_sku[1])." ".$pharm;
+	$p_bonus=$product->getBonus();
+	$qty = number_format($_item->getQtyOrdered());
+
+	if(empty($p_bonus)) {
+		$total_pills = (trim($item_sku[1]) * $qty);
+	}
+	else {
+		$total_pills = (trim($item_sku[1]) * $qty)*2;
+	}
+
+	$price = "$".sprintf ("%.2f", $itemArr['price']);
+	$total_price = "$".sprintf ("%.2f", $itemArr['row_total_incl_tax']);
+	$active_ingridientsattr = $product->getResource()->getAttribute("active_ingridients");
+	$activeIngridientsId = $product->getActiveIngridients();
+	$activeIngridient = $active_ingridientsattr->getSource()->getOptionText($activeIngridientsId);
+
+?>
+
+    <td align="center" style="font-family:Arial; font-size:12px; color:#393737;padding:5px 0 5px 15px;">
+        <strong style="font-size:11px;">
+        	<?php echo $this->htmlEscape($_product->getName()) ?>
+        </strong>
+        (<?php echo $activeIngridient; ?>)
+    </td>
+
+	<td align="center" style="font-family:Arial; font-size:12px; color:#393737;padding:5px 0 5px 15px;">
+        <strong style="font-size:11px;"><?php echo $this->htmlEscape($p_packagesize) ?></strong>
+    </td>
+	<td align="center" style="font-family:Arial; font-size:12px; color:#393737;padding:5px 0 5px 15px;">
+        <strong style="font-size:11px;"><?php echo $this->htmlEscape($price) ?></strong>
+    </td>
+    <td align="center" style="font-family:Arial; font-size:12px; color:#393737;padding:5px 0 5px 15px;">
+        <strong style="font-size:11px;"><?php echo $this->htmlEscape($p_bonus) ?></strong>
+    </td>
+	<td align="center" style="font-family:Arial; font-size:12px; color:#393737;padding:5px 0 5px 15px;">
+        <strong style="font-size:11px;"><?php echo $this->htmlEscape($qty) ?></strong>
+    </td>
+
+	<td align="center" style="font-family:Arial; font-size:12px; color:#393737;padding:5px 0 5px 15px;">
+        <strong style="font-size:11px;"><?php echo $this->htmlEscape($total_pills)." ".$pharm ?></strong>
+    </td>
+	<td align="center" style="font-family:Arial; font-size:12px; color:#393737;padding:5px 0 5px 15px;">
+        <strong style="font-size:11px;"><?php echo $this->htmlEscape($total_price) ?></strong>
+    </td>
+
+</tr>
+<?php if ($_item->getGiftMessageId() && $_giftMessage = $this->helper('giftmessage/message')->getGiftMessage($_item->getGiftMessageId())): ?>
+<tr>
+    <td colspan="4" style=" border-bottom:2px solid #CCCCCC; padding:3px 9px;">
+        <strong style="color:#444444; font-size:11px;"><?php echo $this->__('Gift Message') ?></strong>
+        <?php echo $this->__('From:'); ?> <?php echo $this->htmlEscape($_giftMessage->getSender()) ?><br />
+        <?php echo $this->__('To:'); ?> <?php echo $this->htmlEscape($_giftMessage->getRecipient()) ?><br />
+        <strong><?php echo $this->__('Message:'); ?></strong><br /><?php echo $this->htmlEscape($_giftMessage->getMessage()) ?>
+    </td>
+</tr>
+<?php endif; ?>

@@ -1,0 +1,42 @@
+<?php 
+
+$userAgent = Mage::helper('core/http')->getHttpUserAgent();
+Mage::log($userAgent,null,'user_agent.log',1);
+
+?>
+<div class="below_banner_main_area">
+	<div class="below_banner_area">
+		<?php //echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/drugsearch.phtml")->toHtml();?>
+		<iframe scrolling="no" width="100%" height="0" frameborder="0" src="<?php echo $this->getUrl('frontend/index/allbrands', array(
+            '_secure' => Mage::app()->getFrontController()->getRequest()->isSecure()
+        ));?>"></iframe> 
+		 <div class="home-banner-block">
+			<a class="comboclass" href="<?php echo $this->getBaseUrl().'referral';?>">
+				<img src="<?php echo $this->getSkinUrl('images/banner-block-1.jpg');?>" alt=""/>
+			</a>
+			
+		</div>
+		<div class="home-banner-block mid">
+			<a class="comboclass" href="<?php echo $this->getBaseUrl().'content/114-echeck/';?>">
+				<img src="<?php echo $this->getSkinUrl('images/echeck-banner.jpg');?>" alt=""/>
+			</a>
+		</div>
+		
+		<div class="home-banner-block third">
+			<a class="comboclass" href="<?php echo $this->getBaseUrl().'content/88-order-online/';?>">
+				<img src="<?php echo $this->getSkinUrl('images/banner-block-3.jpg');?>" alt=""/>
+			</a>
+			
+		</div> 
+		<div class="home-banner-block last">
+			<a class="comboclass" href="<?php echo $this->getBaseUrl().'';?>">
+				<img src="<?php echo $this->getSkinUrl('images/banner-block-4.jpg');?>" alt=""/>
+			</a>			
+		</div>
+		<!-- <div class="trustedcompany-widget">
+			<iframe id="trustedcompany-widget" width="266" height="110" frameborder="0" scrolling="no"></iframe>
+			<a href="http://trustedcompany.com/us/alldaychemist.com-reviews" target="_blank" title="Alldaychemist Reviews"></a>
+			<script>(function(){document.getElementById('trustedcompany-widget').src='//trustedcompany.com/embed/widget/v2?domain=alldaychemist.com&type=d&review=0&text=b';})();</script>
+		</div> -->
+	</div>
+</div>

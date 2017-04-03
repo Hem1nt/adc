@@ -1,0 +1,16 @@
+-----------------------------------------------------------
+- Target release date 15th July 2013 -
+-----------------------------------------------------------
+
+FEATURES
+- Fix pager (it might not even be broken!)
+
+FEATURES (next)
+- Add license system for all add-ons
+- Add option to serve WordPress from the root as an addon extension
+
+PLUGINS
+- Gravity forms
+
+UPSELL
+- Build reviews into integration tests

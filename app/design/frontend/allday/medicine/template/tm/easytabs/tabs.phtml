@@ -1,0 +1,63 @@
+<?php
+    $tabs = array();
+    $curProduct = Mage::registry('current_product');
+    $productSku = $curProduct->getSku();
+    $productName = $curProduct->getName();
+    $productInfographics = $curProduct->getInfographics();
+    $infoSku = Mage::getStoreConfig('custom_snippet/referral_id/infographics');
+    $infoSkuArr = explode(',', $infoSku);
+    if($productInfographics && $productInfographics != 'no_selection'){
+        $infoImage = $this->helper('catalog/image')->init($curProduct, 'infographics');
+    }
+    foreach ($this->getTabs() as $_index => $_tab) {
+        if (!($childHtml = $this->getChildHtml($_tab['alias']))
+            || $this->isEmptyString($childHtml)) {
+
+            continue;
+        }
+        $_tab['child_html'] = $childHtml;
+        $_tab['title'] = $this->getTabTitle($_tab);
+        $tabs[$_index] = $_tab;
+    }
+    if(!in_array($productSku, $infoSkuArr)){
+        unset($tabs[0]);
+    }else{
+        unset($tabs[4]);
+    }
+?>
+<div class="easytabs-wrapper" id="easytabs">
+    <div class="easytabs-ul-wrapper">
+        <ul class="easytabs">
+            <?php foreach ($tabs as $_index => $_tab) : 
+            ?>
+                <li>
+                    <a href="#product_tabs_<?php echo $_tab['alias'] ?>"
+                        class="easytabs-anchor easytabs-a easytabs-a-tab"
+                    ><?php echo $this->__($_tab['title']); ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="padder easytabs-content-wrapper">
+        <?php foreach ($tabs as $_index => $_tab) : ?>
+            <a href="#product_tabs_<?php echo $_tab['alias'] ?>"
+                class="easytabs-anchor easytabs-a easytabs-a-accordion"
+            ><?php echo $this->__($_tab['title']); ?></a>
+            <div class="easytabs-content"
+                id="product_tabs_<?php echo $_tab['alias'] ?>_contents"
+                style="display:none">
+                <?php 
+                if(in_array($productSku, $infoSkuArr) && $_tab['alias'] == 'infographics'){
+                    echo '<img alt="'.$productName.'-infographics" src="'.$infoImage.'" width="90%" height="auto"/>';
+                }else{
+                    echo $_tab['child_html'];
+                }
+                 ?>
+                </div>
+        <?php endforeach; ?>
+    </div>
+
+    <script type="text/javascript">
+        var easytabs = new EasyTabs();
+    </script>
+</div>

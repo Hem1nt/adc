@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>css/jquery.bxslider.css</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.bxslider.js</name></action>
+		</reference>
+	</default>
+	
+	<catalog_product_view>
+	   
+	   <reference name="right">
+			<block type="bought/bought" name="right.bought">
+				<action method="setTemplate" ifconfig="catalog/bought/product_detail_rightposition">
+					<template>bought/sidebar.phtml</template> 
+				</action>
+			</block>
+        </reference>
+		
+		<reference name="left">
+			<block type="bought/bought" name="left.bought" before="-">
+				<action method="setTemplate" ifconfig="catalog/bought/product_detail_leftposition">
+					<template>bought/sidebar.phtml</template> 
+				</action>
+			</block>
+        </reference>
+		
+	</catalog_product_view>
+	
+	 <checkout_cart_index >
+           <reference name="left">
+			<block type="bought/bought" name="left.bought" before="-">
+				<action method="setTemplate" >
+					<template>bought/sidebar.phtml</template> 
+				</action>
+			</block>
+        </reference>
+    </checkout_cart_index>
+</layout> 

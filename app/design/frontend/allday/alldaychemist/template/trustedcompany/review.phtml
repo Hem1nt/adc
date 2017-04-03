@@ -1,0 +1,31 @@
+
+<!-- trusted company review widget-->
+<div class="right-review">
+  <div class="trustedcompany-widget">
+    <iframe id="trustedcompany-widget" width="270" height="220" frameborder="0" scrolling="no"></iframe>
+    <a href="http://trustedcompany.com/us/alldaychemist.com-reviews" target="_blank" title="Alldaychemist Reviews"></a>
+    <script>(function(){document.getElementById('trustedcompany-widget').src='//trustedcompany.com/embed/widget/v2?domain=alldaychemist.com&type=c&review=1&text=b';})();</script>
+  </div>
+</div>
+<!-- trusted company review widget-->
+<!-- trusted company review from API Start -->
+<?php
+  $reviewData = $this->getTrustedReviewAPI();
+
+  $reviewData = array_slice($reviewData, 0,15);
+?>
+<div class="right-review">
+<?php foreach ($reviewData as $review) { ?>
+  <div class="cust_review_area">
+  <?php 
+    $strtotime_date = strtotime($review['date']);  
+    $review_date = date('M d, Y',$strtotime_date);  
+  ?>
+  <h2><?php echo $review['subject'];?></h2>
+    <h1><?php echo $review['reviewer'];?></h1>
+
+    <span><?php echo $review_date;?></span>
+    <p><?php echo Mage::helper('core/string')->truncate($review['body'],70);?></p>
+  </div>
+<?php } ?>
+</div>

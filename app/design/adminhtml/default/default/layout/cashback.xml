@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <cashback_adminhtml_cashbackbackend_index>
+	<reference name="content">
+	  <block type="cashback/adminhtml_cashbackbackend" name="cashbackbackend" template="cashback/cashbackbackend.phtml"/>
+	</reference>
+  </cashback_adminhtml_cashbackbackend_index>
+  <cashback_adminhtml_cashback_index>
+	<reference name="content">
+	  <block type="cashback/adminhtml_cashback" name="cashback" />
+	</reference>
+  </cashback_adminhtml_cashback_index>
+</layout>

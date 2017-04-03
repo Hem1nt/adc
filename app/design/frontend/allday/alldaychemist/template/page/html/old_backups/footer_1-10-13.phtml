@@ -1,0 +1,217 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<!-- BEGIN LivePerson Monitor. -->
+<script language='javascript'> 
+	var lpMTagConfig = {'lpServer' : "server.iad.liveperson.net",'lpNumber' : "82521976",'lpProtocol' : "https"}; 
+	function lpAddMonitorTag(src){
+	if(typeof(src)=='undefined'||typeof(src)=='object')
+	{
+	src=lpMTagConfig.lpMTagSrc?lpMTagConfig.lpMTagSrc:'/hcp/html/mTag.js';
+	}
+	if(src.indexOf('http')!=0)
+	{
+	src=lpMTagConfig.lpProtocol+"://"+lpMTagConfig.lpServer+src+'?site='+lpMTagConfig.lpNumber;
+	}
+	else{
+		if(src.indexOf('site=')<0)
+		{
+		if(src.indexOf('?')<0)src=src+'?';
+		else src=src+'&';src=src+'site='+lpMTagConfig.lpNumber;
+		}
+	};
+	var s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('charset','iso-8859-1');s.setAttribute('src',src);document.getElementsByTagName('head').item(0).appendChild(s);
+	} 
+	if (window.attachEvent) window.attachEvent('onload',lpAddMonitorTag); else window.addEventListener("load",lpAddMonitorTag,false);
+</script>
+<!-- END LivePerson Monitor. -->
+<div class="footer-container">
+		<!--div class="contact-main">
+			<span class="btn-contact"><?php echo Mage::helper('contacts')->__('Contacts') ?></span>
+			<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
+			    <div class="fieldset">
+	              <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+	              <ul class="form-list">
+	                  <li class="fields">
+	                      <div class="field">
+	                          <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+	                          <div class="input-box">
+	                              <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+	                          </div>
+	                      </div>
+	                      <div class="field">
+	                          <label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+	                          <div class="input-box">
+	                              <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+	                          </div>
+	                      </div>
+							<div class="field last">
+								<label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+								<div class="input-box">
+									<input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="text" />
+								</div>
+							</div>
+	                  </li>
+	                  <li class="wide">
+	                      <label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+	                      <div class="input-box">
+	                          <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+	                      </div>
+	                  </li>
+	              </ul>
+	          </div>
+	          <div class="buttons-set">
+	              <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+	              <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button><p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+	          </div>
+	      </form>
+	</div-->
+	<div style="position: fixed; right: 0px; top: 0px; z-index:100">
+		<a href="#" onclick="return add_favorite(this);">
+			<img width="120px" src="<?php echo $this->getSkinUrl('images/bookmark_add.png'); ?>" />
+		</a>
+	</div>
+ <?php //echo $this->getChildHtml('customer_form_login') ?> 
+ 
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+jQuery(document).ready(function(){
+    //alert('sdf');
+      jQuery('#hcIcon').css('width','135px');
+	  
+});
+
+</script>
+
+  <div class="footer">
+    <div class="padd-footer" style="padding:0 0 10px 104px;">
+      <div class="wrapper">
+        <div class="footer-col"> 
+            <?php echo $this->getChildHtml('cms_footer_links') ?>
+            <?php //echo $this->getChildHtml('footer_links') //change by programmer ?>
+        </div>
+        <div class="footer-col-1"> <?php echo $this->getChildHtml('footer_list_1') ?></div>
+		<div class="footer-col-2"> <?php echo $this->getChildHtml('footer_list_3') ?> </div>
+        <div class="footer-col-3"> <?php echo $this->getChildHtml('footer_list_2') ?> </div>
+		<div class="footer-col-3">
+			<a rel="nofollow" href="https://www.mcafeesecure.com/RatingVerify?ref=www.alldaychemist.com" id="mcaffee_logo" class="footer_logos" onclick="window.open(this.href, 'mcafee_new',
+'width=1000,height=500,toolbar=1,resizable=0'); return false;"></a>
+			<a  href="https://seal.godaddy.com/verifySeal?sealID=516304681046fb4bc11011f1400b8da37d719429464659303720420694" rel="nofollow" style="cursor: pointer" id="godaddy_logo" onclick="window.open(this.href, 'godaddy_new',
+'width=700,height=500,toolbar=1,resizable=0'); return false;" class="footer_logos"></a>
+			<a href="http://www.copyscape.com/dmca-copyright-protection/" rel="nofollow" id="copyscap_logo" class="footer_logos target_blank"></a>
+			<!--img src="<?php echo $this->getSkinUrl('images/logos_image.jpg') ?>" /-->
+			<!-- BEGIN LivePerson Button Code -->
+			<div style="position: fixed; right: 0px; bottom: 0px; left: 90.6%; z-index: 100;">
+				<table border='0' cellspacing='2' cellpadding='2'>
+						<tr>
+							<td align="center">
+							</td>
+							<td align='center'>
+							<a rel="nofollow" id="_lpChatBtn" href='https://server.iad.liveperson.net/hc/82521976/?cmd=file&file=visitorWantsToChat&site=82521976&byhref=1&imageUrl=https://server.iad.liveperson.net/hcp/Gallery/ChatButton-Gallery/English/General/3b' target='chat82521976'  onClick="lpButtonCTTUrl = 'https://server.iad.liveperson.net/hc/82521976/?cmd=file&file=visitorWantsToChat&site=82521976&imageUrl=https://server.iad.liveperson.net/hcp/Gallery/ChatButton-Gallery/English/General/3b&referrer='+escape(document.location); lpButtonCTTUrl = (typeof(lpAppendVisitorCookies) != 'undefined' ? lpAppendVisitorCookies(lpButtonCTTUrl) : lpButtonCTTUrl); lpButtonCTTUrl = ((typeof(lpMTag)!='undefined' && typeof(lpMTag.addFirstPartyCookies)!='undefined')?lpMTag.addFirstPartyCookies(lpButtonCTTUrl):lpButtonCTTUrl);window.open(lpButtonCTTUrl,'chat82521976','width=472,height=320,resizable=yes');return false;" ><img src='https://server.iad.liveperson.net/hc/82521976/?cmd=repstate&site=82521976&channel=web&&ver=1&imageUrl=https://server.iad.liveperson.net/hcp/Gallery/ChatButton-Gallery/English/General/3b' id='hcIcon' name='hcIcon' alt='Chat Button' border=0>
+							</a>
+							</td> 
+						</tr>
+						<!--tr><td>&nbsp;</td><td align='center'><div style="margin-top:5px;"><span style="font-size:10px; font-family:Arial, Helvetica, sans-serif;"><a href="http://solutions.liveperson.com/live-chat" style="text-decoration:none; color:#000" target="_blank"><b>Live Chat</b></a><span style="color:#000"> by </span><a href="http://solutions.liveperson.com/" style="text-decoration:none; color:#FF9900" target="_blank">LivePerson</a></span></div></td> </tr> 
+						<tr>
+							<td>&nbsp;</td>
+							<td align='center'>
+							<a href='http://solutions.liveperson.com/customer-service/?site=82521976&domain=server.iad.liveperson.net&origin=chatbutton' target='_blank'  onClick="javascript:window.open('http://solutions.liveperson.com/customer-service/?site=82521976&domain=server.iad.liveperson.net&origin=chatbutton&referrer='+escape(document.location));return false;" ><img src='https://server.iad.liveperson.net/hc/82521976/?cmd=rating&site=82521976&type=indicator' name='hcRating' alt='Customer Service Rating by LivePerson' border=0>
+							</a>
+							</td>
+						</tr-->
+				</table>
+			</div>
+			
+			<!-- END LivePerson Button code -->
+			 <!--Start of Live Chat Code-->
+			 <!--div  style="position:fixed; right:0px; top:30px">
+				<a href="http://www.cheapindiandrugs.com/crm/chat/chat.php" target="_blank" onclick="if(navigator.userAgent.toLowerCase().indexOf('opera') != -1 &amp;&amp; window.event.preventDefault) window.event.preventDefault();this.newWindow = window.open('http://www.cheapindiandrugs.com/crm/chat/chat.php?locale=en&amp;url='+escape(document.location.href)+'&amp;referrer='+escape(document.referrer), 'crm', 'toolbar=0,scrollbars=0,location=0,status=1,menubar=0,width=640,height=550,resizable=1');this.newWindow.focus();this.newWindow.opener=window;return false;"><img src="http://www.cheapindiandrugs.com/crm/chat/checkStatus.php" border="0" alt=""/></a>
+				<div id="monitor" style="display:none"></div><script type="text/javascript"> var script = document.createElement("script");script.type="text/javascript";var src = "http://www.cheapindiandrugs.com/crm/chat/tracking.php?request=track&url="+escape(document.location.href)+"&referrer="+escape(document.referrer)+"&output=jcrpt&nse="+Math.random();setTimeout("script.src=src;document.getElementById('monitor').appendChild(script)",1);</script>
+			</div-->
+			<!--End of Live Chat Code-->
+	    </div>
+         <?php echo $this->getChildHtml('left.newsletter'); ?>
+      </div>
+    </div>
+    <div>
+<p style="background-color:#ccc;text-align:justify;padding:15px;"><b>IMPORTANT DISCLAIMER :</b>
+ All information provided on this web site is provided for information purposes only and does not constitute a legal contract between this site and any person or entity unless otherwise specified. Information on this site is subject to change without prior notice. Although every reasonable effort is made to present current and accurate information, the site makes no guarantees of any kind.
+The web site may contain information (including but not limited to medical content and news articles) that is created and maintained by a variety of sources both internal and external to it. These internal urls / sites are unmoderated forums containing the personal opinions and other expressions of the persons who post the content / entries. The site does not control, monitor or guarantee the information contained in these internal urls / sites or information contained in links to other external web sites, and does not endorse any views expressed or products or services offered therein. In no event shall the site be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such site or resource. This site does not provide any medical advise and the content of this site should not be a substitute for professional medical advise, diagnosis or any treatment.</p>
+</div>
+    <address>
+    <?php //echo $this->getCopyright() ?>
+	Copyright  &copy; <?php echo date('Y')?> AllDayChemist.All Rights Reserved.
+    </address>
+    <?php echo $this->getChildHtml('store_switcher') ?>
+    <?php $current_page = Mage::app()->getFrontController()->getRequest()->getRouteName(); 
+        if ($current_page == 'cms'):
+           // echo 'More Drug Store Magento Themes at <a rel="nofollow" href="http://www.templatemonster.com/category/drug-store-magento-themes/" target="_blank">TemplateMonster.com</a>';
+        endif;
+    ?>
+  </div>
+</div>
+
+<!-- Crazy Egg Code Starts -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/0693.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- Crazy Egg Code Ends -->
+<script type="text/javascript">
+   function add_favorite( a ) { 
+  title = document.title; 
+  url = document.location; 
+  try { 
+    // Internet Explorer 
+    window.external.AddFavorite( url, title ); 
+  } 
+  catch (e) { 
+    try { 
+      // Mozilla 
+      window.sidebar.addPanel( title, url, "" ); 
+    } 
+    catch (e) { 
+      // Opera 
+      if( typeof( opera ) == "object" ) { 
+        a.rel = "sidebar"; 
+        a.title = title; 
+        a.url = url; 
+        return true; 
+      } 
+      else { 
+        // Unknown 
+        alert( 'Press CTRL+D to add page to your bookmarks' ); 
+      } 
+    } 
+  } 
+  return false; 
+}
+</script>

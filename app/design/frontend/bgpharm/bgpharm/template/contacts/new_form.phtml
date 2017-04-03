@@ -1,0 +1,233 @@
+<?php
+
+
+/**
+ * get Router name
+ */
+
+$routerName = Mage::app()->getRequest()->getRouteName();
+
+if($routerName=='contacts'){
+    $freshdeskStatus = Mage::getStoreConfig('freshdesk/account/enable_freshdesk');
+    $contatusUrl = Mage::getStoreConfig('freshdesk/account/support_url');
+    if($freshdeskStatus==1 && !empty($contatusUrl)){
+        $create_ticket = $contatusUrl.'support/tickets/new';
+        Mage::app()->getFrontController()->getResponse()->setRedirect($create_ticket);    
+    }
+}
+
+
+$productid = Mage::app()->getRequest()->getParam('productid');
+$queryid = Mage::app()->getRequest()->getParam('queryid');
+if($productid){
+    $productCollection  = Mage::getModel('catalog/product')->load($productid);
+    $productname = $productCollection ->getName();
+    if ($queryid==1) {
+        $queryvalue = 'Medication Requests';
+    }
+    else{
+        $queryvalue = '';
+    }
+}
+
+$callback = Mage::app()->getRequest()->getParam('callback');
+
+?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
+</div>
+
+<form action="<?php echo Mage::getUrl('contacts/index/searchPost'); ?>" id="contactForm" method="post">
+<input type="hidden" name="redirect_url" value="<?php echo Mage::helper('core/url')->getCurrentUrl();?>" />
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('contacts')->__('Get in touch') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field field_select">
+                    <label for="name" class="required"><?php echo Mage::helper('contacts')->__('Query Type') ?><em>*</em></label>
+                    <div class="input-box">
+                        <select id="querytype" name="querytype">
+                            <?php  foreach (unserialize(Mage::getStoreConfig("custom_snippet/snippet/query_type")) as $mapping) { ?>
+                                <option value="<?php echo $mapping['query']; ?>" <?php if(($callback == 1 && $mapping["query"] == "Request a Call Back") || ($queryvalue == $mapping["query"])){ echo 'selected=selected'; } ?> ><?php echo $mapping["query"]; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="fields cproductname" <?php if($productid && $queryid == 1){ ?>style="display:block;" <?php }else{?>style="display:none;"<?php } ?> >
+                <div class="field">
+                    <label for="productname" class="required"><?php echo Mage::helper('contacts')->__('Product Name') ?><em>*</em></label>
+                    <div class="input-box">
+                        <input name="productname" id="productname" title="<?php echo $productname?>" value="<?php echo $productname ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+            </li>
+        <?php  ?>
+          <li class="fields timetocallclass <?php if(!$callback){echo 'hidetimetocall';}?>  " >
+                <div class="field">
+                    <label for="timetocall" class="required"><?php echo Mage::helper('contacts')->__('Time to call') ?><em>*</em></label>
+                    <div class="input-box">
+                    <select onchange="return timetocall(this.value);" id="timetocall" name="timetocall">
+                        <option value="09 AM - 12 PM">09 AM - 12 PM</option>
+                        <option value="12 PM - 03 PM">12 PM - 03 PM</option>
+                        <option value="03 PM - 06 PM">03 PM - 06 PM</option>
+                        <option value="06 PM - 09 PM">06 PM - 09 PM</option>
+                        <option value="09 PM - 12 AM">09 PM - 12 AM</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><?php echo Mage::helper('contacts')->__('Time Zone') ?><em>*</em></label>
+                    <div class="input-box">
+                     <select onchange="return timezone(this.value);" id="timezone" name="timezone">
+                        <option value="CST">CST</option>
+                        <option value="EST">EST</option>
+                        <option value="MST">MST</option>
+                        <option value="PST">PST</option>
+                    </select>
+                    </div>
+                </div>
+            </li>
+             <li class="fields">
+                <div class="field">
+                    <label for="name" class="required"><?php echo Mage::helper('contacts')->__('Name') ?><em>*</em></label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><?php echo Mage::helper('contacts')->__('Email') ?><em>*</em></label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                </div>
+				<div class="field">
+					<label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+					<div class="input-box">
+						<input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="text" />
+					</div>
+				</div>
+				<div class="field last">
+					<label for="telephone"><?php echo Mage::helper('contacts')->__('Order Number (If any)') ?></label>
+					<div class="input-box">
+						<input name="ordernumber" id="ordernumber" title="<?php echo Mage::helper('contacts')->__('Order Number') ?>" value="" class="input-text" type="text" />
+					</div>
+				</div>
+            </li>
+            <li class="wide">
+                <label for="comment" class="required"><?php echo Mage::helper('contacts')->__('Query') ?><em>*</em></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Query') ?>" class="required-entry input-text" ></textarea>
+                </div>
+            </li>
+            <li class="wide captcha_area">
+                <label for='message'>Enter the code</label>
+                <div class="input-box">
+                    <img src="<?php echo $this->getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' >
+                    <small>Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
+                </div>
+                <div class="input-box input-box-captcha">
+                    <input id="3_letters_code" class="required-entry validate-captcha captcha_sty" name="3_letters_code" type="text">
+                </div>
+                <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+                <div class="buttons-set">
+
+                    <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+                    <input type="hidden" id="check_me" />
+                    <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+                </div>
+
+            </li>
+        </ul>
+
+        <div class="contact_info">
+        <div class="info_block">
+            <div class="info-img"><img class="img_nos" src="<?php echo $this->getSkinUrl().'images/phone_icon1.png'?>" /></div>
+            <div class="numbers"><p><span class="contact_no">For USA :</span> +1(855) 840-0584 (Toll Free)</p>
+            <p><span class="contact_no">For Europe / UK :</span> +442075721246</p>
+            <p><span class="contact_no">For Australia :</span> +61290380439</p></div>
+        </div>
+        <div class="info_block f-right">
+            <div class="info-img"><img class="img_fax" src="<?php echo $this->getSkinUrl().'images/fax_img1.png'?>" /></div>
+            <div class="fax_content"><p><span class="contact_no">FAX:</span> +1(760) 284-5903</p></div>
+        </div>
+        <div class="info_block">    
+            <div class="info-img"><img class="img_work" src="<?php echo $this->getSkinUrl().'images/clock1.png'?>" /></div>
+            <!-- <div class="work_hours">
+                <p>
+                    <span class="contact_no">Operational Hours:</span>
+                    Monday to Saturday
+
+                </p>
+                <p><span class="contact_no no-d">Operational Hours:</span>
+                    6.00 AM to 6.00 PM (PST)
+                </p>
+            </div> -->
+
+            <div class="work_hours"><p><span class="contact_no">Operational</span>Monday to Saturday </p>
+            <p><span class="contact_no">Hours:</span> 5.00 AM to 5.00 PM (PST)</p></div>
+        </div>
+        <div class="info_block f-right">      
+            <div class="info-img"><img class="img_info" src="<?php echo $this->getSkinUrl().'images/info1.png'?>" /></div>
+            <div class="contact_content"><p>If you are unable to reach us by telephone, please feel free to leave us a message. You can also fill the Call Back Request form and we will reply within one business day.</p></div>
+        </div>
+    </div>
+    </div>
+
+</form>
+
+<script type="text/javascript">
+var contactform = new Validation('contactForm');
+Validation.add('validate-captcha','Enter valid code',function(field_value){
+   if(jQuery("#check_me").val() != "")
+   {
+		var me = jQuery("#check_me").val().split("_");
+		if(me[1] == field_value)
+		{
+			return true;
+		}
+		return false;
+   }
+	return false;
+});
+jQuery(window).load(function(){
+	 RefreshCapcha();
+});
+function RefreshCapcha()
+{
+	 jQuery.post('<?php echo $this->getUrl()."captcha_code_file.php?code=".rand();?>', function(data){
+        if(data!="")
+		{
+			jQuery("#check_me").val(data);
+		}
+    });
+}
+</script>
+<style type="text/css">
+.hidetimetocall{display: none;}
+</style>
+<script language='JavaScript' type='text/javascript'>
+function refreshCaptcha()
+{
+    var img = document.images['captchaimg'];
+    img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
+	setTimeout('RefreshCapcha()', 200);
+}
+
+jQuery(document).ready(function(){
+    jQuery('#querytype').change(function(){
+        var queryid = jQuery('#'+this.id).val();
+        if(queryid == 'Request a Call Back'){
+            jQuery('.timetocallclass').removeClass('hidetimetocall');
+        }else{
+            jQuery('.timetocallclass').addClass('hidetimetocall');
+        }
+        if(queryid == 'Medication Requests'){
+            jQuery('.cproductname').show();
+        }else{
+            jQuery('.cproductname').hide();
+        }
+    });
+});
+</script>

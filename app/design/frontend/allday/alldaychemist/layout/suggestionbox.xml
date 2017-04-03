@@ -1,0 +1,7 @@
+<layout version="0.1.0">	
+	 <default>
+		<reference name="left">
+            <block type="core/template" name="suggestionbox" template="suggestionbox/suggestionbox.phtml" before="leftmenu" after="catalog.leftnav" />
+        </reference>
+	</default>
+</layout>

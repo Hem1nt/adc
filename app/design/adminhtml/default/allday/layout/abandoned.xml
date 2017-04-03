@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <abandoned_adminhtml_abandoned_index>
+	<reference name="content">
+	  <block type="abandoned/adminhtml_abandoned" name="abandoned" />
+	</reference>
+  </abandoned_adminhtml_abandoned_index>
+</layout>

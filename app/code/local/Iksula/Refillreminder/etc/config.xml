@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Refillreminder>
+      <version>0.1.0</version>
+    </Iksula_Refillreminder>
+  </modules>
+  <frontend>
+    <routers>
+      <refillreminder>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Refillreminder</module>
+            <frontName>refillreminder</frontName>
+          </args>
+      </refillreminder>
+    </routers>
+		<layout>
+		  <updates>
+			<refillreminder>
+			  <file>refillreminder.xml</file>
+			</refillreminder>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+    <helpers>
+      <refillreminder>
+        <class>Iksula_Refillreminder_Helper</class>
+      </refillreminder>
+    </helpers>
+	<blocks>
+	  <refillreminder>
+		<class>Iksula_Refillreminder_Block</class>
+	  </refillreminder>
+	</blocks>
+	<models>
+	  <refillreminder>
+		<class>Iksula_Refillreminder_Model</class>
+		<resourceModel>refillreminder_mysql4</resourceModel>
+	  </refillreminder>
+	  <refillreminder_mysql4>
+		<class>Iksula_Refillreminder_Model_Mysql4</class>
+		<entities>		  
+			  <refillreminder>
+				<table>refillreminder</table>
+			  </refillreminder>
+			  <orderreminder>
+				<table>orderreminder</table>
+			  </orderreminder>
+        </entities>
+	  </refillreminder_mysql4>
+	</models>
+	<resources>
+	  <refillreminder_setup>
+		<setup>
+		  <module>Iksula_Refillreminder</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </refillreminder_setup>
+	  <refillreminder_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </refillreminder_write>
+	  <refillreminder_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </refillreminder_read>
+	</resources>
+    <events>
+	  <!-- <sales_order_place_after>
+        <observers>
+          <sales_order_place_after_handler>
+            <type>model</type>
+            <class>refillreminder/observer</class>
+            <method>checkProductInReminder</method>
+            <args></args>
+          </sales_order_place_after_handler>
+        </observers>
+      </sales_order_place_after> -->
+      <sales_order_place_after>
+			<observers>
+				<refillreminder_observer>
+					<type>singleton</type>
+					<class>refillreminder/observer</class>
+					<method>checkProductInReminder</method>
+				</refillreminder_observer>
+			</observers>
+		</sales_order_place_after>
+	<newsletter_subscriber_save_after>  
+		<observers>  
+			<newsletterSubscriberSave>  
+				<type>model</type>  
+				<class>refillreminder/observer</class>    
+				<method>FireCheetaSubscribe</method>            
+			</newsletterSubscriberSave>              
+		</observers>  
+	</newsletter_subscriber_save_after>
+
+    </events>
+  </global>
+  <admin>
+	<routers>
+	  <refillreminder>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Refillreminder</module>
+		  <frontName>refillreminder</frontName>
+		</args>
+	  </refillreminder>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <!-- <refillreminder module="refillreminder"> -->
+	  <customerdelete module="customerdelete">
+		<!-- <title>Refillreminder</title>
+		<sort_order>100</sort_order> -->
+		<children>
+		  <refillreminder module="refillreminder">
+		    <title>Manage Refillreminder</title>
+			<sort_order>150</sort_order>
+			<action>refillreminder/adminhtml_refillreminder</action>
+		  </refillreminder>
+		   <orderreminder module="refillreminder">
+		    <title>Manage Orderreminder</title>
+			<sort_order>151</sort_order>
+			<action>refillreminder/adminhtml_orderreminder</action>
+		  </orderreminder>
+		</children>
+	<!--   </refillreminder> -->
+     </customerdelete>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<refillreminder translate="title" module="refillreminder">
+			  <title>Refillreminder</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <refillreminder translate="title">
+			<title>Manage Refillreminder</title>
+			<sort_order>0</sort_order>
+		  </refillreminder>
+			  </children>
+			</refillreminder>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<refillreminder>
+		  <file>refillreminder.xml</file>
+		</refillreminder>
+	  </updates>
+	</layout>
+  </adminhtml>    
+    <crontab>
+        <jobs>            
+			<refillreminder_sendrefillreminder>
+                <schedule><cron_expr>* 12 * * *</cron_expr></schedule>
+                <run><model>refillreminder/cron::SendRefillReminder</model></run>
+            </refillreminder_sendrefillreminder>
+        </jobs>
+    </crontab>
+</config> 

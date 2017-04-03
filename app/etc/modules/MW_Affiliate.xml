@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MW_Affiliate>
+            <active>false</active>
+            <codePool>local</codePool>
+        </MW_Affiliate>
+    </modules>
+</config> 

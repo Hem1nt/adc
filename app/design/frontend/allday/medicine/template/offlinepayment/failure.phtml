@@ -1,0 +1,100 @@
+<style type="text/css">
+	.thankyoutitle{clear: both;}
+	.paymentmessage{text-align: left;margin-bottom: 20px;}
+	.thankyoutitle h1{font-size: 56px !important;color:#4c6804;}
+	.paymentstatustitle h1{font-size: 36px !important;color: #15317E;font-weight:bold;}
+
+	.order_number,.customer_name{
+		font-size: 16px;
+		font-weight: bold;
+		margin:10px 0; 
+	}
+	.message_content{
+		font-size: 16px;
+		margin:10px 0; 
+	}
+	.regards_message_content{
+		font-size: 16px;
+		font-weight: bold;
+		margin:10px 0; 
+	}
+	ol.message_content{
+		list-style: circle;
+		margin-left: 40px;
+	}
+</style>
+<?php 
+$request = Mage::app()->getRequest()->getParams();
+
+$transactionTransactionID = $request['transactionTransactionID'];
+$transactionStatus = $request['transactionStatus'];
+$customerOrderID = $request['customerOrderID'];
+$transactionAmount = $request['transactionAmount'];
+$_order = Mage::getModel('sales/order')->loadByIncrementId($customerOrderID);
+$customer_name = $_order->getCustomerName();
+$orderid = $_order->getCustomerOrderIncrementId();
+if(empty($orderid)){
+	$orderid = $_order->getIncrementId();
+}
+
+$responce = Mage::helper('offlinepayment/data')->gspay_check_order($transactionTransactionID);
+
+?>
+<?php if($responce['RESULTSTATUS']=='approved'):
+
+	$_order->addStatusToHistory('link_payment_accepted', 'Order Status Changed with the help of link Payment - TransactionId ==> '.$transactionTransactionID, false);
+	$_order->save();
+	?>
+	<div class="paymentmessage">
+		<div class="thankyoutitle">
+			<h1>Thank You</h1>
+		</div>	
+		<div class="paymentstatustitle">
+			<h1>Payment Accepted</h1>
+		</div>
+	</div>
+
+	<p class="order_number">ORDER NUMBER: <?php echo $orderid;?></p>
+	<p class="customer_name">Dear <?php echo $customer_name;?>,</p>
+	<p class="message_content">Thank you for placing an order with us.</p>
+	<p class="message_content">Your order is confirmed. Our charge normally appears as "<b>Purelinestore.com</b>” from Latvia on your card statement. Please note that the information is submitted via SSL secured encrypted page and that there is no risk of fraud.</p>
+	<p class="message_content">Since the charge originates from a foreign country, your bank may levy a negligible foreign transaction fee. This depends on the agreement between you and your bank and is retained by your bank. This transaction fee varies from 0.5% to 3.0% of the value and thus you may see a small separate charge on this purchase.</p>
+	<p class="message_content">The shipment will go shortly and we will keep you updated. You can also check the status of your order by logging into your account by clicking on "My Account".</p>
+
+<?php else: ?>
+	<?php 
+
+	$_order->addStatusToHistory('link_payment_declined', 'Order Status Changed with the help of link Payment - TransactionId ==> '.$transactionTransactionID, false);
+	$_order->save();
+
+	?>
+	<div class="paymentmessage">
+		<div class="thankyoutitle">
+			<h1>Sorry</h1>
+		</div>	
+		<div class="paymentstatustitle">
+			<h1>Transaction Declined</h1>
+		</div>
+	</div>
+
+	<p class="order_number">ORDER NUMBER: <?php echo $orderid;?></p>
+	<p class="customer_name">Dear <?php echo $customer_name;?>,</p>
+
+	<p class="message_content">Please note that the transaction of your order was declined.</p>
+	<p class="message_content">This could be because of one of the following reasons:</p>
+	<ol class="message_content">
+		<li>Invalid CVV or Expiry Date</li>
+		<li>Incorrect Billing address</li>
+		<li>Insufficient Funds</li>
+	</ol>
+
+	<br>
+	<p class="message_content">Other major reason of the declined transaction may be due to the origination of the charge from a foreign country. Please inform your bank that you are expecting a charge in the name of Purelinestore.com from Latvia and that you have approved the same. Once you do this, please try again or you can easily complete the transaction over the phone.</p>
+	<p class="message_content">Please note that all personal information is submitted via SSL secured encrypted page and that there is no risk of fraud.</p>
+<?php endif;?>
+
+<p class="message_content">We appreciate your patience and also your patronage of our pharmacy.</p>
+<br>
+<p class="regards_message_content">With warm regards</p>
+<p class="regards_message_content">AllDayChemist Billing Department</p>
+<p class="regards_message_content">Tel (US): +1 (855) 840-0584</p>

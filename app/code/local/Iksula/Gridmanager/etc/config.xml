@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Gridmanager>
+      <version>0.1.0</version>
+    </Iksula_Gridmanager>
+  </modules>
+  <global>
+    <helpers>
+      <gridmanager>
+        <class>Iksula_Gridmanager_Helper</class>
+      </gridmanager>
+    </helpers>
+	<blocks>
+	  <gridmanager>
+		<class>Iksula_Gridmanager_Block</class>
+	  </gridmanager>
+			<!-- <adminhtml>
+				<rewrite>
+					<sales_order_grid>Iksula_Gridmanager_Block_Adminhtml_Sales_Order_Grid</sales_order_grid>
+				</rewrite>
+			</adminhtml> -->
+	</blocks>
+  </global>
+</config> 

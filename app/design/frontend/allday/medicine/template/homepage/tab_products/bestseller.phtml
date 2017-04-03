@@ -1,0 +1,95 @@
+<?php
+$_productCollection=$this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+$_frontendHelper = $this->helper('frontend/data');
+$category = Mage::getModel('catalog/category')->load($this->getCategoryId());
+$categoryUrl = $category->getUrl();
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="slider-block">
+
+	<ul class="products-grid bxslider" id="product-category1">
+    <?php foreach ($_productCollection as $_product): ?>
+        <li class="item">
+            <div class="inner_wrapper">
+                <div class="grid-inner">
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                    <img src="
+                    <?php echo $this->helper('catalog/image')->init($_product, 'small_image')->keepFrame(false)->resize(100,100); ?>" alt="image alt text" />
+                    </a>
+                </div>
+
+                <h2 class="product-name product-name-height">
+                    <a href="<?php echo $_product->getProductUrl() ?>">
+                        <?php
+                            $pName = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                            echo Mage::helper('core/string')->truncate($pName, 50);
+                        ?>
+                    </a>
+                </h2>
+                <?php if(!$_product->isSaleable()):
+                        $custom_stock_status = $_frontendHelper->getCustomStockStatus($_product);
+                        if($custom_stock_status!='No' && $custom_stock_status!=''){ ?>
+                            <h3 class="pr-out-of-stock-index">
+                                <span><?php echo $this->__($custom_stock_status) ?></span>
+                            </h3>
+                        <?php } else{ ?>
+                            <h3 class="pr-out-of-stock-index">
+                                <span><?php echo $this->__('Out of stock') ?></span>
+                            </h3>
+                        <?php }
+                    endif;
+                ?>
+
+                <div class="desc std">
+                     <?php echo $_frontendHelper->getGenericInfo($_product);?>
+                </div>
+                <div class="generic_for">
+                        <?php
+                        $usbrandName = $_frontendHelper->getUsBrandInfo($_product);
+                        if(!empty($usbrandName)):
+                            echo $this->__('Generic for ');
+                            echo $usbrandName;
+                        endif;
+                        ?>
+                    </div>
+                 <div class="wrapper">
+                 	<div class="list-reviews grid-manufacturer">
+                        <?php
+                        $manufacturedby = $_frontendHelper->getManufacturerInfo($_product);
+                        if(!empty($manufacturedby)):
+                            echo $this->__('Manufactured by : ');
+                            echo $manufacturedby;
+                        endif;
+                        ?>
+             	  </div>
+                </div>
+                <?php
+                    $firstChildInfo = $_frontendHelper->getFirstChildPrice($_product);
+                    if(!empty($firstChildInfo)):
+                        echo $firstChildInfo;
+                    endif;
+                ?>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+
+    <div class="view-all-products"><a href="<?php echo $categoryUrl;?>">View all products</a></div>
+
+</div>
+<?php endif;?>
+
+<script>
+// jQuery('#product-category1').bxSlider({
+//       minSlides: 1,
+//       maxSlides: 4,
+//       slideWidth: 400,
+//       slideMargin: 0,
+//       infiniteLoop :false,
+//       // hideControlOnEnd: true,
+//       moveSlides: 1
+// });
+</script>

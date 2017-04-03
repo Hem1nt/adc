@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<config>
+
+  <tabs>
+    <iksulafrontend translate="label comment" module="frontend">
+      <label>Order Status For Customer Group</label>
+      <sort_order>0</sort_order>
+    </iksulafrontend>
+  </tabs>
+
+  <sections>
+    <order_status translate="label comment" module="frontend">
+      <label>Selection Of Order Status</label>
+      <tab>iksulafrontend</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>99999</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <general translate="label comment">
+          <label>Selection Of Order Status For Changing Customer Group</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <selected_status translate="label comment" module="frontend">
+              <label>Selection Of Order Status</label>
+              <frontend_type>multiselect</frontend_type>
+              <source_model>frontend/status</source_model>
+              <comment></comment>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </selected_status>
+            <order_date translate="label comment" module="frontend">
+              <label>Order Date For Pay Payment</label>
+              <frontend_type>text</frontend_type>
+              <comment></comment>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </order_date>
+          </fields>
+        </general>
+      </groups>
+    </order_status>
+   <!--  <home_drop_down translate="label comment" module="frontend">
+      <label>Home Page Drop Down</label>
+      <tab>iksulafrontend</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>99999</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <general translate="label comment">
+          <label>General Setting</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <status translate="label comment" module="frontend">
+              <label>Enable</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <comment></comment>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </status>
+            <synchronize translate="label comment">
+              <frontend_type>button</frontend_type>
+              <frontend_model>frontend/adminhtml_system_config_form_button</frontend_model>
+              <sort_order>300</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>0</show_in_website>
+              <show_in_store>0</show_in_store>
+              <comment>After selecting a new media storage location, press the Synchronize button
+                to transfer all media to that location. Media will not be available in the new
+                location until the synchronization process is complete.</comment>
+              </synchronize>
+            </fields>
+          </general>
+        </groups>
+      </home_drop_down> -->
+  </sections> 
+  <tabs>
+    <iksulacustomshipping translate="label comment" module="frontend">
+      <label>Custom Shipping Rates</label>
+      <sort_order>0</sort_order>
+    </iksulacustomshipping>
+  </tabs>
+  <sections>
+    <custom_shipping translate="label comment" module="frontend">
+      <label>Custom Shipping Rates</label>
+      <tab>iksulacustomshipping</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>99999</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <general translate="label comment">
+          <label>Selection Of Custom Shipping Rates</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <selected_data translate="label comment" module="frontend">
+              <label>Selection Of Custom Shipping Rates</label>
+              <frontend_model>frontend/config_serializer</frontend_model>
+              <backend_model>adminhtml/system_config_backend_serialized_array</backend_model> 
+              <comment></comment>
+              <sort_order>0</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </selected_data>
+            <us_customer translate="label comment" module="frontend">
+              <label>Payment message for US customer</label>
+              <frontend_type>textarea</frontend_type>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </us_customer>
+            <non_us_customer translate="label comment" module="frontend">
+              <label>Payment message for NON US customer</label>
+              <frontend_type>textarea</frontend_type>
+              <comment></comment>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </non_us_customer>
+            <other_offer_msg translate="label comment" module="frontend">
+              <label>Payment message Other Offer</label>
+              <frontend_type>textarea</frontend_type>
+              <comment></comment>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </other_offer_msg>
+          </fields>
+        </general>
+      </groups>
+    </custom_shipping>
+    <free_delivery translate="label comment" module="frontend">
+      <label>Free Delivery Rate</label>
+      <tab>iksulacustomshipping</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>99999</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <delivery_rate translate="label comment">
+          <label>Rate For Free Delivery</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <free_delivery_amount translate="label">
+              <label>Free Delivery Amount</label>
+              <comment>Mention Max Free Delivery $ Amount For All Payment Method.</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </free_delivery_amount>
+            <shipping_discount translate="label">
+              <label>Shipping Discount Amount</label>
+              <comment>Mention Discount on Shipping when subtotal is above free delivery $ amount.</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </shipping_discount>
+            <trust_logo translate="label comment">
+              <label>Purchase Protection Banner</label>
+              <comment>Allowed file types: jpeg, gif, png.</comment>
+              <frontend_type>image</frontend_type>
+              <backend_model>adminhtml/system_config_backend_image</backend_model>
+              <upload_dir config="system/filesystem/media" scope_info="1">theme</upload_dir>
+              <base_url type="media" scope_info="1">theme</base_url>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </trust_logo>
+          </fields>
+    </delivery_rate>
+    </groups>
+    </free_delivery>
+  </sections> 
+</config>

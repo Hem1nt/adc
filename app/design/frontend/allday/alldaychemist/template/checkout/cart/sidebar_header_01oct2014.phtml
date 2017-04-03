@@ -1,0 +1,10 @@
+<div class="cart_bag  cart-icon <?php echo $this->getInCart() ? 'active' : '' ?>">                 
+    <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="emptycart" title="Cart">
+        <?php $_cartItems = $this->helper('checkout/cart')->getSummaryCount(); ?>
+        <?php echo $_cartItems > 0 ? '<span>'.$_cartItems.'</span>' : '0'; ?> Items
+    </a>
+    <span class="fleft">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+    <a href="<?php echo $this->getBaseUrl();?>checkout/">Checkout</a>
+
+
+</div>    

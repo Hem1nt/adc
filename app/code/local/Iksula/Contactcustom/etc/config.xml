@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Contactcustom>
+      <version>0.1.0</version>
+    </Iksula_Contactcustom>
+  </modules>
+  <frontend>
+    <routers>
+      <contactcustom>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Contactcustom</module>
+            <frontName>contactcustom</frontName>
+          </args>
+      </contactcustom>
+    </routers>
+	<!-- <routers>
+      <contactcustom>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Contactcustom</module>
+            <frontName>comparelist</frontName>
+          </args>
+      </contactcustom>
+    </routers> -->
+	<!-- <routers>
+            <catalog>
+                <use>standard</use>
+                <args>
+                    <modules>
+                        <Iksula_Contactcustom before="Mage_Catalog">Iksula_Contactcustom_Catalog</Iksula_Contactcustom>
+                    </modules>
+                </args>
+            </catalog>
+        </routers> -->
+  </frontend>
+  <global>
+		<rewrite>        
+            <iksula_contactcustom_contacts_indexcontroller>
+                <from><![CDATA[#^/contacts/index/#]]></from> 
+                <to>/contactcustom/contacts_index/</to> 
+            </iksula_contactcustom_contacts_indexcontroller>
+		</rewrite>
+    <helpers>
+      <contactcustom>
+        <class>Iksula_Contactcustom_Helper</class>
+      </contactcustom>
+    </helpers>
+  </global>
+  <admin>
+	<routers>
+	  <contactcustom>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Contactcustom</module>
+		  <frontName>contactcustom</frontName>
+		</args>
+	  </contactcustom>
+	</routers>
+  </admin>
+</config> 

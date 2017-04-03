@@ -1,0 +1,7 @@
+<form name="submit_file_form" action="<?php echo $this->getUrl('admin_variations/adminhtml_variationsbackend/submit/')?>" method="post" enctype="multipart/form-data" >
+	<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey()?>" />
+
+    Select image to upload:
+    <input type="file" name="fileupload" id="fileupload">
+    <button type="submit">Submit</button>
+</form>

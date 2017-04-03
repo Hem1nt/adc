@@ -1,0 +1,42 @@
+<?php 
+$moduleStatus = Mage::helper('cashback')->isEnable();
+?>
+<div class="ajaxRefreshCoupon">
+<form id="opc-discount-coupon-form" action="<?php echo $this->getUrl('onepage/coupon/newCouponPost', array('_secure' => $this->getRequest()->isSecure())) ?>" method="post">
+    <div class="discount">
+        <div class="discount-form">
+            <label for="coupon_code"><?php echo $this->__('Enter your coupon code:') ?></label>
+            <div class="input-box">
+                <input class="input-text required-entry" id="coupon_code" type="text" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" autocomplete="off"/>
+            </div>
+                <!-- <button type="button" title="<?php //echo $this->__('Redeem Now') ?>" class="button apply-coupon"  value="<?php //echo $this->__('Apply') ?>"><span><span><?php //echo $this->__('Redeem Now') ?></span></span></button> -->
+                <?php if(!strlen($this->getCouponCode())): ?>
+                <input type="button" title="<?php echo $this->__('Redeem Now') ?>" class="button apply-coupon" name="submit" value="<?php echo $this->__('Redeem Now') ?>" onclick="onepageLogin(this)"/>
+                <?php endif;?>
+                <?php if(strlen($this->getCouponCode())): ?>
+                    &nbsp;
+                    <!-- <button type="button" title="<?php //echo $this->__('Cancel') ?>" class="button remove-coupon right"  value="<?php //echo $this->__('Cancel') ?>"><span><span><?php //echo $this->__('Cancel') ?></span></span></button> -->
+                    <input type="button" title="<?php echo $this->__('Cancel') ?>" class="button remove-coupon right" name="submit" value="<?php echo $this->__('Cancel') ?>" onclick="onepageLogin(this)"/>
+                <?php endif;?>
+                <?php if(Mage::getModel('customer/session')->isLoggedIn() && $moduleStatus): ?>
+                <input type="button" title="<?php echo $this->__('Show Coupons') ?>" class="button show-coupon" value="<?php echo $this->__('Show Coupons') ?>"/>
+                <?php endif;?>
+            <div class="buttons-set">
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<script type="text/javascript">
+    //< ![CDATA[
+        var customForm = new VarienForm('opc-discount-coupon-form');
+    //]]>
+
+    function onepageLogin(button){
+        if(customForm.validator &&  customForm.validator.validate()){
+            customForm.submit();
+        }
+    }
+</script>

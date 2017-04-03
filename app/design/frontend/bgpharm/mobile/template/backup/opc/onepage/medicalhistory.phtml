@@ -1,0 +1,243 @@
+<ul class="form-list">
+    <li class="control medical" id="medical_history_div_new" style="display:block;">
+        <?php //echo $this->getChildHtml('medicalhistory');?>
+        <p class="f-left"><h4 class="medical_title">Medical Conditions </h4></p><!--a id="medical_history"  href="#medical_history_div">Add Medical History</a></p-->
+        <div id="medical_history_div" class="detail" style="display:block;">
+            <?php echo $this->getChildHtml('form.additional.info'); ?>
+            <form name="longform" action="<?php //echo $this->getUrl('productdetail/index/index'); ?>" method="post" id="medicalobservationform" enctype="multipart/form-data">
+                <div class="medical_history_block">
+                    <div class="medical_history_name medical_label">
+                        <label class="required"><strong>Primary Physician's Name : </strong></label>
+                    </div>
+
+                    <div class="medical_history_content1 medical_fieldc">
+                        <input type="text" class="physician_name"  id="physician_name" name="physician_name"/>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="medical_history_telephone medical_label">
+                        <label class="required"><strong>Physician's Telephone No : </strong></label>
+                    </div>
+
+                    <div class="medical_history_content2 medical_fieldc">
+                        <input type="text" class="physician_telephone" id="physician_telephone" name="physician_telephone"/>
+                    </div>
+                    <div class="clear"></div>
+                    <!-- <div class="medical_history_fax medical_label">
+                        <strong>Physician's FAX No : </strong>
+                    </div>
+
+                    <div class="medical_history_content3 medical_fieldc">
+                        <input type="text" class="physician_fax"  id="physician_fax" name="physician_fax"/>
+                    </div>
+                    <div class="clear"></div> -->
+                    <div class="medical_history_field3 medical_label">
+                        <strong>Drug Allergies:</strong>
+                        <span>
+                            <input type="checkbox" class="medical_checkbox" id="drug_allergies" name="drug_allergies"> <label for="drug_allergies">None</label><br>
+                        </span>
+                    </div>
+                    <div class="break medical_history_content3 medical_fieldc" id="medicaltoggle">
+                        <textarea name="Drug Allergies" class="medicaltextarea input-text required-entry" cols="55" width="auto" id="drug_allergies_texarea"></textarea>
+                        <span id="drug_allergies_span" class="msgspan" style="background-color:#fff;color:#ff0000;font-weight:normal;display:none;">If you don't have any drug allergies, please check "None".</span>
+                    </div>
+                    <div class="clear"></div>
+                    <div  class="medical_history_field4 medical_label">
+                        <strong>Current Medications:</strong>
+                        <span>
+                            <input type="checkbox" class="medical_checkbox" id="current_medications" name="Current Medications" > <label for="current_medications">None</label><br>
+                        </span>
+                    </div>
+                    <div class="break medical_history_content4 medical_fieldc" id="currmedicationtoggle">
+                        <textarea name="Current Medications" class="medicaltextarea input-text required-entry" cols="55" width="auto" id="current_medications_texarea"></textarea>
+                        <span id="current_medications_span" class="msgspan" style="background-color:#fff;color:#ff0000;font-weight:normal;display:none;">If you don't have any current medications, please check "None".</span>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="medical_history_field5 medical_label">
+                        <strong>Current Treatments:</strong>
+                        <span>
+                            <input type="checkbox" class="medical_checkbox" id="current_treatments" name="Current Treatments"> <label for="current_treatments">None</label><br>
+                        </span>
+                    </div>
+                    <div class="break medical_history_content5 medical_fieldc" id="currtreatmentstoggle">
+                        <textarea name="Current Treatments" class="medicaltextarea input-text required-entry" cols="55" width="auto" id="current_treatments_texarea" ></textarea>
+                        <span id="current_treatments_span" class="msgspan" style="background-color:#fff;color:#ff0000;font-weight:normal;display:none;">If you don't have any current treatments, please check "None".</span>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="medical_history_field6 medical_label">
+                        <h4 class="medical_title">Other Conditions:</h4>
+                        <div class="do_you_smoke">Do you Smoke?</div>
+                        <div class="custom_radio">
+                            <input type="radio" class="smoke_checkbox" value="no" checked="checked" name="Smoke" id="smokeno">
+                            <label class="custom_radio_label" for="smokeno">No</label>
+                        </div>
+                        <div class="custom_radio">
+                            <input type="radio" class="smoke_checkbox" id="smokeyes" value="yes" name="Smoke">
+                            <label class="custom_radio_label" for="smokeyes">Yes</label>
+                        </div>
+                    </div>
+                    <div class="medical_history_field6 medical_label">
+                        <div class="do_you_drink">Do you drink?</div>
+                        <div class="custom_radio">
+                            <input type="radio" class="drink_radio" value="no" id="drinkno" checked="checked" name="Drink">
+                            <label class="custom_radio_label" for="drinkno">No</label>
+                        </div>
+                        <div class="custom_radio">
+                            <input type="radio" class="drink_radio" value="yes" id="drinkyes" name="Drink">
+                            <label class="custom_radio_label" for="drinkyes">Yes</label>
+                        </div>
+                    </div>
+                    <!-- <div class="medical_history_field6 medical_label">
+                        <div class="are_you_pregnant">Are you Pregnant or Breast feeding?</div>
+                        <div class="custom_radio">
+                            <input type="radio" class="pregnant_radio" value="no" id="pregnantno" checked="checked" name="Pregnant">
+                            <label class="custom_radio_label" for="pregnantno">No</label>
+                        </div>
+                        <div class="custom_radio">
+                            <input type="radio" class="pregnant_radio" value="yes" id="pregnantyes" name="Pregnant">
+                            <label class="custom_radio_label" for="pregnantyes">Yes</label>
+                        </div>
+                    </div> -->
+                    <div class="clear"></div>
+                </div>
+            </form>
+        </div>
+    </li>
+    <br/>
+
+    <div class="addedmedicalhistory" id="addedmedicalhistory" style="background-color:#fff;color:#819d01;font-weight:bold;display:none;">Medical History Added to your order</div>
+    <li>
+        <label><em></em><p><?php echo $this->__('Please send your prescription through fax +1(760) 284-5903 or you can upload the prescription here: ') ?><span id='file_upload_text'></span></p></label>
+         <!-- <div class="input-box">
+            <input id="fileupload" type="file" name="file_upload" />
+        </div>  -->
+        <form id="upload" method="post" action="<?php echo $this->getUrl('frontend/medical/upload') ?>" enctype="multipart/form-data">
+            <div id="drop">
+                <a>Browse</a>
+                <input type="file" name="file" />
+            </div>
+
+            <ul>
+
+            </ul>
+        </form>
+        <input id="file_upload_path" type="hidden" name="file_upload_path" class='required-entry'  />
+        <input type="hidden" value='billing_file' name="file_upload_type" class='required-entry'  />
+    </li>
+
+    <li>
+        <p class="medicalk-text">I certify that I am 'over 18 years' and that I am under the supervision of a doctor. The ordered
+medication is for my own personal use and is strictly not meant for a re-sale. I also accept that
+I am taking the medicine /s at my own risk and that I am duly aware of all the effects / side effects
+of the medicine / s. If my order contain Tadalafil, I confirm that the same is not meant for
+consumption in the USA. I acknowledge that the drugs are as per the norms of the country
+of destination. </p><br/>
+       <p class="small">By pressing 'continue', I agree to the above statements.</p>
+    </li>
+</ul>
+<!-- <div class="signup_for_calls">
+    <input type="checkbox" name="callandoffers" title="<?php echo $this->__('Sign Up for Calls and offers') ?>" value="1" checked="checked" id="callandoffers" class="callandofferscheckbox" />
+    <label for="callandoffers"><?php echo $this->__('Sign Up for Calls and offers') ?></label>
+</div> -->
+
+<script type="text/javascript">
+//jQuery.noConflict();
+
+jQuery(document).ready(function() {
+    jQuery('.medical_checkbox').click(function(){
+        // alert(this.id);
+        jQuery('#'+this.id+"_texarea").toggle();
+        jQuery('#'+this.id+"_texarea").val('');
+        jQuery('#'+this.id+"_span").css('display','none');
+        var div_to_hide = jQuery('#'+this.id+"_texarea").parent().attr('id');
+        jQuery('#'+div_to_hide).toggle();
+        console.log(jQuery('#'+this.id+"_texarea").parent().attr('id'));
+    });
+    //code for the call and offers check
+    jQuery('#callandoffers').change(function(){
+        var callforoffersval = jQuery('#callandoffers').val();
+        if(callforoffersval=='1'){
+        jQuery('#callandoffers').val('0');
+        }
+    });
+});
+//<![CDATA[
+var medicalobservationformForm = new VarienForm('medicalobservationform', true);
+
+function onepageMedicalObservation(button){
+    if(medicalobservationformForm.validator &&  medicalobservationformForm.validator.validate()){
+        button.disabled = false;
+    }
+}
+
+function submitmedicalhistory(){
+    //alert('hi');
+    var url='<?php echo $this->getUrl('frontend/medical/index');?>';
+    // alert(url);
+    var drug_allergies = jQuery('#drug_allergies_texarea').val();
+    var physician_name = jQuery('#physician_name').val();
+    var physician_telephone = jQuery('#physician_telephone').val();
+    var physician_fax = jQuery('#physician_fax').val();
+    var current_medications = jQuery('#current_medications_texarea').val();
+    //alert(jQuery.type(current_medications));
+
+    var current_treatments = jQuery('#current_treatments_texarea').val();
+    //var smoke_treatments = jQuery('.smoke_checkbox').val();
+
+    var smoke_treatments=jQuery('input:radio[name="Smoke"]:checked').val();
+    var drink_treatments = jQuery('input:radio[name="Drink"]:checked').val();
+    var pregnancy_treatments = jQuery('input:radio[name="Pregnant"]:checked').val();
+    //var ckbox = jQuery('.medical_checkbox');
+
+    if(drug_allergies!='' || current_medications!='' || current_treatments!='' || physician_fax!='') {
+
+        jQuery.post( url, { physicianname: physician_name,physiciantelephone: physician_telephone,physicianfax: physician_fax,drugallergies: drug_allergies,currentmedications:current_medications,currenttreatments:current_treatments,smoke:smoke_treatments,drink:drink_treatments,pregnant:pregnancy_treatments},function(result) {
+                if(result == 'success') {
+                    jQuery('#medical_history_div_new').hide(500, function(){
+                        jQuery('#addedmedicalhistory').show();
+                    });
+                }
+        });
+    }
+}
+
+function savemedicalhistory(){
+    var timezonecode =jQuery('#timezone').val();
+    // alert(timezonecode);
+    var timezoneval = jQuery('#timeval1').val()+' - '+jQuery('#timeval2').val()+' - ('+timezonecode+')';
+    if(jQuery('#timeval1').val() == '' && jQuery('#timeval2').val() == '' && timezonecode == ''){
+        timezoneval= '';
+    }
+    var all_clear = 0;
+
+    var callandoffersurl='<?php echo $this->getUrl('frontend/medical/callforoffersreg');?>';
+    var callforfree = jQuery('#callandoffers').val();
+
+    jQuery.ajax({
+        url: callandoffersurl,
+        type: "POST",
+        cache: true,
+        data: {callforfree: callforfree, timetocall:timezoneval}
+    })
+    .done(function( data ) {
+        // console.log("###"+data+"###");
+    });
+
+    var drug_allergies = jQuery('#drug_allergies_texarea').val();
+    var current_medications = jQuery('#current_medications_texarea').val();
+    var current_treatments = jQuery('#current_treatments_texarea').val();
+
+    jQuery(".medical_checkbox").each(function(){
+        if(jQuery("#"+this.id+"_texarea").val() == "" && jQuery("#"+this.id).is(':checked') == false) {
+            all_clear = 1;
+        }
+    });
+    //alert(all_clear);
+    if(jQuery('#medical_history_div_new').css('display') == 'block') {
+        submitmedicalhistory();
+    }
+}
+    // });
+
+//]]>
+</script>
+

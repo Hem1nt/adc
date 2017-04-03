@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @author      Kalpesh Mehta
+ * @category    KM
+ * @package     KM_Shippingcarriers
+ * @copyright   Copyright (c) 2012 Kalpesh Mehta (http://ka.lpe.sh)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <KM_Shippingcarriers>
+            <version>1.0.3</version>
+        </KM_Shippingcarriers>
+    </modules>
+
+    <global>
+        <helpers>
+            <shippingcarriers>
+                <class>KM_Shippingcarriers_Helper</class>
+            </shippingcarriers>
+        </helpers>
+        <models>
+            <shippingcarriers>
+                <class>KM_Shippingcarriers_Model</class>
+            </shippingcarriers>
+        </models>
+    </global>
+
+    <default>
+        <carriers>
+            <!-- <aramex>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Aramex</model>
+                <name>Aramex</name>
+                <title>Aramex</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>http://www.aramex.com/track_xml.asp</gateway_url>
+            </aramex> -->            
+           <!--  <bluedart>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Bluedart</model>
+                <name>Bluedart</name>
+                <title>Bluedart</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>http://www.bluedart.com/servlet/RoutingServlet?handler=tnt</gateway_url>
+            </bluedart>
+            <afl>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Fedex</model>
+                <name>AFL</name>
+                <title>AFL</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>http://trackntrace.aflwiz.com/aflwiztrack</gateway_url>
+            </afl> -->
+            <deutsche>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Deutsche</model>
+                <name>Deutsche Post</name>
+                <title>Deutsche Post</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>http://www.deutsche.com/track_xml.asp</gateway_url>
+                <sort_order>100</sort_order>
+            </deutsche>
+            <singapore>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Singapore</model>
+                <name>Singapore Post</name>
+                <title>Singapore Post</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>http://www.singapore.com/track_xml.asp</gateway_url>
+                <sort_order>100</sort_order>
+            </singapore>
+            <australia>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Australia</model>
+                <name>Australia Post</name>
+                <title>Australia Post</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>www.auspost.com.au</gateway_url>
+                <sort_order>100</sort_order>
+            </australia>
+            <swiss>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Swiss</model>
+                <name>Swiss Post</name>
+                <title>Swiss Post</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>http://track.trackingmore.com/swiss-post/en</gateway_url>
+                <sort_order>100</sort_order>
+            </swiss>
+            <parcel>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Parcel</model>
+                <name>Parcel Post</name>
+                <title>Parcel Post</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>http://track.trackingmore.com/swiss-post/en</gateway_url>
+                <sort_order>100</sort_order>
+            </parcel>
+            <other>
+                <active>1</active>
+                <model>KM_Shippingcarriers_Model_Other</model>
+                <name>Other Post</name>
+                <title>Other Post</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <gateway_url>http://ipsweb.ptcmysore.gov.in/ipswebtracking/</gateway_url>
+                <sort_order>100</sort_order>
+            </other>
+        </carriers>
+    </default>
+
+</config>

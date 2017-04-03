@@ -1,0 +1,49 @@
+<?php
+
+	$order = Mage::getModel('sales/order')->loadByIncrementId($this->getRealOrderId());
+	if($orderid==''){
+		$orderIncrement_id =  Mage::getSingleton('core/session')->getcustomOrderid();
+		$orderid = Mage::getModel('sales/order')->loadByIncrementId($orderIncrement_id);
+	}
+	$customer_name = $order->getCustomerName();
+	$paymentMethosUsed = Mage::getSingleton('core/session')->getPaymentMethosUsed();
+	 if(!isset($paymentMethosUsed)){
+ 		 	$paymentMethosUsed = 'default';
+    }
+ 	 switch ($paymentMethosUsed) {
+ 	 	case 'gspay':
+ 	 	echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/message/declined.phtml')->toHtml();
+ 	 		break;
+ 	 	case 'echeck':
+ 	 	echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/message/declined.phtml')->toHtml();
+ 	 		break;
+ 	 	case 'anytrans':
+ 	 	echo $this->getLayout()->createBlock('core/template')->setTemplate('checkout/message/declined.phtml')->toHtml();
+ 	 		break;
+ 	 	
+ 	 	default: ?>
+	 	 	<div class="page-title">
+	 	 		<h1><?php echo $this->__('An error occurred in the process of payment') ?></h1>
+	 	 	</div>
+	 	 	<?php if ($this->getRealOrderId()) : ?><p><?php echo $this->__('Order #') . $this->getRealOrderId() ?></p><?php endif ?>
+	 	 	<?php if ($error = $this->getErrorMessage()) : ?><p><?php echo $error ?></p><?php endif ?>
+	 	 	<p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getContinueShoppingUrl()) ?></p>
+ 	 	<?php 	break; 	
+ 	} ?>
+ 	<script type="text/javascript">
+ jQuery(document).ready(function(){
+ 	jQuery.ajax({
+		        type:"POST",
+		        url:"<?php echo Mage::getUrl('crm/index/updateOrderStatusCredit', array('_secure'=>true)) ?>",
+		        data:{'orderid': '<?php echo $this->getRealOrderId() ?>'},
+		        dataType:"json",
+		        success:function(data){
+		        	console.log("Call successfull");
+		        	       	
+		       	}
+		  	});
+
+ 	});
+ </script>
+
+

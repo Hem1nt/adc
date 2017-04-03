@@ -1,0 +1,79 @@
+<div class="wrap left rounded customsearch">
+	<form id="cse-search-box" onclick="return false;">
+    <input type="text" class="search left rounded" name="search" value="" />
+    <button class="go left rounded searchbutton"><span></span></button>
+	</form>
+</div>
+<div class="searchresult" >
+    <!-- <table>
+        <tr class="maincols">
+            <td> Question </td> <td>Answer</td> <td>Action</td>
+        </tr>
+    </table> -->
+</div> 
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery(".searchbutton").click(function(){
+		//alert('hi');
+		var searchresult = jQuery('.search').val();
+		url = '<?php echo $this->getUrl('backendfaq/adminhtml_backendfaqbackend/search') ?>';
+		new Ajax.Request(url, {
+			parameters: {isAjax: 1, method: 'POST',search:searchresult},
+			onSuccess: function(transport) {
+				jQuery('.searchresult').html(transport['responseText']);
+
+			}
+		});
+	});
+});
+</script>
+<style type="text/css">
+.searchresult{display: block;clear:both;}
+.left {
+    float:left;
+}
+.rounded {
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+.wrap {
+    position:relative;
+    padding:5px 6px 6px 7px; /* readjust in jsfiddle*/
+    background:#f0f0f0;
+    border:1px solid #ccc;
+    overflow:hidden;
+}
+.search {
+    width:360px;
+    position:relative; top:2px; /* readujst in jsfiddle */
+    padding:8px 5px 8px 30px;
+    border:1px solid #ccc;
+    background:white url(http://i.imgur.com/lFkqn.png) left center no-repeat;
+}
+.go {
+    position:relative; top:0;
+    padding:3px 5px 2px;
+    margin-left:8px;
+    border:none;
+    background: -webkit-gradient(linear, left top, left bottom, from(#d631a7), to(#8f1b64));
+    background: -moz-linear-gradient(top,  #d631a7,  #8f1b64);
+}
+.customsearch .go span {
+    display:block;
+    width:64px; height:28px;
+    background:url(http://i.imgur.com/mxxzQ.png) 0 0 no-repeat !important;
+    padding-left: 0px;
+}
+
+.tablegrid{border: 1px solid #cbd3d4; width: 100%;}
+.tablegrid td{border: 1px solid #cbd3d4;color: #2d444f; cursor: pointer;}
+.maincols td{font-weight: bold;width:33.3%}
+.othercols td{width:33.3%}
+.maincols td:hover{color: #d85909;}
+.maincols td {background: url(http://adc.iksulabeta.com/skin/adminhtml/default/default/images/sort_row_bg.gif) 0 50% repeat-x;} /**Change the img URL**/
+tr.othercols:hover{background: #fcf5dd;}
+
+
+</style>

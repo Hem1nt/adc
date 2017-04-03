@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <medical_adminhtml_medical_index>
+	<reference name="content">
+	  <block type="medical/adminhtml_medical" name="medical" />
+	</reference>
+  </medical_adminhtml_medical_index>
+  <adminhtml_sales_order_view>
+        <reference name="sales_order_tabs">
+            <action method="addTab">
+                <name>order_medicalhistory</name>
+                 <block>medical/adminhtml_order_view_tab_medicalhistory</block>
+            </action>
+        </reference>
+</adminhtml_sales_order_view>  
+</layout>

@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Notifyoutofstock>
+      <version>0.1.1</version>
+    </Iksula_Notifyoutofstock>
+  </modules>
+  <frontend>
+    <routers>
+      <notifyoutofstock>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Notifyoutofstock</module>
+            <frontName>notifyoutofstock</frontName>
+          </args>
+      </notifyoutofstock>
+    </routers>
+		<layout>
+		  <updates>
+			<notifyoutofstock>
+			  <file>notifyoutofstock.xml</file>
+			</notifyoutofstock>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+  	<template>
+	    <email>
+	        <notifyoutofstock_email_template translate="label" module="notifyoutofstock">
+	            <label>Notifyoutofstock Email</label>
+	            <file>iksula_notifyoutofstock_template.html</file>
+	            <type>html</type>
+	        </notifyoutofstock_email_template>
+	    </email>
+	</template>
+    <helpers>
+      <notifyoutofstock>
+        <class>Iksula_Notifyoutofstock_Helper</class>
+      </notifyoutofstock>
+    </helpers>
+	<blocks>
+	  <notifyoutofstock>
+		<class>Iksula_Notifyoutofstock_Block</class>
+	  </notifyoutofstock>
+	</blocks>
+	<models>
+	  <notifyoutofstock>
+		<class>Iksula_Notifyoutofstock_Model</class>
+		<resourceModel>notifyoutofstock_mysql4</resourceModel>
+	  </notifyoutofstock>
+	  <notifyoutofstock_mysql4>
+		<class>Iksula_Notifyoutofstock_Model_Mysql4</class>
+		<entities>
+			  <notifyoutofstock>
+				<table>notifyoutofstock</table>
+			  </notifyoutofstock>
+        </entities>
+	  </notifyoutofstock_mysql4>
+	</models>
+	<resources>
+	  <notifyoutofstock_setup>
+		<setup>
+		  <module>Iksula_Notifyoutofstock</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </notifyoutofstock_setup>
+	  <notifyoutofstock_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </notifyoutofstock_write>
+	  <notifyoutofstock_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </notifyoutofstock_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <notifyoutofstock>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Notifyoutofstock</module>
+		  <frontName>admin_notifyoutofstock</frontName>
+		</args>
+	  </notifyoutofstock>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <notifyoutofstock module="notifyoutofstock">
+		<title>Notifyoutofstock</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <notifyoutofstock module="notifyoutofstock">
+		    <title>Manage Notifyoutofstock</title>
+			<sort_order>0</sort_order>
+			<action>admin_notifyoutofstock/adminhtml_notifyoutofstock</action>
+		  </notifyoutofstock>
+		</children>
+	  </notifyoutofstock>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<notifyoutofstock translate="title" module="notifyoutofstock">
+			  <title>Notifyoutofstock</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <notifyoutofstock translate="title">
+			<title>Manage Notifyoutofstock</title>
+			<sort_order>0</sort_order>
+		  </notifyoutofstock>
+			  </children>
+			</notifyoutofstock>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<notifyoutofstock>
+		  <file>notifyoutofstock.xml</file>
+		</notifyoutofstock>
+	  </updates>
+	</layout>
+  </adminhtml>
+	<crontab>
+		<jobs>
+			<notifyoutofstock_notifyoutofstockemail>
+			<schedule><cron_expr>59 23 * * *</cron_expr></schedule>
+			<run><model>notifyoutofstock/cron::Notifyoutofstockemail</model></run>
+			</notifyoutofstock_notifyoutofstockemail>
+			<notifyoutofstock_notifyoutofstockdelete>
+			<schedule><cron_expr>0 0 * * *</cron_expr></schedule>
+			<run><model>notifyoutofstock/cron::Notifyoutofstockdelete</model></run>
+			</notifyoutofstock_notifyoutofstockdelete>
+		</jobs>
+	</crontab>
+</config>

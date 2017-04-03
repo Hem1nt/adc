@@ -1,0 +1,124 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="std more_details_area category_bottom_description_footer" id="category_bottom_description_footer">
+
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+  jQuery('.category-description.std.desc_area.bottom_desc').css('display', 'none');
+  jQuery('#category_bottom_description_footer').html(jQuery('#desc_area_content').html());
+});
+</script>
+
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/livechat.phtml')->toHtml();?>
+<div class="footer-container">    
+  <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/bookmark.phtml')->toHtml();?>
+  
+  <script type="text/javascript">
+//<![CDATA[
+var contactForm = new VarienForm('contactForm', true);
+//]]>   
+//});
+</script>
+
+<div class="footer">
+  <div class="padd-footer" style="padding:0 0 10px 104px;">
+    <div class="wrapper">
+      <div class="footer_links_area">
+        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('homepage/footer_msg.phtml')->toHtml();?>
+        <div class="footer-col"> 
+          <?php echo $this->getChildHtml('cms_footer_links') ?>
+        </div>
+        <div class="footer-col-1"> <?php echo $this->getChildHtml('footer_list_1') ?></div>
+        <div class="footer-col-2"> <?php echo $this->getChildHtml('footer_list_3') ?> </div>
+      </div>
+      <div class="footer-col-3"> <?php echo $this->getChildHtml('footer_list_2') ?> </div>
+      <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/ourpartner.phtml')->toHtml();?>
+      
+    </div>
+  </div>
+  <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/disclaimer.phtml')->toHtml();?>
+  
+  <div class="copyright_area">
+    <div class="copyright_area1">Copyright &copy; <?php echo date('Y'); ?> AllDayChemist. All Rights Reserved.</div>
+  </div>
+  <address>
+    Copyright  &copy; <?php echo date('Y')?> AllDayChemist.All Rights Reserved.
+  </address>
+</div>
+</div>
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/subscription.phtml')->toHtml();?>
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/fontwidget.phtml')->toHtml();?>
+
+<!-- <div style="position: fixed; right: 0px; top: 0px; z-index: 99"  class="bookMark_tag">
+  <a href="#inline2" class="freeship_msg various" id="limited_offer_hangging">
+    <img width="120px" src="<?php //echo $this->getSkinUrl('images/limited-offer.png'); ?>" />
+  </a>
+</div> -->
+<div style="position: fixed; right: 0px; top: 0px; z-index: 100" class="bookMark">
+	<a href="#" onclick="return add_favorite(this);">
+		<img width="120px" src="<?php echo $this->getSkinUrl('images/bookmark_add.png'); ?>" />
+	</a>
+</div>
+<!-- Crazy Egg Code Starts -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+	var b=document.getElementsByTagName("script")[0];
+	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/0693.js?"+Math.floor(new Date().getTime()/3600000);
+	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- Crazy Egg Code Ends -->
+<script type="text/javascript">
+function add_favorite( a ) { 
+	title = document.title; 
+	url = document.location; 
+	try { 
+// Internet Explorer 
+window.external.AddFavorite( url, title ); 
+} 
+catch (e) { 
+try { 
+  // Mozilla 
+  window.sidebar.addPanel( title, url, "" ); 
+} 
+catch (e) { 
+  // Opera 
+  if( typeof( opera ) == "object" ) { 
+  	a.rel = "sidebar"; 
+  	a.title = title; 
+  	a.url = url; 
+  	return true; 
+  } 
+  else { 
+    // Unknown 
+    alert( 'Press CTRL+D to add page to your bookmarks' ); 
+} 
+} 
+} 
+return false; 
+}
+</script>

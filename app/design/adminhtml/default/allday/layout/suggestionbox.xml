@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+  <suggestionbox_adminhtml_suggestionbox_index>
+	<reference name="content">
+	  <block type="suggestionbox/adminhtml_suggestionbox" name="suggestionbox" />
+	</reference>
+  </suggestionbox_adminhtml_suggestionbox_index>
+</layout>

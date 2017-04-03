@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Frontend>
+      <version>0.1.0</version>
+    </Iksula_Frontend>
+  </modules>
+  <frontend>
+    <routers>
+      <frontend>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Frontend</module>
+            <frontName>frontend</frontName>
+          </args>
+      </frontend>
+      <catalog>
+        <args>
+            <modules>
+                <Iksula_Frontend before="Mage_Catalog">Iksula_Frontend</Iksula_Frontend>
+            </modules>
+        </args>
+      </catalog>
+    </routers>
+		<layout>
+		  <updates>
+			<frontend>
+			  <file>frontend.xml</file>
+			</frontend>
+		  </updates>
+		</layout>
+     <events>
+      <catalog_product_collection_load_before>
+          <observers>
+              <iksula_frontend__catalog_product_collection_load_before>
+                  <type>singleton</type>
+                  <class>Iksula_Frontend_Model_Observer</class>
+                  <method>catalogProductCollectionLoadBefore</method>
+              </iksula_frontend__catalog_product_collection_load_before>
+          </observers>
+      </catalog_product_collection_load_before>
+      <!-- <sales_order_place_after>
+          <observers>
+            <sales_order_place_after_userafter>
+              <type>singleton</type>
+              <class>Iksula_Frontend_Model_Observer</class>
+              <method>changeUserGroup</method>
+            </sales_order_place_after_userafter>
+          </observers>
+      </sales_order_place_after> -->
+    </events>
+  </frontend>
+  <global>
+    <helpers>
+      <frontend>
+        <class>Iksula_Frontend_Helper</class>
+      </frontend>
+    </helpers>
+    <models>
+    <frontend>
+    <class>Iksula_Frontend_Model</class>
+    <!-- <resourceModel>frontend_mysql4</resourceModel> -->
+    </frontend>
+      <!-- <sales>
+        <rewrite>
+          <resource_quote>Iksula_Frontend_Model_Sales_Resource_Quote</resource_quote>
+        </rewrite>
+      </sales> -->
+  </models>
+  
+	<blocks>
+	  <frontend>
+		<class>Iksula_Frontend_Block</class>
+	  </frontend>
+	</blocks>
+  <template>
+      <email>
+          <order_dispensed translate="label" module="frontend">
+              <label>Order Dispensing</label>
+              <file>order_dispensed.html</file>
+              <type>html</type>
+          </order_dispensed>
+          <order_confirmation translate="label" module="frontend">
+              <label>Order Confirmation</label>
+              <file>order_confirmation.html</file>
+              <type>html</type>
+          </order_confirmation>
+          <order_payment_reminder translate="label" module="frontend">
+              <label>Order Payment Reminder</label>
+              <file>order_payment_reminder.html</file>
+              <type>html</type>
+          </order_payment_reminder>
+          <order_shipped_tracking translate="label" module="frontend">
+              <label>Order shipped Tracking</label>
+              <file>order_shipped_tracking.html</file>
+              <type>html</type>
+          </order_shipped_tracking>
+          <order_shipped translate="label" module="frontend">
+              <label>Order shipped</label>
+              <file>order_shipped.html</file>
+              <type>html</type>
+          </order_shipped>
+      </email>
+  </template>
+  </global>
+   <adminhtml>
+      <events>
+        <customer_save_after>
+          <observers>
+            <stockalert>
+              <type>singleton</type>
+              <class>Iksula_Frontend_Model_Observer</class>
+              <method>checkCustomerGroup</method>
+            </stockalert>
+          </observers>
+        </customer_save_after>
+      </events>
+   </adminhtml>
+</config> 

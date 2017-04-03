@@ -1,0 +1,227 @@
+<div class="pr-order-reminder">
+    <div class="reminder-img">
+        <img src="<?php echo $this->getSkinUrl('images/pr-reminder-icon.png') ?>" alt="" />
+    </div>
+
+<div class="reminder-container rcheckout_page">
+        <h2>Order Reminder</h2>
+    <div class="order-text"><p>We care for your good health.</p><p>Let us remind you for your next order.</p></div>
+        <?php
+        $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+        $customerEmail = ""; $custPhone = "";
+        if($customerLoggedIn)
+        {
+            $customerData = Mage::getSingleton('customer/session')->getCustomer();
+            $customerEmail = $customerData->getEmail();
+
+            $orderId = $this->getOrderId();
+            $orderOBject = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+            $telephoneno = $orderOBject->getBillingAddress()->getTelephone();
+        }
+
+
+        ?>
+
+    <form id="co-heared4us-form" action=""></form>
+    <form id="form_refill_reminder" action="<?php echo Mage::getUrl('',array('_secure'=>true)); ?>refillreminder/index/orderreminderpost" name="form_refill_remind" method="post">
+        <table class="pr-reminder-details">
+            <tr>
+                <td>
+                    <input type="hidden" name="txtproduct_id" id="txtproduct_id" value="<?php echo $this->getOrderId(); ?>" />
+                    <input class="input-text" type="hidden" name="txtmail" id="txtmail" value="<?php echo $customerEmail; ?>" />
+                    <input class="input-text" type="hidden" id="txtphone" name="txtphone" value="<?php echo $telephoneno; ?>" />
+                </td>
+                <!-- <td>Email</td>
+                <td><input class="input-text required-entry validate-email" type="text" name="txtmail" id="txtmail" value="<?php// echo $customerEmail; ?>" /> <input type="hidden" name="txtproduct_id" id="txtproduct_id" value="<?php// echo $this->getOrderId(); ?>" /></td> -->
+            </tr>
+            <!-- <tr>
+                <td>Telephone</td>
+                <td><input class="input-text required-entry validate-digits" id="txtphone" name="txtphone" value="<?php //echo $custPhone; ?>" /> </td>
+            </tr> -->
+            <tr>
+                <td>Remind Me In</td>
+                <td><select id="remind_count">
+                    <?php
+                    for($i=1; $i<=30; $i++) {
+                        echo '<option value="'.$i.'">'.$i.'</option>';
+                    }
+                    ?>
+                </select>
+                <select id="remind_type">
+                    <option value="d">Day(s)</option>
+                    <option value="m">Month(s)</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Enter the code</td>
+                <td>
+                    <img src="<?php echo Mage::getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' ><br/>
+                    <input id="3_letters_code" class="required-entry validate-captcha" name="3_letters_code" type="text"><br/>
+                    <small>Can't read the image? click <a class="refresh_captcha" href='javascript: refreshCaptcha();'>here</a> to refresh</small>
+                    <input type="hidden" id="check_me" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button>
+                </td>
+                <td>
+                    <div class="button-set">
+                        <div id="heared4us-buttons-container">
+                            <a href="<?php echo Mage::getUrl(); ?>"><button type="button" class="button form-button right" onclick="heared4us.save();"><span><span><?php echo $this->__('Skip') ?></span></span></button></a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><div class="failure_delivery"></div></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+</div>
+<script type="text/javascript">
+jQuery(window).load(function(){
+    refreshCaptcha();
+});
+var valReminder = new Validation('form_refill_reminder');
+jQuery("#form_refill_reminder").submit(function(){
+
+    if(valReminder.validate())
+    {
+        var url = jQuery(this).attr('action'), days;
+        var rType = jQuery("#remind_type").val();
+        if(rType=="d") {
+            days = jQuery("#remind_count").val();
+        }
+        else {
+            days = jQuery("#remind_count").val()*30;
+        }
+        //var values = jQuery(this).serialize();
+        // alert(jQuery("#txtproduct_id").val());
+        // alert(jQuery("#txtmail").val());
+        // alert(jQuery("#txtphone").val());
+        // alert(days);
+        var values = {'txtmail':jQuery("#txtmail").val(), 'txtproduct_id': jQuery("#txtproduct_id").val(), 'txtphone': jQuery("#txtphone").val(), 'remind_days': days};
+        //return false;
+        jQuery.ajax({
+            url: url,
+            type: "post",
+            data: values,
+            success: function(data){
+                // setTimeout(function(){heared4us.save(); jQuery("#heared4us-buttons-container").hide();},1000);
+                // jQuery( "div.success_delivery" ).replaceWith( '<div class="isuccess_delivery">Thank you, for your interest. You will be Notified by Email .</div>' );
+                window.location.href =  window.location.origin;
+            },
+            error:function(){
+                jQuery( "div.failure_delivery" ).replaceWith( '<div class="failure_delivery">Failure, Kindly Try Again. </div>' );
+                // alert("failure");
+            }
+        });
+        return false;
+    }
+});
+jQuery("#remind_count,#remind_type").click(function(){ CheckDays(); });
+
+function CheckDays() {
+    if(jQuery("#remind_count").val()>12) {
+        jQuery("#remind_type").val("d").attr('disabled', true).css('background','#eee');
+    } else {
+        jQuery("#remind_type").attr('disabled', false).css('background','#fff');
+    }
+}
+var form_refill_remind = new Validation('form_refill_remind');
+Validation.add('validate-captcha','Enter valid code',function(field_value){
+           if(jQuery("#check_me").val() != "")
+           {
+                var me = jQuery("#check_me").val().split("_");
+                if(me[1] == field_value)
+                {
+                    return true;
+                }
+                return false;
+           }
+            return false;
+        });
+        jQuery(window).load(function(){
+            jQuery("#cap_box").html('<input id="3_letters_code" class="required-entry validate-captcha" name="3_letters_code" type="text">');
+             RefreshCapcha();
+        });
+        function RefreshCapcha()
+        {
+             jQuery.post('<?php echo $this->getUrl()."captcha_code_file.php?code=".rand();?>', function(data){
+                if(data!="")
+                {
+                    jQuery("#check_me").val(data);
+                }
+            });
+        }
+        function refreshCaptcha()
+        {
+            var img = document.images['captchaimg'];
+            img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
+            setTimeout('RefreshCapcha()', 200);
+        }
+</script>
+<script type="text/javascript">
+//<![CDATA[
+
+var Heared4us = Class.create();
+Heared4us.prototype = {
+    initialize: function(form, saveUrl){
+        this.form = form;
+        if ($(this.form)) {
+            $(this.form).observe('submit', function(event){this.save();Event.stop(event);}.bind(this));
+        }
+        this.saveUrl = saveUrl;
+        this.onSave = this.nextStep.bindAsEventListener(this);
+        this.onComplete = this.resetLoadWaiting.bindAsEventListener(this);
+    },
+
+    save: function(){
+
+        var validator = new Validation(this.form);
+        if (validator.validate()) {
+
+            var request = new Ajax.Request(
+                this.saveUrl,
+                {
+                    method: 'post',
+                    onComplete: this.onComplete,
+                    onSuccess: this.onSave,
+                    onFailure: checkout.ajaxFailure.bind(checkout),
+                    parameters: Form.serialize(this.form)
+                }
+            );
+        }
+    }
+}
+
+var heared4us = new Heared4us('co-heared4us-form', '<?php echo $this->getUrl('checkout/onepage/saveHeared4us') ?>');
+
+//]]>
+</script>
+<style type="text/css">
+#form_refill_reminder table td {
+    padding: 5px
+}
+.rcheckout_page {
+    width: 100%
+}
+.button-set {
+    display: inline-block;
+    width: 100%
+}
+#heared4us-buttons-container {
+    display: inline-block;
+    float: right;
+}
+.refresh_captcha {
+    color: #819d01;
+}
+.refresh_captcha:hover {
+    color: #000;
+}
+</style>
+

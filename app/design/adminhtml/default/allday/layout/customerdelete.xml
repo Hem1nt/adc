@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+ 			<action method="addJs"><script>jquery-1.7.min.js</script></action>
+			<action method="addJs"><script>jquery-ui.js</script></action>
+			<action method="addCss"><style>jquery-ui.css</style></action>
+		</reference>
+	</default>
+  <customerdelete_adminhtml_customerdeletebackend_index>
+	<reference name="content">
+	  <block type="customerdelete/adminhtml_customerdeletebackend" name="customerdeletebackend" template="customerdelete/customerdeletebackend.phtml"/>
+	</reference>
+  </customerdelete_adminhtml_customerdeletebackend_index>
+
+  <customerdelete_adminhtml_customerdelete_index>
+	<reference name="content">
+	  <block type="customerdelete/adminhtml_customerdelete" name="customerdelete" />
+	</reference>
+  </customerdelete_adminhtml_customerdelete_index>
+
+   <customerdelete_adminhtml_customerdeletebackend_productwiseqty>
+	<reference name="content">
+	  <block type="customerdelete/adminhtml_customerdeletebackend" name="customerdeletebackend" template="customerdelete/reports.phtml"/>
+	</reference>
+  </customerdelete_adminhtml_customerdeletebackend_productwiseqty> 
+   <customerdelete_adminhtml_customerdeletebackend_reportstock>
+	<reference name="content">
+	  <block type="customerdelete/adminhtml_customerdeletebackend" name="customerdeletebackend" template="customerdelete/reports.phtml"/>
+	</reference>
+  </customerdelete_adminhtml_customerdeletebackend_reportstock> 
+
+   <customerdelete_adminhtml_customerdeletebackend_customerreport>
+	<reference name="content">
+	  <block type="customerdelete/adminhtml_customerdeletebackend" name="customerdeletebackend" template="customerdelete/reports.phtml"/>
+	</reference>
+  </customerdelete_adminhtml_customerdeletebackend_customerreport>
+
+</layout>

@@ -1,0 +1,109 @@
+/*
+ * Velan Info Services India Pvt Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://store.velanapps.com/License.txt
+ *
+  /***************************************
+ *         MAGENTO EDITION USAGE NOTICE *
+ * *************************************** */
+/* This package designed for Magento COMMUNITY edition
+ * Velan Info Services does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Velan Info Services does not provide extension support in case of
+ * incorrect edition usage.
+  /***************************************
+ *         DISCLAIMER   *
+ * *************************************** */
+/* Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future.
+ * ****************************************************
+ * @category   velanapps
+ * @package    Holiday Season Effects
+ * @author     Velan Team 
+ * @copyright  Copyright (c) 2012 - 2013 Velan Info Services India Pvt Ltd. (http://www.velanapps.com)
+ * @license    http://store.velanapps.com/License.txt
+ */
+
+@font-face {
+	font-family: 'wwflakesregular';
+	src:url('wwflakes-webfont.eot'),
+		url('wwflakes-webfont.eot?#iefix') format('embedded-opentype'),
+		url('wwflakes-webfont.woff') format('woff'),
+		url('wwflakes-webfont.ttf') format('truetype'),
+		url('wwflakes-webfont.svg#wwflakesregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+.fl{float:left;}
+.fr{float:right;}
+/*---------Snow Fall----------*/
+#HolidaySeasonEffects { font-family: wwflakesregular !important;}
+/*-------------Ball bouncing Header-------------*/
+#newYrBall {position: fixed;top: -280px;height:253px;width:117px;z-index:9997;}
+.newyrBallPositionLeft{left: 10px;}
+.newyrBallPositionRight{right: 10px;}
+.newyrBallImg1 {background:url(../images/new_yr1.png);}
+.newyrBallImg2 {background:url(../images/new_yr2.png);}
+.newYrBall1 {top:-50px !important;-moz-transition: all 1s ease-in-out;-webkit-transition: all 1s ease-in-out;-o-transition: all 1s ease-in-out;-ms-transition: all 1s ease-in-out;transition: all 1s ease-in-out;}
+.newYrBall2 {top:0px !important;-moz-transition: all 1s ease-in-out;-webkit-transition: all 1s ease-in-out;-o-transition: all 1s ease-in-out;-ms-transition: all 1s ease-in-out;transition: all 1s ease-in-out;}
+.newYrBall3 {top: -280px !important;-moz-transition: all 1s ease-in-out;-webkit-transition: all 1s ease-in-out;-o-transition: all 1s ease-in-out;-ms-transition: all 1s ease-in-out;transition: all 1s ease-in-out;}
+/*------------header decoration---------*/
+#serial{height:49px;width:100%;z-index: 9998;position: fixed;top: 0px;}
+.serialImgs1{background:url(../images/lights1.png) repeat;}
+.serialImgs2{background:url(../images/lights2.png) repeat;}
+.serialImgs3{background:url(../images/lights3.png) repeat;}
+.serialImgs4{background:url(../images/lights4.png) repeat;height:44px !important;}
+.serialImgs5{background:url(../images/lights5.png) repeat;height:97px !important;}
+.serialImgs6{background:url(../images/lights6.png) repeat;}
+.serialImgs8{background:url(../images/lights8.png) repeat;height:63px !important;}
+.serialImgs9{background:url(../images/lights9.png) repeat;}
+.serialImgs10{background:url(../images/lights10.png) repeat;height:79px !important;}
+.serialImgs11{background:url(../images/lights11.png) repeat;height:40px !important;}
+.serialImgs12{background:url(../images/lights12.png) repeat;height:38px !important;}
+/*---------Santa Claus---------*/
+#christmas_thatha_image {width: 300px;height:300px;position:fixed;z-index:9999;}
+#christmas_thatha_image img{max-width:100%;max-height:100%;}
+/*----------Snow Man and Xmas Tree---------*/
+.bottom_left{left:0;bottom:0;}
+.bottom_right{right:0;bottom:0;}
+#set_christmas_tree{position:fixed;z-index:9996;}
+#set_christmas_tree img{max-width:100%;max-height:100%;}
+#set_christmas_tree .close_it{cursor:pointer;float:right;background:gray;height:30px;width:30px;text-align:center;}
+#set_christmas_tree_content  {position: absolute;bottom: 0px;}
+/*footer decoration*/
+#footer_decoration{display:none;bottom:0;position:fixed;width:100%;left:0;z-index:9995;}
+.footerDecorationImgs1{background: url(../../images/footerdecoration1.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height:76px;}
+.footerDecorationImgs2{background: url(../images/footerdecoration2.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height:65px;}
+.footerDecorationImgs3{background: url(../../images/hse/lights3.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height:49px;}
+.footerDecorationImgs4{background: url(../images/footerdecoration4.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height:101px;}
+.footerDecorationImgs5{background: url(../images/footerdecoration5.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height:105px;}
+.footerDecorationImgs6{background: url(../images/footerdecoration6.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height:145px;}
+.footerDecorationImgs7{background: url(../images/footerdecoration7.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height:145px;background-size:100%;}
+.footerDecorationImgs8{background: url(../images/footerdecoration8.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height:170px;}
+
+#get-hse {background: url(../images/get_now.png);
+cursor: pointer;
+    height: 120px;
+    position: fixed;
+    right: 2px;
+    top: 80px;
+    width: 190px;
+    z-index: 9999;}
+#get-hse a {
+   color: #FFFFFF;
+    display: block;
+    font-size: 14px;
+    height: 80px;
+    margin-left: 8px;
+    padding: 14px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 5px;
+    width: 135px;
+}

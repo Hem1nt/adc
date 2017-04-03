@@ -1,0 +1,106 @@
+<?php $childpoint = Mage::getStoreConfig('rewardpoints/registration/referral_points_parent'); ?>
+<?php $parentpoint = Mage::getStoreConfig('rewardpoints/registration/referral_points'); ?>
+<?php $currency = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();?>
+<div class="referralcalculator">
+	<p class="works rheader">Try It Yourself!</p>
+	<p class="rmessage"><em>To see how much Kate could earn monthly, simply fill in your own numbers below.</em></p>
+	<div class="rfirst">
+		<p>
+			<strong>Ross's monthly order</strong>
+			<span>(Kate earns 5%):</span>
+		</p>
+		<p>
+			<?php echo $currency; ?>
+			<input type="text" class="firstlevel"  onkeypress="return isNumber(event)"/>
+		</p>
+	</div>
+	<div class="rsecond">
+		<p>
+			<strong>Ross's Friend's monthly order</strong>
+			<span>(Kate earns 2%):</span>
+		</p>
+		<p>
+			<?php echo $currency; ?>
+			<input type="text" class="secondlevel" />
+		</p>
+	</div>
+	<div class="finalearn">
+		<p>
+			Kate earns 
+			<strong class="finaloffer"></strong>
+		</p>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var parentpoint = "<?php echo $parentpoint; ?>";
+	var childpoint = "<?php echo $childpoint; ?>";
+	var currency = "<?php echo $currency; ?>";
+	jQuery(".firstlevel").keyup(function(){
+		var fvalue = jQuery(this).val();
+		var svalue = jQuery(".secondlevel").val();
+		var fpercent = (fvalue/100)*parentpoint;
+		var spercent = (svalue/100)*childpoint;
+		var percent = fpercent + spercent;
+		jQuery(".finaloffer").html(currency+(percent.toFixed(2)));
+		jQuery(".finalearn").show();
+
+	});
+
+	jQuery(".secondlevel").keyup(function(){
+		var svalue = jQuery(this).val();
+		var fvalue = jQuery(".firstlevel").val();
+		var spercent = (svalue/100)*childpoint;
+		var fpercent = (fvalue/100)*parentpoint;
+		var percent = fpercent + spercent;
+		jQuery(".finaloffer").html(currency+(percent.toFixed(2)));
+		jQuery(".finalearn").show();
+
+	});
+
+	function isNumber(evt) {
+		evt = (evt) ? evt : window.event;
+		var charCode = (evt.which) ? evt.which : evt.keyCode;
+		if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+			if(charCode == 46){
+                return true;
+            }
+            else{
+                return false;
+            }
+		}
+		return true;
+	}
+</script>
+<style>
+	.referralcalculator{
+		background-color: #D2DF7B;
+		width: 80%;
+		padding: 8px;
+		border: 3px solid #1F7C1B;
+		border-radius: 5px;
+		float: right;
+	}
+	.referralcalculator .rheader{color: #1F7C1B;}
+	.referralcalculator em{color: #4AA846;}
+	.referralcalculator span{color: #1E5F3B;}
+	.referralcalculator input {
+		width: 55%!important;
+		border: 2px solid #ccc;
+		border-radius: 5px;
+	}
+	.finalearn{
+		border-radius: 10px;
+		color: #271B1B;
+		font-size: 21px;
+		display: none;
+		line-height: 20px;
+	}
+	.finalearn p{margin-top: 16px;}
+	div.referral-content{float: left;width: 60%;text-align: justify;}
+	div.referral-image{float: right;width: 40%;}
+	.referral{width: 100%;}
+	.rmessage{line-height: 14px;}
+	.rfirst{line-height: 14px;}
+	.rsecond{line-height: 14px;}
+</style>

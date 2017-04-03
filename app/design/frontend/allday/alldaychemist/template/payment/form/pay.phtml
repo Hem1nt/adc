@@ -1,0 +1,31 @@
+<?php 
+$customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+$customerData = Mage::getSingleton('customer/session')->getCustomer();
+$CustomerName = "Customer";
+if($customerLoggedIn)
+{
+    $CustomerDataArr = $customerData->getData();
+    if($CustomerDataArr['firstname'] != "")
+    {
+        $CustomerName = $CustomerDataArr['firstname'];
+    }
+}
+?>
+<ul class="form-list" id="payment_form_<?php echo $this->getMethodCode(); ?>" style="display:none">
+    <li>
+        <p style="font-size: 16px;font-family:arial;">
+            Dear <?php echo ucfirst($CustomerName); ?>,<br/><br/>
+            Thank you for visiting our site <a href="<?php echo $this->getUrl(); ?>" style="">www.alldaychemist.com.</a><br/></p>
+            <p style="font-size: 16px;font-family:arial;">Please press <strong style="font-size:18px">continue</strong> button (given on the bottom of the page) to generate your order number. We will send you an invoice within a minute and you can make the payment using that invoice.</p>
+
+            <p style="font-size: 16px;font-family:arial;">Your card would be charged within 1 working day and you will get a confirmation email from our billing department accordingly.</p>
+
+            <p style="font-size: 16px;font-family:arial;">You can also place the order over the phone. Please give us a call between 6.00 am to 6.00 pm as per PST (Pacific Standard Time) at +1(855) 840-0584 to confirm your purchase.</p><br/>
+
+            <p style="font-size: 16px;font-family:arial;"><b>With warm regards,</b><br/>
+                <b>Alldaychemist Billing Department</b><br/>
+                <b>Tel: + 1(855) 840-0584</b><br/>
+            </p>
+        </li>
+    </ul>
+

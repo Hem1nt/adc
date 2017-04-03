@@ -1,0 +1,257 @@
+/*css by sb*/
+
+/*product page review*/
+.cashback-index-viewcashback .my-account .info {
+    font-size: 15px;
+    line-height: 27px;
+    color: #2f2f2f;
+    margin: 20px 0;
+}
+.catalog-product-view .pr-name-social-icons{
+	border-right: 0;
+}
+.catalog-product-view .review-count-pr{
+	width: 65%;
+}
+.catalog-product-view .review-count-pr .ratings .rating-links {
+   	font-size: 14px;
+}
+/*myaccount cashback coupon*/
+ li.cashback_offer a {
+    background: url(../images/coupon_cashback.jpg) 9px 3px no-repeat;
+    background-size: 32px;
+}
+
+.cashback-index-viewcashback .my-account .data-table {
+  width: 100%;
+  margin: 20px 0;
+   border: 0;
+   border-bottom: 1px solid #bebcb7;
+}
+.cashback-index-viewcashback .my-account .data-table thead th {
+    background: #000;
+    color: #fff;
+    border-right: 0;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 5px 15px;
+}
+.cashback-index-viewcashback .my-account .data-table td {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 0;
+}
+.cashback-index-viewcashback .my-account .data-table tr.tr_desc {
+    height: 50px;
+    padding: 12px 0;
+}
+.cashback-index-viewcashback .my-account .page-title {
+     background: url(../images/coupon_cashback.jpg) 9px 3px no-repeat;
+    background-size: 32px;
+    margin: 0;
+    border-bottom: 2px solid #666262;
+    overflow: visible;
+    height: 39px;
+}
+.cashback-index-viewcashback .my-account .page-title h1 {
+    margin-left: 50px;
+    height: 39px;
+    line-height: 39px;
+    background: #fff;
+    font-size: 22px;
+    color: #0a263c; 
+    font-size: 20px;
+    color: #0a263c;
+}
+.charge-name {
+	font-size: 17px !important ;
+	color: #ff0000 !important;
+	font-weight: 600 !important;
+}
+.a-charge-name {
+	font-size: 17px !important ;
+	color: #ff0000 !important;
+	font-weight: 600 !important;
+}
+
+/*onepage show coupon popup*/
+.opc-index-index .opc-wrapper-opc .discount-block input.button.apply-coupon{
+	margin: 5px 0 0!important;
+	padding: 0px 2% !important;
+}
+.opc-index-index .opc-wrapper-opc .discount-block input.button.show-coupon{
+	background: #F6770E;
+	font-size: 13px;
+	width: auto!important;
+	font-weight: normal;
+	text-transform: capitalize;
+	padding: 0px 2% !important;
+	float: right !important;
+	display: inline-block;
+	line-height: 31px !important;
+	height: auto !important;
+	border-bottom: 2px solid #8E4407;
+	color: #fff;
+	margin: 5px 0 0!important;		
+	cursor: pointer;
+}
+
+.opc-index-index .cashbackCoupon_overlay {
+	background-color: rgba(0, 0, 0, 0.6);
+	display: block;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10001;
+}
+.opc-index-index .cashbackCoupon {
+	box-sizing: border-box;
+	padding: 30px;
+	border-radius: 10px;
+	color: #404040;
+	display: block;
+	font-size: 16px;
+	left: 50%;
+	margin-left: -205px;
+	margin-top: -20px;
+	position: fixed;
+	text-align: left;
+	top: 40%;
+	width: 410px;
+	box-shadow: 0 3px 10px 1px rgba(0,0,0,0.2);
+	background-color: #fefefe;
+	font-weight: normal;
+	z-index: 10002;
+}
+.opc-index-index .cashbackCoupon .data-table tbody td {
+	border: 1px solid #C4C2C2 !important;
+	padding: 10px 8px;
+}
+
+.opc-index-index .cashbackCoupon td.ajaxCoupon span{
+	background: #f6770e;
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 400;
+	text-transform: capitalize;
+	padding: 3px 30px;
+	border-radius: 0px !important;
+	cursor: pointer;
+}
+
+.opc-index-index .cashbackCoupon td.ajaxCoupon:hover > span {
+	border-bottom: 2px solid #83410A;
+	transition: all 0.3s linear;
+    	-webkit-transition: all 0.3s linear;
+}
+
+@media only screen and (max-width: 840px){
+	.opc-index-index .opc-wrapper-opc .discount-block input.button.apply-coupon{
+		margin: 0 5px!important;
+		padding: 2px 2% !important;
+	}
+	.opc-index-index .opc-wrapper-opc .discount-block input.button.show-coupon{
+		margin: 0 5px!important;
+		float: left !important;
+		padding: 2px 2% !important;
+	}
+
+}
+@media only screen and (max-width: 736px){
+	.footer-payment-types span span#siteseal img {
+		display: none;
+	}
+	.footer-payment-types span.fpt1 {
+		width: 0;
+		height: 0;
+	}
+	.footer-payment-types span#siteseal {
+		width: 0;
+		height: 0;
+	}
+	.cart_table_wrap #shopping-cart-table1{
+		display: none;
+	}
+	.checkout-cart-index .cart_table_wrap.mid {
+	    margin: 0 !important;
+	}
+	.footer-payment-types {
+		margin-top: 0;
+	}
+}
+@media only screen and (max-width: 533px){
+	.footer-payment-types span.fpt1 {
+		width: 76px;
+    		height: 38px;
+	}
+	.footer-payment-types span#siteseal {
+		width: 76px;
+    		height: 38px;
+	}
+	.footer-payment-types span.fpt4.last {
+		display: none;
+	}
+	.footer-payment-types span.fpt2 {
+		vertical-align: top;
+	}
+	.footer-payment-types span.fpt3 {
+		vertical-align: top;
+	}
+	.opc-index-index .opc-wrapper-opc input#coupon_code {
+		width: 205px;
+	}
+	.opc-index-index .opc-wrapper-opc .discount-block .input-box {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.opc-index-index .opc-wrapper-opc .discount-block input.button.apply-coupon {
+		clear: both;
+		margin: 0!important;
+		padding: 2px 2% !important;
+	}
+
+}
+@media only screen and (max-width: 480px){
+	.catalog-product-view .review-count-pr{
+	    width: 100%;
+	}
+
+	.opc-index-index .cashbackCoupon {
+		font-size: 14px;
+		left: 5%;
+		margin-left: 0;
+		margin-top: 0;
+		top: 20%;
+		width: 90%;
+		padding: 15px;
+	}
+	.opc-index-index .cashbackCoupon td.ajaxCoupon span {
+		background: #f6770e;
+		color: #ffffff;
+		font-size: 15px;
+	}
+	.opc-index-index .cashbackCoupon .data-table thead{
+		display: none;
+	}
+	.opc-index-index .cashbackCoupon .data-table tbody td {
+	    display: block;
+	    position: relative;
+	    width: 100%;
+	}
+	.opc-index-index .cashbackCoupon .data-table tbody td:before{
+	    content: attr(data-attrset);
+	    display: inline-block;
+	    margin: 0 11px 0 0;
+	    width: 40%;
+	}	
+	/*.opc-messages {
+		font-size: 14px !important;
+		left: 5% !important ;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		top: 20% !important;
+		width: 90% !important;
+	}*/
+}

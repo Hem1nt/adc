@@ -1,0 +1,163 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+ 
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Checkout') ?></h1>
+</div>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+<ol class="opc" id="checkoutSteps">
+<?php //print_r($this->getSteps());exit;?>
+<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+    <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+        <div class="step-title">
+            <span class="number"><?php echo $i ?></span>
+            <h2><?php echo $_stepInfo['label'] ?></h2>
+            <a href="#"><?php echo $this->__('Edit') ?></a>
+        </div>
+        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
+            <?php echo $this->getChildHtml($_stepId) ?>
+        </div>
+    </li>
+<?php endforeach ?>
+</ol>
+<script type="text/javascript">
+
+//<![CDATA[
+    var accordion = new Accordion('checkoutSteps', '.step-title', true);
+    <?php if($this->getActiveStep()): ?>
+    accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+    <?php endif ?>
+    var checkout = new Checkout(accordion,{
+        progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+        review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+    );
+//]]>
+
+/*function SetCookie(cookieValue) 
+{	
+	 var today = new Date();
+	 var expire = new Date();
+	 var cookieName = "history";
+	 var nDays = 1;
+	 if (nDays==null || nDays==0) nDays=1;
+	 expire.setTime(today.getTime() + 3600000*24*nDays);
+	 document.cookie = cookieName+"="+escape(cookieValue)
+					 + ";expires="+expire.toGMTString();
+	// 
+	//alert(document.cookie);
+ 
+}*/
+    function submitform()
+	{
+	   var option="";
+	   
+		//alert('<?php echo $this->getUrl('medicalhistory/index/index') ?>');
+		//return;
+		var flag = 0;
+		var phy_name = jQuery('#phy_name').val();
+		
+		var phy_phone = document.getElementById("phy_phone").value;
+		var med_1 = document.getElementById("med_1").value;
+		var med_freq_1 = document.getElementById("med_freq_1").value;
+		var med_dur_1 = document.getElementById("med_dur_1").value;
+		var med_dur_alg = document.getElementById("med_dur_alg").value;
+		var option_text = jQuery('#option_text').val();
+		var pattern = /^(\+91-|\+91|0)?\d{10}$/;
+		//var j =0;
+		if(phy_name == "" )
+		{
+			flag = 1;
+			alert("Please Insert Physician's Name");
+			return;
+		}
+		else if(phy_phone == "")
+		{
+			flag = 1;
+			alert("Please Insert Physician's Phone Number");
+			return;
+		}
+		if(pattern.test(phy_phone))
+		{
+			flag = 0;
+		}
+		else{
+		    alert("Invalid Mobile Number.");
+			return;
+		}
+		if(med_1 == "")
+		{
+			flag = 1;
+			alert("Please insert product name");
+			return;
+		}
+		
+		if(flag == '0')
+		{
+			for(var i=1;i<=14;i++)
+			{
+			  var radios = document.getElementsByName("option_"+i);
+			  //alert(radios);
+			  for (var j = 0; j<=radios.length; j++) { 
+				if (radios[j].checked == true) {
+					  if(radios[j].value == '1')
+					  {
+						option=option+i+",";
+					  }
+					
+				}
+				break;
+			  }
+			}
+			
+			jQuery.ajax({
+					url: '<?php echo $this->getUrl('medicalhistory/index/index') ?>',
+					type: 'post',
+					data: "phy_name="+phy_name+"&phy_phone="+phy_phone+"&med_1="+med_1+"&med_freq_1="+med_freq_1+"&med_dur_1="+med_dur_1+"&med_dur_alg="+med_dur_alg+"&option_text="+option_text+"&option="+option,
+					success: function(output) {
+							  if(output == "success")
+							  {
+								 alert("Your data is inserted successfully..")
+								 jQuery("#medical_history").fancybox({
+										'type': 'iframe',
+										onComplete: function() { setTimeout("jQuery.fancybox.close();", 3000); }
+								 });
+							  }
+							  else
+							  { 
+							  }
+							  //return;
+					}
+				});
+		}
+		
+	}
+
+</script>

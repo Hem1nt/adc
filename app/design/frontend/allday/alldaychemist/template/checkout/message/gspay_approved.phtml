@@ -1,0 +1,35 @@
+<?php 
+
+$orderid =  Mage::getSingleton('core/session')->getcustomOrderid();
+$order = Mage::getModel('sales/order')->loadByIncrementId($orderid);
+Mage::getSingleton('core/session')->unsPaymentMethosUsed();
+Mage::getSingleton('core/session')->unscustomOrderid();
+$customer_name = $order->getCustomerName();
+?>
+<div class="paymentmessage">
+	<div class="thankyoutitle">
+		<h1>Thank You</h1>
+	</div>	
+	<div class="paymentstatustitle">
+		<h1>Payment Accepted</h1>
+	</div>
+</div>
+
+<p>ORDER NUMBER: <?php echo $orderid;?></p><br/>
+<p>Dear <?php echo $customer_name;?>,</p><br/>
+<p>Thank you for placing an order with us.</p><br/>
+<p>Your order is confirmed. Our charge normally appears as "Health Store” on your card statement. Please note that the information is submitted via SSL secured encrypted page and that there is no risk of fraud.</p><br/>
+<p>Since the charge originates from a foreign country, your bank may levy a negligible foreign transaction fee. This depends on the agreement between you and your bank and is retained by your bank. This transaction fee varies from 0.5% to 3.0% of the value and thus you may see a small separate charge on this purchase.</p><br/>
+</p>The shipment will go shortly and we will keep you updated. You can also check the status of your order by logging into your account by clicking on "My Account".</p><br/>
+</p>We appreciate your patience and also your patronage of our pharmacy.</p><br/>
+<br>
+<p>With warm regards</p>
+<br>
+<p>AllDayChemist Billing Department</p>
+<br>
+<p>Tel (US): +1-213-291-2588</p>
+<style type="text/css">
+.paymentmessage{text-align: left;margin-bottom: 20px;}
+.thankyoutitle h1{font-size: 56px !important;color:#4c6804;}
+.paymentstatustitle h1{font-size: 36px !important;color: #15317E;font-weight:bold;}
+</style>

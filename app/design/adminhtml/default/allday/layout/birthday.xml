@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <birthday_adminhtml_birthday_index>
+	<reference name="content">
+	  <block type="birthday/adminhtml_birthday" name="birthday" />
+	</reference>
+  </birthday_adminhtml_birthday_index>
+  <birthday_adminhtml_birthday_sendcoupon>
+	<reference name="content">
+	  <block type="core/template" name="sendCoupon" template="birthday/birthday.phtml"/>
+	</reference>
+  </birthday_adminhtml_birthday_sendcoupon>
+</layout>

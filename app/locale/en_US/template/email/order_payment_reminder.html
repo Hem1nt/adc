@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AllDayChemist</title>
+</head>
+
+<body style="margin:0;">
+<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="font-size:0; background-color:#fff9eb;">
+  <tr>
+    <td align="left" valign="top" style="padding:10px 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left"><a href="{{store url=''}}"><img src='{{skin url="images/order_payment_reminder_logo.jpg" _area="frontend" _package="allday" _theme="medicine"}}' width="202" alt="logo" style="display:block; border:none; font-size:14px;" /></a></td>
+            {{customVar code=emailer_contactus}}
+          </tr>
+        </table>
+    </td>
+  </tr> 
+<tr>
+    <td align="left" valign="top" style="padding:0 20px 10px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href='{{store url=""}}rewardpoints/index/referral/'>Refer A Friend</a></td>
+            <td align="left">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="center" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href='{{store url=""}}customer/account/'>Your Account</a></td>
+                  </tr>
+                </table>
+            </td>
+            <td align="right" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href='{{store url=""}}contacts'>Contact Us</a></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><a href="{{store url=''}}"><img src='{{skin url="images/order_payment_reminder_banner.jpg" _area="frontend" _package="allday" _theme="medicine"}}' width="600" alt="We’ve packed your order" style="display:block; border:none; font-size:14px;" /></a></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:20px 30px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#000000;"><strong>Dear {{htmlescape var=$order.getCustomerName()}},</strong>
+            </td>
+          </tr>
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#000000;"><strong>Order Number:{{var order.customer_order_increment_id}}</strong>
+            </td>
+          </tr>
+          {{if pay_link_counter}} 
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#000000; padding:20px 0 0;">You left this order unpaid. Still want it? <a style="color:#008ea3;" href="{{var link}}">Click here</a> to pay</td>
+          </tr>
+          {{else}}
+          <tr></tr>
+          {{/if}}
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" style="padding:0 30px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:20px; color:#000000; padding:0 0 20px 0;"><strong>Order Details</strong></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:0 30px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr style="background: #4f6b05;">
+            <td align="center" valign="middle" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#00000; padding:12px 20px; border-top:1px solid #a0a90b; border-bottom:1px solid #a0a90b;">Product Name</td>
+<td align="center" valign="middle" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#00000; padding:12px 10px; border-top:1px solid #a0a90b; border-bottom:1px solid #a0a90b;">Pack Size</td>
+ <td align="center" valign="middle" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#00000; padding:12px 10px; border-top:1px solid #a0a90b; border-bottom:1px solid #a0a90b;">Bonus(If any)</td>           
+<td align="center" valign="middle" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#00000; padding:12px 10px; border-top:1px solid #a0a90b; border-bottom:1px solid #a0a90b;">No. of Packs</td>
+            <td align="center" valign="middle" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#00000; padding:12px 5px; border-top:1px solid #a0a90b; border-bottom:1px solid #a0a90b;">Total Quantity</td>
+            <td align="center" valign="middle" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#00000; padding:12px 10px; border-top:1px solid #a0a90b; border-bottom:1px solid #a0a90b;">Sub Total</td>
+          </tr>
+          {{var item}}
+        </table>
+    </td>
+  </tr>
+  {{var shippingitem}}
+  <tr>
+    <td align="left" valign="top"></td>
+  </tr>
+  {{if pay_link_counter}}
+  <tr>
+    <td align="left" valign="top" style="padding:10px 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="right" valign="middle"><a style="padding:8px 25px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; font-weight:normal; display:inline-block; background-color:#4f6b05; text-decoration:none;" href="{{var link}}">Pay Now</a></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  {{else}}
+  <tr></tr>
+  {{/if}}
+<tr>
+            <td style="font-family:arial;  font-size:13px;  color:#000000; padding:0 0 0 30px; text-transform:uppercase;"><strong>Shipping Address</strong></td>
+          </tr>
+<tr>
+            <td style="font-family:arial;  font-size:12px;  color:#000000;  padding:0 0 0 30px;">
+{{var order.customer_firstname}} {{var order.customer_lastname}}<br/>
+                                {{var order.getShippingAddress().getStreetFull()}}<br/>
+                                {{var order.getShippingAddress().getCity()}},
+                                {{if order.getShippingAddress().getRegion()}}
+                                  {{var order.getShippingAddress().getRegion()}}, 
+                                {{/if}}
+                                {{var order.getShippingAddress().getPostcode()}}<br/>
+                                {{var order.getShippingAddress().getCountryModel().getName()}}
+          </td>
+          </tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+  <tr>
+    <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#000000; padding:20px 0 18px 30px;">Need help in deciding? Get in touch with our <a style="color:#4f6b05; text-decoration:none;" href='{{store url=""}}contacts'>Customer Support.</a></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:20px 0 18px 30px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#333333;"><strong>We hope to see you again soon!<br />
+    AllDayChemist</strong></td>
+  </tr>
+  <tr>
+<table width="600" border="0" cellspacing="0" cellpadding="0" style="font-size:10px;background-color: #fff9eb; " align="center">
+  <tbody>
+  <tr>
+    <td bgcolor="#fff9eb" style="padding:20px 20px; border-bottom:1px solid #dfdfdd;"><table width="566" border="0" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+        <td width="33"><a href="https://www.alldaychemist.com/refunds-and-returns/" style="cursor:pointer"><img src="https://www.alldaychemist.com/skin/adminhtml/default/default/images/refund.jpg" width="33" height="27" alt="" border="0" style="display:block;"></a></td>
+        <td width="174" style="font-family:arial;  font-size:12px; text-transform:uppercase; color:#464646; padding-left:3px;"><a href="" style="font-family:arial;  font-size:12px; text-transform:uppercase; color:#464646; text-decoration:none;">Refunds and Returns</a></td>
+        <td width="28"><a href="https://www.alldaychemist.com/cancellation-policy/" style="cursor:pointer"><img src="https://www.alldaychemist.com/skin/adminhtml/default/default/images/cancellation.jpg" width="27" height="27" alt="" border="0" style="display:block;"></a></td>
+        <td width="152" style="font-family:arial;  font-size:12px; text-transform:uppercase; color:#464646; padding-left:3px;"><a href="" style="font-family:arial;  font-size:12px; text-transform:uppercase; color:#464646; text-decoration:none;">Cancellation Policy</a></td>
+      </tr>
+    </tbody></table></td>
+  <tr>
+    <td bgcolor="#fff9eb" style="padding:0 21px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+        <td width="65%" align="left" style="padding:10px 0; border-right: 1px solid #464646"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td style="font-family:arial;  font-size:12px; text-transform:uppercase; color:#464646; padding-left:3px;">Protected By</td>
+            <td><img src="https://www.alldaychemist.com/skin/adminhtml/default/default/images/footer_links_email.jpg" width="267" height="24" alt="" border="0" style="display:block;"></td>
+          </tr>
+        </tbody></table></td>
+        <td width="35%" style="padding:10px 0 10px 3px; border-left: 1px solid #464646"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td style="font-family:arial;  font-size:12px; text-transform:uppercase; color:#464646; padding-left:3px;">Join us on</td>
+            <td><a href="https://www.facebook.com/alldaychemist2"><img src="https://www.alldaychemist.com/skin/adminhtml/default/default/images/email_facebook.jpg" width="30" height="30" alt="" border="0" style="display:block;"></a></td>
+            <td><a href="https://twitter.com/alldaychemist1"><img src="https://www.alldaychemist.com/skin/adminhtml/default/default/images/email_twitter.jpg" width="30" height="30" alt="" border="0" style="display:block;"></a></td>
+            <td align="center"><a href="http://www.pinterest.com/alldaychemist/"><img src="https://www.alldaychemist.com/skin/adminhtml/default/default/images/email_pinterest.jpg" width="30" height="30" alt="" border="0" style="display:block;"></a></td>
+          </tr>
+        </tbody></table></td>
+      </tr>
+    </tbody></table></td>
+  </tr>
+  <tr>
+    <td align="center" bgcolor="#464646" style="padding:10px; color:#c1c1bf; font-size:12px; font-family:Arial;">Copyright © 2016 AllDayChemist. All rights reserved. </td>
+  </tr>
+</tbody></table>
+</body></html>
+</table>
+</body>
+</html>

@@ -1,0 +1,63 @@
+Only in layout: authorizenet.xml
+Only in layout: base_catalog.xml
+Only in layout: bundle.xml
+Only in layout: captcha.xml
+Only in layout_allday/: catalog (copy).xml
+Only in layout: cataloginventory.xml
+Only in layout: catalog_msrp.xml
+Only in layout_allday/: catalogsale.xml
+Only in layout_allday/: catalogsearch (copy).xml
+Files layout/catalogsearch.xml and layout_allday/catalogsearch.xml differ
+Only in layout: centinel.xml
+Files layout/checkout.xml and layout_allday/checkout.xml differ
+Only in layout_allday/: cheetahmail.xml
+Only in layout_allday/: clnews.xml
+Only in layout: core.xml
+Files layout/customer.xml and layout_allday/customer.xml differ
+Files layout/directory.xml and layout_allday/directory.xml differ
+Files layout/downloadable.xml and layout_allday/downloadable.xml differ
+Only in layout_allday/: ecommerceteam-cloudzoom.xml
+Only in layout: googleanalytics.xml
+Only in layout: googlecheckout.xml
+Only in layout_allday/: hssocialmedia.xml
+Only in layout_allday/: importorder.xml
+Only in layout: iwd_opc.xml
+Only in layout_allday/: local_09-01-2014.xml
+Only in layout_allday/: local_20_12_13.xml
+Only in layout_allday/: local_.xml
+Files layout/local.xml and layout_allday/local.xml differ
+Only in layout: moneybookers.xml
+Only in layout_allday/: mw_affiliate.xml
+Only in layout_allday/: mw_credit.xml
+Files layout/newsletter.xml and layout_allday/newsletter.xml differ
+Files layout/oauth.xml and layout_allday/oauth.xml differ
+Only in layout: pagecache.xml
+Files layout/page.xml and layout_allday/page.xml differ
+Only in layout: payment.xml
+Only in layout: paypaluk.xml
+Files layout/paypal.xml and layout_allday/paypal.xml differ
+Only in layout: persistent.xml
+Files layout/poll.xml and layout_allday/poll.xml differ
+Only in layout: productalert.xml
+Files layout/reports.xml and layout_allday/reports.xml differ
+Files layout/review.xml and layout_allday/review.xml differ
+Only in layout_allday/: rewardpoints 29-1-2014.xml
+Only in layout_allday/: rewardpoints.xml
+Only in layout: rss.xml
+Files layout/sales/billing_agreement.xml and layout_allday/sales/billing_agreement.xml differ
+Files layout/sales/recurring_profile.xml and layout_allday/sales/recurring_profile.xml differ
+Files layout/sales.xml and layout_allday/sales.xml differ
+Only in layout_allday/: searchautocomplete.xml
+Files layout/sendfriend.xml and layout_allday/sendfriend.xml differ
+Only in layout: shipping.xml
+Only in layout_allday/: skipshippingmethods.xml
+Only in layout_allday/: suggestionbox.xml
+Files layout/tag.xml and layout_allday/tag.xml differ
+Only in layout_allday/: testimonial.xml
+Only in layout_allday/: trackorder.xml
+Only in layout_allday/: trustedcompany.xml
+Only in layout_allday/: vpager.xml
+Only in layout_allday/: webandpeople
+Only in layout: weee.xml
+Files layout/wishlist.xml and layout_allday/wishlist.xml differ
+Only in layout: xmlconnect.xml

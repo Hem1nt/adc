@@ -1,0 +1,7 @@
+<?php echo $this->getLayout()->createBlock("catalog/product_list")->setCategoryId(68)->setTemplate("catalog/product/list.phtml")->toHtml();?>
+
+<?php $id = $this->categorylist();
+$cat = explode(",",$id);
+foreach ($cat as $value) {
+ 	$categoryCollection = Mage::getModel("catalog/category")->load($value); ?>
+ <?php } ?>

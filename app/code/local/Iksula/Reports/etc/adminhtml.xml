@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <report>
+            <children>
+                <salesroot translate="title">
+                    <children>
+                        <iksula_reports translate="title">
+                            <title>Custom Reports</title>
+                            <action>adminhtml/iksula_reports</action>
+                            <sort_order>100</sort_order>
+                        </iksula_reports>
+                    </children>
+                </salesroot>
+            </children>
+        </report>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <iksula_reports>
+                                        <title>My Reports Section</title>
+                                    </iksula_reports>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <report>
+                        <children>
+                            <salesroot>
+                                <children>
+                                    <iksula_reports translate="title">
+                                        <title>Custom Reports</title>
+                                        <children>
+                                            <view translate="title">
+                                                <title>View</title>
+                                            </view>
+                                        </children>
+                                    </iksula_reports>
+                                </children>
+                            </salesroot>
+                        </children>
+                    </report>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Prescription>
+      <version>0.1.0</version>
+    </Iksula_Prescription>
+  </modules>
+  <frontend>
+    <routers>
+      <prescription>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Prescription</module>
+            <frontName>prescription</frontName>
+          </args>
+      </prescription>
+    </routers>
+		<layout>
+		  <updates>
+			<prescription>
+			  <file>prescription.xml</file>
+			</prescription>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+    <helpers>
+      <prescription>
+        <class>Iksula_Prescription_Helper</class>
+      </prescription>
+    </helpers>
+	<blocks>
+	  <prescription>
+		<class>Iksula_Prescription_Block</class>
+	  </prescription>
+	</blocks>
+	<models>
+	  <prescription>
+		<class>Iksula_Prescription_Model</class>
+		<resourceModel>prescription_mysql4</resourceModel>
+	  </prescription>
+	  <prescription_mysql4>
+		<class>Iksula_Prescription_Model_Mysql4</class>
+		<entities>		  
+			  <prescription>
+				<table>bulk_prescription</table>
+			  </prescription>
+        </entities>
+	  </prescription_mysql4>
+	</models>
+	<resources>
+	  <prescription_setup>
+		<setup>
+		  <module>Iksula_Prescription</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </prescription_setup>
+	  <prescription_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </prescription_write>
+	  <prescription_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </prescription_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <prescription>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Prescription</module>
+		  <frontName>admin_prescription</frontName>
+		</args>
+	  </prescription>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <prescription module="prescription">
+		<title>Prescription</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <prescriptionbackend module="prescription">
+			<title>View Prescription Details</title>
+			<sort_order>2</sort_order>
+			<action>admin_prescription/adminhtml_prescription</action>
+		  </prescriptionbackend>
+		  <prescription module="prescription">
+		    <title>Upload Prescription Order Id</title>
+			<sort_order>0</sort_order>
+			<action>admin_prescription/adminhtml_prescriptionbackend</action>
+		  </prescription>
+		  <bulk_prescription module="prescription">
+		    <title>Bulk Upload Prescription File</title>
+			<sort_order>1</sort_order>
+			<action>prescription/adminhtml_prescriptionbackend/bulkPrescripionImport</action>
+		  </bulk_prescription>
+		  <bulk_prescription_order module="prescription">
+		    <title>Bulk Upload Prescription File With Order Id</title>
+			<sort_order>1</sort_order>
+			<action>prescription/adminhtml_prescriptionbackend/bulkPrescripionOrderIdImport</action>
+		  </bulk_prescription_order>
+		</children>
+	  </prescription>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<prescription translate="title" module="prescription">
+			  <title>Prescription</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <prescriptionbackend translate="title">
+			<title>Prescription</title>
+		  </prescriptionbackend>
+		  <prescription translate="title">
+			<title>Manage Prescription</title>
+			<sort_order>0</sort_order>
+		  </prescription>
+		  <!-- <bulk_prescription_order translate="title">
+			<title>Manage Prescription</title>
+			<sort_order>0</sort_order>
+		  </bulk_prescription_order>
+		  <bulk_prescription translate="title">
+			<title>Manage Prescription</title>
+			<sort_order>0</sort_order>
+		  </bulk_prescription> -->
+			  </children>
+			</prescription>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<prescription>
+		  <file>prescription.xml</file>
+		</prescription>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

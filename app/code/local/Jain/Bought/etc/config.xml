@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Jain_Bought>
+            <version>0.1.0</version>
+        </Jain_Bought>
+    </modules>
+    <frontend>  
+		<routers>
+            <bought>
+                <use>standard</use>
+                <args>
+                    <module>Jain_Bought</module>
+                    <frontName>bought</frontName>
+                </args>
+            </bought>
+        </routers>     
+        <layout>
+            <updates>
+                <bought>
+                    <file>bought.xml</file>
+                </bought>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global> 
+		<models>
+            <bought>
+                <class>Jain_Bought_Model</class>
+            </bought>
+        </models>
+			
+		<blocks>
+            <bought>
+                <class>Jain_Bought_Block</class>
+            </bought>
+        </blocks>
+        <helpers>
+            <bought>
+                <class>Jain_Bought_Helper</class>
+            </bought>
+        </helpers>
+    </global>
+	
+	<default>
+        <catalog>
+            <bought>
+                <enable>1</enable>
+                <title>Customers who bought this product also purchased</title>
+				<product_detail_leftposition>0</product_detail_leftposition>
+				<product_detail_rightposition>1</product_detail_rightposition>
+				<products>5</products>
+            </bought>
+        </catalog>
+    </default>
+	
+</config>

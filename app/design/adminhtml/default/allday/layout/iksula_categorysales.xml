@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_iksula_categorysales_index>
+        <reference name="content">
+            <block type="iksula_categorysales/adminhtml_categorysales" template="report/grid/container.phtml" name="my_reports_report_grid_container">
+                <block type="iksula_categorysales/adminhtml_filter_form" name="grid.filter.form" />
+            </block>
+        </reference>
+    </adminhtml_iksula_categorysales_index>
+
+    <adminhtml_iksula_categorysales_view>
+        <reference name="content">
+            <block type="iksula_categorysales/adminhtml_categorysalesview" name="my_reportview_report_grid_container">
+            </block>
+            <block type="iksula_categorysales/adminhtml_categorysalescustomer" name="my_reportcustomer_report_grid_container">
+            </block>
+        </reference>
+    </adminhtml_iksula_categorysales_view>
+</layout>

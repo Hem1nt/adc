@@ -1,0 +1,186 @@
+<?php
+
+$title = $this->getTitle();
+
+$cart = Mage::getModel('checkout/cart')->getQuote();
+$current_product = Mage::registry('current_product');
+if($current_product) {
+    $productId = Mage::registry('current_product')->getId();
+    $producsku = $this->getProduct()->getSku();
+}
+else {
+  foreach ($cart->getAllItems() as $item) {
+    $productId = $item->getProduct()->getId();
+  }
+}
+/*if($productId==''){
+ $le = $this->getBoughtProducts();
+}
+else{
+  $le = $this->getBoughtProducts($productId);
+}*/
+$le = $this->getBoughtProducts($productId);
+
+$lecount=count($le);
+
+
+?>
+<?php if($this->getEnable()){ ?>
+<div class="block block-list block-compare bought-block-list">
+    <div class="block-title bought-block-title" style="background-color:#FFFFFF;">
+        <strong><span style="border-bottom:1px solid;"><?php echo $title; ?>
+            <?php if($lecount>0): ?>
+                <small><?php echo $this->__('(%d)', $lecount) ?></small>
+            <?php endif; ?></span></strong>
+       
+    </div>
+  <div class="block-content bought-block-content">
+    <?php if($lecount>0): ?>
+    <ol id="wishlist-sidebar" class="bxslider mini-products-list bought-block-content-sidebar">
+       <?php foreach ($le as $_index => $_item) {  ?>
+       <?php
+
+           $sku = explode('-',$_item->getSku());
+           $skuArr[]=$sku[0];
+           $newskuArr[]=$sku[0];
+         }
+         // $product_sku=array_pop($newskuArr,$producsku);
+         // $newArr = array_filter($newskuArr, $product_sku);
+         // print_r($newArr);
+        ?>
+
+        <?php
+        $productCount = 1;
+        $productModel = Mage::getModel('catalog/product');
+        $countAll = count(array_unique($skuArr));
+        echo "<li>";
+        if($productCount%5==1) {
+      }
+        foreach (array_unique($skuArr) as $unique_index => $unique_item) {  
+          //echo "##".$productCount."##";
+      if($unique_item!=$producsku):
+      if((int)$unique_item!=(int)$producsku){
+       $productCollection = $productModel->loadByAttribute('sku',$unique_item);
+ 
+      ?>
+
+      <div class="item">
+        <div class="product-image">
+          <a href="<?php echo $productCollection->getProductUrl() ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($productCollection, 'small_image')->resize(50); ?>" alt="<?php echo $this->htmlEscape($productCollection->getName()) ?>" width="50" height="50" />
+          </a>
+        </div>
+        <div class="product-details">
+         <?php 
+         $strength = $productCollection->getData('configurable_attribute');
+         $special_price = $productCollection->getData('special_price');
+         $us_brand_name = $productCollection->getData('us_brand_name');
+                    // print_r($_item->getData());?>
+        <a href="<?php echo $productCollection->getProductUrl() ?>"><b><?php echo $this->htmlEscape($productCollection->getName()).' '.$strength.'</b> <br/>'; ?></a>
+        <?php echo '(Equivalent to'.' '.trim($us_brand_name).')'?>
+        <span style="border-bottom:1px solid;">
+          <?php //echo $special_price;?>
+          <?php echo $this->getPriceHtml($productCollection); ?>
+
+        </span>
+        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+        <!--        <a href="<?php echo $this->getAddToWishlistUrl($productCollection) ?>" class="link-cart"><?php echo $this->__('Add to Wishlist') ?></a> -->
+        <?php endif; ?><?php //if($productCollection->isSaleable()): ?>
+        <div class="clear"  ></div>
+        <a href="<?php echo $this->getAddToCartUrl($productCollection) ?>" class="link-cart"><?php echo $this->__('View Details') ?></a>
+
+
+        <?php //endif; ?>
+                  </div>
+                </div>
+        <?php
+          if($productCount==$countAll) {
+            echo "</li>";
+          } elseif($productCount%5==0) {
+            // echo $productCount;
+            echo "</li><li>";
+          }
+
+        ?>
+        <?php   $productCount++; 
+      }
+    endif;
+        } 
+
+       
+          //echo "</li>";  
+            ?>
+    </ol>
+ 
+    <?php else: ?>
+    <div class="content"><p><?php echo $this->__('You have no items to bought.') ?></p></div>
+    <?php endif ?>
+    </div>
+</div>
+
+<?php } ?>
+<?php
+// print_r($skuArr); 
+?>
+<script type="text/javascript">
+jQuery('.bxslider').bxSlider({
+  minSlides: 2,
+  maxSlides: 2,
+  // slideWidth: 360,
+  slideMargin: 10,
+  pager: false,
+  infiniteLoop: false,
+  hideControlOnEnd: true,
+});
+</script>
+<style type="text/css">
+.bought-block-list{font-size: 12px;}
+.bought-block-content li {padding:0px;}
+.bought-block-content li .item{min-height: auto;padding:0px 0px 20px 0px;}
+.bought-block-content li .item .product-image{width:40px;}
+.bought-block-content li .item .price-box .price{font-size:14px;}
+/*.bx-viewport{height: 630px !important;}*/
+.bx-wrapper .bx-viewport {-moz-box-shadow: 0 0 0px #ccc; -webkit-box-shadow: 0 0 0px #ccc; box-shadow: 0 0 0px #ccc; border: solid #fff 0px; left: -5px; background: #fff; } 
+.bought-block-list .mini-products-list .product-details {
+margin-left: 53px;
+margin-top: -3px;
+}
+.bought-block-list .bx-controls{margin: 10px 0px 20px 0px;}
+.bought-block-list .block-title {
+padding: 0px ;
+background: none;
+border-radius: 0px;
+
+}
+.bought-block-list .block-title span{
+text-transform: uppercase;
+color: #333;
+font-size: 13px;
+font-weight: bold;
+padding: 7px 0;
+display: block;
+text-align: left;
+}
+
+.block .bought-block-content {background-color: #fff; }
+.checkout-cart-index .bx-wrapper .bx-controls-direction a {width: 30px; height: 30px; top: 100%; margin-top: 0px; right: 159px; }
+/*.bought-block-content li:last-child{display: none;}*/
+
+.bought-block-list .price-box{border-top: 1px solid #ccc; width: 155px; margin-top: 4px;margin-bottom: 10px; } 
+.bought-block-list .link-cart{
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9fb601',endColorstr='#809d01');
+background: #9fb601;
+background: -webkit-gradient(linear,left top,left bottom,from(#9fb601),to(#809d01));
+background: -moz-linear-gradient(top,#9fb601,#809d01);
+background: -o-linear-gradient(top,#9fb601,#809d01);
+background: -ms-linear-gradient(top,#9fb601,#809d01);
+border-bottom: 1px solid #5e7301;
+color:#fff;
+border-radius: 5px;
+font-size: 12px;
+font-family: arial;
+padding:5px 10px 5px 10px; 
+margin:10px 0px 0px 0px; 
+}
+/*.bought-block-list .item{width: 230px; }
+*/ </style>

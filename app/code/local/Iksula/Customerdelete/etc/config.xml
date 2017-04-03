@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Customerdelete>
+      <version>0.1.0</version>
+    </Iksula_Customerdelete>
+  </modules>
+  <frontend>
+    <routers>
+      <customerdelete>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Customerdelete</module>
+            <frontName>customerdelete</frontName>
+          </args>
+      </customerdelete>
+    </routers>
+		<layout>
+		  <updates>
+			<customerdelete>
+			  <file>customerdelete.xml</file>
+			</customerdelete>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+    <helpers>
+      <customerdelete>
+        <class>Iksula_Customerdelete_Helper</class>
+      </customerdelete>
+    </helpers>
+	<blocks>
+	  <customerdelete>
+		<class>Iksula_Customerdelete_Block</class>
+	  </customerdelete>
+	</blocks>
+	<models>
+	  <customerdelete>
+		<class>Iksula_Customerdelete_Model</class>
+		<resourceModel>customerdelete_mysql4</resourceModel>
+	  </customerdelete>
+	  <sales>
+	  	<rewrite>
+	  		<resource_quote>Iksula_Customerdelete_Model_Sales_Resource_Quote</resource_quote>
+	  	</rewrite>
+	  </sales>
+	  <customerdelete_mysql4>
+		<class>Iksula_Customerdelete_Model_Mysql4</class>
+		<entities>		  
+			  <customerdelete>
+				<table>duplicateentrytable</table>
+			  </customerdelete>
+        </entities>
+	  </customerdelete_mysql4>
+	</models>
+	<events>
+		<sales_order_place_after>
+			<observers>
+				<customerdelete_observer>
+					<type>singleton</type>
+					<class>Iksula_Customerdelete_Model_Observer</class>
+					<method>checkmoemailsend</method>
+				</customerdelete_observer>
+			</observers>
+		</sales_order_place_after>
+		<customer_logout>
+			<observers>
+				<customerdelete_echeck>
+					<type>singleton</type>
+					<class>Iksula_Customerdelete_Model_Observer</class>
+					<method>echeckids</method>
+				</customerdelete_echeck>
+			</observers>
+		</customer_logout>
+	</events>
+	<resources>
+	  <customerdelete_setup>
+		<setup>
+		  <module>Iksula_Customerdelete</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </customerdelete_setup>
+	  <customerdelete_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </customerdelete_write>
+	  <customerdelete_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </customerdelete_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <customerdelete>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Customerdelete</module>
+		  <frontName>customerdelete</frontName>
+		</args>
+	  </customerdelete>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <customerdelete module="customerdelete">
+		<title>Custom Modules</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <customerdeletebackend module="customerdelete">
+			<title>Ratio Calculator</title>
+			<sort_order>0</sort_order>
+			<action>customerdelete/adminhtml_customerdeletebackend</action>
+		  </customerdeletebackend>
+		  <productwiseqty module="customerdelete">
+				<title>Manage Reports</title>
+				<sort_order>1</sort_order>
+				<action>customerdelete/adminhtml_customerdeletebackend/productwiseqty</action>
+			</productwiseqty>
+<!-- 		  <customerdelete module="customerdelete">
+		    <title>Manage Customerdelete</title>
+			<sort_order>0</sort_order>
+			<action>customerdelete/adminhtml_customerdelete</action>
+		  </customerdelete> -->
+		  <callforoffers module="callforoffer">
+		  	<title>Manage Callforoffers</title>
+		  	<sort_order>0</sort_order>
+		  	<action>callforoffer/adminhtml_callforoffers</action>
+		  </callforoffers>
+
+		  <!-- <refillreminder module="refillreminder">
+		  	<title>Manage Refillreminder</title>
+		  	<sort_order>0</sort_order>
+		  	<action>refillreminder/adminhtml_refillreminder</action>
+		  </refillreminder> -->
+
+		    <medical module="medical">
+		    <title>Manage Medical History</title>
+			<sort_order>0</sort_order>
+			<action>medical/adminhtml_medical</action>
+		  </medical>
+
+		</children>
+	  </customerdelete>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<customerdelete translate="title" module="customerdelete">
+			  <title>Customerdelete</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <customerdeletebackend translate="title">
+			<title>Ratio Calculator</title>
+		  </customerdeletebackend>
+		 <!--  <customerdelete translate="title">
+			<title>Manage Customerdelete</title>
+			<sort_order>0</sort_order>
+		  </customerdelete> -->
+			  </children>
+			</customerdelete>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<customerdelete>
+		  <file>customerdelete.xml</file>
+		</customerdelete>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

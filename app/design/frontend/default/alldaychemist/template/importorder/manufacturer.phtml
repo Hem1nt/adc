@@ -1,0 +1,55 @@
+<?php 
+$product = Mage::getModel('catalog/product');
+      $attributes = Mage::getResourceModel('eav/entity_attribute_collection')
+                  ->setEntityTypeFilter($product->getResource()->getTypeId())
+                  ->addFieldToFilter('attribute_code', 'manufacturer');
+      $attribute = $attributes->getFirstItem()->setEntity($product->getResource());
+      $manufacturers = $attribute->getSource()->getAllOptions(false);
+     // echo "<pre>";
+	  //print_r($manufacturers);
+	  $label = "";  
+	  foreach ($manufacturers as $manufacturer){
+		  $label .= $manufacturer['label'];
+		  $label .=",";
+	  }
+	  
+	  $explode = explode(',',$label);
+	  $unique = array_unique($explode);
+	  
+	  //rint_r($unique);
+	  /*foreach($unique as $k=>$v) {
+		var_dump($kt=array_search($v,$unique));
+		if( ($kt=array_search($v,$unique))!==false and $k!=$kt )
+		 { 
+		 unset($unique[$kt]);  
+		 $duplicated[]=$v;
+		 echo 1;
+		  }
+		
+		}
+		*/
+			
+	foreach($unique as $k=>$v) {
+		for($i=0;$i<count($unique);$i++)
+		{
+			/*if(($v !== $unique[$i]) )
+			{
+				unset($unique[$i]);	
+			}	*/
+			
+			if(strcmp($v,$unique[$i])==0)
+			{
+				unset($unique[$i]);	
+			}
+		}
+	}
+
+?>
+<ul><?php foreach($unique as $manu_name){ 
+
+?>
+	<li>
+    <?php echo $manu_name; ?>
+    </li>
+	<?php } ?>
+</ul>

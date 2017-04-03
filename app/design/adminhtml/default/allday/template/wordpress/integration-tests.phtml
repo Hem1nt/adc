@@ -1,0 +1,79 @@
+<?php
+/**
+  *
+  *
+  */
+?>
+<?php $_session = Mage::getSingleton('admin/session') ?>
+<?php
+
+	try {
+		$hasValidAcl = $_session->isAllowed(
+			$_session->getData('acl')->get("admin/system/config/wordpress")->getResourceId()
+		);
+	}
+	catch (Exception $e) {
+		$hasValidAcl = false;
+	}
+
+?>
+<?php if ($this->getRequest()->getParam('section') == 'wordpress' && Mage::helper('wordpress')->isEnabled()): ?>
+	<div class="content-header">
+		<table cellspacing="0">
+			<tbody>
+				<tr>
+					<td>
+						<h3><?php echo $this->__('WordPress Integration') ?></h3>
+					</td>
+					<td class="form-buttons">
+						<button style="" onclick="configForm.submit()" class="scalable save" type="button" title="<?php echo $this->__('Save Config') ?>"><span><span><span><?php echo $this->__('Save Config') ?></span></span></span></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="fp-integration-test-results" style="margin-bottom:20px;">
+		<?php if (!$hasValidAcl): ?>
+			<div id="messages">
+				<ul class="messages">
+					<li class="warning-msg">
+						<ul>
+							<li>
+								<span><?php echo $this->__("To finish installing Fishpig's Magento WordPress integration extension, log out of Magento and log back in.") ?></span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		<?php else: ?>
+			<?php if ($errors = Mage::helper('wordpress/system')->getIntegrationTestResults()): ?>
+				<div class="grid">
+					<div class="hor-scroll">
+						<table cellspacing="0" class="data" style="border-left: 0px none;">
+							<colgroup>
+								<col width="30px" />
+								<col />
+								<col />
+							</colgroup>
+							<tbody>
+								<?php foreach($errors as $it => $error): ?>
+									<tr title="http://labs.fishpig.co.uk/index.php/hq/catalog_product/edit/id/170/key/f99eac9eb4923165fedfbe3f30743f81/" class="<?php if ($it%2===0): ?>odd<?php else: ?>even<?php endif; ?>">
+										<td class="a-center" style="border-color:<?php echo $error->getBgColour() ?>;background-color:<?php echo $error->getBgColour() ?>;">
+											<span>&nbsp;</span>
+										</td>
+										<td style="vertical-align: middle !important;">
+											<strong><?php echo $this->__($error->getTitle()) ?></strong>
+										</td>
+										<td style="vertical-align: middle !important;">
+											<span><?php echo $error->getMessage() ?></span>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			<?php endif; ?>
+		<?php endif; ?>
+	</div>
+<?php endif; ?>

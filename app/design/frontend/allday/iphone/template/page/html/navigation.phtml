@@ -1,0 +1,28 @@
+<nav id="menu">
+        
+    <ul>
+        <li><a class="Selected" href="<?php echo $this->getBaseUrl('');?>customer/account/login/">My Account </a></li>
+        <li><a href="<?php echo $this->getBaseUrl('');?>Article/">Article </a></li>
+        <li><a href="<?php echo $this->getBaseUrl('');?>wishlist">My Wishlist</a></li>
+        <li><a href="<?php echo $this->getBaseUrl('');?>checkout/cart">My Cart </a></li>
+        <li><a href="<?php echo $this->getBaseUrl('');?>checkout">Checkout </a></li>
+        <!-- <li><a href="http://www.alldaychemist.com/blog/" target="_blank">Blog </a></li> -->
+        <li><a href="<?php echo $this->getBaseUrl('');?>testimonial">Testimonial </a></li>
+        <?php $myStatus = Mage::getSingleton('customer/session')->isLoggedIn() ?>
+
+        <?php if($myStatus): ?>
+
+        <li><a href="<?php echo $this->getBaseUrl('');?>customer/account/logout">Logout</a></li>            
+<!--         <li><a href="/customer/account/index" title="Customer Register">My account</a> |</li>
+        <li><?php echo $this->getLayout()->getBlock('header')->getWelcome() ?></li>
+ -->
+        <?php else: ?>
+
+        <!-- <li><a href="/customer/account/index" title="Customer Register">My account</a></li> -->
+        <li><a href="<?php echo $this->getBaseUrl('');?>customer/account/create" title="Customer Register">Register</a></li>
+
+        <!-- <li><a href="<?php echo $this->getBaseUrl('');?>customer/account/create">Register</a></li>-->
+        <li><a href="<?php echo $this->getBaseUrl('');?>customer/account/login">Log In</a></li>
+        <?php endif ?>
+    </ul>
+</nav>

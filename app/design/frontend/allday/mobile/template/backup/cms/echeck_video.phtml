@@ -1,0 +1,45 @@
+<script type="text/javascript" src="http://www.alldaychemist.com/js/jwplayer/jwplayer.js"></script>
+<script type="text/javascript" src="http://www.alldaychemist.com/js/jwplayer/akamaihtml5-min.js"></script>
+<script type="text/javascript">jwplayer.key="Ne7JMR5Uhbmzy7oiriciRgMcswmWfAjHEvURvg==";</script>
+
+<div class="jwplayer_wrapper" style="float:left;padding-right: 20px;">
+    <div id="player">Loading the player...</div>
+    <script type="text/javascript">
+            //alert(navigator.userAgent);
+            if(navigator.userAgent.match(/(iPhone)|(iPod)|(android)|(webOS)/i))
+            {
+                jwplayer("player").setup({
+                    playlist: [{
+                            //file: 'http://adc-vh.akamaihd.net/i/FORZEST,,_1,_2,.mp4.csmil/master.m3u8',
+                            file: 'http://adc-vh.akamaihd.net/i/echeck_2.mp4/master.m3u8',
+                            provider: 'AkamaiAdvancedJWStreamProvider.swf',
+                            type:'mp4',
+                        }],
+                        logo: {
+                            file: '/assets/myLogo.png',
+                            link: 'http://www.alldaychemist.com'
+                        },
+                        width:360,
+                        height:240,
+                    });
+                    //console.log("if");
+                } 
+                else {
+                    jwplayer("player").setup({
+                        playlist: [{
+                            file: 'http://adc-vh.akamaihd.net/z/echeck,,_1,_2,.mp4.csmil/manifest.f4m',
+                            provider: 'http://players.edgesuite.net/flash/plugins/jw/v3.3/AkamaiAdvancedJWStreamProvider.swf',
+                            type:'mp4',
+                        }],
+                        width:360,
+                        height:240,
+                        primary: "flash",
+                        abouttext: "Alldaychemist.com",
+                        aboutlink: "http://www.alldaychemist.com",
+                    });
+                //console.log("else");
+            }
+
+            </script>
+        </div>
+

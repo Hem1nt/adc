@@ -1,0 +1,49 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #fff;
+}
+.reminder-container ul{
+	margin: 0px;
+	list-style: none;
+	padding: 0px;
+}
+label {
+	font-size: 12px;
+	font-family: arial
+}
+.page {
+	width: auto;
+	margin: 0px auto 0px;
+}
+
+.col1-layout .col-main {
+	padding: 0px;
+}
+
+
+input.input-text, textarea {
+padding: 3px 2px 4px 2px;
+width: 280px;
+}
+
+.fancybox-close {
+position: absolute;
+top: -18px;
+right: -18px;
+width: 19px;
+height: 19px;
+cursor: pointer;
+z-index: 8040;
+}
+
+.reminderdiv{
+border: 0px solid #586500;
+padding: 10px;
+border-bottom: 2px solid #586500;
+padding-bottom: 9px;
+padding-left: 20px;
+font-size: 18px;
+}
+#form_refill_reminder ul li{padding-left:10px;}
+

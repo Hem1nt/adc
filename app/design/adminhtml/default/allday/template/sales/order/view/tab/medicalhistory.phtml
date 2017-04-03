@@ -1,0 +1,125 @@
+<?php 
+	$order = $this->getOrder();
+	$physicianname = $order->getData('physicianname');
+	$physiciantelephone = $order->getData('physiciantelephone');
+	$drug_allergies = $order->getData('drug_allergies');
+	$current_medications = $order->getData('current_medications');
+	$current_treatments = $order->getData('current_treatments');
+	$smoke = $order->getData('smoke');
+	$drink = $order->getData('drink');
+	$pregnant = $order->getData('pregnant');
+	// print_r($order->getData());exit;
+	$prescription_link = $order->getData('order_prescription');
+	$mediaUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+?>
+<div class="box-right" style="float:left;width:100%">
+    <!--Account Information-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-account"><?php echo Mage::helper('sales')->__('Medical History') ?></h4>
+            <div class="tools"><?php echo $this->getAccountEditLink()?></div>
+        </div>
+        <div class="fieldset">
+            <div class="hor-scroll">
+                <table cellspacing="0" class="form-list">
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Primary Physicians Name') ?></label></td>
+                    <td class="value">
+                        <strong><?php echo $this->htmlEscape($physicianname) ?></strong>
+                   
+                    </td>
+                </tr>
+				<tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Physicians Telephone No') ?></label></td>
+                    <td class="value">
+                        <strong><?php echo $this->htmlEscape($physiciantelephone) ?></strong>
+                   
+                    </td>
+                </tr>
+				<tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Drug Allergies') ?></label></td>
+                    <td class="value">
+						<?php if($drug_allergies != ""){?>
+							<strong><?php echo $this->htmlEscape($drug_allergies) ?></strong>
+						<?php }else {?>
+							<strong><?php echo "-"; ?></strong>
+						<?php }?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Drug Allergies') ?></label></td>
+                    <td class="value">
+						<?php if($drug_allergies != ""){?>
+							<strong><?php echo $this->htmlEscape($drug_allergies) ?></strong>
+						<?php }else {?>
+							<strong><?php echo "-"; ?></strong>
+						<?php }?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Current Medications Allergies') ?></label></td>
+                    <td class="value">
+						<?php if($current_medications != ""){?>
+							<strong><?php echo $this->htmlEscape($current_medications) ?></strong>
+						<?php }else {?>
+							<strong><?php echo "-"; ?></strong>
+						<?php }?>
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Current Treatments') ?></label></td>
+                    <td class="value">
+						<?php if($current_treatments != ""){?>
+							<strong><?php echo $this->htmlEscape($current_treatments) ?></strong>
+						<?php }else {?>
+							<strong><?php echo "-"; ?></strong>
+						<?php }?>
+                    </td>
+                </tr> <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Smoke') ?></label></td>
+                    <td class="value">
+						<?php if($smoke != ""){?>
+							<strong><?php echo $this->htmlEscape($smoke) ?></strong>
+						<?php }else {?>
+							<strong><?php echo "-"; ?></strong>
+						<?php }?>
+                    </td>
+                </tr> 
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Drink') ?></label></td>
+                    <td class="value">
+						<?php if($drink != ""){?>
+							<strong><?php echo $this->htmlEscape($drink) ?></strong>
+						<?php }else {?>
+							<strong><?php echo "-"; ?></strong>
+						<?php }?>
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Pregnant') ?></label></td>
+                    <td class="value">
+						<?php if($pregnant != ""){?>
+							<strong><?php echo $this->htmlEscape($pregnant) ?></strong>
+						<?php }else {?>
+							<strong><?php echo "-"; ?></strong>
+						<?php }?>
+                    </td>
+                </tr>   
+
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Prescription Link');?></label></td>
+                    <td class="value">
+						<?php if($prescription_link != ""){?>
+							<!-- <strong><?php //echo $this->htmlEscape($prescription_link) ?></strong> -->
+							<a download href="<?php echo $mediaUrl.'/uploads/'.$prescription_link;?>">Download Prescription</a>
+						<?php }else {?>
+							<strong><?php echo "-"; ?></strong>
+						<?php }?>
+                    </td>
+                </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

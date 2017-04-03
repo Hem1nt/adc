@@ -1,0 +1,135 @@
+<?php
+
+$title = $this->getTitle();
+
+$cart = Mage::getModel('checkout/cart')->getQuote();
+$current_product = Mage::registry('current_product');
+if($current_product) {
+    $productId = Mage::registry('current_product')->getId();
+    $producsku = $this->getProduct()->getSku();
+}
+else {
+  foreach ($cart->getAllItems() as $item) {
+    $productId = $item->getProduct()->getId();
+  }
+}
+/*if($productId==''){
+ $le = $this->getBoughtProducts();
+}
+else{
+  $le = $this->getBoughtProducts($productId);
+}*/
+$le = $this->getBoughtProducts($productId);
+
+$lecount=count($le);
+
+
+?>
+<?php if($this->getEnable()){ ?>
+<div class="block block-list block-compare bought-block-list">
+    <div class="block-title bought-block-title" >
+        <strong><span ><?php echo $title; ?>
+            <?php if($lecount>0): ?>
+                <small><?php echo $this->__('(%d)', $lecount) ?></small>
+            <?php endif; ?></span></strong>
+       
+    </div>
+  <div class="block-content bought-block-content">
+    <?php if($lecount>0): ?>
+    <ol id="wishlist-sidebar" class="bxslider mini-products-list bought-block-content-sidebar">
+       <?php foreach ($le as $_index => $_item) {  ?>
+       <?php
+
+           $sku = explode('-',$_item->getSku());
+           $skuArr[]=$sku[0];
+           $newskuArr[]=$sku[0];
+         }
+         // $product_sku=array_pop($newskuArr,$producsku);
+         // $newArr = array_filter($newskuArr, $product_sku);
+         // print_r($newArr);
+        ?>
+
+        <?php
+        $productCount = 1;
+        $productModel = Mage::getModel('catalog/product');
+        $countAll = count(array_unique($skuArr));
+        echo "<li>";
+        if($productCount%4==1) {
+      }
+        foreach (array_unique($skuArr) as $unique_index => $unique_item) {  
+          //echo "##".$productCount."##";
+      if($unique_item!=$producsku):
+      if((int)$unique_item!=(int)$producsku){
+       $productCollection = $productModel->loadByAttribute('sku',$unique_item);
+ 
+      ?>
+
+      <div class="item">
+        <div class="product-image">
+          <a href="<?php echo $productCollection->getProductUrl() ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($productCollection, 'small_image')->resize(250); ?>" alt="<?php echo $this->htmlEscape($productCollection->getName()) ?>" />
+          </a>
+        </div>
+        <div class="product-details">
+         <?php 
+         $strength = $productCollection->getData('configurable_attribute');
+         $special_price = $productCollection->getData('special_price');
+         $us_brand_name = $productCollection->getData('us_brand_name');
+                    // print_r($_item->getData());?>
+        <a href="<?php echo $productCollection->getProductUrl() ?>"><b><?php echo $this->htmlEscape($productCollection->getName()).' '.$strength.'</b> <br/>'; ?></a>
+        <span class="equivalentSty">(<?php echo 'Equivalent to'.' '.trim($us_brand_name)?>)</span>
+        <span>
+          <?php //echo $special_price;?>
+          <?php echo $this->getPriceHtml($productCollection); ?>
+
+        </span>
+        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+        <!--        <a href="<?php echo $this->getAddToWishlistUrl($productCollection) ?>" class="link-cart"><?php echo $this->__('Add to Wishlist') ?></a> -->
+        <?php endif; ?><?php //if($productCollection->isSaleable()): ?>
+        <div class="clear"  ></div>
+        <a href="<?php echo $this->getAddToCartUrl($productCollection) ?>" class="link-cart"><?php echo $this->__('View Details') ?></a>
+
+
+        <?php //endif; ?>
+                  </div>
+                </div>
+        <?php
+          if($productCount==$countAll) {
+            echo "</li>";
+          } elseif($productCount%4==0) {
+            // echo $productCount;
+            echo "</li><li>";
+          }
+
+        ?>
+        <?php   $productCount++; 
+      }
+    endif;
+        } 
+
+       
+          //echo "</li>";  
+            ?>
+    </ol>
+ 
+    <?php else: ?>
+    <div class="content"><p><?php echo $this->__('You have no items to bought.') ?></p></div>
+    <?php endif ?>
+    </div>
+</div>
+
+<?php } ?>
+<?php
+// print_r($skuArr); 
+?>
+<script type="text/javascript">
+jQuery('.bxslider').bxSlider({
+  minSlides: 2,
+  maxSlides: 3,
+  // slideWidth: 360,
+  slideMargin: 10,
+  pager: false,
+  infiniteLoop: false,
+  hideControlOnEnd: true
+});
+</script>

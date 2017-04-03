@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <limitedsupply_adminhtml_limitedsupply_index>
+	<reference name="content">
+	  <block type="limitedsupply/adminhtml_limitedsupply" name="limitedsupply" />
+	</reference>
+  </limitedsupply_adminhtml_limitedsupply_index>
+</layout>

@@ -1,0 +1,14 @@
+<?php
+// echo 'Now:       '. date('Y-m-d H h:i:sa') ."\n";
+
+if(Mage::registry('current_product')) 
+{
+	$_product = Mage::registry('current_product');
+	// echo $_product->getId();
+	$_outofstockHelper = Mage::helper('notifyoutofstock');
+	if(!$_product->isSaleable()){
+  		 $_outofstockHelper->notifyOutofStock($_product);
+	}
+  // Product detail page
+}
+?>

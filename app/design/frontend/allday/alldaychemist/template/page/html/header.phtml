@@ -1,0 +1,152 @@
+<?php
+/**
+* Magento
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE_AFL.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade Magento to newer
+* versions in the future. If you wish to customize Magento for your
+* needs please refer to http://www.magentocommerce.com for more information.
+*
+* @category    design
+* @package     base_default
+* @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+* @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*/
+/**
+* @var Mage_Page_Block_Html_Header $this
+*/
+?>
+<!--script type="text/javascript">
+jQuery(document).ready(function(){
+jQuery(document).snowfall({deviceorientation : true, round : true, minSize: 5, maxSize:10});
+jQuery(".wrapper").snowfall({image :"<?php //echo $this->getSkinUrl('images/snow_flake.png') ?>", minSize: 10, maxSize:20});
+});
+</script-->
+
+<!-- Toll free details area -->
+<style>
+.header_toll_free_sec .contact {font-size: 14px;
+	font-weight: bold;}
+	</style>
+	<div class="header_toll_free_sec">
+<!--  <div class="adc_container">
+Toll Free Tel <span class="contact">+1(855) 840-0584</span> & International Tel <span class="contact">+1 (213) 291 2588, +1 (213) 814 1313</span>  &  Fax <span class="contact">+ 1(760) 284-5903</span> Calling Hours 9.00 AM to 5.00 PM (PST)
+</div> -->
+<div class="adc_container">
+	Toll Free Tel <span class="contact">+1(855) 840-0584</span> & International Tel <span class="contact">+1 (213) 814 1313</span>  &  Fax <span class="contact">+ 1(760) 284-5903</span> Calling Hours 6.00 AM to 6.00 PM (PST)
+</div>
+</div>
+<?php 
+
+// echo $this->getLayout()
+//     ->createBlock('core/template')
+//     ->setTemplate('page/html/socialwidget.phtml')
+//     ->toHtml();
+?>
+<!-- Header area -->
+
+<div class="adc_header">
+
+		<?php if ($this->getIsHomePage()):?>
+		<h1 style="float:left;"><a href="<?php echo Mage::getBaseUrl(); ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+	<?php else:?>
+		<h1 style="float:left;"><a href="<?php echo Mage::getBaseUrl() ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+	<?php endif?>
+
+
+	<div class="header"> 
+		<!--p class="welcome-msg"><?php //echo $this->getWelcome() ?> <?php //echo $this->getAdditionalHtml() ?></p-->
+		<div class="quick-access"> 
+			<?php echo $this->getChildHtml('currency') ?>
+			<?php echo $this->getChildHtml('store_language') ?>
+			<div class="clear"></div>
+			<!--div class="topmenuclass"></div-->
+			<?php echo $this->getChildHtml('topLinks') ?>
+			<!-- <div style="display:none;"> -->
+				<?php echo $this->getChildHtml('cart_header'); ?>
+			<!-- </div> -->
+			<!-- <div class="cart_bag  cart-icon <?php //echo $this->getInCart() ? 'active' : '' ?>">                 
+				<a href="<?php //echo $this->getUrl('checkout/cart'); ?>" class="emptycart" title="Cart">
+					<?php //$_cartItems = $this->helper('checkout/cart')->getSummaryCount(); ?>
+					<?php //echo $_cartItems > 0 ? '<span>'.$_cartItems.'</span>' : '0'; ?> Items
+				</a>
+				<span class="fleft">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+				<a href="<?php //echo $this->getBaseUrl();?>checkout/">Checkout</a>
+
+
+			</div>  -->     
+			<div class="clear"></div>
+			<?php echo $this->getChildHtml('topSearch') ?>
+			<div class="cart_bag_img  cart-icon"> 
+		<!-- 		<div style="position: absolute;left: 98%;width: 231px;background: #9fb701;color: #fff;border-radius: 5px;box-shadow: 0;padding: 5px;text-align: left;font-size: 12px;line-height: 14px;word-break: break-all;bottom: -10px;border: 1px solid #999;">
+					<span>
+						<div style="font-weight: bold;padding: 6px 0 7px;font-weight: bold;font-size: 13px;">Terms & Conditions</div>
+							<ul style="padding-left:17px;">
+								<li style="padding-left: 0;list-style: disc;"> 5% OFF on minimum purchase of $100</li>
+								<li style="padding-left: 0;list-style: disc;"> One time use and for registered users only</li>
+								<li style="padding-left: 0;list-style: disc;"> Valid till 14th August</li>
+							</ul>
+					</span>
+				</div>   -->      
+				<a href="#inline1" class="freeship_msg various" id="free_shipping"> 
+					<!-- <img src="<?php //echo $this->getSkinUrl().'images/ADC-Womens-day-website-small-banner.png'?>" /> -->
+				</a>
+				<!-- <a class="fraudulent-alert" href="<?php //echo $this->getBaseUrl().''?>" > -->
+					<!-- <img src="<?php //echo $this->getSkinUrl().'images/advisory3.png'?>" />    -->
+					<div class="popup_class_area">	
+						<img class="fraudulent-alert popup_class_area" src="<?php echo $this->getSkinUrl().'images/new-look-button.gif'?>" />
+					</div>   
+				<!-- </a> -->
+				<a href="<?php echo $this->getBaseUrl().'contacts?callback=1'?>" ><img src="<?php echo $this->getSkinUrl().'images/request_a_call1.png'?>" />   
+				</a>
+			</div>
+			<!--     <div id="inline1" style="display:none">
+			Women's Day Special <b>DISCOUNT OFFER</b><br/><br/>
+			<b>10% OFF*</b> on all Women's Health and Beauty Products!<br/><br/>
+			<span style="color:red">*Terms and Conditions</span><br/>
+			<ul>
+			<li>• Minimum cart amount - 100$ (including shipping)</li>
+			<li>• BEAUTIFUL10 code is case sensitive</li>
+			<li>• Valid from 6th March till 20th March 2014 </li>
+			<li>• Only logged in users can use the coupon</li>
+			<li>• One time use</li>
+			</ul>
+			</div>  -->
+			<!-- <div id="inline2" style="display:none;text-align:center;">
+			Free Shipping on all Orders<br/>
+			Pay By Echeck or Online Bank Transfer</br/>
+			*Minimum Order value US$100.<br/>
+
+			</div> -->
+			<script type="text/javascript">
+			jQuery(document).ready(function(){
+			// jQuery("#free_shipping").fancybox();
+			// jQuery("#limited_offer_hangging").fancybox();
+			});
+			</script>
+
+			</div>
+
+
+	</div>
+			<!-- Social Media Links Bar | END -->
+	<div class="clear"></div>
+	<?php //echo $this->getChildHtml('home_counter') ?>
+	<?php echo $this->getChildHtml('topContainer'); ?>
+</div>
+<?php echo $this->getChildHtml('head_link_wrap'); ?>
+<?php echo $this->getChildHtml('topMenu') ?>  
+<?php echo $this->getChildHtml('slider_1') ?>
+<?php // echo $this->getChildHtml('banner_block') ?>
+<div class="clear"></div>

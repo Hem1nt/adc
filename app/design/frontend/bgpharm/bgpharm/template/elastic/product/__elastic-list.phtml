@@ -1,0 +1,123 @@
+<?php /*?>
+<div class="cms-subcategory-area">
+    <ul>
+        <li>
+            <a href="<?php echo $this->getBaseUrl(); ?>" class="home-search">
+                <div class="circle">&nbsp;</div>
+                Home
+            </a>
+        </li>
+
+    </ul>
+</div>
+<?php */?>
+<?php
+$whiteSpace         = ' ';
+$pattern            = '/[^a-zA-Z0-9'  . $whiteSpace . ']/u';
+$queryParam         = Mage::app()->getRequest()->getParam('q');
+$queryParam         = preg_replace($pattern, '', (string) $queryParam);
+$queryParam         = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $queryParam);
+$_productCollection = $this->getLoadedProductCollection();
+$_helper            = $this->helper('catalog/output');
+$_collectionSize    = $_productCollection->count();
+?>
+
+<div class="one_category" id="category0">
+
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+    <div class="category_head page-title search-title">
+        <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '<b>%s</b>'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+    </div>
+
+    <?php if($messages = $this->getNoteMessages()): ?>
+
+        <p class="note-msg">
+            <?php foreach ($messages as $message):?>
+                <?php echo $message?><br />
+            <?php endforeach;?>
+        </p>
+
+    <?php endif; ?>
+
+    <?php //$searchString = $this->helper('explore')->checkAndReturnSearchString(); ?>
+    <?php //$helper = Mage::helper('smsapp');?>
+
+
+    <?php if(!$_productCollection->count()): ?>
+
+        <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+
+    <?php else: ?>
+
+        <div class="category-products">
+
+            <ul class="products-grid" id="<?php echo 'container' . $_categoryId; ?>">
+
+                <?php $i=0; foreach ($_productCollection as $product): $i++; ?>
+
+                    <?php $_product  = Mage::getModel('catalog/product')->load($product->getId()); ?>
+                    <?php //$parentUrl  = $helper->getParentUrl($_product);?>
+                    <li class="item<?php if($i % 3 == 2): echo ' middle'; endif; ?>" id="product_id_<?php echo $_product->getId(); ?>">
+
+                        <a class="search_product_list" href="<?php echo $_product->getProductUrl();?>">
+                            <div class="product-image" id="<?php echo 'product_' . $_product->getId(); ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'thumbnail'), null, true) ?>">
+                                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(TRUE)->resize(300,400); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" onmouseover="this.src='<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(TRUE)->resize(300,400) ?>';" onmouseout="this.src='<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(TRUE)->resize(300,400) ?>';" >
+                            </div>
+
+                            <h2 class="product-name">
+                                <?php
+                                $productname = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                                echo substr($productname,0,36); if(strlen($productname) > 36) echo '...'; ?>
+                            </h2>
+                            <?php $SearchPrice =  Mage::helper('core')->currency($_product->getFinalPrice(),true,false);?>
+                            <div class="search_price"><?php echo $SearchPrice?></div>
+                            <?php //echo $this->getPriceHtml($_product, true) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="all_loadmore">
+                <div class="ias_trigger"><a>Load more items</a></div>
+                <div class="search_end" style="display:none">No More products matching to your search</div>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    var url = '<?php echo Mage::getBaseUrl();?>' + 'elastic/search/loadmore';
+    var count = 1;
+    var index = 0;
+    var query = '<?php echo $queryParam;?>';
+
+    $('.ias_trigger').live('click',function(){
+        if(count == 1){
+            index = 10;
+        }
+        else{
+            index = index + 10;
+        }
+
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:{'count':count,'index':index,'query':query},
+            success:function(prodhtml){
+                count = count + 1;
+                var lastindex = $(prodhtml + 'li:last-child').index();
+                $( "li.item" ).last().after(prodhtml);
+                if(lastindex < 9){
+                    $('.ias_trigger').hide();
+                    $('.search_end').show();
+                }
+
+            },
+            error:function(e){
+
+            }
+        });
+    });
+});
+</script>

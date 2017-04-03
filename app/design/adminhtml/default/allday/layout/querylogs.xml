@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <querylogs_adminhtml_information_index>
+	<reference name="content">
+	  <block type="querylogs/adminhtml_information" name="information" />
+	</reference>
+  </querylogs_adminhtml_information_index>
+</layout>

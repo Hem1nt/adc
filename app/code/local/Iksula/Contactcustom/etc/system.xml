@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<config>
+  <tabs>
+        <combooffer translate="label">
+            <label>Combooffer Configuration</label>
+            <sort_order>0</sort_order>
+        </combooffer>
+  </tabs>
+  	<sections>
+        <custom_offer>
+	        <label>Combooffer Configuration</label>
+	        <tab>combooffer</tab>
+	         <sort_order>400</sort_order>
+	        <frontend_type>text</frontend_type>
+	        <show_in_default>1</show_in_default>
+	        <show_in_website>1</show_in_website>
+	        <show_in_store>1</show_in_store>
+	                    <groups>
+	                      <custom_code translate="label">
+	                          <label>Combooffer Configuration</label>
+	                          <frontend_type>text</frontend_type>
+	                          <sort_order>0</sort_order>
+	                          <show_in_default>1</show_in_default>
+	                          <show_in_website>1</show_in_website>
+	                          <show_in_store>1</show_in_store>
+	                          <fields>
+	                              <offer translate="label">
+	                                  <label>Enter Product ID</label>
+	                                  <comment>Please Enter ProductId</comment>
+	                                  <frontend_type>text</frontend_type>
+	                                  <sort_order>50</sort_order>
+	                                  <show_in_default>1</show_in_default>
+	                                  <show_in_website>1</show_in_website>
+	                                  <show_in_store>1</show_in_store>
+	                              </offer>
+	                              <optionId1 translate="label">
+	                                  <label>Enter First Product Option ID</label>
+	                                  <frontend_type>text</frontend_type>
+	                                  <sort_order>60</sort_order>
+	                                  <show_in_default>1</show_in_default>
+	                                  <show_in_website>1</show_in_website>
+	                                  <show_in_store>1</show_in_store>
+	                              </optionId1>
+	                              <optionValue1 translate="label">
+	                                  <label>Enter First Product Option Value</label>
+	                                  <frontend_type>text</frontend_type>
+	                                  <sort_order>70</sort_order>
+	                                  <show_in_default>1</show_in_default>
+	                                  <show_in_website>1</show_in_website>
+	                                  <show_in_store>1</show_in_store>
+	                              </optionValue1>
+	                              <optionId2 translate="label">
+	                                  <label>Enter Second Product Option ID</label>
+	                                  <frontend_type>text</frontend_type>
+	                                  <sort_order>80</sort_order>
+	                                  <show_in_default>1</show_in_default>
+	                                  <show_in_website>1</show_in_website>
+	                                  <show_in_store>1</show_in_store>
+	                              </optionId2>
+	                              <optionValue2 translate="label">
+	                                  <label>Enter Second Product Option Value</label>
+	                                  <frontend_type>text</frontend_type>
+	                                  <sort_order>90</sort_order>
+	                                  <show_in_default>1</show_in_default>
+	                                  <show_in_website>1</show_in_website>
+	                                  <show_in_store>1</show_in_store>
+	                              </optionValue2>
+	                          </fields>
+	                      </custom_code>
+	                    </groups>
+        </custom_offer>
+    </sections>
+</config>                        

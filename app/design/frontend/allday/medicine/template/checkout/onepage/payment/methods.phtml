@@ -1,0 +1,254 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * One page checkout payment methods
+ *
+ * @var $this Mage_Checkout_Block_Onepage_Payment_Methods
+ */
+?>
+<!-- <div style="margin-bottom: 30px;">
+    <p style="font-size: 14px;color: #f00;font-weight: bold;">
+        Please note that the due to some technical problem, our payment processing bank is currently down. We are trying hard to fix it but it may take few days of time. You are requested to please pay by eCheck (For USA customers only) or Money order or Wire Transfer.
+    </p>
+    <p style="font-size: 14px;color: #f00;font-weight: bold;">
+        For non USA customers - Please choose Epayworx as a payment option and we will contact you by email.
+    </p>
+</div> -->
+
+<?php
+    $methods = $this->getMethods();
+    // print_r($methods);
+    $oneMethod = count($methods) <= 1;
+    $selectedPayment = 'checkmo';
+    $usCustomerMessage = Mage::getStoreConfig('custom_shipping/general/us_customer');
+    $nonUsCustomerMessage = Mage::getStoreConfig('custom_shipping/general/non_us_customer');
+    $otherOfferMsg = Mage::getStoreConfig('custom_shipping/general/other_offer_msg');
+    $quote = Mage::getSingleton('checkout/session')->getQuote();
+    $billingCountry = $quote->getBillingAddress()->getCountry();
+    foreach ($methods as $_method){
+        $paymentMethods[] = $_method->getCode();
+    }
+    if($billingCountry!='US'){
+        $selectedPayment = 'pay';
+        
+        if(in_array('otherpayments',$paymentMethods)){
+            $selectedPayment = 'otherpayments';
+        }
+    }
+    
+?>
+<?php if(!$oneMethod): ?>
+    <h3><?php echo $this->__('Payment Method')?></h3>    
+    <?php
+        $customer = Mage::getSingleton('customer/session')->getCustomer(); 
+        $email =$customer->getEmail();
+        $customerSuccess = Mage::helper('frontend/order')->getCustomersOrdersCount($email);
+        if($customerSuccess==0 ){
+    ?>
+    <?php if($billingCountry == 'US'){ ?>
+        <div class="checkout_note">
+            <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
+            <div class="text_2"><?php echo $usCustomerMessage;?></div>
+            <div class="red_note">*OFFER VALID FOR LIMITED PERIOD</div>
+        </div>
+    <?php }else{ ?>
+            <div class="checkout_note">
+            <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
+            <div class="text_2"><?php echo $nonUsCustomerMessage;?></div>
+            <div class="red_note">*OFFER VALID FOR LIMITED PERIOD</div>
+        </div>
+    <?php } ?>
+    <?php } else{?>
+            <div class="checkout_note">
+            <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
+            <div class="text_2"><?php echo $otherOfferMsg;?></div>
+            <div class="red_note">*OFFER VALID FOR LIMITED PERIOD</div>
+            </div>
+        <?php }?>
+   
+<?php endif;?>
+
+        
+<?php if(!in_array('pay',$paymentMethods)):?>
+
+<?php endif;?>
+
+<?php if (empty($methods)): ?>
+    <dt class="no-payment-available">
+       <h1> <?php echo $this->__('No Payment Methods Available !!!') ?></h1>
+    </dt>
+<?php else: ?>
+    <div class="select_method">
+        Select Payment Method
+    </div>
+ <div class="payment_tabs">
+<?php  foreach ($methods as $_method):
+        $_code = $_method->getCode();
+        $var = "pay_method_".$_code.".jpg";
+        $baseOriginalMethod = $this->getSelectedMethodCode();
+         // $baseOriginalMethod = '';
+        if($billingCountry!='US'){
+            $baseOriginalMethod = 'pay';
+            
+            if(in_array('checkmo',$paymentMethods)){
+                $baseOriginalMethod = 'checkmo';
+            }
+
+            if(in_array('otherpayments',$paymentMethods)){
+                $baseOriginalMethod = 'otherpayments';
+            }
+
+
+        }
+        
+        if(in_array('echeckapi',$paymentMethods)){
+            $baseOriginalMethod = 'echeckapi';
+        }
+        if(in_array('echeckpayment',$paymentMethods)){
+            $baseOriginalMethod = 'echeckpayment';
+        }
+?>
+    <dt>
+    <?php if(!$oneMethod): ?>
+        <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->escapeHtml($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($baseOriginalMethod==$_code || $selectedPayment==$_code ): ?> checked="checked"<?php endif; ?> class="radio" />
+         <img src="<?php echo $this->getSkinUrl('images/'.$var) ?>" alt="<?php echo $this->htmlEscape($_method->getTitle()) ?>" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" class="v-middle" style="width:121px;height:33px"/>
+    <?php else: ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <?php $oneMethod = $_code; ?>
+    <?php endif; ?>
+        <label for="p_method_<?php echo $_code ?>"class="<?php if($baseOriginalMethod==$_code || $selectedPayment==$_code): ?>selected<?php endif; ?> label_<?php echo $_code ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+    </dt>
+<?php endforeach; ?>
+</div>
+
+ <div class="payment_tabs_mobile">
+    <span class="title">Select Payment Method</span>
+    <span class="label_text"></span>
+    <span class="right_arrow"></span>
+ </div>
+ <div class="dropdown">
+<?php  foreach ($methods as $_method):
+        $_code = $_method->getCode();
+        $var = "pay_method_".$_code.".jpg";
+        
+        $baseOriginalMethod = '';
+        if($billingCountry!='US'){
+            $baseOriginalMethod = 'pay';
+            if(in_array('otherpayments',$paymentMethods)){
+                $baseOriginalMethod = 'otherpayments';
+            }
+        }
+        
+        if(in_array('echeckapi',$paymentMethods)){
+            $baseOriginalMethod = 'echeckapi';
+        }
+        if(in_array('echeckpayment',$paymentMethods)){
+            $baseOriginalMethod = 'echeckpayment';
+        }
+
+        // if(in_array('pay',$paymentMethods)){
+        //     $otherpayments = 'pay';
+        // }
+        // if(in_array('otherpayments',$paymentMethods)){
+        //     $otherpayments = 'otherpayments';
+        // }
+        // if(in_array('echeckpayment',$paymentMethods)){
+        //     $otherpayments = 'echeckpayment';
+        // } 
+        // Mage::log($baseOriginalMethod.'====='.$_code,null,'$baseOriginalMethod.log');
+
+?>
+    <dt>
+    <?php if(!$oneMethod): ?>
+        <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->escapeHtml($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($baseOriginalMethod==$_code || $selectedPayment==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+        <img src="<?php echo $this->getSkinUrl('images/'.$var) ?>" alt="<?php echo $this->htmlEscape($_method->getTitle()) ?>" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" class="v-middle" style="width:170px;height:40px"/>
+    <?php else: ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <?php $oneMethod = $_code; ?>
+    <?php endif; ?>
+        <label for="p_method_<?php echo $_code ?>" class="<?php if($baseOriginalMethod==$_code || $selectedPayment==$_code): ?>selected<?php endif; ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+    </dt>
+<?php endforeach; ?>
+</div>
+
+<div class="payment_tabs_area">
+<?php
+    foreach ($methods as $_method):
+        $_code = $_method->getCode();
+?>
+    <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+    <dd>
+        <?php echo $html; ?>
+    </dd>
+    <?php endif; ?>
+<?php endforeach; ?>
+</div>
+<?php endif; ?>
+<?php echo $this->getChildChildHtml('additional'); ?>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php echo $this->getChildChildHtml('scripts'); ?>
+    payment.init();
+    <?php if (is_string($oneMethod)): ?>
+    payment.switchMethod('<?php echo $oneMethod ?>');
+        <?php endif; ?>
+    //]]>
+jQuery(document).ready(function($){
+    $("#checkout-payment-method-load dt label").on('click', function(){
+        var label_value = $(this).attr("for");
+        $("#checkout-payment-method-load dt label").removeClass("selected");
+        if(label_value ==($(this).attr("for"))){
+            $(this).addClass("selected");
+        }
+        else{
+            $("#checkout-payment-method-load dt label").removeClass("selected");
+        }
+
+    });
+    $(window).bind("load", function() {
+        
+        $("#checkout-payment-method-load dt input[type='radio']").each(function(){
+            if($(this).attr("checked")=="checked"){
+                $("#checkout-payment-method-load dt label").removeClass("selected");
+                $(this).next().addClass("selected");
+            }
+        });
+    });
+    $(".payment_tabs_mobile").click(function(){
+        $(".dropdown").toggle();
+        $(".payment_tabs_mobile .right_arrow").toggleClass("selected");
+        
+    });
+    $(".dropdown label").click(function(){
+        var str = $(this).text();
+        $(".payment_tabs_mobile .label_text").html( str );
+        $(".dropdown").toggle();
+        $(".payment_tabs_mobile .right_arrow").toggleClass("selected");
+    });
+});
+</script>

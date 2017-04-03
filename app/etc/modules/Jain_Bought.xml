@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Jain_Bought>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Jain_Bought>
+    </modules>
+</config> 

@@ -1,0 +1,25 @@
+<?php
+	$categories = Mage::helper('configfile')->getMobileBannerData();
+?>
+<?php if(!$categories): ?>
+	<p class="note-msg"><?php echo $this->__('There are no categories in the selection.') ?></p>
+	<?php else: ?>
+	<div class="slider-block">
+		<?php foreach ($categories as $categorie):?>
+		<ul class="products-grid" id="product-category1">
+	            <li class="item">
+	                <div class="inner_wrapper">
+	                <?php 
+	                $categoryImage=$categorie->getMobileBanner(); 
+	                $categoryImage = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/category/'.$categoryImage;?>   
+                	<a href="<?php echo $categorie->getUrl()?>">
+                		<img src="<?php echo $categoryImage; ?>" alt="<?php echo $categorie->getName() ?>"/>
+                	</a>
+	                	<span><?php echo  $categorie->getName();?></span>
+	                </div>	
+	            </li>
+	    </ul>
+		<?php endforeach;?>	    
+    </div>
+<?php endif;?>
+

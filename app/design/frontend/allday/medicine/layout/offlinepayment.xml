@@ -1,0 +1,40 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">   
+  <offlinepayment_index_index>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <remove name="hssocialmedia_index" />
+    <reference name="content">   
+      <block type="offlinepayment/index" name="offlinepayment_index" template="offlinepayment/index.phtml"/>   
+    </reference>   
+  </offlinepayment_index_index> 
+  <offlinepayment_link_processpayment>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/empty.phtml</template></action>   
+    </reference>   
+    <remove name="hssocialmedia_index" />
+    <reference name="content">   
+      <block type="offlinepayment/index" name="offlinepayment_index" template="offlinepayment/processpayment.phtml"/>
+    </reference>
+  </offlinepayment_link_processpayment>
+  <offlinepayment_link_success>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <remove name="hssocialmedia_index" />
+    <reference name="content">   
+      <block type="offlinepayment/index" name="offlinepayment_index" template="offlinepayment/success.phtml"/>   
+    </reference>   
+  </offlinepayment_link_success>
+    <offlinepayment_link_failure>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <remove name="hssocialmedia_index" />
+    <reference name="content">   
+      <block type="offlinepayment/index" name="offlinepayment_index" template="offlinepayment/failure.phtml"/>   
+    </reference>   
+  </offlinepayment_link_failure>   
+</layout>   
+	

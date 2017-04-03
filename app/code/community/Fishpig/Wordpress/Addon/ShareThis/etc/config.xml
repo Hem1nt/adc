@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+		<Fishpig_Wordpress_Addon_ShareThis>
+			<version>1.0.0.0</version>
+			<fishpig>
+				<id>share-this</id>
+				<name>ShareThis</name>
+				<is_core>1</is_core>
+			</fishpig>
+		</Fishpig_Wordpress_Addon_ShareThis>
+    </modules>
+    <global>
+    	<blocks>
+	    	<wp_addon_sharethis>
+	    		<class>Fishpig_Wordpress_Addon_ShareThis_Block</class>
+	    	</wp_addon_sharethis>
+    	</blocks>
+    	<helpers>
+	    	<wp_addon_sharethis>
+	    		<class>Fishpig_Wordpress_Addon_ShareThis_Helper</class>
+	    	</wp_addon_sharethis>
+    	</helpers>
+    </global>
+</config>

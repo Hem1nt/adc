@@ -1,0 +1,45 @@
+<?php
+
+
+$result = $this->getBestsellerProduct(); 
+$itemPerRow = ($this->getItemsPerRow()) ? $this->getItemsPerRow() : 2 ;
+ //getting product model
+
+$model = Mage::getModel('catalog/product');
+?>
+<?php  $i=0;
+for($cnt = 0; $cnt<count($result); $cnt++){
+	
+	$_product = $model->load($result[$cnt]); //getting product object for particular product id
+	if($i>($itemPerRow-1))
+			echo '<tr valign="top">';
+	?>
+   
+<div class="headerrightcontainer">
+	<h4>BEST SELLING PRODUCTS</h4>
+</div>
+<div class="bottomrightcontainer">
+	<ul>
+		<li><div class="img"><a href="<?php echo $this->getBaseUrl().$_product['url_path']; ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+					<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(($this->getImageHeight()) ? $this->getImageHeight() : 65,($this->getImageWidth()) ? $this->getImageWidth() : 65); ?>" alt="<?php echo $this->htmlEscape($_product['name']) ?>"/>
+				</a></div><a href="<?php echo $this->getBaseUrl().$_product['url_path'] ?>" title="<?php echo $this->htmlEscape($_product['name']) ?>"><?php echo $this->htmlEscape($_product['name']) ?></a>
+				<div class="text">Nemo enim ispam voluptatemquia voluptas sit aspernatur aut...</div><h3><span class="price-box"><?php echo Mage::helper('core')->currency(number_format($_product->getPrice(),2)); ?></span></h3><?php $addtocartval = $this->getAddToCart();
+					if($addtocartval == 1){
+					if($_product->isSaleable()): ?>
+
+				<button class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+				<?php else: ?>
+				<span class="out-of-stock"><?php echo $this->__('Out of stock') ?></span>
+				<?php endif; }?></li>
+		
+	</ul>
+</div>
+<div class="clear"></div>
+<div id="toTop">
+        <div class="subscribe">
+            Subscribe to our Newsletter &amp; never miss a latest product or offer
+            <input type="text" id="txtEmailDiv" value="Please enter your email address here" class="subs" onblur="return showText(this, 'Please enter your email address here')" onfocus="return hideText(this, 'Please enter your email address here')"><!--<a href="#" style="margin-right:0px;float:right"><img src="images/subscribe-btn.png" border="0" width="170" height="30"/></a>-->
+            <input type="button" value="Subscribe &gt;" style="width: 110px; height: 30px; margin-left: 10px" onclick="InsNewsSub('txtEmailDiv', 'RegDiv');">
+        </div>
+        <a href="javascript:void(0);" onclick="document.getElementById('toTop').style.display='none';$.cookie('NewsSub', 'HideNewsSub');" style="bottom: 7px; color: #FFFFFF; position: fixed; right: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 2px">X</a>
+    </div>

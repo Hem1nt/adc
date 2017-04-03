@@ -1,0 +1,32 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<div class="checkout-headerk">
+	<div class="header-container">
+	    <div class="header">
+	    	<div class="checkout-ldetails">
+	    		<span class="ldetails-t">Toll Free Tel +1(855) 840-0584 & </span>
+	    		<span class="ldetails-b">International Tel +1 (213) 814 1313 </span>
+	    	</div>
+	        <?php if ($this->getIsHomePage()):?>
+		        <h1 class="logo">
+		        	<strong><?php echo $this->getLogoAlt() ?></strong>
+		        	<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+		        		<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+		        	</a>
+		        </h1>
+		        <?php else:?>
+		        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+		        	<strong><?php echo $this->getLogoAlt() ?></strong>
+		        	<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+		        </a>
+	        <?php endif?>
+	        <div class="checkout-rdetails">
+	    		<span class="rdetails-t">Customer Support Email ID:</span>
+	    		<span class="rdetails-b"><a href="mailto:info@bluegreenpharmacy.vu">Info@BlueGreenPharmacy.vu</a></span>
+	    	</div>
+	    </div>
+	</div>
+</div>

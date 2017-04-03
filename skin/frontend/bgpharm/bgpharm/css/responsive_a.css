@@ -1,0 +1,107 @@
+.cms-page-view .col-main .std *{
+	text-align: left !important;
+}
+.cms-page-view .main-container .col-main .page-title {
+    padding-bottom: 0;
+}
+.cms-page-view .col-main .std div{
+	padding: 2px 0px !important;
+	color: #666;
+	font-size: 14px;
+}
+.cms-page-view .col-main .std div img{
+	margin: 10px 0 30px 0 !important;
+	display: block;
+}
+.cms-page-view .col-main .std p{
+	margin: 0 0 25px 0;
+}
+#prescription-drugs{
+	font-size: 14px !important;
+}
+ul.orderemaillist{
+	margin: 0px 0 20px 20px; 
+	padding: 0px;
+}
+ul.orderemaillist li{
+	font-size: 14px !important;
+	margin: 0 0 5px 0;
+}
+p.jty{
+	font-size: 14px !important;
+}
+
+.cms-page-view .col-main .std .order-links *{
+	text-align: center !important;
+}
+
+.cms-page-view .order-links{
+	border-bottom: 1px dotted #ccc;
+	margin: 0 0 20px 0px;
+}
+
+.cms-order-by-email .buttons-set{
+	text-align: center !important;
+}
+.cms-order-by-email .buttons-set button.button{
+	margin: 0 auto;
+}
+.cms-page-view .place-order a.order-online-block {
+    display: inline-block;
+    text-align: center !important;
+}
+
+.cms-page-view .place-order a.order-online-block.mid {
+    display: inline-block;
+    margin: 0 15%;
+}
+
+.cms-page-view .place-order span.order-online-text {
+    color: #000;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 0;
+    text-align: center !important;
+}
+.cms-page-view .place-order span.telephone-order-icon {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -13px -10px / auto;
+    display: block;
+    height: 160px;
+    margin: 20px 0 0;
+    width: 158px;
+}
+.cms-page-view .place-order span.telephone-order-icon:hover {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -13px -172px / auto;
+}
+
+.cms-page-view .place-order span.midcart-order-icon {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -194px -10px / auto;
+    display: block;
+    height: 160px;
+    margin: 20px 0 0;
+    width: 158px;
+}
+.cms-page-view .place-order span.midcart-order-icon:hover {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -194px -172px / auto;
+}
+
+.cms-page-view .place-order span.mail-fax-order-icon {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -379px -10px / auto;
+    display: block;
+    height: 160px;
+    margin: 20px 0 0;
+    width: 158px;
+}
+.cms-page-view .place-order span.mail-fax-order-icon:hover {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -379px -172px / auto;
+}
+.cms-page-view .place-order span.telephone-order-icon-selected {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -13px -172px / auto;
+}
+.cms-page-view .place-order span.midcart-order-icon-selected {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -194px -172px / auto;
+}
+.cms-page-view .place-order span.mail-fax-order-icon-selected {
+    background: rgba(0, 0, 0, 0) url("../images/adcorderdelieveryicons.png") no-repeat scroll -379px -172px / auto;
+}

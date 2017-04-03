@@ -1,0 +1,26 @@
+<?php
+/**
+ * Mageplace Freshdesk extension
+ *
+ * @category    Mageplace_Freshdesk
+ * @package     Mageplace_Freshdesk
+ * @copyright   Copyright (c) 2014 Mageplace. (http://www.mageplace.com)
+ * @license     http://www.mageplace.com/disclaimer.html
+ */
+
+/**
+ * @see  Mageplace_Freshdesk_Block_Field_Row
+ *
+ * @var Mageplace_Freshdesk_Block_Field_Row $this
+ */
+$formClass = preg_replace("/[^a-zA-Z]/", '', $this->getFieldId());
+?>
+<li class="wide <?php echo str_replace(' ','',$formClass); ?>">
+    <div class="field">
+        <label for="<?php echo $this->getFieldId(); ?>" class="<?php if ($this->isRequired()): ?>required<?php endif; ?>"><?php echo trim($this->getFieldLabel()); ?><?php if ($this->isRequired()): ?> <em>*</em><?php endif; ?></label>
+
+        <div class="input-box">
+            <?php echo $this->getInputFieldHtml(); ?>
+        </div>
+    </div>
+</li>

@@ -1,0 +1,89 @@
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<!-- <p class="left"><a class="login-trigger signin-modal" data-modal="modal-login"><?php echo $this->__('LOGIN')?></a></p> -->
+
+<!-- <div class="md-modal md-effect-7 md-modal" id="modal-login"> -->
+<div class="md-content">
+	<div class="md-content-wrapper">
+		<div class="opc-title"><h2 class="login-g"><?php echo $this->__('Login') ?></h2></div>
+		<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+      		<?php echo $this->getBlockHtml('formkey'); ?>
+	        <div>
+				<ul class="form-list">
+					<li>
+						<label for="email" class="required"><?php echo $this->__('Enter E-mail ID ') ?><em>*</em></label>
+						<div class="input-box">
+							<input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+						</div>
+						<div class="radio-box">
+							<input type="radio" value='guest' name='guest_checkout' id='guest_checkout' checked>
+
+							<label for="guest_checkout" class="custom_checkout_toggle_label">
+		                        <span class="radio_cover"><span>&nbsp;</span></span>
+		                        <span class="label_title">Checkout as a guest</span>
+		                    </label>
+		                    <p class="have_account">(Continue without password)</p>
+						</div>
+					</li>
+					<li>
+						<div class="radio-box">
+							<input type="radio" value='registered' name='guest_checkout' id='registered'>
+							<label for="registered" class="custom_checkout_toggle_label">
+		                        <span class="radio_cover"><span>&nbsp;</span></span>
+		                         <span class="label_title">I have an Account and Password</span>
+		                    </label>
+						</div>
+					</li>
+					<li class="liforpassword" style="display:none;">
+						<label for="pass" class="required"><?php echo $this->__('Enter Password ') ?><em>*</em></label>
+						<div class="input-box">
+							<input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+						</div>
+						<div class="liforget"><a href="<?php echo $this->getForgotPasswordUrl() ?>" class="restore-account"><?php echo $this->__('Forgot Your Password?') ?></a></div>
+					</li>
+
+				</ul>
+			</div>
+			<input name="context" type="hidden" value="checkout" />
+		</form>
+
+		<?php echo $this->getChildhtml('forgotPassword');?>
+	</div>
+	<!-- <div id="login-button-set">
+		<a href="<?php //echo $this->getForgotPasswordUrl() ?>" class="restore-account"><?php //echo $this->__('Forgot Your Password?') ?></a>
+		<button type="button" class="btn btn-primary"><span><span><?php //echo $this->__('Login') ?></span></span></button>
+
+		<div class="radio-box">
+			<input type="checkbox"  id="signup_for_deals" class="checkbox">
+
+			<label for="signup_for_deals" class="custom_checkout_billing_toggle_label">
+                <span class="checkbox_cover"></span>
+                <span class="label_title">Sign Up to Receive Awesome Deals</span>
+                <p class="have_account">(I accept <a href="#">T&amp;C</a>) </p>
+            </label>
+        </div>
+	</div>	 -->
+	<div id="forgotpassword-button-set" style="display:none">
+    	<p class="back-to-login"><a href="<?php echo $this->helper('customer')->getLoginUrl() ?>"><span class="small_arrow"></span><?php echo $this->__('Back') ?></a></p>
+    	<!-- <button type="button" title="<?php //echo $this->__('Submit') ?>" class="btn"><span><span><?php //echo $this->__('Submit') ?></span></span></button> -->
+	</div>
+	<button class="mobile_button proceed-next btn btn-primary"><span><span>Continue</span></span></button>
+</div>
+<div class="login-info">
+	<h1>Register and avail its benefits:</h1>
+	<ul class="login-info-points">
+		<li>Access exclusive product info</li>
+		<li>Receive personalized price listing</li>
+		<li>Receive personalized deals in your email</li>
+		<li>Enjoy faster checkout</li>
+		<li>Stay up-to-date on the hottest price</li>
+	</ul>
+	<a href="<?php echo Mage::getUrl('customer/account/create/'); ?>"><button class="mobile_button  btn btn-primary"><span><span>Register</span></span></button></a>
+</div>
+<!-- </div> -->
+
+<div class="md-overlay"></div>
+<script type="text/javascript">
+    //<![CDATA[
+        // var dataForm1 = new VarienForm('login-form', true);
+    //]]>
+</script>

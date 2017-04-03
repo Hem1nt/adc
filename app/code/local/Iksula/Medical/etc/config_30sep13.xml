@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Medical>
+      <version>0.1.0</version>
+    </Iksula_Medical>
+  </modules>
+  <global>
+    <helpers>
+      <medical>
+        <class>Iksula_Medical_Helper</class>
+      </medical>
+    </helpers>
+	<blocks>
+	  <medical>
+		<class>Iksula_Medical_Block</class>
+	  </medical>
+	</blocks>
+	<models>
+	  <medical>
+		<class>Iksula_Medical_Model</class>
+		<resourceModel>medical_mysql4</resourceModel>
+	  </medical>
+	  <medical_mysql4>
+		<class>Iksula_Medical_Model_Mysql4</class>
+		<entities>		  
+			  <medical>
+				<table>medical_history</table>
+			  </medical>
+        </entities>
+	  </medical_mysql4>
+	</models>
+	<resources>
+	  <medical_setup>
+		<setup>
+		  <module>Iksula_Medical</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </medical_setup>
+	  <medical_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </medical_write>
+	  <medical_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </medical_read>
+	  <salesattribute1377155265_setup>
+		<setup>
+		  <module>Iksula_Medical</module>
+		  <class>Mage_Sales_Model_Mysql4_Setup</class>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </salesattribute1377155265_setup>
+	  <salesattribute1377155265_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </salesattribute1377155265_write>
+	  <salesattribute1377155265_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </salesattribute1377155265_read>
+	</resources>
+    <events>
+	  <sales_order_place_after> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_place_after_handler> <!-- identifier of the event handler -->
+            <type>singleton</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>medical/observer</class> <!-- observers class alias -->
+            <method>medicalhistoryorderidset</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_place_after_handler>
+        </observers>
+      </sales_order_place_after>
+    </events>
+  </global>
+  <admin>
+	<routers>
+	  <medical>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Medical</module>
+		  <frontName>medical</frontName>
+		</args>
+	  </medical>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <medical module="medical">
+		<title>Medical</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <medical module="medical">
+		    <title>Manage Medical</title>
+			<sort_order>0</sort_order>
+			<action>medical/adminhtml_medical</action>
+		  </medical>
+		</children>
+	  </medical>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<medical translate="title" module="medical">
+			  <title>Medical</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <medical translate="title">
+			<title>Manage Medical</title>
+			<sort_order>0</sort_order>
+		  </medical>
+			  </children>
+			</medical>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<medical>
+		  <file>medical.xml</file>
+		</medical>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

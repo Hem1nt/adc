@@ -1,0 +1,69 @@
+<?php
+$order_id = Mage::app()->getRequest()->getParam('orderid');
+$customer_name = Mage::app()->getRequest()->getParam('customer_name');
+$security_key = base64_decode(Mage::app()->getRequest()->getParam('security_key'));
+/* clear cache programmatically */
+$allTypes = Mage::app()->useCache();
+foreach($allTypes as $type => $cachetypes) {
+   Mage::app()->getCacheInstance()->cleanType($type);
+}
+/* clear cache programmatically */
+?>
+<p style="text-align: left;" align="CENTER"><span style="color: #92d050; font-size: x-large;"><span style="font-family: 'Edwardian Script ITC', serif;"><em><strong>Thank You</strong></em></span></span></p>
+<p><span style="font-size: large;"><strong style="font-size: medium; font-family: 'Times New Roman', serif;">ORDER NUMBER: <?php echo $order_id;?></strong></span></p>
+<p><span style="font-family: 'Times New Roman', serif;"><span><strong>Dear <?php echo $customer_name;?>,</strong></span></span></p>
+<p><span style="color: #1f497d;">Thank you for placing an order with us.</span></p>
+<p><span style="color: #1f497d;">Please note that your Bank information has been submitted via SSL secured encrypted page. The transaction is under process and you will get the update from our billing department within 1 working day.</span></p>
+<p>You can also check the status of your order by log in your user account.</p>
+<p>We appreciate your patience and the patronage of our pharmacy.</p>
+<p><span style="font-family: 'Times New Roman', serif;"><span>With warm regards</span></span></p>
+<p><strong><span style="font-family: 'Times New Roman', serif;">AllDayChemist Billing Department</span></strong></p>
+<p><strong><span style="font-family: 'Times New Roman', serif;">Toll Free Tel +1 (855) 840-0584</span></strong></p>
+
+<?php
+
+$currentDate = date('d-m-Y');
+$timestamp = strtotime($currentDate);
+// if($timestamp==$security_key){
+	$paymentlinkorderstatus = Mage::getStoreConfig('custom_snippet/snippet/paymentlinkorderstatus');
+	$statusCollection = explode(',',$paymentlinkorderstatus);
+	$orderObj = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+
+	if(!$orderObj->getId()) {
+		$orderObj = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$order_id);
+		// print_r($orderObj->getData());exit;
+	}
+
+	$skipMethods = array('verification_pending');
+	if(!in_array($orderObj->getStatus(),$statusCollection)){
+
+		if(!in_array($orderObj->getStatus(),$skipMethods)){
+			$orderObj->setStatus("processing");
+		}
+		
+		$orderObj->addStatusToHistory($orderObj->getStatus(),'User Successfully submitted the credit card details');
+		$orderObj->save();
+	}
+
+// }
+
+?>
+<?php
+
+?>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+
+ 	jQuery.ajax({
+		        type:"POST",
+		        url:"<?php echo Mage::getUrl('crm/index/updateOrderStatusCredit', array('_secure'=>true)) ?>",
+		        data:{'orderid': '<?php echo $order_id ?>'},
+		        dataType:"json",
+		        success:function(data){
+		        	console.log("Call successfull");
+
+		       	}
+		  	});
+
+ 	});
+ </script>

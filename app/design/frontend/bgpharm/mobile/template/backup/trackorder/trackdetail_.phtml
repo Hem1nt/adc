@@ -1,0 +1,24 @@
+<?php
+$_order = $this->getTrackOrder();
+$this->setOrder($_order);
+
+?>
+
+<div class="order_actions_tab">
+    <div class="details_bottom">
+    
+    </div>
+</div>
+
+<?php echo $this->getChildHtml('order_items') ?>
+
+<div class="total-row my_order_total">
+    <div colspan="4" align="right" class="padding10">
+    <?php
+        $_finalPrice = $_order->getGrandTotal();
+    ?>
+    </div>
+</div>
+ <div class="buttons-set">
+    <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->getBackTitle() ?></a></p>
+</div>

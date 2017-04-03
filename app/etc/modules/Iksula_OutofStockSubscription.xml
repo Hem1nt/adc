@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<config>
+    <modules>
+        <Iksula_OutofStockSubscription>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+            	<Mage_Catalog/>
+            	<Mage_CatalogInventory/>
+      		</depends>
+        </Iksula_OutofStockSubscription>
+    </modules>
+</config>

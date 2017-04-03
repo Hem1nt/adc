@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <variations_adminhtml_variations_index>
+	<reference name="content">
+	  <block type="variations/adminhtml_variations" name="variations" />
+	</reference>
+  </variations_adminhtml_variations_index>
+  <variations_adminhtml_variationsbackend_index>
+	<reference name="content">
+	  <block type="variations/adminhtml_variationsbackend" name="variationsbackend" template="variations/variationsbackend.phtml"/>
+	</reference>
+  </variations_adminhtml_variationsbackend_index>
+</layout>

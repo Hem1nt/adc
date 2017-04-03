@@ -1,0 +1,178 @@
+/* ------------ Pop CSS by Archana ------------------ */
+div.pr-limited-supply-boxwrapper {
+width: 100%;
+max-width: 377px;
+height: auto;
+border-radius: 3px;
+background: #f5f8fa;
+padding: 10px;
+position: fixed;
+left: 50%;
+top: 50%;
+margin-left: -188px;
+margin-top: -20%;
+z-index: 15000;
+text-align: center;
+border: 10px solid #ffffff;
+display: none;
+}
+
+.limited-supply-overlay{
+	position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 10000;
+    background: #000;
+    opacity: 0.6;
+    display: none;
+}
+.limited-supply-close-btn{
+	position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+.limited-supply-input-box{
+	width: 100%;
+	margin: 20px 0 0 0;
+}
+.limited-supply-input-box input.input-text, .limited-supply-input-box textarea{
+	color: #666;
+    font-size: 14px;
+    margin: 0 0 10px;
+    padding: 8px 5px;
+    width: 100%;
+}
+.limited-supply-input-box .captcha_div{
+	margin: 0px 0 0 0;
+}
+.limited-supply-input-box .captcha_div .small-txt{
+	display: inline-block;
+}
+.limited-supply-input-box #suggestion_captcha_code{
+	color: #666;
+    font-size: 14px;
+    margin: 0 0 10px;
+    padding: 8px 5px;
+    width: 70%;
+}
+button#limited-supply{
+	background: #347922 none repeat scroll 0 0;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 20px;
+    margin: 8px 0 0 0;
+}
+a.link-limited-supply{
+    font-size: 14px;
+    padding: 0 2px;
+    color: #6B9A63;
+    font-weight: bold;
+}
+.contact-supply-box{
+	display: inline-block;
+	margin: 10px 0 0 35px;
+	font-size: 14px;
+}
+.catalog-product-view .add_to_wishlist_product, .review-product-list .add_to_wishlist_product {
+    float: right;
+    margin: 10px 10px 0 0;
+}
+.catalog-product-view .add_to_wishlist_product .add-to-box, .review-product-list .add_to_wishlist_product .add-to-box{
+	margin: 0px;
+}
+
+/*  ---------- Theming by Archana for Product page         -------*/
+.nav-content-header {
+    /*display: inline-block;*/
+}
+body.catalog-product-view br{
+	display: none;
+}
+body.catalog-product-view .wrapper br{
+	display: block;
+}
+body.catalog-product-view .header .form-search input.input-text {
+    width: 67.3%;
+    height: auto !important;
+    padding: 13px 15px;
+}
+body.catalog-product-view .nav-content-header {
+    /*display: inline-block;*/
+}
+body.catalog-product-view a.home_icon {
+    padding: 12px 10px 10px;
+    line-height: 0;
+}
+body.catalog-product-view .nav-right-category ul li.coupon-and-offer a , body.catalog-product-view .nav-right-category ul li.callback-req a{
+    padding-bottom: 4px;
+}
+
+
+
+@media only screen and (max-width: 1024px){
+    body.catalog-product-view a.home_icon {
+        padding: 13px 5px 8px!important;
+    }
+    body.catalog-product-view .nav-right-category ul li.coupon-and-offer a{
+        padding-top: 2px;
+        padding-bottom: 0px !important;
+    }
+    body.catalog-product-view .nav-right-category ul li.callback-req a{
+        padding-top: 3px;
+    }
+    body.catalog-product-view .nav-right-category.coupon-and-offer ul li a {
+        padding-top: 2px;
+        padding-bottom: 0px !important;
+    }
+    body.catalog-product-view .nav-right-category ul li a span.coupon-icon {
+        margin-top: 1px;
+    }
+    body.catalog-product-view .header .form-search input.input-text {
+        width: 62.8%;
+    }
+}
+
+@media only screen and (max-width: 980px){
+    body.catalog-product-view .header .form-search input.input-text {
+        width: 53.1%;
+    }
+
+    body.catalog-product-view .product-details-table table.new_product_list th, body.catalog-product-view .review-product-list .product-details-table table.new_product_list{
+        padding: 6px 5px;
+        font-size: 14px;
+    }
+    body.catalog-product-view .product-details-table table.new_product_list td, body.catalog-product-view .review-product-list .product-details-table table.new_product_list{
+        padding: 7px 7px;
+    }
+}
+
+@media only screen and (max-width: 980px){
+    
+}
+
+@media only screen and (max-width: 800px){
+    body.catalog-product-view .header .form-search input.input-text {
+        width: 43.9%;
+    }
+    body.catalog-product-view .nav-right-category ul li.coupon-and-offer a {
+        padding-top: 8px;
+    }
+    body.catalog-product-view .nav-right-category ul li.callback-req a {
+        padding-top: 8px;
+        padding-bottom: 0px;
+    }
+}
+
+
+
+@media only screen and (max-width: 320px){
+    .product-details-table{
+        overflow-x: scroll;
+        display: inline-block;
+        width: 100%;
+    }
+}

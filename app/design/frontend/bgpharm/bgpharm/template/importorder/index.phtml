@@ -1,0 +1,213 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0) 
+ */
+ 
+	 /* $resource = Mage::getSingleton('core/resource');
+	  $readConnection = $resource->getConnection('core_read');
+	  $table = $resource->getTableName('old_order');
+	  $table1 = $resource->getTableName('old_order_details');
+	  $table2 = $resource->getTableName('old_products');
+	 $customer = Mage::getSingleton('customer/session')->getCustomer();
+	 $email = $customer->getEmail();// for email address	
+	 
+	  $orders = $readConnection->fetchAll("SELECT * FROM ".$table." where customer_email='".$email."'");*/
+   //echo "SELECT oo.*,ood.* FROM " . $table . " as oo LEFT JOIN  " .$table1. " as ood ON oo.old_order_id=ood.order_id where oo.customer_email='".$email ."'";
+	 
+	//echo "<pre>";
+	//print_r($orders);
+   
+   $getPage = $this->getRequest()->getParam('page');
+$getPpp = $this->getRequest()->getParam('ppp');
+
+$getPpp = isset($getPpp)?$getPpp:16;
+$getPage = isset($getPage)?$getPage:1;
+$startingFrom = ($getPage - 1) * $getPpp;
+
+
+?>
+
+<div class="box-account box-recent">
+
+<?php $_orders = $this->oldorders()->setPageSize($getPpp)->setCurPage($getPage);
+$_orders = $_orders->getData();
+$order_count = count($this->order_count()->getData());
+
+?>
+<script>
+jQuery(document).ready(function ($) {
+	var custom_crumb_class = "<?php echo $currentBrand ?>";
+	var custom_crumb_content = "<a href='filter_brand?brand=<?php echo $getBrand ?>'><?php echo $currentBrand ?></a>";
+	$('ul', 'div.breadcrumbs').append('<li class="' + custom_crumb_class + '"><span>> </span><b>' + custom_crumb_content + '</b></li>');
+	
+	if (<?php echo $getCategory ?> !== 0 )
+	{
+		var custom_crumb_content_last = "<?php echo $activeCategory ?>";
+		$('ul', 'div.breadcrumbs').append('<li class="breadcrumb_last"><span> > </span>' + custom_crumb_content_last + '</li>');
+	}
+	
+	$('.products_per_page').change(function () {
+		$('.products_per_page option:selected').each(function () {
+			var ppp = $(this).val();
+			if (ppp != <?php echo $getPpp ?>)
+			{
+				window.location.href = 'filter_brand?brand=<?php echo $getBrand ?>&ppp=' + ppp + '&category=' + <?php echo $getCategory ?>;
+			}
+		});
+	});
+	
+	// var pathname = window.location;
+	var pathname = 'filter_brand?brand=' + <?php echo $getBrand ?>;
+		
+	$('.block-contents').html('<ul class="filtered_categories"><?php foreach ($categorySet as $categoryId=>$categoryIn) { if ($categoryId == $getCategory) echo "<li><span class=\'active_category\'>" . $categoryIn . "</span></li>"; else echo "<li><a href=\'' + pathname + '&category=" . $categoryId . "\'>" . $categoryIn . "</a></li>"; } ?></ul>');
+});
+</script>
+    <div class="box-head">
+        <h2><?php echo $this->__('Old Orders') ?></h2>
+        <?php //if( sizeof($_orders->getItems()) > 0 ): ?><a href="<?php //echo $this->getUrl('sales/order/history') ?>"><?php //echo $this->__('View All') ?></a><?php //endif; ?>
+    </div>
+    <div class="info">
+Dear <?php echo Mage::helper('customer')->getCustomerName();?> , <br/>
+Please note that older BlueGreenPharmacy site version was on an older platform since it was a couple of years old. Due to this, it was not possible to migrate the older data-base. We have abled to migrate the list of medications (only equivalent Indian brands), you have ordered in the past.<br/>
+We understand that there would be inconvenience to you in the short-term but trust us, you will be much more comfortable using the current site.<br/>
+We request you to please cooperate with us while we aim to deliver a seamless experience to you.<br/>
+</div><br/>
+<?php if( count($_orders) > 0 ): ?>
+    <table class="data-table" id="my-orders-table">
+    <col width="1" />
+    <col width="1" />
+    <col />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+        <thead>
+            <tr>
+                <th><?php echo 'Order #' ?></th>
+                <th><?php echo 'Date'; ?></th>
+                <th><?php echo 'Details'; ?></th>
+                <th><span class="nobr"><?php echo 'Order Total'; ?></span></th>
+                <th><?php echo 'Payment Method'; ?></th>
+                <th><?php echo 'Status'; ?></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        <div class="custom_pager">
+		<p class="custom_amount">
+			<span class='label'><?php echo $order_count ?> Orders</span>
+		</p>		
+		<div class="custom_pagination" >
+			<strong>Page:</strong>
+			<?php
+			$splitPages = ceil($order_count / $getPpp);
+			// echo $splitPages;
+			for ($n=1; $n<=$splitPages; $n++)
+			{
+				if($n == $getPage)
+				{
+					echo "<span class='custom_pagenumber page_active'>" . $n . "</span>";
+				}
+				else
+				{
+					echo "<a class='custom_pagenumber' href='?page=" . $n . "&ppp=" . $getPpp . "'>" . $n . "</a>";
+				}
+			}
+			?>
+		</div>
+		<center style="float:right;"><div class="custom_limiter">
+			<span class='label'>Show </span>
+			<select class="products_per_page">
+				<?php for ($p=2; $p<=5; $p++): ?>
+					<option value=<?php echo $p*8?> <?php if($getPpp == ($p*8)) echo "selected='selected'" ?>><?php echo $p*8 ?></option>
+				<?php endfor; ?>
+			</select>
+			<span class='label'> Per Page </span>
+		</div></center>
+	</div>
+            <?php for ($i=0;$i<count($_orders);$i++){ ?>
+                <tr>
+                    <td><?php echo $_orders[$i]['old_order_id'];?></td>
+                    <td><span class="nobr"><?php echo $this->formatDate($_orders[$i]['invoice_date']) ?></span></td>
+                    <?php 
+					
+					// $order_details = $readConnection->fetchAll("SELECT * FROM ".$table1." where order_id='".$orders[$i]['old_order_id']."'");
+					// echo "SELECT * FROM ".$table1." where order_id='".$orders[$i]['old_order_id']."'";
+					$_order_details_1 = $this->orderdetails($_orders[$i]['old_order_id']);
+					$_order_details = $_order_details_1->getData();
+					?>
+                    
+                    <td>
+                    <?php  for($j=0;$j<count($_order_details);$j++){
+						echo $_order_details[$j]['product_name']	."  X  ".$_order_details[$j]['product_quantity']."<br><br>"	;
+						}
+						?>
+                    </td>
+                    
+                    
+                    <td>$ <?php echo $_orders[$i]['total_cart_cost'];?></td>
+                     <td><?php echo $_orders[$i]['module'];?></td>
+                    <td><em>Old Orders</em></td>
+                    
+                </tr>
+            <?php } ?>
+            
+        </tbody>
+    </table>
+    <div class="custom_pager">
+		<p class="custom_amount">
+			<span class='label'><?php echo $order_count ?> Orders</span>
+		</p>		
+		<div class="custom_pagination" >
+			<strong>Page:</strong>
+			<?php
+			$splitPages = ceil($order_count / $getPpp);
+			// echo $splitPages;
+			for ($n=1; $n<=$splitPages; $n++)
+			{
+				if($n == $getPage)
+				{
+					echo "<span class='custom_pagenumber page_active'>" . $n . "</span>";
+				}
+				else
+				{
+					echo "<a class='custom_pagenumber' href='?page=" . $n . "&ppp=" . $getPpp . "'>" . $n . "</a>";
+				}
+			}
+			?>
+		</div>
+		<center style="float:right;"><div class="custom_limiter">
+			<span class='label'>Show </span>
+			<select class="products_per_page">
+				<?php for ($p=2; $p<=5; $p++): ?>
+					<option value=<?php echo $p*8?> <?php if($getPpp == ($p*8)) echo "selected='selected'" ?>><?php echo $p*8 ?></option>
+				<?php endfor; ?>
+			</select>
+			<span class='label'> Per Page </span>
+		</div></center>
+	</div>
+    <script type="text/javascript">decorateTable('my-orders-table')</script>
+<?php else: ?>
+    <p class="no_order_txt"><?php echo $this->__('You have placed no orders.'); ?></p>
+<?php endif; ?>
+</div>

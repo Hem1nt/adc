@@ -1,0 +1,146 @@
+<div class="best-selligng-product-block">
+
+<h1 class="best-selling-products">Our Best selling products</h1>
+
+<div class="tab_container">
+	<div class="product_mobile_tab">
+		<span class="ptitle">Select</span>
+		<span class="menu_toogle_arrow"></span>
+	</div>
+	<ul class="tabs">
+		<li class="tab-link current" data-tab="tab-1">Best seller</li>
+		<li class="tab-link" data-tab="tab-2">Featured</li>
+		<li class="tab-link " data-tab="tab-3">Asthma</li>
+		<li class="tab-link last" data-tab="tab-4">Offers</li>
+	</ul>
+	<div class="tab-content-main">
+		<div id="tab-1" class="tab-content current">
+			<?php echo $this->getLayout()->createBlock("catalog/product_list")->setCategoryId(4)->setTemplate("homepage/tab_products/bestseller.phtml")->toHtml();?>
+		</div>
+		<div id="tab-2" class="tab-content">
+			<?php echo $this->getLayout()->createBlock("catalog/product_list")->setCategoryId(8)->setTemplate("homepage/tab_products/featured.phtml")->toHtml();?>
+		</div>
+		<div id="tab-3" class="tab-content">
+			<?php echo $this->getLayout()->createBlock("catalog/product_list")->setCategoryId(6)->setTemplate("homepage/tab_products/category.phtml")->toHtml();?>
+		</div>
+		<div id="tab-4" class="tab-content">
+			<?php echo $this->getLayout()->createBlock("catalog/product_list")->setCategoryId(7)->setTemplate("homepage/tab_products/offers.phtml")->toHtml();?>
+		</div>
+	</div>
+
+</div>
+
+</div>
+
+<!-- tab_container -->
+<style>
+
+		/*.tab_container{
+			clear: both;
+			width: 100%;
+			margin: 0 auto;
+		}
+
+		.tab_container ul.tabs{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+		}
+		.tab_container ul.tabs li{
+			background: none;
+			color: #222;
+			display: inline-block;
+			padding: 10px 15px;
+			cursor: pointer;
+		}
+
+		.tab_container ul.tabs li.current{
+			background: #1c1c1c;
+			color: #fff;
+		}
+
+		.tab_container .tab-content{
+			display: none;
+			background: #fff;
+			padding: 30px;
+		}
+
+		.tab_container .tab-content.current{
+			display: inherit;
+		}*/
+</style>
+<script>
+jQuery(document).ready(function($){
+
+	var slider3 = jQuery('#product-category3').bxSlider({
+	  minSlides: 1,
+	  maxSlides: 4,
+	  slideWidth: 400,
+	  slideMargin: 0,
+	  infiniteLoop :false,
+      // hideControlOnEnd: true,
+	  moveSlides: 1
+	});
+
+	var slider2 = jQuery('#product-category2').bxSlider({
+	  minSlides: 1,
+	  maxSlides: 4,
+	  slideWidth: 400,
+	  slideMargin: 0,
+	  infiniteLoop :false,
+      // hideControlOnEnd: true,
+	  moveSlides: 1
+	});
+
+	var slider1 = jQuery('#product-category1').bxSlider({
+	  minSlides: 1,
+	  maxSlides: 4,
+	  slideWidth: 400,
+	  slideMargin: 0,
+	  infiniteLoop :false,
+      // hideControlOnEnd: true,
+	  moveSlides: 1
+	});
+
+	var slider4 = jQuery('#product-category4').bxSlider({
+	  minSlides: 1,
+	  maxSlides: 4,
+	  slideWidth: 400,
+	  slideMargin: 0,
+	  infiniteLoop :false,
+      // hideControlOnEnd: true,
+	  moveSlides: 1
+	});
+	
+	$('ul.tabs li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('ul.tabs li').removeClass('current');
+		$('.tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+		//alert(tab_id);
+		if(tab_id == "tab-1"){
+			//alert(1);
+			slider1.reloadSlider();
+		}
+
+		if(tab_id == "tab-2"){
+			//alert(2);
+			slider2.reloadSlider();
+		}
+
+		if(tab_id == "tab-3"){
+			//alert(3);
+			slider3.reloadSlider();
+		}
+
+		if(tab_id == "tab-4"){
+			//alert(4);
+			slider4.reloadSlider();
+		}
+	})
+
+})
+</script>

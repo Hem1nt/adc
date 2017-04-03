@@ -1,0 +1,115 @@
+`<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+    $_helper    = $this->helper('catalog/output');
+    $category = Mage::registry('current_category');
+
+    $onCatalog = false;
+    if(Mage::registry('current_product')) {
+        $onCatalog = true;
+    }
+  ?>
+<?php if($category && !$onCatalog): ?>
+<div class="category_big_bottom_desc">
+    <?php if($_description = $category->getBottomdescription()): ?>
+        <div class="std more_details_area category_bottom_description_footer category-description std desc_area" id="category_bottom_description_footer">
+            <h1>More Information</h1>
+            <div class="desc_area_content">
+                <?php echo $_helper->categoryAttribute($category, $_description, 'bottomdescription') ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+<?php endif;?>
+<?php echo $this->getChildHtml('notifyoutofstock_index');?>
+<div class="footer-payment-types">
+	<span class="fpt1"><span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=516304681046fb4bc11011f1400b8da37d719429464659303720420694"></script></span></span>
+	<a rel="nofollow" href="https://www.mcafeesecure.com/RatingVerify?ref=www.alldaychemist.com" id="mcaffee_logo" class="footer_logos" onclick="window.open(this.href, 'mcafee_new',
+        'width=1000,height=500,toolbar=1,resizable=0'); return false;">
+        <span class="fpt2">&nbsp;</span>
+    </a>    
+	<span class="fpt3">&nbsp;</span>
+	<span class="fpt4 last">&nbsp;</span>
+</div>
+<?php //echo $this->getChildHtml('popupwidget');?>
+<div class="footer-container">
+    <div class="footer">
+        <?php echo $this->getChildHtml() ?>
+        <!-- <address><?php //echo $this->getCopyright() ?></address> -->
+        <address>Copyright &copy; <?php echo date('Y')?> AllDayChemist. All rights reserved.</address>
+        <div id="toTop_mobile">
+        <div class="subscribe">
+            <div class="subscribe-innerdiv">
+            Subscribe to our Newsletter <span class="xtra-txt">&amp; never miss a latest product or offer</span>
+                <div class="subscribe-input-go">
+                    <input type="text" id="txtEmailDiv" placeholder="Please enter E-mail address" class="subs"
+                    onblur="return showText(this, 'Please enter E-mail address')" onfocus="return hideText(this, 'Please enter E-mail address')">
+                    <input type="button" id="subscribebtn" value="Go">
+               </div>
+            </div>
+        </div>
+        <div class="subscribe_msg" style="display:none;">
+             <div class="subscribe-innerdiv">Thank you for Subscribing us.</div>
+        </div>
+            <a id="show_subs" class="subs_a" onclick="" style="display:none; bottom: 15px; color: #FFFFFF; position: fixed; left: 4px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">&gt;</a>
+            <a id="close_subs" class="subs_a" onclick="" style="bottom: 15px; color: #FFFFFF; position: fixed; left: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">X</a>
+    </div>
+    </div>
+</div>
+<div class="livechat_support" style="position: fixed; right: 0px; bottom: 0px; left: 90.6%; z-index: 10000;">
+    <table border='0' cellspacing='2' cellpadding='2'>
+        <tr>
+            <td align="center">
+            </td>
+            <td align='center'>
+                <div id="LP_DIV_1469617086361"></div>
+                </a>
+            </td>
+        </tr>
+
+    </table>
+</div>
+<style type="text/css">
+.lp_lpview_survey_header.lp_survey_header_area {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+
+    jQuery('#hcIcon').css('width','135px');
+
+});
+
+</script>
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0040/9331.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>

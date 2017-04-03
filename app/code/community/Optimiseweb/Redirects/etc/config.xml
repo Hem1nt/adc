@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+  <modules>
+    <Optimiseweb_Redirects>
+      <version>0.1.3</version>
+    </Optimiseweb_Redirects>
+  </modules>
+
+  <frontend>
+    <events>
+      <controller_action_predispatch>
+        <observers>
+          <optimiseweb_redirects_model_redirector>
+            <type>singleton</type>
+            <class>optimiseweb_redirects_model_redirector</class>
+            <method>doRedirects</method>
+          </optimiseweb_redirects_model_redirector>
+        </observers>
+      </controller_action_predispatch>
+    </events>
+  </frontend>
+
+  <adminhtml>
+    <!-- <menu>
+      <optimiseweball translate="title" module="redirects">
+        <title>Optimise Web</title>
+        <sort_order>71</sort_order>
+        <children>
+          <redirects translate="title" module="redirects">
+            <title>Mass 301 Redirects</title>
+            <sort_order>5</sort_order>
+            <action>adminhtml/system_config/edit/section/optimisewebredirects</action>
+          </redirects>
+        </children>
+      </optimiseweball>
+    </menu> -->
+  </adminhtml>
+
+  <global>
+
+    <blocks>
+      <redirects>
+        <class>Optimiseweb_Redirects_Block</class>
+      </redirects>
+    </blocks>
+
+    <helpers>
+      <redirects>
+        <class>Optimiseweb_Redirects_Helper</class>
+      </redirects>
+    </helpers>
+
+    <models>
+      <redirects>
+        <class>Optimiseweb_Redirects_Model</class>
+      </redirects>
+    </models>
+
+  </global>
+
+</config>

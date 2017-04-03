@@ -1,0 +1,54 @@
+<?php
+    $_productCollection = Mage::helper('configfile')->getBestSellingProducts();
+    $categoryUrl = Mage::helper('configfile')->getBestSellingCategory();
+    $_helper = $this->helper('catalog/output');
+    $_frontendHelper = $this->helper('frontend/data');
+?>
+<?php if(!$_productCollection): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+    <?php else: ?>
+    <div class="slider-block">
+        <?php foreach ($_productCollection as $_product):
+
+         ?>
+        <ul class="products-grid" id="product-category1">
+            <li class="item">
+                <div class="inner_wrapper">    
+                    <div class="grid-inner">
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                        <img src="
+                        <?php echo $this->helper('catalog/image')->init($_product, 'small_image')->keepFrame(false)->resize(100,100); ?>" alt="image alt text" />
+                        </a>
+                    </div>
+                     <h2 class="product-name product-name-height">
+                        <a href="<?php echo $_product->getProductUrl() ?>">
+                            <?php
+                                $pName = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                                echo Mage::helper('core/string')->truncate($pName, 50);
+                            ?>
+                        </a>
+                    </h2>
+                    <!-- <span class="active_ingridients">
+                        <?php //if($_product->getAttributeText('active_ingridients')):?>
+                            <?php //echo $_product->getAttributeText('active_ingridients');?>
+                        <?php //endif;?>
+                    </span>
+                    </br> -->
+                    <span class="generic_name">
+                        <?php if($_product->getGenericName()):?>
+                            <?php echo trim($_product->getGenericName());?>
+                        <?php endif;?>
+                    </span>
+                    <?php
+                        $firstChildInfo = $_frontendHelper->getFirstChildPrice($_product);
+                        if(!empty($firstChildInfo)):
+                            echo $firstChildInfo;
+                        endif;
+                    ?>
+                </div>
+            </li>
+        </ul>
+        <?php endforeach; ?>
+        <div class="view-all-products"><a href="<?php echo $categoryUrl;?>">View all products</a></div>
+    </div>
+<?php endif;?>

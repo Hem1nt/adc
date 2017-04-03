@@ -1,0 +1,585 @@
+.checkout-cart-index .data-table tbody td.last {
+  text-align: right;
+}
+.checkout-cart-index .cart_table_wrap.mid {
+  padding: 10px 10px;
+}
+.checkout-cart-index .data-table thead th {
+  font-size: 1.2em;
+}
+.checkout-cart-index .th_heading {
+  padding: 0px 10px;
+  background-color: #1C1C1C;
+}
+.checkout-cart-index table#shopping-cart-table .presc {
+	width: 25%;
+	text-align: left;
+}
+.checkout-cart-index table#shopping-cart-table td:first-child {
+	width: 15%;
+}
+.checkout-cart-index table#shopping-cart-table td:first-child img {
+	width: 100% !important;
+	height: initial !important;
+}
+
+
+.checkout-cart-index .data-table thead th.qty_header {
+  width: 6%;
+  text-align: center;
+}
+
+.checkout-cart-index .data-table thead th {
+	float: left;
+}
+.checkout-cart-index .data-table tbody td {
+	text-align: center;
+}
+.checkout-cart-index .data-table thead th:last-child {
+	width: 7%;
+	float: right;
+	text-align: right !important;
+}
+.checkout-cart-index table#shopping-cart-table td {
+	box-sizing:border-box;
+    position: relative;
+}
+/******** 1 & 2 ********/
+.checkout-cart-index .data-table thead th.product_name {
+	width: 36%;
+}
+.checkout-cart-index table#shopping-cart-table td:nth-child(1) {
+	  width: 20%;
+}
+.checkout-cart-index table#shopping-cart-table td:nth-child(2) {
+	  width: 20%;
+}
+/******** 1 & 2 ********/
+.checkout-cart-index .data-table thead th.move_to_wishlist {
+	width: 16%;
+}
+.checkout-cart-index table#shopping-cart-table td:nth-child(3) {
+	width: 21%;
+	font-size: 1.2em;
+	text-align: center !important;
+}
+.checkout-cart-index .data-table thead th.unit_price {
+	width: 8%;
+	text-align: center !important;
+}
+.checkout-cart-index table#shopping-cart-table td:nth-child(4) {
+	width: 10%;
+}
+.checkout-cart-index table#shopping-cart-table td:nth-child(2) .link-wishlist{
+	display: block;
+}
+.checkout-cart-index .cart-table span.orange {
+  bottom: 3px;
+  font-size: 0.8em;
+}
+.checkout-cart-index .btn-remove {
+  bottom: 10px;
+  font-size: 1em;
+}
+
+
+.below_banner_area iframe{
+	height: 122px;
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1060px) {
+	.checkout-cart-index .cart-table span.orange {
+	  bottom: 2px;
+	  font-size: 0.8em;
+	}
+	.checkout-cart-index .cart-table td {
+	  padding: 15px 5px;
+	}
+	.checkout-cart-index .data-table thead th.product_name {
+	  width: 28%;
+	}
+	.checkout-cart-index .data-table thead th.unit_price {
+	  width: 10%;
+	}
+	.checkout-cart-index .data-table thead th.product_name {
+	  width: 35%;
+	}
+	.checkout-cart-index .data-table thead th.move_to_wishlist {
+	  width: 15%;
+	}
+	.checkout-cart-index .data-table thead th.qty_header {
+	  width: 3%;
+	  text-align: center;
+	}
+}
+
+@media only screen and (max-width: 920px) {
+	.checkout-cart-index .align-r h1 {
+	  width: 100%;
+	}
+	.checkout-cart-index .cart-table tfoot td {
+	  padding: 10px 0px;
+	}
+	.checkout-cart-index .data-table thead th.product_name {
+	  width: 37%;
+	}
+	.checkout-cart-index .data-table thead th.move_to_wishlist {
+	  width: 12%;
+	  text-align: center;
+	}
+	.checkout-cart-index .data-table thead th.unit_price {
+	  width: 9%;
+	  text-align: center !important;
+	}
+	.checkout-cart-index .data-table thead th.qty_header {
+	  width: 3%;
+	  text-align: center;
+	}
+	.checkout-cart-index .cart .totals td:first-child {
+	  border-right: none;
+	  margin: 5px 0px;
+	  float: left;
+	  text-align: right;
+	  width: 97%;
+	  color: rgb(224, 147, 0);
+	}
+	.checkout-cart-index #shopping-cart-totals-table .price {
+	  margin: 5px 0px;
+	  float: left;
+	  text-align: right;
+	  width: 95%;
+	}
+	.checkout-cart-index .align-r h1 {
+	  width: 100%;
+	}
+	.checkout-cart-index .data-table thead th.move_to_wishlist {
+	  width: 16%;
+	}
+	.checkout-cart-index .data-table thead th.qty_header {
+	  width: 6%;
+	}
+
+}
+
+@media only screen and (max-width: 900px) {
+	.checkout-cart-index .data-table thead th.product_name {
+	  width: 39%;
+	}
+	.checkout-cart-index .data-table thead th.unit_price {
+	  width: 11%;
+	}
+}
+
+@media only screen and (max-width: 840px){
+	.frontend-index-allbrands .main-container {
+	    padding: 0 0px;
+	}
+
+	.frontend-index-allbrands .main-container .col-main {
+	    padding: 0 0px;
+	}
+	.frontend-index-allbrands #search_sidebar_form .drugSearch {
+	    background: #192758;
+	    padding: 2px 8px 2px;
+	    box-sizing: border-box;
+	    width: 99%;
+	    margin-bottom: 10px;
+	    font-family: 'Open Sans', sans-serif;
+	    border-radius: 7px;
+	}
+
+	.frontend-index-allbrands #search_sidebar_form .drugSearch ul {
+	    padding: 0;
+	}
+
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li {
+        padding-bottom: 5px;
+	    margin-bottom: 0;
+	    width: 49%;
+	    display: inline-block;
+	    border-bottom: 0;
+	}
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2 {
+	    margin-left: 10px;
+	}
+
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li select, .frontend-index-allbrands #search_sidebar_form .drugSearch li input {
+	    background: #fff;
+	    border: 0px solid #6A8C76;
+	    border-radius: 6px;
+	    color: #000;
+	    padding: 8px 5px;
+	    box-sizing: border-box;
+	    width: 100%;
+	    margin-top: 5px;
+	    font-size: 15px;
+	    font-weight: 600;
+	    font-family: 'Open Sans', sans-serif;
+	}
+	.below_banner_area iframe {
+	    height: 65px;
+	}
+	iframe#trustedcompany-widget{
+		/*height: 220px;*/
+	}
+	h1.best-selling-products {
+	    padding: 0 50px 2px;
+	    margin: 15px 0 10px 0;
+	}
+	.trustedcompany-widget {
+	    margin: 0 0 10px 0px;
+	}
+	.catalog-product-view .product-essential, .review-product-list .product-essential {
+	    margin-bottom: 5px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.checkout-cart-index .data-table thead th.qty_header {
+	  width: 4%;
+	}
+	.checkout-cart-index .data-table thead th.product_name {
+	  width: 38%;
+	}
+	.checkout-cart-index .data-table thead th.unit_price {
+	  width: 13%;
+	}
+	.checkout-cart-index .th_heading {
+	  font-size: 11px;
+	}
+	.checkout-cart-index .cart-table .product-name {
+	  font-size: 14px;
+	}
+	.checkout-cart-index .cart-table .price {
+	  font-size: 14px;
+	}
+	.checkout-cart-index .data-table thead th {
+	  font-size: 13px;
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(3) {
+	  font-size: 13px;
+	}
+	.checkout-cart-index .cart .totals td {
+	  font-size: 12px;
+	}
+	.checkout-cart-index .cart .totals tfoot td strong {
+		font-size: 13px;
+	} 
+}
+@media only screen and (max-width: 680px) {
+	.checkout-cart-index .cart_table_wrap.mid {
+	  margin: 7px 0 20px 0;
+	}
+	/*.checkout-cart-index .data-table tbody td:nth-child(3) {
+	  display: none;
+	}
+	.checkout-cart-index .data-table thead th.move_to_wishlist {
+	  display: none;
+	}*/
+	.checkout-cart-index .data-table thead th.product_name {
+	  width: 38%;
+	}
+	.checkout-cart-index .data-table thead th.unit_price {
+	  width: 11%;
+	  text-align: center !important;
+	}
+	.checkout-cart-index .data-table thead th:last-child {
+	  width: 13%;
+	  float: right;
+	  text-align: right !important;
+	}
+	.checkout-cart-index .data-table thead th.qty_header {
+	  width: 6%;
+	}
+
+
+
+}
+@media only screen and (max-width: 620px) {
+	.checkout-cart-index .data-table thead th.product_name {
+	  width: 33%;
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(2) {
+	  width: 26%;
+	}
+	.checkout-cart-index .data-table thead th.move_to_wishlist {
+	  width: 20%;
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(3) {
+	  width: 23%;
+	}
+	.checkout-cart-index .data-table thead th.qty_header {
+	  width: 5%;
+	}
+	.checkout-cart-index .data-table thead th:last-child {
+	  width: auto;
+	}
+	.checkout-cart-index .data-table thead th.unit_price {
+	  width: 12%;
+	}
+}
+@media only screen and (max-width: 570px) {
+	.checkout-cart-index .data-table tbody td {
+	  text-align: center;
+	  float: left;
+	}
+	.checkout-cart-index .cart-table td {
+	  padding: 1.5%;
+	}
+	.checkout-cart-index table#shopping-cart-table td:first-child {
+	  width: 25%;
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(2) {
+	  width: 32%;
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(3) .link-wishlist::before {
+	  content: "Move to wishlist : ";
+	  color: rgb(246, 125, 25);
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(4) .price::before {
+	  content: "Unit price : ";
+	  color: rgb(246, 125, 25);
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(5) select.qty::before {
+	  content: "Qty : ";
+	  color: rgb(246, 125, 25);
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(6) .price::before {
+	  content: "Final price : ";
+	  color: rgb(246, 125, 25);
+	}
+	.checkout-cart-index #shopping-cart-table tr {
+	  border-bottom: 1px solid rgba(29, 40, 87, 0.67);
+	  float: left;
+	  width: 100%;
+	  padding-bottom: 17px;
+	  margin: 5px 0px;
+	  padding: 0px 0px 0px 0px;
+	}
+	.checkout-cart-index table#shopping-cart-table td:first-child {
+	    padding: 5px 5px 0 !important;
+	}
+	.checkout-cart-index #shopping-cart-table tr.last {
+	  border-bottom: none;
+	}
+	.checkout-cart-index .data-table tbody td {
+	  border-bottom: none;
+	}
+	.checkout-cart-index .btn-remove {
+		bottom: -23px;
+		right: 9px;
+		font-size: 0.9em;
+	}
+	.checkout-cart-index .cart_table_wrap.mid {
+	  padding: 6px;
+	}
+	.checkout-cart-index .cart-table span.orange {
+	  bottom: -13px;
+	}
+	.checkout-cart-index .th_heading {
+	  display: none;
+	}
+	.checkout-cart-index .cart-table .product-name {
+	  font-size: 1.1em;
+	}
+	.checkout-cart-index .cart-table .price {
+	  font-size: 1.1em;
+	}
+	.checkout-cart-index .block.bought-block-list .block-title strong {
+		font: normal 15px Arial, Helvetica, sans-serif;
+	}
+	.cont_shop_btn {
+	  display: inline-block;
+	  width: 100%;
+	  text-align: center;
+	}
+	.checkout-cart-index a.pr-continue-shop-cart-empty {
+	  text-decoration: none;
+	  display: inline-block;
+	  float: none;
+	}
+	.checkout-cart-index .main-container .cart-empty {
+	  padding: 17px;
+	  box-sizing: border-box;
+	}
+	.checkout-cart-index .cart-empty-text h2 {
+	  margin-top: 17px;
+	  text-align: center;
+	}
+	.checkout-cart-index .cart-empty-text p {
+	  text-align: center;
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(5):before {
+	  content: "Qty : ";
+	  color: #F67D19;
+	  font-weight: 600;
+	}
+}
+@media only screen and (max-width: 440px) {
+	
+	.checkout-cart-index table#shopping-cart-table td:nth-child(4) {
+		/*margin-top: 20px;*/
+		padding-top: 7px;
+	}
+    .checkout-cart-index table#shopping-cart-table td:nth-child(3) {
+		border-top: 2px solid #CCD;
+		width: 100%;
+		margin-top: 14px;
+		font-size: 14px;
+		text-align: left !important;
+		padding-top: 10px;
+    }
+    .checkout-cart-index table#shopping-cart-table td:first-child img {
+	  padding: 7px;
+	  border: 1px solid #eee;
+	  box-sizing: border-box;
+	  width: 70% !important;
+	}
+	.checkout-cart-index .cart-empty-text h2 {
+	  margin-top: 17px;
+	}
+	.checkout-cart-index .cart-empty-text p {
+	  font-size: 13px;
+	}
+	.checkout-cart-index .cart-empty-img img {
+	  width: 80%;
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(6) .price::before,
+	.checkout-cart-index table#shopping-cart-table td:nth-child(4) .price::before,
+	.checkout-cart-index table#shopping-cart-table td:nth-child(3) .link-wishlist::before {
+	  width: 150px;
+	  float: left;
+	}
+	
+	.checkout-cart-index table#shopping-cart-table td:nth-child(5) select {
+		margin-left: 150px;
+	}
+	.checkout-cart-index table#shopping-cart-table td:nth-child(5) select {
+	  margin-left: 122px;
+	}
+	.checkout-cart-index .btn-remove {
+	  bottom: 0;
+	  right: 2px;
+	  font-size: 0;
+	  top: -90px;
+	  background: url("../images/remove_icon.png") no-repeat right top;
+	  background-size: 19px;
+	  width: 20px;
+	}
+	.checkout-cart-index .btn-remove::before {
+	  content:"Remove";
+	}
+	.frontend-index-allbrands #search_sidebar_form .drugSearch {
+	    border: 2px solid #EAE8E8;
+	}
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li {
+	    width: 100%;
+	    /*border-bottom: 1px dotted #B6B6B6;*/
+	}
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2 {
+	    margin-left: 0px;
+        margin-top: 0;
+	}
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li.border_bot{
+		border-bottom: 1px dotted #6A8C76;
+		margin-bottom: 5px;
+	}
+	.below_banner_area iframe {
+	    height: 130px;
+	}
+}
+@media only screen and (max-width: 400px) {
+	.checkout-cart-index .cart-table .btn-continue {
+	  width: 100%;
+	  margin-bottom: 7px;
+	}
+	.checkout-cart-index .cart-table .btn-empty {
+	  float: right;
+	  width: 100%;
+	}
+	.button.button.btn-proceed-checkout.btn-checkout {
+		width: 100%;
+	}
+
+}
+@media only screen and (max-width: 320px) {
+	.checkout-cart-index .cart-table .product-name {
+	  font-size: 1.1em;
+	  text-align: center;
+	}
+	.checkout-cart-index .cart-table span.orange {
+	  left: 26%;
+	  bottom: -9px;
+	}
+	.frontend-index-allbrands .main-container {
+	    padding: 0 0px;
+	}
+
+	.frontend-index-allbrands .main-container .col-main {
+	    padding: 0 0px;
+	}
+
+	.frontend-index-allbrands #search_sidebar_form .drugSearch {
+	    background: #192758;
+	    padding: 5px 8px 0px;
+	    box-sizing: border-box;
+	    width: 99%;
+	    margin-bottom: 10px;
+	    font-family: 'Open Sans', sans-serif;
+	    border-radius: 7px;
+        border: 0;
+	}
+
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li {
+	    font-size: 14px;    
+	    padding-bottom: 8px;
+	    /*border-bottom: 1px dotted #6A8C76;*/
+	}
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li.border_bot{
+	    border-bottom: 1px dotted #7180b7;
+    	margin-bottom: 8px;
+	}
+
+	.frontend-index-allbrands #search_sidebar_form .drugSearch li select, .frontend-index-allbrands #search_sidebar_form .drugSearch li input {
+	    background: #fff;
+	    border: 0px solid #6A8C76;
+	    border-radius: 6px;
+	    color: #000;
+	    padding: 8px 5px;
+	    box-sizing: border-box;
+	    width: 100%;
+	    margin-top: 5px;
+	    font-size: 15px;
+	    font-weight: 600;
+	    font-family: 'Open Sans', sans-serif;
+	}
+}

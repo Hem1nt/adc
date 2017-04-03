@@ -1,0 +1,49 @@
+<layout>
+    <default>
+        <remove name="notification_security" />
+        <remove name="notification_survey" />
+        <reference name="head">
+            <action method="addJs"><script>custom/adminscript.js</script></action>
+        </reference>
+    </default>
+    <adminhtml_sales_order_bulkinvoice>
+    	<reference name="content">
+    		<block type="adminhtml/template"  name="bulkinvoice" template="sales/order/bulkinvoice.phtml" ></block>
+    	</reference>
+    </adminhtml_sales_order_bulkinvoice>
+    <adminhtml_sales_order_bulkshipment>
+    	<reference name="content">
+    		<block type="adminhtml/template"  name="bulkshipment" template="sales/order/bulkshipment.phtml"></block>
+    	</reference>
+    </adminhtml_sales_order_bulkshipment>
+    <adminhtml_sales_order_customexporttocsv>
+        <reference name="content">
+            <block type="adminhtml/template"  name="customexporttocsv" template="sales/order/customexporttocsv.phtml"></block>
+        </reference>
+    </adminhtml_sales_order_customexporttocsv>
+    <adminhtml_sales_order_itemexporttocsv>
+        <reference name="content">
+            <block type="adminhtml/template"  name="itemexporttocsv" template="sales/order/itemexporttocsv.phtml"></block>
+        </reference>
+    </adminhtml_sales_order_itemexporttocsv>   
+    <adminhtml_sales_order_feedbackimportcsv>
+        <reference name="content">
+            <block type="adminhtml/template"  name="feedbackimportcsv" template="sales/order/feedbackimportcsv.phtml"></block>
+        </reference>
+    </adminhtml_sales_order_feedbackimportcsv>    
+    <adminhtml_sales_order_prescriptionexportcsv>
+        <reference name="content">
+            <block type="adminhtml/template"  name="prescriptionexportcsv" template="sales/order/prescriptionexportcsv.phtml"></block>
+        </reference>
+    </adminhtml_sales_order_prescriptionexportcsv>
+    <adminhtml_sales_order_descripterexportcsv>
+        <reference name="content">
+            <block type="adminhtml/template"  name="descripterexportcsv" template="sales/order/descripterexportcsv.phtml"></block>
+        </reference>
+    </adminhtml_sales_order_descripterexportcsv>   
+     <adminhtml_sales_order_bulkinvoicepdf>
+        <reference name="content">
+            <block type="adminhtml/template"  name="bulkinvoicepdf" template="sales/order/bulkinvoicepdf.phtml"></block>
+        </reference>
+    </adminhtml_sales_order_bulkinvoicepdf>
+</layout>

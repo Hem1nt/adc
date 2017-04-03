@@ -1,0 +1,216 @@
+		<script type="text/javascript">
+
+		jQuery(document).ready(function() {
+			jQuery('.read_more_content').css({'font-weight':'bold'});
+			jQuery('.less_content_para').css({'font-weight':'bold'});
+			jQuery('.content_para').hide();
+			jQuery('.read_more_content').click(function (){
+				//alert('.'+this.id);
+				jQuery('.'+this.id).slideDown( "slow" );
+				jQuery('#'+this.id).hide();
+			});
+
+			jQuery('.less_content_para').click(function (){
+				//alert('.'+this.id);
+				var class_string = this.id;
+				var strarray = class_string.split('_');
+				console.log(strarray);
+				var newidforless = strarray[1]+'_'+strarray[2];
+				jQuery('.'+newidforless).slideUp( "slow" );
+				// jQuery('#'+this.id).css({'display':'none'});
+				// jQuery('.read_more_content').css({'display':'block'});
+				jQuery('.read_more_content').show();
+			});
+
+		});
+		</script>
+		<style type="text/css">
+.read_more_content,.less_content_para{cursor: pointer;}
+/*.less_space{margin-left: 5px;}*/
+		</style>
+<div class="below_banner_content">
+	<p>&nbsp;</p>
+	<h1><span class="hometextcontent" style="color: #415a00;">Welcome to AllDayChemist - it’s your pharmacy </span></h1>
+	<hr />
+	<p>&nbsp;</p>
+	<div class="hometextcontent" title="Generic Drugs">
+		<p><span>Welcome User. Please see our Terms and Conditions before you start with shopping on our site.</span></p>
+		<p>&nbsp;</p>
+		<p><b>AllDayChemist</b> is one of the leading online pharmacies specializing in providing generic and OTC products. All of our products are compatible and consistent with FDA standards, and they are manufactured by reputed manufacturers. We usually supply a 90-day supply of drugs; however, we will also supply generic medicines as per the quantity needed by our customers for personal use.</p>
+		<p>&nbsp;</p>
+		<p>
+			<b>Our generic drugs are identical in their pharmaceutical and chemical compositions as compared to their U.S. counterparts; also there are no hidden charges involved in the drug and medicines prices. </b>
+		<a id="content_para1" class="read_more_content">Read More</a></p>
+		<p>&nbsp;</p>
+
+		<div class="content_para1 content_para">
+
+			<p><span>AllDayChemist is one of those online chemist whose endeavor is to simplify your search for generic medicines. You can either search by Brand-Name or search by Generic Name before you decide on buying medicine online. You can also mention the desired quantity of drugs required and check-out after providing us with the required information. We intend to become the best online pharmacy through concentrated efforts towards community service in the form of affordable medicines.</span></p>
+			<p>&nbsp;</p>
+
+			<p><b>Please note that your online drug transaction will be considered valid after we receive a fax or scanned copy of your prescription.</b></p>
+			<p>&nbsp;</p>
+
+			<p>We expect our site visitors to be at least 21 years of age and we encourage our customers to keep themselves informed about their respective country’s laws related to online pharmacies and import of generic drugs for personal use.</p>
+			<p>&nbsp;</p>
+
+			<p><b>AllDayChemist assumes no legal responsibility for those not in compliance with such guidelines regarding the import of generic drugs.</b></p>
+			<p>&nbsp;</p>
+			<p>AllDayChemist has been serving the community worldwide since 2000. Our internal audit teams ensure that our processes are aligned with our mission while serving the community with reliability and integrity. We believe in consumer satisfaction and strive to ensure there are no delays in delivery. In case a consumer experiences delay in the arrival of the consignment of generic drugs, we ship the consignment at absolutely no cost to the customer.</p>
+			<p>&nbsp;</p>
+			<p><b>Buy prescription drugs and health care products from your favorite online chemist – AllDayChemist, without paying any extra or hidden charges.  </b>
+				<a id="less_content_para1" class="less_content_para"><span class="less_space">Less</span></a>
+			</p>
+		</div>
+		<p>&nbsp;</p>
+		<div>
+			<h2 title="Prescription Drugs">
+				<span class="hometextcontent" style="color: #415a00;">Why Choose AllDayChemist?</span>
+			</h2>
+			<hr />
+			<p>&nbsp;</p>
+			<div class="hometextcontent">
+				<p style="text-align: justify;"><span>We believe in directing our skills and expertise in delivering and developing quality, in online pharmacy services which is not gained by accident. Our promise to deliver and maintain the present quality of work forms the basis of our work philosophy, a claim endorsed by online pharmacy reviews.</span></p>
+				<p>&nbsp;</p>
+				<p>We believe that as we develop our work quality we will be one step closer to helping you enrich your lives with good health and happiness. We wish to see our consumers to live life filled with long life and comforts. This is AllDayChemist’s commitment towards the community.</p>
+					<!-- <a id="content_para2" class="read_more_content">Read More</a></p> -->
+				<div class="content_para content_para2">
+					<p>&nbsp;</p>
+					<p style="text-align: justify;"><a id="less_content_para2" class="less_content_para">Less</a></p>
+				</div>
+			</div>
+				<p>&nbsp;</p>
+				<h2 title="Generic Medicines">
+					<span class="hometextcontent" style="color: #415a00;">What have we to offer?</span>
+				</h2>
+				<hr />
+<!-- 				<p><img src="<?php //echo $this->getSkinUrl().'images/qualty.jpg'?>" alt="" /></p>
+ -->				<p>&nbsp;</p>
+				<div class="hometextcontent">
+					<h3>Hassle-free service:</h3>
+					<p><span>Our home delivery service provides utmost convenience to help you order drugs online  without compromising on time and quality. Along with being well-recognized for dispersing high quality drugs inexpensively, we offer hassle-free services to our valued customers. For those requesting privacy of order, the consignments are sent in small bubble envelopes or card boxes for the same.</span></p>
+					<p>&nbsp;</p>
+								
+
+					<h3>Savings and Safety</h3>
+					<p><span>At AllDayChemist, we purchase our medicines from only the best and respected manufacturing companies. We practice hygiene measures to make sure all the drugs are safely placed in suitable conditions. We at AllDayChemist do not compromise drug quality for the sake of discounted price. We encourage you to buy drugs online as it saves both time and energy. If a product is damaged during the transit we ensure a new package is immediately dispatched.</span></p>
+					<p>&nbsp;</p>	
+					<h3>Best buy at best prices:</h3>					
+					<p>We at AllDayChemist aim to provide you with a 100% Satisfaction Guarantee. We live by the adage of healthy life and affordable medical expenses. You can buy drugs online by paying us through check/money orders, or credit cards. We have made lives easier with our easy to use search engines that will help you find and buy medicine online. You can also avail the various exciting offers that are always ongoing at our store.<a id="content_para3" class="read_more_content">Read More</a></p>
+					<p>&nbsp;</p>
+
+					<div class="content_para content_para3">
+						<p>If you order drugs online from us and it does not reach you or is damaged in transit, we quickly arrange to ship another package. Due to circumstantial factors if that is not possible, we offer a full refund. <a id="less_content_para3" class="less_content_para"><span class="less_space">Less</span></a></p>
+					<p>&nbsp;</p>
+					</div>
+
+				</div>
+					<h3 title="Prescription Medicines">
+						<span>Manufacturers: </span>
+					</h3>
+					<!-- <hr /> -->
+					<div class="hometextcontent">
+						<p>We order our drugs from reputed international manufacturers and are made available for sale after careful scrutiny of the quality. This way we can spend more time and efforts to help you when you buy medicine online. These drugs sold in other countries are known by other brand names, but generically they are the same drugs. <a id="content_para4" class="read_more_content">Read More</a></p>
+						<p>&nbsp;</p>
+						<div class="content_para4 content_para" >
+						<p style="text-align: justify;">AllDayChemist orders their drugs from reputed manufacturing companies in India. Some of these companies are:</p>
+						<p>&nbsp;</p>
+						<p style="text-align: justify;">
+							<ol>
+							<li>Ranbaxy Laboratories Ltd.</li>
+							<li>Cipla Ltd.</li>
+							<li>Dr. Reddy'S Laboratories Ltd.</li>
+							<li>Nicholas Piramal India Ltd.</li>
+							<li>Aurobindo Pharma Ltd.</li>
+							<li>Glaxosmithkline Pharmaceuticals Ltd.</li>
+							<li>Lupin Ltd.</li>
+							<li>Cadila Healthcare Ltd.</li>
+							<li>Sun Pharmaceutical Inds. Ltd.</li>
+							<li>Wockhardt Ltd.</li>
+							<li>Aventis Pharma Ltd.</li>
+							<li>Orchid Chemicals & Pharmaceuticals Ltd.</li>
+							<li>Ipca Laboratories Ltd.</li>
+							<li>Alembic Ltd.</li>
+							<li>Pfizer Ltd.</li>
+							<li>Morepen Laboratories Ltd.</li>
+							<li>U S V Ltd.</li>
+							<li>Matrix Laboratories Ltd.</li>
+							<li>Biocon Ltd.</li>
+							<li>Novartis India Ltd.</li>
+							<li>Torrent Pharmaceuticals Ltd.</li>
+							<li>Abbott India Ltd.</li>
+							<li>Cadila Pharmaceuticals Ltd.</li>
+							<li>Merck Ltd.</li>
+							<li>Unichem Laboratories Ltd.</li>
+							<li>Glenmark Pharmaceuticals Ltd.</li>
+							<li>Wyeth Ltd.</li>
+							<li>Divi'S Laboratories Ltd.</li>
+							<li>J B Chemicals & Pharmaceuticals Ltd.</li>
+							<li>F D C Ltd.</li>
+							<li>Emcure Pharmaceuticals Ltd.</li>
+							<li>Panacea Biotec Ltd.</li>
+							<li>Strides Arcolab Ltd.</li>
+							<li>Shasun Chemicals & Drugs Ltd.</li>
+							<li>Elder Pharmaceuticals Ltd.</li>
+							<li>Macleods Pharmaceuticals Ltd.</li>
+							<li>Aarti Drugs Ltd.</li>
+							<li>Dabur Pharma Ltd.</li>
+							<li>Nectar Lifescience Ltd.</li>
+							<li>Ind-Swift Ltd.</li>
+							<li>Astrazeneca Pharma India Ltd.</li>
+							<li>Unimark Remedies Ltd.</li>
+							<li>Jagsonpal Pharmaceuticals Ltd.</li>
+							<li>Organon (India) Ltd.</li>
+							<li>Surya Pharmaceutical Ltd.</li>
+							<li>Ind-Swift Laboratories Ltd.</li>
+							<li>Kopran Ltd.</li>
+							<li>K D L Biotech Ltd.</li>
+							<li>T T K Healthcare Ltd.</li>
+							<li>Neuland Laboratories Ltd.</li>
+							</ol>
+							<a id="less_content_para4" class="less_content_para"><span class="less_space">Less</span></a></p>
+						<p>&nbsp;</p>
+					</div>
+					<div class="hometextcontent">
+						<h3>Our Community</h3>
+						<p>You can subscribe to our newsletter to be up to date with our inflow of information, new products and medications. Creating an account with us will facilitate faster checkouts, store multiple shipping addresses and check the status of your order online through the order tracker facility. Your Wishlist is our Command!</p>
+						<p>&nbsp;</p>
+
+						<h3>Information:</h3>
+						<p>Along with supplying the best medicines, our website has a host of information on an eclectic set of topics in form of our blogs that will give you a better perspective on your medicines. When buying medications it will become easy to know your order before placing it. Also, with each of our medications we offer extensive product review. There is also space provided for User reviews.</p>
+						<p>&nbsp;</p>
+
+						<h3>Reliability:</h3>
+						<p>AllDayChemist strongly believes in maintaining patient's privacy. In case the delivery is not made on time, is misplaced or damaged; a replacement or full refund is given. At AllDayChemist, we deliver in two-three weeks.<a id="content_para5" class="read_more_content">Read More</a></p>
+						<div class="content_para5 content_para" >
+						<p>&nbsp;</p>
+						<p>We host our site not just for commercial gains, but also to educate and spread awareness about healthy living. Stay up-to-date with various health related articles with the help of our blog.</p>
+						<p>&nbsp;</p>
+						<p>Other than medications to counter almost every disease, we also sell supplements and drugs for beauty and health, weight loss and more.<a id="less_content_para5" class="less_content_para">
+							<span class="less_space">Less</span></a></p>
+						
+						</div>
+						<p>&nbsp;</p>
+						<h3>Medications</h3>
+						<p>We offer medicines for a host of ailments and diseases at our online pharmacy. We offer medications at discounted prices for various ailments, diseases, and deficiency. These include medicines and products for Epilepsy, Cancer, Diabetes, Infertility, Migraine, Alzheimers, HIV, Herpes, and Blood pressure. We also have a section dedicated to beauty and skin care products. It includes Gels, Fairness creams, careprost, hair fall solutions, serums as well as syrups and medication for skin and hair health.<a id="content_para6" class="read_more_content">Read More</a></p>
+						<p>&nbsp;</p>
+
+
+						<div class="content_para6 content_para" >
+
+						<p>We have dedicated categories in our site to simplify your search. The categories have been named after the ailments they are intended to target.<a id="less_content_para6" class="less_content_para">
+						<span class="less_space">Less</span></a>
+						</p>
+						<p>&nbsp;</p>
+						</div>
+						<h3>Health Supplements</h3>
+						<p>Modern lifestyle has rendered regular meals inefficient in supplying our bodies with the required nutrients. We may have to include supplements in our diets to meet our body’s dietary needs. Get all the nutrition that you require with a little help of supplements. Here at AllDayChemist, we offer the best supplements for both men and women. You can refer to our blogs for more information on a given subject.</p>
+						<p>&nbsp;</p>
+
+						<h3>Affiliate programme</h3>
+						<p>If want to join us and contribute in our efforts towards helping the community lead a healthy and happy life, then you can join our affiliate program. To know more, send mail to our affiliate manager who will guide you further.</p>
+						
+						
+					</div>
+					<p>&nbsp;</p>
+				</div>

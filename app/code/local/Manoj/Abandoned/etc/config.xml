@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Manoj_Abandoned>
+      <version>0.1.0</version>
+    </Manoj_Abandoned>
+  </modules>
+  <frontend>
+    <routers>
+      <abandoned>
+        <use>standard</use>
+          <args>
+            <module>Manoj_Abandoned</module>
+            <frontName>abandoned</frontName>
+          </args>
+      </abandoned>
+    </routers>
+		<layout>
+		  <updates>
+			<abandoned>
+			  <file>abandoned.xml</file>
+			</abandoned>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+    <helpers>
+      <abandoned>
+        <class>Manoj_Abandoned_Helper</class>
+      </abandoned>
+    </helpers>
+	<blocks>
+	  <abandoned>
+		<class>Manoj_Abandoned_Block</class>
+	  </abandoned>
+	</blocks>
+	<models>
+	  <abandoned>
+		<class>Manoj_Abandoned_Model</class>
+		<resourceModel>abandoned_mysql4</resourceModel>
+	  </abandoned>
+	  <abandoned_mysql4>
+		<class>Manoj_Abandoned_Model_Mysql4</class>
+		<entities>		  
+			  <abandoned>
+				<table>abandoned_cart</table>
+			  </abandoned>
+        </entities>
+	  </abandoned_mysql4>
+	</models>
+	<resources>
+	  <abandoned_setup>
+		<setup>
+		  <module>Manoj_Abandoned</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </abandoned_setup>
+	  <abandoned_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </abandoned_write>
+	  <abandoned_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </abandoned_read>
+	</resources>
+    <events>
+	  <sales_order_place_after> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_place_after_handler> <!-- identifier of the event handler -->
+            <type>singleton</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>abandoned/observer</class> <!-- observers class alias -->
+            <method>removeentry</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_place_after_handler>
+        </observers>
+      </sales_order_place_after>
+    </events>
+  </global>
+  <admin>
+	<routers>
+	  <abandoned>
+	    <use>admin</use>
+		<args>
+		  <module>Manoj_Abandoned</module>
+		  <frontName>abandoned</frontName>
+		</args>
+	  </abandoned>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+		<abandoned translate="title" module="abandoned">
+			<title>Abandoned Cart</title>
+			<sort_order>100</sort_order>
+			<children>
+				<abandoned module="abandoned">
+					<title>Manage Abandoned Cart</title>
+					<sort_order>0</sort_order>
+					<action>abandoned/adminhtml_abandoned</action>
+				</abandoned>
+			</children>
+		</abandoned>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<abandoned translate="title" module="abandoned">
+			  <title>Abandoned Cart</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <abandoned translate="title">
+			<title>Manage Abandoned Cart</title>
+			<sort_order>0</sort_order>
+		  </abandoned>
+			  </children>
+			</abandoned>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<abandoned>
+		  <file>abandoned.xml</file>
+		</abandoned>
+	  </updates>
+	</layout>
+  </adminhtml>    
+    <crontab>
+        <jobs>            
+			<abandoned_abandonedemail>
+                <schedule><cron_expr>0 3 * * *</cron_expr></schedule>
+                <run><model>abandoned/cron::Abandonedemail</model></run>
+            </abandoned_abandonedemail>
+        </jobs>
+    </crontab>
+</config> 

@@ -1,0 +1,242 @@
+
+<style type="text/css">
+/* ################# Top Level Icon Menu CSS ############## */
+
+ul.iconmenu{
+font-size: 1em;
+list-style: none;
+position: fixed;
+left: 0;
+top: 250px; /* offset from top of page to display icon menu */
+margin: 0;
+padding: 0;
+width: 2em;
+z-index: 5;
+}
+
+ul.iconmenu li{
+text-align: center;
+cursor: pointer;
+}
+
+ul.iconmenu li a{
+display: block;
+text-decoration: none;
+color: black;
+padding: 12px 5px;
+border-bottom: 1px solid white;
+}
+
+ul.iconmenu li a:last-of-type{
+border-bottom-width: 0;
+padding-bottom: 7px;
+margin-bottom: 3px;
+}
+
+ul.iconmenu li a:hover, ul.iconmenu li a.selected{ /* style for selected icon */
+background: #D2FFFF;
+}
+
+/* ################# Shared icon submenu DIV CSS ############## */
+
+
+div.iconsubmenu{
+width:300px; /*default width of each icon sub menu*/
+position:absolute;
+visibility:hidden;
+padding:0;
+background: #F4F4F4;
+-webkit-box-shadow: 5px 5px 5px #c8c8c8; /*css 3 shadows*/
+-moz-box-shadow: 5px 5px 5px #c8c8c8;
+box-shadow: 5px 5px 5px #c8c8c8;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+div.iconsubmenu a{
+text-decoration:none;
+position: relative;
+}
+
+div.iconsubmenu .arrow{ /* default look for arrow of sub menu */
+content: '';
+display: block;
+position:absolute;
+border: 0.4em solid transparent;
+border-right-color: #ccc;
+top: 10px;
+z-index:1000;
+}
+
+/* ################# Mixed Content specific CSS ############## */
+
+div.mixedcontent{
+border: 10px solid red;
+padding: 10px;
+border-radius: 10px;
+}
+
+
+div.mixedcontent a[rel]{ /* links inside mixedcontent that contains a drop down */
+/*border-bottom: 2px dotted red;*/
+}
+
+div.mixedcontent .column{ /*each link column within a mixed content menu*/
+float:left;
+width:50%;
+padding:5px; /*add padding inside p and .column elements within mixed content menu*/
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+
+div.mixedcontent .column ul{
+margin:0;
+margin-left:5px;
+padding:0;
+list-style:none;
+}
+
+div.mixedcontent .column ul li{
+margin-bottom:3px;
+}
+
+
+/* ################# Vertical List Menu Specific CSS ############## */
+
+div.dropdownmenu{
+width:300px;
+height: 50px;
+padding: 15px;
+/*border: 10px solid #ccc;*/
+}
+
+div.dropdownmenu ul{ /*style any UL within vertical menu with class="ulmenu"*/
+margin:0;
+padding:0;
+list-style:none;
+}
+
+div.dropdownmenu ul a{
+display:block;
+border-bottom:1px solid gray;
+padding:5px;
+}
+
+div.dropdownmenu ul a:hover, div.dropdownmenu ul a.selected{ /* style for selected menu item */
+background:lightyellow;
+}
+
+div.dropdownmenu a[rel]:after{ /* style anchor links inside dropdownmenu that contain a drop down */
+content: '>';
+font-size: 16px;
+height: 100%;
+position: absolute;
+top: 2px;
+right: 5px;
+}
+
+/* ################# Tooltip Specific CSS ############## */
+
+div.icontooltip{
+background: black;
+color: white;
+width:auto;
+padding: 5px;
+border-radius: 5px;
+padding: 5px 8px;
+}
+
+div.icontooltip .arrow{
+border-right-color: black;
+}
+
+</style>
+
+<script src="<?php echo $this->getSkinUrl('js/iconmenu.js')?>"></script>
+
+<style type="text/css">
+
+.icon-facebook{
+background-image:url('<?php echo $this->getSkinUrl('images/social_images/facebook.png')?>') ;}
+
+.icon-twitter{
+	background-image:url('<?php echo $this->getSkinUrl('images/social_images/twitter.png')?>') }
+
+.icon-googleplus{
+background-image:url('<?php echo $this->getSkinUrl('images/social_images/googleplus.png')?>') ;
+background-size:32px; 
+}
+
+.icon-pinterest{
+	/*background-image:url('http://adc.iksulabeta.com/skin/frontend/default/alldaychemist/images/social_images/pinterest.png') */
+	background-image:url('<?php echo $this->getSkinUrl('images/social_images/pinterest.png')?>') ;
+
+}
+
+ul.iconmenu li a.icon-facebook{padding: 15px 16px;}
+ul.iconmenu li a.icon-twitter{padding: 15px 16px;}
+ul.iconmenu li a.icon-googleplus{padding: 15px 16px;}
+ul.iconmenu li a.icon-pinterest{padding: 15px 16px;}
+
+ul.iconmenu li a.icon-facebook:hover, ul.iconmenu li a.icon-facebook.selected {
+background:url('<?php echo $this->getSkinUrl('images/social_images/facebook.png')?>') ;
+}
+
+ul.iconmenu li a.icon-twitter:hover, ul.iconmenu li a.icon-twitter.selected {
+background:url('<?php echo $this->getSkinUrl('images/social_images/twitter.png')?>') ;
+}
+/*
+ul.iconmenu li a.icon-googleplus:hover, ul.iconmenu li a.icon-googleplus.selected {
+background:url('http://adc.iksulabeta.com/skin/frontend/default/alldaychemist/images/social_images/googleplus.png') ;
+background-size:32px;
+}*/
+
+ul.iconmenu li a.icon-pinterest:hover, ul.iconmenu li a.icon-pinterest.selected {
+background:url('<?php echo $this->getSkinUrl('images/social_images/pinterest.png')?>') ;
+}
+
+
+</style>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=156204357897583";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+jQuery(document).ready(function(){
+	jQuery("#u_0_3 span span").hide();
+	// jQuery("#u_0_2").renoveClass('hidden_elem');
+
+});
+</script>
+
+<ul id="myiconmenu" class="iconmenu">
+<li><a class="icon-facebook" href="http://www.facebook.com/alldaychemist2" rel="[title]" title="Facebook" target="_blank"></a></li>
+<li><a class="icon-twitter" href="http://www.twitter.com/alldaychemist1" rel="[title]" title="Twitter" target="_blank"></a></li>
+<li><a class="icon-pinterest" href="http://pinterest.com/alldaychemist" rel="[title]" title="Pinterest" target="_blank"></a></li>
+<!-- <li><a class="icon-googleplus" href="#" rel="[title]" title="Google Plus"></a></li> -->
+</ul>
+ 
+ 
+<div id="csslibrary" class="iconsubmenu dropdownmenu">
+
+<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+</div>
+
+<script> 
+/*ddiconmenu.docinit({
+menuid:'myiconmenu', // main menu ID
+easing:"easeInOutCirc",
+dur:500
+})*/
+ 
+jQuery(document).ready(function(){
+	// jQuery('.pluginButtonImage')
+});
+</script>

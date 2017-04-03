@@ -1,0 +1,342 @@
+html, body
+{
+	padding: 0;
+	margin: 0;
+}
+body {
+	background-color: #eee;
+	font-family: Arial, Helvetica, Verdana;
+	font-size: 14px;
+	line-height: 22px;
+	color: #333;
+	-webkit-text-size-adjust: none;
+}
+body *
+{
+	text-shadow: none;
+}
+h1, h2, h3, h4, h5, h6
+{
+	line-height: 1;
+	color: #330;
+	font-weight: bold;
+	margin: 20px 0 10px 0;
+}
+h1, h2, h3
+{
+	font-size: 18px;
+}
+h4, h5, h6
+{
+	font-size: 16px;
+}
+p
+{
+	margin: 0 0 10px 0;
+}
+a, a:link, a:active, a:visited, a:hover
+{
+	color: #333;
+	text-decoration: underline;
+}
+pre
+{
+	font-size: 12px;
+	width: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+#page nav
+{
+	display: none;
+}
+
+#header,
+.header,
+#footer
+{
+	background: #999;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	height: 40px;
+	padding: 0 50px;
+}
+#header a,
+.header a
+{
+	background: center center no-repeat transparent;
+	background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC );
+
+	display: block;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	left: 10px;
+}
+#header a.friends,
+.header a.friends
+{
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAVNJREFUeNq01jFLAzEYxvH2UBCxiIiDUhzcdXCyIk5ufgUXLR37JdxcXBxcuwmOOtml0EKpo04iWIpIQREVEVFLjf9AhoC9e3O5uxd+lMLdPU1yedO8UiqXdQWO122ghi4+8IwGqiiId+uRCHbxqsLrFHNRz5ACSnhTch1EPScQpnIH0w7TWcGiz5rouS45rtkMVnxCJrAQ4yUq+oT8YhAjZOAT8oWHGCE9nxC9H64cA15w4xOiW0HbfErVNhvUa8c3cecQcoZv3xA9z+fCNbe4SNq7jvEUMaUnuE/au7SjkHbSR1G637ULh73Kn+gn7cIBttELGckQh9Jo8iMOrSksYx2b2MKk8FuvUUcHl/9GbiWuooYu3pVf/eARLZQxbp8na2YR0659e+HLmM/geN+z98lSRv8hZu2QQkYh+kzKjZkvHdPahymH6DNp5Cucev0JMAAkKj0NEoYBJwAAAABJRU5ErkJggg==);
+}
+#header a.right,
+.header a.right
+{
+	left: auto;
+	right: 10px;
+}
+#content,
+.content
+{
+	padding: 20px;
+}
+
+
+/** css for mobile out of stock subcription **/
+
+.notify_heading {
+	font-size: 20px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	font-weight: 600;
+}
+
+input#notify_submit {
+	width: 100%;
+	background: #9fb701;
+	margin-top: 8px;
+	padding: 10px;
+}
+
+
+/************************CSS FOR REVIEW PRODUCT******************************************/
+.customer_rating {
+	width: 100% !important;
+}
+#customer-reviews h2,
+.customer_rating h2 {
+	border-bottom: 2px solid #333333;
+	line-height: 2em;
+}
+table#product-attribute-specs-table th,
+table#product-attribute-specs-table td {
+  padding: 5px !important;
+  border: 1px solid #ccc !important;
+}
+table#product-attribute-specs-table  {
+  margin-left: 10px 0px !important;
+}
+.star_image {
+  width: 50%;
+  float: left;
+}
+.average_rating {
+  width: 50%;
+  float: right;
+}
+ul.ratingsDistribution {
+  width: 50%;
+  float: right;
+}
+.rate-cover {
+	width: 100%;
+	float: left;
+	border-bottom: 2px solid #363636;
+}
+.average_rating span {
+  width: 100%;
+  float: left;
+  text-align: center;
+  color: #333333;
+  line-height: 1.7em;
+  font-size: 18px;
+}
+.average_rating {
+  float: left;
+  width: 50%;
+  text-align: center;
+  color: #849b02;
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 30px;
+}
+ul.ratingsDistribution {
+  float: right;
+  width: 40%;
+  text-align: right;
+}
+ul.ratingsDistribution span {
+  float: right;
+  margin-left: 13px;
+  font-weight: bold;
+}
+.progress {
+  background: #849b02 !important;
+  float: right;
+  border: none !important;
+  font-size: 0;
+}
+ul.ratingsDistribution li {
+  margin: 5px 0px;
+  line-height: 24px !important;
+  float: left;
+}
+.rating-bars {
+  background: #e5e5e5;
+  width: 170px !important;
+  display: inline-block;
+  border: 1px solid #f2f2f2;
+  vertical-align: bottom;
+  zoom: 1;
+}
+.rating_box {
+  display: inline-block;
+}
+.reg_login {
+  width: 50%;
+  float: left;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 21px;
+  line-height: 26px;
+}
+.reg_login span {
+  color: #6c9a40;
+  font-weight: bold;
+}
+.star_image img {
+  width: 60%;
+  height: auto;
+}
+.star_image {
+  width: 50%;
+  float: left;
+}
+.rate_me img {
+  width: 14px;
+  height: 13px;
+  margin-top: 4px;
+  float: right;
+}
+.rate_me {
+	display: inline-block;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 5px 0px;
+	margin: 10px 0px;
+}
+.rate_me ul li {
+  float: left;
+  margin-right: 10px;
+}
+.rating_label {
+  float: left;
+  margin-right: 10px;
+}
+#review-form label.required {
+  width: 30%;
+  float: left;
+}
+#review-form input[type=radio].css-checkbox + label.css-label {
+  height: 15px;
+  line-height: 15px;
+}
+#review-form .input-box {
+  float: right;
+  width: 70%;
+}
+#product-review-table {
+  margin: 0;
+}
+.ratings .rating-box {
+  float: left;
+}
+span.amount {
+  margin-left: 13px;
+}
+.rating-box {
+  background-image: url(../images/blank_star.jpg);
+  background-size: 20px 18px;
+}
+.rating-box .rating, #product-review-table tbody td input {
+  background-image: url(../images/green_star.jpg);
+  background-size: 20px 18px;
+}
+.customer_rating .ratings {
+  margin-top: 17px;
+}
+form#review-form p.back-link {
+  display: none;
+}
+
+form#review-form .button {
+  background: #6c9a40 !important;
+  border-radius: 0 !important;
+  float: left;
+  margin-left: 30%;
+  padding: 7px 13px !important;
+  color: #fff;
+}
+.customer_review {
+  width: 100% !important;
+}
+.review_left_block {
+  width: 30%;
+  float: left;
+  padding-top: 10px;
+}
+.review_right_block {
+  width: 65%;
+  float: right;
+}
+.review-cover {
+  display: inline-block;
+  width: 100%;
+  margin: 20px 0px;
+}
+.page {
+	box-sizing: border-box;
+	padding: 10px;
+}
+
+@media all and (max-width: 540px) {
+.reg_login {
+  width: 30%;
+  margin-top: 30px;
+  font-size: 17px;
+  line-height: 26px;
+}
+ul.ratingsDistribution {
+  width: 70%;
+}
+ul.ratingsDistribution li {
+  float: right;
+}
+}
+@media all and (max-width: 380px) {
+.reg_login {
+  margin-top: 10px;
+}
+section[role="main"] {
+  padding: 0 5px 15px 5px;
+}
+#review-form .input-box {
+  float: right;
+  width: 60%;
+}
+#review-form label.required {
+  width: 40%;
+  float: left;
+}
+.rating-bars {
+  width: 140px !important;
+}
+form#review-form .button {
+  margin-left: 40%;
+}
+
+}
+/******************************************************************/

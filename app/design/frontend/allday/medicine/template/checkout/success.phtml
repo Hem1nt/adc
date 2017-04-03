@@ -1,0 +1,97 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php  //echo $this->getChildHtml('heared4us'); ?>
+
+<?php 
+$customerModel = Mage::getModel('customer/customer');
+$loggedInCustomer = Mage::getSingleton('customer/session')->isLoggedIn();
+$incrementId = $this->getData('order_id');
+$order = Mage::getModel('sales/order')->loadByIncrementId($incrementId);
+$paymentCode = $order->getPayment()->getMethodInstance()->getCode();
+
+
+
+// if($loggedInCustomer && $paymentCode == 'otherpayments'){
+//     $customerData = Mage::getSingleton('customer/session')->getCustomer();
+//     $verifyCustomer = $customerData->getVerify();
+//     $attributeText = $customerModel->getResource()->getAttribute('verify');
+//     $attributeLabel = $attributeText->getSource()->getOptionText($verifyCustomer);
+//     if($attributeLabel == 'Complete'){
+//         if($incrementId):
+//             $msg = 'Verification Pending';
+//             $comments = $order->getAllStatusHistory();
+//             foreach ($comments as $comment) {
+//             $comment->delete();
+//         }
+//         endif; 
+//         $orderState = "processing";
+//         $orderStatus = "verification_complete";
+//         $order->setState($orderState, $orderStatus, "", true);
+//         // $order->addStatusToHistory($order->getStatus(),$msg , true);
+//         $order->save();
+//     }
+// }
+
+?>
+<div class="pr-order-success">
+    <div class="page-title">
+        <h1><?php echo $this->__('Order Placed') ?></h1>
+    </div>
+    
+    <div class="pr-order-success-box">
+        <input type="hidden" id="incrementId" value="<?php echo $incrementId;?>">
+        <?php
+            echo $this->getChildHtml('checkout.success.restpayment');
+             
+            // switch ($paymentCode) {
+            // case 'otherpayments':
+            //     echo $this->getChildHtml('checkout.success.otherpayment');
+            //     break;
+            // default:
+            //     echo $this->getChildHtml('checkout.success.restpayment');
+            // }
+        ?>
+
+        <!-- <div class="buttons-set">
+            <button type="button" class="button" title="<?php //echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php //echo $this->getUrl() ?>'"><span><span><?php //echo $this->__('Continue Shopping') ?></span></span></button>
+        </div> -->
+    </div>
+</div>
+
+<script>
+jQuery('document').ready(function(){
+    var incrementId = jQuery('#incrementId').val();
+    var url = '<?php echo $this->getUrl("overrides/method/changeCustomerGroup");?>';
+    jQuery.ajax({
+        type:'post',
+        url:url,
+        data:'incrementId='+incrementId,
+        success:function(res){
+        }
+    })
+})
+</script>

@@ -1,0 +1,33 @@
+<?php
+	$_product = $this->getProduct();
+	$_proId = $_product->getId();
+	$_product = Mage::getSingleton('catalog/product')->load($_proId);
+	//echo "<pre>"; print_r($_product->getData()); exit;
+	$akamai_url = $_product->getData('akamai_url');
+?>
+
+<?php if($akamai_url){ ?>
+<div class="video_area">
+	<div class="block-title bought-block-title">
+        <strong><span>Watch Video</span></strong>       
+    </div>
+    <div class="vid_wrap">
+    	<script type="text/javascript">jwplayer.key="Ne7JMR5Uhbmzy7oiriciRgMcswmWfAjHEvURvg==";</script>
+    	<div id="player">Loading the player...</div>
+    	<script type="text/javascript">
+            jwplayer("player").setup({
+                    playlist: [{
+                     file: '<?php echo $akamai_url ?>',
+                        provider: 'http://players.edgesuite.net/flash/plugins/jw/v3.1.0.1/AkamaiAdvancedJWStreamProvider.swf',
+                        type:'mp4',
+                    }],
+                    width:338,
+                    height:223,
+                    primary: "flash",
+                    abouttext: "Alldaychemist.com",
+                    aboutlink: "http://www.alldaychemist.com",
+            });
+        </script>
+    </div>   
+</div>
+<?php } ?>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Orderstatechange>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.1.0</version>
+	  <depends>
+                <Mage_Sales />
+      </depends>
+    </Iksula_Orderstatechange>
+  </modules>
+</config>

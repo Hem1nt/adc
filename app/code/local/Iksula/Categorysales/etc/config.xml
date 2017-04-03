@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Iksula_Categorysales>
+            <version>0.1.0</version>
+            <depends>
+                <Mage_Adminhtml />
+                <Mage_Sales />
+            </depends>
+        </Iksula_Categorysales>
+    </modules>
+
+   <global>
+        <models>
+            <iksula_categorysales>
+                <class>Iksula_Categorysales_Model</class>
+                <resourceModel>iksula_categorysales_mysql4</resourceModel>
+            </iksula_categorysales>
+            <iksula_categorysales_mysql4>
+                <class>Iksula_Categorysales_Model_Mysql4</class>
+            </iksula_categorysales_mysql4>
+        </models>
+        <helpers>
+            <iksula_categorysales>
+                <class>Iksula_Categorysales_Helper</class>
+            </iksula_categorysales>
+        </helpers>
+        <blocks>
+            <iksula_categorysales>
+                <class>Iksula_Categorysales_Block</class>
+            </iksula_categorysales>
+        </blocks>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Iksula_Categorysales before="Mage_Adminhtml">Iksula_Categorysales_Adminhtml</Iksula_Categorysales>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <iksula_categorysales>
+                    <file>iksula_categorysales.xml</file>
+                </iksula_categorysales>
+            </updates>
+        </layout>
+    </adminhtml>
+
+</config>

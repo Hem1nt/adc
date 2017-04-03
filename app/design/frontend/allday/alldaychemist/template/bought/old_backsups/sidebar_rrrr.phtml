@@ -1,0 +1,106 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+$title = $this->getTitle();
+$le = $this->getBoughtProducts();
+
+$lecount=count($le );
+?>
+<?php if($this->getEnable()){ ?>
+<div class="block block-list block-compare">
+    <div class="block-title" style="background-color:#FFFFFF;">
+        <strong><span><?php echo $title; ?>
+            <?php if($lecount>0): ?>
+                <small><?php echo $this->__('(%d)', $lecount) ?></small>
+            <?php endif; ?></span></strong>
+       
+    </div>
+	<div class="block-content">
+    <?php if($lecount>0): ?>
+    <ol id="wishlist-sidebar" class="mini-products-list">
+       <?php foreach ($le as $_index => $_item) {  ?>
+       <?php
+
+           $sku = explode('-',$_item->getSku());
+           $skuArr[]=$sku[0];
+         }
+        ?>
+
+        <?php
+        $productCount = 1;
+        $productModel = Mage::getModel('catalog/product');
+        foreach (array_unique($skuArr) as $unique_index => $unique_item) {  
+            if($productCount <=5){
+
+           $productCollection = $productModel->loadByAttribute('sku',$unique_item);
+       ?>
+       <?php //print_r($productCollection->getData());
+            // $urlpath=$productCollection->getData('url_path');
+       ?>
+          <li class="item">
+            <div class="product-image">
+                <a href="<?php echo $productCollection->getProductUrl() ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($productCollection, 'thumbnail')->resize(50); ?>" alt="<?php echo $this->htmlEscape($productCollection->getName()) ?>" width="50" height="50" />
+                </a>
+            </div>
+            <div class="product-details">
+             <?php 
+                    $strength = $productCollection->getData('configurable_attribute');
+                    $us_brand_name = $productCollection->getData('us_brand_name');
+                    // print_r($_item->getData());?>
+                <a href="<?php echo $productCollection->getProductUrl() ?>"><b><?php echo $this->htmlEscape($productCollection->getName()).' '.$strength.'</b> <br/>'; ?></a>
+                <?php echo '( Equivalent to'.' '.$us_brand_name.')'?>
+                <?php echo $this->getPriceHtml($productCollection) ?>
+				 <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <a href="<?php echo $this->getAddToWishlistUrl($productCollection) ?>" class="link-cart"><?php echo $this->__('Add to Wishlist') ?></a>
+                        <?php endif; ?><?php if($productCollection->isSaleable()): ?>
+                <div class="clear"  ></div>
+				 <a href="<?php echo $this->getAddToCartUrl($productCollection) ?>" class="link-cart"><?php echo $this->__('Add to Cart') ?></a>
+						
+
+                <?php endif; ?>
+            </div>
+        </li>
+    <?php   $productCount++; }
+        }      ?>
+    </ol>
+ 
+    <?php else: ?>
+    <div class="content"><p><?php echo $this->__('You have no items to bought.') ?></p></div>
+    <?php endif ?>
+    </div>
+</div>
+
+<?php } ?>
+<?php
+// print_r($skuArr); 
+?>

@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Orderlog>
+      <version>0.1.2</version>
+    </Iksula_Orderlog>
+  </modules>
+  <global>
+    <helpers>
+      <orderlog>
+        <class>Iksula_Orderlog_Helper</class>
+      </orderlog>
+    </helpers>
+	<blocks>
+	  <orderlog>
+		<class>Iksula_Orderlog_Block</class>
+	  </orderlog>
+	</blocks>
+	<models>
+	  <orderlog>
+		<class>Iksula_Orderlog_Model</class>
+		<resourceModel>orderlog_mysql4</resourceModel>
+	  </orderlog>
+	  <orderlog_mysql4>
+		<class>Iksula_Orderlog_Model_Mysql4</class>
+		<entities>		  
+			  <orderstatus>
+				<table>orderstatus_log</table>
+			  </orderstatus>		  
+			  <ordertracking>
+				<table>ordertracking_log</table>
+			  </ordertracking>		  
+			  <usertimelog>
+				<table>user_time_log</table>
+			  </usertimelog>
+			  <itemexportlog>
+			  	<table>item_export_log</table>
+			  </itemexportlog>
+        </entities>
+	  </orderlog_mysql4>
+	</models>
+	<resources>
+	  <orderlog_setup>
+		<setup>
+		  <module>Iksula_Orderlog</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </orderlog_setup>
+	  <orderlog_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </orderlog_write>
+	  <orderlog_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </orderlog_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+		<adminhtml>
+			<args>
+		        <modules>
+		            <iksula_orderlog before="Mage_Adminhtml">Iksula_Orderlog_Adminhtml</iksula_orderlog>
+		        </modules>
+		    </args>
+		</adminhtml>
+	  <orderlog>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Orderlog</module>
+		  <frontName>orderlog</frontName>
+		</args>
+	  </orderlog>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <orderlog module="orderlog">
+		<title>Orderlog</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <orderstatus module="orderlog">
+		    <title>Manage Orderstatus</title>
+			<sort_order>0</sort_order>
+			<action>orderlog/adminhtml_orderstatus</action>
+		  </orderstatus>
+		  <ordertracking module="orderlog">
+		    <title>Manage Ordertracking</title>
+			<sort_order>10</sort_order>
+			<action>orderlog/adminhtml_ordertracking</action>
+		  </ordertracking>
+		  <usertimelog module="orderlog">
+		    <title>Manage Usertimelog</title>
+			<sort_order>20</sort_order>
+			<action>orderlog/adminhtml_usertimelog</action>
+		  </usertimelog>
+		</children>
+	  </orderlog>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<orderlog translate="title" module="orderlog">
+			  <title>Orderlog</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <orderstatus translate="title">
+			<title>Manage Orderstatus</title>
+			<sort_order>0</sort_order>
+		  </orderstatus>
+		  <ordertracking translate="title">
+			<title>Manage Ordertracking</title>
+			<sort_order>10</sort_order>
+		  </ordertracking>
+		  <usertimelog translate="title">
+			<title>Manage Usertimelog</title>
+			<sort_order>20</sort_order>
+		  </usertimelog>
+			  </children>
+			</orderlog>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<orderlog>
+		  <file>orderlog.xml</file>
+		</orderlog>
+	  </updates>
+	</layout>
+	<events>
+        <controller_action_layout_load_before>
+            <observers>
+                <admin_orderlog>
+                    <type>singleton</type>
+                    <class>Iksula_Orderlog_Model_Observer</class>
+                    <method>adminLog</method>
+                </admin_orderlog>
+            </observers>
+        </controller_action_layout_load_before>
+         <admin_session_user_login_success>
+            <observers>
+                <admin_loginsuccess>
+                    <type>singleton</type>
+                    <class>Iksula_Orderlog_Model_Observer</class>
+                    <method>adminLogin</method>
+                </admin_loginsuccess>
+            </observers>
+        </admin_session_user_login_success>
+    </events>
+  </adminhtml>
+</config>

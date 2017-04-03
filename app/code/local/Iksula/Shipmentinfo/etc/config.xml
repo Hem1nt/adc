@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Shipmentinfo>
+      <version>0.1.0</version>
+    </Iksula_Shipmentinfo>
+  </modules>
+  <global>
+    <helpers>
+      <shipmentinfo>
+        <class>Iksula_Shipmentinfo_Helper</class>
+      </shipmentinfo>
+    </helpers>
+	<blocks>
+	  <shipmentinfo>
+		<class>Iksula_Shipmentinfo_Block</class>
+	  </shipmentinfo>
+	</blocks>
+	<models>
+	  <shipmentinfo>
+		<class>Iksula_Shipmentinfo_Model</class>
+		<resourceModel>shipmentinfo_mysql4</resourceModel>
+	  </shipmentinfo>
+	  <!-- <shipmentinfo_mysql4>
+		<class>Iksula_Shipmentinfo_Model_Mysql4</class>
+		<entities>		  
+			  <shipmentinfo>
+				<table>sales_flat_order</table>
+			  </shipmentinfo>
+		</entities>
+	  </shipmentinfo_mysql4> -->
+	</models>
+	<resources>
+	  <shipmentinfo_setup>
+		<setup>
+		  <module>Iksula_Shipmentinfo</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </shipmentinfo_setup>
+	  <shipmentinfo_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </shipmentinfo_write>
+	  <shipmentinfo_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </shipmentinfo_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <shipmentinfo>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Shipmentinfo</module>
+		  <frontName>admin_shipmentinfo</frontName>
+		</args>
+	  </shipmentinfo>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <sales>
+		<children>
+		  <!-- <shipmentinfobackend module="shipmentinfo">
+			<title>Shipmentinfo</title>
+			<sort_order>0</sort_order>
+			<action>admin_shipmentinfo/adminhtml_shipmentinfobackend</action>
+		  </shipmentinfobackend> -->
+		  <shipmentinfo module="shipmentinfo">
+		    <title>Manage Shipmentinfo*</title>
+			<sort_order>40</sort_order>
+			<action>admin_shipmentinfo/adminhtml_shipmentinfo</action>
+		  </shipmentinfo>
+		</children>
+	</sales>	
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<shipmentinfo translate="title" module="shipmentinfo">
+			  <title>Shipmentinfo</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <shipmentinfobackend translate="title">
+			<title>Shipmentinfo</title>
+		  </shipmentinfobackend>
+		  <shipmentinfo translate="title">
+			<title>Manage Shipmentinfo</title>
+			<sort_order>0</sort_order>
+		  </shipmentinfo>
+			  </children>
+			</shipmentinfo>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<shipmentinfo>
+		  <file>shipmentinfo.xml</file>
+		</shipmentinfo>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

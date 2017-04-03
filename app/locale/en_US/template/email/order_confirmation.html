@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AllDayChemist</title>
+</head>
+
+<body style="margin:0;">
+<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="font-size:0;">
+  <tr>
+    <td align="left" valign="top" style="padding:10px 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left"><a href="{{store url=''}}"><img src='{{skin url="images/logo.jpg" _area="frontend" _package="allday" _theme="medicine"}}' width="202" alt="logo" style="display:block; border:none; font-size:14px;" /></a>
+            {{customVar code=emailer_contactus}}
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:0 20px 10px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href='{{store url=""}}rewardpoints/index/referral/'>Refer A Friend</a></td>
+            <td align="left">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="center" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href='{{store url=""}}offers.html'>Offer Zone</a></td>
+                  </tr>
+                </table>
+            </td>
+            <td align="right" valign="middle"><a style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color:#ffffff; text-align:center; text-decoration:none; display:block; width:152px; padding:10px 0;" href='{{store url=""}}contacts'>Contact Us</a></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><a href='{{store url=""}}'><img src='{{skin url="images/order_confirmation_banner.jpg" _area="frontend" _package="allday" _theme="medicine"}}' width="600" alt="We’ve packed your order" style="display:block; border:none; font-size:14px;" /></a></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:20px 40px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#000000;">Dear <span style="color:#4f6b05;">{{htmlescape var=$order.getCustomerName()}}</span>,</td>
+          </tr>
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:25px; color:#4f6b05; padding:10px 0 5px;">Congratulations!</td>
+          </tr>
+
+          <tr>
+            <td colspan="2" align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#000000;"><p><b>Order number: {{htmlescape var=$order.getCustomerOrderIncrementId()}}</b></p>
+<p><b>Thank you for ordering with us. Your order has been received and we are looking into it. We will send you a mail once your order is confirmed.</b></p></td>
+          </tr>
+          
+          <tr>
+{{if pay_link_counter}}
+            <td align="left" valign="top" style="padding:0 0 5px;"><a style="padding:8px 25px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; font-weight:normal; display:inline-block; background-color:#4f6b05; text-decoration:none;" href="{{var payment_link}}">Pay Now</a></td>
+{{else}}
+<td></td>
+{{/if}}
+            <td align="right" valign="top" style="padding:0 0 5px;"><a style="padding:8px 25px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; font-weight:normal; display:inline-block; background-color:#4f6b05; text-decoration:none;" href="{{store url=''}}sales/order/view/order_id/{{var order.entity_id}}/">Track My Order</a></td>
+          </tr>
+{{if pay_link_counter}}
+          <tr>
+            <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#000000;">*Please ignore if already paid.</td>
+          </tr>
+{{else}}
+<tr></tr>
+{{/if}}
+                  </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" style="padding:10px 0;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#6b6b6b; background-color:#dadada; padding:8px 0;"><strong>Your Order Details</strong></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:0 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 0;">Product Name</td>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">Pack Size</td>
+             <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">Bonus (If any)</td>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">No. of Packs</td>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">Total Quantity</td>
+            <td align="center" valign="middle" style="background-color:#4f6b05; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#ffffff; padding:8px 10px;">Sub Total</td>
+          </tr>
+         {{var item}}
+        </table>
+    </td>
+  </tr>
+ {{var shippingitem}}
+  <tr>
+    <td align="left" valign="top"></td>
+  </tr>
+  {{if pay_link_counter}}
+  <tr>
+    <td align="left" valign="top" style="padding:0 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="right" valign="middle"><a style="padding:8px 25px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; font-weight:normal; display:inline-block; background-color:#4f6b05; text-decoration:none;" href="{{var payment_link }}">Pay Now</a></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  {{else}}
+  <tr></tr>
+  {{/if}}
+  <tr>
+    <td align="left" valign="top" style="padding:0 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+           <tr>
+            <td style="font-family:arial;  font-size:13px;  color:#000000; padding:10px; text-transform:uppercase;"><strong>Shipping Address</strong></td>
+          </tr>
+          <tr>
+            <td style="font-family:arial;  font-size:12px;  color:#000000;  padding:0px 10px 10px;;">
+{{var order.customer_firstname}} {{var order.customer_lastname}}<br/>
+                                {{var order.getShippingAddress().getStreetFull()}}<br/>
+                                {{var order.getShippingAddress().getCity()}},
+                                {{if order.getShippingAddress().getRegion()}}
+                                  {{var order.getShippingAddress().getRegion()}}, 
+                                {{/if}}
+                                {{var order.getShippingAddress().getPostcode()}}<br/>
+                                {{var order.getShippingAddress().getCountryModel().getName()}}
+          </td>
+          </tr>
+        <tr>
+              <td align="left" valign="left" style="padding:25px 0px 12px 10px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#000000;">If you need assistance please visit <a style="color:#4f6b05; text-decoration:none;" href='{{store url=""}}contacts'>Customer Support.</a></td>
+        </tr>
+        </table>
+    </td>
+  </tr>
+  {{if recommendedproducts}}
+  <tr>
+    <td align="center" valign="top" style="padding:20px 0 10px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#6b6b6b; background-color:#dadada; padding:8px 0;"><strong>Recommended Products</strong></td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:0 20px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="top" style="border-bottom:1px solid #dcdcdc; padding:0 0 8px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    {{var recommendedproducts}}
+                  </tr>
+                </table>
+            </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  {{else}}
+  <tr></tr>
+  {{/if}}
+  <tr>
+    <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#333333; padding:45px 0 20px 40px;;">We are glad to serve you.</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#333333; padding:0 0 20px 40px;">Looking forward to see you soon. </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" style="padding:35px 0 18px 40px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#333333;">Regards,<br />
+<strong>AllDayChemist</strong></td>
+  </tr>
+</table>
+{{customVar code=new_emailer_footer}}  
+</body>
+</html>

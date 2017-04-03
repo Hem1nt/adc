@@ -1,0 +1,175 @@
+<script type="text/javascript">
+	countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?>
+</script>
+<?php
+echo $this->getDesignStyles();
+$package = Mage::getDesign()->getPackageName();
+$theme = Mage::getDesign()->getTheme('frontend');
+$is_persistent = Mage::helper('opc')->isPersistentMember();
+?>
+<div class="opc-wrapper-opc design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
+	<div class="opc-menu">
+
+	</div>
+	
+<div class="clear"></div>
+
+<div <?php if($is_persistent):?>style="display:none !important;"<?php endif;?>>
+	<div class="checkout_steps">	
+		<div class="tabs">
+			<div class="tab-link checkoutstep-1 current" data-tab="tab-1"><span class="icon-login"></span><p>Login</p><em></em></div><div class="divider"></div><div class="tab-link checkoutstep-2" data-tab="tab-2"><span class="icon-shipping_info"></span><p>Shipping Information</p></div><div class="divider"></div><div class="tab-link checkoutstep-3" data-tab="tab-3"><span class="icon-medical_history"></span><p>Medical History</p></div><div class="divider"></div><div class="last tab-link checkoutstep-4" data-tab="tab-4"><span class="icon-payment"></span><p>Payment</p></div>
+		</div>
+	</div>
+
+	<div class="allday_checkout_left opc-col-left">
+	    <div class="opc-title"><h2><?php echo $this->__('Checkout')?></h2></div>
+		<div id="tab-1" class="tab-content current">
+			<div class="login_section">
+				<?php if(!$is_persistent):?>	
+					<?php //echo $this->getChildHtml('paypal.button')?>
+
+					<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+						<?php echo $this->getChildHtml('login');?>	
+					<?php endif;?>    	
+		 			<div class="clear move-columns"></div>
+				<?php else:?>
+					<?php echo $this->getChildHtml('login');?>
+				<?php endif;?>
+			</div>
+			<!-- <div class="proceed-next">Continue</div> -->
+			<!-- <button class="desktop_button proceed-next btn btn-primary"><span><span>Continue</span></span></button> -->
+		</div>
+		<div id="tab-2" class="tab-content">
+			<form id="opc-address-form-billing" method="post">
+		    	<?php echo $this->getChildHtml('billing')?>
+		    </form>
+		    	
+		    <form id="opc-address-form-shipping" class="hidden" method="post">
+		    <?php echo $this->getChildHtml('shipping')?>
+		    </form>
+		    <?php if (!$this->getOnepage()->getQuote()->isVirtual()):?>
+			<div class="shipping-block" style="display:none;">
+				<h3><?php echo $this->__('Shipping Method')?></h3>
+				<div id="shipping-block-methods">
+					<?php echo $this->getChildHtml('shipping_method');?>
+				</div>
+			</div>
+			<?php endif;?> 
+			<!-- <div class="proceed-next">Continue</div> -->
+			<button class="proceed-next btn btn-primary"><span><span>Continue</span></span></button>
+		</div>
+		<div id="tab-3" class="tab-content">
+			<?php echo $this->getChildHtml('medicalhistory')?>
+			<!-- <div class="proceed-next">Continue</div> -->
+			<button class="medical_nextbtn proceed-next btn btn-primary medicalhistorynext"><span><span>Continue</span></span></button>
+		</div>
+		<div id="tab-4" class="tab-content">
+			<?php //if(Mage::helper('opc')->isShowComment()):?>
+				<?php //echo $this->getChildhtml('customer.comment');?>
+			<?php //endif;?>
+			<div class="payment-block <?php if ($this->getOnepage()->getQuote()->isVirtual()):?>clear-margin<?php endif;?>">
+				<!-- <h3><?php //echo $this->__('Payment Method')?></h3> -->
+				<?php echo $this->getChildHtml('payment')//$this->_getPaymentMethodsHtml();?>
+			</div>
+			<div class="opc-review-actions" id="checkout-review-submit">
+				<h5 class="grand_total"><?php echo $this->__('Grand Total')?>
+					<?php echo Mage::helper('opc')->getGrandTotal()?>
+				</h5>
+			</div>
+			<?php //if (Mage::getConfig()->getModuleConfig('IWD_OnepageCheckoutSignature')->is('active', 'true')): ?>
+			<!-- <div class="signature-block">
+					<h3><?php //echo $this->__('Signature')?><span class='fa expand_plus'></span></h3>
+					<div  class="collapse-block hidden">
+						<?php //echo $this->getChildhtml('opcsignature');?>
+					</div>
+				</div> -->
+			<?php //endif;?>
+		</div>  
+
+	</div>
+
+	<div class="opc-col-right">
+	    <div class="opc-title"><h2><?php echo $this->__('Review Your Order:')?></h2></div>
+		<?php if(Mage::helper('opc')->isShowDiscount()):?>
+			<div class="discount-block">
+				<!-- <h3><?php //echo $this->__('Discount Codes')?><span class='fa expand_plus'></span></h3> -->
+				<!-- <div  class="collapse-block hidden"> -->
+				<?php echo $this->getChildhtml('coupon_points');?>
+				<!-- </div> -->
+			</div>
+		<?php endif;?>
+		<div class="" id="opc-review-block">
+			<?php echo $this->_getReviewHtml()?>
+		</div>
+	</div>
+    
+</div>
+
+</div>
+<script>
+	var vopc = '<?php echo Mage::getConfig()->getModuleConfig("IWD_Opc")->version;?>';
+	IWD.OPC.Checkout.config = '<?php echo $this->getJsonConfig()?>';
+	<?php if ($this->getOnepage()->getQuote()->isVirtual()):?>
+		IWD.OPC.Checkout.isVirtual = true;
+	<?php endif;?>
+
+	var loginStatus = "<?php echo Mage::getSingleton('customer/session')->isLoggedIn(); ?>";
+</script>
+
+<div id="agree_error" style="display:none !important;"><?php echo $this->__('Please agree to all the terms and conditions before placing the order.');?></div>
+<div id="pssm_msg" style="display:none !important;"><?php echo $this->__('Please specify shipping method.');?></div>
+<div class="opc-ajax-loader">
+	<div id="floatingCirclesG">
+		<div class="f_circleG" id="frotateG_01"></div>
+		<div class="f_circleG" id="frotateG_02"></div>
+		<div class="f_circleG" id="frotateG_03"></div>
+		<div class="f_circleG" id="frotateG_04"></div>
+		<div class="f_circleG" id="frotateG_05"></div>
+		<div class="f_circleG" id="frotateG_06"></div>
+		<div class="f_circleG" id="frotateG_07"></div>
+		<div class="f_circleG" id="frotateG_08"></div>
+	</div>
+</div>
+<div class="opc-message-wrapper design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
+	
+	<div class="opc-messages">
+		<a class="close-message-wrapper"><i class="fa fa-close"></i></a>
+		<div class="opc-message-container"></div>
+		<div class="opc-messages-action"><button class="button"><span><span><?php echo $this->__('Close')?></span></span></button></div>
+	</div>
+</div>
+
+<script>
+jQuery(document).ready(function(){
+	var url = "<?php echo Mage::getUrl('overrides/method/changepayment',array(
+            '_secure' => Mage::app()->getFrontController()->getRequest()->isSecure()));?>";
+	var paymentCode;
+	jQuery('.opc-review-actions .grand_total').show();
+	jQuery('.medicalhistorynext').click(function(){
+	jQuery("#checkout-payment-method-load dt input[type='radio']").each(function(){
+        if(jQuery(this).attr("checked")=="checked"){
+            paymentCode = jQuery(this).val();
+        }
+     }); 
+	// console.log(paymentCode);
+		if(paymentCode){
+			
+			jQuery.ajax({
+				type:'post',
+				url:url,
+				data:'data='+paymentCode,
+				dataType:'json',
+				success:function(res){
+					if(res.Status == 1){
+						IWD.OPC.Checkout.pullPayments();
+					}
+				}
+			});
+		}else{
+			jQuery('.opc-review-actions .grand_total').hide();
+		}
+	
+	});
+});
+</script>
+

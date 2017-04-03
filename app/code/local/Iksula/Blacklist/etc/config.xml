@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Iksula_Blacklist>
+          <version>0.1.0</version>
+        </Iksula_Blacklist>
+    </modules>
+    <global>
+        <blocks>
+            <blacklist>
+                <class>Iksula_Blacklist_Block</class>
+            </blacklist>
+        </blocks>
+        <helpers>
+            <blacklist> 
+                <class>Iksula_Blacklist_Helper</class> 
+            </blacklist>
+        </helpers>
+        <models>
+            <blacklist>
+                <class>Iksula_Blacklist_Model</class>
+            </blacklist>
+        </models>
+    </global> 
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <blacklist_section>
+                                            <title>Blacklist Configuration Section</title>
+                                            <sort_order>0</sort_order>
+                                        </blacklist_section>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config> 

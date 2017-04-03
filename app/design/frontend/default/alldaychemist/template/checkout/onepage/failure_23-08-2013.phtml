@@ -1,0 +1,93 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+ //Mage::getSingleton('core/session')->setGspayfailure('1');
+ $order = Mage::getModel('sales/order')->loadByIncrementId($this->getRealOrderId());
+ $customer_name = $order->getCustomerName();
+?>
+
+<?php if(Mage::getSingleton('core/session')->getMyEcheckstatus()) {
+		$orderId = Mage::getSingleton('core/session')->getMyOrderId();
+		$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+		$customer_name = $order->getCustomerName();
+		$orderState = "canceled";
+		$orderStatus = "eCheck Payment Declined";
+		$order->setState($orderState, $orderStatus, "", false);
+		$order->save(); ?>
+		<div class="page-title">
+		    <h1><?php echo $this->__('eCheck Payment Declined') ?></h1>
+		</div>
+		<p>Order Number : <strong><?php echo $orderId; ?></strong></p>
+		<br/>
+		<p>Dear <?php echo $customer_name; ?>,</p>
+		<br/>
+		<p>Thank you for contacting us.</p>
+		<br/>
+		<p>Please note that your eCheck payment has been declined due to any of the following reason/s:</p>
+		<br/>
+		<p>1)&nbsp;&nbsp;&nbsp;&nbsp;Invalid Account Information</p>
+		<br/>
+		<p>2)&nbsp;&nbsp;&nbsp;&nbsp;E-mail address or phone number is incorrect</p>
+		<br/>
+		<p>Please contact us with the correct information so that we can resubmit your order.</p>
+		<br/>
+		<p>We appreciate your patience and the patronage of our pharmacy.</p>
+		<br/>
+		<p>With warm regards,</p>
+		<br/>
+		<p>AllDayChemist Billing Department,</p>
+		<br/>
+		<p>Tel (US): +1-855-840-0584</p><br/>
+<?php Mage::getSingleton('core/session')->unsMyEcheckstatus();	} elseif(Mage::getSingleton('core/session')->getGspayfailure() == '1'){?>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php //echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getRealOrderId()):?>
+    <p><?php echo 'Order Number : '.$this->getRealOrderId(); ?></p>
+<br>
+<p style="font-weight: bold;"><?php echo "Dear ".$customer_name; ?></p>
+<br>
+<p>Please note that the transaction of your order has been declined.</p>
+<br>
+<p>Please inform your Bank that you are expecting a charge from overseas and that you have approved. Once you inform your bank, you can try again or place the order over the phone.</p>
+<br>
+<p>With warm regards</p>
+<br>
+<p>AllDayChemist Billing Department</p>
+<br>
+<p>Tel (US): +1-213-291-2588</p>
+<?php endif;?>
+<?php Mage::getSingleton('core/session')->unsGspayfailure(); 
+ }else {?>
+<div class="page-title">
+    <h1><?php echo $this->__('An error occurred in the process of payment') ?></h1>
+</div>
+<?php if ($this->getRealOrderId()) : ?><p><?php echo $this->__('Order #') . $this->getRealOrderId() ?></p><?php endif ?>
+<?php if ($error = $this->getErrorMessage()) : ?><p><?php echo $error ?></p>
+<?php endif ?>
+<?php }?>
+<p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', Mage::getBaseUrl()) ?></p>
+

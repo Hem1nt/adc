@@ -1,0 +1,70 @@
+<?php
+  $_product = $this->getProduct();
+  $related_product_collection = $_product->getRelatedProductIds();
+?>
+<?php 
+if(!empty($related_product_collection)){
+?>
+<div class="slider_heading">
+    <input type="hidden" value="<?php echo $count;?>" id="relatedProductCount">
+    <h2>Related Products</h2>
+</div>
+
+<div class="related_slider">
+<ol class="multiple-items">
+    <?php
+    foreach($related_product_collection as $_item): ?>
+    <?php
+        $productData = Mage::getModel('catalog/product')->load($_item);
+        $activeIngredient = Mage::helper('amoaction')->getAttributeLabel('active_ingridients',$productData->getActiveIngridients());
+
+        $path = Mage::getUrl().$productData->getUrlPath();
+    ?>
+    <li>
+        <div class="item_wrap">
+            <div class="product-images">
+                <a href="<?php echo $path ?>"><img src="<?php echo $this->helper('catalog/image')->init($productData, 'thumbnail')->resize(50) ?>" alt="<?php echo $this->htmlEscape($productData->getName()) ?>" width="50" height="50" /></a>
+            </div>
+            <div class="product-details">
+                    <a class="p_name" href="<?php echo $path ?>"><?php echo $this->htmlEscape($productData->getName()) ?></a>
+                    <a class="p_name" href="<?php echo $path ?>"><?php echo $this->htmlEscape($activeIngredient) ?></a>
+                    <?php echo $this->getPriceHtml($productData, true) ?>
+                    <?php //if ($this->helper('wishlist')->isAllow()) : ?>
+                    <!-- <a href="<?php //echo $this->getAddToWishlistUrl($productData) ?>" class="wishlist-link"><?php //echo $this->__('Add to Wishlist') ?></a> -->
+                    <?php //endif; ?>
+            </div>
+        </div>
+    </li>
+<?php endforeach ?>
+</ol>
+</div>
+<?php } ?>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    $('.multiple-items').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      adaptive:true,
+      autoplaySpeed: 3000,
+      responsive: [
+    {
+      breakpoint: 901,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 360,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+    });
+});
+</script>

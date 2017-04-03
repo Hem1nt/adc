@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <ts_reports_sales_sales>
+		 <reference name="head">
+			<action method="addJs"><script>ts/reports/reports.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="ts_reports/report_sales" template="report/grid/container.phtml" name="ts_reports_report_grid_container">
+                <block type="ts_reports/report_filter_form_sales" name="grid.filter.form">
+					<action method="setFieldVisibility">
+                        <field>report_type</field>
+                        <visibility>0</visibility>
+                    </action>
+				</block>
+            </block>
+        </reference>
+    </ts_reports_sales_sales>
+	
+    <ts_reports_sales_products>
+		 <reference name="head">
+			<action method="addJs"><script>ts/reports/reports.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="ts_reports/report_products" template="report/grid/container.phtml" name="ts_reports_report_grid_container">
+                <block type="ts_reports/report_filter_form_products" name="grid.filter.form">
+					<action method="setFieldVisibility">
+                        <field>report_type</field>
+                        <visibility>0</visibility>
+                    </action>
+				</block>
+            </block>
+        </reference>
+    </ts_reports_sales_products>	
+	
+</layout>

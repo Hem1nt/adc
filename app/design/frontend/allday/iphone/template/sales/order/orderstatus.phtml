@@ -1,0 +1,425 @@
+<?php  $_order = $this->getOrder();
+if ($_order->hasInvoices()) {
+    $invIncrementIDs = array();
+    foreach ($_order->getInvoiceCollection() as $inv) {
+        $invIncrementIDs[] = $inv->getIncrementId();
+    }
+    $invoice = Mage::getModel('sales/order_invoice')->loadByIncrementId($invIncrementIDs);
+}
+?>
+<?php
+
+
+    $order_state_status = Mage::helper('frontend')->getorderstatestatus($_order->getData('status'));
+
+   //  $configArray = unserialize(Mage::getStoreConfig('custom_snippet/dynamic_status/orderstatus_state', Mage::app()->getStore()));
+   //  foreach($configArray as $configstatus) {
+   //      if($configstatus['list_template'] == $_order->getData('status')) {
+   //          $order_state_status = $configstatus['magento_template'];
+   //      }
+   // }
+
+?>
+<?php
+    $config_incomplete_state = Mage::getStoreConfig('custom_snippet/dynamic_status/incomplete_state');
+    $config_approval_state = Mage::getStoreConfig('custom_snippet/dynamic_status/approval_state');
+    $config_processing_state = Mage::getStoreConfig('custom_snippet/dynamic_status/processing_state');
+    $config_shipping_state = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_state');
+
+    $incomplete_state = explode(",",$config_incomplete_state);
+    $approval_state = explode(",",$config_approval_state);
+    $processing_state = explode(",",$config_processing_state);
+    $shipping_state = explode(",",$config_shipping_state);
+
+    $config_approval_status = Mage::getStoreConfig('custom_snippet/dynamic_status/approval_status');
+    $config_approval_status_failure = Mage::getStoreConfig('custom_snippet/dynamic_status/approval_status_failure');
+    $config_processing_status = Mage::getStoreConfig('custom_snippet/dynamic_status/processing_status');
+    $config_processing_status_done = Mage::getStoreConfig('custom_snippet/dynamic_status/processing_status_failure');
+    $config_processing_status_none = Mage::getStoreConfig('custom_snippet/dynamic_status/processing_status_none');
+    $config_shipping_status_with_trackno = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_status');
+
+    $config_shipping_status_with_trackno_failure = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_status_failure');
+    $config_shipping_status_without_trackno_failure = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_status_1_failure');
+    $config_shipping_status_without_trackno = Mage::getStoreConfig('custom_snippet/dynamic_status/shipping_status_1');
+
+?>
+
+<tr>
+<?php
+
+
+  $arrival_statusArray  = $approval_state;
+  $processing_statusArray  = $processing_state;
+  $shipping_statusArray1  = array('Order Shipped');
+  $shipping_statusArray2  = $shipping_state;
+  $failure_statusArray = $incomplete_state;
+  $dispensing_message = $config_processing_status_none;
+  $arrival_message = $config_approval_status;
+
+  if(in_array($_order->getStatus(),$arrival_statusArray)){
+    $arrival_status = 'processed-current';
+    $processing_status = 'pending';
+    $shipping_status1 = 'pending';
+    $shipping_status2 = 'pending';
+}
+
+if(in_array($_order->getStatus(),$failure_statusArray)){
+    $arrival_status = 'incomplete';
+    $arrival_message = $config_approval_status_failure;
+    $processing_status = 'pending';
+    $shipping_status1 = 'pending';
+    $shipping_status1 = 'pending';
+    $shipping_status2 = 'pending';
+}
+
+if(in_array($_order->getStatus(),$processing_statusArray)){
+    $arrival_status = 'processed';
+
+    $processing_status1 = 'processed';
+    $processing_status1 = 'processed-current';
+    $dispensing_message = $config_processing_status;
+    // $processing_status2 = 'processed-current';
+    $shipping_status1 = 'pending';
+    $shipping_status2 = 'pending';
+}
+
+if(in_array($_order->getStatus(),$shipping_statusArray1)){
+    $arrival_status = 'processed';
+    $processing_status1 = 'processed';
+    $processing_status2 = 'processed';
+    $shipping_status1 = 'processed-current';
+    $shipping_status2 = 'pending';
+    $dispensing_message = $config_processing_status;
+}
+
+if(in_array($_order->getStatus(),$shipping_statusArray2)){
+    $arrival_status = 'processed';
+    $processing_status1 = 'processed';
+    $processing_status2 = 'processed';
+    $shipping_status1 = 'processed';
+    $shipping_status2 = 'processed-current';
+    $dispensing_message = $config_processing_status;
+}
+
+    if(in_array($_order->getStatus(),$processing_statusArray) || in_array($_order->getStatus(),$shipping_statusArray1) || in_array($_order->getStatus(),$shipping_statusArray2) && !(in_array($_order->getStatus(),$failure_statusArray))) {
+        $dispensedstatus = Mage::getModel('sales/order_status_history')->getCollection()
+        ->addFieldToFilter('status', 'Dispensing')
+        ->addFieldToFilter('parent_id', $_order->getId());
+        $array = end($dispensedstatus->getData('created_at'));
+        $dispensingDate = Mage::getModel('core/date')->date('D,F d,Y', strtotime($array['created_at']));
+    } else {
+        if($_order->hasInvoices() & !(in_array($_order->getStatus(),$failure_statusArray))) {
+            $dispensingDate = Mage::getModel('core/date')->date('D, F d ,Y', strtotime($invoice->getCreatedAt()));
+        }
+    }
+
+    if($_order->getData('fromdate_message') & $_order->getData('todate_message') & !(in_array($_order->getStatus(),$failure_statusArray))) {
+        $deliveryDate = Mage::getModel('core/date')->date('F d', strtotime($_order->getData('fromdate_message')));;
+        $deliveryDate2 = Mage::getModel('core/date')->date('D, F d ,Y', strtotime($_order->getData('todate_message')));
+    } else if(in_array($_order->getStatus(),$shipping_statusArray1) || in_array($_order->getStatus(),$shipping_statusArray2)) {
+        $shippedstatus = Mage::getModel('sales/order_status_history')->getCollection()
+        ->addFieldToFilter('status', 'Order Shipped')
+        ->addFieldToFilter('parent_id', $_order->getId());
+        $array = end($shippedstatus->getData('created_at'));
+        $shippingDate = Mage::getModel('core/date')->date('D,F d,Y', strtotime($array['created_at']));
+
+        $deliveryDate = Mage::getModel('core/date')->date('F d', strtotime($shippingDate."+10 days"));
+        $deliveryDate2 = Mage::getModel('core/date')->date('D, F d ,Y', strtotime($deliveryDate."+10 days"));
+    }
+
+    if(in_array($_order->getStatus(),$shipping_statusArray1)){
+        $shippedstatus = Mage::getModel('sales/order_status_history')->getCollection()
+        ->addFieldToFilter('status', 'Order Shipped')
+        ->addFieldToFilter('parent_id', $_order->getId());
+        $array = end($shippedstatus->getData('created_at'));
+        $shippingDate = Mage::getModel('core/date')->date('D,F d,Y', strtotime($array['created_at']));
+    }
+
+    $order_statusArray = array('voice_message_left','closed','order_fulfilled');
+    if(in_array($_order->getStatus(),$order_statusArray)){
+
+        $orderstatestatus = Mage::getModel('sales/order_status_history')->getCollection();
+        $orderstatestatusData = $orderstatestatus->getData();
+
+        $j = count($orderstatestatusData);
+        for($i = 0 ; $i < count($orderstatestatusData); $i++){
+            $orderstatesArr  = end($orderstatestatusData);
+            if(in_array($orderstatesArr['status'], $order_statusArray)){
+                if($i > 0){
+
+                    if(!in_array($orderstatestatusData[--$j]['status'], $order_statusArray)) {
+                        $preOrderstatesArr = $orderstatestatusData[--$j];
+                        $preOrderstate = $preOrderstatesArr['status'];
+                    } else {
+                        $preOrderstate = Mage::helper('frontend')->getstatus($order_statusArray);
+                    }
+
+                    $order_state_status_arr[] = Mage::helper('frontend')->getorderstatestatus($preOrderstate);
+                }
+            }
+        }
+    }
+
+$shipmentCollection = Mage::getResourceModel('sales/order_shipment_track_collection')
+->setOrderFilter($_order)
+->getData();
+
+
+$i = 0;
+
+if($shipmentCollection) {
+
+    foreach ($shipmentCollection as $trackvalue) {
+
+        $tracktitle[$i]['track_number'] = $trackvalue['track_number'];
+        $tracktitle[$i]['title'] = $trackvalue['title'];
+        $tracktitle[$i]['updated_at'] = Mage::getModel('core/date')->timestamp($trackvalue['updated_at']);
+        $tracktitle[$i]['created_at'] = date('Y-m-d',$currentTimestamp);
+
+        if ($trackvalue['assign_date'] == '') {
+            $current_date = date('l ,d F');
+            $tracktitle[$i]['assign_date'] = $current_date;
+        } else {
+            $tracktitle[$i]['assign_date'] = $trackvalue['assign_date'];
+        }
+
+        $i++;
+    }
+
+    $shipping_status_message_1 = array();
+    $shipping_status_message_2 = array();
+
+    // if(!(in_array($_order->getStatus(),$failure_statusArray)) && !(in_array($_order->getStatus(),$processing_statusArray)) && !(in_array($_order->getStatus(),$arrival_statusArray)))
+    if(in_array($_order->getStatus(),$shipping_statusArray2))
+    {
+
+
+
+        foreach($tracktitle as $track) {
+           if($track['track_number']){
+            $shipping_status2 = 'processed-current';
+                $html = $track['track_number'];
+                $config_status_track_exist = $config_shipping_status_with_trackno;
+                $shipping_status2_message[] = " <br> ".$html."  on  ". date('D, F d ,Y', strtotime($track['assign_date']));
+            }else{
+                $shipping_status2_message[] = $config_shipping_status_with_trackno_failure;
+            }
+
+           if(in_array($_order->getStatus(),$shipping_statusArray2)){
+                $dispensing_message = $config_processing_status_done;
+                $shipping_status1_message = $config_shipping_status_without_trackno;
+                if($track['track_number']){
+                 $shipping_status1 = 'processed';
+             }else{
+                 $shipping_status1 = 'processed-current';
+             }
+            }else{
+                $shipping_status1_message = $config_shipping_status_without_trackno_failure;
+            }
+        }
+    }
+                                                                                                                                                                                                                                                                                                                            }
+if(in_array($_order->getStatus(),$shipping_statusArray1) || in_array($_order->getStatus(),$shipping_statusArray2)){
+        $shipping_status1_message = $config_shipping_status_without_trackno_failure;
+    }
+
+// if($_order->getStatusLabel() == 'Payment Review') {
+        $orderHistory = Mage::getModel('sales/order_status_history')->getCollection()
+        // ->addFieldToFilter('status', 'Payment Review')
+        ->addFieldToFilter('parent_id', $_order->getId());
+         $array = end($orderHistory->getData('created_at'));
+         $messagedeliveryDate = Mage::getModel('core/date')->date('D, F d, Y', strtotime($array['created_at']));
+
+// } else {
+//     $messagedeliveryDate = Mage::getModel('core/date')->date('D,F d,Y', strtotime($_order->getCreatedAt()));
+// }
+if($order_state_status_arr)
+{
+    $order_state_status = $order_state_status_arr[0];
+}
+
+if(empty($order_state_status)){
+    $order_state_status = 'Payment Approved';
+}
+
+
+// if($_order->hasInvoices()) {
+//     if($_order->getStatusLabel() == 'Dispensing') {
+//         $dispensingDate = Mage::getModel('core/date')->date('D,F d,Y', strtotime($invoice->getCreatedAt()));
+//     }
+//     $deliveryDate = Mage::getModel('core/date')->date('D,d M', strtotime($invoice->getCreatedAt()."+18 days"));
+//     $deliveryDate2 = Mage::getModel('core/date')->date('l ,d F', strtotime($deliveryDate."-3 days"));
+// }
+// $deliveryDate = Mage::getModel('core/date')->date('D,d M', strtotime($_order->getCreatedAt()."+15 days"));
+// $deliveryDate2 = Mage::getModel('core/date')->date('l ,d F', strtotime($deliveryDate."+4 days"));
+?>
+    <!--td align="left" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">
+        <p align="center"><img src="<?php //echo Mage::helper('catalog/image')->init($_order, 'image')->resize(50); ?>" width="50" height="50" alt="" /></p>
+    </td-->
+    <td align="left" width="10%" class="item-details">
+        <label class="order-stat">Order Status:</label>
+        <div class="order-ful">
+            <?php
+                echo $_order->getStatusLabel();
+            ?>
+        </div>
+    </td>
+    <td align="left" width="45%" class="item-shipment delivery_status">
+    <div class="delivery_graph">
+        <label class="del-date">Delivery Date</label>
+            <div class="left_graph">&nbsp;</div>
+            <div class="dates">
+                <?php if($deliveryDate && $deliveryDate2) {  ?>
+                <p class="delivery_date">Between <?php echo $deliveryDate; ?> to <?php echo $deliveryDate2; ?></p>
+                <?php }  ?>
+            </div>
+        </div>
+        <!-- <strong style="font-size:11px;"><?php //echo $this->htmlEscape($p_packagesize) ?></strong> -->
+        <ul class="status_graph">
+            <li class="state">
+                <ul>
+                    <li class="status_step <?php echo $arrival_status;?>" data-row="<?php echo $_order->getId() ?>" data-index="0"></li>
+                </ul>
+            </li>
+            <li class="state">
+                <ul>
+                    <li class="status_step <?php echo $processing_status1;?>" data-row="<?php echo $_order->getId() ?>" data-index="1"></li>
+                    <!-- <li class="status_step <?php //echo $processing_status2;?>" data-row="<?php //echo $_order->getId() ?>" data-index="2"></li> -->
+                    <!-- <li class="status_step <?php //echo $processing_status;?>" data-row="<?php //echo $_order->getId() ?>" data-index="3"></li> -->
+                </ul>
+            </li>
+            <li class="state">
+                <ul>
+                    <li class="status_step <?php echo $shipping_status1;?>" data-row="<?php echo $_order->getId() ?>" data-index="4"></li>
+                    <li class="status_step <?php echo $shipping_status2;?>" data-row="<?php echo $_order->getId() ?>" data-index="5"></li>
+                    <!-- <li class="status_step <?php //echo $shipping_status;?>" data-row="<?php //echo $_order->getId() ?>" data-index="6"></li> -->
+                </ul>
+            </li>
+        </ul>
+
+        
+
+        <div class="shipment_details">
+            <div class="shipment_info_box box<?php echo $_order->getId() ?> outer_box<?php echo $_order->getId() ?>0 adc_hidden">
+                <div class="arrow arrow0"></div>
+                <div class="shipment_message_box">
+                    <div class="message_details">
+
+                    <?php
+                        echo $arrival_message;
+                        echo "<div class='message_details_more' style='display:block'>";
+                        echo "<div class='message_details_date'>";
+                        if($messagedeliveryDate) {
+                            echo $messagedeliveryDate;
+                        }
+                        echo "</div>";
+                        echo "<div class='message_details_status'>";
+                        if($order_state_status) {
+                            echo $order_state_status;
+                        }
+                        echo "</div>";
+                        echo "</div>";
+                    ?>
+                    </div>
+                </div>
+            </div>
+            <div class="shipment_info_box box<?php echo $_order->getId() ?> outer_box<?php echo $_order->getId() ?>1">
+                <div class="arrow arrow1"></div>
+                <div class="shipment_message_box">
+                    <div class="message_details">
+                    <!-- Order items are ready to dispatch -->
+                    <?php
+                        echo $dispensing_message;
+                        echo "<div class='dispensing_details_date'>";
+                        if($dispensingDate) {
+                            echo $dispensingDate;
+                        }
+                        echo "</div>";
+                    ?>
+                    </div>
+                </div>
+            </div>
+            <div class="shipment_info_box box<?php echo $_order->getId() ?> outer_box<?php echo $_order->getId() ?>2 adc_hidden">
+                <div class="arrow arrow2"></div>
+                <div class="message_details shipment_message_box">Order items are yet to dispatch
+                </div>
+            </div>
+            <div class="shipment_info_box box<?php echo $_order->getId() ?> outer_box<?php echo $_order->getId() ?>3 adc_hidden">
+                <div class="arrow arrow3"></div>
+                <div class="message_details shipment_message_box">N/A</div>
+            </div>
+            <div class="shipment_info_box box<?php echo $_order->getId() ?> outer_box<?php echo $_order->getId() ?>4 adc_hidden">
+                <div class="arrow arrow4"></div>
+                <div class="message_details shipment_message_box">
+                    <?php
+                    if($shipping_status1_message && (in_array($_order->getStatus(),$shipping_statusArray1) || in_array($_order->getStatus(),$shipping_statusArray2))) {
+                        echo $shipping_status1_message;
+                            if($shippingDate) {
+                                echo "<div style='display:inline-block;padding-left:7px;'>".$shippingDate."</div>";
+                            }
+                       } else { echo "N/A"; } ?></div>
+
+            </div>
+            <div class="shipment_info_box box<?php echo $_order->getId() ?> outer_box<?php echo $_order->getId() ?>5 adc_hidden">
+                <div class="arrow arrow5"></div>
+                <div class="message_details shipment_message_box <?php if($tracktitle['track_number']){echo 'message_details';}?>">
+
+                    <?php
+                    // print_r($_order->getStatus());
+                    // print_r($shipping_statusArray2);
+                    if ($shipping_status2_message && in_array($_order->getStatus(),$shipping_statusArray2)) {
+                        $shipping_status2_unique = array_unique($shipping_status2_message);
+                        if($config_status_track_exist) {
+                            echo "<span class='track_text'>".$config_status_track_exist."</span>";
+                        }
+                        foreach($shipping_status2_unique as $status2_message) {
+
+                            echo "<span class='track_msg'>".$status2_message."</span>";
+                        }
+                    } else {
+                        echo "N/A";
+                    }
+                        // echo $tracktitle['title'];
+                    ?>
+
+                </div>
+            </div>
+            <div class="shipment_info_box box<?php echo $_order->getId() ?> outer_box<?php echo $_order->getId() ?>6 adc_hidden">
+                <div class="arrow arrow6"></div>
+                <div class="message_details shipment_message_box">N/A</div>
+            </div>
+        </div>
+    <!-- </td> -->
+    <!-- <td align="left" width="15%" class="item-shipment"> -->
+        <!-- <strong style="font-size:11px;"><?php //echo $this->htmlEscape($qty) ?></strong> -->
+
+    <!-- </td> -->
+   <!--  <td align="right" width="12%" class="item-details">
+        <span class="row_total"><?php //echo $this->htmlEscape($price) ?></span>
+    </td> -->
+    <!--<td align="center" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;"><?php //echo $_item->getQtyOrdered()*1 ?></td-->
+
+</tr>
+<script type="text/javascript">
+    var step_id = 0;
+    jQuery('.status_step').hover(function(){
+     step_id = jQuery(this).attr('data-index');
+     step_datarow = jQuery(this).attr('data-row');
+     jQuery('.box'+step_datarow).hide();
+     jQuery('.outer_box'+step_datarow+step_id).show();
+
+ });
+
+    jQuery(document).ready(function(){
+
+        if (jQuery(".processed-current")[0]){
+
+            jQuery(".status_step.processed-current").trigger("mouseover");
+            // Do something if class exists
+        } else {
+            // Do something if class does not exist
+        }
+
+    });
+</script>
+

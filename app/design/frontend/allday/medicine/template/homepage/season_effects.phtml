@@ -1,0 +1,34 @@
+<script>
+jQuery(document).ready( function(){
+	jQuery.fn.snow({minSize: 15, maxSize: 25, newOn: 1000, flakeColor: '#aaa' });/*minSize: 5, maxSize: 25, newOn: 1000, */
+	jQuery.fn.snow1({minSize: 10, maxSize: 20, newOn: 800, flakeColor: '#aaa' });/*minSize: 5, maxSize: 25, newOn: 1000, */
+});
+</script>
+<div id="set_christmas_tree">
+	<img src="" alt=""/>
+</div>
+<script>
+	set_tree_width_height(300,500,'bottom_left','http://www.alldaychemist.com/media/hse/images/snowman2.png');
+	jQuery( "#set_christmas_tree img" ).click(function() {
+		jQuery('#set_christmas_tree').fadeOut(300);
+	});
+</script>
+<!-- Santa Claus Flying-->
+<div id="christmas_thatha_image"><img src="" /></div>
+<script type="text/javascript">		
+	// thatha_fly('no_flip',15000,'http://www.alldaychemist.com/media/hse/images/santa-1.gif','http://adc.iksulabeta.com/media/hse/images/santa-1.gif');
+</script>
+
+<div id="footer_decoration" class="footerDecorationImgs1" style=""></div>
+
+<script type="text/javascript">
+jQuery(document).scroll(function () {
+    var y = jQuery(this).scrollTop();
+    if (y > 240) {
+        jQuery('#footer_decoration').fadeIn();
+    } else {
+        jQuery('#footer_decoration').fadeOut();
+    }
+
+});
+</script>

@@ -1,0 +1,365 @@
+/*css by sb*/
+
+/*product page review*/
+.cashback-index-viewcashback .my-account .info {
+    font-size: 15px;
+    line-height: 27px;
+    color: #2f2f2f;
+    margin: 20px 0;
+}
+.catalog-product-view .pr-name-social-icons{
+	border-right: 0;
+}
+.catalog-product-view .review-count-pr{
+	width: 65%;
+}
+.catalog-product-view .review-count-pr .ratings .rating-links {
+   	font-size: 14px;
+}
+/*myaccount cashback coupon*/
+ li.cashback_offer a {
+    background: url(../images/coupon_cashback.jpg) 9px 3px no-repeat;
+    background-size: 32px;
+}
+
+.cashback-index-viewcashback .my-account .data-table {
+  width: 100%;
+  margin: 20px 0;
+   border: 0;
+   border-bottom: 1px solid #bebcb7;
+}
+.cashback-index-viewcashback .my-account .data-table thead th {
+    background: #000;
+    color: #fff;
+    border-right: 0;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 5px 15px;
+}
+.cashback-index-viewcashback .my-account .data-table td {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 0;
+}
+.cashback-index-viewcashback .my-account .data-table tr.tr_desc {
+    height: 50px;
+    padding: 12px 0;
+}
+.cashback-index-viewcashback .my-account .page-title {
+     background: url(../images/coupon_cashback.jpg) 9px 3px no-repeat;
+    background-size: 32px;
+    margin: 0;
+    border-bottom: 2px solid #666262;
+    overflow: visible;
+    height: 39px;
+}
+.cashback-index-viewcashback .my-account .page-title h1 {
+    margin-left: 50px;
+    height: 39px;
+    line-height: 39px;
+    background: #fff;
+    font-size: 22px;
+    color: #0a263c; 
+    font-size: 20px;
+    color: #0a263c;
+}
+
+
+/*override product review*/
+.rating_section {
+    display: inline-block;
+}
+.rating_heading {
+    font-size: 16px;
+    font-weight: bold;
+   margin-right: 20px;
+}
+.star_wrap, .rating_heading {
+    display: inline-block;
+    float: left;
+    line-height: 39px;
+}
+.star_wrap > div {
+    float: left;
+}
+.rating_section input[type=radio].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+   margin: -1px;
+    padding: 0;
+     border: 0;
+    width: 100%;
+    float: right;
+    clear: none;
+}
+input.radio {
+    display: inline-block;
+    vertical-align: middle;
+}
+input[type="radio"]{
+    line-height: normal
+}
+.rating_section input[type=radio].css-checkbox + label.css-label {
+    margin-bottom: 0;
+    width: 34px;
+    height: 34px;
+    background: url(../images/new_stars.png) center center no-repeat;
+   padding: 0;
+    background-size: 100%;
+    display: inline-block;
+    line-height: 25px;
+        font-size: 25px;
+   vertical-align: middle;
+    cursor: pointer;
+}
+
+.overrides-method-productreview .star_wrap  label.custom_css_label{
+    margin-bottom: 0;
+    width: 34px;
+    height: 34px;
+    background: url(../images/new_stars.png) center center no-repeat;
+    padding: 0;
+    background-size: 100%;
+    display: inline-block;
+    line-height: 25px;
+    font-size: 25px;
+    vertical-align: middle;
+   cursor: pointer;
+     font-weight: 600;
+}
+
+/*add your review on product page*/
+
+ .add_your_review_btn {
+     font-size: 14px;
+     text-align: left;
+    vertical-align: top;
+    font-weight: normal;
+    border: none;
+ }
+ 
+ .add_your_review_btn a {
+   text-decoration: none;
+    text-decoration: none;
+     color: #fff;
+    background: url(../images/sprite.png) -235px -348px no-repeat #506f00;
+    height: 25px;
+    background: #506f00;
+    height: 28px;
+     line-height: 28px;
+     display: inline-block;
+     text-align: center;
+     padding: 0 12px;
+     font-size: 12px;
+ }
+.catalog-product-view .rating-links .add_your_review_btn a:hover{
+    background: #f6770e;
+    border-bottom: 2px solid #8e4407;
+    font-weight: normal;
+}
+ 
+.catalog-product-view .rating-links .add_your_review_btn{
+    border: 0;
+    font-size: 14px;
+    text-align: left;
+}
+
+.catalog-product-view .rating-links .add_your_review_btn a{
+    text-decoration: none;
+    color: #fff;
+    background: #506f00;
+    height: 28px;
+    line-height: 28px;
+    display: inline-block;
+    text-align: center;
+    border-bottom: 2px solid #2a360c;
+    padding: 0 12px;
+    font-size: 12px;
+}
+.catalog-product-view .rating-links .add_your_review_btn a:hover{
+    background: #f6770e;
+    border-bottom: 2px solid #8e4407;
+    font-weight: normal;
+}
+
+/*testimonial form*/
+
+.testimonial-form-index .form-list li {
+    width: 60%;
+}
+.testimonial-form-index .form-list textarea {
+    width: 254px;
+    height: 10em;
+}
+.testimonial-form-index .input-box-captcha {
+    float: left;
+    width: 60%;
+    margin: 0 0 8px;
+}
+.testimonial-form-index .input-box-captcha label{
+    float: none;
+    font-size: 14px;
+    display: inline-block;
+    color: #666;
+    font-weight: bold;
+    position: relative;
+    z-index: 0;
+}
+.testimonial-form-index .input-box-captcha label.required em {
+    right: inherit;
+    top: 0;
+    margin-left: 3px;
+     position: static;
+     float: right;
+    font-style: normal;
+    color: #eb340a;
+}
+.testimonial-form-index .input-box-captcha .input-box {
+    width: 80%;
+    display: inline-block;
+    float: right;
+}
+.testimonial-form-index .input-box-captcha input.input-text {
+    width: 30%;
+}
+.testimonial-form-index .form-list input.input-text {
+    width: 100%;
+    box-sizing: border-box;
+}
+.testimonial-form-index .input-box-captcha .input-box p {
+    font-size: 14px;
+    display: inline-block;
+    color: #666;
+    font-weight: bold;
+}
+.testimonial-form-index div#ratingBox {
+    float: left;
+    width: 60%;
+    margin-top: 10px;
+    margin-left: 108px;
+}
+.testimonial-form-index .page-title h1, .page-title h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #0a263c;
+    border-bottom: 1px solid #444;
+    padding-bottom: 8px;
+}
+
+@media only screen and (max-width: 920px){
+    .testimonial-form-index .form-list .input-box {
+        width: 70%;
+    }
+    .testimonial-form-index .std-input-box {
+        width: 70%;
+    }
+    .testimonial-form-index .input-box-captcha .input-box {
+        width: 70%;
+    }
+    .testimonial-form-index div#ratingBox {
+        margin-left: 140px;
+    }
+}
+@media only screen and (max-width: 736px){
+	.footer-payment-types span span#siteseal img {
+		display: none;
+	}
+	.footer-payment-types span.fpt1 {
+		width: 0;
+		height: 0;
+	}
+	.footer-payment-types span#siteseal {
+		width: 0;
+		height: 0;
+	}
+	.cart_table_wrap #shopping-cart-table1{
+		display: none;
+	}
+	.checkout-cart-index .cart_table_wrap.mid {
+	    margin: 0 !important;
+	}
+	.footer-payment-types {
+		margin-top: 0;
+	}
+}
+
+@media only screen and (max-width: 670px){
+    .testimonial-form-index .form-list .input-box {
+        width: 65%;
+    }
+    .testimonial-form-index .std-input-box {
+        width: 65%;
+    }
+    .testimonial-form-index .input-box-captcha .input-box {
+        width: 65%;
+    }
+    .testimonial-form-index div#ratingBox {
+        margin-left: 140px;
+    }
+}
+@media only screen and (max-width: 570px){
+        .testimonial-form-index .form-list li {
+            width: 100%;
+        }
+        .testimonial-form-index .input-box-captcha {
+            float: left;
+            width: 100%;
+        }
+        .testimonial-form-index div#ratingBox {
+            margin-left: 34%;
+        }
+}
+@media only screen and (max-width: 533px){
+	.footer-payment-types span.fpt1 {
+		width: 76px;
+    	height: 38px;
+	}
+	.footer-payment-types span#siteseal {
+		width: 76px;
+    	height: 38px;
+	}
+	.footer-payment-types span.fpt4.last {
+		display: none;
+	}
+	.footer-payment-types span.fpt2 {
+	    vertical-align: top;
+	}
+	.footer-payment-types span.fpt3 {
+	    vertical-align: top;
+	}
+                    .catalog-product-view .product-view .review-count-pr .ratings {
+                        margin: 0;
+                        margin: 7px 0;
+                }
+
+}
+@media only screen and (max-width: 480px){
+    .catalog-product-view .review-count-pr{
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (max-width: 420px){
+       .testimonial-form-index .form-list li {
+            margin: 0 0 8px;
+        }
+        .testimonial-form-index .form-list .input-box {
+            width: 100%;
+        }
+        .testimonial-form-index .std-input-box {
+            width: 100%;
+        }
+        .testimonial-form-index .input-box-captcha .input-box {
+            width: 100%;
+        }
+        .testimonial-form-index div#ratingBox {
+            margin-left: 0;
+        }
+	
+}
+

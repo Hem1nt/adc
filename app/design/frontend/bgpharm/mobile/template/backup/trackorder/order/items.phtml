@@ -1,0 +1,71 @@
+<?php $_order = $this->getOrder() ?>
+<?php if ($_order): ?>
+<table cellspacing="0" cellpadding="0" border="transparent" width="600" style="border:transparent !important">
+    <thead>
+        <tr>
+            <th align="center" bgcolor="#90a51c" style="font-family:Arial; font-size:13px; color:#ffffff; font-weight:bold; padding:5px 0 5px 0px;"><?php echo $this->__('Product Name') ?></th>
+            <th align="center" bgcolor="#90a51c" style="font-family:Arial; font-size:13px; color:#ffffff; font-weight:bold; padding:5px 0 5px 0px;"><?php echo $this->__('Pack Size') ?></th>
+            <th align="center" bgcolor="#90a51c" style="font-family:Arial; font-size:13px; color:#ffffff; font-weight:bold; padding:5px 0 5px 0px;"><?php echo $this->__('Price Per Pack') ?></th>
+            <th align="center" bgcolor="#90a51c" style="font-family:Arial; font-size:13px; color:#ffffff; font-weight:bold; padding:5px 0 5px 0px;"><?php echo $this->__('Bonus (If any)') ?></th>
+            <th align="center" bgcolor="#90a51c" style="font-family:Arial; font-size:13px; color:#ffffff; font-weight:bold; padding:5px 0 5px 0px;"><?php echo $this->__('No. of Packs') ?></th>
+            <th align="center" bgcolor="#90a51c" style="font-family:Arial; font-size:13px; color:#ffffff; font-weight:bold; padding:5px 0 5px 0px;"><?php echo $this->__('Total Quantity') ?></th>       
+             <th align="center" bgcolor="#90a51c" style="font-family:Arial; font-size:13px; color:#ffffff; font-weight:bold; padding:5px 0 5px 0px;"><?php echo $this->__('Total') ?></th>
+        </tr>
+    </thead>
+
+    <?php $i=0; foreach ($_order->getAllItems() as $_item): ?>
+    <?php if($_item->getParentItem()) continue; else $i++; ?>
+    <tbody<?php echo $i%2 ? ' bgcolor="#F6F6F6"' : '' ?>>
+        <?php echo $this->getItemHtml($_item) ?>
+    </tbody>
+    <?php endforeach; ?>
+</table>
+<table cellspacing="0" cellpadding="0" border="transparent" width="600" style="border:transparent !important">
+    <tbody>
+          <?php echo $this->getChildHtml('order_totals') ?>
+    </tbody>
+</table>
+<?php if ($this->helper('giftmessage/message')->isMessagesAvailable('order', $_order, $_order->getStore()) && $_order->getGiftMessageId()): ?>
+    <?php $_giftMessage = $this->helper('giftmessage/message')->getGiftMessage($_order->getGiftMessageId()); ?>
+    <?php if ($_giftMessage): ?>
+<br />
+<table cellspacing="0" cellpadding="0" border="0" width="100%" style="border:1px solid #EAEAEA;">
+    <thead>
+        <tr>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><strong><?php echo $this->__('Gift Message for this Order') ?></strong></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+            <td colspan="4" align="left" style="padding:3px 9px">
+            <strong><?php echo $this->__('From:'); ?></strong> <?php echo $this->escapeHtml($_giftMessage->getSender()) ?>
+            <br /><strong><?php echo $this->__('To:'); ?></strong> <?php echo $this->escapeHtml($_giftMessage->getRecipient()) ?>
+            <br /><strong><?php echo $this->__('Message:'); ?></strong><br /> <?php echo $this->escapeHtml($_giftMessage->getMessage()) ?>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    <?php endif; ?>
+<?php endif; ?>
+<?php if(Mage::getStoreConfig('trackorder/trackorder_general/enabled') && Mage::getStoreConfig('trackorder/trackorder_general/sendtrack_link') && ($_order->getTrackLink() != NULL)) { ?>
+<br />
+<table cellspacing="0" cellpadding="0" border="0" width="650">
+    <thead>
+        <tr>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Track Your Order') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="font-size: 12px; padding: 7px 9px 9px 9px; border-left: 1px solid #EAEAEA;
+border-bottom: 1px solid #EAEAEA; border-right: 1px solid #EAEAEA;">
+                <?php echo $this->__('Track Your Order ');?>
+                <a style="text-decoration: none;" href="<?php echo Mage::getBaseUrl().'trackorder/index/view/'.$_order->getTrackLink();?>"> <?php echo $this->__('Here');?></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<?php } ?>
+<?php endif; ?>

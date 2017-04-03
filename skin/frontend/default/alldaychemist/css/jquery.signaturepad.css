@@ -1,0 +1,88 @@
+
+#sigpaddiv {	
+	width: 100%;	
+	height: 500px;
+	margin-top: 5px;		
+	background: url(../../images/check.jpg) no-repeat;	
+	background-position:top;
+}
+
+.sigPad { /* move the entire thing */
+	margin: 0px;
+	padding: 0;
+	width: 402px;
+	position: relative;
+	top: 260px; 
+	left: 460px;
+}
+
+.sigPad .submitSig {
+	margin: -10px;
+	padding: 0.6em;
+	border: 1px solid #000;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	color: #000;
+	/*background-color: #7c362b; */
+	font: bold 1em/1.375 "Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-align: left;
+	position: absolute;
+	left: 240px;
+	top: 160px;		
+}
+
+.sigPad .clearSig {
+	margin: -10px;
+	padding: 0.6em;
+	border: 1px solid #000;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	color: #000;
+	/*background-color: #7c362b; */
+	font: bold 1em/1.375 "Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-align: left;
+	position: absolute;
+	left: 60px;
+	top: 160px;		
+}
+
+.sigPad button:hover {		
+	border: 1px solid #f33;
+	color: #000;
+}
+
+.sigPad .sig { display: none; }
+
+.sigNav {
+	display: none;
+	height: 2.25em;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	list-style-type: none;
+}
+
+.sigWrapper {
+	clear: both;
+	height: 80px;
+	border: 0px solid #000;		
+}
+
+.signed .sigWrapper { border: 5; }
+.pad { position: relative; }
+.current .pad { cursor: url("../images/pencil.png") 1 15, crosshair; }	
+
+p.error {
+	display: relative;
+	position: absolute;
+	top:-25px;
+	margin: 5px;
+	padding: 0px;
+	background-color: #f33;
+	color: #fff;
+	font-weight: bold;
+}

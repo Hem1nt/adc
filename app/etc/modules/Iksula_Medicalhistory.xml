@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Iksula_Medicalhistory>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Iksula_Medicalhistory>
+    </modules>
+</config>

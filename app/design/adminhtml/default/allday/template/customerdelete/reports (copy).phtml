@@ -1,0 +1,40 @@
+<div style="width:100%; float:left; margin-bottom:18px;">
+	<!--   <label style="margin:0px;">Export Product Wise Sold Qty</label> -->
+<!-- <table>
+<tr><td>Slot 1 </td><td>Slot 2 </td><td>Slot 3 </td><td>Slot 4 </td></tr>
+<tr><td>Slot 5 </td><td>Slot 6  </td><td>Slot 7 </td><td>Slot 8 </td></tr>
+
+</table> -->
+<form action="<?php echo $this->getUrl('*/adminhtml_customerdeletebackend/reportstock');?>" method="post" >
+
+	<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" /> 
+	<button class="print" style="float:left;margin-left:15px;" id="stockstatement" type="submit" >Product Sold Report</button>
+
+</form>
+
+
+<!-- <form action="<?php echo $this->getUrl('*/adminhtml_customerdeletebackend/reportstockstatement');?>" method="post" >
+<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" /> 
+<button class="print" style="margin-left:15px;" id="customer-reportstockstatement" type="submit" >
+		Customer Report
+	</button>
+
+</form> -->
+<form action="<?php echo $this->getUrl('*/adminhtml_customerdeletebackend/customerreport');?>" method="post" >
+From  : <input type="text" name="fromdate" id="from-datepicker" />
+To : <input type="text" name="todate" id="to-datepicker" />
+<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" /> 
+<button class="print" style="margin-left:15px;" id="customer-report" type="submit" >
+		Customer Report With Date Filters
+	</button>
+
+</form>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery("#from-datepicker").datepicker();
+	jQuery("#to-datepicker").datepicker();
+});
+
+</script>
+
+</div>

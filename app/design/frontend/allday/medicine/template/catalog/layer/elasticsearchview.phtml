@@ -1,0 +1,116 @@
+<?php
+$helper = Mage::helper('elastic');
+$filterResult = $this->getData('filterdata');
+$statefilterResult = $this->getData('statefilter');
+$catalogProduct = Mage::getModel('catalog/product');
+$activeIngridientsAttr = $catalogProduct->getResource()->getAttribute("active_ingridients");
+$manufacturerAttr = $catalogProduct->getResource()->getAttribute("manufacturer");
+if(count($filterResult) > 0) { ?>
+<div class="block block-layered-nav">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Shopping Options') ?></span></strong>
+    </div>
+    <div class="block-content">
+          <?php if(!empty($statefilterResult)) { ?>
+            <ol class="result-filter-pr">
+                <?php foreach ($statefilterResult['name'] as $key => $filter) {
+                    ?>
+                <?php if($filter['statefilter_name'] == 'manufacturer') {
+                    $manufacturerLabel = $helper->getOptionText($manufacturerAttr,$filter['statefilter_value']);
+                    ?>
+                    <li>
+                        <a href="<?php echo $filter['statefilter_removeurl']; ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
+                        <span class="label"><?php echo $filter['statefilter_name']; ?>:</span> <?php echo $this->stripTags($manufacturerLabel) ?>
+                    </li>
+                <?php } else if($filter['statefilter_name'] == 'active_ingridients') {
+                    $activeIngridientsLabel = $helper->getOptionText($activeIngridientsAttr,$filter['statefilter_value']);
+                    ?>
+                    <li>
+                        <a href="<?php echo $filter['statefilter_removeurl'] ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
+                        <span class="label"><?php echo $filter['statefilter_name']; ?>:</span> <?php echo $this->stripTags($activeIngridientsLabel) ?>
+                    </li>
+                <?php } else if($filter['statefilter_name'] == 'price'){
+                        $result = explode("-",$filter['statefilter_value']);
+                        if(count($result) == 2) {
+                            $minPrice = Mage::helper('core')->currency($result[0], true, false);
+                            $maxPrice = Mage::helper('core')->currency($result[1], true, false);
+                        } else {
+                            $Price = Mage::helper('core')->currency($result[0], true, false);
+                        }
+
+                    ?>
+                    <li>
+                       <a href="<?php echo $filter['statefilter_removeurl']; ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
+                        <span class="label"><?php echo $filter['statefilter_name']; ?>:</span> <?php
+                        if(count($result) == 2) {
+                            echo $minPrice.'-'.$maxPrice;
+                        } else {
+                            echo $Price;
+                        }
+                        ?>
+                    </li>
+                <?php } else { ?>
+                    <li>
+                       <a href="<?php echo $filter['statefilter_removeurl']; ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
+                        <span class="label"><?php echo $filter['statefilter_name']; ?>:</span> <?php echo $this->stripTags($filter['statefilter_value']) ?>
+                    </li>
+                <?php }?>
+            <?php } ?>
+            <?php if($statefilterResult['name']) { ?>
+                <div class="clear_all">
+                    <a href="<?php echo $statefilterResult['statefilter_clearall'] ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
+                </div>
+            <?php } ?>
+        </ol>
+        <?php } ?>
+        <dl id="narrow-by-list">
+            <?php foreach ($filterResult as $key => $filterData) { ?>
+                    <dt class="filterlabel"><?php if($key == 'configurable_attribute') { echo 'STRENGTH'; } else { echo $key; } ?></dt>
+                    <dd>
+                        <ol>
+                            <?php foreach ($filterData as $filterkey => $filtervalue) { ?>
+                                <?php if($key == 'manufacturer') {
+                                    $manufacturerLabel = $helper->getOptionText($manufacturerAttr,$filterkey);
+                                    ?>
+                                    <li>
+                                        <a href="<?php echo $this->urlEscape(Mage::helper('core/url')->getCurrentUrl()."&".strtolower($key)."=".urlencode($filterkey)) ?>"><?php echo $manufacturerLabel." (".$filtervalue.")" ?></a>
+                                    </li>
+                               <?php } else if($key == 'active_ingridients') {
+                                $activeIngridientsLabel = $helper->getOptionText($activeIngridientsAttr,$filterkey);
+                                ?>
+                                    <li>
+                                        <a href="<?php echo $this->urlEscape(Mage::helper('core/url')->getCurrentUrl()."&".strtolower($key)."=".urlencode($filterkey)) ?>"><?php echo $activeIngridientsLabel." (".$filtervalue.")" ?></a>
+                                    </li>
+                               <?php } else if($key == 'price') {
+                                    $result = explode("-",$filterkey);
+                                    if(count($result) == 2) {
+                                        $minPrice = Mage::helper('core')->currency($result[0], true, false);
+                                        $maxPrice = Mage::helper('core')->currency($result[1], true, false);
+                                    } else {
+                                        $Price = Mage::helper('core')->currency($result[0], true, false);
+                                    }
+                                ?>
+                                    <li>
+                                        <a href="<?php echo $this->urlEscape(Mage::helper('core/url')->getCurrentUrl()."&".strtolower($key)."=".urlencode($filterkey)) ?>">
+                                            <?php
+                                                if(count($result) == 2) {
+                                                    echo $minPrice.'-'.$maxPrice." (".$filtervalue.")";
+                                                } else {
+                                                    echo $Price." (".$filtervalue.")";
+                                                }
+                                            ?>
+                                        </a>
+                                    </li>
+                               <?php } else { ?>
+                                    <li>
+                                        <a href="<?php echo $this->urlEscape(Mage::helper('core/url')->getCurrentUrl()."&".strtolower($key)."=".urlencode($filterkey)) ?>"><?php echo $filterkey." (".$filtervalue.")" ?></a>
+                                    </li>
+                               <?php } ?>
+                            <?php } ?>
+                        </ol>
+                    </dd>
+            <?php } ?>
+        </dl>
+    </div>
+</div>
+<?php } ?>

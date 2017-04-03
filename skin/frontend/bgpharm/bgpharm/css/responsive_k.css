@@ -1,0 +1,834 @@
+/* 1150px */
+
+
+
+
+/*.mobile_button{
+	display: none;
+}*/
+
+.opc-wrapper-opc .payment-block li {
+    margin-bottom: 0;
+    list-style: none;
+}
+#co-billing-form > ul.form-list, #opc-address-form-shipping  ul.form-list, #tab-3 ul.form-list{
+	margin-left: 0;
+}
+
+.payment_tabs{
+	display: block;
+}
+
+
+.select_method{
+	display: none;
+}
+
+.medical_fieldc{
+	margin-bottom: 0;
+}
+
+#tab-3 h4{
+	font-weight: 600;
+}
+
+.opc-wrapper-opc p{
+	font-size: 14px;
+}
+
+
+.payment_tabs_area .input-box select{
+	width: 100%;
+	padding: 0 1%;
+	box-sizing: border-box;
+}
+
+#payment_form_echeckpayment{
+	margin-left: 7px;
+}
+
+
+.medical_label strong{
+	color: #393939!important;
+	font-size: 14px!important;
+	font-weight: 600
+}
+
+.opc-index-index .messages li{
+	margin: 5px 0 12px 0;
+}
+
+li.error-msg span{
+	font-size: 13px;
+	  font-weight: 600;
+}
+
+/*.billing_part1, .billing_part2, .shiping_part1, .shipping_part2{
+	width: 48%;
+}
+
+#co-billing-form ul.form-list label{
+	width: 35%;
+}
+
+#co-billing-form ul.form-list .fields .input-box{
+	width: 65%;
+}*/
+
+.wrapper{
+	min-width: inherit!important;
+}
+
+.mobile_footer{
+	display: none;
+}
+
+.mobile_button.proceed-next{
+	margin-top: 15px;
+}
+
+.mobile_button.proceed-next span{
+	line-height: 31px;
+}
+
+
+@media only screen and (max-width: 1150px) {
+	.col1-layout .col-main {
+		padding: 0 10px;
+	}
+}
+
+/* 1110px */
+
+@media only screen and (max-width: 1110px) {
+	.adc-footer-links ul {
+		margin-right: 3%;
+	}
+	.checkout_steps div.tabs div.divider {
+		width: 20%;
+	}
+	.md-content {
+		min-height: 320px;
+	}
+	#co-billing-form ul.form-list .fields .input-box, #tab-2 .shipping-address-block .input-box {
+	}
+	.billing_part1 li.wide .input-box {
+	  width: 60%!important;
+	}
+	#co-billing-form ul.form-list label {
+		width: 28%;
+	}
+	.billing_part2 .input-box, .shipping_part2 .input-box {
+	  width: 70%!important;
+	}
+	.billing_part2 label, .shipping_part2 label {
+	  width: 30%!important;
+	}
+	label.save-add-book {
+	  width: 100%!important;
+	  text-align: right;
+	}
+}
+
+/* 1050px */
+
+@media only screen and (max-width: 1050px) {
+	.adc-footer-links ul {
+		margin-right: 2%;
+	}
+}
+
+/* 1024px */
+
+@media only screen and (max-width: 1024px) {
+	.footer {
+	  max-width: 1110px;
+	  padding: 10px 15px 15px;
+	  width: auto;
+	}
+	.adc-footer-links {
+		width: 100%;
+		float: none;
+		border-top: 1px solid #C8C8C8;
+	  	padding-top: 15px;
+	}
+	.adc-footer-links ul {
+		margin-right: 3%;
+		float: none;
+	}
+	.adc-footer-links ul li a {
+		line-height: 25px;
+	}
+	span.footer-logo-adc {
+		float: none;
+	}
+	.footer-our-partners {
+	  text-align: center;
+	  border-bottom: 1px solid #C8C8C8;
+	  padding: 10px 0;
+	  border-top: 1px solid #C8C8C8;
+	  margin-top: 10px;
+	}
+	p.footer_content {
+		margin: 20px 0 10px;
+	}
+	.checkout-headerk .header {
+		padding: 2px 10px;
+	}
+	.checkout_steps div.tabs div.divider {
+		width: 19%;
+	}
+	.opc-wrapper-opc .opc-col-left {
+		width: 65%;
+	}
+	.opc-wrapper-opc .opc-col-right {
+		width: 34%;
+	}
+	.md-content {
+		width: 54%;
+	}
+	ul.login-info-points li {
+		line-height: 20px;
+		margin-bottom: 5px;
+	}
+	.medical_label {
+		width: 38%;
+	}
+	#co-billing-form ul.form-list label, #co-billing-form ul.form-list .fields .input-box, #tab-2 .shipping-address-block .input-box, .billing_part2 label, .billing_part2 .input-box, .shipping_part2 .input-box, .billing_part1 li.wide .input-box, .shipping_part2 label {
+		width: 100%!important;
+	}
+	select, ul.form-list .input-box input[type="text"], ul.form-list .input-box input[type="password"] {
+		margin-bottom: 10px;
+	}
+
+	.opc-wrapper-opc .validation-advice{
+		margin-top: -8px;
+	}
+}
+
+/* 960px */
+
+@media only screen and (max-width: 960px) {
+	.checkout_steps div.tabs div.divider {
+	  width: 18%;
+	}
+	.medical_label, .do_you_smoke, .do_you_drink {
+	  width: 46%;
+	}
+
+	.medical_fieldc input[type="text"] {
+	  width: 100%;
+	}
+	.form-list .medical_fieldc textarea {
+	  width: 100%;
+	}
+}
+
+/* 900px */
+
+@media only screen and (max-width: 900px) {
+	.footer-our-partners span {
+		margin-right: 20px;
+	}
+	.footer-our-partners span.our-partner-text {
+		font-size: 16px;
+	}
+	.footer-our-partners span.op1 {
+		background: url(../images/sprite.png) 0 -291px no-repeat;
+		background-size: 400px;
+		width: 100px;
+		height: 30px;
+	}
+	.footer-our-partners span.op2 {
+	  background: url(../images/sprite.png) 0 -323px no-repeat;
+	  background-size: 400px;
+	  width: 80px;
+	  height: 41px;
+	}
+	.footer-our-partners span.op3 {
+	  background: url(../images/sprite.png) 0 -375px no-repeat;
+	  background-size: 400px;
+	  width: 117px;
+	  height: 27px;
+	}
+	.checkout_steps div.tabs div.divider {
+	  width: 17%;
+	}
+	.login-info h1 {
+		font-size: 17px;
+	}
+}
+
+/* 840px */
+
+@media only screen and (max-width: 840px) {
+	.adc-footer-links ul li a {
+		font-size: 13px;
+	}
+	.adc-footer-links ul {
+		margin-right: 1%;
+	}
+	.icon-medical_history:before {
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		font-size: 45px;
+	}
+	.icon-shipping_info:before, .icon-login:before {
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		font-size: 50px;
+	}
+	.icon-payment:before {
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		font-size: 47px;
+	}
+	.checkout-ldetails span, .checkout-rdetails span {
+		font-size: 15px;
+	}
+	.opc-wrapper-opc .opc-col-left {
+		width: 100%;
+	}
+	.opc-wrapper-opc .opc-col-right {
+		width: 100%;
+		padding-left: 0;
+		margin-top: 0;
+	}
+	.opc-wrapper-opc .opc-col-left .opc-title h2, .opc-wrapper-opc .opc-col-right .opc-title h2 {
+		margin-bottom: 15px;
+	}
+	.login-info {
+		width: 50%;
+	}
+	.md-content {
+	  width: 48%;
+	  min-height: 200px;
+	  padding-right: 10px;
+	  box-sizing:border-box;
+	}
+
+	.opc-wrapper-opc .opc-col-left{
+		margin-bottom: 20px;
+	}
+
+	.opc-wrapper-opc label {
+		display: block;
+	}
+	.opc-wrapper-opc .discount-block .input-box{
+		width: 30%;
+		float: left;
+		margin-right: 2%;
+	}
+
+	.opc-wrapper-opc input#coupon_code{
+		height: 36px;
+	}
+
+	.opc-wrapper-opc .discount-block .buttons-set{
+		width: auto;
+		float: left;
+		margin-top: 0;
+		clear: none;
+	}
+
+	.opc-wrapper-opc .discount-form{
+		width: 100%;
+		display: inline-block;
+	}
+
+	.opc-wrapper-opc .discount-block .apply-coupon{
+		width: auto;
+	}
+
+	.login-info{
+		padding-top: 15px;
+	}
+
+	#checkout-review-table td.last{
+		width: 20%;
+		text-align: right;
+	}
+	#checkout-review-table td.a-right{
+		text-align: right!important;
+	}
+	#checkout-review-table tbody td.prod-value {
+	    text-align: left !important;
+	}
+}
+
+
+
+
+@media only screen and (max-width: 768px){
+	.do_you_smoke, .do_you_drink{
+		width: 26%;
+	}
+}
+
+@media only screen and (max-width: 736px){
+	span.footer-logo-adc, .adc-footer-row1, .footer-our-partners, .adc-footer-links, .footer_imp_msg, .subscribe-innerdiv .span.xtra-txt {
+	  display: none;
+	}
+
+	.payment_tabs.show_methods{
+		display: block;
+	}
+
+	.checkout-headerk .header .logo img{
+		margin-left: 0;
+	}
+
+	.footer{
+		padding-bottom: 75px;
+	}
+
+	.checkout-ldetails span, .checkout-rdetails span {
+	  font-size: 12px;
+	}
+
+	.header .logo img{
+		width: auto;
+	}
+
+	.icon-shipping_info:before, .icon-login:before, .icon-payment:before, .icon-medical_history:before{
+		font-size: 25px;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+	}
+
+	.checkout_steps .tab-link.checkoutstep-1{
+		float: none;
+	}
+
+	.checkout_steps div.tab-link p{
+		font-size: 13px;
+	}
+
+	.checkout_steps div.tab-link, .checkout_steps div.tab-link p{
+		float: none;
+	}
+
+	.checkout_steps{
+		text-align: center;
+	}
+
+
+	.checkout_steps div.tab-link.checkoutstep-2 p, .checkout_steps div.tab-link.checkoutstep-3 p {
+  		width: 138px;
+  	}
+
+  	.checkout_steps div.tabs div.divider {
+		margin-bottom: 7px;
+		margin-top: 0;
+		width: 19%;
+		float: none;
+		display: inline-block;
+	}
+
+	.login-info{
+		padding-top: 0;
+	}
+
+	.opc-wrapper-opc .opc-col-left .opc-title h2.login-g, .opc-wrapper-opc h2, div#co-billing-form h3, .shipping-address-block h3, h4.medical_title, .opc-wrapper-opc .payment-block h3{
+		font-size: 18px;
+	}
+
+	#opc-discount-coupon-form .discount-form{
+		margin-top: 0px;
+	}
+
+	.login_section ul.form-list{
+		margin-left: 0;
+	}
+
+	.mobile_footer{
+		display: block;
+	}
+
+	.mobile_footer .checkout-footer{
+		padding: 5px 0 0;
+		font-size: 13px;
+	}
+
+	.footer address{
+		margin:5px 0 0 
+	}
+
+	.footer a{
+		color: #000000;
+		text-decoration: underline;
+	}
+
+	.checkout-headerk .header .checkout-ldetails, .checkout-headerk .header .checkout-rdetails{
+		display: none;
+	}
+
+	#tab-2 .form-list textarea{
+		margin-bottom: 10px
+	}
+
+	.select_method{
+		display: block;
+		background: #506f00;
+		padding: 0 8px;
+		position: relative;
+		height: 36px;
+		line-height: 36px;
+		color: #fff;
+		text-transform: uppercase;
+		text-align: center;
+		
+	}
+
+	.payment_tabs_area{
+		width: 100%;
+		padding: 15px 0;
+		min-height: inherit;
+		border-left: 0;
+	}
+
+	
+	.select_method:after{
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+		position: absolute;
+		bottom: 12px;
+		right: 2%;
+		content: ""	;
+		border-top: 8px solid rgb(145, 183, 44);
+	}
+
+	.select_method.opened:after{
+		border-bottom: 8px solid rgb(145, 183, 44);
+		border-top: 0;
+		bottom: 14px;
+	}
+
+
+	.payment_tabs{
+		width: 100%;
+		display: none;
+	}
+
+	.opc-wrapper-opc .payment-block dt{
+		width: 100%;
+		border-bottom: 1px solid #000;
+		height: 36px;
+		margin:0!important; 
+		line-height: 36px;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 15px;
+		background: #3D3D3D;
+		border-radius: 0;
+	}
+
+	.opc-wrapper-opc .payment-block dt:hover, .opc-wrapper-opc .payment-block dt.active{
+		  background: #1c1c1c;
+	}
+
+	.opc-wrapper-opc .payment-block dt label{
+		font-size: 15px!important;
+		color: #fff;
+		height: 36px;
+		line-height: 36px;
+		text-align: center;
+		font-size: 14px!important;
+		font-weight: 600!important;
+	}
+
+	.payment_tabs label:before, .payment_tabs dt.active label:before{
+		display: none;
+	}
+
+	#checkout-payment-method-load img{
+		display: none;
+	}
+
+
+
+}
+
+
+
+@media only screen and (max-width: 670px){
+	
+	.icon-shipping_info:before, .icon-login:before, .icon-payment:before, .icon-medical_history:before{
+		font-size: 20px;
+		width: 25px;
+		height: 25px;
+		line-height: 25px;
+	}	
+
+	.checkout-headerk .header .logo{
+		width: 32%;
+		display: inline-block;
+	}
+
+	.checkout-headerk .header .logo img{
+		width: 100%;
+	}
+
+	.allday_checkout_left .tab-content, .allday_checkout_left .tab-content{
+		padding: 18px;
+	}
+
+	.footer address{
+		font-size: 13px;
+	}
+}
+
+@media only screen and (max-width: 570px){
+	.checkout_steps div.tabs div.divider{
+		width: 17%;
+	}
+
+	.opc-wrapper-opc .discount-block .buttons-set {
+	  width: auto;
+	}
+
+	.md-content{
+		width: 100%;
+		padding-right: 0;
+		min-height: inherit;
+		padding-bottom: 18px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #c5c5c5;
+		border-right: 0;
+	}
+
+	.login-info{
+		width: 100%;
+		padding: 0;
+	}
+
+	
+
+	.opc-wrapper-opc .opc-col-left .login_section .input-box{
+		width: 90%;
+	}
+}
+
+
+@media only screen and (max-width: 540px){
+	.icon-shipping_info:before, .icon-login:before, .icon-payment:before, .icon-medical_history:before {
+	  font-size: 18px;
+	  width: 20px;
+	  height: 20px;
+	  line-height: 20px;
+	}
+
+	.medical_label {
+	  width: 49%;
+	}
+
+	button.medical_nextbtn.proceed-next.btn.btn-primary.medicalhistorynext{
+		float: none;
+		margin-top: 0;
+		clear: both;
+	}
+
+
+	.do_you_smoke, .do_you_drink {
+	  width: 38%;
+	}
+
+
+	.checkout_steps div.tab-link p {
+	  font-size: 12px;
+	  line-height: 14px;
+	}
+
+	.checkout_steps div.tab-link.checkoutstep-2 p, .checkout_steps div.tab-link.checkoutstep-3 p {
+	  width: 80px;
+	  left: -16px;
+	}
+
+	.checkout-headerk .header .logo{
+		min-width: 160px;
+	}
+
+	.from_to{
+		width: 7%;
+		margin-right: 0;
+	}
+
+	.opc-wrapper-opc .discount-block .input-box {
+		width: 40%;
+	}
+}
+
+
+@media only screen and (max-width: 480px){
+	.checkout_steps div.tabs div.divider {
+	  width: 12%;
+	}
+
+	.medical_label, .medical_fieldc {
+	  width: 100%;
+	}
+
+	#medical_history_div .validation-advice{
+		margin-bottom: 5px;
+	}
+
+	#medical_history_div input[type="text"], #medical_history_div textarea, #medical_history_div input[type="password"]{
+		margin-bottom: 12px;
+	}
+
+	.medical_history_field3 strong, .medical_history_field4 strong, .medical_history_field5 strong{
+		float: left;
+	}
+
+	.medical_history_field3 span, .medical_history_field4 span, .medical_history_field5 span{
+		float: left;
+		margin-top: 0;
+	}
+
+	.medical_history_field3 span label, .medical_history_field4 span label, .medical_history_field5 span label{
+		margin-bottom: 8px;
+		margin-left: 8px;
+	}
+	.allday_checkout_left .tab-content, .allday_checkout_left .tab-content, .opc-wrapper-opc .discount-block {
+	    padding: 8px;
+	}
+}
+
+
+
+@media only screen and (max-width: 420px){
+	.checkout_steps div span {
+	  border: 2px solid #c2c2c2;
+	  display: inline-block;
+	  border-radius: 50%;
+	  padding: 2px;
+	  background: #fff;
+	}
+
+	.billing_part1, .billing_part2, .shiping_part1, .shipping_part2{
+		width: 100%;
+		margin-bottom: 5px;
+	}
+
+	.opc-wrapper-opc #opc-review-block{
+		font-size: 13px;
+	}
+
+	.opc-wrapper-opc #checkout-review-table-wrapper h3{
+		font-size: 15px;
+	}
+
+	ul.login-info-points li{
+		font-weight: normal;
+	}
+
+	.opc-wrapper-opc .opc-col-left .login_section .input-box{
+		width: 100%;
+	}
+
+	.checkout_steps div.current span {
+	  border: 2px solid #1ead57;
+	}
+
+	.checkout_steps .tabs{
+		padding: 0;
+	}
+
+	#checkout-review-table-wrapper strong{
+		font-size: 14px;
+	}
+
+	.opc-wrapper-opc .discount-block .buttons-set {
+	  width: auto;
+	}
+
+	.opc-wrapper-opc .discount-block .input-box {
+	  width: 100%;
+	  margin-bottom: 10px;
+	}
+}
+
+
+@media only screen and (max-width: 375px){
+	.icon-shipping_info:before, .icon-login:before, .icon-payment:before, .icon-medical_history:before {
+	  font-size: 16px;
+	  width: 16px;
+	  height: 16px;
+	  line-height: 16px;
+	}
+
+	.from_to {
+	  width: 11%;
+	}
+
+	.opc-wrapper-opc .time-from, .opc-wrapper-opc .time-to {
+	  width: 28%;
+	}
+
+	.opc-wrapper-opc .discount-block .buttons-set{
+		width: auto;
+	}
+
+
+	.checkout_steps div.tab-link p{
+		  font-size: 0.68em;
+	}
+
+	.checkout_steps div.tab-link.checkoutstep-2 p, .checkout_steps div.tab-link.checkoutstep-3 p{
+		width: 69px;
+	}
+
+	.checkout_steps div.tabs div.divider{
+		width: 13.2%;
+	}
+
+	.login-info h1{
+		padding-left: 25px;
+		background: url(../images/sprite.png) 0 -255px no-repeat;
+		display: inline-block;
+		background-size: 400px;
+	}
+
+	
+
+	.login-info h1, .opc-wrapper-opc .opc-col-left .opc-title h2.login-g, .opc-wrapper-opc h2, h4.medical_title, .opc-wrapper-opc .opc-col-left .opc-title h2.login-g, .opc-wrapper-opc h2, div#co-billing-form h3, .shipping-address-block h3, h4.medical_title, .opc-wrapper-opc .payment-block h3{
+		font-size: 16px;
+	}
+
+	.col1-layout .col-main{
+		padding: 0;
+	}
+
+	.do_you_smoke, .do_you_drink {
+	  width: 100%;
+	  margin-bottom: 6px;
+	}
+
+	.allday_checkout_left .tab-content#tab-4{
+		padding: 10px;
+	}
+
+	.select_method, .opc-wrapper-opc .payment-block dt label{
+		font-size: 13px!important;
+		text-transform: inherit;
+	}
+
+	.payment_tabs_area h5{
+		font-size: 15px;
+	}
+}
+
+
+@media only screen and (max-width: 320px){
+	.wrapper{
+		min-width: inherit!important;
+	}
+
+	.checkout-headerk .header .logo{
+		min-width: 150px;
+	}
+}
+

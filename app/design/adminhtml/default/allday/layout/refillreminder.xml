@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <refillreminder_adminhtml_refillreminder_index>
+	<reference name="content">
+	  <block type="refillreminder/adminhtml_refillreminder" name="refillreminder" />
+	</reference>
+  </refillreminder_adminhtml_refillreminder_index>
+  <refillreminder_adminhtml_orderreminder_index>
+	<reference name="content">
+	  <block type="refillreminder/adminhtml_orderreminder" name="orderreminder" />
+	</reference>
+  </refillreminder_adminhtml_orderreminder_index>
+</layout>

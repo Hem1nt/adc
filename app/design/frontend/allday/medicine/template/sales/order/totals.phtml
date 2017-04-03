@@ -1,0 +1,99 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var $this Mage_Sales_Block_Order_Totals
+ * @see Mage_Sales_Block_Order_Totals
+ */
+?>
+<?php foreach ($this->getTotals() as $_code => $_total): ?>
+    <?php if ($_total->getBlockName()): ?>
+        <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>
+    <?php else:?>
+    <tr class="<?php echo $_code?>">
+        <td colspan="7" <?php echo $this->getLabelProperties()?>>
+<!--             <?php if ($_total->getStrong()):?>
+            <strong><?php echo $this->escapeHtml($_total->getLabel());?></strong>
+            <?php else:?>
+            <?php echo $this->escapeHtml($_total->getLabel());?>
+            <?php endif?> -->
+
+            <?php 
+                if(strpos($this->escapeHtml($_total->getLabel()), "Shipping &amp; Handling") !== false)
+                { 
+                    $shipping_name=floatval(Mage::getModel('core/variable')->loadByCode('shipping_rates')->getValue('plain'));
+                    $shipping_rate=$this->formatValue($_total);
+                    //preg_match('{(\d+\.\d+)}', $shipping_rate, $matches);
+                    preg_match('{(\d+\.\d+)}', $shipping_rate, $matches);
+                    $matches=floatval($matches[0]);
+                    $shipping_flag=false;
+                    if($matches<=$shipping_name){
+                        $shipping_flag=true;
+                    }
+
+                    if($shipping_flag)
+                    {
+            ?>
+            
+                    <?php if ($_total->getStrong()):?>
+                    <strong><?php echo $this->escapeHtml($_total->getLabel()); ?></strong>
+                    <?php else:?>
+                    <?php echo $this->escapeHtml($_total->getLabel()); ?>
+                    <?php endif?>
+            
+            <?php 
+                    }else{
+            ?>
+            
+                    <?php if ($_total->getStrong()):?>
+                    <strong><?php echo $this->escapeHtml($_total->getLabel())."(Including Extra Shipping)"; ?></strong>
+                    <?php else:?>
+                    <?php echo $this->escapeHtml($_total->getLabel())."(Including Extra Shipping)"; ?>
+                    <?php endif?>
+            
+            <?php                        
+                    }
+                }else{ 
+            ?>
+            
+                    <?php if ($_total->getStrong()):?>
+                    <strong><?php echo $this->escapeHtml($_total->getLabel()); ?></strong>
+                    <?php else:?>
+                    <?php echo $this->escapeHtml($_total->getLabel()); ?>
+                    <?php endif?>
+            
+            <?php } ?>
+
+        </td>
+        <td colspan="3" <?php echo $this->getValueProperties()?>>
+            <?php if ($_total->getStrong()):?>
+            <strong><?php echo $this->formatValue($_total) ?></strong>
+            <?php else:?>
+            <?php echo $this->formatValue($_total) ?>
+            <?php endif?>
+        </td>
+    </tr>
+    <?php endif?>
+<?php endforeach?>

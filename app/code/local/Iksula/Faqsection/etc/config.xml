@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Faqsection>
+      <version>0.1.0</version>
+    </Iksula_Faqsection>
+  </modules>
+  <frontend>
+    <routers>
+      <faqsection>
+        <use>standard</use>
+          <args>
+            <module>Iksula_Faqsection</module>
+            <frontName>faqsection</frontName>
+          </args>
+      </faqsection>
+    </routers>
+		<layout>
+		  <updates>
+			<faqsection>
+			  <file>faqsection.xml</file>
+			</faqsection>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+    <helpers>
+      <faqsection>
+        <class>Iksula_Faqsection_Helper</class>
+      </faqsection>
+    </helpers>
+	<blocks>
+	  <faqsection>
+		<class>Iksula_Faqsection_Block</class>
+	  </faqsection>
+	</blocks>
+	<models>
+	  <faqsection>
+		<class>Iksula_Faqsection_Model</class>
+		<resourceModel>faqsection_mysql4</resourceModel>
+	  </faqsection>
+	  <faqsection_mysql4>
+		<class>Iksula_Faqsection_Model_Mysql4</class>
+		<entities>		  
+			  <faqsection>
+				<table>faq_sections_type</table>
+			  </faqsection>		  
+			  <faqquestions>
+				<table>faq_questions</table>
+			  </faqquestions>
+        </entities>
+	  </faqsection_mysql4>
+	</models>
+	<resources>
+	  <faqsection_setup>
+		<setup>
+		  <module>Iksula_Faqsection</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </faqsection_setup>
+	  <faqsection_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </faqsection_write>
+	  <faqsection_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </faqsection_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <faqsection>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_Faqsection</module>
+		  <frontName>admin_faqsection</frontName>
+		</args>
+	  </faqsection>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <faqsection module="faqsection">
+		<title>Faqsection</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <faqsection module="faqsection">
+		    <title>Manage Faqsection</title>
+			<sort_order>0</sort_order>
+			<action>admin_faqsection/adminhtml_faqsection</action>
+		  </faqsection>
+		  <faqquestions module="faqsection">
+		    <title>Manage Faqquestions</title>
+			<sort_order>10</sort_order>
+			<action>admin_faqsection/adminhtml_faqquestions</action>
+		  </faqquestions>
+		</children>
+	  </faqsection>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<faqsection translate="title" module="faqsection">
+			  <title>Faqsection</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <faqsection translate="title">
+			<title>Manage Faqsection</title>
+			<sort_order>0</sort_order>
+		  </faqsection>
+		  <faqquestions translate="title">
+			<title>Manage Faqquestions</title>
+			<sort_order>10</sort_order>
+		  </faqquestions>
+			  </children>
+			</faqsection>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<faqsection>
+		  <file>faqsection.xml</file>
+		</faqsection>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

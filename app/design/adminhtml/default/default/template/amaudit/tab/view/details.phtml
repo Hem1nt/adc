@@ -1,0 +1,44 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2013 Amasty (http://www.amasty.com)
+* @package Amasty_Audit
+*/
+?>
+<?php if (count($this->getLogRows())): ?>
+ <div class="entry-edit">
+    <div class="entry-edit-head"><h4 class="icon-head head-audit-log-statistics"><?php echo Mage::helper('amaudit')->__('Modifications Breakdown') ?></h4></div>
+    <div class="grid">
+        <table cellspacing="0" class="data">
+            <thead>
+                <tr class="headings">
+                    <th><?php echo Mage::helper('amaudit')->__('Name') ?></th>
+                    <th><?php echo Mage::helper('amaudit')->__('Old Value') ?></th>
+                    <th><?php echo Mage::helper('amaudit')->__('New Value') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $_i = 0; $_model = ''; ?>
+                <?php foreach ($this->getLogRows() as $_value): ?>
+                    <?php if ($_i == 0 || $_model != $_value->getModel()): ?>
+                         <tr<?php echo ($_i++ % 2 ? ' class="even"' : '') ?>>
+                             <td align="center" colspan="3" class="label ammodel"><?php echo $_value->getModel(); ?></td>
+                        </tr>
+                        <?php $_model = $_value->getModel(); ?>
+                    <?php endif; ?>
+                    <tr<?php echo ($_i++ % 2 ? ' class="even"' : '') ?>>
+                         <td class="label"><?php echo $_value->getName(); ?></td>
+                         <td><span class="amaudit-red"><?php echo $_value->getOldValue(); ?></span></td>
+                         <td><span class="amaudit-green"><?php echo $_value->getNewValue(); ?></span></td>
+                    </tr>
+                    <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="clear"></div> 
+<?php else: ?>
+ <div class="entry-edit">
+    <div class="entry-edit-head"><h4 class="icon-head head-audit-log-statistics"><?php echo Mage::helper('amaudit')->__('Not found') ?></h4></div>
+</div>
+<?php endif; ?>

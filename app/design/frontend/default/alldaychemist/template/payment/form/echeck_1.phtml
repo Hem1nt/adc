@@ -1,0 +1,123 @@
+<head>
+<style>
+#sigpaddiv
+{
+	float: left;
+    height: 135px;
+    margin-top: 5px;
+}
+.sigPad
+{
+	float: left;
+	margin: 0;
+    padding: 0;
+    position: relative;
+	left: 0px;
+	top:0px
+}
+.sigPad .clearSig 
+{
+   left: 0px;
+    margin: 0px;
+    padding: 0.6em;
+    position: absolute;
+    text-align: left;
+    top: 91px;
+}
+.form-list label
+{
+  padding: 0;
+}
+</style>
+
+</head>
+<fieldset class="form-list">
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+		<li style="color:red; font-weight:bold">Due to some technical issues we cannot process. Kindly place your order on phone. We apologize for inconvenience.</li>
+		<li style = "display:none;">
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_echeck_bank_name"><?php echo $this->__('First Name') ?> <span class="required">*</span></label><br />
+                <input  id="<?php echo $_code ?>_firstname" name="payment[echeck_firstname]" class="required-entry">
+            </div>
+			<div class="input-box">
+                <label for="<?php echo $_code ?>_echeck_bank_name"><?php echo $this->__('Last Name') ?> <span class="required">*</span></label><br />
+                <input id="<?php echo $_code ?>_lastname" name="payment[echeck_lastname]" class="required-entry">
+            </div>
+        </li>
+
+        <li style = "display:none;">
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_echeck_routing_number"><?php echo $this->__('Routing number') ?> <span class="required">*</span></label><br />
+                <input id="<?php echo $_code ?>_echeck_routing_number" name="payment[echeck_routing_number]" class="required-entry">
+            </div>
+        </li>
+		<li style = "display:none;">
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_echeck_bank_acct_num"><?php echo $this->__('Account number') ?> <span class="required">*</span></label><br />
+                <input id="<?php echo $_code ?>_echeck_bank_acct_num" name="payment[echeck_bank_acct_num]" class="required-entry">
+            </div>
+        </li>
+        <!-- <li>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_echeck_bank_name"><?php echo $this->__('Bank name') ?> <span class="required">*</span></label><br />
+                <input id="<?php echo $_code ?>_echeck_bank_name" name="payment[echeck_bank_name]" class="required-entry">
+            </div>
+        </li> 
+        
+        <li>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_echeck_account_type"><?php echo $this->__('Account type') ?> <span class="required">*</span></label><br />
+                <select id="<?php echo $_code ?>_echeck_account_type" name="payment[echeck_account_type]" class="required-entry">
+                   
+                <?php $_accountType = $this->getInfoData('account_type') ?>
+                <?php foreach ($this->getAccountAvailableTypes() as $_typeCode => $_typeName): ?>
+                    <option value="<?php echo $_typeCode ?>"<?php if($_typeCode==$_accountType): ?> selected="selected"<?php endif ?>><?php echo $_typeName ?></option>
+                <?php endforeach ?>
+                </select>
+            </div>
+        </li>
+        <li>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_echeck_account_name"><?php echo $this->__('Name On Account') ?> <span class="required">*</span></label><br />
+                <input id="<?php echo $_code ?>_echeck_account_name" name="payment[echeck_account_name]" class="required-entry">
+            </div>
+        </li> -->
+        <!-- li>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_echeck_type"><?php echo $this->__('Echeck type') ?> <span class="required">*</span></label><br />
+                <input id="<?php echo $_code ?>_echeck_type" name="payment[echeck_type]" class="required-entry">
+            </div>
+        </li
+		<li>
+			<div id="sigpaddiv" class="input-box">
+				
+					<div class="sigPad">
+						<div class="sig sigWrapper">
+						<canvas class="pad" width="260" height="80"></canvas>
+						<input id="<?php echo $_code ?>_echeck_signature" type="hidden" name="payment[signature]" class="output" />
+						<input type="hidden" name="payment[submit]" value="1" />
+					</div>
+					<button class="clearSig clearButton">Clear Signature </button>
+					
+					</div>
+				
+			</div>
+			
+		</li>-->
+    </ul>
+</fieldset>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('.sigPad').signaturePad({
+            displayOnly: false,
+            drawOnly:true,
+            bgColour:'#ffff00',
+            validateFields:true,
+            lineTop:60,
+            penWidth:1,
+            lineColour:'#000',
+            lineMargin:0
+        });
+    });
+</script>

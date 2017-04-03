@@ -1,0 +1,83 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+?>
+<?php
+/**
+ * $this->renderCategoriesMenuHtml() supports optional arguments:
+ * int Level number for list item class to start from
+ * string Extra class of outermost list items
+ * string If specified wraps children list in div with this class
+ */
+?>
+
+<div class="accordion">
+    <a href="#" class="accord">Shop by categories </a>
+    <div class="pane">
+    	<?php $_menu = $this->renderCategoriesMenuHtml(0,'level-top') ?>
+		<?php if($_menu): ?>
+		<div class="nav-wrap">
+		    <div id="nav-container">
+		        <ul id="nav">
+		            <?php echo $_menu ?>
+		        </ul>
+		    </div>
+		</div>
+		<?php endif ?>
+    </div>
+
+    <a href="#" class="accord">Search by brands</a>
+    <div class="pane">    
+    	<div class="brand_search">  
+			<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/drugsearch.phtml")->toHtml(); ?>
+		</div>
+    </div>
+
+    <a href="#" class="accord">Featured Products</a>
+    <div class="pane">
+    	<div class="featured_area"> 
+    		<?php echo $this->getLayout()->createBlock("featuredproducts/listing")->setTemplate("inchoo/featuredproducts/block_featured_products.phtml")->toHtml(); ?>
+    	</div>
+    </div>
+
+    <a href="#" class="accord">Contact Us</a>
+    <div class="pane">
+    	<div class="contact_home" >
+    		<p class="brand_name">Alldaychemist is my pharmacy</p>
+    		<p>Toll Free Tel : +1(855) 840-0584</p>
+    		<p>International Tel : +1 (213) 291 2588  </p>
+    		<p>+1 (213) 814 1313</p>
+    		<p>Fax :  + 1(760) 284-5903    </p>
+    		<p>Calling Hours 6.00 AM to 6.00 PM (PST)</p>
+    	</div>
+    </div>
+</div>

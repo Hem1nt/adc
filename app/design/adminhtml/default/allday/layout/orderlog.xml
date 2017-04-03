@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <orderlog_adminhtml_orderstatus_index>
+	<reference name="content">
+	  <block type="orderlog/adminhtml_orderstatus" name="orderstatus" />
+	</reference>
+  </orderlog_adminhtml_orderstatus_index>
+  <orderlog_adminhtml_ordertracking_index>
+	<reference name="content">
+	  <block type="orderlog/adminhtml_ordertracking" name="ordertracking" />
+	</reference>
+  </orderlog_adminhtml_ordertracking_index>
+  <orderlog_adminhtml_usertimelog_index>
+	<reference name="content">
+	  <block type="orderlog/adminhtml_usertimelog" name="usertimelog" />
+	</reference>
+  </orderlog_adminhtml_usertimelog_index>
+</layout>

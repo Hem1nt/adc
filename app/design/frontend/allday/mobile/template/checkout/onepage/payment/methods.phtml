@@ -1,0 +1,158 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * One page checkout payment methods
+ *
+ * @var $this Mage_Checkout_Block_Onepage_Payment_Methods
+ */
+?>
+
+<?php
+    $methods = $this->getMethods();
+    $oneMethod = count($methods) <= 1;
+    $selectedPayment = 'checkmo';
+?>
+<?php if (empty($methods)): ?>
+    <dt>
+        <?php echo $this->__('No Payment Methods') ?>
+    </dt>
+<?php else: ?>
+    <div class="select_method">
+        Select Payment Method
+    </div>
+ <div class="payment_tabs">
+<?php  foreach ($methods as $_method):
+        $_code = $_method->getCode();
+        $var = "pay_method_".$_code.".jpg";
+?>
+    <dt>
+    <?php if(!$oneMethod): ?>
+        <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->escapeHtml($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($selectedPayment==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+         <img src="<?php echo $this->getSkinUrl('images/'.$var) ?>" alt="<?php echo $this->htmlEscape($_method->getTitle()) ?>" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" class="v-middle" style="width:121px;height:33px"/>
+    <?php else: ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <?php $oneMethod = $_code; ?>
+    <?php endif; ?>
+        <label for="p_method_<?php echo $_code ?>"class="<?php if($selectedPayment==$_code): ?>selected<?php endif; ?> label_<?php echo $_code ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+    </dt>
+<?php endforeach; ?>
+</div>
+
+ <div class="payment_tabs_mobile">
+    <span class="title">Select Payment Method</span>
+    <span class="label_text"></span>
+    <span class="right_arrow"></span>
+ </div>
+ <div class="dropdown">
+<?php  foreach ($methods as $_method):
+        $_code = $_method->getCode();
+         $var = "pay_method_".$_code.".jpg";
+?>
+    <dt>
+    <?php if(!$oneMethod): ?>
+        <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->escapeHtml($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($selectedPayment==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+        <img src="<?php echo $this->getSkinUrl('images/'.$var) ?>" alt="<?php echo $this->htmlEscape($_method->getTitle()) ?>" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" class="v-middle" style="width:170px;height:40px"/>
+    <?php else: ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <?php $oneMethod = $_code; ?>
+    <?php endif; ?>
+        <label for="p_method_<?php echo $_code ?>" class="<?php if($selectedPayment==$_code): ?>selected<?php endif; ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+    </dt>
+<?php endforeach; ?>
+</div>
+
+<div class="payment_tabs_area">
+<?php
+    foreach ($methods as $_method):
+        $_code = $_method->getCode();
+?>
+    <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+    <dd>
+        <?php echo $html; ?>
+    </dd>
+    <?php endif; ?>
+<?php endforeach; ?>
+</div>
+<?php endif; ?>
+<?php echo $this->getChildChildHtml('additional'); ?>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php echo $this->getChildChildHtml('scripts'); ?>
+    payment.init();
+    <?php if (is_string($oneMethod)): ?>
+    payment.switchMethod('<?php echo $oneMethod ?>');
+        <?php endif; ?>
+    //]]>
+
+
+
+
+jQuery(document).ready(function($){
+    $("#checkout-payment-method-load dt label").on('click', function(){
+        var label_value = $(this).attr("for");
+        $("#checkout-payment-method-load dt label").removeClass("selected");
+        if(label_value ==($(this).attr("for"))){
+            $(this).addClass("selected");
+        }
+        else{
+            $("#checkout-payment-method-load dt label").removeClass("selected");
+        }
+    });
+
+
+
+    $(window).bind("load", function() {
+        
+
+        $("#checkout-payment-method-load dt input[type='radio']").each(function(){
+            if($(this).attr("checked")=="checked"){
+                $("#checkout-payment-method-load dt label").removeClass("selected");
+                $(this).next().addClass("selected");
+            }
+        });
+    });
+
+    $(".payment_tabs_mobile").click(function(){
+        $(".dropdown").toggle();
+        $(".payment_tabs_mobile .right_arrow").toggleClass("selected");
+        
+    });
+
+    $(".dropdown label").click(function(){
+        var str = $(this).text();
+        $(".payment_tabs_mobile .label_text").html( str );
+        $(".dropdown").toggle();
+        $(".payment_tabs_mobile .right_arrow").toggleClass("selected");
+
+    });
+
+
+});
+</script>
+
+

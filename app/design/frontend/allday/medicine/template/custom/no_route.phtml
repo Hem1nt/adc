@@ -1,0 +1,126 @@
+ <div class="no_route_wrap">
+ 	<div class="no_route_img">
+ 		<img src="<?php echo $this->getSkinUrl()?>images/custom/adc_error.png" alt="Page Not Found"/>
+ 	</div>
+ 	<div class="no_route_content">
+ 		<div class="title">
+ 			404 <span>error</span>
+ 		</div>
+ 		<div class="other_content">
+ 			<div class="head_line">Whoops, our bad...</div>
+ 			<div class="para">The page you requested was not found.</div>
+			<div class="para">You are being redirected to home page.</div>
+ 		</div>
+ 	</div>
+ </div>
+ <script type="text/javascript">
+ function redirect(){
+ 	window.location.href="<?php echo $this->getUrl();?>";
+ }
+ setTimeout(redirect, 3000);
+</script>
+
+ <style type="text/css">
+ 	.no_route_wrap {
+	    width: 90%;
+	    max-width: 820px;
+	    margin: 0 auto;
+	}
+
+	.no_route_img {
+	    float: right;
+	    width: 50%;
+	}
+
+	.no_route_img img {
+		width: 100%;
+	}
+
+	.no_route_content {
+	    float: left;
+	    width: 50%;
+	}
+
+	.no_route_content .title {
+	    font-size: 7.5em;
+	    font-weight: 400;
+	    color: #f6770e;
+	}
+
+	.no_route_content .title span {
+	    font-size: 0.4em;
+	    font-weight: 300;
+	    text-transform: uppercase; 
+	}
+
+	.other_content {
+	    color: #506f00;
+	    font-size: 1.6em;
+	    line-height: 1.7em;
+	}
+
+	.head_line {
+	    font-weight: 700;
+	    font-size: 1.5em;
+	    margin-bottom: 11px;
+	}
+
+	@media all and (max-width: 950px) {
+		.no_route_img {
+		    width: 60%;
+		    text-align: center;
+		}
+
+		.no_route_img img {
+		    width: 80%;
+		}
+
+		.no_route_content {
+		    width: 40%;
+		    font-size: 0.8em;
+		}
+	}
+
+	@media all and (max-width: 820px) {
+		.no_route_img {		
+		    width: 100%;
+		    text-align: center;
+		}
+
+		.no_route_img img {
+		    width: 60%;
+		}
+
+		.no_route_content {
+		    width: 100%;
+		    text-align: center;
+		    margin-bottom: 20px;
+		    font-size: 1em;
+		}
+
+		.head_line {
+		    font-size: 2.1em;
+		    margin-bottom: 25px;
+		}
+	}
+
+	@media all and (max-width: 620px) {	
+		.no_route_img img {
+		    width: 80%;
+		}
+
+		.no_route_content {
+			font-size: 0.8em;
+		}
+	}
+
+	@media all and (max-width: 420px) {	
+		.head_line {
+		    font-size: 1.8em;
+		}
+
+		.no_route_content .title {
+		    font-size: 6.5em;
+		}
+	}
+ </style>

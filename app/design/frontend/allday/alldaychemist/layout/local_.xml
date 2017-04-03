@@ -1,0 +1,163 @@
+<layout version="0.1.0">
+    <default>
+	<reference name="head">
+		<action method="addItem"><type>skin_css</type><name>css/accordion.core.css</name></action>
+		<action method="addItem"><type>skin_css</type><name>css/bought.css</name></action>
+		<action method="addItem"><type>skin_js</type><name>js/style_rk.js</name></action>
+		<action method="addItem"><type>skin_js</type><name>js/jquery.accordion.2.0.js</name></action>
+	</reference>
+
+	<reference name="top.links">
+		<action method="addLink" translate="label title">
+		    <label> Blog </label>
+		    <url>blog</url> 
+		    <title>Alldaychemist Blog</title>
+		    <prepare>true</prepare>
+		    <urlParams/> 
+		    <position>60</position>
+		    <liParams/>
+		    <aParams>class="top-link-example"</aParams>
+		    <beforeText></beforeText>
+		    <afterText></afterText>
+		</action>
+	</reference>
+	<remove name="left.newsletter" />
+		<remove name="right.poll" />
+		<remove name="right.reports.product.viewed" />
+		<remove name="right.permanent.callout"/>
+		<remove name="left.permanent.callout"/>
+		<!-- <remove name="catalog.leftnav"/> -->
+		<remove name="right.reports.product.viewed"/>
+		<remove name="sale.reorder.sidebar"/>
+		<remove name="paypal.partner.right.logo"/>
+		<!--remove name="catalog.compare.sidebar"/-->
+		<!--remove name="cart_sidebar"/-->
+		
+		<remove name = "left.reports.product.viewed" />
+		<remove name = "left.permanent.callout" />
+		<reference name="head">
+          	<action method="addItem"><type>skin_css</type><name>css/override.css</name></action>
+          	<action method="addItem"><type>skin_css</type><name>css/style_rk.css</name></action>
+			<action method="addJs"><script>infinite/jquery.ias.min.js</script></action>
+			<action method="addItem"><type>skin_js</type><name>js/little.js</name></action>
+        </reference>
+		<reference name="left">
+			<remove name="left.reports.product.viewed" />
+			<remove name="top.menu" />
+
+		
+			<!-- <block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block> -->
+			<block type="core/template" name="left.sitebanners" template="homepage/banners.phtml"></block>
+			<block type="cms/block" name="video">
+				<action method="setBlockId"><block_id>video</block_id></action>
+			</block>
+
+			<remove name="cart_sidebar"/>
+
+		</reference>
+
+
+
+
+	</default>	
+	
+	<cms_index_index>
+		<remove name="left" />		
+		<remove name="slider_11" />	
+		<remove name="featured_product_list" />	
+		<reference name="content">
+			<block type="core/template" name="adc.banner" template="homepage/adc_banner.phtml">
+
+			</block>
+		</reference>
+	</cms_index_index>
+
+	<checkout_onepage_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>css/jquery.signaturepad.css</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/flashcanvas.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.signaturepad.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/json2.min.js</name></action>
+		
+			<action method="addItem"><type>skin_js</type><name>uploadify/noconflict.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>uploadify/jquery.uploadify.v2.1.4.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>uploadify/swfobject.js</name></action>
+			
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-buttons.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-media.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-thumbs.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.pack.js</name></action>
+		</reference>
+	
+	</checkout_onepage_index>
+
+	<catalog_category_view>		
+		<reference name="left">
+			<remove name="wishlist_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+
+		</reference>
+		<reference name="footer">
+	         <block type="core/template" template="ajaxwishlist/catalog/product/more_details.phtml" name="more_details" as="more_details" />
+	    </reference>
+
+	</catalog_category_view>
+
+	<catalog_product_view>
+		<reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>            
+        </reference>
+        <remove name="left"/>
+        <!-- <reference name="content">
+			<block type="bought/bought" name="left.bought">
+				<action method="setTemplate" ifconfig="catalog/bought/product_detail_leftposition">
+					<template>bought/sidebar.phtml</template> 
+				</action>
+			</block>
+        </reference> -->
+	</catalog_product_view>
+
+	<clnews_index_index>
+		<reference name="left">
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block> 
+		</reference>
+	</clnews_index_index>
+
+	<clnews_newsitem_view>
+		<reference name="left">
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block> 
+		</reference>
+	</clnews_newsitem_view>
+
+	<testimonial_index_index>
+		<reference name="left">
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block> 
+		</reference>
+	</testimonial_index_index>
+	
+	<testimonial_form_index>
+		<reference name="left">
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block> 
+		</reference>
+	</testimonial_form_index>
+
+	<sendfriend_product_send>
+		<reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>            
+        </reference>
+        <remove name="left"/>
+	</sendfriend_product_send>
+
+	<!-- <checkout_cart_index translate="label">
+	    <reference name="breadcrumbs">
+	        <action method="addCrumb"><crumbName>Your Basket</crumbName><crumbInfo><label>Your Basket</label><title>Your Basket</title></crumbInfo></action>
+	    </reference>
+	</checkout_cart_index> -->
+
+</layout>	

@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   Mage
+ * @package    Iksula_Epayworxs
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Iksula_Epayworxs>
+            <version>0.1.0</version>
+        </Iksula_Epayworxs>
+    </modules>
+    <global>
+		 <helpers>
+            <epayworxs>
+                <class>Iksula_Epayworxs_Helper</class>
+            </epayworxs>
+      </helpers>
+        <models>
+            <epayworxs>
+                <class>Iksula_Epayworxs_Model</class>
+                <resourceModel>epayworxs_mysql4</resourceModel>
+            </epayworxs>
+            <epayworxs_mysql4>
+                <class>Iksula_Epayworxs_Model_Mysql4</class>
+                <entities>
+                    <api_debug><table>epayworxs_api_debug</table></api_debug>
+                </entities>
+            </epayworxs_mysql4>
+        </models>
+        <resources>
+            <epayworxs_setup>
+                <setup>
+                    <module>Iksula_Epayworxs</module>
+                    <class>Iksula_Epayworxs_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </epayworxs_setup>
+            <epayworxs_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </epayworxs_write>
+            <epayworxs_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </epayworxs_read>
+        </resources>
+        <blocks>
+            <epayworxs><class>Iksula_Epayworxs_Block</class></epayworxs>
+        </blocks>
+        <payment>
+            <cc>
+                <types>
+                    <DI>
+                        <code>DI</code>
+                        <name>Discover</name>
+                        <order>60</order>
+                    </DI>
+                    <JCB>
+                        <code>JCB</code>
+                        <name>JCB</name>
+                        <order>61</order>
+                    </JCB>
+                    <DICL>
+                        <code>DICL</code>
+                        <name>Diners Club</name>
+                        <order>62</order>
+                    </DICL>
+                    <ENR>
+                        <code>ENR</code>
+                        <name>enRoute</name>
+                        <order>63</order>
+                    </ENR>
+                    <SS>
+                        <code>SS</code>
+                        <name>Switch/Solo</name>
+                        <order>64</order>
+                    </SS>
+                </types>
+            </cc>
+        </payment>
+    </global>
+    <frontend>
+        <secure_url>
+            <epayworxs_standard>/epayworxs/standard</epayworxs_standard>
+        </secure_url>
+        <routers>
+            <epayworxs>
+                <use>standard</use>
+                <args>
+                    <module>Iksula_Epayworxs</module>
+                    <frontName>epayworxs</frontName>
+                </args>
+            </epayworxs>
+        </routers>
+        <translate>
+            <modules>
+                <Iksula_Epayworxs>
+                    <files>
+                        <default>Iksula_Epayworxs.csv</default>
+                    </files>
+                </Iksula_Epayworxs>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <epayworxs>
+                    <file>epayworxs.xml</file>
+                </epayworxs>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Iksula_Epayworxs>
+                    <files>
+                        <default>Iksula_Epayworxs.csv</default>
+                    </files>
+                </Iksula_Epayworxs>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <payment>
+            <epayworxs_standard>
+                  <model>epayworxs/standard</model>
+                  <title>epayworxs Standard</title>
+                  <allowspecific>0</allowspecific>
+                  <transaction_type>O</transaction_type>
+            </epayworxs_standard>
+        </payment>
+    </default>
+</config>

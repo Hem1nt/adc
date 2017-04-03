@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+	<config>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<custom_snippet>
+											<title>custom List Section</title>
+											<sort_order>0</sort_order>
+										</custom_snippet>
+										<custom_snippet_email>
+											<title>Custom notify email section</title>
+											<sort_order>1</sort_order>
+										</custom_snippet_email>
+										<dynamic_metatags>
+											<title>Dynamic Meta Tags</title>
+											<sort_order>2</sort_order>
+										</dynamic_metatags>
+										<birthday_offer>
+											<title>Birthday Offer</title>
+											<sort_order>3</sort_order>
+										</birthday_offer>
+										<hide_attribute_frontend>
+											<title>Hide Attribute From Additional Information</title>
+											<sort_order>4</sort_order>
+										</hide_attribute_frontend>
+										<best_seller>
+											<title>Best Selling Section</title>
+											<sort_order>5</sort_order>
+										</best_seller>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</config>

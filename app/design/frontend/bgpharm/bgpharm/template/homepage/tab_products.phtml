@@ -1,0 +1,130 @@
+<div class="best-selligng-product-block">
+	<h1 class="best-selling-products">Our Best selling products</h1>
+	<div class="tab_container">
+		<div class="product_mobile_tab">
+			<span class="ptitle">Select</span>
+			<span class="menu_toogle_arrow"></span>
+		</div>
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_tabs_bg')->toHtml(); ?>
+	</div>
+</div>
+
+<div class="recent-view-product-block">
+	<h1 class="best-selling-products">Recently View Products</h1>
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('recently_view_bg')->toHtml(); ?>
+</div>
+
+<?php 
+$_tabHelper = Mage::helper('overrides');
+
+?>
+
+<script>
+jQuery(document).ready(function($){
+
+	jQuery('#tab-1').addClass('current');
+	// var slider3 = jQuery('#product-category3').bxSlider({
+	//   minSlides: 1,
+	//   maxSlides: 4,
+	//   slideWidth: 400,
+	//   slideMargin: 0,
+	//   infiniteLoop :false,
+ //      // hideControlOnEnd: true,
+	//   moveSlides: 1
+	// });
+
+	// var slider2 = jQuery('#product-category2').bxSlider({
+	//   minSlides: 1,
+	//   maxSlides: 4,
+	//   slideWidth: 400,
+	//   slideMargin: 0,
+	//   infiniteLoop :false,
+ //      // hideControlOnEnd: true,
+	//   moveSlides: 1
+	// });
+
+	var slider1 = jQuery('#product-category1').bxSlider({
+	  minSlides: 1,
+	  maxSlides: 4,
+	  slideWidth: 400,
+	  slideMargin: 0,
+	  infiniteLoop :false,
+      // hideControlOnEnd: true,
+	  moveSlides: 1
+	});
+
+	// var slider4 = jQuery('#product-category4').bxSlider({
+	//   minSlides: 1,
+	//   maxSlides: 4,
+	//   slideWidth: 400,
+	//   slideMargin: 0,
+	//   infiniteLoop :false,
+ //      // hideControlOnEnd: true,
+	//   moveSlides: 1
+	// });
+
+
+	jQuery('ul.tabs li').click(function(){
+		var tab_id = jQuery(this).attr('data-tab');
+
+		jQuery('ul.tabs li').removeClass('current');
+		jQuery('.tab-content').removeClass('current');
+
+		jQuery(this).addClass('current');
+		jQuery("#"+tab_id).addClass('current');
+		//alert(tab_id);
+		if(tab_id == "tab-1"){
+			slider1.reloadSlider();
+			// jQuery('#tab-1').load('<?php echo Mage::getUrl("frontend/index/bestseller") ?>');
+			// if (jQuery('#tab-1').is(':empty')){
+			// 	jQuery("#tab-1").append('<img id="theImg" src="<?php echo $this->getSkinUrl("images/loading_spinner.gif") ?>" />');
+			// 	jQuery( "#tab-1" ).load( '<?php echo Mage::getUrl("frontend/index/bestseller") ?>', function() {
+	  //             $("#theImg").replaceWith("");
+	  //           });
+			// }
+		}
+
+		if(tab_id == "tab-2"){
+			// jQuery("#tab-2").load('<?php echo Mage::getUrl("frontend/index/featured") ?>');
+			// $('#tab-2').load('<?php echo Mage::getUrl("frontend/index/featured") ?>');
+			if (jQuery.trim(jQuery('#tab-2').text()).length==0){
+				jQuery("#tab-2").append('<img id="theImg" src="<?php echo $this->getSkinUrl("images/loading_spinner.gif") ?>" />');
+				jQuery( "#tab-2" ).load( '<?php echo $_tabHelper->getSecureUrl("frontend/index/featured") ?>', function() {
+	              jQuery("#theImg").replaceWith("");
+	            });
+	        } else {
+				Slider2.reloadSlider();
+	        }
+		}
+
+		if(tab_id == "tab-3"){
+			// jQuery("#tab-3").load('<?php echo Mage::getUrl("frontend/index/category") ?>');
+
+			if (jQuery.trim(jQuery('#tab-3').text()).length==0){
+				jQuery("#tab-3").append('<img id="theImg" src="<?php echo $this->getSkinUrl("images/loading_spinner.gif") ?>" />');
+				jQuery( "#tab-3" ).load( '<?php echo $_tabHelper->getSecureUrl("frontend/index/category") ?>', function() {
+	              jQuery("#theImg").replaceWith("");
+	            });
+			}else{
+				slider3.reloadSlider();
+			}
+		}
+
+		if(tab_id == "tab-4"){
+			// jQuery("#tab-4").load('<?php echo Mage::getUrl("frontend/index/offers") ?>');
+			// jQuery('#tab-4').load('<?php echo Mage::getUrl("frontend/index/offers") ?>');
+			if (jQuery.trim(jQuery('#tab-4').text()).length==0){
+				jQuery("#tab-4").append('<img id="theImg" src="<?php echo $this->getSkinUrl("images/loading_spinner.gif") ?>" />');
+				jQuery( "#tab-4" ).load( '<?php echo $_tabHelper->getSecureUrl("frontend/index/offers") ?>', function() {
+	              jQuery("#theImg").replaceWith("");
+	            });
+	        } else {
+				Slider4.reloadSlider();
+	        }
+		}
+	})
+
+
+
+})
+</script>

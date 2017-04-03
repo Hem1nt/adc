@@ -1,0 +1,52 @@
+<?php $_cartQty = $this->getSummaryCount();
+?>
+<div class="cart-icon mini-cart-layer">
+	<?php if ($this->getIsNeedToDisplaySideBar()):?>
+		<div class="top-cart">
+				<div class="cart_bag">                 
+				    <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="emptycart" title="Cart">
+				        <?php $_cartItems = $this->helper('checkout/cart')->getSummaryCount(); ?>
+				        <?php echo $_cartItems > 0 ? '<span>'.$_cartItems.'</span>' : '0'; ?> Items
+				    </a>
+				    <span class="fleft">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+				    <a href="<?php echo $this->getBaseUrl();?>checkout/">Checkout</a>
+				</div>
+				<div id="topCartContent" class="block-content" style="display:none;">
+					<div class="inner-wrapper">
+						<?php $_items = $this->getRecentItems() ?>
+						<?php if(count($_items)): ?>
+							<ol id="mini-cart" class="mini-products-list">
+								<?php foreach($_items as $_item): ?>
+									<?php echo $this->getItemHtml($_item); ?>
+								<?php endforeach; ?>
+							</ol>
+							<script type="text/javascript">decorateList('mini-cart', 'none-recursive')</script>
+						<?php else: ?>
+							<p class="cart-empty">
+								<?php echo $this->__('You have no items in your shopping cart.') ?>
+							</p>
+						<?php endif ?>
+						<?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+							<div class="actions">
+								<button class="button" type="button" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')" style="float:left;"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+								<button class="button" type="button" onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>')"><span><span><?php echo $this->__('Cart') ?></span></span></button>
+							</div>
+						<?php endif ?>
+					</div>
+				</div>
+			<?php //endif;?>
+		</div>
+	<?php endif;?>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    jQuery('#topCartContent').hide();
+    jQuery('.top-cart').mouseenter(function(){
+        jQuery('#topCartContent').stop(true,true).slideDown('slow', function(){
+        });
+    });
+    jQuery('.top-cart').mouseleave(function(){
+        jQuery('#topCartContent').slideUp();
+    });
+});
+</script>

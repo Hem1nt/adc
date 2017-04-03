@@ -1,0 +1,68 @@
+<layout version="0.1.0">
+    <default>
+	<reference name="top.links">
+		<action method="addLink" translate="label title">
+		    <label> Blog </label>
+		    <url>blog</url> 
+		    <title>Alldaychemist Blog</title>
+		    <prepare>true</prepare>
+		    <urlParams/> 
+		    <position>60</position>
+		    <liParams/>
+		    <aParams>class="top-link-example"</aParams>
+		    <beforeText></beforeText>
+		    <afterText></afterText>
+		</action>
+	</reference>
+	<remove name="left.newsletter" />
+		<remove name="right.poll" />
+		<remove name="right.reports.product.viewed" />
+		<remove name="right.permanent.callout"/>
+		<remove name="left.permanent.callout"/>
+		<remove name="catalog.leftnav"/>
+		<remove name="right.reports.product.viewed"/>
+		<remove name="sale.reorder.sidebar"/>
+		<remove name="paypal.partner.right.logo"/>
+		<!--remove name="catalog.compare.sidebar"/-->
+		<!--remove name="cart_sidebar"/-->
+		
+		<remove name = "left.reports.product.viewed" />
+		<remove name = "left.permanent.callout" />
+		<reference name="head">
+          	<action method="addItem"><type>skin_css</type><name>css/override.css</name></action>
+			<action method="addJs"><script>infinite/jquery.ias.min.js</script></action>
+			<action method="addItem"><type>skin_js</type><name>js/little.js</name></action>
+        </reference>
+		<reference name="left">
+		<remove name="left.reports.product.viewed" />
+		
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block>
+			<block type="core/template" name="left.sitebanners" template="homepage/banners.phtml"></block>
+			<block type="cms/block" name="video">
+				<action method="setBlockId"><block_id>video</block_id></action>
+			</block>
+		</reference>
+	</default>	
+	<checkout_onepage_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>css/jquery.signaturepad.css</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/flashcanvas.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.signaturepad.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/json2.min.js</name></action>
+		
+			<action method="addItem"><type>skin_js</type><name>uploadify/noconflict.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>uploadify/jquery.uploadify.v2.1.4.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>uploadify/swfobject.js</name></action>
+			
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-buttons.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-media.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-thumbs.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.pack.js</name></action>
+		</reference>
+	
+	</checkout_onepage_index>
+	
+	
+</layout>	

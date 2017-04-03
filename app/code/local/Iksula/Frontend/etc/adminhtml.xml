@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+	<config>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<custom_shipping module="frontend" >
+											<title>Custom Shipping Rates</title>
+											<sort_order>0</sort_order>
+										</custom_shipping>
+										<order_status module="frontend" >
+											<title>Selection Of Order Status</title>
+											<sort_order>0</sort_order>
+										</order_status>
+										<home_drop_down module="frontend" >
+											<title>Home Page Drop Down</title>
+											<sort_order>0</sort_order>
+										</home_drop_down>
+										<free_delivery module="frontend" >
+											<title>Free Delivery Rates</title>
+											<sort_order>0</sort_order>
+										</free_delivery>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</config>

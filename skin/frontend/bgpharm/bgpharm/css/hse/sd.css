@@ -1,0 +1,151 @@
+/*
+ * Velan Info Services India Pvt Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://store.velanapps.com/License.txt
+ *
+  /***************************************
+ *         MAGENTO EDITION USAGE NOTICE *
+ * *************************************** */
+/* This package designed for Magento COMMUNITY edition
+ * Velan Info Services does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Velan Info Services does not provide extension support in case of
+ * incorrect edition usage.
+  /***************************************
+ *         DISCLAIMER   *
+ * *************************************** */
+/* Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future.
+ * ****************************************************
+ * @category   velanapps
+ * @package    SD
+ * @author     Velan Team 
+ * @copyright  Copyright (c) 2013 - 2014 Velan Info Services India Pvt Ltd. (http://www.velanapps.com)
+ * @license    http://store.velanapps.com/License.txt
+ */
+@font-face {
+    font-family:'hearts_bvregular';
+    src: url('heartsbv_0-webfont.eot');
+    src: url('heartsbv_0-webfont.eot?#iefix') format('embedded-opentype'),
+         url('heartsbv_0-webfont.woff') format('woff'),
+         url('heartsbv_0-webfont.ttf') format('truetype'),
+         url('heartsbv_0-webfont.svg#hearts_bvregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.fl{float:left;}
+.fr{float:right;}
+/*------------header decoration---------*/
+#SeasonalDecorations { font-family:hearts_bvregular!important;}
+#serial{height:49px;width:100%;z-index: 9998;position: fixed;top: 0px;}
+.serialImg1{background:url(../images/lights1.png) repeat;height:67px!important;}
+.serialImg2{background:url(../images/lights2.png) repeat;height:60px!important;}
+.serialImg3{background:url(../images/lights3.png) repeat;}
+.serialImg4{background:url(../images/lights4.png) repeat;height:44px !important;}
+.serialImg5{background:url(../images/lights5.png) repeat;height:68px !important;top:-15px !important;}
+
+/*---------Cupid---------*/
+#cupid {height: 120px;
+width: 170px;
+background:url(../images/tot_fly.png) -0px -0px repeat;
+background-position:top center;
+z-index: 999999999;
+position: absolute;
+right: 0px;
+margin:0;
+padding:0;}
+#flower {height: 189px;
+width: 195px;
+background:url(../images/flower.png) ;
+background-position:top center;
+z-index: 999999999;
+position: absolute;
+right: 0px;
+margin:0;
+padding:0;}
+
+/*footer decoration*/
+#footer_decoration{bottom:48px;position:fixed;width:100%;left:0;z-index:997;}
+.footerDecorationImg1{background: url(../images/footerdecoration1.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height: 69px!important;}
+.footerDecorationImg2{background: url(../images/footerdecoration2.png) repeat scroll 0 0 rgba(0, 0, 0, 0); height: 69px!important;}
+
+.bottom_left{left:0px;bottom:0px;}
+.bottom_right{right:0px;bottom:0px;}
+.top_right{right:0px;top:0px;}
+.top_left{left:0px;top:0px;}
+#couple{height: 221px;
+width: 226px;
+background:url(../images/dance.png) -0px -0px repeat;
+background-position:top center;
+z-index: 999999999;
+position: absolute;
+right: 0px;
+bottom:0px;}
+#couple img{max-width:100%;max-height:100%;}
+#couple .close_it{cursor:pointer;float:right;background:gray;height:30px;width:30px;text-align:center;}
+#valBall {position: fixed;top: -280px;height:253px;width:117px;}
+.valBallPositionLeft{left: 10px;}
+.valBallPositionRight{right: 10px;}
+.valBallImg1 {background:url(../images/heartball.png);z-index:9999;}
+
+.valBall1 { 
+top:-50px !important;
+-moz-transition: all 1s ease-in-out;
+-webkit-transition: all 1s ease-in-out;
+-o-transition: all 1s ease-in-out;
+-ms-transition: all 1s ease-in-out;
+transition: all 1s ease-in-out;
+}
+.valBall2 {
+top:0px !important;
+-moz-transition: all 1s ease-in-out;
+-webkit-transition: all 1s ease-in-out;
+-o-transition: all 1s ease-in-out;
+-ms-transition: all 1s ease-in-out;
+transition: all 1s ease-in-out;
+}
+
+.valBall3 {
+top: -280px !important;
+-moz-transition: all 1s ease-in-out;
+-webkit-transition: all 1s ease-in-out;
+-o-transition: all 1s ease-in-out;
+-ms-transition: all 1s ease-in-out;
+transition: all 1s ease-in-out;
+}
+#get-sd {background: url(../images/get_now.png) no-repeat;
+cursor: pointer;
+text-shadow: 1px 2px 5px #030809;
+height: 120px;
+position: fixed;
+color:#fff;
+right: 2px;
+top: 80px;
+width: 190px;
+z-index: 9999;
+margin-right: -11px;
+margin-top: 38px;
+padding-left: 8px;
+padding-top: 31px;
+font-size: 13px;
+}
+#get-sd a {
+color: #080108;
+/*text-shadow: 1px 1px 1px #322;*/
+text-shadow: none;
+display: block;
+font-size: 14px;
+margin-left: 8px;
+padding: 14px;
+position: relative;
+text-align: center;
+text-decoration: none;
+top: -7px;
+width: 135px;
+}

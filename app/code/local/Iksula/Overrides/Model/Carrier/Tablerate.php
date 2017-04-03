@@ -1,0 +1,232 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Shipping
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+include_once 'app/code/core/Mage/Shipping/Model/Carrier/Tablerate.php';
+class Iksula_Overrides_Model_Carrier_Tablerate extends Mage_Shipping_Model_Carrier_Tablerate
+{
+
+    protected $_code = 'tablerate';
+    protected $_isFixed = true;
+    protected $_default_condition_name = 'package_weight';
+
+    protected $_conditionNames = array();
+
+    public function __construct()
+    {
+        parent::__construct();
+        foreach ($this->getCode('condition_name') as $k=>$v) {
+            $this->_conditionNames[] = $k;
+        }
+    }
+
+    /**
+     * Enter description here...
+     *
+     * @param Mage_Shipping_Model_Rate_Request $data
+     * @return Mage_Shipping_Model_Rate_Result
+     */
+    public function collectRates(Mage_Shipping_Model_Rate_Request $request)
+    {
+        // echo "string";exit();
+        if (!$this->getConfigFlag('active')) {
+            return false;
+        }
+        
+        // exclude Virtual products price from Package value if pre-configured
+        if (!$this->getConfigFlag('include_virtual_price') && $request->getAllItems()) {
+            foreach ($request->getAllItems() as $item) {
+                if ($item->getParentItem()) {
+                    continue;
+                }
+                if ($item->getHasChildren() && $item->isShipSeparately()) {
+                    foreach ($item->getChildren() as $child) {
+                        if ($child->getProduct()->isVirtual()) {
+                            $request->setPackageValue($request->getPackageValue() - $child->getBaseRowTotal());
+                        }
+                    }
+                } elseif ($item->getProduct()->isVirtual()) {
+                    $request->setPackageValue($request->getPackageValue() - $item->getBaseRowTotal());
+                }
+            }
+        }
+
+        // Free shipping by qty
+        $freeQty = 0;
+        if ($request->getAllItems()) {
+            foreach ($request->getAllItems() as $item) {
+                if ($item->getProduct()->isVirtual() || $item->getParentItem()) {
+                    continue;
+                }
+
+                if ($item->getHasChildren() && $item->isShipSeparately()) {
+                    foreach ($item->getChildren() as $child) {
+                        if ($child->getFreeShipping() && !$child->getProduct()->isVirtual()) {
+                            $freeQty += $item->getQty() * ($child->getQty() - (is_numeric($child->getFreeShipping()) ? $child->getFreeShipping() : 0));
+                        }
+                    }
+                } elseif ($item->getFreeShipping()) {
+                    $freeQty += ($item->getQty() - (is_numeric($item->getFreeShipping()) ? $item->getFreeShipping() : 0));
+                }
+            }
+        }
+
+        if (!$request->getConditionName()) {
+            $request->setConditionName($this->getConfigData('condition_name') ? $this->getConfigData('condition_name') : $this->_default_condition_name);
+        }
+
+         // Package weight and qty free shipping
+        $oldWeight = $request->getPackageWeight();
+        $oldQty = $request->getPackageQty();
+
+        $request->setPackageWeight($request->getFreeMethodWeight());
+        $request->setPackageQty($oldQty - $freeQty);
+
+        $result = Mage::getModel('shipping/rate_result');
+        $rate = $this->getRate($request);
+
+        $request->setPackageWeight($oldWeight);
+        $request->setPackageQty($oldQty);
+
+        $quote = Mage::getModel('checkout/cart')->getQuote();
+        // $quote->setTotalsColl‌​ectedFlag(false);
+        // $quote->collectTotals();
+        // $quote->save();
+        $collection = Mage::getBlockSingleton('checkout/cart_totals');
+        $total = $collection->getTotals();
+
+        $subtotal = $total['subtotal']['value'];
+        if($quote->getId() && $quote->getPayment()->getMethod()){
+            $paymentMethod = $quote->getPayment()->getMethodInstance()->getCode();
+        }else{
+            $paymentMethod = "";
+        }
+        
+        $shippingSerializeData = unserialize(Mage::getStoreConfig('custom_shipping/general/selected_data'));
+
+        if (!empty($rate) && $rate['price'] >= 0) {
+            $method = Mage::getModel('shipping/rate_result_method');
+
+            $method->setCarrier('tablerate');
+            $method->setCarrierTitle($this->getConfigData('title'));
+
+            $method->setMethod('bestway');
+            $method->setMethodTitle($this->getConfigData('name'));
+
+            if ($request->getFreeShipping() === true || ($request->getPackageQty() == $freeQty)) {
+                $shippingPrice = 0;
+            } else {
+                if($shippingSerializeData){
+                    foreach ($shippingSerializeData as $key => $value) {
+                        if($value['payment_method'] == $paymentMethod && $subtotal < $value['subtotal']){
+                            $shippingPrice = $value['shipping_amount'];
+                            break;
+                        }elseif($value['payment_method'] == $paymentMethod && $subtotal > $value['subtotal'] && $value['new_shipping_amount'] != 'NA'){
+                            $shippingPrice = $value['new_shipping_amount'];
+                            break;
+                        }else{
+                            $shippingPrice = $this->getFinalPriceWithHandlingFee($rate['price']);
+                        }
+                    }
+                }else{
+                    $shippingPrice = $this->getFinalPriceWithHandlingFee($rate['price']);
+                }
+            }
+            //date condition with price  
+            $method->setPrice($shippingPrice);
+            $method->setCost($rate['cost']);
+
+            $result->append($method);
+        }
+
+        return $result;
+    }
+
+    public function getRate(Mage_Shipping_Model_Rate_Request $request)
+    {
+        return Mage::getResourceModel('shipping/carrier_tablerate')->getRate($request);
+    }
+
+    public function getCode($type, $code='')
+    {
+        $codes = array(
+
+            'condition_name'=>array(
+                'package_weight' => Mage::helper('shipping')->__('Weight vs. Destination'),
+                'package_value'  => Mage::helper('shipping')->__('Price vs. Destination'),
+                'package_qty'    => Mage::helper('shipping')->__('# of Items vs. Destination'),
+            ),
+
+            'condition_name_short'=>array(
+                'package_weight' => Mage::helper('shipping')->__('Weight (and above)'),
+                'package_value'  => Mage::helper('shipping')->__('Order Subtotal (and above)'),
+                'package_qty'    => Mage::helper('shipping')->__('# of Items (and above)'),
+            ),
+
+        );
+
+        if (!isset($codes[$type])) {
+            throw Mage::exception('Mage_Shipping', Mage::helper('shipping')->__('Invalid Table Rate code type: %s', $type));
+        }
+
+        if (''===$code) {
+            return $codes[$type];
+        }
+
+        if (!isset($codes[$type][$code])) {
+            throw Mage::exception('Mage_Shipping', Mage::helper('shipping')->__('Invalid Table Rate code for type %s: %s', $type, $code));
+        }
+
+        return $codes[$type][$code];
+    }
+
+    /**
+     * Get allowed shipping methods
+     *
+     * @return array
+     */
+    public function getAllowedMethods()
+    {
+        return array('bestway'=>$this->getConfigData('name'));
+    }
+
+    public function getFinalPriceWithHandlingFee($cost)
+    {
+        $handlingFee = $this->getConfigData('handling_fee');
+        $handlingType = $this->getConfigData('handling_type');
+        
+        if (!$handlingType) {
+            $handlingType = self::HANDLING_TYPE_FIXED;
+        }
+        $handlingAction = $this->getConfigData('handling_action');
+        if (!$handlingAction) {
+            $handlingAction = self::HANDLING_ACTION_PERORDER;
+        }
+
+        return ($handlingAction == self::HANDLING_ACTION_PERPACKAGE)
+            ? $this->_getPerpackagePrice($cost, $handlingType, $handlingFee)
+            : $this->_getPerorderPrice($cost, $handlingType, $handlingFee);
+    }
+}

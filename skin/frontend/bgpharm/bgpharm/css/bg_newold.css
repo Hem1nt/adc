@@ -1,0 +1,155 @@
+.block .block-title {
+    background: #8ec543;
+}
+a.home_icon {
+    background-color: #2195bf;
+}
+.header .form-search button.button {
+    float: left;
+    background: #12b2e2 url(../images/search-icon.png) center center no-repeat;
+}
+.header .form-search button.button:hover {
+    background: #8ec543 url(../images/search-icon.png) center center no-repeat;
+}
+.block .block-title strong.all-categories {
+    background: #2195bf;
+}
+.nav-right-category ul li.callback-req {
+    background: #2ca1cd;
+}
+
+h1.best-selling-products {
+    border-top: 0px solid #9fb701;
+    border-bottom: 2px solid #9fb701;
+    color: #2ca1cd;
+    padding-bottom: 5px;
+    padding-top: 0;
+}
+.tab_container {
+    border: 1px solid #8ec543;
+}
+.tab_container ul.tabs li {
+    background: #2ca1cd;
+    border-right: 1px solid #8ec543;
+    width: 24.93%;
+}
+.tab_container ul.tabs li.current {
+    background: #8ec543;
+    color: #fff;
+    border-right: 1px solid #8ec543;
+    width: 24.93%;
+}
+.tab_container ul.tabs li:hover {
+    background: rgba(142, 197, 67, 0.73);
+}
+li.tab-link.current:after {
+    content: "";
+    border-top: 15px solid rgb(142, 197, 67);
+}
+.view-all-products a {
+    color: #8ec543;
+}
+.recent-view-product-block{
+    text-align: center;
+}
+.recent-view-block{
+    border: 1px solid #8ec543;
+    padding: 30px 30px 15px;
+    box-sizing: border-box;
+    margin: 0 0 25px 0;
+}
+.recent-view-product-block .tab-content-main #tab-2, .recent-view-product-block .tab-content-main #tab-3, .recent-view-product-block .tab-content-main #tab-4{
+    display: none;
+}
+
+.home-content h1 {
+    border-top: 0px solid #8ec543;
+    border-bottom: 2px solid #8ec543;
+    color: #2ca1cd;
+    padding-bottom: 5px;
+}
+.footer-container {
+    border-top: 5px solid #2ca1cd;
+    background: linear-gradient(#f7f7f7, #fff);
+}
+span.footer-logo-adc {
+    background: url(../images/bg_logo.png) no-repeat;
+    width: 225px;
+    height: 110px;
+    display: inline-block;
+    float: left;
+}
+.cms-index-index .slider-block p.custom_price {
+    color: #8ec543;
+}
+.customer-account-login .account-login .col2-set .col-1 {
+    float: none;
+    width: 100%;
+    border-right: 0px solid #BEBEBE;
+    padding-right: 0%;
+    /*margin: 0 auto;*/
+}
+.customer-account-login .account-login .col-1 .content {
+    background: none;
+}
+.customer-account-login .account-login .col-1 .content button.button, .customer-account-login .account-login .col-2 .content button.button {
+    margin-top: 15px;
+    float: right;
+}
+.customer-account-login .account-login .col-1 .content h2{
+    color: #2195bf;
+    font-size: 20px;
+    margin: 0 0 20px;
+}
+.customer-account-login .account-login .col-1 .content button.button span, .customer-account-login .account-login .col-2 .content button.button span{
+    background: #2195bf;
+}
+.customer-account-login .account-login .col-1 .content button.button > span, .customer-account-login .account-login .col-2 .content button.button > span {
+    border-bottom: 3px solid #006b91;
+    padding: 3px 8px;
+    font-size: 16px;
+}
+.customer-account-login .account-login .col2-set, .customer-account-resetpassword .col-main .fieldset{
+    width: 500px;
+}
+.cms-index-index .main-container {
+    background: #fff;
+    margin-top: 20px;
+}
+
+.logged-in-user:hover {
+    background-color: #12b2e2;
+}
+
+.dropdown_links {
+    background: #12b2e2;
+}
+.header-top-block .h-left ul li a:hover, .header-top-block .h-right ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.dropdown_links li a {
+    border-bottom: 1px solid #0093bf;
+}
+.customer-account-index .box-account .box-head a {
+    color: #2195bf;
+}
+.nav-left-category ul li a:hover {
+    color: #005472;
+}
+.inner-wrapper button.button > span {
+    border-bottom: 2px solid #006b91;
+}
+.inner-wrapper button.button span {
+    background: #2195bf;
+}
+
+@media only screen and (max-width: 320px){
+   .frontend-index-allbrands #search_sidebar_form .drugSearch {
+        background: #2195bf;
+    }
+    .frontend-index-allbrands #search_sidebar_form .drugSearch li.border_bot {
+        border-bottom: 1px dotted #ffffff;
+        padding-bottom: 5px;
+    }  
+}

@@ -1,0 +1,453 @@
+<?php $_order = $this->getOrder();?>
+<?php
+$orderAdminDate = $this->formatDate($_order->getCreatedAtDate(), 'medium', true);
+$orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', true);
+?>
+<div class="box-left">
+    <!--Order Information-->
+    <div class="entry-edit">
+        <?php if ($_order->getEmailSent()):
+        $_email = Mage::helper('sales')->__('the order confirmation email was sent');
+        else:
+            $_email = Mage::helper('sales')->__('the order confirmation email is not sent');
+        endif; ?>
+        <div class="entry-edit-head">
+            <?php if ($this->getNoUseOrderLink()): ?>
+                <h4 class="icon-head head-account"><?php echo Mage::helper('sales')->__('Order # %s', $_order->getRealOrderId()) ?> (<?php echo $_email ?>)</h4>
+            <?php else: ?>
+                <a href="<?php echo $this->getViewUrl($_order->getId()) ?>"><?php echo Mage::helper('sales')->__('Order # %s', $_order->getRealOrderId()) ?></a>
+                <strong>(<?php echo $_email ?>)</strong>
+            <?php endif; ?>
+        </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Order Date') ?></label></td>
+                    <td class="value"><strong><?php echo $orderAdminDate ?></strong></td>
+                </tr>
+                <?php if ($orderAdminDate != $orderStoreDate):?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Order Date (%s)', $_order->getCreatedAtStoreDate()->getTimezone()) ?></label></td>
+                        <td class="value"><strong><?php echo $orderStoreDate ?></strong></td>
+                    </tr>
+                <?php endif;?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Order Status') ?></label></td>
+                    <td class="value">
+                        <strong>
+                            <span id="order_status" class="<?php echo $_order->getStatus();?>"><?php echo $_order->getStatusLabel() ?></span>
+                        </strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Purchased From') ?></label></td>
+                    <td class="value"><strong><?php echo $this->getOrderStoreName() ?></strong></td>
+                </tr>
+                <?php if($_order->getRelationChildId()): ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Link to the New Order') ?></label></td>
+                        <td class="value"><a href="<?php echo $this->getViewUrl($_order->getRelationChildId()) ?>">
+                            <?php echo $_order->getRelationChildRealId() ?>
+                        </a></td>
+                    </tr>
+                <?php endif; ?>
+                <?php if($_order->getRelationParentId()): ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Link to the Previous Order') ?></label></td>
+                        <td class="value"><a href="<?php echo $this->getViewUrl($_order->getRelationParentId()) ?>">
+                            <?php echo $_order->getRelationParentRealId() ?>
+                        </a></td>
+                    </tr>
+                <?php endif; ?>
+                <?php if($_order->getRemoteIp() && $this->shouldDisplayCustomerIp()): ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Placed from IP') ?></label></td>
+                        <td class="value"><strong><?php echo $_order->getRemoteIp(); echo ($_order->getXForwardedFor())?' (' . $this->escapeHtml($_order->getXForwardedFor()) . ')':''; ?></strong></td>
+                    </tr>
+                <?php endif; ?>
+                <?php if($_order->getGlobalCurrencyCode() != $_order->getBaseCurrencyCode()): ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('%s / %s rate:', $_order->getGlobalCurrencyCode(), $_order->getBaseCurrencyCode()) ?></label></td>
+                        <td class="value"><strong><?php echo $_order->getBaseToGlobalRate() ?></strong></td>
+                    </tr>
+                <?php endif; ?>
+                <?php if($_order->getBaseCurrencyCode() != $_order->getOrderCurrencyCode()): ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('%s / %s rate:', $_order->getOrderCurrencyCode(), $_order->getBaseCurrencyCode()) ?></label></td>
+                        <td class="value"><strong><?php echo $_order->getBaseToOrderRate() ?></strong></td>
+                    </tr>
+                <?php endif; ?>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="box-right">
+    <!--Account Information-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-account"><?php echo Mage::helper('sales')->__('Account Information') ?></h4>
+            <div class="tools"><?php echo $this->getAccountEditLink()?></div>
+        </div>
+        <div class="fieldset">
+            <div class="hor-scroll">
+                <table cellspacing="0" class="form-list">
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Customer Name') ?></label></td>
+                        <td class="value">
+                            <?php if ($_customerUrl=$this->getCustomerViewUrl()) : ?>
+                                <a href="<?php echo $_customerUrl ?>" target="_blank"><strong><?php echo $this->htmlEscape($_order->getCustomerName()) ?></strong></a>
+                            <?php else: ?>
+                                <strong><?php echo $this->htmlEscape($_order->getCustomerName()) ?></strong>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                    <?php if($_order->getData('customer_order_increment_id') != '') : ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Customer Custom Order ID') ?></label></td>
+                        <td class="value">
+                            <strong><?php echo $this->htmlEscape($_order->getData('customer_order_increment_id')) ?></strong>
+                        </td>
+                    </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Email') ?></label></td>
+                        <td class="value"><a class="custom_emailid_href" href="mailto:<?php echo $_order->getCustomerEmail() ?>">
+                            <strong class="custome_emailid"><?php echo $_order->getCustomerEmail() ?></strong></a>
+                             <button class="change_email_id" id="change_email_id_btn" title="Edit" type="button" class="scalable " onclick="return false;" style="">
+                                    <span>
+                                        <span><span>Change Email id</span></span>
+                                    </span>
+                                </button>
+                            <?php $save_email_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/saveemails');?>
+                            <form id ='ad'></form>
+                            <form action="#" onsubmit="return false;" method="get" class="emailid_form_class">
+                                <p>Your name: <input type="text" name="email" class="email_address" /></p>
+                                <p><input type="hidden" name="orderid" value="<?php echo $_order->getId() ?>" class="orderid"/></p>
+                                <button id="save_email_btn" title="Edit" type="button" class="scalable " onclick="changeEmailAddress('<?php echo $save_email_url;?>')" style="">
+                                    <span>
+                                        <span><span>Submit</span></span>
+                                    </span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php if ($_groupName = $this->getCustomerGroupName()) : ?>
+                    <tr>
+                        <td class="label"><label><?php echo Mage::helper('sales')->__('Customer Group') ?></label></td>
+                        <td class="value"><strong><?php echo $_groupName ?></strong></td>
+                    </tr>
+                <?php endif; ?>
+                <?php foreach ($this->getCustomerAccountData() as $data):?>
+                    <tr>
+                        <td class="label"><label><?php echo $data['label'] ?></label></td>
+                        <td class="value"><strong><?php echo $data['value'] ?></strong></td>
+                    </tr>
+                <?php endforeach;?>
+                <?php
+                if($_order->getAgentName() != ""){ ?>
+                    <tr>
+                         <td class="label"><label><strong class="custom_color"><?php echo Mage::helper('sales')->__('Order Placed By') ?></label></strong></td>
+                         <td class="value"><strong class="custom_color"><?php echo $_order->getAgentName(); ?></strong></td>
+                    </tr>
+                <?php }  ?>
+                    <tr>
+                    <?php
+                        $customerObj = Mage::getModel('customer/customer')->load($_order->getCustomerId());
+                        $donotcallval = $customerObj->getDonotcall();
+                        $customercomment = $customerObj->getCustomerComment();
+                        switch ($donotcallval) {
+                            case '0':  $donotcall = 'No'; break;
+                            case '1':  $donotcall = 'Yes'; break;
+                            default: break;
+                        }
+                        $orderdonotcall = $_order->getDonotcall();
+                        ?>
+                        <td class="label"><label><strong class="custom_color"><?php echo Mage::helper('sales')->__('Do Not Call') ?></strong></label></td>
+                        <?php if($_groupName != "NOT LOGGED IN"){ ?>
+                        <td class="value"><strong style="color:#0125E2;"><?php echo $donotcall ?></strong></td>
+                        <?php }else{ ?>
+                        <td class="value">
+                            <select id="donotcall" name="donotcall">
+                                <option value="9999" <?php if($orderdonotcall == "" || $orderdonotcall == 9999){ ?>selected="selected" <?php } ?> ></option>
+                                <option value="1" <?php if($orderdonotcall == 1){ ?>selected="selected" <?php } ?>>Yes</option>
+                                <option value="0" <?php if($orderdonotcall == 0 && $orderdonotcall != ''){ ?>selected="selected" <?php } ?>>No</option>
+                            </select>
+                        </td>
+                        <?php }?>
+                    </tr>
+                    <?php
+                        if($customercomment != ""){ ?>
+                        <tr>
+                           <td class="label"><label><strong class="custom_color">
+                           <?php echo Mage::helper('sales')->__('User Comment') ?></label></strong></td>
+                           <td class="value">
+                             <strong class="custom_color">
+                                <?php echo $customercomment ?>
+                             </strong>
+                            </td>
+                        </tr>
+                    <?php } ?>
+            <?php //endif; ?>
+            <?php if ($_order->getMedicalHistory() != "") : ?>
+            <?php endif; ?>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div class="box-left">
+    <!--Additional Details-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-billing-address"><?php echo Mage::helper('sales')->__('Additional Details') ?></h4>
+        </div>
+        <fieldset>
+        <table cellspacing="0" class="form-list">
+            <?php
+            $status = $_order->getData('status');
+            // if($status=='want_to_pay' || $status=='awaiting_check_transfer' || $status=='Incomplete Payment Process' || $status=='Pending Payment' || $status=='transaction_declined' || $status=='transaction_declined_vt' || $status=='pay_now' ||) :
+            //     $order_paynow_class= 'show_paynow_link';
+            // else:
+            //     $order_paynow_class= 'hide_paynow_link';
+            // endif;
+            $order_paynow_class= 'show_paynow_link';
+            
+            ?>
+            <tr class="paynowlink <?php echo $order_paynow_class;?>">
+                <td class="label"><label><?php echo Mage::helper('sales')->__('Pay Now') ?></label></td>
+                <td class="value">
+                    <strong>
+                        <?php
+                        $paymentLinkUrl = Mage::getStoreConfig('custom_snippet/snippet/paymentlink');
+                        $frontendHelper = Mage::helper('frontend');
+                        $encodedurl = $frontendHelper->encrypt_decrypt('encrypt',$_order->getData('entity_id'));
+
+                        echo $paymentLinkUrl.'?order_id='.$encodedurl.'&utm_source=back-payment&utm_medium=email&utm_campaign=pay-link';
+
+                        ?>
+                    </strong>
+                </td>
+            </tr>
+            <tr class="paynowlink <?php echo $order_paynow_class;?>">
+                <td class="label"><label><?php echo Mage::helper('sales')->__('Online Payment Link') ?></label></td>
+                <td class="value">
+                    <strong>
+                        <?php
+                        $linkPayment = Mage::getStoreConfig('payment/offlinepayment/paymentlink');
+                        echo $linkPayment.'?order_id='.$encodedurl.'&utm_source=back-payment&utm_medium=chat&utm_campaign=online-link-payment';
+
+                        ?>
+                    </strong>
+                </td>
+            </tr>
+            <tr class="paynowlink <?php echo $order_paynow_class;?>">
+                <td class="label"><label><?php echo Mage::helper('sales')->__('Echek Payment Link') ?></label></td>
+                <td class="value">
+                    <strong>
+                        <?php
+                        $linkPayment = Mage::getStoreConfig('payment/newofflinepayment/newpaymentlink');
+                        echo $linkPayment.'?order_id='.$encodedurl.'&utm_source=back-payment&utm_medium=chat&utm_campaign=echeck-payment';
+
+                        ?>
+                    </strong>
+                </td>
+            </tr>
+          
+             <!-- <tr>
+                <td class="label"><label><?php //echo Mage::helper('sales')->__('Suppy Issue Comment') ?></label></td>
+                <td class="value">
+                    <input id="order_view_id" type="hidden" name="order_view_id" value="<?php //echo $_order->getId() ?>" />
+                    <textarea style="width: 200px;height: 36px;" id="supply_issue_data"><?php //echo $_order->getSupplyIssueMessage();?></textarea>
+                    <?php //$supply_issue_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savesupplyissue') ?>
+                    <div>
+                        <button id="supply_issue_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="supply_issue_comment('<?php //echo $supply_issue_url;?>')" style="">
+                            <span>
+                                <span><span>Submit</span></span>
+                            </span>
+                        </button>
+                    </div>
+                </td>
+            </tr> -->
+            <tr>
+                <td class="label"><label><?php echo Mage::helper('sales')->__('Descriptor Info') ?></label></td>
+                <td class="value">
+                    <input id="des_order_view_id" type="hidden" name="des_order_view_id" value="<?php echo $_order->getId() ?>" />
+                    <textarea style="width: 300px;height: 36px;" id="dispatcher_data"><?php echo $_order->getDispatcherMessage();?></textarea>
+                    <?php $dispatcher_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savedispatcher') ?>
+                    <div>
+                        <button id="dispatcher_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="dispatcher_comment('<?php echo $dispatcher_url;?>')" style="">
+                            <span>
+                                <span><span>Submit</span></span>
+                            </span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <form action="#" onclick="return false; " method="get" id="update-order-total">
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Reason to Update Total Price'); ?></label></td>
+                    <td class="value"><textarea style="width: 300px;height: 36px;" class="order_reason"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Price to be Updated'); ?></label></td>
+                    <td class="value">
+                        <input type="text" class="order_amt" onkeypress="return isNumber(event)" />
+                        <input type="submit" name="Submit" id="price_submit" />
+                    </td>
+
+                </tr>
+            </form>
+        </table>
+        </fieldset>
+    </div>
+</div>
+<div class="box-right">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-billing-address"><?php echo Mage::helper('sales')->__('Additional Details') ?></h4>
+        </div>
+        <fieldset>
+           <table cellspacing="0" class="form-list">
+               <tr>
+                <td class="label"><label><?php echo Mage::helper('sales')->__('Payment Information') ?></label></td>
+                <td class="value">
+                    <input id="payment_order_view_id" type="hidden" name="payment_order_view_id" value="<?php echo $_order->getId() ?>" />
+                    <textarea style="width: 200px;height: 36px;" id="paymentinfo_data"><?php echo $_order->getPaymentinfoMessage();?></textarea>
+                    <?php $paymentinfo_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savepaymentinfo');
+                    ?>
+                    <div>
+                        <button id="paymentinfo_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="paymentinfo_comment('<?php echo $paymentinfo_url;?>')" style="">
+                            <span>
+                                <span><span>Submit</span></span>
+                            </span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><label><?php echo Mage::helper('sales')->__('From Date') ?></label></td>
+                <td class="value">
+                    <input id="fdate_order_view_id" type="hidden" name="fdate_order_view_id" value="<?php echo $_order->getId() ?>" />
+                    <input type="date" id="from_date" value="<?php echo $_order->getData('fromdate_message'); ?>" />
+                    <?php $fromdate_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savefromdate');
+
+                    ?>
+                    <button id="fromdate_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="fromdate_comment('<?php echo $fromdate_url;?>')" style="">
+                        <span>
+                            <span><span>Submit</span></span>
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><label><?php echo Mage::helper('sales')->__('To Date') ?></label></td>
+                <td class="value">
+                    <input id="fdate_order_view_id" type="hidden" name="fdate_order_view_id" value="<?php echo $_order->getId() ?>" />
+                    <input type="date" id="to_date" value="<?php echo $_order->getData('todate_message'); ?>" />
+                    <?php $todate_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savetodate') ?>
+                    <button id="todate_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="todate_comment('<?php echo $todate_url;?>')" style="">
+                        <span>
+                            <span><span>Submit</span></span>
+                        </span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        </fieldset>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="box-left">
+    <!--Billing Address-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-billing-address"><?php echo Mage::helper('sales')->__('Billing Address') ?></h4>
+            <div class="tools"><?php echo $this->getAddressEditLink($_order->getBillingAddress())?></div>
+        </div>
+        <fieldset>
+            <address><?php echo $_order->getBillingAddress()->getFormated(true) ?></address>
+        </fieldset>
+    </div>
+</div>
+<?php if (!$this->getOrder()->getIsVirtual()): ?>
+    <div class="box-right">
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-shipping-address"><?php echo Mage::helper('sales')->__('Shipping Address') ?></h4>
+                <div class="tools"><?php echo $this->getAddressEditLink($_order->getShippingAddress())?></div>
+            </div>
+            <fieldset>
+                <address><?php echo $_order->getShippingAddress()->getFormated(true) ?></address>
+            </fieldset>
+        </div>
+    </div>
+    <div class="clear"></div>
+<?php endif; ?>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        $('button.scalable.customOrderBtn.save').bind("click", function(){
+            var status = $( "#history_status" ).val();
+            if(status=='want_to_pay' || status=='awaiting_check_transfer' || status=='Incomplete Payment Process' || status=='Pending Payment' || status=='transaction_declined' || status=='transaction_declined_vt' || status=='pay_now')
+            {
+                console.log(status);
+                $('.paynowlink').removeClass("hide_paynow_link");
+                $('.paynowlink').addClass("show_paynow_link");
+            }
+            else{
+                console.log(status);
+                $('.paynowlink').removeClass("show_paynow_link");
+                $('.paynowlink').addClass("hide_paynow_link");
+            }
+        });
+        jQuery("#donotcall").change(function(){
+            var dvalue = jQuery(this).val();
+            new Ajax.Request("<?php echo $this->getUrl('overrides/adminhtml_sales_order_create/donotcall',array('_secure'=>true)); ?>", {
+               method: 'Post',
+               parameters: {"value":dvalue,"orderid":"<?php echo $_order->getId(); ?>"},
+               onComplete: function(transport) {
+               }
+           });
+        });
+    });
+</script>
+<style>
+    tr.paynowlink.hide_paynow_link { display: none; }
+    tr.paynowlink.show_paynow_link { display: table-row; }
+    .verification_pending{color: #ff0000;}
+    .verification_complete{color: #20AB17;}
+    .paynowlink strong { color: #ea7601; text-decoration: underline; word-break: break-all;}
+    select#donotcall{width: 50px;}
+    #price_submit{padding: 0px 3px;}
+</style>
+<script>
+    jQuery(document).ready(function(){
+        jQuery( "#update-order-total").submit(function(event){
+            var order_reason = jQuery(".order_reason").val();
+            var order_amt = jQuery(".order_amt").val();
+            new Ajax.Request("<?php echo $this->getUrl('overrides/index/ordertotal',array('_secure'=>true)); ?>", {
+             method: 'Post',
+             parameters: {"order_reason":order_reason,"order_amt":order_amt,"orderid":"<?php echo $_order->getId(); ?>"},
+             onComplete: function(transport) {
+                window.location.reload(true);
+            }
+        });
+        });
+    });
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            if(charCode == 43 || charCode == 45 || charCode == 46){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+
+</script>

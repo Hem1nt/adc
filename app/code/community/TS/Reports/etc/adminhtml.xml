@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<acl>
+      <resources>
+        <admin>
+          <children>
+            <system>
+              <children>
+                <config>
+                  <children>
+                    <ts_reports translate="title" module="ts_reports">
+                      <title>TS Reports</title>
+                    </ts_reports>
+                  </children>
+                </config>
+              </children>
+            </system>
+            <report>
+              <children>
+                <ts_reports translate="title" module="ts_reports">
+                    <title>TS Reports</title>
+					<children>
+						<sales translate="title" module="ts_reports">
+							<title>Sales</title>
+						</sales>
+						<products translate="title" module="ts_reports">
+							<title>Products</title>
+						</products>
+						<prices_list_full translate="title" module="ts_reports">
+							<title>List Prices - Full</title>
+						</prices_list_full>
+						<prices_list_mini translate="title" module="ts_reports">
+							<title>List Prices - Mini</title>
+						</prices_list_mini>
+					</children>
+                </ts_reports>
+              </children>
+            </report>
+          </children>
+        </admin>
+      </resources>
+    </acl>
+	
+    <menu>
+        <report>
+            <children>
+				<ts_reports translate="title" module="ts_reports">
+					<title>TS Reports</title>
+					<sort_order>80</sort_order>
+					<children>
+						<sales translate="title" module="ts_reports">
+							<title>Sales</title>
+							<action>ts_reports/sales/sales</action>
+						</sales>
+						<products translate="title" module="ts_reports">
+							<title>Products</title>
+							<action>ts_reports/sales/products</action>
+						</products>
+						<prices_list_full translate="title" module="ts_reports">
+							<title>List Prices - Full</title>
+							<action>ts_reports/prices/index</action>
+						</prices_list_full>
+						<prices_list_mini translate="title" module="ts_reports">
+							<title>List Prices - Mini</title>
+							<action>ts_reports/pricesmini/index</action>
+						</prices_list_mini>
+					</children>
+				</ts_reports>
+			</children>
+		</report>
+	</menu>
+</config>

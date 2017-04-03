@@ -1,0 +1,24 @@
+<div class="h-right">
+<?php 
+	$loginStatus = Mage::getSingleton('customer/session')->isLoggedIn();
+	if($loginStatus):
+?>
+		<div class="logged-in-user_normal"></div>
+	<div class="logged-in-user">
+		<a href="<?php echo Mage::getUrl('customer/account');?>"><?php echo $this->__('%s', Mage::getSingleton('customer/session')->getCustomer()->getName()); ?></a>
+		<ul class="dropdown_links">				
+			<li><a href="<?php echo Mage::getUrl('customer/account');?>">Account</a></li>
+			<li><a href="<?php echo Mage::getUrl('sales/order/history');?>">Orders</a></li>
+			<li><a href="<?php echo Mage::getUrl('wishlist');?>">Wishlist</a></li>
+			<li><a href="<?php echo Mage::getUrl('review/customer');?>">Review and Rating</a></li>
+			<li><a href="<?php echo Mage::getUrl('customer/account/logout');?>">Logout</a></li>
+		</ul>
+	</div>
+<?php else: ?>
+	<ul class="new-user">
+		<li><a href="<?php echo Mage::getUrl('customer/account/login');?>">Login</a></li>
+		<!-- <li><a href="<?php //echo Mage::getUrl('customer/account/create');?>">Register</a></li> -->
+	</ul>	
+<?php endif;?>
+
+</div>

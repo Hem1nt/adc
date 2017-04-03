@@ -1,0 +1,41 @@
+<?php
+    $_cartQty = $this->getSummaryCount();
+    $quote = Mage::getModel('checkout/session')->getQuote();
+    $quote->setTotalsCollectedFlag(false)->collectTotals();
+    $_grandTotal= Mage::helper('core')->currency($quote->getGrandTotal(), true, false);
+?>
+<div class="min_cart_overlay"></div>
+<div class="cart-icon mini-cart-layer">
+    <?php if ($this->getIsNeedToDisplaySideBar()):?>
+        <div class="top-cart">
+                <div id="topCartContent" class="block-content" >
+                    <div class="inner-wrapper">
+                         <div class="pr-minicart-title">
+                            <span class="minicart-title-text">Your Cart.</span>
+                            <span class="minicart-title-price">Total <?php echo $_grandTotal;?></span>
+                        </div>
+                        <?php $_items = $this->getRecentItems() ?>
+                        <?php if(count($_items)): ?>
+                            <ol id="mini-cart" class="mini-products-list">
+                                <?php foreach($_items as $_item): ?>
+                                    <?php echo $this->getItemHtml($_item); ?>
+                                <?php endforeach; ?>
+                            </ol>
+                            <script type="text/javascript">decorateList('mini-cart', 'none-recursive')</script>
+                        <?php else: ?>
+                            <p class="cart-empty">
+                                <?php echo $this->__('You have no items in your shopping cart.') ?>
+                            </p>
+                        <?php endif ?>
+                        <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+                            <div class="actions">
+                                <button class="button" type="button" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')" style="float:left;"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+                                <button class="button" type="button" onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>')"><span><span><?php echo $this->__('Cart') ?></span></span></button>
+                            </div>
+                        <?php endif ?>
+                    </div>
+                </div>
+            <?php //endif;?>
+        </div>
+    <?php endif;?>
+</div>

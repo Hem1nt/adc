@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <simpleorderexport translate="title">
+                        <title>SLandsbek SimpleOrderExport</title>
+                        <children>
+                            <actions translate="title">
+                                <title>Actions</title>
+                                <children>
+                                    <csvexport translate="title">
+                                        <title>Export to .csv file</title>
+                                    </csvexport>
+                                    <couponreportexport translate="title">
+                                        <title>Coupon Code Report</title>
+                                    </couponreportexport>
+                                    <descriptorreportexport translate="title">
+                                        <title>Descriptor Wise Report</title>
+                                    </descriptorreportexport>   
+                                    <deleteorder translate="title">
+                                        <title>Delete order</title>
+                                    </deleteorder>
+                                    <exportCsv translate="title">
+                                        <title>Grid exportCsv</title>
+                                    </exportCsv>
+                                    <pdfinvoices translate="title">
+                                        <title>Print Invoices</title>
+                                    </pdfinvoices>
+                                    <pdfshipments translate="title">
+                                        <title>Print Packingslips</title>
+                                    </pdfshipments>
+                                    <pdfcreditmemos translate="title">
+                                        <title>Print Credit Memos</title>
+                                    </pdfcreditmemos>
+                                    <pdfdocs translate="title">
+                                        <title>Print All</title>
+                                    </pdfdocs> 
+                                    <importcsv translate="title">
+                                        <title>Import CSV</title>
+                                    </importcsv>
+                                    <importtracking translate="title">
+                                        <title>Import Trakingnumber</title>
+                                    </importtracking>
+                                    <bulkinvoice translate="title">
+                                        <title>Bulk Invoice</title>
+                                    </bulkinvoice>
+                                    <bulkshipment translate="title">
+                                        <title>Bulk Shipment</title>
+                                    </bulkshipment>
+                                    <customexporttocsv translate="title">
+                                        <title>Bulk Export</title>
+                                    </customexporttocsv>
+                                    <itemexporttocsv translate="title">
+                                        <title>Bulk Item Export</title>
+                                    </itemexporttocsv>
+                                    <feedbackimportcsv translate="title">
+                                        <title>Review Import</title>
+                                    </feedbackimportcsv>
+                                    <prescriptionexportcsv translate="title">
+                                        <title>Report Export</title>
+                                    </prescriptionexportcsv>
+                                     <descripterexportcsv translate="title">
+                                        <title>Descripter Import Export</title>
+                                    </descripterexportcsv>
+                                    <invoice_pdf translate="title">
+                                        <title>Invoice Pdf</title>
+                                    </invoice_pdf>
+                                </children>
+                            </actions> 
+                        </children>
+                    </simpleorderexport>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

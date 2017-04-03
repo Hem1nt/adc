@@ -1,0 +1,11 @@
+<?php
+if(Mage::registry('current_product')) 
+{
+	$_product = Mage::registry('current_product');
+	$_outofstockHelper = Mage::helper('notifyoutofstock');
+	if(!$_product->isSaleable()){
+  		 $_outofstockHelper->notifyOutofStock($_product);
+	}
+  // Product detail page
+}
+?>

@@ -1,0 +1,56 @@
+<?php
+    $_product = $this->getProduct();
+	$_proId = $_product->getId();
+	$_product = Mage::getSingleton('catalog/product')->load($_proId);
+	//echo "<pre>"; print_r($_product->getData());
+	$akamai_mobile_url = $_product->getData('akamai_mobile_url');
+?>
+
+<?php if($akamai_mobile_url){ ?>
+<div class="video_area">
+<div class="block-title bought-block-title">
+        <strong><span>Watch Video</span></strong>       
+</div>
+<div class="jwplayer_wrapper" style="float:left">
+    <div id="player">Loading the player...</div>
+    <script type="text/javascript">jwplayer.key="Ne7JMR5Uhbmzy7oiriciRgMcswmWfAjHEvURvg==";</script>
+    <script type="text/javascript">
+    //alert(navigator.userAgent);
+    if(navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/Safari/i)||navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/android/i)){
+
+      jwplayer("player").setup({
+        
+            playlist: [{
+                 //file: 'http://adc-vh.akamaihd.net/i/FORZEST_2.mp4/master.m3u8',
+                 file: '<?php echo $akamai_mobile_url ?>',
+                type:'mp4',
+            }],
+             logo: {
+                    file: '/assets/myLogo.png',
+                    link: 'http://www.alldaychemist.com'
+                },   
+            width:270,
+            height:200,
+        });
+
+    }
+    else {
+        jwplayer("player").setup({
+                playlist: [{
+                file: '<?php echo $akamai_mobile_url ?>',
+                    provider: 'http://players.edgesuite.net/flash/plugins/jw/v3.3/AkamaiAdvancedJWStreamProvider.swf',
+                    type:'mp4',
+                }],
+                width:360,
+                height:240,
+                primary: "flash",
+                abouttext: "Alldaychemist.com",
+                aboutlink: "http://www.alldaychemist.com",
+        });
+        //console.log("else");
+    }
+
+    </script>
+</div>
+</div>
+<?php } ?>

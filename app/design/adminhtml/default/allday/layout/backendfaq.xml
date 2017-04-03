@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <backendfaq_adminhtml_backendfaqbackend_index>
+	<reference name="content">
+	  <block type="backendfaq/adminhtml_backendfaqbackend" name="backendfaqbackend" template="backendfaq/backendfaqbackend.phtml"/>
+	</reference>
+  </backendfaq_adminhtml_backendfaqbackend_index>
+  <backendfaq_adminhtml_backendfaq_index>
+	<reference name="content">
+	  <block type="backendfaq/adminhtml_backendfaq" name="backendfaq" />
+	</reference>
+  </backendfaq_adminhtml_backendfaq_index>
+</layout>

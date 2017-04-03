@@ -1,0 +1,9 @@
+<config>
+    <modules>
+        <Rx_Productimport>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Rx_Productimport>
+		 
+    </modules>
+</config>       

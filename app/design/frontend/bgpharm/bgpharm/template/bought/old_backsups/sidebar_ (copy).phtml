@@ -1,0 +1,100 @@
+<?php
+$title = $this->getTitle();
+$cart = Mage::getModel('checkout/cart')->getQuote();
+$current_product = Mage::registry('current_product');
+if($current_product) {
+    $productId = Mage::registry('current_product')->getId();
+}
+else {
+  foreach ($cart->getAllItems() as $item) {
+    $productId = $item->getProduct()->getId();
+  }
+}
+/*if($productId==''){
+ $le = $this->getBoughtProducts();
+}
+else{
+  $le = $this->getBoughtProducts($productId);
+}*/
+$le = $this->getBoughtProducts($productId);
+
+$lecount=count($le);
+// $producsku = $this->getProduct()->getSku();
+
+?>
+<?php if($this->getEnable()){ ?>
+<div class="block block-list block-compare">
+    <div class="block-title" style="background-color:#FFFFFF;">
+        <strong><span><?php echo $title; ?>
+            <?php if($lecount>0): ?>
+                <small><?php echo $this->__('(%d)', $lecount) ?></small>
+            <?php endif; ?></span></strong>
+       
+    </div>
+  <div class="block-content">
+    <?php if($lecount>0): ?>
+    <ol id="wishlist-sidebar" class="mini-products-list">
+       <?php foreach ($le as $_index => $_item) {  ?>
+       <?php
+
+           $sku = explode('-',$_item->getSku());
+           $skuArr[]=$sku[0];
+           $newskuArr[]=$sku[0];
+         }
+         // $product_sku=array_pop($newskuArr,$producsku);
+         // $newArr = array_filter($newskuArr, $product_sku);
+         // print_r($newArr);
+        ?>
+
+        <?php
+        $productCount = 1;
+        $productModel = Mage::getModel('catalog/product');
+        foreach (array_unique($skuArr) as $unique_index => $unique_item) {  
+          //echo "##".var_dump($producsku)."##";
+            if($unique_item!=$producsku):
+            if($productCount <=5 && (int)$unique_item!=(int)$producsku){
+              //echo var_dump($unique_item);
+           $productCollection = $productModel->loadByAttribute('sku',$unique_item);
+       ?>
+       <?php //print_r($productCollection->getData());
+            // $urlpath=$productCollection->getData('url_path');
+       ?>
+          <li class="item">
+            <div class="product-image">
+                <a href="<?php echo $productCollection->getProductUrl() ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($productCollection, 'thumbnail')->resize(50); ?>" alt="<?php echo $this->htmlEscape($productCollection->getName()) ?>" width="50" height="50" />
+                </a>
+            </div>
+            <div class="product-details">
+             <?php 
+                    $strength = $productCollection->getData('configurable_attribute');
+                    $us_brand_name = $productCollection->getData('us_brand_name');
+                    // print_r($_item->getData());?>
+                <a href="<?php echo $productCollection->getProductUrl() ?>"><b><?php echo $this->htmlEscape($productCollection->getName()).' '.$strength.'</b> <br/>'; ?></a>
+                <?php echo '( Equivalent to'.' '.$us_brand_name.')'?>
+                <?php echo $this->getPriceHtml($productCollection) ?>
+         <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <a href="<?php echo $this->getAddToWishlistUrl($productCollection) ?>" class="link-cart"><?php echo $this->__('Add to Wishlist') ?></a>
+                        <?php endif; ?><?php if($productCollection->isSaleable()): ?>
+                <div class="clear"  ></div>
+         <a href="<?php echo $this->getAddToCartUrl($productCollection) ?>" class="link-cart"><?php echo $this->__('Add to Cart') ?></a>
+            
+
+                <?php endif; ?>
+            </div>
+        </li>
+    <?php   $productCount++; }
+    endif;
+        }      ?>
+    </ol>
+ 
+    <?php else: ?>
+    <div class="content"><p><?php echo $this->__('You have no items to bought.') ?></p></div>
+    <?php endif ?>
+    </div>
+</div>
+
+<?php } ?>
+<?php
+// print_r($skuArr); 
+?>

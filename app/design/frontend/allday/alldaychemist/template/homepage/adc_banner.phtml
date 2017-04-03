@@ -1,0 +1,8 @@
+<div class="banner_sec">
+	<div class="drug_search_area">
+		<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/drugsearch.phtml")->toHtml();?>
+	</div>
+		<?php echo $this->getLayout()->createBlock("homepagebanner/index")->getBannerHtml();?>
+</div>
+<div class="clearSty"></div>
+<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/adc_banner_below.phtml")->toHtml();?>

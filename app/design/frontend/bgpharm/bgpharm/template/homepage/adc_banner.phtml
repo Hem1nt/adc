@@ -1,0 +1,14 @@
+<div class="banner-area-index">
+	<div class="banner_sec">
+		<?php echo $this->getLayout()->createBlock("homepagebanner/index")->getBannerHtml();?>
+	</div>
+	<div>
+		<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/adc_banner_below.phtml")->toHtml();?>
+	</div>
+</div>
+<div>
+	<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/tab_products.phtml")->toHtml();?>
+</div>
+
+
+<div class="clearSty"></div>

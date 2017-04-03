@@ -1,0 +1,17 @@
+<?php
+// ob_start();
+
+$block_title = $this->getBlockTitle();
+if ( empty($block_title) ) $block_title = 'Categories';
+?>
+<div class="block block-left-nav">
+    <div class="block-title">
+        <strong><span><?php echo $this->__($block_title) ?></span></strong>
+    </div>
+    <div class="block-content">
+    <?php 
+        $rootcatId = Mage::app()->getStore()->getRootCategoryId(); 
+	      $categories = Mage::getModel('catalog/category')->getCategories($rootcatId);
+        echo $this->get_categories($categories); ?>
+    </div>
+</div>

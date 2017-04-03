@@ -1,0 +1,65 @@
+##
+# WordPress Integration
+#
+# Author:			    	 FishPig Limited (Ben Tideswell)
+# URL:	 					 http://fishpig.co.uk/wordpress-integration.html
+# Documentation:	 http://fishpig.co.uk/wordpress-integration.html#docs
+##
+
+03/08/2013 - v3.0.1.0
+- Updated extension to work with Integrated Search extension (http://fishpig.co.uk/magento/wordpress-integration/integrated-search/)
+
+23/07/2013 - v3.0.0.21
+- Fixed associations error
+- Added Yarpp block with no output for legacy
+
+22/07/2013 - v3.0.0.20
+- Added RSS Feed support back in
+
+14/07/2013 - v3.0.0.19
+- Improved Google XML Sitemap integration
+
+14/07/2013 - v3.0.0.16
+- Fixed page comments
+
+11/07/2013 - v3.0.0.14
+- Hide integration success message when update available
+
+11/07/2013 - v3.0.0.12
+- Added fix for comment form
+
+10/07/2013 - v3.0.0.11
+- Added support for Magento 1.4.2.0
+
+10/07/2013 - v3.0.0.7
+- Added support for Magento 1.5.0.0
+
+10/07/2013 - v3.0.0.6
+- Added support for Magento 1.6.0.0
+
+10/07/2013 - v3.0.0.5
+- Improved the upgrade notification system
+
+10/07/2013 - v3.0.0.3
+- Fixed auto login issue
+
+10/07/2013 - v3.0.0.2
+- Changed version checker from === to >
+- Added support for Magento 1.6.2.0
+
+10/07/2013 - v3.0.0.0
+- Added support for the Instragram shortcode (http://en.support.wordpress.com/images/instagram/)
+- Added support for Vimeo videos (http://en.support.wordpress.com/videos/vimeo/)
+- Added support for the Dailymotion shortcode (http://en.support.wordpress.com/videos/dailymotion/)
+- Added support for the Scribd shortcode (http://en.support.wordpress.com/scribd/)
+- Added support for the Gist shortcode (http://en.support.wordpress.com/gist/)
+- Added moderation message for comments
+- Added replying to comments
+- Added support for custom menu item title
+- Cleaned up configuration
+- Added support for sticky posts
+- Added simple WordPress like pager (uncomment line in wordpress.xml to activate)
+- Added better category URL's and breadcrumbs for posts with %category% permalinks
+- You can now use '/' in your blog route
+- Redirect requests for RSS feeds to raw WP installation. This means rss, rss2, atom and rdf are now supported
+- Added support for Google XML Sitemaps plugin

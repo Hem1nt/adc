@@ -1,0 +1,94 @@
+<?php
+
+$title = $this->getTitle();
+$_frontendHelper = $this->helper('frontend/data');
+// $simpleProductId = $_item->getProductId();
+$cart = Mage::getModel('checkout/cart')->getQuote();
+$current_product = Mage::registry('current_product');
+if($current_product) {
+  $productId = Mage::registry('current_product')->getId();
+  $producsku = $this->getProduct()->getSku();
+}
+else {
+  foreach ($cart->getAllItems() as $item) {
+    $productId = $item->getProduct()->getId();
+  }
+}
+
+$le = $this->getBoughtProductsMobile($productId);
+
+$lecount=count($le);
+?>
+
+<?php if($this->getEnable() && $lecount){ ?>
+<div class="block block-list block-compare bought-block-list">
+  <div class="block-title" style="background-color:#FFFFFF;">
+    <strong>
+        <span>FREQUENTLY BOUGHT ALONG WITH THIS PRODUCT </span>
+    </strong>
+
+  </div>
+  <div class="block-content bought-block-content">
+    <?php if($lecount>0): ?>
+    <ol id="wishlist-sidebar" class="mini-products-list bought-block-content-sidebar cartpage-slider">
+     <?php
+       $productCount = 1;
+       foreach ($le as $_index => $_item) {
+     ?>
+      <li>
+       <div class="item">
+        <div class="product-image">
+          <a href="<?php echo $_item->getProductUrl() ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(150); ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" />
+          </a>
+        </div>
+        <div class="product-details">
+         <?php
+           $strength = $_item->getData('configurable_attribute');
+           $special_price = $_item->getData('special_price');
+           $us_brand_name = $_item->getData('us_brand_name');
+           $simpleProduct = $_frontendHelper->getFirstChildInfo($_item);
+           $activeingredient = $_frontendHelper->getActiveIngredients($_item);
+           $genericName = $_frontendHelper->getGenericInfo($_item);
+
+         ?>
+         <a href="<?php echo $_item->getProductUrl() ?>">
+          <b><?php echo $this->htmlEscape($_item->getName()).'</b> <br/>'; ?>
+        </a>
+        <span class="generic_name">
+          <?php echo trim($genericName);?>
+        </span>
+        </br>
+        <?php echo $simpleProduct; ?>
+         <?php if($_item->isSaleable()): ?>
+             <div class="clear"  ></div>
+             <a href="<?php echo $this->getAddToCartUrl($_item) ?>" class="link-cart">
+                <?php echo $this->__('View Details') ?>
+            </a>
+       <?php  endif; ?>
+     </div>
+   </div>
+   </li>
+   <?php
+ }
+ ?>
+</ol>
+
+<?php else: ?>
+  <div class="content"><p><?php echo $this->__('You have no items to bought.') ?></p></div>
+<?php endif ?>
+</div>
+</div>
+
+<?php } ?>
+
+<!-- <script type="text/javascript">
+ jQuery('.bxslider').bxSlider({
+   minSlides: 2,
+   maxSlides: 3,
+   slideMargin: 10,
+   pager: false,
+   infiniteLoop: false,
+   hideControlOnEnd: true
+ });
+</script> -->

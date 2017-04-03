@@ -1,0 +1,82 @@
+<head>
+<style>
+.form-list1 li span
+{
+    float:left;
+	font-weight: bold;
+	margin-right:5px;
+}
+.form-list1 li
+{
+	list-style: disc outside none;
+	margin: 0 0 7px 20px;
+}
+</style>
+</head>
+<?php
+	$billing_countryCode = Mage::getSingleton('checkout/type_onepage')->getQuote()->getBillingAddress()->getCountryId();
+	$shipping_countryCode = Mage::getSingleton('checkout/type_onepage')->getQuote()->getShippingAddress()->getCountryId();
+	if($billing_countryCode=='US'){
+		$name_of_company = Mage::getStoreConfig("custom_snippet/snippet/company_us_name");
+	}else{
+		$name_of_company = Mage::getStoreConfig("custom_snippet/snippet/company_name");
+
+	}
+?>
+<fieldset class="form-list1" >
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+    	<h5>Pay By Check / Money Order</h5>
+		<p>Discount:</p>
+           <!-- <p><span>Offering US$ 5.00 discount on order value.</span></p> -->
+		   <p><span>
+		   	<?php echo $this->__('Please make the Check / Pay Order / Bank Draft payable to "'.$name_of_company.'". Kindly ensure the following points before mailing the same:');echo "<br>"; ?>
+		   </span></p>
+		<li>
+            <p>You have sufficient funds in your account (in case of check).</p>
+        </li>
+		<li>
+            <p>Date should be in the format of MM/DD/YYYY</p>
+        </li>
+		<li>
+            <p>It is in the favor of our company <?php echo "'".$name_of_company."'"?></p>
+        </li>
+		<li>
+            <p>The amount in words and figures should match.</p>
+        </li>
+		<li>
+            <p>You have signed the Check</p>
+        </li>
+		<li>
+            <p>There is no over writing on the check.</p>
+        </li>
+		<li>
+            <p>Please mail the Check / Pay Order / Bank Draft to:</p>
+        </li>
+		<?php
+
+
+		if($billing_countryCode=='US'){
+			echo Mage::getStoreConfig("custom_snippet/snippet/derricwood_us_address");
+		}
+        else{
+        	echo Mage::getStoreConfig("custom_snippet/snippet/derricwood_address");
+		} ?>
+
+        <p><span>Please send the scan copy of your filled Check/ Money order to
+        <?php echo Mage::getStoreConfig("custom_snippet/snippet/derricwood_email"); ?>
+        so that we can ensure that you have filled all the information correctly.</span></p>
+
+ 		 <p><span>This will help us to process your order as soon as possible.</span></p>
+
+
+		 <p>Regards</p>
+
+		 <p>AllDayChemist Sales Team</p>
+
+		 <button type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+	</ul>
+
+
+
+</fieldset>
