@@ -176,9 +176,14 @@
                 <?php endforeach; ?>
                 </ul>
                 <?php endif; ?>
+                <br>
             <div class="home-banner-block mid">
-                <a class="comboclass" href="<?php echo $this->getBaseUrl().'content/114-echeck/';?>">
-                    <img src="<?php echo $this->getSkinUrl('images/echeck-banner_update.jpg');?>" alt=""/>
+            <?php
+                $cart_sidebar_image = Mage::getStoreConfig('homepage_conf/common_group/cart_sidebar_image');
+                $cart_sidebar_image_url = Mage::getStoreConfig('homepage_conf/common_group/cart_sidebar_image_url');
+            ?>
+                <a class="comboclass" href="<?php echo $cart_sidebar_image_url;?>">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $cart_sidebar_image; ?>"/>
                 </a>
             </div>
         </div>

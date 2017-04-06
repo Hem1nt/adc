@@ -1,0 +1,125 @@
+<?php	
+	$popularCategories = Mage::helper('configurehomepage')->popularCategoryData();
+	$bestSellingProducts = Mage::helper('configurehomepage')->getBestSellingData();
+	$bestSellingTitle = Mage::getStoreConfig('homepage_conf/guest_group/best_selling');
+	$onlinePharmacyTitle = Mage::getStoreConfig('homepage_conf/guest_group/online_pharmacy');
+	$popularCategoryTitle = Mage::getStoreConfig('homepage_conf/guest_group/popular_category_label');
+	$banner_1 = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_1');
+	$banner_2 = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_2');
+	$banner_3 = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_3');
+	$banner_1_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_1_url');
+	$banner_2_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_2_url');
+	$banner_3_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_3_url');
+	$categotryPlaceHolder = Mage::getStoreConfig('homepage_conf/guest_group/popular_category_default_placeholder');
+?>
+<div class="main_config_page">
+<!-- Best Seller S-->
+	<div class="best_seller">
+		<div class="best_seller_title">
+			<span><?php echo strtoupper($bestSellingTitle);?></span>
+		</div>
+		<div class="best_seller_data ">
+			<ul class="single-item">
+				<?php
+					$i = 0;
+					foreach($bestSellingProducts as $bestProducts){
+						$i++;
+						$productName = $bestProducts->getName();
+						$productUrl = $bestProducts->getProductUrl();
+						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(81,176);
+						if($i%2 != 0):?>
+						<li>
+							<a href="<?php echo $productUrl;?>">
+								<img src="<?php echo $productImage; ?>" alt="<?php echo $productName;?>"/>
+								<span><?php echo $productName;?></span>
+							</a>
+						<?php else:?>						
+							<a href="<?php echo $productUrl;?>">
+								<img src="<?php echo $productImage; ?>" alt="<?php echo $productName;?>"/>
+								<span><?php echo $productName;?></span>
+							</a>
+						</li>
+						<?php endif ?>
+					<?php }
+				?>
+			</ul>
+		</div>
+	</div>
+<!-- Best Seller E-->
+<!-- Best Seller Mobile S-->
+	<div class="mobile_best_seller">
+		<div class="mobile_best_seller_title">
+			<span><?php echo strtoupper($bestSellingTitle);?></span>
+		</div>
+		<div class="mobile_best_seller_data ">
+			<ul class="single-item">
+				<?php
+					foreach($bestSellingProducts as $bestProducts){
+						$productName = $bestProducts->getName();
+						$productUrl = $bestProducts->getProductUrl();
+						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(81,176);?>
+						<li>
+							<a href="<?php echo $productUrl;?>">
+								<img src="<?php echo $productImage; ?>" alt="<?php echo $productName;?>"/>
+								<span><?php echo $productName;?></span>
+							</a>
+						</li>
+					<?php }
+				?>
+			</ul>
+		</div>
+	</div>
+<!-- Best Seller Mobile E-->
+<!-- Popular categories S -->
+	<div class="popular_categories">
+		<div class="popular_categories_title">
+			<span><?php echo strtoupper($popularCategoryTitle);?></span>
+		</div>
+		<div class="popular_categories_data">
+		<?php
+			foreach ($popularCategories as $_popularCat) {
+			$popularCatName = $_popularCat->getName();
+			$popularCatUrl = $_popularCat->getUrl();
+			$popularCatImage = $_popularCat->getPopularBanner(); 
+		?>
+		<li>
+			<a href="<?php echo $popularCatUrl; ?>">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/category/'.$popularCatImage;?>">
+				<span class="popular_name"><?php echo $popularCatName; ?></span>
+			</a>
+		</li>
+	<?php }
+		?>
+		</div>
+	</div>
+<!-- Popular categories E -->
+<!-- Leading online pharmacy S -->	
+	<div class="leading_online">
+		<div class="leading_online_title">
+			<span><?php echo strtoupper($onlinePharmacyTitle);?></span>
+		</div>
+		<div class="leading_online_data">
+			<ul>
+				<li class="leading_online_banner">
+					<a href="<?php echo $banner_1_url;?>">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_1; ?>"/>
+					</a>
+				</li>
+				<li class="leading_online_banner">
+					<a href="<?php echo $banner_2_url;?>">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_2; ?>"/>
+					</a>				
+				</li>
+				<li class="leading_online_banner">
+					<a href="<?php echo $banner_3_url;?>">
+						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_3; ?>"/>
+					</a>				
+				</li>
+			</ul>
+		</div>		
+	</div>
+<!-- Leading online pharmacy E -->	
+</div>
+<script type="text/javascript">
+	jQuery('.single-item').slick();
+</script>

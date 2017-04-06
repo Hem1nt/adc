@@ -1,0 +1,143 @@
+/*home page 2*/
+/*css for main-config-page*/
+/*.cms-home .main_config_page{
+	width: 74%;
+    display: inline-block;
+    margin-top: 15px;
+}
+.cms-home .main_config_page .best_seller, 
+.cms-home .main_config_page .leading_online{
+    width: 30%;
+    display: inline-block;
+    float: left;
+}
+.cms-home .main_config_page .popular_categories{
+ 	width: 34%;
+    display: inline-block;
+    float: left;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    margin: 0 20px;
+
+}
+.cms-home .main_config_page .best_seller .best_seller_title, 
+.cms-home .main_config_page .popular_categories .popular_categories_title, 
+.cms-home .main_config_page .leading_online .leading_online_title{
+	text-align: center;
+	margin-bottom: 40px;
+	margin-top: 15px;
+}
+.cms-home .main_config_page .best_seller .best_seller_title span, 
+.cms-home .main_config_page .popular_categories .popular_categories_title span, 
+.cms-home .main_config_page .leading_online .leading_online_title span{
+    background-color: #506f00;
+    color: #ffffff;
+    padding: 9px 33px;
+    text-align: center;
+    border-radius: 35px;
+    font-weight: 700;
+    position: relative;
+}
+.cms-home .main_config_page .best_seller .best_seller_title span::before, 
+.cms-home .main_config_page .popular_categories .popular_categories_title span::before, 
+.cms-home .main_config_page .leading_online .leading_online_title span::before{
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 11px solid #506f00;
+    position: absolute;
+    top: 30px;
+    transform: rotate(180deg);
+    left: 41%;
+}
+.cms-home .main_config_page .best_seller .best_seller_data,
+.cms-home .main_config_page .popular_categories .popular_categories_data,
+.cms-home .main_config_page .leading_online .leading_online_data{
+	display: inline-block;
+    width: 100%;
+    margin-top: 13px;
+}
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item{
+	width: 100%;
+    display: inline-block;
+}
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-list{
+	width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-list li a img{
+	margin: 0 auto;
+}
+.cms-home .main_config_page .best_seller .best_seller_data .slick-prev:before{
+	content: "" !important;
+    color: #5d5d5d;
+    width: 0;
+    border: solid #5b5b5b;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.cms-home .main_config_page .best_seller .best_seller_data .slick-prev{
+	left:30px;
+	top:60%;
+}
+.cms-home .main_config_page .best_seller .best_seller_data .slick-next{
+	right:30px;
+	top:60%;
+}
+.cms-home .main_config_page .best_seller .best_seller_data .slick-next:before{
+	content: "" !important;
+    color: #5d5d5d;
+    width: 0;
+    border: solid #5b5b5b;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(315deg);
+    -webkit-transform: rotate(315deg);
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li{
+	list-style: none;
+    float: left;
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 20px;
+    height: 100px;
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li a{
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li a span{
+    display: block;
+    margin-bottom: 10px;
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li:last-child a img{
+	width: 50%;
+    overflow: hidden;
+}
+.cms-home .main_config_page .best_seller .best_seller_data{
+	margin-top: 0;
+}
+.cms-home .main_config_page .leading_online .leading_online_data ul li{
+	margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 13px;
+    padding-bottom: 13px;
+    width:70%;
+}
+.cms-home .main_config_page .leading_online .leading_online_data ul li a{ 
+    width: 40%;
+    display: inline-block;
+ }
+.cms-home .main_config_page .leading_online .leading_online_data ul li a img{
+	 width: 50%;
+}*/

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+	<config>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<homepage_conf translate="title" module="configurehomepage">
+											<title>homepage Section</title>
+											<sort_order>0</sort_order>
+										</homepage_conf>
+										<common_sec translate="title" module="configurehomepage">
+											<title>homepage Section</title>
+											<sort_order>0</sort_order>
+										</common_sec>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</config>
