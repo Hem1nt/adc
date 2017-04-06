@@ -1,0 +1,103 @@
+/* Global and reqiured variables defined in _var.scss partial file */
+
+
+$default_font_size : 14px;
+$dark : #000;
+$dark_color: #202020;
+$bright : #fff;
+
+$green : #9fb701; 
+$orange : #f6770e;
+$dark_green : #506f00;
+$grey : #818181;
+$grey_border : #cdcdcd;
+$light_gray: #adacac;
+
+$offer_text : #333333;
+$offer_bg : #f1f1f1;
+$img_border: #5d6d7e;
+$account_border: #dadada;
+
+$auto_search_border : #585aa4;  
+$error_message_border_color : #df280a;
+$error_message_bg : #faebe7;
+$success_message_border_color : #11b400;
+$success_message_bg : #eff5ea;
+
+$delete_btn: #ee3538;
+$table_border_color : #d8d8d8;
+
+$special_cta_color : #fff;
+$special_cta_bg_color : #000;
+$special_cta_border_color : #000;
+$special_cta_hover_color : #000;
+$special_cta_hover_bg_color : #ccc;
+$special_cta_hover_border_color : #fff;
+
+$layered_nav_bg_color : #666;
+
+$block_bg_color : #f9f9f9;
+
+$overlay_color : rgba(0,0,0,0.5);
+
+$shadow_style : inset 10px 10px 5px 1px rgba(0,0,0,0.75); /* default value for box-shadow mixin. refer _mixin fie */
+$text_shadow_style : 1px 1px 2px rgba(0, 0, 0, 1); /* default value for text-shadow mixin. refer _mixin fie */
+
+/* default value for transform mixin. refer _mixin fie */
+// $translate : null; 
+// $rotate : null; 
+// $skew : null; 
+// $scale : null;
+/* default value for transform mixin refer _mixin fie */
+
+$element : null; /* default value for element in fontimport mixin. refer _mixin fie */
+
+$gradient_bg_color1 : #{$dark};
+$gradient_bg_color2 : #{$bright};
+
+$success_notification_color : #fff;
+$success_notification_bg_color : #fff;
+$success_notification_border_color : #fff;
+
+$error_notification_color : #fff;
+$error_notification_bg_color : #fff;
+$error_notification_border_color : #fff;
+
+$notice_notification_color : #fff;
+$notice_notification_bg_color : #fff;
+$notice_notification_border_color : #fff;
+
+$validation_color : #df280a;
+
+$font_family_roboto : Roboto;
+$font_family_opensans : Open Sans;
+
+
+
+
+$proximanova_thin:'proximanova-thin',Sans-Serif;
+$proximanova_light:'proxima_nova_light',Sans-Serif;
+$proximanova_reg:'proximanova-reg',Sans-Serif;
+$proximanova_sbold:'proximanova-sbold',Sans-Serif;
+$proximanova_bold:'proximanova-bold',Sans-Serif;
+$proximanova_xbold:'proximanova-xbold',Sans-Serif;
+$icomoon: 'icomoon';
+$icomoon-new: 'icomoon-new';
+
+$default_font: #{$proximanova_reg};
+
+.button_style {
+	border-radius: 4px;
+	line-height: 2.5rem;
+	padding: 0 1rem;
+	text-transform: uppercase;
+	min-width: 135px;
+}
+
+.box_sizing{
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box;
+	     -o-box-sizing: border-box;
+	        box-sizing: border-box;
+}

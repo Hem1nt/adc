@@ -1,0 +1,118 @@
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  
+  @return $string;
+}
+
+
+$opensans_family: 		('Open Sans',	'400,600,900',			'latin');
+$roboto_family: 		('Roboto',		'300',					'');
+$lato_family: 			('Lato',		'',						'');
+$montserrat_family: 	('Montserrat',	'',						'');
+$lora_family: 			('Lora',		'',						'');
+$pt_sans_family: 		('PT Sans',		'',						'');
+$raleway_family: 		('Raleway',		'',						'');
+
+$family: (
+  $opensans_family,
+  $raleway_family
+);
+
+// $abc : 1;
+// Generate Button Modifiers 
+@each $b in $family {
+
+	// $i : index($family, $b);
+	$updated_fontname : str-replace(nth($b,1), " ", "+");
+	$updated_weight : str-replace(nth($b,2), " ", ",");
+	$updated_subset : str-replace(nth($b,3), " ", ",");
+
+
+	@if $updated_fontname!= "" and $updated_weight != "" and $updated_subset != ""{
+		
+  		@import url('https://fonts.googleapis.com/css?family='+$updated_fontname+':'+$updated_weight+'&subset='+$updated_subset);  
+
+	}@else if $updated_fontname != "" and $updated_weight !="" {
+
+  		@import url('https://fonts.googleapis.com/css?family='+$updated_fontname+':'+$updated_weight);  
+		
+	}@else if $updated_fontname != "" and $updated_subset !="" {
+
+  		@import url('https://fonts.googleapis.com/css?family='+$updated_fontname+'&subset='+$updated_subset);  
+		
+	}@else {
+  		@import url('https://fonts.googleapis.com/css?family='+$updated_fontname);  
+		
+	}
+
+	// body.a#{$abc} {
+	// 	font-family: #{nth($b,1)};
+	// }
+
+	// $abc : $abc+1;
+}
+
+// $opensans : 'Open Sans';
+// $roboto : 'Roboto';
+// $lato : 'Lato';
+// $montserrat: 'Montserrat';
+// $lora: 'Lora';
+// $pt_sans: 'PT Sans';
+// $raleway: 'Raleway';
+
+// $fontname: $roboto;
+
+$fontname_default : 'Open Sans';
+$weight_default : '400';
+$subset_default : latin;
+
+$updated_fontname:null;
+$updated_weight:null;
+$updated_subset:null;
+
+
+
+
+@function font_emb($fontname_default:"", $weight_default:"", $subset_default:""){
+	$updated_fontname : str-replace($fontname_default, " ", "+");
+	$updated_weight : str-replace($weight_default, " ", ",");
+	$updated_subset : str-replace($subset_default, " ", ",");
+
+	@if $fontname_default!= "" and $weight_default != "" and $subset_default != ""{
+		@return $updated_fontname+':'+$updated_weight+'&'+$subset_default;		
+	}@else if $fontname_default != "" and $weight_default !="" {
+		@return $updated_fontname+':'+$updated_weight;				
+	}@else if $fontname_default != "" and $subset_default !="" {
+		@return $updated_fontname+'&'+$subset_default;		
+	}@else {
+		@return $updated_fontname;				
+	}
+}
+
+$opensans: font_emb($fontname_default, $weight_default, $subset_default);
+$roboto: font_emb('Roboto', '400,500,600', latin);
+$slabo: font_emb('Slabo 27px');
+
+
+
+// @import url("https://fonts.googleapis.com/css?family=#{$opensans}");	
+// @import url("https://fonts.googleapis.com/css?family=#{$roboto}");	
+// @import url("https://fonts.googleapis.com/css?family=#{$slabo}");	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

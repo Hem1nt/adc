@@ -1,0 +1,165 @@
+
+
+/*mixin for transition, variables inside paranthesis are not defined. so they are mandatory*/
+@mixin transition($property, $duration, $anim_mode){
+	-webkit-transition: $property $duration $anim_mode;
+	   -moz-transition: $property $duration $anim_mode;
+		-ms-transition: $property $duration $anim_mode;
+	     -o-transition: $property $duration $anim_mode;
+	        transition: $property $duration $anim_mode;
+}
+
+/*mixin for border-radius, variables inside paranthesis are not defined. so they are mandatory*/
+@mixin border-radius($radius){ 
+	-webkit-border-radius: $radius;
+	   -moz-border-radius: $radius;
+	    -ms-border-radius: $radius;
+	     -o-border-radius: $radius;
+	        border-radius: $radius;
+}
+
+/*mixin for box-shadow, variables inside paranthesis are defined. variable is defined in _var.scss */
+@mixin box-shadow($shadow_style){ 
+	-webkit-box-shadow: $shadow_style;
+	   -moz-box-shadow: $shadow_style;
+	    -ms-box-shadow: $shadow_style;
+	     -o-box-shadow: $shadow_style;
+	        box-shadow: $shadow_style;
+}
+
+
+/*mixin for text-shadow, variables inside paranthesis are defined. variable is defined in _var.scss */
+@mixin text-shadow($text_shadow_style){
+	-webkit-text-shadow: $text_shadow_style;
+	   -moz-text-shadow: $text_shadow_style;
+	    -ms-text-shadow: $text_shadow_style;
+	     -o-text-shadow: $text_shadow_style;
+	        text-shadow: $text_shadow_style;
+}
+
+
+/*mixin for transform, variables inside paranthesis are defined as null. specific properties can be changed and used. variable is defined in _var.scss */
+@mixin transform($property){ 
+	-webkit-transform: $property;
+	   -moz-transform: $property;
+	    -ms-transform: $property;
+	     -o-transform: $property;
+	        transform: $property;
+}
+
+
+/*mixin for button-skewed, variables inside paranthesis are not defined. so they are mandatory*/
+@mixin button_skewed($deg, $radius, $background) {	
+		@include border-radius($radius);
+		position: absolute;
+		z-index: 0;
+		top: 0;
+		left: 0;
+		background: $background;
+		-webkit-transform: skew($deg * 1deg);
+		   -moz-transform: skew($deg * 1deg);
+			// -ms-transform: skew($deg * 1deg);
+		     -o-transform: skew($deg * 1deg);
+		        transform: skew($deg * 1deg);
+}
+
+/*mixin for button_skewed_oneside, variables inside paranthesis are not defined. so they are mandatory*/
+@mixin button_skewed_oneside($deg, $radius, $background, $side, $shift_amount) {
+	@if $side == 'left'{
+
+		@include button_skewed($deg, $radius, $background);		
+		left: $shift_amount * -1px;
+		left: 0 \9 !important;
+
+	} @else if $side == 'right'{
+
+		@include button_skewed($deg, $radius, $background);
+		right: $shift_amount * -1px;
+		right : 0 \9 !important;
+
+	} @else {
+
+		@include button_skewed($deg, $radius, $background);
+
+	}	
+}
+
+/*mixin for triangle, variables inside paranthesis are not defined. so they are mandatory*/
+@mixin triangle($direction, $size, $color){
+	
+	border: $size solid transparent;
+	width: 0;
+	height: 0;
+
+	@if $direction == "up" {
+		border-bottom: $size solid $color;
+	} @else if $direction == 'down' {
+		border-top: $size solid $color;
+	} @else if $direction == 'left' {
+		border-right: $size solid $color;
+	} @else if $direction == 'right' {
+		border-left: $size solid $color;
+	} 
+}
+
+/*mixin for gradient, variables inside paranthesis are defined. variables are defined in _var.scss*/
+@mixin gradient($gradient_bg_color1, $gradient_bg_color2){
+	/* fallback */
+	background-color: $gradient_bg_color1; 
+
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($gradient_bg_color2), to($gradient_bg_color1));
+
+	/* Safari 5.1, Chrome 10+ */
+	background: -webkit-linear-gradient(top, $gradient_bg_color1, $gradient_bg_color2);
+
+	/* Firefox 3.6+ */
+	background: -moz-linear-gradient(top, $gradient_bg_color1, $gradient_bg_color2);
+
+	/* IE 10 */
+	background: -ms-linear-gradient(top, $gradient_bg_color1, $gradient_bg_color2);
+
+	/* Opera 11.10+ */
+	background: -o-linear-gradient(top, $gradient_bg_color1, $gradient_bg_color2);
+}
+
+
+/*mixin for media query, variables inside paranthesis are not defined.  so they are mandatory*/
+@mixin desktop_resolution($resolution) {
+	@media all and (min-width: $resolution) {
+		@content;
+	}
+}
+
+@mixin media_query($condition, $resolution) {
+	@media all and ($condition: $resolution) {
+		@content;
+	}
+}
+
+/*mixin for trapezoid, variables inside paranthesis are not defined.  so they are mandatory*/
+@mixin trapezoid($dir, $bordercolor, $basewidth, $sidewidth) {
+
+	width: 100%;
+	height: 0;
+
+	@if $dir == 'up' {
+		border-bottom: $basewidth solid $bordercolor;
+		border-left: $sidewidth solid transparent;
+		border-right: $sidewidth solid transparent;
+	}
+	@else if $dir == 'down' {
+		border-top: $basewidth solid $bordercolor;
+		border-left: $sidewidth solid transparent;
+		border-right: $sidewidth solid transparent;
+	} 	  
+}
+
+@function calculateRem($size) {
+  $remSize: $size / $default_font_size;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+  font-size: calculateRem($size);
+}
