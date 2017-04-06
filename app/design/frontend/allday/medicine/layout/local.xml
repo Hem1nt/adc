@@ -11,7 +11,7 @@
 		<remove name="paypal.partner.right.logo"/>
 
 		<remove name="left.reports.product.viewed" />
-		<remove name="left.permanent.callout" />
+	<remove name="left.permanent.callout" />
 
 		<reference name="head">
 			<action method="addItem"><type>skin_css</type><name>css/font-awesome.css</name></action>
@@ -29,7 +29,6 @@
 			<action method="addItem"><type>skin_js</type><name>js/little.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>js/custom_d.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>js/custom_sb.js</name></action>
-
 			<action method="addCss"><stylesheet>css/custom_d.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/responsive_b.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/responsive_d.css</stylesheet></action>
@@ -37,6 +36,12 @@
 			<!-- <action method="addCss"><stylesheet>css/custom_ab.css</stylesheet></action>			 -->
 			<action method="addCss"><stylesheet>css/responsive_a.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/responsive_custom.css</stylesheet></action>
+
+			<action method="addCss"><stylesheet>css/custom_sb.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/homepage_sb2.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/global_sb.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/homepage_sb.css</stylesheet></action>
+			
 			<action method="addCss"><stylesheet>css/slick.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/slick-theme.css</stylesheet></action>
 			<action method="addItem"><type>skin_css</type><name>css/custom_sb.css</name></action>
@@ -67,7 +72,6 @@
 			<action method="unsetData"><key>cache_tags</key></action>
 			<block type="core/template" name="livechat_option" template="page/html/livechat.phtml" />
 			<block type="core/template" name="footer_msg" template="homepage/footer_msg.phtml" />
-			<block type="core/template" name="subscription" template="page/html/subscription.phtml" />
 			<block type="notifyoutofstock/index" name="notifyoutofstock_index" template="notifyoutofstock/index.phtml" after="-"/>
 		</reference>
 	</default>

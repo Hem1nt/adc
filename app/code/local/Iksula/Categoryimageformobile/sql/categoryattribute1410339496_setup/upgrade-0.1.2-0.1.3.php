@@ -3,11 +3,11 @@ $installer = $this;
 $installer->startSetup();
 
 
-$installer->addAttribute("catalog_category", "desktop_banner",  array(
+$installer->addAttribute("catalog_category", "popular_banner",  array(
     "type"     => "text",
     "backend"  => "catalog/category_attribute_backend_image",
     "frontend" => "",
-    "label"    => "Best Selling Banner for Desktop",
+    "label"    => "Popular Category Banner for Desktop",
     "input"    => "image",
     "class"    => "",
     "source"   => "",

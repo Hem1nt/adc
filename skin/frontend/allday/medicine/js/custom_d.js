@@ -3,11 +3,25 @@ jQuery(document).ready(function($){
     //     // $(".all_categories_list").stop( true, true ).toggle();
     //     $(".block-compare, .block-account .block-content, .block-layered-nav").hide();
     // });
+  // alert($(window).width());
+          $(".all-categories,.all_categories_list").mouseover(function(){
+        if ($(window).width() > 736) {
+              $(".all_categories_list").stop( true, true ).show();
+          }
+              // $(".block-compare, .block-account .block-content").hide();
+          });
 
-    $(".all-categories,.all_categories_list").mouseover(function(){
-        $(".all_categories_list").stop( true, true ).show();
-        // $(".block-compare, .block-account .block-content").hide();
-    });
+            $(".all-categories, .all_categories_list").mouseout(function(){
+              if ($(window).width() > 736) {
+                $(".all_categories_list").stop( true, true ).hide();
+                $(".block-compare, .block-account .block-content").hide();
+            }
+          });
+
+
+
+
+
 
     // $(".all_categories_list").mouseover(function(){
     //     $(".all_categories_list").stop( true, true ).show();
@@ -19,10 +33,6 @@ jQuery(document).ready(function($){
     //     $(".block-compare, .block-account .block-content, .block-layered-nav").hide();
     // });
 
-    $(".all-categories, .all_categories_list").mouseout(function(){
-        $(".all_categories_list").stop( true, true ).hide();
-        // $(".block-compare, .block-account .block-content").hide();
-    });
 
     $(".mobile-pr-category-icon").click(function(){
         $(".all_categories_list").stop( true, true ).toggle();
@@ -41,6 +51,7 @@ jQuery(document).ready(function($){
     });
 
     $(".mobile-pr-search-icon").click(function(){
+      $(".nav-container").toggle();
         $(".quick-access").stop( true, true ).toggle();
         var search_status = $(".quick-access").css("display");
         if (search_status == "none")

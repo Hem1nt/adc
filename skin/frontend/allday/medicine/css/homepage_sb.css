@@ -1,0 +1,1111 @@
+/*guest user*/
+/* homepage content by sb*/
+.cms-index-index .mobile_best_seller {
+    display: none;
+}
+.header-top-block-content, .header, .nav-content-header, .main{
+	max-width: 1200px;
+}
+.main-container {
+	margin-top: 20px;
+}
+.col-main {
+                   padding: 0 10px;
+}
+.cms-index-index .banner_sec .bx-wrapper{
+	border: 1px solid #c9c9c9;
+}
+.cms-index-index .banner_sec{
+	width: 73.5%;
+}
+.cms-index-index .below_banner_main_area{
+	width: 25%;
+	margin: 0;
+}
+ .frontend-index-allbrands #search_sidebar_form .drugSearch{
+	background: #202020;
+	border: 1px solid #c9c9c9;
+	width: 100%;
+	border-radius: 0;
+	padding: 18px 20px;
+}
+ .below_banner_area iframe{
+	height: 170px;
+	margin-bottom: 22px;
+}
+ .frontend-index-allbrands #search_sidebar_form .drugSearch li{
+	padding: 22px 0 !important;
+                    width: 100%;
+}
+ .frontend-index-allbrands #search_sidebar_form .drugSearch li.border_bot{
+	border-bottom: none;
+	margin-bottom: 0;
+                    width: 100%;
+}
+
+
+
+.frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1 {
+                    width: 85%;
+                    margin: 0 22px;
+}
+.frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2 {
+                    width: 85%;
+                    margin: 0 22px;
+}
+ .frontend-index-allbrands #search_sidebar_form .drugSearch li select{
+	margin: 0;
+                    padding: 11px 5px;
+}
+.frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(2) {
+    width: 100%;
+    margin-left: 0 !important;
+}
+.frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(3) {
+    width: 100%;
+}
+ .home-banner-block{
+	border: 1px solid #c9c9c9;
+	margin: 22px 0;
+}
+ .home-banner-block a img{
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+}
+
+/* right sidebar banner below*/
+
+/*.home-banner-block.third {
+    display: block;
+}*/
+.home-banner-block.third {
+    display: block;
+}
+.home-banner-block.forth {
+    display: none;
+}
+.tc-widget-standard .tc-widget-standard-content .tc-widget-standard-col-1 .tc-widget-standard-rate {
+    font-size: 30px;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-right: 0;
+    display: block;
+    text-align: center;
+}
+#TRUSTEDCOMPANY_widget_86428 .tc-star-color {
+    fill: #adbe24;
+}
+.tc-ratings svg {
+    margin-right: 0;
+    margin: 0 auto;
+}
+.tc-widget-standard-col-3.tc-review-visibility {
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+}
+#TRUSTEDCOMPANY_widget_86428 .tc-background-color {
+    background-color: #000 !important;
+}
+.tc-widget-standard .tc-widget-standard-content .tc-widget-standard-col-1 .tc-widget-standard-rate {
+    font-size: 2em !important;
+    font-weight: 600 !important;
+    vertical-align: middle !important;
+    margin-right: 2px !important;
+    color: #fff;
+}
+#TRUSTEDCOMPANY_widget_86428 .tc-star-color {
+    fill: #a1b508  !important;
+}
+#TRUSTEDCOMPANY_widget_86428 .tc-widget-logo--title {
+    color: #fff  !important;
+}
+.tc-widget-standard {
+    font-family: arial  !important;
+}
+.tc-widget-standard .tc-widget-standard-content .tc-widget-standard-col-2 {
+    margin-bottom: 8px !important;
+    border-bottom: 2px solid #4d4d4d;
+    padding: 3px 0;
+}
+.tc-widget-standard .tc-widget-standard-content {
+    text-align: center !important;
+    width: 80%;
+}
+.tc-widget-standard .tc-widget-standard-content .tc-widget-standard-col-1 {
+    border-bottom: 2px solid #4d4d4d;
+}
+.tc-widget-standard .tc-widget-standard-content .tc-widget-standard-col-3 .tc-widget-reviewcount{
+    opacity: 1 !important;
+}
+.home-banner-block.mid {
+    margin: 0;
+}
+.home-banner-block.mid {
+    display: inline-block;
+}
+
+/*css for main-config-page*/
+.cms-home .main_config_page{
+    width: 74%;
+    display: inline-block;
+    margin-top: 15px;
+}
+.cms-home .main_config_page .best_seller, 
+.cms-home .main_config_page .leading_online{
+    width: 30%;
+    display: inline-block;
+    float: left;
+}
+.cms-home .main_config_page .popular_categories{
+    width: 34%;
+    display: inline-block;
+    float: left;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    margin: 0 1%;
+
+}
+.cms-home .main_config_page .best_seller .best_seller_title, 
+.cms-home .main_config_page .popular_categories .popular_categories_title, 
+.cms-home .main_config_page .leading_online .leading_online_title{
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 15px;
+}
+.cms-home .main_config_page .best_seller .best_seller_title span, 
+.cms-home .main_config_page .popular_categories .popular_categories_title span, 
+.cms-home .main_config_page .leading_online .leading_online_title span{
+    background-color: #506f00;
+    color: #ffffff;
+    padding: 9px 12%;
+    text-align: center;
+    border-radius: 35px;
+    font-weight: 700;
+    position: relative;
+}
+.cms-home .main_config_page .best_seller .best_seller_title span::before, 
+.cms-home .main_config_page .popular_categories .popular_categories_title span::before, 
+.cms-home .main_config_page .leading_online .leading_online_title span::before{
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 11px solid #506f00;
+    position: absolute;
+    top: 30px;
+    transform: rotate(180deg);
+    left: 41%;
+}
+.cms-home .main_config_page .best_seller .best_seller_data,
+.cms-home .main_config_page .popular_categories .popular_categories_data,
+.cms-home .main_config_page .leading_online .leading_online_data{
+    display: inline-block;
+    width: 100%;
+    margin-top: 13px;
+}
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item{
+    width: 100%;
+    display: inline-block;
+}
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-list{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-list li a img{
+    margin: 0 auto;
+}
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-list li a span{
+    font-size: 16px;
+    color: #333333;
+    font-family: Droid sans-serif;
+}
+
+.cms-home .main_config_page .best_seller .best_seller_data .slick-prev:before{
+    content: "" !important;
+    color: #5d5d5d;
+    width: 0;
+    border: solid #5b5b5b;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.cms-home .main_config_page .best_seller .best_seller_data .slick-prev{
+    left:-10px;
+    top:60%;
+}
+.cms-home .main_config_page .best_seller .best_seller_data .slick-next{
+    right:5px;
+    top:60%;
+}
+.cms-home .main_config_page .best_seller .best_seller_data .slick-next:before{
+    content: "" !important;
+    color: #5d5d5d;
+    width: 0;
+    border: solid #5b5b5b;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(315deg);
+    -webkit-transform: rotate(315deg);
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li{
+    list-style: none;
+    float: left;
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 60px;
+    height: 100px;
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li a{
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li a span{
+    display: block;
+    margin-bottom: 10px;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333333;
+    text-transform: capitalize;
+}
+/*.cms-home .main_config_page .popular_categories .popular_categories_data li:last-child a img{
+    width: 50%;
+    overflow: hidden;
+}*/
+.cms-home .main_config_page .best_seller .best_seller_data{
+    margin-top: 0;
+}
+.cms-home .main_config_page .leading_online .leading_online_data ul li{
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 13px;
+    padding-bottom: 13px;
+    width:100%;
+}
+.cms-home .main_config_page .leading_online .leading_online_data ul li:last-child{
+    margin-bottom: 5px;
+    padding-bottom: 0;
+}
+.cms-home .main_config_page .leading_online .leading_online_data ul li a{ 
+    width: 100%;
+    display: inline-block;
+ }
+.cms-home .main_config_page .leading_online .leading_online_data ul li a img{
+     width: 100%;
+}
+
+/*content heading*/
+.home-content {
+    display: inline-block;
+}
+
+.cms-index-index .home-content h2 {
+     border-top: 0 dotted #000; 
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    margin: 10px 0;
+    font-family: arial;
+    width: 370px;
+    text-align: center;
+    color: #333333;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/*guest user content*/
+
+.cms-home .recently_view_category_content {
+    display: inline-block;
+    width: 74%;
+      text-align: center;
+}
+.cms-home .recently_view_category_content .register_user_category_name{
+    color: #506f00;
+    display: inline-block;
+    width: 285px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 15px;
+}
+.cms-home .recently_view_category_content .register_user_category_name span{
+    background-color: #506f00;
+    color: #ffffff;
+    padding: 9px 32%;
+    text-align: center;
+    border-radius: 35px;
+    font-weight: 700;
+    position: relative;
+}
+.cms-home .recently_view_category_content .register_user_category_name span::before{
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 11px solid #506f00;
+    position: absolute;
+    top: 30px;
+    transform: rotate(180deg);
+    left: 45%;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.single-item {
+    width: 100%;
+    display: inline-block;
+}
+.cms-home .recently_view_category_content .register_user_categories .slick-prev {
+   left: 0px;
+    top: 50%;
+}
+.cms-home .recently_view_category_content .slick-prev:before {
+    content: "" !important;
+    color: #5d5d5d;
+    width: 0;
+    border: solid #5b5b5b;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.cms-home .recently_view_category_content .slick-next {
+    right: 0px !important;
+}
+.cms-home .recently_view_category_content .slick-next:before {
+    content: "" !important;
+    color: #5d5d5d;
+    width: 0;
+    border: solid #5b5b5b;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(315deg);
+    -webkit-transform: rotate(315deg);
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list li.slick_list{
+   border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    margin: 0 15px;
+    padding: 10px;
+}
+.slick-initialized .slick-slide {
+    display: block;
+    padding: 10px 0;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list li.slick_list:hover {
+    box-shadow: 0 0 5px #aaa;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list li.slick_list:hover a.buy_now_click .btn.buy-now {
+        background-color: #506f00;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list a.product_img {
+    display: inline-block;
+    width: 100%;
+}
+.product_desc {
+    display: inline-block;
+    min-height: 130px;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .product_name {
+    font-size: 13px;
+    font-family: Droid sans-serif;
+    color: #333333;
+    text-align: center;
+    min-height: 38px;
+    text-transform: uppercase;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .generic_name {
+    font-size: 13px;
+    font-family: Droid sans-serif;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .desc.std {
+    font-size: 13px;
+    font-family: Droid sans-serif;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .manu_name {
+    font-size: 13px;
+    font-family: Droid sans-serif;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a img {
+    margin: 0 auto;
+    width: 60%;
+    display: inline-block;
+}
+
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a span {
+    font-size: 16px;
+    color: #333333;
+    font-family: Droid sans-serif;
+}
+
+.cms-home .recently_view_category_content .register_user_categories .slick_list p.custom_price {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #506f00;
+    text-align: center;
+}
+
+.cms-home .recently_view_category_content .register_user_categories .slick_list a.buy_now_click{
+    text-align: center;
+    display: inline-block;
+    padding: 20px 0;
+}
+.cms-home .recently_view_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now {
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: arial;
+    padding: 8px 18px;
+    background-color: #333333;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+}
+.cms-home .recently_view_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now:hover{
+    background-color: #506f00;
+}
+
+
+
+
+
+
+/*logged in user css*/
+.banner_below_content {
+    display: inline-block;
+    margin-top: 15px;
+    width: 74%;
+}
+
+.banner_below_content .banner_below_sec {
+    display: inline-block;
+}
+.banner_below_content .banner_below_sec .banner_below_sec_left {
+    width: 31%;
+    display: inline-block;
+    margin: 1.1%;
+}
+.banner_below_content .banner_below_sec .banner_below_sec_left a {
+    display: inline-block;
+    width: 100%;
+}
+.banner_below_content .banner_below_sec .banner_below_sec_left a img{
+    width: 100%;
+    height: 100%;
+}
+
+/*content logged in user*/
+
+.banner_below_category_content {
+    display: inline-block;
+    width: 74%;
+      text-align: center;
+}
+.banner_below_category_content .register_user_category_name{
+    font-size: 18px;
+    color: #506f00;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 15px 0;
+    display: inline-block;
+    border-bottom: 1px solid #e0e0e0;
+    width: 285px;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.single-item {
+    width: 100%;
+    display: inline-block;
+}
+.cms-home .banner_below_category_content .register_user_categories .slick-prev {
+   left: -10px;
+    top: 50%;
+}
+.cms-home .banner_below_category_content .slick-prev:before {
+    content: "" !important;
+    color: #5d5d5d;
+    width: 0;
+    border: solid #5b5b5b;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.cms-home .banner_below_category_content .slick-next {
+    right: -10px !important;
+}
+.cms-home .banner_below_category_content .slick-next:before {
+    content: "" !important;
+    color: #5d5d5d;
+    width: 0;
+    border: solid #5b5b5b;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(315deg);
+    -webkit-transform: rotate(315deg);
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list li.slick_list{
+   border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    margin: 0 15px;
+    padding: 10px;
+}
+.slick-initialized .slick-slide {
+    display: block;
+    padding: 10px 0;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list li.slick_list:hover {
+    box-shadow: 0 0 5px #aaa;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list li.slick_list:hover a.buy_now_click .btn.buy-now {
+        background-color: #506f00;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list a.product_img {
+    display: inline-block;
+    width: 100%;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .product_name {
+    font-size: 13px;
+    font-family: Droid sans-serif;
+    color: #333333;
+    text-align: center;
+    min-height: 80px;
+    text-transform: uppercase;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .generic_name {
+    font-size: 13px;
+    font-family: Droid sans-serif;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .desc.std {
+    font-size: 13px;
+    font-family: Droid sans-serif;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+}
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .manu_name {
+    font-size: 13px;
+    font-family: Droid sans-serif;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items li a img {
+    margin: 0 auto;
+    width: 60%;
+    display: inline-block;
+}
+
+.cms-home .banner_below_category_content .register_user_categories ul.multiple-items li a span {
+    font-size: 16px;
+    color: #333333;
+    font-family: Droid sans-serif;
+}
+
+.cms-home .banner_below_category_content .register_user_categories .slick_list p.custom_price {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #506f00;
+    text-align: center;
+}
+
+.cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click{
+    text-align: center;
+    display: inline-block;
+    padding: 20px 0;
+}
+.cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now {
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: arial;
+    padding: 8px 18px;
+    background-color: #333333;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+}
+.cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now:hover{
+	background-color: #506f00;
+}
+.slick-prev, .slick-next {
+    z-index: 10;
+}
+
+
+
+
+
+@media all and (max-width: 1024px){
+
+    /*banner*/
+
+      
+         .cms-index-index .below_banner_main_area .trustedcompany-widget , .home-banner-block.mid,
+         .home-banner-block.mid, .home-banner-block, .home-banner-block.forth{
+            display: none;
+        }
+        .cms-index-index .banner_sec {
+            width: 100%;
+        }
+        .cms-index-index .bx-wrapper img {
+            width: 100%;
+        }
+          .frontend-index-allbrands .wrapper .main-container {
+            padding: 0;
+            margin-top: 0;
+        }
+        .frontend-index-allbrands .wrapper .main-container .col-main {
+            padding: 0;
+        }
+        .frontend-index-allbrands #search_sidebar_form .drugSearch {
+            width: auto;
+            padding: 0;
+        }
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li {
+            display: inline-block;
+            width: 50%;
+            padding: 15px 0 !important;
+            vertical-align: top;
+        } 
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li {
+            /*width: 48.5%;*/
+            padding: 0;
+        } 
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(2) {
+            /*margin-left: 10px !important;*/
+            /*float: left;*/
+            /*width: 48.5%;*/
+        } 
+         .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(3) {
+            /*margin-left: 10px !important;*/
+            /*float: left;*/
+            /*width: 48.5%;*/
+        } 
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li select {
+            width: 95%;
+            border-radius: 7px;
+            font-size: 15px;
+            font-family: arial;
+            font-weight: bold;
+        }
+        .below_banner_area iframe {
+            height:80px;
+        }
+        .cms-home .main_config_page {
+            width: 100%;
+        }
+        .cms-home .main_config_page {
+            margin-top: 0;
+        }
+
+
+        /*logged in user*/
+
+        /*below banner area*/
+        .below_banner_area iframe {
+            margin-bottom: 0;
+        }
+        .banner_below_content {
+            display: inline-block;
+            margin-top: 0;
+            width: 100%;
+        }
+         /*rightside content*/
+       .cms-home .home-banner-block.third {
+            display: none;
+        }
+        /*content*/
+        .banner_below_category_content {
+            width: 100%;
+        }
+         .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .product_name {
+            font-size: 13px;
+        }
+         .cms-index-index .below_banner_main_area {
+            width: 100%;
+        }
+        .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .generic_name, .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .manu_name {
+            min-height: 40px;
+        }
+        .cms-home .recently_view_category_content {
+            width: 100%;
+        }
+         .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .product_name {
+            font-size: 13px;
+        }
+        .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .generic_name, .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .manu_name {
+            min-height: 40px;
+        }
+        .cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a img {
+            width: 30%;
+        }
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li{
+        width: 50%!important;
+        float: left!important;
+        margin: 0!important;
+        padding: 0 10px!important;  
+        box-sizing:border-box;
+    }
+     .frontend-index-allbrands #search_sidebar_form .drugSearch {
+            background: #202020;
+            border: 1px solid #c9c9c9;
+            width: 100%;
+            border-radius: 0;
+            box-sizing:border-box;
+            padding: 18px 5px;
+            display: inline-block;
+        }
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li select {
+            width: 95% !important;
+        }
+         .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(3){
+            float: right !important;
+        }
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1, .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2  {
+             margin: 0; 
+        } 
+        
+}
+
+@media all and ( max-width: 910px){
+            .cms-home .banner_below_category_content .register_user_categories .slick_list p.custom_price {
+                    min-height: 54px;
+            }
+            .product_desc {
+                display: inline-block;
+                min-height: 144px;
+            }
+}
+
+@media all and ( max-width: 736px) {
+    .cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a img {
+        width: 45%;
+    }
+    .cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now {
+        background-color: #506f00;
+    }
+    .cms-home .main_config_page {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    .cms-home .main_config_page .leading_online {
+        width: 100%;
+    }
+    .cms-home .main_config_page .best_seller {
+        display: none;
+    }
+    .cms-home .main_config_page .popular_categories {
+        width: 100%;
+        border: 0;
+    }
+    .cms-home .main_config_page .popular_categories .popular_categories_data li {
+        width: 33.33%;
+    }
+    .cms-home .main_config_page .leading_online .leading_online_data ul li a img {
+        width: 50%;
+    }
+    .cms-home .main_config_page .leading_online .leading_online_data ul li:last-child {
+        border: 0;
+    }
+    .subscribe-input-go {
+        height: 35px;
+    }
+    .footer-container #toTop .subscribe-innerdiv .subscribe-input-go {
+        width: 50%;
+    }
+    .frontend-index-allbrands #search_sidebar_form .drugSearch li {
+        width: 47.5%;
+    }
+    .cms-home .main_config_page .popular_categories .popular_categories_data li a span {
+        font-size: 15px;
+        font-weight: bold;
+        font-family: droid sans-serif;
+    }
+    .cms-home .main_config_page .best_seller .best_seller_data ul.single-item li a {
+        width: 50%;
+        float: left;
+    }
+    .cms-home .main_config_page .mobile_best_seller {
+        width: 100%;
+        display: inline-block;
+        margin: 0 auto;
+        float: left;
+    }
+    .cms-home .main_config_page .mobile_best_seller_title {
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: 15px;
+    }
+    .cms-home .main_config_page .mobile_best_seller_title span {
+        background-color: #506f00;
+        color: #ffffff;
+        padding: 9px 12%;
+        text-align: center;
+        border-radius: 35px;
+        font-weight: 700;
+        position: relative;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_title span::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 11px solid #506f00;
+        position: absolute;
+        top: 30px;
+        transform: rotate(180deg);
+        left: 41%;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data {
+        display: inline-block;
+        width: 100%;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item {
+        width: 100%;
+        display: inline-block;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item .slick-list {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .slick-initialized .slick-slide {
+        padding: 10px 0;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item li a {
+        width: 100%;
+        float: left;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item .slick-list li a img {
+        margin: 0 auto;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev {
+        left: 185px;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next {
+        right: 185px;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev:before {
+        content: "" !important;
+        color: #5d5d5d;
+        width: 0;
+        border: solid #5b5b5b;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 5px;
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next:before {
+        content: "" !important;
+        color: #5d5d5d;
+        width: 0;
+        border: solid #5b5b5b;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 5px;
+        transform: rotate(315deg);
+        -webkit-transform: rotate(315deg);
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item .slick-list li a span {
+        font-size: 16px;
+        color: #333333;
+        font-family: Droid sans-serif;
+    }
+    .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(2) {
+        /*width: 48.5%;*/
+    }
+    .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(3) {
+        /*width: 48.5%;*/
+    }
+    .below_banner_area iframe {
+        height: 86px;
+    }
+    .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .generic_name,
+    .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .manu_name {
+        display: none;
+    }
+    .cms-home .banner_below_category_content .register_user_categories .slick_list p.custom_price {
+        min-height: 40px;
+    }
+    .cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click {
+        padding: 0;
+        padding-bottom: 10px;
+    }
+    .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2 {
+        width: 90%;
+        margin: 0;
+        margin-right: 15px;
+        float: right;
+        font-size: 13px;
+    }
+    .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1 {
+        width: 90%;
+        margin: 0;
+        margin-left: 15px;
+        font-size: 13px;
+    }
+}
+
+@media all and (max-width: 470px){
+
+        .footer-container #toTop .subscribe-innerdiv .subscribe-input-go {
+            width: 85%;
+        }
+        .footer-our-partners span {
+            margin-right: 0;
+        }
+        .banner_below_content .banner_below_sec .banner_below_sec_left {
+            width: 90%;
+            margin-top: 20px;
+            float: none !important;
+        }
+         .banner_below_content .banner_below_sec .banner_below_sec_left:nth-child(3){
+            display: none;
+        }
+         .banner_below_content .banner_below_sec .banner_below_sec_left:nth-child(2) {
+            display: none;
+        }
+        .banner_below_content .banner_below_sec {
+            display: inline-block;
+            text-align: center;
+        }
+        .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .product_name {
+            min-height: 100px;
+        }
+}
+
+@media all and (max-width: 453px){
+        .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev,
+        .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next {
+            top: 40%;
+        }
+        .slick-slider {
+            margin-bottom: 0 !important;
+        }
+}
+
+@media all and (max-width: 420px){
+        .cms-home .main_config_page .mobile_best_seller {
+            width: 100%;
+        }
+        .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev, .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next {
+            top: 45%;
+        }
+        .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev {
+            left: 25px;
+        }
+        .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next {
+            right: 25px;
+        }
+        .cms-home .main_config_page .best_seller .best_seller_title span, .cms-home .main_config_page .popular_categories .popular_categories_title span, .cms-home .main_config_page .leading_online .leading_online_title span {
+            padding: 9px 25%;
+        }
+        .cms-home .main_config_page .mobile_best_seller_title span {
+            padding: 9px 25%;
+        }
+        .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_title span::before {
+            left: 45%;
+        }
+        .cms-home .main_config_page .best_seller .best_seller_title span::before, .cms-home .main_config_page .popular_categories .popular_categories_title span::before, .cms-home .main_config_page .leading_online .leading_online_title span::before {
+            left: 45%;
+        }
+         .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2 {
+            width: 85%;
+            margin: 0; 
+            float: right;
+        }
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1 {
+            width: 85%;
+             margin: 0; 
+        }
+
+       
+        
+         .iframe_wrap{
+            background: #000;
+         }
+}
+
+@media all and (min-width: 1025px) and (max-width:10000px){
+    .frontend-index-allbrands #search_sidebar_form .drugSearch li {
+        width: 100% !important;
+    }
+}
+
+@media all and (max-width:1024px){
+    
+}
+
+@media all and (max-width: 300px){
+      .frontend-index-allbrands #search_sidebar_form .drugSearch li{
+            text-align: center;
+         }
+
+           .frontend-index-allbrands #search_sidebar_form .drugSearch li{
+                width: 100%!important;
+                padding: 13px 0 !important;
+           }
+           .frontend-index-allbrands #search_sidebar_form .drugSearch ul {
+                display: inline-block;
+            }
+
+         .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2{
+             width: 100% !important;
+             margin: 0!important;
+         }
+
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1{
+             width: 100% !important;
+             margin: 0!important;
+        }
+
+        .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(3){
+            margin-left: 0!important;
+            float: right !important;
+        }
+        .frontend-index-allbrands #search_sidebar_form .drugSearch {
+            background: #202020;
+            border: 1px solid #c9c9c9;
+            width: 100%;
+            border-radius: 0;
+            padding: 18px 20px;
+        }
+}

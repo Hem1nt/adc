@@ -1,36 +1,53 @@
 <div class="below_banner_main_area">
 	<div class="below_banner_area">
-		<iframe scrolling="no" width="100%" height="0" frameborder="0" src="<?php echo $this->getUrl('frontend/index/allbrands', array(
-            '_secure' => Mage::app()->getFrontController()->getRequest()->isSecure()
-        ));?>"></iframe> 
-		 <div class="home-banner-block">
-			<a class="comboclass" href="<?php //echo $this->getBaseUrl().'referral';?>">
-				<!-- <img src="<?php //echo $this->getSkinUrl('images/banner-block-1.jpg');?>" alt=""/> -->
-				<img src="<?php echo $this->getSkinUrl('images/adcshipping-block-1.jpg');?>" alt=""/>
-			</a>
-			
+		<div class="iframe_wrap">
+			<iframe scrolling="no" width="100%" height="0" frameborder="0" src="<?php echo $this->getUrl('frontend/index/allbrands', array(
+			            '_secure' => Mage::app()->getFrontController()->getRequest()->isSecure()
+			        ));?>"></iframe>
 		</div>
-		<div class="home-banner-block mid">
-			<a class="comboclass" href="<?php echo $this->getBaseUrl().'content/114-echeck/';?>">
-				<img src="<?php echo $this->getSkinUrl('images/echeck-banner_update.jpg');?>" alt=""/>
-			</a>
+        <div class="trustedcompany-widget">
+			<div id="TRUSTEDCOMPANY_widget_86428">
+				<script async src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXh4BFAMkFgoRGR0LEhgAFkIHHQJYU0JcV08"
+				></script>
+			</div>
 		</div>
-		
-		<div class="home-banner-block third">
-			<a class="comboclass" href="<?php echo $this->getBaseUrl().'content/88-order-online/';?>">
-				<img src="<?php echo $this->getSkinUrl('images/banner-block-3.jpg');?>" alt=""/>
-			</a>
-			
-		</div> 
-		<div class="home-banner-block last">
-			<a class="comboclass" href="<?php echo $this->getBaseUrl().'';?>">
-				<img src="<?php echo $this->getSkinUrl('images/banner-block-4.jpg');?>" alt=""/>
+		<?php
+		$right_banner_1 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_1');
+			$right_banner_1_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_1_url');
+		$right_banner_2 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_2');
+			$right_banner_2_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_2_url');
+		$right_banner_3 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_3');
+			$right_banner_3_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_3_url');
+		$right_banner_4 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_4');
+			$right_banner_4_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_4_url');
+		?>
+		<?php if($right_banner_1):?>
+		<div class="home-banner-block">
+			<a class="comboclass" href="<?php echo $right_banner_1_url;?>">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_1; ?>"/>
 			</a>			
 		</div>
-		<div class="trustedcompany-widget">
-			<div id="TRUSTEDCOMPANY_widget_86428"><script async
-			src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXh4BFAMkFgoRGR0LEhgAFkIHHQJYU0JcV08"
-			></script></div>
+		<?php endif;?>
+		<?php if($right_banner_2):?>
+		<div class="home-banner-block mid">
+			<a class="comboclass" href="<?php echo $right_banner_2_url;?>">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_2; ?>"/>
+			</a>
+		</div>		
+		<?php endif;?>
+		<?php if($right_banner_3):?>
+		<div class="home-banner-block third">
+			<a class="comboclass" href="<?php echo $right_banner_3_url;?>">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_3; ?>"/>
+			</a>			
 		</div>
+		<?php endif;?>
+		<?php if($right_banner_4):?>
+		<div class="home-banner-block forth">
+			<a class="comboclass" href="<?php echo $right_banner_4_url;?>">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_4; ?>"/>
+			</a>			
+		</div>
+		<?php endif;?> 		
 	</div>
 </div>
