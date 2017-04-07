@@ -2,12 +2,21 @@
 	<div class="banner_sec">
 		<?php echo $this->getLayout()->createBlock("homepagebanner/index")->getBannerHtml();?>
 	</div>
-	<div>
+	<div class="below_banner_main_area_outer">
 		<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/adc_banner_below.phtml")->toHtml();?>
 	</div>
 </div>
 <div>
-	<?php echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/tab_products.phtml")->toHtml();?>
+	<?php
+		$customer = Mage::getSingleton('customer/session')->isLoggedIn();
+		if($customer){
+			echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/register_user.phtml")->toHtml();
+		}else{
+			echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/recentlyview.phtml")->toHtml();
+			echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/new_customer.phtml")->toHtml();
+		}
+	?>
+	<?php //echo $this->getLayout()->createBlock("core/template")->setTemplate("homepage/tab_products.phtml")->toHtml();?>
 </div>
 
 <div class="clearSty"></div>

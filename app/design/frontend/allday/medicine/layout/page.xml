@@ -136,7 +136,7 @@ Default layout, loads most of the pages
          -->
 
 
-
+                 <block type="core/template" name="subscription" template="page/html/subscription.phtml" />
                 <block type="cms/block" name="footer_list_1">
                     <!--
                         The content of this block is taken from the database by its block_id.

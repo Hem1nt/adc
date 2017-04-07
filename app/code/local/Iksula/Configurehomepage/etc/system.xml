@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<config>
+	  <tabs>
+		<conf_homepage translate="label" module="configurehomepage">
+            <label>Homepage Configuration</label>
+            <sort_order>0</sort_order>
+        </conf_homepage>
+	  </tabs>
+	  <sections>
+		<homepage_conf  translate="label" module="configurehomepage">                    
+		<label>homepage</label>
+		<tab>conf_homepage</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <guest_group translate="label"> 
+					  <label>Guest homepage configuration</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+                          <best_selling translate="label">
+                            <label>Best selling products label:</label>
+                            <comment>Enter Title For Best selling Section</comment>
+							<frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </best_selling>
+                          	<bestselling_category translate="label" module="configurehomepage">
+				              <label>Best Selling Category</label>
+				              <frontend_type>select</frontend_type>
+				              <comment>Select Category to show under best Selling section</comment>
+				              <source_model>configurehomepage/bestsellingcategory</source_model>
+				              <sort_order>1</sort_order>
+				              <show_in_default>1</show_in_default>
+				              <show_in_website>1</show_in_website>
+				              <show_in_store>1</show_in_store>
+			            	</bestselling_category>
+				            <best_selling_product_limit translate="label">
+	                            <label>Enter number of Best selling product to be shown:</label>
+	                            <comment>Enter number of product to be shown on front</comment>
+								<frontend_type>text</frontend_type>
+	                            <sort_order>2</sort_order>
+	                            <show_in_default>1</show_in_default>
+	                            <show_in_website>1</show_in_website>
+	                            <show_in_store>1</show_in_store>
+	                        </best_selling_product_limit>
+	                      <popular_category_label translate="label" module="configurehomepage">
+			              <label>Popular category products</label>
+			              <frontend_type>text</frontend_type>
+			              <comment>Please add text for popular categories section</comment>
+			              <sort_order>3</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </popular_category_label>
+			            <popular_category translate="label" module="configurehomepage">
+			              <label>Popular Category</label>
+			              <comment>Select max 6 Categories</comment>
+			              <frontend_type>multiselect</frontend_type>
+			              <source_model>configurehomepage/popularcategory</source_model>
+			              <sort_order>4</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </popular_category>
+			            <popular_category_default_placeholder> 
+			            	<label>Set Default image for Category</label>
+				            <comment>Set default placeholder image for Category</comment>
+				            <frontend_type>image</frontend_type>
+				            <backend_model>adminhtml/system_config_backend_image</backend_model>
+				            <upload_dir config="system/filesystem/media" scope_info="1">onlinePharmacy</upload_dir>
+				            <base_url type="media" scope_info="1">onlinePharmacy</base_url>
+				            <sort_order>4</sort_order>
+				            <show_in_default>1</show_in_default>
+				            <show_in_website>1</show_in_website>
+				            <show_in_store>1</show_in_store>
+			            </popular_category_default_placeholder>
+			            <online_pharmacy translate="label" module="configurehomepage">
+			              <label>Leading online pharmacy title</label>
+			              <frontend_type>text</frontend_type>
+			              <comment>Please add text for leading online pharmacy</comment>
+			              <sort_order>5</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </online_pharmacy>
+			            <leading_image_1 translate="label">
+			              <label>Genuine Products Banner 1:</label>
+			              <comment>leading online pharmacy image-1</comment>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">onlinePharmacy</upload_dir>
+			              <base_url type="media" scope_info="1">onlinePharmacy</base_url>
+			              <sort_order>6</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </leading_image_1>
+			            <leading_image_1_url translate="label">
+			              <label>Above Banner URL:</label>
+			              <comment>leading online pharmacy image-1 Url</comment>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>7</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </leading_image_1_url>
+			            <leading_image_2 translate="label">
+			              <label>Refunds Banner 2:</label>
+			              <comment>leading online pharmacy image-2</comment>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">onlinePharmacy</upload_dir>
+			              <base_url type="media" scope_info="1">onlinePharmacy</base_url>
+			              <sort_order>8</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </leading_image_2>
+			            <leading_image_2_url translate="label">
+			              <label>Above Banner URL:</label>
+			              <comment>leading online pharmacy image-2 Url</comment>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>9</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </leading_image_2_url>
+			            <leading_image_3 translate="label">
+			              <label>OTC Products Banner 3:</label>
+			              <comment>leading online pharmacy image-3</comment>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">onlinePharmacy</upload_dir>
+			              <base_url type="media" scope_info="1">onlinePharmacy</base_url>
+			              <sort_order>10</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </leading_image_3>
+			            <leading_image_3_url translate="label">
+			              <label>Above Banner URL:</label>
+			              <comment>leading online pharmacy image-3 Url</comment>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>11</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </leading_image_3_url>
+			            <guest_home_slider translate="label">
+			              <label>Title For Slider</label>
+			              <comment>Set title for below multiselect</comment>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>11</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </guest_home_slider>
+			            <select translate="label">
+                            <label>Homepagebanner Category Ids</label>
+							<frontend_type>multiselect</frontend_type>
+                            <source_model>configurehomepage/popularcategory</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </select>	
+					   </fields>
+					   </guest_group>
+					</groups>
+					<groups>
+				      <common_group translate="label"> 
+					  <label>Common Section Right Banner</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>1</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+			            <sidebar_image_1 translate="label">
+			              <label>Sidebar Image 1</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
+			              <base_url type="media" scope_info="1">sidebanner</base_url>
+			              <sort_order>0</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </sidebar_image_1>
+                          <sidebar_image_1_url translate="label">
+                            <label>Sidebar Image 1 Url</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </sidebar_image_1_url>
+			            <sidebar_image_2 translate="label">
+			              <label>Sidebar Image 2</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
+			              <base_url type="media" scope_info="1">sidebanner</base_url>
+			              <sort_order>2</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </sidebar_image_2>
+                         <sidebar_image_2_url translate="label" module="configurehomepage">
+			              <label>Sidebar Image 2 Url</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>3</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </sidebar_image_2_url>
+			            <sidebar_image_3 translate="label">
+			              <label>Sidebar Image 3</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
+			              <base_url type="media" scope_info="1">sidebanner</base_url>
+			              <sort_order>4</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </sidebar_image_3>
+			            <sidebar_image_3_url translate="label" module="configurehomepage">
+			              <label>Sidebar Image 3 Url</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>5</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </sidebar_image_3_url>
+			            <sidebar_image_4 translate="label">
+			              <label>Sidebar Image 4</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
+			              <base_url type="media" scope_info="1">sidebanner</base_url>
+			              <sort_order>6</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </sidebar_image_4>
+			            <sidebar_image_4_url translate="label" module="configurehomepage">
+			              <label>Sidebar Image 4 Url</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>7</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </sidebar_image_4_url>
+			            <cart_sidebar_image translate="label">
+			              <label>Offer Banner For Cart Page</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
+			              <base_url type="media" scope_info="1">sidebanner</base_url>
+			              <sort_order>8</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </cart_sidebar_image>
+			            <cart_sidebar_image_url translate="label" module="configurehomepage">
+			              <label>Offer Banner For Cart Page Url</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>9</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </cart_sidebar_image_url>
+			            <mobile_number translate="label">
+                            <label>Contact Number for mobile theme header:</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </mobile_number>
+					   </fields>
+					   </common_group>
+					</groups>
+					<groups>
+				      <register_group translate="label"> 
+					  <label>Register Section</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>2</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+					  <fields>
+					  	<promotion_image_1 translate="label">
+			              <label>Promotion Image 1</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">promotion1</upload_dir>
+			              <base_url type="media" scope_info="1">promotion1</base_url>
+			              <sort_order>0</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </promotion_image_1>
+                          <promotion_image_1_url translate="label">
+                            <label>Promotion Image 1 Url</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </promotion_image_1_url>
+			            <promotion_image_2 translate="label">
+			              <label>Promotion Image 2</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">promotion2</upload_dir>
+			              <base_url type="media" scope_info="1">promotion2</base_url>
+			              <sort_order>2</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </promotion_image_2>
+                         <promotion_image_2_url translate="label" module="configurehomepage">
+			              <label>Promotion Image 2 Url</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>3</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </promotion_image_2_url>
+			            <promotion_image_3 translate="label">
+			              <label>Promotion Image 3</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">promotion3</upload_dir>
+			              <base_url type="media" scope_info="1">promotion3</base_url>
+			              <sort_order>4</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </promotion_image_3>
+			            <promotion_image_3_url translate="label" module="configurehomepage">
+			              <label>Promotion Image 3 Url</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>5</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </promotion_image_3_url>
+			            <promotion_category translate="label" module="configurehomepage">
+			              <label>Promotion category</label>
+			              <frontend_model>configurehomepage/serializer</frontend_model>
+                          <backend_model>adminhtml/system_config_backend_serialized_array</backend_model> 
+			              <sort_order>6</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </promotion_category>
+			            <category_limit translate="label" module="configurehomepage">
+			              <label>No of categories in banner</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>7</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </category_limit>
+			            <product_limit translate="label" module="configurehomepage">
+			              <label>No of products in category collection</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>8</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </product_limit>
+					   </fields>
+					  </register_group>
+					</groups>  
+		</homepage_conf>           
+	  </sections>
+</config>

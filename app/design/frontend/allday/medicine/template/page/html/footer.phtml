@@ -57,14 +57,14 @@
 </div>
 <?php //echo $this->getChildHtml('popupwidget');?>
 <div class="footer-container">
+        <?php  echo $this->getChildHtml() ?>
     <div class="footer">
-        <?php echo $this->getChildHtml() ?>
-        <!-- <address><?php //echo $this->getCopyright() ?></address> -->
-        <address>Copyright &copy; <?php echo date('Y')?> AllDayChemist. All rights reserved.</address>
         <div id="toTop_mobile">
         <div class="subscribe">
             <div class="subscribe-innerdiv">
-            Subscribe to our Newsletter <span class="xtra-txt">&amp; never miss a latest product or offer</span>
+            <div class="subscribe-innerdiv_text">
+                Subscribe to our Newsletter <span class="xtra-txt">&amp; never miss a latest product or offer</span>
+            </div>
                 <div class="subscribe-input-go">
                     <input type="text" id="txtEmailDiv" placeholder="Please enter E-mail address" class="subs"
                     onblur="return showText(this, 'Please enter E-mail address')" onfocus="return hideText(this, 'Please enter E-mail address')">
@@ -78,6 +78,10 @@
             <a id="show_subs" class="subs_a" onclick="" style="display:none; bottom: 15px; color: #FFFFFF; position: fixed; left: 4px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">&gt;</a>
             <a id="close_subs" class="subs_a" onclick="" style="bottom: 15px; color: #FFFFFF; position: fixed; left: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">X</a>
     </div>
+
+        <!-- <address><?php //echo $this->getCopyright() ?></address> -->
+        <address>Copyright &copy; <?php echo date('Y')?> AllDayChemist. All rights reserved.</address>
+        
     </div>
 </div>
 <div class="livechat_support" style="position: fixed; right: 0px; bottom: 0px; left: 90.6%; z-index: 10000;">
