@@ -22,7 +22,7 @@
 			  <action method="addJs"><script>leftmenu/leftmenu.js</script></action>
 		    <action method="addCss"><stylesheet>css/leftmenu.css</stylesheet></action>
 	    </reference>
-  			 	<reference name="left">
+  			 	<reference name="right">
 				<block type="leftmenu/navigation" name="leftmenu" after="suggestionbox" >	
 					<action method="setTemplate" ifconfig="categorylist_section/categorylist_group/cateorylist_left">
 						<template>leftmenu/left.phtml</template> 

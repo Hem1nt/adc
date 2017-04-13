@@ -1,0 +1,281 @@
+<layout version="0.1.0">
+	<default>
+
+		<remove name="left.newsletter" />
+		<remove name="right.poll" />
+		<remove name="right.reports.product.viewed" />
+		<remove name="right.permanent.callout"/>
+		<remove name="left.permanent.callout"/>
+		<remove name="right.reports.product.viewed"/>
+		<remove name="sale.reorder.sidebar"/>
+		<remove name="paypal.partner.right.logo"/>
+
+		<remove name="left.reports.product.viewed" />
+		<remove name="left.permanent.callout" />
+
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>css/font-awesome.css</name></action>
+			<action method="addJs"><script>jquery-1.7.min.js</script></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.accordion.2.0.js</name></action>
+			<!-- <action method="addJs"><script>infinite/jquery.ias.min.js</script></action> -->
+			<action method="addJs"><script>custom/customscript.js</script></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.mCustomScrollbar.concat.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.bxslider2.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/category.nav.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/slick.min.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/jquery.bxslider.css</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
+			<!-- <action method="addItem"><type>skin_css</type><name>css/ico-font.css</name></action> -->
+			<action method="addItem"><type>skin_js</type><name>js/little.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/custom_d.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/custom_sb.js</name></action>
+
+			<action method="addCss"><stylesheet>css/custom_d.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/responsive_b.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/responsive_d.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/custom_v.css</stylesheet></action>
+			<!-- <action method="addCss"><stylesheet>css/custom_ab.css</stylesheet></action>			 -->
+			<action method="addCss"><stylesheet>css/responsive_a.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/responsive_custom.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/slick.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/slick-theme.css</stylesheet></action>
+			<action method="addItem"><type>skin_css</type><name>css/custom_sb.css</name></action>
+			
+
+		</reference>
+		<reference name="left">
+			<block type="catalog/product_compare_sidebar" before="-" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+            <action method="append">catalog.compare.sidebar</action>
+
+			<remove name="left.reports.product.viewed" />
+			<!-- <block type="core/template" name="left.sitebanners" template="homepage/banners.phtml"></block> -->
+			<block type="cms/block" name="video">
+				<action method="setBlockId"><block_id>video</block_id></action>
+			</block>
+			<remove name="cart_sidebar"/>
+			<remove name="wishlist_sidebar"/>
+
+		</reference>
+		<reference name="header">
+            <!-- <block type="checkout/cart_sidebar" name="topLinksMobile" as="topLinksMobile" template="page/html/links-mobile.phtml"/> -->
+            <block type="checkout/cart_sidebar" name="topcart_mini" as="miniCart" template="checkout/cart/topcart.phtml" />
+			<block type="core/template" name="home_counter" template="homepage/home_counter.phtml" />
+            <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+            <block type="core/template" name="user-section" as="user-section" template="page/html/user-section.phtml"/>
+		</reference>
+		<reference name="footer">
+			<action method="unsetData"><key>cache_lifetime</key></action>
+			<action method="unsetData"><key>cache_tags</key></action>
+			<block type="core/template" name="livechat_option" template="page/html/livechat.phtml" />
+			<block type="core/template" name="footer_msg" template="homepage/footer_msg.phtml" />
+			<block type="core/template" name="subscription" template="page/html/subscription.phtml" />
+			<block type="notifyoutofstock/index" name="notifyoutofstock_index" template="notifyoutofstock/index.phtml" after="-"/>
+		</reference>
+	</default>
+	<checkout_cart_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/jquery.bxslider2.min.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/jquery.bxslider.css</name></action>
+		</reference>
+	</checkout_cart_index>
+	<cms_index_index>
+		<remove name="left" />
+		<remove name="slider_11" />
+		<remove name="featured_product_list" />
+		<reference name="content">
+			<block type="core/template" name="adc.banner" template="homepage/adc_banner.phtml">
+
+			</block>
+		</reference>
+		<reference name="head">
+
+			<action method="addItem"><type>skin_js</type><name>js/jquery.bxslider2.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/bx_scripts.js</name></action>
+			<!-- <action method="addItem"><type>skin_js</type><name>js/jquery.snow.min.1.0.js</name></action> -->
+			<!-- <action method="addItem"><type>skin_js</type><name>js/homepage.js</name></action> -->
+			<!-- <action method="removeItem"><type>js</type><name>jquery.prettyPhoto.js</name></action> -->
+			<!-- <action method="removeItem"><type>skin_js</type><name>js/ajaxwishlist/ajaxwishlist.js</name></action> -->
+			<action method="removeItem"><type>skin_js</type><name>js/vpager.js</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/vpager.css</name></action>
+			<action method="removeItem"><type>skin_js</type><name>js/fancybox/jquery.fancybox-1.3.4.js</name></action>
+			<action method="removeItem"><type>skin_js</type><name>js/fancybox/jquery.easing-1.3.pack.js</name></action>
+			<action method="removeItem"><type>skin_js</type><name>js/fancybox/jquery.mousewheel-3.0.6.pack.js</name></action>
+			<action method="removeItem"><type>skin_css</type><name>js/fancybox/jquery.fancybox-1.3.4.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/ecommerceteam/cloud-zoom.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/accordion.core.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>turnkeye/testimonial/css/testimonial.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/bought.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/prettyPhoto.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/font-awesome.css</name></action>
+            <action method="removeItem"><type>js</type><name>iwd/all/iwd-jquery-2.1.3.min.js</name></action>
+            <action method="removeItem"><type>js</type><name>iwd/all/modal.js</name></action>
+            <action method="removeItem"><type>js</type><name>jquery/noconflict.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/tm/easytabs.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/jquery.accordion.2.0.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/jquery.prettyPhoto.js</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
+		</reference>
+	</cms_index_index>
+	<homepagebanner_index_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>css/bought.css</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.bxslider2.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/bx_scripts.js</name></action>
+		</reference>
+
+	</homepagebanner_index_index>
+
+	<checkout_onepage_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>css/jquery.signaturepad.css</name></action>
+			<!-- <action method="addItem"><type>skin_css</type><name>css/custom_sb.css</name></action> -->
+			<action method="addItem"><type>skin_js</type><name>js/flashcanvas.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.signaturepad.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/json2.min.js</name></action>
+
+			<action method="addItem"><type>skin_js</type><name>uploadify/noconflict.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>uploadify/jquery.uploadify.v2.1.4.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>uploadify/swfobject.js</name></action>
+
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-buttons.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-media.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox-thumbs.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.pack.js</name></action>
+		</reference>
+
+	</checkout_onepage_index>
+
+	<!-- <opc_index_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/jquery.mCustomScrollbar.concat.min.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.min.css</name></action>
+		</reference>
+	</opc_index_index> -->
+
+	<catalog_category_view>
+		<reference name="root">
+			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+		 	<block type="core/template" name="category_banner" template="catalog/category/category-image.phtml" before="-"></block>
+		</reference>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/jquery.lazyload.js</name></action>
+            <action method="removeItem"><type>js</type><name>jquery.prettyPhoto.js</name></action>
+            <action method="removeItem"><type>js</type><name>infinite/jquery.ias.min.js</name></action>
+            <action method="removeItem"><type>js</type><name>iwd/all/iwd-jquery-2.1.3.min.js</name></action>
+            <action method="removeItem"><type>js</type><name>iwd/all/modal.js</name></action>
+			<action method="removeItem"><type>skin_js</type><name>js/ajaxwishlist/ajaxwishlist.js</name></action>
+			<action method="removeItem"><type>skin_js</type><name>js/tm/easytabs.js</name></action>
+			<action method="removeItem"><type>skin_js</type><name>js/jquery.bxslider2.min.js</name></action>
+			<action method="removeItem"><type>skin_js</type><name>js/fancybox/jquery.fancybox-1.3.4.js</name></action>
+			<action method="removeItem"><type>skin_js</type><name>js/jquery.accordion.2.0.js</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/prettyPhoto.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/font-awesome.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/ecommerceteam/cloud-zoom.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/ico-font.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/category_page.css</name></action>
+		</reference>
+		<reference name="right">
+			<block type="core/template" name="herbalcategory" template="herbalcategory/herbalcategoryleft.phtml" before="-"/>
+			<block type="core/template" name="trustedcompany" template="trustedcompany/trustedcompany.phtml" />
+			<remove name="wishlist_sidebar"/>
+		</reference>
+	 </catalog_category_view>
+
+	 <catalog_product_view>
+	 	<reference name="root">
+	 		<action method="setTemplate"><template>page/1column.phtml</template></action>
+	 	</reference>
+	 	<reference name="head">
+	 		<action method="addItem"><type>skin_js</type><name>js/jquery.prettyPhoto.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/fancybox/jquery.fancybox-1.3.4.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/fancybox/jquery.easing-1.3.pack.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/fancybox/jquery.mousewheel-3.0.6.pack.js</name></action>
+            <action method="addItem"><type>js</type><name>jquery/noconflict.js</name></action>
+            <action method="addCss"><stylesheet>js/fancybox/jquery.fancybox-1.3.4.css</stylesheet></action>
+			<action method="addItem"><type>skin_js</type><name>js/ajaxwishlist/ajaxwishlist.js</name></action>
+			<action method="addJs"><script>jwplayer/jwplayer.js</script></action>
+	 		<action method="addJs"><script>jwplayer/akamaihtml5-min.js</script></action>
+        </reference>
+
+	 	<reference name="product.info">
+         <block type="catalog/product_compare_sidebar" before='-' name="product.info.custom_compare" as="custom_compare" template="catalog/product/compare/product_compare.phtml" />
+    	</reference>
+	 	<remove name="left"/>
+
+	</catalog_product_view>
+
+	<clnews_index_index>
+		<reference name="left">
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block>
+			<remove name="wishlist_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+		</reference>
+	</clnews_index_index>
+
+	<clnews_newsitem_view>
+		<reference name="left">
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block>
+			<remove name="wishlist_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+		</reference>
+	</clnews_newsitem_view>
+
+	<testimonial_index_index>
+		<reference name="left">
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block>
+			<remove name="wishlist_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+		</reference>
+	</testimonial_index_index>
+
+	<testimonial_form_index>
+		<reference name="left">
+			<block type="core/template" name="left.drugsearch" template="homepage/drugsearch.phtml" before="-"></block>
+			<block type="core/template" name="left.drugindexsearch" template="homepage/drugindexsearch.phtml" ></block>
+		</reference>
+	</testimonial_form_index>
+
+	<sendfriend_product_send>
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+		<remove name="left"/>
+	</sendfriend_product_send>
+
+	<refillreminder_view_index>
+		<reference name="left">
+			<remove name="wishlist_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+		</reference>
+	</refillreminder_view_index>
+
+	<contacts_index_index>
+		<reference name="head">
+			<action method="setTitle" translate="title" module="contacts"><title>Get in touch with AllDayChemist through fax or phone numbers listed on our contacts page</title></action>
+			<action method="setDescription" translate="description" module="contacts"><description>Call AllDayChemist at any time of the day/ week on our phone numbers. You can also send a fax or fill the inquiry form on our contacts page.</description></action>
+			<action method="setKeywords" translate="keywords" module="contacts"><keywords>contacts</keywords></action>
+		</reference>
+	</contacts_index_index>
+
+	<dynamicsitemap_index_index>
+		<reference name="head">
+			<action method="setTitle" translate="title"><title>AllDayChemist – Sitemap and comprehensive list of all categories on the website</title></action>
+			<action method="setDescription" translate="description"><description>Check our sitemap and find your way around | Buy Medicines Online | About Us | Customer Service | Privacy Policy | Shipping and Return | Disclaimer |Terms and Conditions</description></action>
+			<action method="setKeywords" translate="keywords"><keywords>sitemap</keywords></action>
+		</reference>
+	</dynamicsitemap_index_index>
+	<sales_order_view>
+        <reference name="order_items">
+            <action method="addItemRender"><type>bundle</type><block>bundle/sales_order_items_renderer</block><template>bundle/sales/order/items/custom_renderer.phtml</template></action>
+        </reference>
+    </sales_order_view>
+     <catalogsearch_result_index translate="label">
+     	<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/jquery.lazyload.js</name></action>
+		</reference>
+     </catalogsearch_result_index>
+</layout>

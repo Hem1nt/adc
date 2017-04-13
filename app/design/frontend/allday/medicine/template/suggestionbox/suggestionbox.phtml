@@ -8,30 +8,32 @@
 		<div id="suggestion_msg"></div>
 		<div class="sbox_form">
 			<form onsubmit="return false;" method="POST" id="new_suggestion">
-				<p class="sb_lable">
-					<label for="name"><?php echo $this->__("Name"); ?>:<em class="sb_em">*</em></label>
-					<div class="input-box sinput">
-						<input type="text" name="name" id="name" class="required-entry sb_input_field"/>
+				<!-- <p class="sb_lable"> -->
+					<!-- <label for="name"><?php //echo $this->__("Name"); ?>:<em class="sb_em">*</em></label> -->
+					<div class="input-box sinput input_name">
+						<input type="text" name="name" id="name" class="required-entry sb_input_field" placeholder="Your Name"/>
 					</div>
-				</p> 
-				<p class="sb_lable">
-					<label for="email"><?php echo $this->__("Email Address"); ?>:<em class="sb_em">*</em></label>
-					<div class="input-box sinput">
-						<input type="text" name="email" id="email" title="example@example.com" class="validate-email required-entry sb_input_field"/>
+				<!-- </p>  -->
+				<!-- <p class="sb_lable"> -->
+					<!-- <label for="email"><?php //echo $this->__("Email Address"); ?>:<em class="sb_em">*</em></label> -->
+					<div class="input-box sinput input_email">
+						<input type="text" name="email" id="email" title="example@example.com" class="validate-email required-entry sb_input_field" placeholder="Email Address"/>
 					</div>
-				</p> 
-				<p class="sb_lable">
-					<label for="suggestion"><?php echo $this->__("What can we do better"); ?>:<em class="sb_em">*</em></label>
-					<div class="input-box sinput">
-						<textarea cols="22" rows="4" id="suggestion" class="required-entry sb_input_field" name="suggestion" title="<?php echo $this->__('Enter Your Message Here...'); ?>"></textarea>
+				<!-- </p>  -->
+				<!-- <p class="sb_lable"> -->
+					<!-- <label for="suggestion"><?php //echo $this->__("What can we do better"); ?>:<em class="sb_em">*</em></label> -->
+					<div class="input-box sinput input_suggestion">
+						<textarea cols="22" rows="4" id="suggestion" class="required-entry sb_input_field" name="suggestion" title="<?php echo $this->__('Enter Your Message Here...'); ?>" placeholder="What can we do better"></textarea>
 					</div>
-				</p>
-				<p class="sb_lable">
-		            <label for="review_field"><?php echo $this->__('Enter the code') ?><em class="sb_em">*</em></label>
-		            <div class="input-box sinput">
+				<!-- </p> -->
+				<p class="sb_lable enter_code">
+		            <label for="review_field" ><?php echo $this->__('Enter the code') ?>
+		            	<!-- <em class="sb_em">*</em> -->
+		            </label>
+		            <div class="input-box sinput input_suggestion_captcha">
 		                <img src="<?php echo $this->getUrl().'suggestion_captcha_file.php?rand='.rand(); ?>" id='suggestion_captcha_img' >
-		                <input id="suggestion_captcha_code" class="required-entry validate_captcha sb_input_field" name="suggestion_captcha_code" type="text">
-		                <small>Can't read the image? click <a href='javascript: suggestion_refresh_Captcha();'>here</a> to refresh</small>
+		                <input id="suggestion_captcha_code" class="required-entry validate_captcha sb_input_field" name="suggestion_captcha_code" type="text" placeholder="Enter code here">
+		                <small class="click_here">Can't read the image? click <a href='javascript: suggestion_refresh_Captcha();'>here</a> to refresh</small>
 		                <input type="hidden" id="check-me" />
 		            </div>
 		        </p>
