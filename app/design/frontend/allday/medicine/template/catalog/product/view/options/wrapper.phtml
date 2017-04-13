@@ -97,13 +97,14 @@ if($_product->isConfigurable()) {
 		echo "</select></td>";
 		echo "<td class='price_value'>".$perUnitCost."</td>";
 		echo "<td class='price_value'>".$priceLabel."</td>";
+		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';
 		if($attributeLabel == 'Coming Soon'){
 			echo '<td class="coming_soon pr-link-notify ">Coming Soon</td>';
 		}else{
-		echo '<td class="add_to_cart_button"><a id="s-'.$child->getId().'" class="related-buy-now" href="'.$url.'checkout/cart/add/product/'.$child->getId().'/?super_attribute[140]='.$child->getPackSize().'&mainid='.$conProduct->getId().'"> | Add to cart</a></td>';
+		echo '<td class="add_to_cart_button"><a id="s-'.$child->getId().'" class="related-buy-now" href="'.$url.'checkout/cart/add/product/'.$child->getId().'/?super_attribute[140]='.$child->getPackSize().'&mainid='.$conProduct->getId().'"> </a></td>';
 		}
 		//echo '<td class="simple_wishlist"><a class="refill_reminder_open" href="refillreminder?product_id='.$child->getId().'">Wishlist</a></td>';
-		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'">Wishlist</a></td>';
+		
 		echo "</tr>";
 		$productCounter++;
 	}

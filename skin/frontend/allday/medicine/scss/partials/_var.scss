@@ -81,10 +81,11 @@ $proximanova_reg:'proximanova-reg',Sans-Serif;
 $proximanova_sbold:'proximanova-sbold',Sans-Serif;
 $proximanova_bold:'proximanova-bold',Sans-Serif;
 $proximanova_xbold:'proximanova-xbold',Sans-Serif;
+$arial:'Arial Regular',Sans-Serif;
 $icomoon: 'icomoon';
 $icomoon-new: 'icomoon-new';
 
-$default_font: #{$proximanova_reg};
+$default_font: #{$arial};
 
 .button_style {
 	border-radius: 4px;
