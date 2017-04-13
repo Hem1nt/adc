@@ -53,7 +53,7 @@ class Iksula_Homepagebanner_Block_Index extends Mage_Core_Block_Template{
 		->addFieldToFilter('website', '1')
 		->setOrder('sortorder', 'asc');
 		$mediaurl=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
-		$html ='<ul class="rslides" id="slider2">';
+		$html ='<ul class="adc_banner_area" id="slider2">';
 		foreach ($model->getData() as $banner) {
 			$url = $banner['url'];
 			if (!parse_url($url, PHP_URL_SCHEME)) {

@@ -948,7 +948,7 @@ h1.best-selling-products {
   position: absolute;
   width: 32%;
   right: 0;
-  top: 100px;
+  top: 85px;
   background-color: #f5f8fa;
   padding: 10px;
   -webkit-box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
@@ -3379,6 +3379,9 @@ button.button.btn-proceed-checkout.btn-checkout span:hover, button.button.btn-pr
   	text-transform: capitalize;
   	font-weight: normal;
   	margin: 20px 0 10px 0;
+}
+.col-left.sidebar .block .block-title strong span, .col-left.sidebar .block-compare .block-title strong span{
+	background: none ;
 }
 
 .block li.odd {
@@ -9910,7 +9913,6 @@ span.testimonial-date.testimonial-state {
 	    background-color: #72ae12;
 	}
 }
-<<<<<<< HEAD
 /************************************************************************************/
 /*fixed header on scroll*/
 @media screen and (min-width: 736px){
@@ -9918,8 +9920,6 @@ span.testimonial-date.testimonial-state {
 		position: fixed;
 		top:0;
 		z-index: 9999;
-=======
-
 /************************************************************************************/
 /*new year theme header*/
 .header_wrap {
@@ -10040,6 +10040,5 @@ span.testimonial-date.testimonial-state {
 	}
 	.header .quick-access {
 	    width: 67% !important;
->>>>>>> be5df1e8870e362c2a540fb8c1af2fbcbe34b7ec
 	}
 }

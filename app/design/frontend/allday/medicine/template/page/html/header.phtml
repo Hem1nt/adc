@@ -71,30 +71,34 @@ if($freshdeskStatus==1){
     </div>
     </div>
 <div class="overlay-header"></div>
-    <div class="header_wrap"> 
-      <!--<div class="tree_img"><img src="<?php //echo $this->getSkinUrl('images/xmas_tree_new.png')?>"></div>-->
-    
+    <div class="header_wrap">     
+        <div class="new-mobile-header">
+        <!-- <div class="mobile-pr-category-icon"></div> -->
+            <div class="mob-new-contact">
+                <?php $adc_contact = Mage::getStoreConfig('homepage_conf/common_group/mobile_number');?>
+                <span><a href="<?php echo $adc_contact; ?>">
+                </a></span>
+            </div>
+            <div class="mob-right-icons">
+                <!-- <div class="mobile-pr-search-icon"></div> -->
+                <div class="mobile-pr-cart-icon">
+                    <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
+                        <span><?php echo $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount(); 
+                    ?></span></a>
+                </div>
+            <div class="mobile-pr-login-icon"><?php echo $this->getChildHtml('user-section') ?></div>
+        </div>
+</div>
 
       <div class="header">
+
         <div class="mobile-pr-category-icon"></div>
         <?php if ($this->getIsHomePage()):?>
         <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
         <?php else:?>
-        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <h1 href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
         <?php endif?>
-        <div class="mob-right-icons">
-            <div class="mobile-pr-search-icon"></div>
-            <div class="mobile-pr-cart-icon">
-                <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
-                <span><?php
-                    echo $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount(); 
-                ?>
-                    </span>
-                </a>
-
-            </div>
-            <div class="mobile-pr-login-icon"><?php echo $this->getChildHtml('user-section') ?></div>
-        </div>
+        
         <!-- <div class="mobile_offer openpopup"><span>offer: </span> Pay by echeck & get 10% discount for new customers</div> -->
         <div class="quick-access">
             <?php echo $this->getChildHtml('topSearch') ?>

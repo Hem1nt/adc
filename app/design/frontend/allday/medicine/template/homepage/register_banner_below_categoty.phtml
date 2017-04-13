@@ -1,0 +1,114 @@
+<?php 
+	$registerCategory = Mage::Helper("configurehomepage")->registerCategory();
+	$noOfCategory = Mage::Helper("configurehomepage")->noOfCategory();
+	$noOfProducts = Mage::Helper("configurehomepage")->noOfProducts();
+	$catData = unserialize($registerCategory);
+	$catData = array_slice($catData, 0, $noOfCategory);
+	$_frontendHelper = $this->helper('frontend/data');
+	  foreach ($catData as $key) {
+	  		$id = $key['category_id'];
+	  		$cid = explode('-', $id);
+	 ?>
+	 <div class="register_user_categories">
+	 	<div class="register_user_category_name"><?php echo strtoupper($cid[1]);?></div>
+	 <?php 		
+	  		$pids = $key['product_sku'];
+	  		$productIdArr = explode(',', $pids);
+	  		if(empty($pids)){
+	  			$categoryCollection = Mage::getModel('catalog/category')->load($cid[0])
+	  			                      ->getProductCollection()
+									 ->addAttributeToSelect('*') 
+									 ->addAttributeToFilter('status', 1)
+									 ->addAttributeToFilter('visibility', 4)
+									 ->setOrder('price', 'ASC')
+									 ->setPageSize($noOfProducts);
+				$categoryData = $categoryCollection->getData();
+	?>
+	<ul class="multiple-items">
+		<?php foreach ($categoryCollection as $key){ ?>				
+		<div class="register_user_category_content">
+			<li class="slick_list">
+				<?php
+					$name = $key->getName();
+					$imageUrl = $key->getImageUrl();
+					$productUrl = $key->getProductUrl();?>
+					<a href ="<?php echo $productUrl;?>"><img src="<?php echo $imageUrl; ?>" alt="<?php echo $name; ?>"></a>
+					<?php
+						$usbrandName = $_frontendHelper->getUsBrandInfo($key);
+						$genericName = $_frontendHelper->getGenericInfo($key);
+						$manufacturedBy = $_frontendHelper->getManufacturerInfo($key);?>
+			                <div class="product_desc">
+			                	<?php if($name):?>
+			                    	<div class="product_name"><?php echo $name;?></div>
+			                   	<?php else:?>
+			                    	<div class="product_name"><?php echo $usbrandName;?></div>
+		               			 <?php endif;?>
+			                    	<div class="generic_name">Generic for : <?php echo $genericName;?></div>
+				            		<div class="manu_name">Manufactured by : <?php echo $manufacturedBy;?></div>
+						<?php $firstChildInfo = $_frontendHelper->getFirstChildPrice($key);
+			           		 if(!empty($firstChildInfo)):
+			                		echo $firstChildInfo;
+			          		  endif;				
+			   		?>	
+			   		 <a class="buy_now_click" href ="<?php echo $productUrl;?>"><button type="button" class="btn buy-now">Buy Now</button></a>
+	    			 </div>
+	    		</li>        
+		</div>
+		<?php } ?>
+	</ul>
+	<?php }
+	else{ $productCollection = Mage::getResourceModel('catalog/product_collection')->addAttributeToSelect('*')->addFieldToFilter('sku',array('in' => $productIdArr))->setPageSize($noOfProducts); ?>
+	<ul class="multiple-items">
+		<?php foreach ($productCollection as $key) { ?>				
+		<div class="register_user_category_content">
+			<li class="slick_list">
+			<?php		  				
+				$name = $key->getName();
+				$imageUrl = $key->getImageUrl();
+				$productUrl = $key->getProductUrl();?>
+				
+				<a  class="product_img" href ="<?php echo $productUrl;?>"><img src="<?php echo $imageUrl; ?>" alt="<?php echo $name; ?>"></a>
+				<?php
+				$usbrandName = $_frontendHelper->getUsBrandInfo($key);
+				$genericName = $_frontendHelper->getGenericInfo($key);
+				$manufacturedBy = $_frontendHelper->getManufacturerInfo($key);?>
+			           	 <div class="product_desc">
+		           		 	<?php if($name):?>
+				            	<div class="product_name"><?php echo $name;?></div>
+				            <?php else:?>
+				            	<div class="product_name"><?php echo $usbrandName;?></div>
+				            <?php endif;?>
+				            	<div class="generic_name">Generic for <?php echo $genericName;?></div>
+				            	<div class="manu_name">Manufactured by <?php echo $manufacturedBy;?></div>
+						<?php $firstChildInfo = $_frontendHelper->getFirstChildPrice($key);
+					        if(!empty($firstChildInfo)):
+					            echo $firstChildInfo;
+					        endif;
+				    	?>
+				    	<a class="buy_now_click" href ="<?php echo $productUrl;?>"><button type="button" class="btn buy-now">Buy Now</button></a>
+				</div>
+			</li>              
+		</div>
+		<?php }	?>
+	</ul>
+	<?php } ?>
+	  </div>
+	  <?php } ?>
+<script type="text/javascript">
+	jQuery('.multiple-items').slick({
+	   dots: false,
+	  infinite: true,
+	  slidesToShow: 3,
+	  slidesToScroll: 3,
+	  responsive: [ 
+		  { 
+			 breakpoint: 630, 
+			settings: { 
+			slidesToShow: 2,
+			 slidesToScroll: 1, 
+			 infinite: false, 
+			dots: false
+			} }
+		] 
+	});
+</script>

@@ -1,70 +1,436 @@
-/*
-Error: Undefined variable: "$violet".
-        on line 13 of scss/product_page.scss
+/* Global and reqiured variables defined in _var.scss partial file */
+/* default value for box-shadow mixin. refer _mixin fie */
+/* default value for text-shadow mixin. refer _mixin fie */
+/* default value for transform mixin. refer _mixin fie */
+/* default value for transform mixin refer _mixin fie */
+/* default value for element in fontimport mixin. refer _mixin fie */
+.button_style {
+  border-radius: 4px;
+  line-height: 2.5rem;
+  padding: 0 1rem;
+  text-transform: uppercase;
+  min-width: 135px;
+}
 
-8: 	}
-9: }
-10: 
-11: 
-12: .basic_button{
-13: 	background: $violet;
-14: 	border:2px solid $violet;
-15: 	border-radius:3px;
-16: 	cursor: pointer;
-17: 	color: $bright;
-18: 	text-transform: uppercase;
+.box_sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-Backtrace:
-scss/product_page.scss:13
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/script/tree/variable.rb:49:in `_perform'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/script/tree/node.rb:50:in `perform'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:79:in `block in with_base'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:115:in `with_frame'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:79:in `with_base'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:158:in `visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:420:in `map'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:79:in `block in with_base'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:115:in `with_frame'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:79:in `with_base'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:158:in `visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `map'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:157:in `visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:8:in `visit'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/root_node.rb:36:in `css_tree'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/engine.rb:368:in `_render_with_sourcemap'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/engine.rb:285:in `render_with_sourcemap'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/plugin/compiler.rb:489:in `update_stylesheet'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/plugin/compiler.rb:469:in `on_file_changed'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/lib/sass/plugin/compiler.rb:328:in `block in watch'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/vendor/listen/lib/listen/listener.rb:252:in `call'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/vendor/listen/lib/listen/listener.rb:252:in `on_change'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.4.7/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$violet\".\A         on line 13 of scss/product_page.scss\A \A 8: 	}\A 9: }\A 10: \A 11: \A 12: .basic_button{\A 13: 	background: $violet;\A 14: 	border:2px solid $violet;\A 15: 	border-radius:3px;\A 16: 	cursor: pointer;\A 17: 	color: $bright;\A 18: 	text-transform: uppercase;"; }
+/*mixin for transition, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for border-radius, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for box-shadow, variables inside paranthesis are defined. variable is defined in _var.scss */
+/*mixin for text-shadow, variables inside paranthesis are defined. variable is defined in _var.scss */
+/*mixin for transform, variables inside paranthesis are defined as null. specific properties can be changed and used. variable is defined in _var.scss */
+/*mixin for button-skewed, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for button_skewed_oneside, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for triangle, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for gradient, variables inside paranthesis are defined. variables are defined in _var.scss*/
+/*mixin for media query, variables inside paranthesis are not defined.  so they are mandatory*/
+/*mixin for trapezoid, variables inside paranthesis are not defined.  so they are mandatory*/
+.breadcrumbs {
+  font-family: Arial Regular, Sans-Serif;
+  max-width: 1200px;
+  margin: 0 auto 18px;
+}
+.breadcrumbs * {
+  font-family: Arial Regular, Sans-Serif;
+}
+.breadcrumbs li a {
+  color: #202020;
+}
+.breadcrumbs li a:visited {
+  color: #202020;
+}
+
+.catalog-product-view .main-container, .review-product-list .main-container {
+  padding-top: 18px;
+  background: #f4f4f4;
+  margin-top: 0;
+}
+.catalog-product-view .main-container .main, .catalog-product-view .main-container .product-essential, .review-product-list .main-container .main, .review-product-list .main-container .product-essential {
+  background: transparent;
+}
+.catalog-product-view .main-container .main, .review-product-list .main-container .main {
+  max-width: 100%;
+}
+.catalog-product-view .main-container .product-shop .short-description, .review-product-list .main-container .product-shop .short-description {
+  background: transparent;
+}
+
+.catalog-product-view .product-view {
+  font-family: 14px;
+}
+.catalog-product-view .product-view .product-essential {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.catalog-product-view .product-view * {
+  font-family: Arial Regular, Sans-Serif;
+}
+.catalog-product-view .col-main {
+  padding: 0;
+}
+.catalog-product-view .std p {
+  display: inline-block;
+  width: 100%;
+}
+.catalog-product-view .std p span {
+  font-size: 14px !important;
+  line-height: 22px;
+}
+.catalog-product-view .std b {
+  font-weight: normal;
+  font-size: 14px;
+  color: #9fb701;
+  text-decoration: underline;
+}
+
+.catalog-product-view .col1-layout .product-view .product-shop, .catalog-product-view .col1-layout .product-view .product-shop, .review-product-list .col1-layout .product-view .product-shop, .review-product-list .col1-layout .product-view .product-shop {
+  width: 60%;
+}
+
+.product-view .product-img-box {
+  width: 35%;
+}
+.product-view .product-shop .product-name {
+  margin-bottom: 0;
+}
+.product-view .product-shop .product-name h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+  color: #506f00;
+  font-family: Arial Regular, Sans-Serif;
+  line-height: 24px;
+}
+.product-view .product-shop .short-description {
+  font-size: 14px;
+  padding-top: 5px;
+  border-bottom: 1px solid #c9c9c9;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+
+.catalog-product-view .pr-social-icons-wrapper .pr-name-social-icons {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.share.bordercolor {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 7px;
+}
+
+.catalog-product-view .product_extra_links, .review-product-list .product_extra_links {
+  width: auto;
+  margin: 0;
+  clear: none;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0;
+  float: right;
+}
+
+.catalog-product-view .pr-add-to-compare a.link-compare, .review-product-list .pr-add-to-compare a.link-compare, .catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend {
+  background: url(../images/sprite.png) -233px -90px no-repeat #9fb701;
+  color: #fff;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 8px 24px 8px 51px;
+  border-radius: 30px;
+  display: block;
+  font-family: Arial Regular, Sans-Serif;
+  height: auto;
+  font-weight: normal;
+  background-size: 600px;
+}
+
+.catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend {
+  background: url(../images/sprite.png) -226px -411.5px no-repeat #9fb701;
+  padding: 8px 24px 8px 48px;
+}
+
+.catalog-product-view .pr-links-right div, .review-product-list .pr-links-right div {
+  display: inline-block;
+  padding: 0 0 0 15px;
+}
+
+.catalog-product-view .pr-links-right, .review-product-list .pr-links-right {
+  margin: 0;
+}
+
+.product-details-table {
+  margin-top: 27px;
+}
+
+.catalog-product-view .product-details-table table.new_product_list, .review-product-list .product-details-table table.new_product_list {
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid #cccaca;
+  border-top: 0;
+}
+
+.catalog-product-view .product-details-table table.new_product_list th, .review-product-list .product-details-table table.new_product_list th {
+  background-color: #506f00;
+  color: #fff;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: normal;
+  padding: 4px 5px;
+  font-family: Arial Regular, Sans-Serif;
+  vertical-align: middle;
+}
+
+.catalog-product-view .product-details-table table.new_product_list th strong, .review-product-list .product-details-table table.new_product_list th strong {
+  font-weight: normal;
+  display: block;
+  padding-left: 5px;
+}
+
+.catalog-product-view .product-details-table table.new_product_list td, .review-product-list .product-details-table table.new_product_list td {
+  padding: 15px 5px 15px 10px;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.catalog-product-view .new_product_list select {
+  background: #ffffff;
+  border: 1px solid #d4d4d4;
+  padding: 7px 9px 7px 10px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  width: 70px;
+  color: #000;
+}
+
+.catalog-product-view table.new_product_list a.related-buy-now, .review-product-list table.new_product_list a.related-buy-now {
+  vertical-align: middle;
+}
+
+.catalog-product-view table.new_product_list a.refill_reminder_open, .review-product-list table.new_product_list a.refill_reminder_open {
+  text-decoration: none;
+  color: #9d9999;
+  font-size: 17px;
+  background: url(../images/sprite.png) -10px -106px no-repeat;
+  padding-left: 26px;
+  transition: none;
+  padding: 3px 5px 5px 5px;
+  width: 20px;
+  display: block;
+  height: 22px;
+}
+
+.catalog-product-view table.new_product_list a.refill_reminder_open:hover, .review-product-list table.new_product_list a.refill_reminder_open:hover {
+  background: url(../images/sprite.png) -10.5px -146px no-repeat;
+}
+
+span.recomend-text {
+  font-size: 0;
+  display: inline-block;
+  background: url(../images/highly-recom.png) no-repeat;
+  width: 43px;
+  height: 43px;
+  background-size: 43px 41px;
+  position: relative;
+  top: 0;
+  left: 5px;
+  vertical-align: middle;
+}
+
+.catalog-product-view table.new_product_list a.related-buy-now, .review-product-list table.new_product_list a.related-buy-now {
+  background: url(../images/custom/cart_prod.png) center no-repeat #fff;
+  border: 0;
+}
+
+.catalog-product-view table.new_product_list a.related-buy-now:hover, .review-product-list table.new_product_list a.related-buy-now:hover {
+  background: url(../images/custom/cart_prod.png) center no-repeat #fff;
+  border: 0;
+}
+
+.catalog-product-view .product-details-table table.new_product_list, .review-product-list .product-details-table table.new_product_list {
+  background: #fff;
+}
+
+.product-image {
+  background: #fff;
+}
+
+.product-collateral-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.catalog-product-view .easytabs-wrapper {
+  width: 100%;
+}
+
+.easytabs-wrapper {
+  margin: 30px 0 0;
+}
+
+.catalog-product-view .easytabs {
+  border-spacing: 0;
+}
+.catalog-product-view .easytabs li {
+  background: #818181;
+  border: 0;
+  box-shadow: none;
+  float: left;
+  border-right: 1px solid #fff;
+  box-sizing: border-box;
+  width: 33.33%;
+}
+.catalog-product-view .easytabs li:hover {
+  background: #506f00;
+}
+.catalog-product-view .easytabs li.active {
+  background: #506f00;
+  border-width: 0;
+  box-shadow: none;
+  text-shadow: none;
+  border-right: 1px solid #fff;
+}
+.catalog-product-view .easytabs li a {
+  padding: 8px 12px;
+}
+.catalog-product-view .easytabs-content-wrapper {
+  line-height: 20px;
+  color: #333;
+}
+.catalog-product-view .easytabs-content-wrapper h3 strong {
+  font-size: 16px !important;
+  font-family: Arial Regular, Sans-Serif;
+  font-weight: bold;
+}
+.catalog-product-view .easytabs-content {
+  color: #333;
+  box-sizing: border-box;
+}
+
+.catalog-product-view .easytabs-content {
+  box-sizing: border-box;
+}
+
+.catalog-product-view .padder.easytabs-content-wrapper {
+  border: 0;
+}
+.catalog-product-view .padder.easytabs-content-wrapper .form-add {
+  padding: 0;
+}
+
+.catalog-product-view .product-view .box-tags .form-add label {
+  font-size: 16px !important;
+  margin-bottom: 8px;
+}
+
+.catalog-product-view .product-collateral #product_tabs_tags_tabbed_contents .input-box input {
+  border: 1px solid #d4d4d4;
+}
+
+.catalog-product-view .easytabs-content {
+  text-align: left;
+}
+
+.catalog-product-view .product-collateral .form-add h2, .catalog-product-view .product-collateral .trustedcompany-widget h2, .review-product-list .product-collateral .form-add h2, .review-product-list .product-collateral .trustedcompany-widget h2 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #fff;
+  border-bottom: 0;
+  padding: 9px 14px;
+  margin: 0;
+  background: #506f00;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.catalog-product-view .customer_rating, .review-product-list .customer_rating {
+  width: 100%;
+}
+.catalog-product-view #review-form, .review-product-list #review-form {
+  padding: 15px;
+}
+
+.trustedcompany-widget {
+  clear: both;
+}
+.trustedcompany-widget .tc-widget-horizontal-content {
+  background: #f4f4f4;
+  display: table !important;
+}
+.trustedcompany-widget .tc-widget-horizontal-content .tc-widget-horizontal-main {
+  padding: 0 !important;
+  width: 23%;
+  text-align: left;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  background: #e9e7e7;
+  margin: 0;
+  padding: 0 20px;
+  position: relative;
+}
+.trustedcompany-widget .tc-widget-horizontal-content .tc-widget-horizontal-main:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: inline-block;
+  background: transparent;
+  position: absolute;
+  transform: rotate(45deg);
+  right: -8px;
+  top: 50%;
+  border: 0 solid transparent;
+  border-top: 20px solid #e9e7e7;
+  border-right: 20px solid #e9e7e7;
+  margin-top: -10px;
+}
+.trustedcompany-widget .tc-widget-horizontal-content #tc-carousel-review-86430 {
+  width: 70%;
+  display: table-cell;
+  vertical-align: middle;
+}
+.trustedcompany-widget .tc-widget-horizontal-content .tc-background-color {
+  background: transparent !important;
+}
+
+.tc-widget-horizontal .tc-widget-horizontal-content .tc-widget-horizontal-item {
+  height: auto !important;
+  min-height: 180px;
+}
+
+.a.tc-carousel-control svg {
+  display: none !important;
+}
+.a.tc-carousel-control.tc-left {
+  background: url(../images/custom_left_bx.png) center no-repeat;
+  width: 23px;
+  height: 23px;
+}
+
+.basic_button {
+  border-radius: 3px;
+  cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 28px;
+  font-size: 1.083rem;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  padding: 0 15px;
+  letter-spacing: 0.4px;
+}
+
+/*# sourceMappingURL=product_page.css.map */
