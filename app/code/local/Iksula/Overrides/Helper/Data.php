@@ -17,8 +17,9 @@ class Iksula_Overrides_Helper_Data extends Mage_Core_Helper_Abstract
             $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
             $pack_size = array();
             foreach ($childProducts as $key => $child) {
-                if($child->getData('status')==1) {
-                  $pack_size[$child->getPrice()] = array('pack_size'=>$child->getResource()->getAttribute('pack_size')->getFrontend()->getValue($child),'child'=>$child);
+                $childData = Mage::getModel('catalog/product')->load($child->getEntityId());
+                if($childData->getData('status')==1) {
+                  $pack_size[$childData->getPrice()] = array('pack_size'=>$childData->getResource()->getAttribute('pack_size')->getFrontend()->getValue($childData),'child'=>$childData);
                 }
             }            
             sort($pack_size);
