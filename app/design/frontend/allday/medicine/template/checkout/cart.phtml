@@ -50,6 +50,7 @@
         <div class="align-l">
 
             <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+            <?php echo $this->getBlockHtml('formkey'); ?>
         <fieldset>
             <div class="cart_table_wrap th_heading">
             <table id="shopping-cart-table2" class="data-table cart-table">
