@@ -7,7 +7,7 @@
     <reference name="content">   
       <block type="overrides/index" name="overrides_index" template="overrides/index.phtml"/>   
     </reference>   
-  </overrides_index_index>
+  </overrides_index_index>   
   <overrides_method_productreview>  
   <reference name="root">   
       <action method="setTemplate"><template>page/1column.phtml</template></action>   
@@ -15,6 +15,6 @@
     <reference name="content">   
       <block type="overrides/productreview" name="overrides_index" template="overrides/productReview.phtml"/>   
     </reference>   
-  </overrides_method_productreview>     
+  </overrides_method_productreview>
 </layout>   
 	

@@ -123,7 +123,9 @@
 
 /* TABLES
 *******************************************************************************/
-
+.custom_color{
+    color: #0125E2;
+}
 /* Grid - General */
 .grid                           { border-bottom:0; padding-bottom:.5em; }
 .grid table                     { width:100%; border:1px solid #cbd3d4; border-bottom:none; }
@@ -376,7 +378,7 @@ select.multiselect option       { padding:3px 4px; border-bottom:1px solid #ddd;
 .form-list td.hidden            { border:0 !important; padding:0 !important; background:0 !important; }
 .form-list td.label             { width:200px; }
 .form-list td.use-default label { display:inline-block; vertical-align:middle; padding:0 3px; }
-.form-list td.label label       { display:block; width:185px; padding-right:15px; padding-top:1px; }
+.form-list td.label label       { display:block;padding-right:15px; padding-top:1px; }
 .form-list td.value input.input-text,
 .form-list td.value textarea    { width:274px; }
 .form-list td.value textarea    { height:15em; }
@@ -589,7 +591,7 @@ div.main-col-inner { float:left; /* Fixes some inner clears in the liquid main-c
 /* HEADER & FOOTER
 *******************************************************************************/
 
-.logo                                   { float:left; margin:5px 20px 5px 27px; height:43px; }
+.logo                                   { float:left;/* margin:5px 20px 5px 27px; height:43px;*/  height:70px;}
 .header-top                             { border-bottom:1px solid #5F767F; }
 
 /* Header right */
@@ -720,16 +722,16 @@ div.autocomplete ul li { padding:.5em .7em; min-height:32px; cursor:pointer; tex
 /* LOGIN
 *******************************************************************************/
 #page-login                             { background:#f8f8f8; text-align:center; }
-.login-container                        { width:581px; margin:170px auto; padding-left:32px; background:url(images/login_logo.gif) no-repeat; }
-.login-form                             { padding:27px 57px 35px 57px; background:url(images/login_box_bg.jpg) no-repeat; text-align:left; }
+.login-container                        { width:581px; margin:170px auto; padding-left:32px;/* background:url(images/login_logo.gif) no-repeat;*/ }
+.login-form                             { padding:27px 57px 35px 57px;/* background:url(images/login_box_bg.jpg) no-repeat;*/ text-align:left; }
 .login-form .input-left                 { float:left; }
 .login-form .input-right                { float:right; }
 .login-form .input-box input.input-text { width:224px; }
 .login-form h2                          { font-size:1.7em; font-weight:normal; }
 .login-form label                       { font-weight:bold; }
 .login-form .form-buttons               { margin:12px 0 0 0; clear:both; text-align:right; }
-.login-box .bottom                      { width:581px; height:5px; background:url(images/login_box_bottom.jpg) no-repeat; overflow:hidden; }
-.login-container .legal                 { margin:0; background:url(images/login_box_legal_bg.gif) no-repeat; padding:8px 8px 5px 8px; font-size:.95em; }
+.login-box .bottom                      { width:581px; height:5px;/* background:url(images/login_box_bottom.jpg) no-repeat;*/ overflow:hidden; }
+.login-container .legal                 { margin:0; /*background:url(images/login_box_legal_bg.gif) no-repeat; */padding:8px 8px 5px 8px; font-size:.95em; }
 .login-form .validation-advice          { margin:3px 0 0 0; }
 .login-form .forgot-link                { margin:0 17px 0 0; text-align:right; }
 .login-form .captcha                    { padding:10px 0 0; }
@@ -737,7 +739,22 @@ div.autocomplete ul li { padding:.5em .7em; min-height:32px; cursor:pointer; tex
 .login-form .captcha-image img          { vertical-align:bottom; }
 .login-form .captcha-reload             { cursor:pointer; position: absolute; top:2px; right:2px; }
 .login-form .captcha-reload.refreshing  { animation:rotate 1.5s infinite linear; -webkit-animation:rotate 1.5s infinite linear; -moz-animation:rotate 1.5s infinite linear; }
+/*-------------All day chiemist Login Page Modications Start ------------- */
 
+.login-box  .alldaychemistlogo          { background:url(images/adc_logo_admin.png) no-repeat;padding:45px 45px 65px 45px;width: 45%;margin: 0px auto;}
+.login-container                        {margin: 100px auto;}
+.login-box .adminheaders                { background:url(images/nav-container-bg.png) no-repeat;height:100px;position: relative;top: 40px}
+.login-box .adminheaders h2             { position:relative;left:20px;top:20px;color: #fff;text-align: left;}
+.login-form .input-box ,.login-form .input-right {width: 100%;float: none;padding-bottom: 10px;}
+.login-form .form-buttons               {margin: 12px 0 0 0px; clear: both; text-align: right; } 
+.login-form .submitbtn                  {margin: 20px 0px 0px 0px;}
+.login-container .legal                 {border: 1px solid #ccc; border-radius: 5px;margin-left: 10px; }
+.login-form                             {border: 1px solid #ccc; border-radius: 5px;margin-left: 10px;}
+.login-form .form-button                {background: #7e9b01; border: 0px; padding: 5px 30px 5px 30px; cursor: pointer; color: #fff; border-radius: 5px; font-family: ita; font: italic 15px/18px Georgia,"Times New Roman",Times,serif; white-space: nowrap; }
+.login-form .input-box input.input-text {width: 300px;margin-top: 5px; }
+.login-form input.input-text, textarea  {padding: 5px; }
+.login-form .input-box label            {font-size: 14px;margin-bottom:10px; }
+ /*-------------All day chiemist Login Page Modications End ------------- */
 @-webkit-keyframes rotate {
     0% { -webkit-transform:rotate(0); }
     0% { -webkit-transform:rotate(360deg); }
@@ -1396,6 +1413,8 @@ ul.super-product-attributes { padding-left:15px; }
 .uploader .file-row-info .file-info-name  { font-weight:bold; }
 .uploader .file-row .progress-text { float:right; font-weight:bold; }
 .uploader .file-row .delete-button { float:right; }
+.uploader .buttons { float:left; }
+.uploader .flex { float:right; }
 .uploader .progress { border:1px solid #f0e6b7; background-color:#feffcc; }
 .uploader .error { border:1px solid #aa1717; background-color:#ffe6de; }
 .uploader .error .progress-text { padding-right:10px; }
@@ -1602,7 +1621,7 @@ ul.super-product-attributes { padding-left:15px; }
 /* Font */
 .bold               { font-weight:bold !important; }
 .normal             { font-weight:normal !important; }
-.strike             { text-decoration: line-through; }
+/*.strike             { text-decoration: line-through; }*/
 
 /* Clear */ /* This keeps our HTML free of buncha clearing elements */
 .config-heading:after,

@@ -1,0 +1,169 @@
+<?php
+$customerStatus = Mage::getSingleton('customer/session')->isLoggedIn(); 
+$currentProductId = $this->getCurrentProductId();
+if(!$customerStatus){
+	Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getBaseUrl().'customer/account/login');
+}
+$obj = new Mage_Review_Block_Form();
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$name = $customer->getFirstname().' '.$customer->getLastname();
+$currentItemDetails = $this->getCurrentItemDetails();
+$orderItemDetails = $this->getOrderItemDetails();
+$i = 1; 
+$j = 1;
+$m = 1;
+?>
+<h2 class="review_rating_heading">your reviews and ratings</h2>	
+<?php
+?>
+<form action="<?php echo $obj->getAction()."id/".$currentItemDetails->getId()?>" method="post" class="review_frm" id="review-form-<?php echo $i ?>">
+	<input type="hidden" name="nickname" id="nickname_field" class="input-text" value="<?php echo $name;?>"/>
+	<div class="review_img">
+		<a class="review_img_click" href="<?php echo $currentItemDetails->getProductUrl();?>"><img src="<?php echo $currentItemDetails->getImageUrl();?>" style="display: inline;"></a>
+	</div>
+	<?php foreach ($obj->getRatings() as $_rating): ?>	                               
+	<div class="rating_section">                                      
+		<a class="rating_heading" href="<?php echo $currentItemDetails->getProductUrl();?>"><span ><?php echo $currentItemDetails->getName();?></span></a>
+		<div class="star_wrap">
+			<div class="value div_<?php echo $j;?>" style="border:transparent">
+				<?php foreach ($_rating->getOptions() as $_option): ?>
+				<input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="id_<?php echo $i;?>_<?php echo $j;?>" value="<?php echo $_option->getId() ?>" class="radio css-checkbox customRadio" />
+				<label id ="label_<?php echo $i;?>_<?php echo $j;?>" for="id_<?php echo $i;?>_<?php echo $j;?>" class="review_lable custom_css_label radGroup2 <?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></label>
+				<?php $i++; endforeach; ?>
+			</div>
+		</div>
+		<?php   $j = $j + 5; endforeach; ?>
+		<div class="review_field review_by review_posted_<?php echo $m; ?>" style="display:none">Review posted by <span><?php echo $customer->getFirstname();?></span></div>
+	</div>  
+	<div class="review_desc">                                      
+		<div id="summary_field_div" class="summary_field_div_<?php echo $m;?>" style="display:none">
+			<ul class="form-list">
+				<li>
+					<div class="input-box summary_input" >
+						<input type="text" name="title" id="summary_field" class="input-text required-entry" placeholder="Summary of Your Review" />
+					</div>
+				</li>
+				<li>
+					<div class="input-box review_field_input">
+						<textarea name="detail" value="Review" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
+					</div>
+				</li>                    
+				<div class="buttons-set summary_field_button_div_<?php echo $m;?>" id="summary_field_button_div">
+					<button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button disableButton"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+				</div>
+			</ul>
+		</div>
+	</div>
+
+</form>
+<?php 
+if($orderItemDetails->getSize()){
+	?>	
+	<h2 class="review_rating_heading">add your review on recently purchased products</h2>	
+	<?php echo $this->pagination($orderItemDetails) ;?>
+	<?php
+	$i = 6; 
+	$j = 6;
+	$m = 6;
+	foreach ($orderItemDetails as $key) {
+		$product = $this->getProductDetails($key['entity_id']);
+		?>
+		<form action="<?php echo $obj->getAction()."id/".$product->getId()?>" method="post" class="review_frm" id="review-form-<?php echo $i ?>">
+			<input type="hidden" name="nickname" id="nickname_field" class="input-text" value="<?php echo $name;?>"/>
+			<div class="review_img">
+				<a class="review_img_click" href="<?php echo $product->getProductUrl();?>"><img src="<?php echo $product->getImageUrl();?>" style="display: inline;"></a>
+			</div>
+			<?php foreach ($obj->getRatings() as $_rating): ?>	                               
+			<div class="rating_section">                                      
+				<a class="rating_heading" href="<?php echo $product->getProductUrl();?>"><span ><?php echo $product->getName();?></span></a>
+				<div class="star_wrap">
+					<div class="value div_<?php echo $j;?>" style="border:transparent">
+						<?php foreach ($_rating->getOptions() as $_option): ?>
+						<input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="id_<?php echo $i;?>_<?php echo $j;?>" value="<?php echo $_option->getId() ?>" class="radio css-checkbox customRadio" />
+						<label id ="label_<?php echo $i;?>_<?php echo $j;?>" for="id_<?php echo $i;?>_<?php echo $j;?>" class="review_lable custom_css_label radGroup2 <?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></label>
+						<?php $i++; endforeach; ?>
+					</div>
+				</div>
+				<?php   $j = $j + 5; endforeach; ?>
+				<div class="review_field review_by review_posted_<?php echo $m; ?>" style="display:none">Review posted by <span><?php echo $customer->getFirstname();?></span></div>
+			</div>  
+			<div class="review_desc">                                      
+				<div id="summary_field_div" class="summary_field_div_<?php echo $m;?>" style="display:none">
+					<ul class="form-list">
+						<li>
+							<div class="input-box summary_input" >
+								<input type="text" name="title" id="summary_field" class="input-text required-entry" placeholder="Summary of Your Review" />
+							</div>
+						</li>
+						<li>
+							<div class="input-box review_field_input">
+								<textarea name="detail" value="Review" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
+							</div>
+						</li>                 
+						<div class="buttons-set summary_field_button_div_<?php echo $m;?>" id="summary_field_button_div">
+							<button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button disableButton"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+						</div>
+					</ul>
+				</div>
+			</div>
+
+		</form>
+		<?php   $m = $m + 5; } ?>
+		<?php } ?>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+		jQuery(document).ready(function(){			
+			jQuery("#summary_field_button_div, #summary_field_div, .review_field").hide();
+			jQuery('.customRadio').change(
+				function(){
+					var radios = document.getElementsByClassName('customRadio');
+					for( i = 0; i < radios.length; i++ ) {
+						if( radios[i].checked ) {
+							if(radios[i].value != this.value){
+								radios[i].checked = false;
+							}else{
+								radios[i].checked = false;
+								this.checked = true;
+							}
+						}
+					}
+					var selected = jQuery("input[type='radio']:checked");
+					var value = jQuery(this).val();
+					var id = this.id;
+					var lableId = id.split("_");
+					var incId = lableId[1];
+					var constId = lableId[2];
+					var radioLabelId = jQuery(".div_"+constId+" input:radio:checked").attr('id');
+					var reviewUrl = '<?php echo $this->getSkinUrl("images/custom_new_stars_active.png");?>';
+					var silverstarUrl = '<?php echo $this->getSkinUrl("images/custom_new_stars.png");?>';
+					jQuery("#summary_field_button_div, #summary_field_div, .review_field").hide();
+					jQuery(".summary_field_button_div_"+constId+", .summary_field_div_"+constId+", .review_posted_"+constId).show();
+					jQuery('.custom_css_label').css('background-image','url(' + silverstarUrl + ')');
+					if(typeof radioLabelId != 'undefined'){
+						var jslabelId = radioLabelId.split("_");
+						var incId = jslabelId[1];
+						var constId = jslabelId[2];
+						for (i = parseInt(constId); i <= parseInt(incId); i++) {
+							var className = "label_"+i+"_"+constId;
+							jQuery("#"+className+"").css('background-image','url(' + reviewUrl + ')');
+						}
+					}else if(selectedVal != ''){
+						radioLabelId = selected.attr('id');
+						if(typeof radioLabelId == 'undefined' || radioLabelId != null){
+							var jslabelId = radioLabelId.split("_");
+							var incId = jslabelId[1];
+							var constId = jslabelId[2];
+							for (i = parseInt(constId); i <= parseInt(incId); i++) {
+								var className = "label_"+i+"_"+jslabelId[2];
+								jQuery("#"+className+"").css('background-image','url(' + reviewUrl + ')');
+							}
+						}
+					}
+				}
+				);
+});
+jQuery('.disableButton').click(function(){
+	jQuery(this).closest('form').submit();
+	jQuery(this).prop('disabled', true);
+})
+</script>
