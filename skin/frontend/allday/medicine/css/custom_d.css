@@ -1111,8 +1111,8 @@ ol#mini-cart .product-name {
 .catalog-category-view .products-grid .product-name, .catalogsearch-result-index .products-grid .product-name,
 .elastic-search-result .products-grid .product-name {
 	/*margin: 0 0 15px 0;*/
-	width: 95%;
-  	display: inline-block;
+/*	width: 95%;
+  	display: inline-block;*/
   	/*height: 30px;*/
 }
 
@@ -1140,7 +1140,6 @@ ol#mini-cart .product-name {
 	-webkit-box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
   	-moz-box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
   	box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
-  	background: #f5f4f4;
 
 }
 
@@ -1148,7 +1147,7 @@ ol#mini-cart .product-name {
 .elastic-search-result .products-grid .product-image {
 	display: inline-block;
 	width: 100%;
-	border-bottom: 2px solid #6B9A63;
+	/*border-bottom: 2px solid #6B9A63;*/
   	padding: 10px 0;
   	background: #fff;
   	height: auto;
@@ -1196,12 +1195,9 @@ ol#mini-cart .product-name {
 .elastic-search-result .products-grid .generic_for {
   padding-top: 2px;
   border-top: 0px solid #CECECE;
-  display: inline-block;
-  width: 70%;
-  margin-top: 2px;
-  margin-bottom: 4px;
+  display: block;
   /*height: 45px;*/
-  font-weight: 600;
+  font-weight: normal;
 }
 
 .catalog-category-view .products-grid p.custom_price, .catalogsearch-result-index .products-grid p.custom_price,
@@ -7528,14 +7524,13 @@ li.mob-menu-topmenu {
 }
 
 .catalog-category-view .generic_name, .catalogsearch-result-index .generic_name, .elastic-search-result .generic_name {
-	font-weight: 600;
-  	display: inline-block;
+	font-weight: normal;
+  	display: block;
 }
 
 .catalog-category-view .products-grid .generic_name, .catalogsearch-result-index .products-grid .generic_name,
 .catalog-category-view .manufactured_by, .elastic-search-result .products-grid .generic_name {
-	width: 90%;
-	display: inline-block;
+	display: block;
 }
 
 .catalog-category-view .ratings .rating-box, .catalogsearch-result-index .ratings .rating-box, .elastic-search-result .ratings .rating-box {
@@ -7846,13 +7841,12 @@ span.minicart-title-price {
 
 .pr-details-height {
   /*min-height: 160px;*/
-  min-height: 135px;
+  /*min-height: 135px;*/
 }
 
 .catalog-category-view .products-grid .no-rating, .catalog-category-view .products-grid .ratings {
 	height: auto;
-	width: 90%;
-	display: inline-block;
+	display: block;
 }
 
 .checkout-cart-index .item .product-details p.custom_price {

@@ -43,14 +43,14 @@
         </p>
 
         <div class="limiter">
-            <label><?php echo $this->__('Show Products: ') ?></label>
+            <label><?php echo $this->__('Show per page') ?></label>
             <select onchange="setLocation(this.value)">
             <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
                 <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
                     <?php echo $_limit ?>
                 </option>
             <?php endforeach; ?>
-            </select> <?php echo $this->__('per page') ?>
+            </select> <?php //echo $this->__('per page') ?>
         </div>
 
         <?php echo $this->getPagerHtml() ?>
@@ -63,15 +63,15 @@
         <p class="view-mode">
             <?php $_modes = $this->getModes(); ?>
             <?php if($_modes && count($_modes)>1): ?>
-            <label><?php echo $this->__('Display') ?>:</label>
+            <label><?php echo $this->__('Show') ?>:</label>
             <?php foreach ($this->getModes() as $_code=>$_label): ?>
                 <?php if($this->isModeActive($_code)): ?>
                     <strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>">
-                        <?php
-                            if($_code=='grid'):echo 'Tile View';
-                                else:echo $_label.' View';                              
-                            endif;
-                         ?>
+                    	<?php
+                    		if($_code=='grid'):echo 'Tile View';
+                    			else:echo $_label.' View';                    			
+                    		endif;
+                    	 ?>
                     </strong>&nbsp;
                 <?php else: ?>
                     <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label.' View' ?></a>&nbsp;
