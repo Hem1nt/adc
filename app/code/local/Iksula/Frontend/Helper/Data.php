@@ -217,25 +217,26 @@ class Iksula_Frontend_Helper_Data extends Mage_Core_Helper_Abstract{
             $pack_size = array();
             $price_division = array();
             foreach ($childProducts as $key => $child) {
-              if($child->getStatus() == 1){    
-                  $pack_size[$child->getPrice()] = array(
-                    'pack_bonus'=>$child->getBonus(),
-                    'pack_special_price'=>$child->getSpecialPrice(),
-                    'pack_price'=>$child->getPrice(),
-                    'pack_size'=>$child->getResource()->getAttribute('pack_size')->getFrontend()->getValue($child) + $child->getBonus(),
+              $childData = Mage::getModel('catalog/product')->load($child->getEntityId());  
+              if($childData->getStatus() == 1){    
+                  $pack_size[$childData->getPrice()] = array(
+                    'pack_bonus'=>$childData->getBonus(),
+                    'pack_special_price'=>$childData->getSpecialPrice(),
+                    'pack_price'=>$childData->getPrice(),
+                    'pack_size'=>$childData->getResource()->getAttribute('pack_size')->getFrontend()->getValue($childData) + $childData->getBonus(),
                     );
-                  $price_division[$child->getPrice()] = array(
-                    'per_unit'=>$child->getPrice()/$pack_size[$child->getPrice()]['pack_size'],
-                    'pack_bonus'=>$child->getBonus(),
-                    'pack_special_price'=>$child->getSpecialPrice(),
-                    'pack_price'=>$child->getPrice(),
-                    'pack_size'=>$child->getResource()->getAttribute('pack_size')->getFrontend()->getValue($child) + $child->getBonus()
+                  $price_division[$childData->getPrice()] = array(
+                    'per_unit'=>$childData->getPrice()/$pack_size[$childData->getPrice()]['pack_size'],
+                    'pack_bonus'=>$childData->getBonus(),
+                    'pack_special_price'=>$childData->getSpecialPrice(),
+                    'pack_price'=>$childData->getPrice(),
+                    'pack_size'=>$childData->getResource()->getAttribute('pack_size')->getFrontend()->getValue($childData) + $childData->getBonus()
                     );
               }  
             }
             sort($pack_size);
             sort($price_division);
-         
+
             // echo '<pre>';print_r($orderListing);exit();
             if($orderListing == 1) {
                 $bestValue = Mage::getStoreConfig('custom_snippet/best_value/best_value_listing_order');

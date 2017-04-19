@@ -52,9 +52,14 @@
 <?php endif; ?>
 
 <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
-    <div class="category-description std">
-        <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
-        <a class="read-more" id="main-desc-a">Read more</a>
+    <div class="category_banner">
+            <div class="banner_image">
+                    <img src="<?php echo $this-> getSkinUrl('images/category_banner.jpg');?>"/>
+            </div>
+            <div class="banner_desc">
+                    <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
+                    <a class="read-more" id="main-desc-a">Read more</a>
+            </div>
     </div>
     <?php endif; ?>
 

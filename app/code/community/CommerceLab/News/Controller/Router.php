@@ -29,84 +29,99 @@ class CommerceLab_News_Controller_Router extends Mage_Core_Controller_Varien_Rou
 
         if (!Mage::app()->isInstalled()) {
             Mage::app()->getFrontController()->getResponse()
-                ->setRedirect(Mage::getUrl('install'))
-                ->sendResponse();
+            ->setRedirect(Mage::getUrl('install'))
+            ->sendResponse();
             exit;
         }
 
         $route = Mage::helper('clnews')->getRoute();
 
         $identifier = $request->getPathInfo();
-
-        if (substr(str_replace("/", "", $identifier), 0, strlen($route)) != $route) {
+        $reviewArr = explode('/', $identifier);
+        if (substr(str_replace("/", "", $identifier), 0, strlen($route)) != $route && $reviewArr[2] != 'review') {
             return false;
+        }else{
+            $pId = $reviewArr[3];
+            $catalogModel =  Mage::getModel('catalog/product')->load($pId);
+            $data = $catalogModel->getData();
+            $urlKey = $catalogModel->getUrlKey();
+            $productId = $catalogModel->getId();
+            $customUrl = '/'.$urlKey.'/review/'.$productId;
+           $newIdentifier = $identifier;
         }
-
-
+        
         $identifier = substr_replace($request->getPathInfo(), '', 0, strlen("/" . $route. "/"));
         $identifier = str_replace(Mage::helper('clnews')->getNewsitemUrlSuffix(), '', $identifier);
 
-        if (substr($request->getPathInfo(), 0, 7) !== '/clnews') {
-            if ($identifier == '') {
-                $request->setModuleName('clnews')
+        if($newIdentifier == $customUrl){
+            $request->setModuleName('overrides')
+                    ->setControllerName('method')
+                    ->setActionName('productReview')
+                    ->setParam('productId', $productId);
+                    return true;
+        }else{    
+            if (substr($request->getPathInfo(), 0, 7) !== '/clnews') {
+                if ($identifier == '') {
+                    $request->setModuleName('clnews')
                     ->setControllerName('index')
                     ->setActionName('index');
                     return true;
-            } elseif (substr($identifier, 0, 9) === 'category/') {
-                $len = strcspn($identifier, '/');
-                $key = substr($identifier, ($len+1));
-                $request->setModuleName('clnews')
+                } elseif (substr($identifier, 0, 9) === 'category/') {
+                    $len = strcspn($identifier, '/');
+                    $key = substr($identifier, ($len+1));
+                    $request->setModuleName('clnews')
                     ->setControllerName('index')
                     ->setActionName('index')
                     ->setParam('category', $key);
-                return true;
-            } elseif (substr($identifier, 0, 4) === 'rss/') {
-                $request->setModuleName('clnews')
+                    return true;
+                } elseif (substr($identifier, 0, 4) === 'rss/') {
+                    $request->setModuleName('clnews')
                     ->setControllerName('rss')
                     ->setActionName('index');
-                return true;
-            } elseif ($pos = strpos($identifier, '/print/article/')) {
-                $param = substr($identifier, $pos+15);
-                $param = trim(str_replace('/', '', $param));
-                $request->setModuleName('clnews')
-                ->setControllerName('newsitem')
+                    return true;
+                } elseif ($pos = strpos($identifier, '/print/article/')) {
+                    $param = substr($identifier, $pos+15);
+                    $param = trim(str_replace('/', '', $param));
+                    $request->setModuleName('clnews')
+                    ->setControllerName('newsitem')
                     ->setActionName('print')
                     ->setParam('article', $param);
-                return true;
-            } elseif (substr($identifier, 0, 9) === 'newsitem/') {
-                $str = str_replace('newsitem/view/id/', '', $identifier);
-                $len = strcspn($identifier, '/');
-                $id = substr($identifier, 0, $len);
-                $request->setModuleName('clnews')
+                    return true;
+                } elseif (substr($identifier, 0, 9) === 'newsitem/') {
+                    $str = str_replace('newsitem/view/id/', '', $identifier);
+                    $len = strcspn($identifier, '/');
+                    $id = substr($identifier, 0, $len);
+                    $request->setModuleName('clnews')
                     ->setControllerName('newsitem')
                     ->setActionName('view')
                     ->setParam('id', $id);
-                return true;
-            } elseif ($pos = strpos($identifier, '/q/')) {
-                $param = substr($identifier, $pos+2);
-                $param = trim(str_replace('/', '', $param));
-                $request->setModuleName('clnews')
-                ->setControllerName('index')
+                    return true;
+                } elseif ($pos = strpos($identifier, '/q/')) {
+                    $param = substr($identifier, $pos+2);
+                    $param = trim(str_replace('/', '', $param));
+                    $request->setModuleName('clnews')
+                    ->setControllerName('index')
                     ->setActionName('index')
                     ->setParam('q', $param);
-                return true;
-            } elseif (substr($identifier, 0, 15) !== 'adminhtml_news/' && strpos($identifier, '/')
-                                       && substr($request->getPathInfo(), 0, strlen($route)+2) === '/'.$route.'/'
-                                       && strpos($identifier, 'category/') === false) {
-                $len = strcspn($identifier, '/');
-                $category = substr($identifier, 0, $len);
-                $key = substr($identifier, ($len+1));
-                $request->setModuleName('clnews')
+                    return true;
+                } elseif (substr($identifier, 0, 15) !== 'adminhtml_news/' && strpos($identifier, '/')
+                 && substr($request->getPathInfo(), 0, strlen($route)+2) === '/'.$route.'/'
+                 && strpos($identifier, 'category/') === false) {
+                    $len = strcspn($identifier, '/');
+                    $category = substr($identifier, 0, $len);
+                    $key = substr($identifier, ($len+1));
+                    $request->setModuleName('clnews')
                     ->setControllerName('newsitem')
                     ->setActionName('view')
                     ->setParams(array('category' => $category, 'key' => $key));
-                return true;
-            } elseif (substr($request->getPathInfo(), 0, strlen($route)+2) === '/'.$route.'/') {
-                $request->setModuleName('clnews')
+                    return true;
+                } elseif (substr($request->getPathInfo(), 0, strlen($route)+2) === '/'.$route.'/') {
+                    $request->setModuleName('clnews')
                     ->setControllerName('newsitem')
                     ->setActionName('view')
                     ->setParam('key', $identifier);
-                return true;
+                    return true;
+                }
             }
         }
 

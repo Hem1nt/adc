@@ -233,7 +233,11 @@ if($_order->getStatus()=='Order Shipped'){
 <tr>
     <td>
         <div class="review_product">
-            <a href="<?php echo $frontendHelper->getReviewLink($_product->getId());?>#review-form" data-url="<?php echo $frontendHelper->getReviewLink($_product->getProductId());?>">Review Product</a>
+          <?php
+          $urlKey = $_product->getUrlKey();
+          $pId = $_product->getId();
+          ?>
+            <a href="<?php echo $this->getBaseurl().$urlKey.'/review/'.$pId?>" data-url="<?php echo $this->getBaseurl().$urlKey.'/'.$pId;?>">Review Product</a>
         </div>
     </td>
 </tr>

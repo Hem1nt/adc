@@ -7,13 +7,21 @@
     margin: 20px 0;
 }
 .catalog-product-view .pr-name-social-icons{
-	border-right: 0;
+    border-right: 0;
 }
+
 /*.catalog-product-view .review-count-pr{
 	width: 65%;
 }*/
 .catalog-product-view .review-count-pr .ratings .rating-links, .product-view .product-shop p.no-rating a {
    	font-size: 13px;
+}
+/*.catalog-product-view .review-count-pr{
+    width: 65%;
+}*/
+.catalog-product-view .review-count-pr .ratings .rating-links {
+    font-size: 14px;
+
 }
 /*myaccount cashback coupon*/
  li.cashback_offer a {
@@ -62,157 +70,500 @@
     font-size: 20px;
     color: #0a263c;
 }
+
 .charge-name {
-	font-size: 17px !important ;
-	color: #ff0000 !important;
-	font-weight: 600 !important;
+    font-size: 17px !important ;
+    color: #ff0000 !important;
+    font-weight: 600 !important;
 }
 .a-charge-name {
-	font-size: 17px !important ;
-	color: #ff0000 !important;
-	font-weight: 600 !important;
+    font-size: 17px !important ;
+    color: #ff0000 !important;
+    font-weight: 600 !important;
 }
 
 /*onepage show coupon popup*/
 .opc-index-index .opc-wrapper-opc .discount-block input.button.apply-coupon{
-	margin: 5px 0 0!important;
-	padding: 0px 2% !important;
+    margin: 5px 0 0!important;
+    padding: 0px 2% !important;
 }
 .opc-index-index .opc-wrapper-opc .discount-block input.button.show-coupon{
-	background: #F6770E;
-	font-size: 13px;
-	width: auto!important;
-	font-weight: normal;
-	text-transform: capitalize;
-	padding: 0px 2% !important;
-	float: right !important;
-	display: inline-block;
-	line-height: 31px !important;
-	height: auto !important;
-	border-bottom: 2px solid #8E4407;
-	color: #fff;
-	margin: 5px 0 0!important;		
-	cursor: pointer;
+    background: #F6770E;
+    font-size: 13px;
+    width: auto!important;
+    font-weight: normal;
+    text-transform: capitalize;
+    padding: 0px 2% !important;
+    float: right !important;
+    display: inline-block;
+    line-height: 31px !important;
+    height: auto !important;
+    border-bottom: 2px solid #8E4407;
+    color: #fff;
+    margin: 5px 0 0!important;      
+    cursor: pointer;
 }
 
 .opc-index-index .cashbackCoupon_overlay {
-	background-color: rgba(0, 0, 0, 0.6);
-	display: block;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 10001;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: block;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10001;
 }
 .opc-index-index .cashbackCoupon {
-	box-sizing: border-box;
-	padding: 30px;
-	border-radius: 10px;
-	color: #404040;
-	display: block;
-	font-size: 16px;
-	left: 50%;
-	margin-left: -205px;
-	margin-top: -20px;
-	position: fixed;
-	text-align: left;
-	top: 40%;
-	width: 410px;
-	box-shadow: 0 3px 10px 1px rgba(0,0,0,0.2);
-	background-color: #fefefe;
-	font-weight: normal;
-	z-index: 10002;
+    box-sizing: border-box;
+    padding: 30px;
+    border-radius: 10px;
+    color: #404040;
+    display: block;
+    font-size: 16px;
+    left: 50%;
+    margin-left: -205px;
+    margin-top: -20px;
+    position: fixed;
+    text-align: left;
+    top: 40%;
+    width: 410px;
+    box-shadow: 0 3px 10px 1px rgba(0,0,0,0.2);
+    background-color: #fefefe;
+    font-weight: normal;
+    z-index: 10002;
 }
 .opc-index-index .cashbackCoupon .data-table tbody td {
-	border: 1px solid #C4C2C2 !important;
-	padding: 10px 8px;
+    border: 1px solid #C4C2C2 !important;
+    padding: 10px 8px;
 }
 
 .opc-index-index .cashbackCoupon td.ajaxCoupon span{
-	background: #f6770e;
-	color: #ffffff;
-	font-size: 18px;
-	font-weight: 400;
-	text-transform: capitalize;
-	padding: 3px 30px;
-	border-radius: 0px !important;
-	cursor: pointer;
+    background: #f6770e;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 3px 30px;
+    border-radius: 0px !important;
+    cursor: pointer;
 }
 
 .opc-index-index .cashbackCoupon td.ajaxCoupon:hover > span {
-	border-bottom: 2px solid #83410A;
-	transition: all 0.3s linear;
-    	-webkit-transition: all 0.3s linear;
+    border-bottom: 2px solid #83410A;
+    transition: all 0.3s linear;
+        -webkit-transition: all 0.3s linear;
+}
+
+
+
+
+
+/*override product review*/
+.rating_section {
+    display: inline-block;
+    float: right;
+    width: 70%;
+}
+.rating_heading {
+    font-size: 16px;
+    font-weight: bold;
+   margin-right: 20px;
+}
+.star_wrap, .rating_heading {
+    display: inline-block;
+    float: left;
+    line-height: 39px;
+}
+.overrides-method-productreview .review_by {
+    font-size: 16px;
+    display: inline-block;
+    float: left;
+    line-height: 39px;
+    margin-left: 10%;
+    color: #6B9A63;
+}
+
+.star_wrap > div {
+    float: left;
+}
+.rating_section input[type=radio].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+   margin: -1px;
+    padding: 0;
+     border: 0;
+    width: 100%;
+    float: right;
+    clear: none;
+}
+input.radio {
+    display: inline-block;
+    vertical-align: middle;
+}
+input[type="radio"]{
+    line-height: normal
+}
+.rating_section input[type=radio].css-checkbox + label.css-label {
+    margin-bottom: 0;
+    width: 34px;
+    height: 34px;
+    background: url(../images/new_stars.png) center center no-repeat;
+   padding: 0;
+    background-size: 100%;
+    display: inline-block;
+    line-height: 25px;
+        font-size: 25px;
+   vertical-align: middle;
+    cursor: pointer;
+}
+
+.overrides-method-productreview .star_wrap  label.custom_css_label{
+    margin-bottom: 0;
+    width: 34px;
+    height: 34px;
+    background: url(../images/custom_new_stars.png) center center no-repeat;
+    padding: 0;
+    background-size: 100%;
+    display: inline-block;
+    line-height: 25px;
+    font-size: 25px;
+    vertical-align: middle;
+   cursor: pointer;
+     font-weight: 600;
+}
+/*rating review page*/
+.overrides-method-productreview h2.review_rating_heading {
+     text-transform: uppercase;
+    color: #6B9A63;
+    text-align: left;
+    clear: both;
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+}
+.overrides-method-productreview  .review_frm {
+    display: inline-block;
+    width: 100%;
+    border-top: 1px solid #e7e7e7;
+}
+.overrides-method-productreview .review_desc {
+    float: right;
+    width: 70%;
+    display: inline-block;
+}
+.overrides-method-productreview .review_img {
+    text-align: center;
+     float: left;
+    width: 28%;
+    display: inline-block;
+}
+.overrides-method-productreview .review_img .review_img_click {
+    display: inline-block;
+}
+.overrides-method-productreview .review_img img{
+    width: 50%;
+    height: auto;
+}
+.overrides-method-productreview  .review_frm #summary_field_div {
+    margin: 20px 0;
+}
+.overrides-method-productreview  .review_frm .rating_heading {
+    display: block;
+    float: none;
+}
+.overrides-method-productreview  input#summary_field {
+    background-color: #fff;
+    height: 22px;
+    padding: 15px 7px;
+    line-height: normal;
+    border: 1px solid #a6a6a6;
+    border-top-color: #949494;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 1px 0 rgba(0,0,0,.07) inset;
+    outline: 0;
+    font-size: 13px!important;
+    line-height: 19px!important;
+    width: 100%;
+    box-sizing: border-box;
+}
+.overrides-method-productreview  .review_frm .summary_input{
+    width: 100%;
+}
+.overrides-method-productreview  .review_frm #review_field {
+    width: 100%;
+}
+.overrides-method-productreview  .review_frm .review_field_input {
+    width: 100%;
+}
+
+/*add your review on product page*/
+
+ .add_your_review_btn {
+     font-size: 14px;
+     text-align: left;
+    vertical-align: top;
+    font-weight: normal;
+    border: none;
+ }
+ 
+ a.rating_review_count {
+    font-size: 14px;
+}
+
+ .add_your_review_btn a {
+   text-decoration: none;
+    text-decoration: none;
+     color: #fff;
+    background: url(../images/sprite.png) -235px -348px no-repeat #506f00;
+    height: 25px;
+    background: #506f00;
+    height: 28px;
+     line-height: 28px;
+     display: inline-block;
+     text-align: center;
+     padding: 0 12px;
+     font-size: 12px;
+ }
+.catalog-product-view .rating-links .add_your_review_btn:hover{
+    background: #f6770e;
+    border-bottom: 2px solid #8e4407;
+    font-weight: normal;
+}
+ 
+.catalog-product-view .rating-links .add_your_review_btn{
+    border: 0;
+    font-size: 14px;
+    text-align: left;
+     text-decoration: none;
+    color: #fff;
+    background: #506f00;
+    height: 28px;
+    line-height: 28px;
+    display: inline-block;
+    text-align: center;
+    border-bottom: 2px solid #2a360c;
+    padding: 0 12px;
+    font-size: 12px;
+}
+
+/*testimonial form*/
+.testimonial-form-index .buttons-set p.back-link {
+    float: left;
+    margin: 0;
+    margin-top: 4px;
+}
+.testimonial-form-index button.button > span {
+    border-bottom: 2px solid #506f00;
+}
+.testimonial-form-index button.button > span:hover {
+    border-bottom: 2px solid #8e4407;
+}
+.testimonial-form-index .form-list li {
+    width: 60%;
+}
+.testimonial-form-index .form-list textarea {
+    width: 254px;
+    height: 10em;
+}
+.testimonial-form-index .input-box-captcha {
+    float: left;
+    width: 60%;
+    margin: 0 0 8px;
+}
+.testimonial-form-index .input-box-captcha label{
+    float: none;
+    font-size: 14px;
+    display: inline-block;
+    color: #666;
+    font-weight: bold;
+    position: relative;
+    z-index: 0;
+}
+.testimonial-form-index .input-box-captcha label.required em {
+    right: inherit;
+    top: 0;
+    margin-left: 3px;
+     position: static;
+     float: right;
+    font-style: normal;
+    color: #eb340a;
+}
+.testimonial-form-index .input-box-captcha .input-box {
+    width: 80%;
+    display: inline-block;
+    float: right;
+}
+.testimonial-form-index .input-box-captcha input.input-text {
+    width: 30%;
+}
+.testimonial-form-index .form-list input.input-text {
+    width: 100%;
+    box-sizing: border-box;
+}
+.testimonial-form-index .input-box-captcha .input-box p {
+    font-size: 14px;
+    display: inline-block;
+    color: #666;
+    font-weight: bold;
+}
+.testimonial-form-index div#ratingBox {
+    float: left;
+    width: 60%;
+    margin-top: 10px;
+    margin-left: 12%;
+}
+.testimonial-form-index .page-title h1, .page-title h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #0a263c;
+    border-bottom: 1px solid #444;
+    padding-bottom: 8px;
+}
+
+.checkout-cart-index .bought-block-list .block-title strong span{
+    background: none;
+}
+.cms-index-index .recently_view_category_content li.slick_list{
+    position: relative;
+}
+.cms-index-index .recently_view_category_content li.slick_list .pr-out-of-stock-index{
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+@media only screen and (max-width: 920px){
+    .testimonial-form-index .form-list .input-box {
+        width: 70%;
+    }
+    .testimonial-form-index .std-input-box {
+        width: 70%;
+    }
+    .testimonial-form-index .input-box-captcha .input-box {
+        width: 70%;
+    }
+    .testimonial-form-index div#ratingBox {
+        margin-left: 18%;
+    }
 }
 
 @media only screen and (max-width: 840px){
-	.opc-index-index .opc-wrapper-opc .discount-block input.button.apply-coupon{
-		margin: 0 5px!important;
-		padding: 2px 2% !important;
-	}
-	.opc-index-index .opc-wrapper-opc .discount-block input.button.show-coupon{
-		margin: 0 5px!important;
-		float: left !important;
-		padding: 2px 2% !important;
-	}
+    .opc-index-index .opc-wrapper-opc .discount-block input.button.apply-coupon{
+        margin: 0 5px!important;
+        padding: 2px 2% !important;
+    }
+    .opc-index-index .opc-wrapper-opc .discount-block input.button.show-coupon{
+        margin: 0 5px!important;
+        float: left !important;
+        padding: 2px 2% !important;
+    }
+
+@media only screen and (max-width: 736px){
+    .footer-payment-types span span#siteseal img {
+        display: none;
+    }
+    .footer-payment-types span.fpt1 {
+        width: 0;
+        height: 0;
+    }
+    .footer-payment-types span#siteseal {
+        width: 0;
+        height: 0;
+    }
+    .cart_table_wrap #shopping-cart-table1{
+        display: none;
+    }
+    .checkout-cart-index .cart_table_wrap.mid {
+        margin: 0 !important;
+    }
+    .footer-payment-types {
+        margin-top: 0;
+    }
+               .overrides-method-productreview .review_desc {
+                    float: right;
+                    width: 100%;
+                }
+                .overrides-method-productreview  .review_frm .rating_heading {
+                    margin-right: 0;
+                    font-size: 14px;
+                    line-height: 28px;
+                }
 
 }
-@media only screen and (max-width: 736px){
-	.footer-payment-types span span#siteseal img {
-		display: none;
-	}
-	.footer-payment-types span.fpt1 {
-		width: 0;
-		height: 0;
-	}
-	.footer-payment-types span#siteseal {
-		width: 0;
-		height: 0;
-	}
-	.cart_table_wrap #shopping-cart-table1{
-		display: none;
-	}
-	.checkout-cart-index .cart_table_wrap.mid {
-	    margin: 0 !important;
-	}
-	.footer-payment-types {
-		margin-top: 0;
-	}
+
+@media only screen and (max-width: 670px){
+    .testimonial-form-index .form-list .input-box {
+        width: 65%;
+    }
+    .testimonial-form-index .std-input-box {
+        width: 65%;
+    }
+    .testimonial-form-index .input-box-captcha .input-box {
+        width: 65%;
+    }
+    .testimonial-form-index div#ratingBox {
+        margin-left: 21%;
+    }
+}
+@media only screen and (max-width: 570px){
+        .testimonial-form-index .form-list li {
+            width: 100%;
+        }
+        .testimonial-form-index .input-box-captcha {
+            float: left;
+            width: 100%;
+        }
+        .testimonial-form-index div#ratingBox {
+            margin-left: 34%;
+        }
 }
 @media only screen and (max-width: 533px){
-	.footer-payment-types span.fpt1 {
-		width: 76px;
-    		height: 38px;
-	}
-	.footer-payment-types span#siteseal {
-		width: 76px;
-    		height: 38px;
-	}
-	.footer-payment-types span.fpt4.last {
-		display: none;
-	}
-	.footer-payment-types span.fpt2 {
-		vertical-align: top;
-	}
-	.footer-payment-types span.fpt3 {
-		vertical-align: top;
-	}
-	.opc-index-index .opc-wrapper-opc input#coupon_code {
-		width: 205px;
-	}
-	.opc-index-index .opc-wrapper-opc .discount-block .input-box {
-		width: 100%;
-		margin-bottom: 10px;
-	}
-	.opc-index-index .opc-wrapper-opc .discount-block input.button.apply-coupon {
-		clear: both;
-		margin: 0!important;
-		padding: 2px 2% !important;
-	}
+    .footer-payment-types span.fpt1 {
+        width: 76px;
+            height: 38px;
+    }
+    .footer-payment-types span#siteseal {
+        width: 76px;
+            height: 38px;
+    }
+    .footer-payment-types span.fpt4.last {
+        display: none;
+    }
+    .footer-payment-types span.fpt2 {
+        vertical-align: top;
+    }
+    .footer-payment-types span.fpt3 {
+        vertical-align: top;
+    }
+    .opc-index-index .opc-wrapper-opc input#coupon_code {
+        width: 205px;
+    }
+    .opc-index-index .opc-wrapper-opc .discount-block .input-box {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .opc-index-index .opc-wrapper-opc .discount-block input.button.apply-coupon {
+        clear: both;
+        margin: 0!important;
+        padding: 2px 2% !important;
+    }
+                .catalog-product-view .product-view .review-count-pr .ratings {
+                        margin: 0;
+                        margin: 7px 0;
+                }
 
 }
 @media only screen and (max-width: 480px){
+
 	.catalog-product-view .review-count-pr{
 	    width: 100%;
 	}
@@ -253,4 +604,76 @@
 		top: 20% !important;
 		width: 90% !important;
 	}*/
+
+    .catalog-product-view .review-count-pr{
+        width: 100%;
+    }
+
+    .opc-index-index .cashbackCoupon {
+        font-size: 14px;
+        left: 5%;
+        margin-left: 0;
+        margin-top: 0;
+        top: 20%;
+        width: 90%;
+        padding: 15px;
+    }
+    .opc-index-index .cashbackCoupon td.ajaxCoupon span {
+        background: #f6770e;
+        color: #ffffff;
+        font-size: 15px;
+    }
+    .opc-index-index .cashbackCoupon .data-table thead{
+        display: none;
+    }
+    .opc-index-index .cashbackCoupon .data-table tbody td {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+    .opc-index-index .cashbackCoupon .data-table tbody td:before{
+        content: attr(data-attrset);
+        display: inline-block;
+        margin: 0 11px 0 0;
+        width: 40%;
+    }   
+    /*.opc-messages {
+        font-size: 14px !important;
+        left: 5% !important ;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        top: 20% !important;
+        width: 90% !important;
+    }*/
 }
+    .catalog-product-view .review-count-pr{
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (max-width: 420px){
+       .testimonial-form-index .form-list li {
+            margin: 0 0 8px;
+        }
+        .testimonial-form-index .form-list .input-box {
+            width: 100%;
+        }
+        .testimonial-form-index .std-input-box {
+            width: 100%;
+        }
+        .testimonial-form-index .input-box-captcha .input-box {
+            width: 100%;
+        }
+        .testimonial-form-index div#ratingBox {
+            margin-left: 0;
+        }
+        .overrides-method-productreview #summary_field_div .form-list li {
+            margin: 0 0 8px;
+        }
+    
+}
+
+
+
+

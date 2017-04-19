@@ -1,0 +1,16 @@
+<?php 
+$order_id = Mage::app()->getRequest()->getParam('orderid');
+$customer_name = Mage::app()->getRequest()->getParam('customer_name');
+ ?>
+<p style="text-align: left;" align="CENTER"><span style="color: #92d050; font-size: x-large;"><span style="font-family: 'Edwardian Script ITC', serif;"><em><strong>Thank You</strong></em></span></span></p>
+<p><span style="font-size: large;"><strong style="font-size: medium; font-family: 'Times New Roman', serif;">ORDER NUMBER: <?php echo $order_id;?></strong></span></p>
+<p><span style="font-family: 'Times New Roman', serif;"><span><strong>Dear <?php echo $customer_name;?>,</strong></span></span></p>
+<p><span style="color: #1f497d;">Thank you for providing your card details.</span></p>
+<p><span style="color: #1f497d;">Our Billing Department will charge your card within 1 working day and send you a confirmation e-mail with the update status of the transaction.</span></p>
+<p>Please note that the information is submitted via SSL secured encrypted page and that there is no risk of fraud.</p>
+<p>Since the charge originates from a foreign country, your bank may levy a negligible foreign transaction fee. This depends on the agreement between you and your bank and is retained by your bank. This transaction fee varies from 0.5% to 3.0% of the value and thus you may see a small separate charge on this purchase.</p>
+<p>You can also check the status of your order by logging into your account by clicking on "My Account".</p>
+<p>We appreciate your patience and also your patronage of our pharmacy.</p>
+<p><span style="font-family: 'Times New Roman', serif;"><span>With warm regards</span></span></p>
+<p><strong><span style="font-family: 'Times New Roman', serif;">AllDayChemist Billing Department</span></strong></p>
+<p><strong><span style="font-family: 'Times New Roman', serif;">Toll Free Tel +1 (855) 840-0584</span></strong></p>
