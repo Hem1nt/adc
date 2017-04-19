@@ -252,6 +252,7 @@ button.button:hover > span {
   position: absolute;
   bottom: -30px;
   left: 0;
+  cursor: pointer;
 }
 .product-view .product-shop .short-description .read_more b {
   font-size: 14px;
@@ -701,6 +702,20 @@ span.recomend-text {
   background: url(../images/yellow_star.png) 0 100% repeat-x;
 }
 .catalog-product-view #customer-reviews h2, .review-product-list #customer-reviews h2 {
+  font-size: 16px;
+  line-height: 16px;
+  color: #fff;
+  border-bottom: 0;
+  padding: 9px 14px;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: #506f00;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.catalog-product-view #customer-reviews .frequently_bought_wrap h2, .review-product-list #customer-reviews .frequently_bought_wrap h2 {
   font-size: 16px;
   line-height: 16px;
   color: #fff;

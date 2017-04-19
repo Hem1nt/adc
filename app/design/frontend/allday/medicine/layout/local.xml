@@ -212,8 +212,13 @@
 
 	 	<reference name="product.info">
          <block type="catalog/product_compare_sidebar" before='-' name="product.info.custom_compare" as="custom_compare" template="catalog/product/compare/product_compare.phtml" />
+         <!-- <block type="core/template" before='-' name="related_product_new" template="custom/related_product.phtml" />
+	      <block type="core/template" before='-' name="frequently_slider" template="custom/frequently_bought.phtml" /> -->
     	</reference>
 	 	<remove name="left"/>
+
+	 	
+	 	<!-- <remove name="left"/> -->
 
 	</catalog_product_view>
 

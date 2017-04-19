@@ -398,31 +398,34 @@
    
     <div class="product-collateral">
         <div class="product-collateral-inner">
-        <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
-            <div class="box-collateral <?php echo "box-{$alias}"?>">
-                <?php if ($title = $this->getChildData($alias, 'title')):?>
-                    <h2><?php echo $this->escapeHtml($title); ?></h2>
-                <?php endif;?>
-                <?php echo $html; ?>
+            <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+                <div class="box-collateral <?php echo "box-{$alias}"?>">
+                    <?php if ($title = $this->getChildData($alias, 'title')):?>
+                        <h2><?php echo $this->escapeHtml($title); ?></h2>
+                    <?php endif;?>
+                    <?php echo $html; ?>
+                </div>
+            <?php endforeach;?>
+            <?php //echo $this->getChildHtml('upsell_products') ?>
+            
+            <?php //echo $this->getChildHtml('bought.product.wrapper'); ?>
+            <?php echo $this->getChildHtml('related_product_new'); ?>
+            <div class="trustedcompany-widget">            
+                <h2>Trusted Company Reviews</h2>
+                <div id="TRUSTEDCOMPANY_widget_86430">
+                    <script async
+                    src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXh4BFAMkFgoRGR0LEhgAFkIHHQJYU0JcVkc"
+                    ></script>
+                </div>
             </div>
-        <?php endforeach;?>
-        <?php echo $this->getChildHtml('upsell_products') ?>
-        
-        <?php echo $this->getChildHtml('bought.product.wrapper'); ?>
-        <div class="trustedcompany-widget">            
-            <h2>Trusted Company Reviews</h2>
-            <div id="TRUSTEDCOMPANY_widget_86430">
-                <script async
-                src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXh4BFAMkFgoRGR0LEhgAFkIHHQJYU0JcVkc"
-                ></script>
+            <?php //echo $this->getChildHtml('product_additional_data') ?>
+            <div class="customer_rating review_graph">
+                <?php echo $this->getChildHtml('review_form');?>
+                <?php echo $this->getChildHtml('product_additional_data_reviews');?>
             </div>
+            <?php echo $this->getChildHtml('frequently_slider'); ?>
+
         </div>
-        <?php echo $this->getChildHtml('product_additional_data') ?>
-        <div class="customer_rating review_graph">
-            <?php echo $this->getChildHtml('review_form');?>
-            <?php echo $this->getChildHtml('product_additional_data_reviews');?>
-        </div>
-  </div>
     </div>
      <!-- Start Trustedcompany Widget Integration -->
        

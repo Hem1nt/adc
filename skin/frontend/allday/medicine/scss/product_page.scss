@@ -273,6 +273,7 @@ button.button:hover > span{
 				position: absolute;
 				bottom: -30px;
 				left: 0;
+				cursor: pointer;
 
 				b{
 					font-size: 14px;
@@ -801,7 +802,24 @@ span.recomend-text {
 			width: 100%;
 			box-sizing: border-box;
 	 	}
-	 }
+
+	 	.frequently_bought_wrap{
+	 		h2{
+		 		font-size: 16px;
+				line-height: 16px;
+				color: #fff;
+				border-bottom: 0;
+				padding: 9px 14px;
+				margin: 0;
+				text-transform: uppercase;
+				font-weight: 600;
+				background: #506f00;
+				text-align: center;
+				width: 100%;
+				box-sizing: border-box;
+		 	}
+	 	}
+	}
 }
 
 .catalog-product-view , .review-product-list {

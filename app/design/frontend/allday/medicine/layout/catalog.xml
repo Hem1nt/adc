@@ -293,6 +293,8 @@ Product view
                     </block>
                 </block>
                  <block type="catalog/product_view" name="custom_related" as="custom_related" template="catalog/product/related.phtml"/>
+                 <block type="core/template"  name="related_product_new" as="related_product_new" template="custom/related_product.phtml" />
+                 <block type="core/template"  name="frequently_slider" as="frequently_slider" template="custom/frequently_bought.phtml" />
             </block>
         </reference>
         <reference name="left">
