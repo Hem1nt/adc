@@ -201,10 +201,11 @@
                     ?>
                 </div> -->
                 <?php if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'){ ?>
-                <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a>
+                <!-- <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a> -->
                <?php } ?>
                 <div class="pr-links-right">
-                    <div class="add_to_wishlist_product">
+                    <?php /*
+                        <div class="add_to_wishlist_product">
                         <?php if (!$this->hasOptions()):?>
                             <div class="add-to-box">
                                 <?php if($_product->isSaleable()): ?>
@@ -222,6 +223,7 @@
                             </div>
                         <?php endif; ?>
                     </div>
+                    */ ?>
                     <div class="pr-add-to-compare">
                     <?php $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);?>
                        <a href="<?php echo $_compareUrl;?>" class="link-compare">Compare</a>
@@ -251,8 +253,8 @@
     </form>
 
             <?php if($_product->isSaleable() && $custom_stock_status =='Coming Soon'){ ?>
-                <div class="pr-notify-me-boxwrapper">
-                    <h1><span>Receive notification when the product is back in stock</span></h1>
+                <div class="notify-me-boxwrapper">
+                    <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
                     <span class="notify-close-btn">
                         <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
                     </span>
@@ -269,7 +271,7 @@
                         <button type="button" title="Notify Me" class="button notify-me" id="notify-me-coming" onclick="" value="">Notify Me</button>
                     </form>
                 </div>
-                <div class="notify-overlay"></div>
+                <!-- <div class="notify-overlay"></div> -->
             <?php } ?>
 
 <?php
@@ -277,8 +279,8 @@
                 if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'): ?>
                 <!-- <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a> -->
 
-                <div class="pr-notify-me-boxwrapper">
-                    <h1><span>Receive notification when the product is back in stock</span></h1>
+                <div class="notify-me-boxwrapper">
+                    <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
                     <span class="notify-close-btn">
                         <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
                     </span>
@@ -418,7 +420,7 @@
                     ></script>
                 </div>
             </div>
-            <?php //echo $this->getChildHtml('product_additional_data') ?>
+            <?php echo $this->getChildHtml('product_additional_data') ?>
             <div class="customer_rating review_graph">
                 <?php echo $this->getChildHtml('review_form');?>
                 <?php echo $this->getChildHtml('product_additional_data_reviews');?>
@@ -439,6 +441,11 @@
     //]]>
 
     jQuery(document).ready(function($) {
+        jQuery('.slider_wraper').slick({
+          infinite: true,
+          slidesToShow: 4,
+          slidesToScroll: 1
+        });
 
         jQuery('.read_more').click(function() {
             var divPosition = jQuery('.easytabs li').offset();
@@ -626,4 +633,6 @@
         img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
         setTimeout('SuggestionRefreshCaptcha()', 500);
     }
+
+
 </script>
