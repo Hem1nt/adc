@@ -73,19 +73,11 @@ $font_family_roboto : Roboto;
 $font_family_opensans : Open Sans;
 
 
-
-
-$proximanova_thin:'proximanova-thin',Sans-Serif;
-$proximanova_light:'proxima_nova_light',Sans-Serif;
-$proximanova_reg:'proximanova-reg',Sans-Serif;
-$proximanova_sbold:'proximanova-sbold',Sans-Serif;
-$proximanova_bold:'proximanova-bold',Sans-Serif;
-$proximanova_xbold:'proximanova-xbold',Sans-Serif;
-$arial:'Arial Regular',Sans-Serif;
+$open_sans:'Open Sans', sans-serif;
 $icomoon: 'icomoon';
 $icomoon-new: 'icomoon-new';
 
-$default_font: #{$arial};
+$default_font: #{$open_sans};
 
 .button_style {
 	border-radius: 4px;
