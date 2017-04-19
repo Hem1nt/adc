@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
             $(".all-categories, .all_categories_list").mouseout(function(){
               if ($(window).width() > 736) {
                 $(".all_categories_list").stop( true, true ).hide();
-                $(".block-compare, .block-account .block-content").hide();
+                // $(".block-compare, .block-account .block-content").hide();
             }
           });
 
