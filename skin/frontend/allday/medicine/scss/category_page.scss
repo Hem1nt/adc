@@ -7,16 +7,23 @@ body{
 }
 
 .catalog-category-view{
- 
+ 	.breadcrumbs{
+ 		li{
+ 			strong{
+ 				color: $dark_green;
+ 			}
+ 		}
+ 	}
 	.col-main{
-		width: 73%;
+		width: 73.5%;
+		padding: 0;
 	
 	.category-title{
 		display: none;
 	}
 
 	.banner_image {
-	    width: 73%;
+	    width: 66%;
 	    display: inline-block;
 	    float: left;
 
@@ -37,13 +44,13 @@ body{
 
 			display: inline-block;
 			float: right;
-			width: 23%;
+			width: 30%;
 			padding: 0 2%;
 			line-height: 19px;
-			padding-top: 15px;
+			padding-top: 20px;
 
 			h1{
-				color: $green;
+				color: $dark_green;
 				font-size: 18px;
 				font-weight: bold;
 				text-align: left;	 		
@@ -63,7 +70,7 @@ body{
 				margin: 0 auto;
 				font-size: 14px;
 				overflow: hidden;
-				height: 190px;
+				height: 155px;
 				// display: -webkit-box;
 				// -webkit-line-clamp: 9;
 				// -webkit-box-orient: vertical;
@@ -71,7 +78,7 @@ body{
 			}
 
 			.read-more{
-				color: $green;
+				color: $dark_green;
 			}
 		}
 	}
@@ -92,6 +99,9 @@ body{
 
 				    	select {
 					    	background: $dark;
+					    	color: $bright;
+						padding: 1px 0;
+						padding-right: 8px;
 					}
 				}
 			}
@@ -100,19 +110,19 @@ body{
 				height: 60px;
 				background-color: $sorter;
 				color: $offer_text;
+				padding: 0 20px;
 
 				.view-mode{
-					padding: 10px 15px;
+					padding: 10px 0;
 
-		 			strong.grid, a.list{
+		 			strong.grid{
+		 				background: url(../images/grid_view_new.png) 8px 5px no-repeat;
 		 				font-size: 0;
-		// 				color: $dark_color;
-		// 				background: url(../images/grid_view.png);
-		// 				background-repeat: no-repeat;
-		// 				background-position: 69px 14px;
-		// 				text-align: right;
-		// 				padding-right: 35px;
-		// 				padding-left: 0;
+		 				margin-right: 0;
+		 			}
+	 				a.list{
+		 				font-size: 0;
+		 				background: url(../images/list_view_new.png) 8px 5px no-repeat;
 					}
 				}
 
@@ -126,6 +136,9 @@ body{
 		 				background: #fff;
 		 				border: 1px solid $grey_border;
 						border-radius: 0;
+						width: 236px;
+						height: 36px;
+						color: #666666;
 		 			}
 		 			.v-middle {
 					    display: none;
@@ -134,12 +147,14 @@ body{
 		 		.pages{
 		 			background-color: $sorter;
 					color: $offer_text;
-					padding: 10px 15px;
+					padding: 10px 0;
+					margin-right: 0;
 
 					li{
 						a{
 							background-color: $sorter;
 							color: $offer_text;
+							font-weight: bold;
 						}
 					}
 		 		}
@@ -182,8 +197,12 @@ body{
 						white-space: nowrap;
 						line-height: 17px;
 					}
+					.product-name{
+						margin-bottom: 15px;
+					}
 					.manufactured_by{
 					        min-height: 30px;	
+					        height: 38px;
 					        line-height: 19px;	
 					        margin: 10px 0;	
 					}
@@ -208,7 +227,23 @@ body{
 					}
 				}
 				.ratings{
-					margin-bottom: 15px;
+					margin-bottom: 0;
+
+					
+						a:hover{
+
+							color: #666;
+							font-weight: normal;
+						}
+					
+				}
+				.no-rating{
+					margin: 2px 0;
+
+					a:hover{
+						color: #666;
+						font-weight: normal;
+					}
 				}
 
 				.actions{
@@ -234,13 +269,13 @@ body{
 						float: left;
 						border-right: 1px solid $grey_border;
 						margin: 0;
-						padding: 24px 0;
+						// padding: 24px 0;
 
 						a.link-compare{
 							color: #202020;
 							font-weight: bold;
 							font-size: 13px;
-							padding: 0 10px;
+							padding: 24px 10px;
 							position: relative;
 							width: 100%;
 							display: block;
@@ -338,7 +373,21 @@ body{
 						}
 					}
 				}
-			}
+
+				&:hover{
+					.actions {
+						.add-to-links a.link-compare{
+							color: $dark_green;	
+							&:after{
+								background-color: $dark_green;
+							}
+						}	
+						button.button span{
+							color: $dark_green;
+						}				
+					}
+				}
+		}
 
 			li.item.last{
 				margin-right: 0;
@@ -378,6 +427,7 @@ body{
 
 							a{
 								font-size: $default_font_size;
+								
 							}
 						}
 
@@ -592,7 +642,7 @@ body{
 			line-height: 51px;
 			font-size: 16px;
 			text-align: center;
-
+			border: 0;
 
 		        strong {
 		    		color: $grey_title ;
@@ -609,6 +659,7 @@ body{
 		}	
 		.block-content{
 			background-color: $grey_background;
+			border: 1px solid #cdcdcd;
 		}
         }
 
@@ -634,7 +685,7 @@ body{
 			}
 
 			input{
-				padding: 5px 10px;
+				padding: 8px 10px;
     				padding-left: 27%;
     				font-size: 15px; 
     				color: $light_gray;
@@ -723,7 +774,7 @@ body{
 
 		.block-compare{
 			margin-bottom: 30px;
-			border: 1px solid #cdcdcd;
+			// border: 1px solid #cdcdcd;
 
 			.empty{
 				color: $offer_text;
@@ -732,11 +783,16 @@ body{
 			}
 			#compare-items{
 				li{
+					border-bottom: 1px solid $grey_border;
+
 					a.btn-remove{
 						background: url('../images/close.png') 1px 4px no-repeat;
 						color: #202020;
 						right: 10px;
 					}
+				}
+				li.last{
+					// border: 0;
 				}
 
 			}
@@ -768,21 +824,25 @@ body{
 		// block compared
 
 		.block-compared{
-			border: 1px solid #cdcdcd;
+			// border: 1px solid #cdcdcd;
 			margin-bottom: 30px;
 
 			ol#recently-compared-items{
 				li{
+					border-bottom: 1px solid $grey_border;
 					a{
 						color: $offer_text;
 						padding: 10px 9px;
 					}
 				}
+				li.last{
+					border: 0;
+				}
 			}
 		}
 
 		.block-left-nav{
-			border: 1px solid $grey_border;
+			// border: 1px solid $grey_border;
 			margin-bottom: 30px;
 		}
 
@@ -857,7 +917,7 @@ body{
 
 // featured products
 	.featured_products{
-		border: 1px solid #cdcdcd;
+		// border: 1px solid #cdcdcd;
 		margin-bottom: 30px;
 
 		.featured-block-tab{
@@ -869,7 +929,7 @@ body{
 				.slick-prev{
 					left: 5px !important;
 					top: 80px;
-					background: url(../images/left_arrow.png) 0 0 no-repeat;
+					background: url(../images/left_arrow.png) center center no-repeat;
 					height: 25px;
 
 					&:before{
@@ -879,7 +939,7 @@ body{
 				.slick-next{
 					right: 5px !important;
 					top: 80px;
-					background: url(../images/right_arrow.png) 0 0 no-repeat;
+					background: url(../images/right_arrow.png) center center no-repeat;
 					height: 25px;
 
 					&:before{
@@ -894,10 +954,11 @@ body{
 					box-sizing: border-box;
 
 					.product-image{
-						border: 1px solid #cdcdcd;
+						border: 1px solid #d3d3d3;
 						display: block;
 						box-sizing: border-box;
 						text-align: center;
+						margin-bottom: 15px;
 					}
 					.pr-details-height{
 						text-align: left;
@@ -908,11 +969,17 @@ body{
 							overflow: hidden;
 							white-space: nowrap;
 							line-height: 17px;
+							font-weight: normal;
+						}
+						.product-name{
+							margin-bottom: 13px;
 						}
 						.manufactured_by{
 						        min-height: 30px;	
 						        line-height: 19px;	
 						        margin: 10px 0;	
+						        height: 38px;
+						        font-weight: normal;
 						}
 					}
 
