@@ -41,4 +41,7 @@ jQuery(document).ready(function($){
             $(".mob-overlay").show();
           }
         }
-  }sg
+      });
+
+    $(".scroll_div_content").mCustomScrollbar();
+  });

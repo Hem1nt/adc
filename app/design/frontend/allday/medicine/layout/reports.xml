@@ -29,7 +29,7 @@
 <layout version="0.1.0">
     <default>
         <!-- Mage_Reports -->
-        <reference name="left">
+        <reference name="right">
             <block type="reports/product_viewed"  name="right.reports.product.viewed" template="reports/product_viewed.phtml" />
             <block type="reports/product_compared"  name="right.reports.product.compared" template="reports/product_compared.phtml" />
         </reference>

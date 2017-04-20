@@ -4,14 +4,22 @@
 $default_font_size : 14px;
 $dark : #000;
 $dark_color: #202020;
+$grid_background: #242424;
 $bright : #fff;
 
 $green : #9fb701; 
 $orange : #f6770e;
+$sorter : #f6f6f6;
 $dark_green : #506f00;
+$light_green : #a1b506;
 $grey : #818181;
 $grey_border : #cdcdcd;
+$grey_title : #f1f1f3;
+$grey_background : #f4f4f4;
 $light_gray: #adacac;
+$wishlist_gray: #adadad;
+$background_gray: #f0eeef;
+$font: 'Open Sans', sans-serif;
 
 $offer_text : #333333;
 $offer_bg : #f1f1f1;
@@ -73,18 +81,11 @@ $font_family_roboto : Roboto;
 $font_family_opensans : Open Sans;
 
 
-
-
-$proximanova_thin:'proximanova-thin',Sans-Serif;
-$proximanova_light:'proxima_nova_light',Sans-Serif;
-$proximanova_reg:'proximanova-reg',Sans-Serif;
-$proximanova_sbold:'proximanova-sbold',Sans-Serif;
-$proximanova_bold:'proximanova-bold',Sans-Serif;
-$proximanova_xbold:'proximanova-xbold',Sans-Serif;
+$open_sans:'Open Sans', sans-serif;
 $icomoon: 'icomoon';
 $icomoon-new: 'icomoon-new';
 
-$default_font: #{$proximanova_reg};
+$default_font: #{$open_sans};
 
 .button_style {
 	border-radius: 4px;

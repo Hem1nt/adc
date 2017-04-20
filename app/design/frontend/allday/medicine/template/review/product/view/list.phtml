@@ -34,10 +34,11 @@
         ->setDateOrder()
         ->addRateVotes();
 ?>
+
 <div class="box-collateral box-reviews" id="customer-reviews">
     <?php if (count($_items)):?>
         <h2><?php echo $this->__('Customer Reviews') ?></h2>
-        <?php echo $pager = $this->getLayout()->createBlock('page/html_pager', 'product_review_list.toolbar')->setCollection($reviews)->toHtml();
+        <?php //echo $pager = $this->getLayout()->createBlock('page/html_pager', 'product_review_list.toolbar')->setCollection($reviews)->toHtml();
         ?>
         <?php foreach ($_items as $_review):?>
         <div class="review-cover">
@@ -57,9 +58,12 @@
                 </div>
             </div>
             <div class="review_right_block">
-                <a href="<?php echo $this->getReviewUrl($_review->getId()) ?>" style="font-weight: bold;"><?php echo $this->htmlEscape($_review->getTitle()) ?></a>
+                <div class="review_title">
+                    <a href="<?php echo $this->getReviewUrl($_review->getId()) ?>">"<?php echo $this->htmlEscape($_review->getTitle()) ?>"</a>
+                </div>
+                
+                <div class="detail_msg"><?php echo nl2br($this->htmlEscape($_review->getDetail())) ?></div>
                 <small class="date"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small>
-                <?php echo nl2br($this->htmlEscape($_review->getDetail())) ?>
             </div>
         </div>
         <?php endforeach; ?>

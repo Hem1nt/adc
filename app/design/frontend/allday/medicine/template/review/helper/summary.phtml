@@ -49,11 +49,11 @@ $pId = $this->getProduct()->getId();
                 if($customerLoggedIn){  
                     
             ?>
-                <a href="<?php echo $this->getBaseurl().$urlKey.'/review/'.$pId; ?>" class="add_your_review_btn"><?php echo $this->__('Add Your Review') ?></a>
+                <a href="<?php echo $this->getBaseurl().$urlKey.'/review/'.$pId; ?>" class="add_your_review"><?php echo $this->__('Add Your Review') ?></a>
             <?php
                 }else{
             ?>
-                 <a href="<?php echo $this->getUrl('customer/account/login'); ?>" class="review-scroll add_your_review_btn"><?php echo $this->__('Add Your Review') ?></a>
+                 <a href="<?php echo $this->getUrl('customer/account/login'); ?>" class="review-scroll add_your_review"><?php echo $this->__('Add Your Review') ?></a>
             <?php        
                 }
             ?>

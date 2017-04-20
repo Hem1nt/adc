@@ -9,11 +9,19 @@
 .catalog-product-view .pr-name-social-icons{
     border-right: 0;
 }
-.catalog-product-view .review-count-pr{
-    width: 65%;
+
+/*.catalog-product-view .review-count-pr{
+	width: 65%;
+}*/
+.catalog-product-view .review-count-pr .ratings .rating-links, .product-view .product-shop p.no-rating a {
+   	font-size: 13px;
 }
+/*.catalog-product-view .review-count-pr{
+    width: 65%;
+}*/
 .catalog-product-view .review-count-pr .ratings .rating-links {
     font-size: 14px;
+
 }
 /*myaccount cashback coupon*/
  li.cashback_offer a {
