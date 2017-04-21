@@ -29,14 +29,14 @@ class Iksula_Frontend_Helper_Data extends Mage_Core_Helper_Abstract{
         $product = Mage::getModel('catalog/product');
         $productobject = $product->load($productId);
         if($productobject->getTypeId() == 'simple'){
-            //product_type_grouped
-            $parentIds = Mage::getModel('catalog/product_type_grouped')
-            ->getParentIdsByChild($productId);
-
             //product_type_configurable
-            if(!$parentIds){
-                $parentIds = Mage::getModel('catalog/product_type_configurable')
+            $parentIds =  Mage::getModel('catalog/product_type_configurable')
                 ->getParentIdsByChild($productId);
+
+            //product_type_grouped
+            if(!$parentIds){
+                $parentIds = Mage::getModel('catalog/product_type_grouped')
+            ->getParentIdsByChild($productId);
 
             }
             //product_type_bundle
@@ -434,6 +434,13 @@ class Iksula_Frontend_Helper_Data extends Mage_Core_Helper_Abstract{
                 return unserialize(urldecode($data)); 
             }
         endif;
+     }
+
+     public function getproductReviews($id){
+        $summaryData = Mage::getModel('review/review_summary')->load($id);
+        $reviews['reviews_count'] = $summaryData->getReviewsCount();
+        $reviews['rating_summary'] = $summaryData->getRatingSummary();
+        return $reviews;
      }
 }
 
