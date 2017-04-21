@@ -192,7 +192,7 @@
         <?php endif ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif;if(!$_product->isSaleable()):echo ' out-of-stock-item';endif;?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img class="lazy" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100); ?>" src="<?php echo $this->getSkinUrl('images/loading_spinner.gif') ?>" width="" height="" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
-
+                <?php if(!$_product->isSaleable()): ?>
                 <p class="availability out-of-stock <?php echo $customClass;?>">
                 <?php if($custom_stock_status!='No' && $custom_stock_status!=''){ ?>
                 <span><?php if($custom_stock_status != 'Limited Supply') { echo $this->__($custom_stock_status); } else { echo '<a href='.$_product->getProductUrl().'>'.$this->__($custom_stock_status).'</a>'; } ?></span>
@@ -201,6 +201,7 @@
 
                 <?php } ?>
                 </p>
+                 <?php endif; ?>
 
                 <?php if ($this->helper('wishlist')->isAllow()) : ?>
                         <a href="<?php echo $_product->getProductUrl(); ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
