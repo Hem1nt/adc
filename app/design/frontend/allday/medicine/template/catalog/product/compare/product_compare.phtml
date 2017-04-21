@@ -52,7 +52,7 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
                 echo  "<img src='" . Mage::helper('catalog/image')->init($product, 'small_image')->resize(50) . "'>"; ?>
                 </div>
                 <div class="p-name"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></div>
-                <div class="p-name"><?php echo 'Price:'.$_parentHelper->getFirstChildPrice($_item) ?></div>
+                <div class="p-price"><?php echo 'Price:'.$_parentHelper->getFirstChildPrice($_item) ?></div>
                 <!-- <div class="p-name"><?php //echo 'Pack Size:'.$_parentHelper->getFirstChildApi($_item) ?></div> -->
                 <!-- <div class="p-name"><?php //echo $this->helper('catalog/output')->productAttribute($_item, $_item->getPrice(), 'name') ?></div> -->
                 <a href="<?php echo $_helper->getRemoveUrl($_item) ?>" title="<?php echo $this->__('Remove This Item') ?>" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove this item from the compare products?') ?>');"><span class="close">X</span></a>

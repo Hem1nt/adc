@@ -10,6 +10,18 @@ body, input, select, textarea, button{
  .header ..mobile-pr-category-icon{
         display: none;
 }
+
+.header li a.top-link-cart{
+    background: url(../images/header_cart.png) center left no-repeat!important;
+    background-size: 31px!important;
+    padding-left: 37px!important;
+}
+
+.header li.first.last a span.shopping_count{
+    font-size: 13px;
+}
+
+
 .header-top-block .h-left ul li a:hover, .header-top-block .h-right ul li a:hover {
     color: #f6770e;
 }
@@ -36,9 +48,9 @@ body, input, select, textarea, button{
 }
   a.home_icon {
     line-height: 28px;
-    padding: 2px 14px;
+    padding: 4px 14px 5px;
     border-radius: 25px;
-    margin: 6px 0;
+    margin: 4px 0;
     background-color: #9fb701;
 }
 body.catalog-product-view a.home_icon {
@@ -120,11 +132,12 @@ a.home_icon img {
   line-height: 28px;
     margin: 0;
     height: 30px;
-    padding: 5px 15px;
+    padding: 6px 15px;
     background: transparent;
 }
+
 .block .block-title strong span {
-    padding: 10px 25px;
+    padding: 10px 25px 8px;
     background: #72ae12;
     border-radius: 25px;
     height: 29px;
@@ -329,6 +342,188 @@ p.footer_content {
 .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1, .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2{
     font-size: 15px!important;
 }
+
+/* umesh css */
+
+.col-main .opc-messages-action .button span span{
+    padding:0!important; 
+}
+
+.col-main .opc-messages-action .button span{
+    background: #9fb701 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+    padding: 8px 16px 8px 16px !important;
+    border-radius: 30px !important;
+    display: inline-block !important;
+    font-family: Open Sans, sans-serif !important;
+    height: auto !important;
+    font-weight: normal !important;
+    border-bottom: none !important;
+}
+
+.col-main button, .buttons-set p.back-link a, a.back,.buttons-set p.back-link a:hover, .newsletter-manage-index .buttons-set p.back-link a, 
+.newsletter-manage-index .buttons-set p.back-link a:hover, .sales-order-history .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a, 
+.review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a,
+.rewardpoints-index-referral .box-account .button-set button.button, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover, 
+.checkout-cart-index a.pr-continue-shop-cart-empty, .opc-wrapper-opc .btn, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon, .col-main #drop a, .col-main #drop a:hover, 
+.mini-cart-layer .inner-wrapper button.button span, .checkout-cart-index a.pr-continue-shop-cart-empty:hover{
+    background: #9fb701;
+    color: #fff;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 30px;
+    margin-top: 12px;
+    display: inline-block;
+    font-family: Open Sans, sans-serif;
+    height: auto;
+    font-weight: normal;
+    border-bottom: none;
+}
+.col-main #drop a:hover{
+    border-bottom: none !important;
+    margin-top: 0;
+}
+.col-main #drop a{
+    margin-top: 0;
+}
+.col-main .opc-wrapper-opc .btn{
+    background: #9fb701 !important;
+    height: auto;
+}
+.col-main .opc-wrapper-opc .btn:hover span, button.button.apply-coupon:hover, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon:hover{
+    border-bottom: none !important;
+    background: #9fb701 !important;
+}
+.col-main .opc-wrapper-opc .discount-block input.button.apply-coupon{
+    padding: 8px 16px 8px 16px !important;
+    line-height: normal !important;
+    margin-top: 12px !important;
+}
+.col-main .opc-wrapper-opc .btn span span, .col-main .opc-wrapper-opc .btn span, .col-main .opc-wrapper-opc .btn:hover span{
+    background: none;
+    padding: 0;
+    font-weight: normal;
+    border-bottom: none;
+    line-height: normal;
+    height: auto;
+}
+.col-main .opc-wrapper-opc .btn-checkout span{
+    background: #9fb701;
+    border-radius: 30px;
+    height: auto;
+    line-height: normal;
+    border-bottom: none;
+    padding: 8px 16px 8px 16px !important;
+}
+.buttons-set p.back-link a, a.back,.buttons-set p.back-link a:hover, .newsletter-manage-index .buttons-set p.back-link a, 
+.newsletter-manage-index .buttons-set p.back-link a:hover, .sales-order-history .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a, 
+.review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover{
+    padding: 10.5px 16px;
+    background: #1f1f1f;
+}
+.newsletter-manage-index .buttons-set button.button > span, .newsletter-manage-index .buttons-set button.button:hover > span{
+    border-bottom: none !important;
+}
+
+.my_account_col .buttons-set button.button, .my_account_col .buttons-set button.button span, .cart-table .btn-empty:hover{
+    background: #9fb701;
+}
+.col-main button span, button.button:hover > span, button.button span:hover span, button.button:hover span span, .my_account_col .buttons-set button.button:hover > span, 
+.my_account_col .buttons-set button.button:hover span, .my_account_col .buttons-set button.button:hover span span, .customer-account-edit .buttons-set button.button span, 
+.my_account_col .buttons-set button.button span, .customer-account-edit .buttons-set button.button span:hover, .customer-account-edit .buttons-set button.button span:hover span,
+.wishlist-index-index .data-table td .cart-cell button.button span, .rewardpoints-index-referral .box-account .button-set button.button span, .rewardpoints-index-referral .box-account .button-set button.button span:hover span,
+.rewardpoints-index-referral .box-account .button-set button.button:hover span, .checkout-onepage-success .col-main button.button span, .checkout-onepage-success .col-main button.button:hover span, 
+.checkout-onepage-success .col-main button.button:hover span span, .checkout-cart-index .cart-table .btn-continue > span, .checkout-cart-index .cart-table .btn-empty:hover span, .checkout-cart-index .cart-table .btn-update:hover span, 
+.cart-table .btn-empty span, .cart-table .btn-continue span, .cart-table .btn-update span, .checkout-cart-index .cart-table .btn-continue:hover > span, .checkout-cart-index .cart-table .btn-continue:hover span, .checkout-cart-index .cart-table .btn-continue:hover span span, 
+.checkout-cart-index .cart-table .btn-empty span, .checkout-cart-index .cart-table .btn-update span, .checkout-cart-index .cart-table .btn-empty span:hover span, .checkout-cart-index .cart-table .btn-update span:hover span, 
+button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-checkout.btn-checkout:hover span, button.button.btn-proceed-checkout.btn-checkout:hover span span{
+    padding:0;
+    border-bottom: none;
+    background: none;
+}
+.catalog-product-view .pr-add-to-compare a.link-compare:hover, .catalog-product-view .pr-write-review a.link-review:hover, .catalog-product-view .pr-email-friend a.link-email-friend:hover{
+    color: #fff;
+}
+.tag-customer-view .data-table td button.button span, .wishlist-index-index .data-table td .cart-cell button.button span, button.button.btn-proceed-checkout.btn-checkout > span, .button.button.btn-continue-shopping > span, 
+.customer-account-login .account-login .col-1 .content button.button span, .customer-account-login .account-login .col-2 .content button.button span, .customer-account-login .account-login .col-1 .content button.button:hover span, 
+.customer-account-login .account-login .col-2 .content button.button:hover span, .customer-account-login .col-main .account-login .col-1 .content button.button span:hover, .customer-account-login .col-main .account-login .col-2 .content button.button span:hover,
+.customer-account-create .account-create .fieldset .buttons-set button.button span, .customer-account-create .account-create .fieldset .buttons-set button.button:hover span, 
+.customer-account-create .account-create .fieldset .buttons-set button.button span:hover span{
+    background: none;
+    padding: 0;
+    border-bottom: none;
+    margin: 0;
+}
+.tag-customer-view .data-table td button.button:hover span span, .tag-customer-view .data-table td button.button span span, 
+.wishlist-index-index .data-table td .cart-cell button.button span span, .wishlist-index-index .data-table td .cart-cell button.button:hover span span{
+    border-bottom: none;
+    background: url(../images/sprite.png) -204px -293px no-repeat;
+    background-size: 500px;
+}
+.tag-customer-view .data-table td button.button:hover span, .wishlist-index-index .data-table td .cart-cell button.button:hover span, .catalog-category-view .products-list .product-shop button.button{
+    background: none;
+    border-bottom: none;
+}
+.tag-customer-view .data-table td button.button span, .wishlist-index-index .data-table td .cart-cell button.button span{
+    height: auto;
+    line-height: normal;
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .add-to-links{
+    width: 47%;
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .btn-cart{
+    font-weight: normal;
+    margin: 15px 10px 0 0;
+    border-left: none;
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .btn-cart span{
+    color: #fff;
+}
+.cms-home .slick-arrow{
+    background: none;
+    padding: 0;
+    margin: 0;
+    color: transparent;
+    line-height: normal;
+}
+.catalog-category-view .col-main .category-products .products-grid li.item .actions button.button{
+    background: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+.catalog-category-view .col-main .category-products .products-list li.item .product-shop .f-fix .actions_btn button.button span span{
+    color: #202020;
+}
+.col-main .opc-wrapper-opc .btn-checkout span span, .mini-cart-layer .inner-wrapper button.button span span{
+    padding: 0 !important;
+    font-size: 14px;
+    height: auto;
+    margin: 0;
+}
+.col-main .opc-wrapper-opc .btn-checkout span span, .mini-cart-layer .inner-wrapper button.button span{
+    margin-top: 0;
+}
+.col-main .opc-wrapper-opc .btn-checkout:hover span, .col-main .opc-wrapper-opc .btn-checkout:hover span span{
+    background: #9fb701;
+    border-bottom: none !important;
+}
+.customer-account-index .compare-block-tab .actions .button.button > span {
+    border-radius: 22px;
+    background: #9fb701 url(../images/compare_arrows.png) 14px 10px no-repeat;
+    top: 15px;
+}
+.customer-account-index .compare-block-tab .actions .button.button > span span{
+    background: none;
+    margin-left: 25px;
+}
+.customer-account-index .compare-block-tab .actions a{
+    padding: 10px 0;
+}
+/* umesh css */
 
 @media only screen and (max-width: 1024px){
 
