@@ -136,6 +136,15 @@ a.home_icon img {
     background: transparent;
 }
 
+.my-account input[type="text"], .my-account  select, .my-account  textarea, .my-account  input[type="email"], .my-account  input[type="password"]{
+    border-radius: 5px;
+    background: #fff;
+    padding: 6px 8px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid #aaaaaa!important;
+}
+
 .block .block-title strong span {
     padding: 10px 25px 8px;
     background: #72ae12;
