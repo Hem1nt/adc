@@ -1,5 +1,8 @@
 /*guest user*/
 /* homepage content by sb*/
+body *, input, select, textarea, button{
+    font-family: 'Open Sans', sans-serif !important;
+}
 .cms-index-index .mobile_best_seller {
     display: none;
 }
@@ -122,7 +125,7 @@
     color: #fff  !important;
 }
 .tc-widget-standard {
-    font-family: arial  !important;
+    /*font-family: arial  !important;*/
 }
 .tc-widget-standard .tc-widget-standard-content .tc-widget-standard-col-2 {
     margin-bottom: 8px !important;
@@ -221,7 +224,7 @@
 .cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-list li a span{
     font-size: 16px;
     color: #333333;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
 }
 
 .cms-home .main_config_page .best_seller .best_seller_data .slick-prev:before{
@@ -314,7 +317,7 @@
     border-bottom: 1px solid #ccc;
     padding: 5px 0;
     margin: 10px 0;
-    font-family: arial;
+    /*font-family: arial;*/
     width: 370px;
     text-align: center;
     color: #333333;
@@ -424,7 +427,7 @@
 }
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .product_name {
     font-size: 13px;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
     min-height: 38px;
@@ -432,21 +435,21 @@
 }
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .generic_name {
     font-size: 13px;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
     text-transform: uppercase;
 }
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .desc.std {
     font-size: 13px;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
     text-transform: uppercase;
 }
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .manu_name {
     font-size: 13px;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
     text-transform: uppercase;
@@ -461,7 +464,7 @@
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a span {
     font-size: 16px;
     color: #333333;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
 }
 
 .cms-home .recently_view_category_content .register_user_categories .slick_list p.custom_price {
@@ -480,7 +483,7 @@
     color: #fff;
     font-size: 14px;
     text-transform: uppercase;
-    font-family: arial;
+    /*font-family: arial;*/
     padding: 8px 18px;
     background-color: #333333;
     border-radius: 5px;
@@ -597,7 +600,7 @@
 }
 .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .product_name {
     font-size: 13px;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
     min-height: 80px;
@@ -605,21 +608,21 @@
 }
 .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .generic_name {
     font-size: 13px;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
     text-transform: uppercase;
 }
 .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .desc.std {
     font-size: 13px;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
     text-transform: uppercase;
 }
 .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .manu_name {
     font-size: 13px;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
     text-transform: uppercase;
@@ -634,7 +637,7 @@
 .cms-home .banner_below_category_content .register_user_categories ul.multiple-items li a span {
     font-size: 16px;
     color: #333333;
-    font-family: Droid sans-serif;
+    /*font-family: Droid sans-serif;*/
 }
 
 .cms-home .banner_below_category_content .register_user_categories .slick_list p.custom_price {
@@ -653,7 +656,7 @@
     color: #fff;
     font-size: 14px;
     text-transform: uppercase;
-    font-family: arial;
+    /*font-family: arial;*/
     padding: 8px 18px;
     background-color: #333333;
     border-radius: 5px;
@@ -721,7 +724,7 @@
             width: 95%;
             border-radius: 7px;
             font-size: 15px;
-            font-family: arial;
+            /*font-family: arial;*/
             font-weight: bold;
         }
         .below_banner_area iframe {
@@ -855,7 +858,7 @@
     .cms-home .main_config_page .popular_categories .popular_categories_data li a span {
         font-size: 15px;
         font-weight: bold;
-        font-family: droid sans-serif;
+        /*font-family: droid sans-serif;*/
     }
     .cms-home .main_config_page .best_seller .best_seller_data ul.single-item li a {
         width: 50%;
@@ -947,7 +950,7 @@
     .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item .slick-list li a span {
         font-size: 16px;
         color: #333333;
-        font-family: Droid sans-serif;
+        /*font-family: Droid sans-serif;*/
     }
     .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(2) {
         /*width: 48.5%;*/
