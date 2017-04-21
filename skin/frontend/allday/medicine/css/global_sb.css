@@ -132,11 +132,12 @@ a.home_icon img {
   line-height: 28px;
     margin: 0;
     height: 30px;
-    padding: 5px 15px;
+    padding: 6px 15px;
     background: transparent;
 }
+
 .block .block-title strong span {
-    padding: 10px 25px;
+    padding: 10px 25px 8px;
     background: #72ae12;
     border-radius: 25px;
     height: 29px;
