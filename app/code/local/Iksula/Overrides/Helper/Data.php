@@ -136,6 +136,14 @@ class Iksula_Overrides_Helper_Data extends Mage_Core_Helper_Abstract
       $count = $order->getSize();
       return $count;        
     }
+
+    public function getBestSellingProducts(){
+         return $collection = Mage::getResourceModel('sales/report_bestsellers_collection')->setPageSize(5);
+    }
+
+    public function getProductDetails($id){
+        return Mage::getModel('catalog/product')->load($id);
+    }
     
 }
 

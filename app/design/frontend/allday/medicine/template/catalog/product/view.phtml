@@ -35,157 +35,158 @@
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php
-    $_product = $this->getProduct();
-    $_frontendHelper = $this->helper('frontend/data');
-    $schemaUnitPrice = min(array_column($_frontendHelper->getUnitPrice($_product), 'unit_price'));
+$_product = $this->getProduct();
+$_frontendHelper = $this->helper('frontend/data');
+$schemaUnitPrice = min(array_column($_frontendHelper->getUnitPrice($_product), 'unit_price'));
 
 ?>
 <script type="text/javascript">
-    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <?php echo $this->getChildHtml('custom_compare');?>
 <!-- schema.org tag for Product Item Scope -->
 <div class="product-view" itemscope itemtype="http://schema.org/Product">
-    
+
     <div class="product-essential">
-    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-        <div class="no-display">
-            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-            <input type="hidden" name="related_product" id="related-products-field" value="" />
-        </div>
-
-        <div class="product-img-box">
-            <?php echo $this->getChildHtml('media') ?>
-        </div>
-        <div class="product-shop">
-            <div class="pr-social-icons-wrapper">
-                <div class="pr-name-social-icons">
-                    <div class="product-name">
-                        <!-- schema.org tag for Product Name -->
-                        <h1 itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-                        
-                        <!-- schema.org tag for Product Availability -->
-                        <?php if($_product->isAvailable()): ?>
-                            <div class="no-display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                 <span itemprop="price">
-                                    <?php
-                                        
-                                        echo Mage::helper('core')->currency($schemaUnitPrice); 
-                                    ?>
-                                 </span>
-                                 <link itemprop="availability" href="http://schema.org/InStock" />
-                            </div>
-                        <?php else: ?>
-                            <div class="no-display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                 <span itemprop="price">
-                                    <?php
-                                        echo Mage::helper('core')->currency($schemaUnitPrice); 
-                                    ?>
-                                 </span>
-                                 <link itemprop="availability" href="http://schema.org/OutOfStock" />
-                            </div>
-                        <?php endif; ?>
-                        </div>
-                    
-                    
-                </div>
-                
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
             </div>
-            <?php echo $this->getChildHtml('alert_urls') ?>
 
-            <?php //echo $this->getChildHtml('product_type_data') ?>
-            <?php echo $this->getTierPriceHtml() ?>
-            <?php echo $this->getChildHtml('extrahint') ?>
+            <div class="product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+            <div class="product-shop">
+                <div class="pr-social-icons-wrapper">
+                    <div class="pr-name-social-icons">
+                        <div class="product-name">
+                            <!-- schema.org tag for Product Name -->
+                            <h1 itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
 
-            <div class="description_related">
-                <?php if ($_product->getShortDescription()):?>
-                    <div class="short-description tablet">
-                        <!-- <h2><?php //echo $this->__('Quick Overview') ?></h2> -->
-                        <div class="std" itemprop="description">
-                            <?php
-                                $string = $_product->getShortDescription();
-                                    if (strlen($string) > 180) {
+                            <!-- schema.org tag for Product Availability -->
+                            <?php if($_product->isAvailable()): ?>
+                            <div class="no-display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                             <span itemprop="price">
+                                <?php
 
-                                        $stringCut = substr($string, 0, 180);
-                                        $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <div class="read_more" id="read_more"><b>Read More</b></div>'; 
-                                    }
-                                    echo $string;
-                            ?>
-                        </div>
-                    </div>
-                <?php endif;?>
-                <div class="slider_wrap">
-                <?php 
-                   $related_product_collection = $_product->getRelatedProductIds();
-                   $count = count($related_product_collection);
-                   if($count){
-                       echo $this->getChildHtml('custom_related');
-                       $related_class = 'border-top: 1px solid #b5b5b5;';
-                   }else{
-                       $related_class = '';
-                   }
-                ?> 
-                </div> 
-                <div class="s_desc_share_wrap">
-                     <?php if ($_product->getShortDescription()):?>
-                        <div class="short-description desktop">
-                            <!-- <h2><?php //echo $this->__('Quick Overview') ?></h2> -->
-                            <div class="std" itemprop="description">
-                               <?php
-                                    $string = $_product->getShortDescription();
-                                        if (strlen($string) > 180) {
-                                            $stringCut = substr($string, 0, 180);
-
-                                            $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <span class="read_more" id="read_more"><b>Read more</b></span>'; 
-                                        }
-                                        echo $string;
+                                echo Mage::helper('core')->currency($schemaUnitPrice); 
                                 ?>
-                            </div>
+                            </span>
+                            <link itemprop="availability" href="http://schema.org/InStock" />
                         </div>
-                    <?php endif;?>
-                    <div class="share bordercolor"><!-- AddThis Button BEGIN -->
-                        <div class="addthis_toolbox addthis_default_style ">
-                            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                            <a class="addthis_button_tweet"></a>
-                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-                            <a class="addthis_counter addthis_pill_style"></a>
-                        </div>
-                        <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f419f410efe76d3"></script>
-                    </div>
-                </div>  
-            </div>
-            
-
-            <div class="review-count-pr">
-                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
-                <?php //echo $this->getChildHtml('summary_review')?>
-            </div>
-
-            <div class="product_extra_links" style="<?php echo $related_class;?>">
-                <?php
-                $productStrengh = $_product->getConfigurableAttribute();
-                $_strendthVariations = Mage::helper('variations')->getVariations($_product);
-                ?>
-                <?php $strengthCount = $_strendthVariations->count();
-                if($strengthCount){
-                    echo '<div style="font-weight: bold;color:#506f00;text-decoration: none;font-size: 18px;">Other Strengths</div>';
-                }
-                ?>
-                <div class="strength_variations">
-                    <?php foreach ($_strendthVariations as $key => $value) { 
-                          if($value->getVariationsStrength() == $productStrengh) {      
-                    ?>
-                            <a class="strength_box active" target="_blank" href="<?php echo $value->getVariationsUrl()?>">
-                                <span class='strength'><?php echo $value->getVariationsStrength()?></span>
-                            </a>
-                          <?php } else { ?>
-                            <a class="strength_box" target="_blank" href="<?php echo $value->getVariationsUrl()?>">
-                                <span><?php echo $value->getVariationsStrength()?></span>
-                            </a>
-                          <?php } ?>
-                    <?php } ?>
+                    <?php else: ?>
+                    <div class="no-display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                     <span itemprop="price">
+                        <?php
+                        echo Mage::helper('core')->currency($schemaUnitPrice); 
+                        ?>
+                    </span>
+                    <link itemprop="availability" href="http://schema.org/OutOfStock" />
                 </div>
+            <?php endif; ?>
+        </div>
+
+
+    </div>
+
+</div>
+<?php echo $this->getChildHtml('alert_urls') ?>
+
+<?php //echo $this->getChildHtml('product_type_data') ?>
+<?php echo $this->getTierPriceHtml() ?>
+<?php echo $this->getChildHtml('extrahint') ?>
+
+<div class="description_related">
+    <?php if ($_product->getShortDescription()):?>
+    <div class="short-description tablet">
+        <!-- <h2><?php //echo $this->__('Quick Overview') ?></h2> -->
+        <div class="std" itemprop="description">
+            <?php
+            $string = $_product->getShortDescription();
+            if (strlen($string) > 180) {
+
+                $stringCut = substr($string, 0, 180);
+                $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <div class="read_more" id="read_more"><b>Read More</b></div>'; 
+            }
+            echo $string;
+            ?>
+        </div>
+    </div>
+<?php endif;?>
+<div class="slider_wrap">
+    <?php 
+                   // $related_product_collection = $_product->getRelatedProductIds();
+                   // $count = count($related_product_collection);
+                   // if($count){
+                   //     echo $this->getChildHtml('custom_related');
+                   //     $related_class = 'border-top: 1px solid #b5b5b5;';
+                   // }else{
+                   //     $related_class = '';
+                   // }
+    ?> 
+</div> 
+<div class="s_desc_share_wrap">
+ <?php if ($_product->getShortDescription()):?>
+ <div class="short-description desktop">
+    <!-- <h2><?php //echo $this->__('Quick Overview') ?></h2> -->
+    <div class="std" itemprop="description">
+       <?php
+       $string = $_product->getShortDescription();
+       if (strlen($string) > 180) {
+        $stringCut = substr($string, 0, 180);
+
+        $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <span class="read_more" id="read_more"><b>Read more</b></span>'; 
+    }
+    echo $string;
+    ?>
+</div>
+</div>
+<?php endif;?>
+<div class="share bordercolor"><!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style ">
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        <a class="addthis_button_tweet"></a>
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f419f410efe76d3"></script>
+</div>
+</div>  
+</div>
+
+
+<div class="review-count-pr">
+    <?php //echo $this->getLayout()->createBlock('overrides/catalog_product_view')->setProduct($_product)->setTemplate('review/helper/summary.phtml')->toHtml();
+    ?>
+    <?php echo $this->getChildHtml('pdp_review')?>
+</div>
+
+<div class="product_extra_links" style="<?php echo $related_class;?>">
+    <?php
+    $productStrengh = $_product->getConfigurableAttribute();
+    $_strendthVariations = Mage::helper('variations')->getVariations($_product);
+    ?>
+    <?php $strengthCount = $_strendthVariations->count();
+    if($strengthCount){
+        echo '<div style="font-weight: bold;color:#506f00;text-decoration: none;font-size: 18px;">Other Strengths</div>';
+    }
+    ?>
+    <div class="strength_variations">
+        <?php foreach ($_strendthVariations as $key => $value) { 
+          if($value->getVariationsStrength() == $productStrengh) {      
+            ?>
+            <a class="strength_box active" target="_blank" href="<?php echo $value->getVariationsUrl()?>">
+                <span class='strength'><?php echo $value->getVariationsStrength()?></span>
+            </a>
+            <?php } else { ?>
+            <a class="strength_box" target="_blank" href="<?php echo $value->getVariationsUrl()?>">
+                <span><?php echo $value->getVariationsStrength()?></span>
+            </a>
+            <?php } ?>
+            <?php } ?>
+        </div>
                 <!-- <div class="pr-availibility"> 
                     <?php
                        // $custom_stock_status = $_frontendHelper->getCustomStockStatus($_product);
@@ -202,8 +203,16 @@
                 </div> -->
                 <?php if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'){ ?>
                 <!-- <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a> -->
-               <?php } ?>
-                <div class="pr-links-right">
+                <?php } ?>
+                <?php 
+                $summaryData = Mage::helper('frontend')->getproductReviews($_product->getId());
+                if($summaryData['reviews_count']){
+                    $class = 'first-review';
+                }else{
+                    $class = '';
+                }
+                ?>
+                <div class="pr-links-right <?php echo $class; ?>">
                     <?php /*
                         <div class="add_to_wishlist_product">
                         <?php if (!$this->hasOptions()):?>
@@ -225,159 +234,159 @@
                     </div>
                     */ ?>
                     <div class="pr-add-to-compare">
-                    <?php $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);?>
-                       <a href="<?php echo $_compareUrl;?>" class="link-compare">Compare</a>
+                        <?php $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);?>
+                        <a href="<?php echo $_compareUrl;?>" class="link-compare">Compare</a>
                     </div>
-       
+
                     <div class="pr-email-friend">
                         <?php if ($this->canEmailToFriend()): ?>
-                            <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"  class="link-email-friend"><?php echo $this->__('Email to a Friend') ?></a></p>
-                        <?php endif; ?>
-                    </div>
+                        <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"  class="link-email-friend"><?php echo $this->__('Email to a Friend') ?></a></p>
+                    <?php endif; ?>
                 </div>
             </div>
-
-            <?php echo $this->getChildHtml('other');?>
-
-            <div class="product-details-table">
-            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-            <?php endif;?>
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-                <?php endif;?>
-            </div>
-            
         </div>
-            <?php echo $this->getChildHtml('catalog.product.custom');?>
-    </form>
 
-            <?php if($_product->isSaleable() && $custom_stock_status =='Coming Soon'){ ?>
-                <div class="notify-me-boxwrapper">
-                    <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
-                    <span class="notify-close-btn">
-                        <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
-                    </span>
-                     <form id="notifyMe" action="" method="post" name="notifyMe">
-                        <div class="notify-input-box">
-                            <input class="input-text required-entry validate-email" id="notify_email" name="notify_email" value="" placeholder="Email Id">
-                            <input type="hidden" id="product_sku" name="product_sku" value="<?php echo $_product->getSku(); ?>">
-                            <input type="hidden" id="product_name" name="product_name" value="<?php echo $_product->getName(); ?>">
-                            <input type="hidden" id="product_id" name="product_id" value="<?php echo $_product->getId(); ?>">
-                            <input type="hidden" id="product_status" name="product_status" value="<?php echo $_product->getData('custom_stock_status'); ?>">
-                            <input type="hidden" id="product_url" name="product_url" value="<?php echo $_product->getData('url_path'); ?>">
-                            <div class="invalid_email"></div>
-                        </div>
-                        <button type="button" title="Notify Me" class="button notify-me" id="notify-me-coming" onclick="" value="">Notify Me</button>
-                    </form>
-                </div>
-                <!-- <div class="notify-overlay"></div> -->
-            <?php } ?>
+        <?php echo $this->getChildHtml('other');?>
+
+        <div class="product-details-table">
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+        <?php endif;?>
+        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+        <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+    <?php endif;?>
+</div>
+
+</div>
+<?php echo $this->getChildHtml('catalog.product.custom');?>
+</form>
+
+<?php if($_product->isSaleable() && $custom_stock_status =='Coming Soon'){ ?>
+<div class="notify-me-boxwrapper">
+    <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
+    <span class="notify-close-btn">
+        <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
+    </span>
+    <form id="notifyMe" action="" method="post" name="notifyMe">
+        <div class="notify-input-box">
+            <input class="input-text required-entry validate-email" id="notify_email" name="notify_email" value="" placeholder="Email Id">
+            <input type="hidden" id="product_sku" name="product_sku" value="<?php echo $_product->getSku(); ?>">
+            <input type="hidden" id="product_name" name="product_name" value="<?php echo $_product->getName(); ?>">
+            <input type="hidden" id="product_id" name="product_id" value="<?php echo $_product->getId(); ?>">
+            <input type="hidden" id="product_status" name="product_status" value="<?php echo $_product->getData('custom_stock_status'); ?>">
+            <input type="hidden" id="product_url" name="product_url" value="<?php echo $_product->getData('url_path'); ?>">
+            <div class="invalid_email"></div>
+        </div>
+        <button type="button" title="Notify Me" class="button notify-me" id="notify-me-coming" onclick="" value="">Notify Me</button>
+    </form>
+</div>
+<!-- <div class="notify-overlay"></div> -->
+<?php } ?>
 
 <?php
-                
-                if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'): ?>
-                <!-- <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a> -->
 
-                <div class="notify-me-boxwrapper">
-                    <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
-                    <span class="notify-close-btn">
-                        <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
-                    </span>
-                     <form id="notify_me_form" action="" method="post" name="notify_me_form">
-                        <div class="notify-input-box">
-                            <input class="input-text required-entry validate-email" id="notify_email" name="notify_email" value="" placeholder="Email Id">
-                            <input type="hidden" id="product_sku" name="product_sku" value="<?php echo $_product->getSku(); ?>">
-                            <input type="hidden" id="product_name" name="product_name" value="<?php echo $_product->getName(); ?>">
-                            <input type="hidden" id="product_id" name="product_id" value="<?php echo $_product->getId(); ?>">
-                            <input type="hidden" id="product_status" name="product_status" value="<?php echo $_product->getData('custom_stock_status'); ?>">
-                            <input type="hidden" id="product_url" name="product_url" value="<?php echo $_product->getData('url_path'); ?>">
-                            <div class="invalid_email"></div>
-                        </div>
-                        <button type="button" title="Notify Me" class="button notify-me" id="notify-me" onclick="" value="">Notify Me</button>
-                    </form>
-                </div>
-                <div class="notify-overlay"></div>
-            <?php endif; ?>
+if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'): ?>
+<!-- <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a> -->
 
-             <!-- limited Supply form -->
+<div class="notify-me-boxwrapper">
+    <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
+    <span class="notify-close-btn">
+        <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
+    </span>
+    <form id="notify_me_form" action="" method="post" name="notify_me_form">
+        <div class="notify-input-box">
+            <input class="input-text required-entry validate-email" id="notify_email" name="notify_email" value="" placeholder="Email Id">
+            <input type="hidden" id="product_sku" name="product_sku" value="<?php echo $_product->getSku(); ?>">
+            <input type="hidden" id="product_name" name="product_name" value="<?php echo $_product->getName(); ?>">
+            <input type="hidden" id="product_id" name="product_id" value="<?php echo $_product->getId(); ?>">
+            <input type="hidden" id="product_status" name="product_status" value="<?php echo $_product->getData('custom_stock_status'); ?>">
+            <input type="hidden" id="product_url" name="product_url" value="<?php echo $_product->getData('url_path'); ?>">
+            <div class="invalid_email"></div>
+        </div>
+        <button type="button" title="Notify Me" class="button notify-me" id="notify-me" onclick="" value="">Notify Me</button>
+    </form>
+</div>
+<div class="notify-overlay"></div>
+<?php endif; ?>
 
-           <?php
-                if(!$_product->isSaleable() && $custom_stock_status =='Limited Supply'): ?>
-                <div class="contact-supply-box"><span class="limited_product_name"><?php echo $_product->getName(); ?></span> has limited supply. Please <a title="link-limited-supply" href="" class="link-limited-supply">Contact US</a> for the quantity needed.</div>
+<!-- limited Supply form -->
 
-                <div class="pr-limited-supply-boxwrapper">
-                    <h1><span>Please Email Your Requirement</span></h1>
-                    <span class="limited-supply-close-btn">
-                        <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
-                    </span>
-                    <form id="limited_supply_form" action="" method="post" name="limited_supply_form">
-                        <div class="limited-supply-input-box">
-                            <input class="input-text required-entry validate-fullname" id="limited_supply_name" name="limited_supply_name" placeholder="Name">
-                            <input class="input-text required-entry validate-email" id="limited_supply_email" name="limited_supply_email" placeholder="Email id">
-                            <input class="input-text validate-digits" id="limited_supply_phone" name="limited_supply_phone" placeholder="Phone No">
-                            <input class="input-text required-entry" id="limited_supply_quantity" name="limited_supply_quantity" placeholder="Quantity Needed">
-                            <textarea rows="4" cols="50" class="required-entry" id="limited_supply_comment" name="limited_supply_comment"></textarea>
-                            <input type="hidden" id="product_sku" name="product_sku" value="<?php echo $_product->getSku(); ?>">
-                            <input type="hidden" id="product_name" name="product_name" value="<?php echo $_product->getName(); ?>">
-                            <input type="hidden" id="product_status" name="product_status" value="<?php echo $_product->getData('custom_stock_status'); ?>">
-                            <input type="hidden" id="product_url" name="product_url" value="<?php echo $_product->getData('url_path'); ?>">
+<?php
+if(!$_product->isSaleable() && $custom_stock_status =='Limited Supply'): ?>
+<div class="contact-supply-box"><span class="limited_product_name"><?php echo $_product->getName(); ?></span> has limited supply. Please <a title="link-limited-supply" href="" class="link-limited-supply">Contact US</a> for the quantity needed.</div>
 
-                            <div class="captcha_div">
-                                <img src="<?php echo $this->getUrl().'suggestion_captcha_file.php?rand='.rand(); ?>" id='suggestion_captcha_img' >
-                                <input id="suggestion_captcha_code" class="required-entry validate_captcha sb_input_field" name="suggestion_captcha_code" type="text">
-                                <small class="small-txt">Can't read the image? click <a href='javascript: suggestion_refresh_Captcha();'>here</a> to refresh</small>
-                                <input type="hidden" id="check-me" />
-                            </div>
+<div class="pr-limited-supply-boxwrapper">
+    <h1><span>Please Email Your Requirement</span></h1>
+    <span class="limited-supply-close-btn">
+        <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
+    </span>
+    <form id="limited_supply_form" action="" method="post" name="limited_supply_form">
+        <div class="limited-supply-input-box">
+            <input class="input-text required-entry validate-fullname" id="limited_supply_name" name="limited_supply_name" placeholder="Name">
+            <input class="input-text required-entry validate-email" id="limited_supply_email" name="limited_supply_email" placeholder="Email id">
+            <input class="input-text validate-digits" id="limited_supply_phone" name="limited_supply_phone" placeholder="Phone No">
+            <input class="input-text required-entry" id="limited_supply_quantity" name="limited_supply_quantity" placeholder="Quantity Needed">
+            <textarea rows="4" cols="50" class="required-entry" id="limited_supply_comment" name="limited_supply_comment"></textarea>
+            <input type="hidden" id="product_sku" name="product_sku" value="<?php echo $_product->getSku(); ?>">
+            <input type="hidden" id="product_name" name="product_name" value="<?php echo $_product->getName(); ?>">
+            <input type="hidden" id="product_status" name="product_status" value="<?php echo $_product->getData('custom_stock_status'); ?>">
+            <input type="hidden" id="product_url" name="product_url" value="<?php echo $_product->getData('url_path'); ?>">
 
-                            <div class="invalid_email"></div>
-                        </div>
-                        <button type="button" title="limited supply" class="button limited-supply" id="limited-supply" onclick="" value="">Submit</button>
-                    </form>
-                </div>
-                <div class="loader">
-                       <img class="loading-image" src="<?php echo $this->getSkinUrl('images/loading_spinner.gif');?>" alt="loading..">
-                </div>
-                <div class="limited-supply-overlay"></div>
-            <?php endif; ?>
-            
-        <div>
-            
-        </div>    
+            <div class="captcha_div">
+                <img src="<?php echo $this->getUrl().'suggestion_captcha_file.php?rand='.rand(); ?>" id='suggestion_captcha_img' >
+                <input id="suggestion_captcha_code" class="required-entry validate_captcha sb_input_field" name="suggestion_captcha_code" type="text">
+                <small class="small-txt">Can't read the image? click <a href='javascript: suggestion_refresh_Captcha();'>here</a> to refresh</small>
+                <input type="hidden" id="check-me" />
+            </div>
 
-    <script type="text/javascript">
+            <div class="invalid_email"></div>
+        </div>
+        <button type="button" title="limited supply" class="button limited-supply" id="limited-supply" onclick="" value="">Submit</button>
+    </form>
+</div>
+<div class="loader">
+   <img class="loading-image" src="<?php echo $this->getSkinUrl('images/loading_spinner.gif');?>" alt="loading..">
+</div>
+<div class="limited-supply-overlay"></div>
+<?php endif; ?>
+
+<div>
+
+</div>    
+
+<script type="text/javascript">
     //<![CDATA[
-        var productAddToCartForm = new VarienForm('product_addtocart_form');
-        productAddToCartForm.submit = function(button, url) {
-            if (this.validator.validate()) {
-                var form = this.form;
-                var oldUrl = form.action;
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+    productAddToCartForm.submit = function(button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
 
-                if (url) {
-                   form.action = url;
-                }
-                var e = null;
-                try {
-                    this.form.submit();
-                } catch (e) {
-                }
-                this.form.action = oldUrl;
-                if (e) {
-                    throw e;
-                }
+            if (url) {
+               form.action = url;
+           }
+           var e = null;
+           try {
+            this.form.submit();
+        } catch (e) {
+        }
+        this.form.action = oldUrl;
+        if (e) {
+            throw e;
+        }
 
-                if (button && button != 'undefined') {
-                    button.disabled = true;
-                }
-            }
-        }.bind(productAddToCartForm);
+        if (button && button != 'undefined') {
+            button.disabled = true;
+        }
+    }
+}.bind(productAddToCartForm);
 
-        productAddToCartForm.submitLight = function(button, url){
-            if(this.validator) {
-                var nv = Validation.methods;
-                delete Validation.methods['required-entry'];
-                delete Validation.methods['validate-one-required'];
-                delete Validation.methods['validate-one-required-by-name'];
+productAddToCartForm.submitLight = function(button, url){
+    if(this.validator) {
+        var nv = Validation.methods;
+        delete Validation.methods['required-entry'];
+        delete Validation.methods['validate-one-required'];
+        delete Validation.methods['validate-one-required-by-name'];
                 // Remove custom datetime validators
                 for (var methodName in Validation.methods) {
                     if (methodName.match(/^validate-datetime-.*/i)) {
@@ -396,48 +405,58 @@
         }.bind(productAddToCartForm);
     //]]>
     </script>
-    </div>
-   
-    <div class="product-collateral">
-        <div class="product-collateral-inner">
-            <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
-                <div class="box-collateral <?php echo "box-{$alias}"?>">
-                    <?php if ($title = $this->getChildData($alias, 'title')):?>
-                        <h2><?php echo $this->escapeHtml($title); ?></h2>
-                    <?php endif;?>
-                    <?php echo $html; ?>
-                </div>
-            <?php endforeach;?>
-            <?php //echo $this->getChildHtml('upsell_products') ?>
-            
-            <?php //echo $this->getChildHtml('bought.product.wrapper'); ?>
-            <?php echo $this->getChildHtml('related_product_new'); ?>
-            <div class="trustedcompany-widget">            
-                <h2>Trusted Company Reviews</h2>
-                <div id="TRUSTEDCOMPANY_widget_86430">
-                    <script async
-                    src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXh4BFAMkFgoRGR0LEhgAFkIHHQJYU0JcVkc"
-                    ></script>
-                </div>
-            </div>
-            <?php echo $this->getChildHtml('product_additional_data') ?>
-            <div class="customer_rating review_graph">
-                <?php echo $this->getChildHtml('review_form');?>
-                <?php echo $this->getChildHtml('product_additional_data_reviews');?>
-            </div>
-            <?php echo $this->getChildHtml('frequently_slider'); ?>
+</div>
 
-        </div>
+<div class="product-collateral">
+    <div class="product-collateral-inner">
+        <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+        <div class="box-collateral <?php echo "box-{$alias}"?>">
+            <?php if ($title = $this->getChildData($alias, 'title')):?>
+            <h2><?php echo $this->escapeHtml($title); ?></h2>
+        <?php endif;?>
+        <?php echo $html; ?>
     </div>
-     <!-- Start Trustedcompany Widget Integration -->
-       
-      <!-- End Trustedcompany Widget Integration -->
+<?php endforeach;?>
+<?php //echo $this->getChildHtml('upsell_products') ?>
+
+<?php //echo $this->getChildHtml('bought.product.wrapper'); ?>
+<?php 
+$related_product_collection = $_product->getRelatedProductIds();
+$count = count($related_product_collection);
+if($count){
+    //echo $this->getChildHtml('custom_related');
+    echo $this->getChildHtml('related_product_new'); 
+    $related_class = 'border-top: 1px solid #b5b5b5;';
+}else{
+   $related_class = '';
+}
+?>       
+<div class="trustedcompany-widget">            
+    <h2>Trusted Company Reviews</h2>
+    <div id="TRUSTEDCOMPANY_widget_86430">
+        <script async
+        src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXh4BFAMkFgoRGR0LEhgAFkIHHQJYU0JcVkc"
+        ></script>
+    </div>
+</div>
+<?php echo $this->getChildHtml('product_additional_data') ?>
+<div class="customer_rating review_graph">
+    <?php echo $this->getChildHtml('review_form');?>
+    <?php echo $this->getChildHtml('product_additional_data_reviews');?>
+</div>
+<?php echo $this->getChildHtml('frequently_slider'); ?>
+
+</div>
+</div>
+<!-- Start Trustedcompany Widget Integration -->
+
+<!-- End Trustedcompany Widget Integration -->
 </div>
 <script type="text/javascript">
      //< ![CDATA[
-        var customForm = new VarienForm('notify_me_form',true);
-        var limitedcustomForm = new VarienForm('limited_supply_form',true);
-        var notifyMe = new VarienForm('notifyMe',true);
+     var customForm = new VarienForm('notify_me_form',true);
+     var limitedcustomForm = new VarienForm('limited_supply_form',true);
+     var notifyMe = new VarienForm('notifyMe',true);
     //]]>
 
     jQuery(document).ready(function($) {
@@ -445,7 +464,7 @@
           infinite: true,
           slidesToShow: 4,
           slidesToScroll: 1
-        });
+      });
 
         jQuery('.read_more').click(function() {
             var divPosition = jQuery('.easytabs li').offset();
@@ -459,7 +478,7 @@
                 // jQuery(".easytabs-content-wrapper .easytabs-content").first().addClass("active");
                 // jQuery("html, body").animate({scrollTop: jQuery('.easytabs').offset().top }, 2000);
                 // jQuery("ul.easytabs li").first().find("a").trigger( "click" );
-        });
+            });
 
         jQuery('#notify-me').click(function(e) {
             if(customForm.validator.validate()){
@@ -474,165 +493,165 @@
 
                 var email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-                 if(subscription_email=="") {
+                if(subscription_email=="") {
                     return false;
                 } else if (!email.test(subscription_email)) {
                    return false;
-                }
+               }
 
-                jQuery.ajax({
-                    url: "<?php echo Mage::getUrl('outofstocksubscription/index/index') ?>",
-                    type: "POST",
-                    data: {"subscription_email":subscription_email,"product_sku":product_sku,"product_name":product_name,"product_status":product_status,"product_url":product_url,"product_id":product_id},
-                    beforeSend : function (){
+               jQuery.ajax({
+                url: "<?php echo Mage::getUrl('outofstocksubscription/index/index') ?>",
+                type: "POST",
+                data: {"subscription_email":subscription_email,"product_sku":product_sku,"product_name":product_name,"product_status":product_status,"product_url":product_url,"product_id":product_id},
+                beforeSend : function (){
 
-                    },
-                    success: function(data) {
-                        jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email">Thank you, for your interest. You will be Notified by Email when it becomes available.</div>' );
-                        jQuery(".subscription_text").hide();
+                },
+                success: function(data) {
+                    jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email">Thank you, for your interest. You will be Notified by Email when it becomes available.</div>' );
+                    jQuery(".subscription_text").hide();
                         // jQuery(".notify_tab").hide();
                         // jQuery(".notify_tab2").hide();
                     }
                 });
-            }
-        });
-        
-        jQuery('#notify-me-coming').click(function(e) {
-            if(notifyMe.validator.validate()){
-                var subscription_email = $("#notify_email").val();
-                var product_sku = $("#product_sku").val();
-                var product_name = $("#product_name").val();
-                var product_status = $("#product_status").val();
-                var product_url = $("#product_url").val();
-                var product_id = $("#product_id").val();
+           }
+       });
+
+jQuery('#notify-me-coming').click(function(e) {
+    if(notifyMe.validator.validate()){
+        var subscription_email = $("#notify_email").val();
+        var product_sku = $("#product_sku").val();
+        var product_name = $("#product_name").val();
+        var product_status = $("#product_status").val();
+        var product_url = $("#product_url").val();
+        var product_id = $("#product_id").val();
 
 
 
-                var email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-                 if(subscription_email=="") {
-                    return false;
-                } else if (!email.test(subscription_email)) {
-                   return false;
-                }
+        if(subscription_email=="") {
+            return false;
+        } else if (!email.test(subscription_email)) {
+           return false;
+       }
 
-                jQuery.ajax({
-                    url: "<?php echo Mage::getUrl('outofstocksubscription/index/index') ?>",
-                    type: "POST",
-                    data: {"subscription_email":subscription_email,"product_sku":product_sku,"product_name":product_name,"product_status":product_status,"product_url":product_url,"product_id":product_id},
-                    beforeSend : function (){
+       jQuery.ajax({
+        url: "<?php echo Mage::getUrl('outofstocksubscription/index/index') ?>",
+        type: "POST",
+        data: {"subscription_email":subscription_email,"product_sku":product_sku,"product_name":product_name,"product_status":product_status,"product_url":product_url,"product_id":product_id},
+        beforeSend : function (){
 
-                    },
-                    success: function(data) {
-                        jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email">Thank you, for your interest. You will be Notified by Email when it becomes available.</div>' );
-                        jQuery(".subscription_text").hide();
+        },
+        success: function(data) {
+            jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email">Thank you, for your interest. You will be Notified by Email when it becomes available.</div>' );
+            jQuery(".subscription_text").hide();
                         // jQuery(".notify_tab").hide();
                         // jQuery(".notify_tab2").hide();
                     }
                 });
-            }
-        });
+   }
+});
 
-        $(".link-limited-supply").click(function(e){
-            e.preventDefault();
+$(".link-limited-supply").click(function(e){
+    e.preventDefault();
             //var parent_notify = $(this).closest( "li" );
             $(".limited-supply-overlay").stop( true, true ).toggle();
             $(".pr-limited-supply-boxwrapper").stop( true, true ).toggle();
         });
 
-        $(".pr-link-limited-supply").click(function(e){
-            e.preventDefault();
-            $(".limited-supply-overlay").stop( true, true ).toggle();
-            $(".pr-limited-supply-me-boxwrapper").stop( true, true ).toggle();
-        });
+$(".pr-link-limited-supply").click(function(e){
+    e.preventDefault();
+    $(".limited-supply-overlay").stop( true, true ).toggle();
+    $(".pr-limited-supply-me-boxwrapper").stop( true, true ).toggle();
+});
 
-        $(".limited-supply-overlay").click(function(){
-            $(".limited-supply-boxwrapper").hide();
-            $(".pr-limited-supply-boxwrapper").hide();
-            $(".limited-supply-overlay").hide();
-        });
+$(".limited-supply-overlay").click(function(){
+    $(".limited-supply-boxwrapper").hide();
+    $(".pr-limited-supply-boxwrapper").hide();
+    $(".limited-supply-overlay").hide();
+});
 
-        $(".limited-supply-close-btn").click(function(){
-            $(".limited-supply-boxwrapper, .pr-limited-supply-boxwrapper, .limited-supply-overlay").hide();
-        });
+$(".limited-supply-close-btn").click(function(){
+    $(".limited-supply-boxwrapper, .pr-limited-supply-boxwrapper, .limited-supply-overlay").hide();
+});
 
-        $('#limited-supply').click(function(e) {
-            if(limitedcustomForm.validator.validate()){
-                e.preventDefault();
-                var subscription_email = $("#limited_supply_email").val();
-                var subscription_name = $("#limited_supply_name").val();
-                var subscription_phone = $("#limited_supply_phone").val();
-                var subscription_quantity = $("#limited_supply_quantity").val();
-                var subscription_comment = $("#limited_supply_comment").val();
-                var product_sku = $("#product_sku").val();
-                var product_name = $("#product_name").val();
-                var product_status = $("#product_status").val();
-                var product_url = $("#product_url").val();
+$('#limited-supply').click(function(e) {
+    if(limitedcustomForm.validator.validate()){
+        e.preventDefault();
+        var subscription_email = $("#limited_supply_email").val();
+        var subscription_name = $("#limited_supply_name").val();
+        var subscription_phone = $("#limited_supply_phone").val();
+        var subscription_quantity = $("#limited_supply_quantity").val();
+        var subscription_comment = $("#limited_supply_comment").val();
+        var product_sku = $("#product_sku").val();
+        var product_name = $("#product_name").val();
+        var product_status = $("#product_status").val();
+        var product_url = $("#product_url").val();
 
-                var email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-                 if(subscription_email=="") {
-                    return false;
-                } else if (!email.test(subscription_email)) {
-                   return false;
-                }
-
-                jQuery.ajax({
-                    url: "<?php echo Mage::getUrl('limitedsupply/index/index') ?>",
-                    type: "POST",
-                    data: {"subscription_quantity":subscription_quantity,"subscription_phone":subscription_phone,"subscription_name":subscription_name,"subscription_comment":subscription_comment,"subscription_email":subscription_email,"product_sku":product_sku,"product_name":product_name,"product_status":product_status,"product_url":product_url},
-                    beforeSend : function (){
-                        jQuery('.loader').css({'display':'block'})
-                    },
-                    success: function(data) {
-                        jQuery('.loader').css({'display':'none'})
-                        jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email">Thank you, for your interest. You will be Notified by Email.</div>' );
-                        jQuery(".subscription_text").hide();
-                        jQuery(".notify_tab").hide();
-                        jQuery(".notify_tab2").hide();
-
-                        setTimeout(closepopup, 3000);
-                    }
-                });
-            }
-        });
-
-    });
-
-    Validation.add('validate_captcha','Enter valid code',function(field_val){
-       if(jQuery("#check-me").val() != "")   {
-            var me = jQuery("#check-me").val().split("_");
-            if(me[1] == field_val) {
-                return true;
-            }
+        if(subscription_email=="") {
             return false;
+        } else if (!email.test(subscription_email)) {
+           return false;
+       }
+
+       jQuery.ajax({
+        url: "<?php echo Mage::getUrl('limitedsupply/index/index') ?>",
+        type: "POST",
+        data: {"subscription_quantity":subscription_quantity,"subscription_phone":subscription_phone,"subscription_name":subscription_name,"subscription_comment":subscription_comment,"subscription_email":subscription_email,"product_sku":product_sku,"product_name":product_name,"product_status":product_status,"product_url":product_url},
+        beforeSend : function (){
+            jQuery('.loader').css({'display':'block'})
+        },
+        success: function(data) {
+            jQuery('.loader').css({'display':'none'})
+            jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email">Thank you, for your interest. You will be Notified by Email.</div>' );
+            jQuery(".subscription_text").hide();
+            jQuery(".notify_tab").hide();
+            jQuery(".notify_tab2").hide();
+
+            setTimeout(closepopup, 3000);
         }
-        return false;
     });
+   }
+});
 
-    jQuery(window).load(function(){
-        SuggestionRefreshCaptcha();
+});
+
+Validation.add('validate_captcha','Enter valid code',function(field_val){
+   if(jQuery("#check-me").val() != "")   {
+    var me = jQuery("#check-me").val().split("_");
+    if(me[1] == field_val) {
+        return true;
+    }
+    return false;
+}
+return false;
+});
+
+jQuery(window).load(function(){
+    SuggestionRefreshCaptcha();
+});
+
+function closepopup(){
+    jQuery('.limited-supply-close-btn').trigger('click');
+    document.getElementById("limited_supply_form").reset();
+    jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email"></div>' );
+}
+
+function SuggestionRefreshCaptcha(){
+    jQuery.post("<?php echo $this->getUrl().'suggestion_captcha_file.php?code='.rand();?>", function(captcha){
+        if(captcha!=""){
+            jQuery("#check-me").val(captcha);
+        }
     });
+}
 
-    function closepopup(){
-        jQuery('.limited-supply-close-btn').trigger('click');
-        document.getElementById("limited_supply_form").reset();
-        jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email"></div>' );
-    }
-
-    function SuggestionRefreshCaptcha(){
-        jQuery.post("<?php echo $this->getUrl().'suggestion_captcha_file.php?code='.rand();?>", function(captcha){
-            if(captcha!=""){
-                jQuery("#check-me").val(captcha);
-            }
-        });
-    }
-
-    function suggestion_refresh_Captcha(){
-        var img = document.images['suggestion_captcha_img'];
-        img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
-        setTimeout('SuggestionRefreshCaptcha()', 500);
-    }
+function suggestion_refresh_Captcha(){
+    var img = document.images['suggestion_captcha_img'];
+    img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
+    setTimeout('SuggestionRefreshCaptcha()', 500);
+}
 
 
 </script>
