@@ -1,4 +1,7 @@
 /*new homepage header*/
+body, input, select, textarea, button{
+    font-family: 'Open Sans', sans-serif !important;
+}
 
 .header {
     padding: 1px 0;
@@ -541,7 +544,7 @@ p.footer_content {
         }
         .header .form-search input.input-text {
             font-size: 17px;
-            font-family: arial;
+            /*font-family: arial;*/
         }
          #toTop_mobile {
             display: none;
@@ -551,7 +554,7 @@ p.footer_content {
             line-height: 25px;
             font-size: 12px;
             font-weight: 600;
-            font-family: 'Open Sans', sans-serif;
+            /*font-family: 'Open Sans', sans-serif;*/
         }
 }
 
