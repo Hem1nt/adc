@@ -1,4 +1,7 @@
 /*new homepage header*/
+body, input, select, textarea, button{
+    font-family: 'Open Sans', sans-serif !important;
+}
 
 .header {
     padding: 1px 0;
@@ -735,7 +738,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         }
         .header .form-search input.input-text {
             font-size: 17px;
-            font-family: arial;
+            /*font-family: arial;*/
         }
          #toTop_mobile {
             display: none;
@@ -745,7 +748,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             line-height: 25px;
             font-size: 12px;
             font-weight: 600;
-            font-family: 'Open Sans', sans-serif;
+            /*font-family: 'Open Sans', sans-serif;*/
         }
 }
 
