@@ -541,6 +541,7 @@ body {
 .catalog-category-view .col-main .category-products .products-list li.item .product-shop .f-fix .actions_btn button.button, .catalogsearch-result-index .col-main .category-products .products-list li.item .product-shop .f-fix .actions_btn button.button {
   position: relative;
   top: 50%;
+  padding: 5px 10px;
   margin-top: -21px;
 }
 .catalog-category-view .col-main .category-products .products-list li.item .product-shop .f-fix .actions_btn button.button span, .catalogsearch-result-index .col-main .category-products .products-list li.item .product-shop .f-fix .actions_btn button.button span {

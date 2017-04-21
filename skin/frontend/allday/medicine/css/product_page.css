@@ -418,8 +418,19 @@ button.button:hover > span {
   padding-top: 30px;
 }
 
+.product-view .product-shop p.no-rating a {
+  color: #506f00;
+  text-decoration: underline;
+}
+
+.catalog-product-view .pr-links-right.first-review, .review-product-list .pr-links-right.first-review {
+  padding-top: 4px;
+}
+
 .product-details-table {
   margin-top: 27px;
+  width: 100%;
+  display: inline-block;
 }
 
 .catalog-product-view .product-details-table table.new_product_list, .review-product-list .product-details-table table.new_product_list {
@@ -524,6 +535,10 @@ span.recomend-text {
   width: 100%;
 }
 
+.catalog-product-view .product-view .product-img-box .product-image img {
+  width: 100%;
+}
+
 .easytabs-wrapper {
   margin: 30px 0 35px;
 }
@@ -541,6 +556,34 @@ span.recomend-text {
 .catalog-product-view #messages_product_view {
   max-width: 1200px;
   margin: 0 auto;
+}
+.catalog-product-view .compare_box_main {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+}
+.catalog-product-view .compare_box_main li.product_box {
+  border-color: #c9c9c9;
+}
+.catalog-product-view .compare_box_main li.product_box .p-name {
+  height: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.catalog-product-view .compare_box_main li.product_box .p-price {
+  height: 45px;
+}
+.catalog-product-view .compare_box_main .compare_btn_box {
+  background: #9fb701;
+  color: #fff;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 8px 24px 8px 24px;
+  border-radius: 30px;
+  display: block;
+  font-family: Open Sans, sans-serif;
+  height: auto;
+  font-weight: normal;
 }
 .catalog-product-view .product-tags {
   margin-top: 20px;
@@ -585,7 +628,7 @@ span.recomend-text {
   color: #333;
 }
 .catalog-product-view .easytabs-content-wrapper h3 strong {
-  font-size: 16px !important;
+  font-size: 15px !important;
   font-family: Open Sans, sans-serif;
   font-weight: bold;
 }
@@ -628,6 +671,7 @@ span.recomend-text {
   height: auto;
   font-weight: normal;
   background: #9fb701;
+  margin-top: 0;
 }
 .catalog-product-view .product-collateral #product_tabs_tags_tabbed_contents button span {
   padding: 0;
@@ -911,6 +955,8 @@ span.recomend-text {
   padding: 24px 0;
   border-left: 1px solid #cccccc;
   box-sizing: border-box;
+  background: none;
+  border-radius: 0;
 }
 .catalog-product-view .frequently_bought_wrap .slider_wraper .btn-cart span, .review-product-list .frequently_bought_wrap .slider_wraper .btn-cart span {
   color: #333333;
