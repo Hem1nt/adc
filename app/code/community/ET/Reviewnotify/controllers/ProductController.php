@@ -95,6 +95,8 @@ class ET_Reviewnotify_ProductController extends Mage_Review_ProductController
                             }
                         }
                     }
+                    Mage::getSingleton('core/cookie')->delete('productCookie');
+                    Mage::getSingleton('core/cookie')->set('productCookie',$product->getId(),time()+86400,'/');
                 }
                 catch (Exception $e) {
                     $session->setFormData($data);

@@ -13,7 +13,7 @@ class Iksula_OutofStockSubscription_IndexController extends Mage_Core_Controller
        $productModel = Mage::getModel('catalog/product');
        if($_POST['product_status'] == '')
        {
-               $product_status = "outofstock";
+               $attributeLabel = "outofstock";
        }else {
         	$productData = $productModel->load($product_id);
         	$customStockStatus = $productData->getCustomStockStatus();
