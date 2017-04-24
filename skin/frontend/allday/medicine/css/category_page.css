@@ -1389,6 +1389,9 @@ dl#narrow-by-list dd ol li a {
   }
 }
 @media only screen and (max-width: 420px) {
+  .catalog-category-view .col-main .category-products .toolbar .sorter .sort-by label {
+    display: block;
+  }
   .catalog-category-view .col-main .category-products .products-grid li.item {
     width: 48% !important;
   }
