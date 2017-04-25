@@ -787,19 +787,23 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         position: relative;
         top: 0;
     }
-    .header .form-search input.input-text {
-        height: 35px;
+    .header .form-search input.input-text, .header .form-search button.button {
+        height: 40px;
+        box-sizing: border-box;
     }
     .main-container {
-        margin-top: 20px !important;
-    }
-    .header .form-search button.button {
-        height: 41px;
+        margin-top: 15px !important;
     }
     .header .form-search input.input-text {
         font-size: 17px;
         margin: 0;
-        width: 89% !important;
+        width: 92% !important;
+        box-sizing: border-box;
+    }  
+    .header .form-search button.button{
+        margin-left: -2%;
+        width: 10%;
+        box-sizing: border-box;
     }
     #toTop_mobile {
         display: none;
@@ -912,29 +916,19 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         padding: 0;
     }
 }
-
-@media only screen and (max-width: 670px){
-    .header .form-search input.input-text {
-        width: 86% !important;
-    }    
-    .header .form-search button.button{
-        margin-left: -1%;
-        width: 11%;
-    }
-}
 @media only screen and (max-width: 568px){
     .customer-account-create .account-create .create-acc-boxlft, .customer-account-create .account-create .create-acc-boxrt, .customer-account-create .account-create .form-list label, 
     .customer-account-create .account-create .create-acc-boxrt .form-list .input-box, .customer-account-create .account-create .form-list .input-box, .customer-account-create .account-create .create-acc-boxrt li.control{
         width: 100%;
+    }
+    .header .form-search input.input-text, .header .form-search button.button{
+        height: 35px;
     }
 }
 @media only screen and (max-width: 420px){
     .all_categories_list {
         padding-left: 10px;
     }
-     .header .form-search input.input-text {
-        width: 73% !important;
-    }  
     #search_autocomplete {
         width: 74% !important;
     }
@@ -989,6 +983,10 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .customer-address-form .form-list li.wide input#street_1{
         margin: 0 0 5px;
+    }
+    .header .form-search button.button {
+        margin-left: -6%;
+        width: 14%;
     }
 }
 @media only screen and (max-width: 360px){
