@@ -1,7 +1,7 @@
 
 jQuery(document).ready(function($){
-    
-  equalheight = function(container){
+
+equalheight = function(container){
    var currentTallest = 0,
         currentRowStart = 0,
         rowDivs = new Array(),
@@ -31,10 +31,10 @@ jQuery(document).ready(function($){
    });
  } 
  
- equalheight('ul.products-grid li.item, .frequently_bought_wrap .pr-details-height');
+ equalheight('ul.products-grid li.item');
 
  $(window).on('resize', function(){
-   equalheight('ul.products-grid li.item, .frequently_bought_wrap .pr-details-height');
+   equalheight('ul.products-grid li.item');
  });
 
  $('.bxslider-pr-view').slick({
