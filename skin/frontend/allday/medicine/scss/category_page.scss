@@ -1947,6 +1947,15 @@ dl#narrow-by-list dd ol li a {
 	.catalog-category-view{
 		.col-main{
 			.category-products{
+				.toolbar{
+					.sorter{
+						 .sort-by{
+						 	label{
+						 		display: block;
+						 	}
+						 }
+					}
+				}
 				.products-grid{
 					li.item{
 						width: 48%!important;
