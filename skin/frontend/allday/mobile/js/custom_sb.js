@@ -1,6 +1,7 @@
-/*jQuery(document).ready(function($){
 
- equalheight = function(container){
+jQuery(document).ready(function($){
+
+equalheight = function(container){
    var currentTallest = 0,
         currentRowStart = 0,
         rowDivs = new Array(),
@@ -36,4 +37,9 @@
    equalheight('ul.products-grid li.item');
  });
 
- });*/
+ $('.bxslider-pr-view').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1
+  });
+
+  });

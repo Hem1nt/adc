@@ -35,14 +35,14 @@
     <div class="std">
         <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_description, 'description') ?>
     </div>
-    <div class="read_more_wrap">
+    <!-- <div class="read_more_wrap">
     	<span class="read-more">Read more</span>
-	</div>
+	</div> -->
 <?php endif; ?>
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$(".read-more").click(function() {
+		/*$(".read-more").click(function() {
 			if (!$(".std").hasClass("stdheight")) {
 				$(".std").addClass("stdheight");
 				$(this).text("Less");			
@@ -52,7 +52,7 @@
 				 $('html, body').animate({
 			        scrollTop: $(".product-collateral").offset().top
 			    }, 1000);
-			}
+			}*/
 
 			// if ($(".std").hasClass("stdheight")) {
 			// 	$(".std").removeClass("stdheight");
@@ -67,6 +67,6 @@
 			// }
 
 			
-		})
+		/*})*/
 	});
 </script>
