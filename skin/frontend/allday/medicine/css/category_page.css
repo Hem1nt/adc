@@ -1044,7 +1044,7 @@ div.notify-me-boxwrapper .notify-input-box input {
 }
 
 .col-right .block .actions {
-  background: #fff;
+  background: #f4f4f4;
 }
 
 dl#narrow-by-list dd ol li a {
@@ -1601,6 +1601,13 @@ dl#narrow-by-list dd ol li a {
     float: left;
   }
   .catalog-category-view .col-right.sidebar #trustedcompany-widget, .catalogsearch-result-index .col-right.sidebar #trustedcompany-widget {
+    border: 0;
+  }
+  .catalog-category-view .col-right.sidebar #trustedcompany-widget .widget, .catalogsearch-result-index .col-right.sidebar #trustedcompany-widget .widget {
+    width: 97%;
+    margin: 0 auto;
+  }
+  .catalog-category-view .col-right.sidebar .block .block-content, .catalogsearch-result-index .col-right.sidebar .block .block-content {
     border: 0;
   }
   .catalog-category-view .col-right.sidebar .block .block-title, .catalogsearch-result-index .col-right.sidebar .block .block-title {

@@ -1296,7 +1296,7 @@ body *{
  }
 
 .col-right .block .actions {
-	background: #fff;
+	background: #f4f4f4;
 }
 
 dl#narrow-by-list dd ol li a {
@@ -2167,6 +2167,14 @@ dl#narrow-by-list dd ol li a {
 		.col-right.sidebar{
 
 			#trustedcompany-widget{
+				border: 0;
+
+				.widget{
+					width: 97%;
+					margin: 0 auto;
+				}
+			}
+			.block .block-content{
 				border: 0;
 			}
 			.block .block-title {
