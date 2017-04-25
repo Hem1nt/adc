@@ -33,30 +33,42 @@
 ?>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php
-    $_helper    = $this->helper('catalog/output');
-    $_category  = $this->getCurrentCategory();
-    $_imgHtml   = '';
-    if ($_imgUrl = $_category->getImageUrl()) {
-        $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" /></p>';
-        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
-    }
+$_helper    = $this->helper('catalog/output');
+$_category  = $this->getCurrentCategory();
+$_imgHtml   = '';
+if ($_imgUrl = $_category->getImageUrl()) {
+    $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" /></p>';
+    $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+}
 ?>
 <div class="page-title category-title">
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
-        <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
-    <?php endif; ?>
-    <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+    <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
+<?php endif; ?>
+<h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
 </div>
 <?php if($_imgUrl): ?>
     <?php echo $_imgHtml ?>
 <?php endif; ?>
 
 <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
-    <div class="category-description std">
-        <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
-        <a class="read-more" id="main-desc-a">Read more</a>
+    <div class="category_banner">
+        <div class="banner_image">
+            <img src="<?php echo $this-> getSkinUrl('images/category_banner.jpg');?>"/>
+        </div>
+        <div class="banner_desc">
+            <?php 
+            $string = $this->getCurrentCategory()->getDescription();
+            if (strlen($string) > 500) {
+
+                $stringCut = substr($string, 0, 550);
+                $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <span style="cursor:pointer;color:#6B9A63" class="read_more" id="read_more"><b>Read More</b></span>'; 
+            }
+            echo $string
+            ?>
+        </div>
     </div>
-    <?php endif; ?>
+<?php endif; ?>
 
 <?php if($this->isContentMode()): ?>
     <?php echo $this->getCmsBlockHtml() ?>
@@ -70,9 +82,13 @@
 <?php endif; ?>
 
 <script type="text/javascript">
-    jQuery('#main-desc-a').click(function() {
-        jQuery("html, body").animate({scrollTop: jQuery('#category_bottom_description_footer').offset().top }, 2000);
-    });
+jQuery('#main-desc-a').click(function() {
+    jQuery("html, body").animate({scrollTop: jQuery('#category_bottom_description_footer').offset().top }, 2000);
+});
+jQuery('.read_more').click(function() {
+            var divPosition = jQuery('.category_big_bottom_desc').offset();
+            jQuery('html, body').animate({scrollTop: divPosition.top}, "slow");
+});
 </script>
 
 <!-- <div class="category_big_bottom_desc">

@@ -1,7 +1,7 @@
 <layout version="0.1.0">
 	 <default>
-		<reference name="left">
-            <block type="core/template" name="suggestionbox" template="suggestionbox/suggestionbox.phtml" before="leftmenu" after="catalog.leftnav" />
+		<reference name="right">
+            <block type="core/template" name="suggestionbox" template="suggestionbox/suggestionbox.phtml" after="featured_products" />
         </reference>
 	</default>
 </layout>

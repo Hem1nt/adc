@@ -76,16 +76,11 @@ if($freshdeskStatus==1){
         <!-- <div class="mobile-pr-category-icon"></div> -->
             <div class="mob-new-contact">
                 <?php $adc_contact = Mage::getStoreConfig('homepage_conf/common_group/mobile_number');?>
-                <span><a href="<?php echo $adc_contact; ?>">
-                </a></span>
+                <span><a href="tel:<?php echo $adc_contact; ?>"><?php echo $adc_contact; ?>+919898989898</a></span>
             </div>
             <div class="mob-right-icons">
                 <!-- <div class="mobile-pr-search-icon"></div> -->
-                <div class="mobile-pr-cart-icon">
-                    <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
-                        <span><?php echo $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount(); 
-                    ?></span></a>
-                </div>
+                
             <div class="mobile-pr-login-icon"><?php echo $this->getChildHtml('user-section') ?></div>
         </div>
 </div>
@@ -98,7 +93,11 @@ if($freshdeskStatus==1){
         <?php else:?>
         <h1 href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
         <?php endif?>
-        
+        <div class="mobile-pr-cart-icon">
+            <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
+                <span><?php echo $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount(); 
+            ?></span></a>
+        </div>
         <!-- <div class="mobile_offer openpopup"><span>offer: </span> Pay by echeck & get 10% discount for new customers</div> -->
         <div class="quick-access">
             <?php echo $this->getChildHtml('topSearch') ?>

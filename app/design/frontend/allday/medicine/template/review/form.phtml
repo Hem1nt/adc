@@ -97,36 +97,39 @@ $newArray = array_count_values($ratingValue);
 
 ?>
 <?php if(isset($ratingSection)) { ?>
+<div class="form-add">
 <h2>PRODUCT REVIEWS</h2>
 <div class="rating_box">
     <div class="star_image">
     <!-- <img src="http://pngimg.com/upload/star_PNG1580.png" alt="star" height="100" width="100"> -->
-    <img src="<?php echo $this->getSkinUrl('images/pr-review-star.png') ?>" alt="" />
+        <img src="<?php echo $this->getSkinUrl('images/pr-review-star.png') ?>" alt="" />
     </div>
     <div class="average_rating">
-    <span>Average Rating</span><br>
-    <span class="pr-rating-points"><?php echo round($staravg,2); ?></span><br>
-    <span class="pr-bracket-text">(Based on <?php echo $totalcount; ?> ratings)</span>
-
+        <span>Average Rating</span><br>
+        <span class="pr-rating-points"><?php echo round($staravg,1); ?></span>
     </div>
-    <ul class="ratingsDistribution">
-        <?php foreach ($ratingSection as $key => $value) { ?>
-        <li>
-            <a title="Read <?php echo $key;?> star reviews">
-                <span><?php echo $key;?> star</span>
-                <div class="rating-bars">
-                    <div class="progress" style="width:<?php echo ($value/count($ratingValue))*100;?>%"><?php echo $value;?></div>
-                </div>
-            </a>
-        </li>
-        <?php }?>
-    </ul>
-    <!-- <p class="rating-box-notice">Only registered users can write reviews. Please, <a href="<?php //echo $this->getBaseUrl(''); ?>customer/account/login/">log in</a> or <a href="<?php //echo $this->getBaseUrl(''); ?>customer/account/login/">register</a></P> -->
-    <?php if ($this->getAllowWriteReviewFlag()): ?>
-        <p class="rating-box-notice">
-            <?php echo $this->__('<span style="font-size:14px"><b>Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a></b></span>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
-        </p>
-    <?php endif;?>
+    <div class="ratingsDistribution">
+        <ul class="ratingsDistribution">
+            <?php foreach ($ratingSection as $key => $value) { ?>
+            <li>
+                <a title="Read <?php echo $key;?> star reviews">
+                    <div class="rating-bars">
+                        <div class="progress" style="width:<?php echo ($value/count($ratingValue))*100;?>%"><?php echo $value;?></div>
+                    </div>
+                    <span><?php echo $key;?> star</span>
+                </a>
+            </li>
+            <?php }?>
+        </ul>
+        <div class="pr-bracket-text">(Based on <?php echo $totalcount; ?> ratings)</div>
+        <!-- <p class="rating-box-notice">Only registered users can write reviews. Please, <a href="<?php //echo $this->getBaseUrl(''); ?>customer/account/login/">log in</a> or <a href="<?php //echo $this->getBaseUrl(''); ?>customer/account/login/">register</a></P> -->
+        <?php if ($this->getAllowWriteReviewFlag()): ?>
+            <p class="rating-box-notice">
+                <?php echo $this->__('<span>Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a></span>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
+            </p>
+        <?php endif;?>
+    </div>
+</div>
 </div>
 <?php } ?>
 
@@ -203,44 +206,44 @@ $newArray = array_count_values($ratingValue);
         <div class="rate_me">
             <ul>
                 <li>
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
                     <div class="rating_label">
                         Poor
                     </div>
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
                 </li>
                 <li>
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
                     <div class="rating_label">
                         Average
                     </div>
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
                 </li>
                 <li>
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
                     <div class="rating_label">
                         Good
                     </div>
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
                 </li>
                 <li>
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
                     <div class="rating_label">
                         Very Good
                     </div>
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
                 </li>
                 <li>
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
+                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.png') ?>" alt="star" height="" width="" />
                     <div class="rating_label">
                         Excellent
                     </div>
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
-                    <img src="<?php echo $this->getSkinUrl('images/yellow_star.jpg') ?>" alt="star" height="14" width="14">
                 </li>
             </ul>
         </div>
@@ -253,29 +256,29 @@ $newArray = array_count_values($ratingValue);
     <div id="review-form-div">
     <form action="<?php echo $this->getAction() ?>" method="post" id="review-form">
                 <ul class="form-list">
-                    <li>
-                        <label for="name_field" class="required"><?php echo $this->__('Product Name') ?><em>*</em></label>
+                    <li class="">
+                       <!--  <label for="name_field" class="required"><?php //echo $this->__('Product Name') ?><em>*</em></label> -->
                         <div class="input-box">
-                            <?php echo $productName ?>
+                            <div class="p_name"><?php echo $productName ?></div>
                         </div>
                     </li>
 
                     <li>
-                        <label for="nickname_field" class="required"><?php echo $this->__('Customer Name') ?><em>*</em></label>
+                        <!-- <label for="nickname_field" class="required"><?php //echo $this->__('Customer Name') ?><em>*</em></label> -->
                         <div class="input-box">
-                            <input type="text" name="nickname" id="nickname_field" class="input-text required-entry" />
+                            <input type="text" name="nickname" id="nickname_field" placeholder="Customer Name*" class="input-text required-entry" />
                         </div>
                     </li>
 
                     <li>
-                        <label for="summary_field" class="required"><?php echo $this->__('Review Title') ?><em>*</em></label>
+                        <!-- <label for="summary_field" class="required"><?php //echo $this->__('Review Title') ?><em>*</em></label> -->
                         <div class="input-box">
-                            <input type="text" name="title" id="summary_field" class="input-text required-entry"  />
+                            <input type="text" name="title" id="summary_field" placeholder="Review Title*" class="input-text required-entry"  />
                         </div>
                     </li>
 
-                    <li>
-                        <label for="rating_field" class="required"><?php echo $this->__('Your Rating') ?><em>*</em></label>
+                    <li class="rating_wrap">
+                        <label for="rating_field" class="required"><?php echo $this->__('Your Rating*') ?></label>
                         <div class="input-box">
                             <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
                                 <table class="data-table" id="product-review-table">
@@ -293,24 +296,26 @@ $newArray = array_count_values($ratingValue);
                                     <?php endforeach; ?>
                                     </tbody>
                                 </table>
-                                <div class="radio_checked" style="color:red;font-size:11px;display:none;">Please select any one of the above star</div>
+                                <div class="radio_checked" style="display:none;">Please select any one of the above star</div>
                             <?php endif; ?>
                         </div>
                     </li>
-
+                </ul>
+                <ul class="form-list field_2">
                     <li>
-                        <label for="review_field" class="required"><?php echo $this->__('Your message') ?><em>*</em></label>
+                        <!-- <label for="review_field" class="required"><?php// echo $this->__('Your message') ?><em>*</em></label> -->
                         <div class="input-box">
-                            <textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
+                            <textarea name="detail" placeholder="Your message*" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
                         </div>
                     </li>
-                     <li><?php // @ nilesh ?>
-                        <label for="message" class="required"><?php echo $this->__('Enter the code') ?><em>*</em></label>
-                            <div class="input-box">
-                            <img src="<?php echo $this->getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' ><br/>
-                            <p class="captcha_small">Can't read the image? Click <a href='javascript: refreshCaptcha();'>here</a> to refresh</p>
-                            <div id="cap_box"><input id="3_letters_code" class="required-entry validate-captcha" name="3_letters_code" type="text"></div>
+                     <li class="captcha_li"><?php // @ nilesh ?>
+                        <!-- <label for="message" class="required"><?php //echo $this->__('Enter the code') ?><em>*</em></label> -->
+                        <div class="input-box">
+                            <img src="<?php echo $this->getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' >
+                            
+                            <div id="cap_box"><input id="3_letters_code" placeholder="Enter the code*" class="required-entry input-text validate-captcha" name="3_letters_code" type="text"></div>
                         </div>
+                        <p class="captcha_small">Can't read the image? Click <a href='javascript: refreshCaptcha();'>here</a> to refresh</p>
                     </li>
                 </ul>
                 <div class="buttons-set">
@@ -318,9 +323,9 @@ $newArray = array_count_values($ratingValue);
                 <input type="hidden" id="check_me" />
                 <button type="submit" title="<?php echo $this->__('SUBMIT REVIEW') ?>" class="button"><span><span><?php echo $this->__('SUBMIT REVIEW') ?></span></span></button>
             </div>
-            </fieldset>
+            
 
-            <?php echo $this->getChildHtml('other');?>
+            <?php //echo $this->getChildHtml('other');?>
     </form>
     </div>
     <script type="text/javascript">
@@ -340,7 +345,7 @@ $newArray = array_count_values($ratingValue);
             return false;
         });
         jQuery(window).load(function(){
-            jQuery("#cap_box").html('<input id="3_letters_code" class="required-entry validate-captcha" name="3_letters_code" type="text">');
+            jQuery("#cap_box").html('<input id="3_letters_code" class="required-entry input-text validate-captcha" name="3_letters_code" type="text">');
              RefreshCapcha();
         });
         function RefreshCapcha()

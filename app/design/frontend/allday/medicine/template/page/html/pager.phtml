@@ -49,14 +49,16 @@
 
     <?php if($this->getShowPerPage()): ?>
     <div class="limiter">
-        <label><?php echo $this->__('Show') ?></label>
+
+        <label><?php echo $this->__('Items per page: ') ?></label>
+
         <select onchange="setLocation(this.value)">
         <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
             <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
                 <?php echo $_limit ?>
             </option>
         <?php endforeach; ?>
-        </select> <?php echo $this->__('per page') ?>
+        </select> 
     </div>
     <?php endif ?>
 

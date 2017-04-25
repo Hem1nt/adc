@@ -1,0 +1,95 @@
+<?php
+
+$title = $this->getTitle();
+$_frontendHelper = $this->helper('frontend/data');
+// $simpleProductId = $_item->getProductId();
+$cart = Mage::getModel('checkout/cart')->getQuote();
+$current_product = Mage::registry('current_product');
+if($current_product) {
+  $productId = Mage::registry('current_product')->getId();
+  $producsku = Mage::registry('current_product')->getSku();
+}
+else {
+  foreach ($cart->getAllItems() as $item) {
+    $productId = $item->getProduct()->getId();
+  }
+}
+$boughtObj = new Jain_Bought_Block_Bought();
+$le = $boughtObj->getBoughtProducts($productId);
+
+$lecount=count($le);
+
+?>
+<?php 
+if($lecount){
+  ?>
+  <div class="frequently_bought_wrap">
+    <h2 class="page_head">REQUENTLY BOUGHT along WITH THIS PRODUCT</h2>
+    <div class="slider_wraper">
+      <?php
+      foreach($le as $_item): ?>
+      <?php
+      $pharmaceuticalForm = $_item->getAttributeText('pharmaceutical_form');
+      $perUnitPharmaceuticalForm = $_item->getAttributeText('per_unit_pharmaceutical_form');
+      $manufacturer = $_item->getAttributeText('manufacturer');
+      $formattedPrice= Mage::helper('core')->currency($_item->getFinalPrice(), true, false);
+      $usBrandName = $_item->getUsBrandName();
+      $genericName = $_item->getGenericName();
+      $imageCacheUrl = Mage::helper('catalog/image')->init($_item, 'image')->resize(268,268);
+      $path = Mage::getUrl().$_item->getUrlPath();
+      $summaryData = Mage::helper('frontend')->getproductReviews($_item->getId());
+      $reviewsCount = $summaryData['reviews_count'];
+      $ratingSummary = $summaryData['rating_summary'];
+      $compareUrl = Mage::helper('catalog/product_compare')->getAddUrl($_item);
+      $wishlistUrl = Mage::helper('wishlist')->getAddUrl($_item);
+      ?>
+      <div class="item_wrap">
+        <div class="item">
+          <a href="<?php echo $path;?>" title="<?php echo $_item->getName();?>" class="product-image"><img class="lazy" src="<?php echo $imageCacheUrl;?>" width="" height="" alt="<?php echo $_item->getName();?>" style="display: inline;"></a>
+          <div class="pr-details-height">
+            <h2 class="product-name"><a href="<?php echo $path;?>" title="<?php echo $_item->getName();?>"><?php echo $_item->getName();?></a></h2>
+            <?php if($genericName){ ?>
+            <div class="generic_name">
+             <?php echo $genericName; ?>                      
+           </div>
+           <?php } ?>
+           <?php if($usBrandName){ ?>
+           <div class="generic_for">
+             Generic for <?php echo $usBrandName; ?>                        
+           </div>
+           <?php } ?>
+           <?php if($manufacturer){ ?>
+           <div class="manufactured_by">
+             Manufactured by : <?php echo $manufacturer;?>                
+           </div>
+           <?php } ?>
+           <div class="first_child_info">
+             <div class="custom_price">
+               <span class="pack_size">1 <?php echo $perUnitPharmaceuticalForm;?></span>
+               <span class="regular_price"><?php echo $formattedPrice; ?></span>
+             </div>
+           </div>
+           <?php if($reviewsCount){ ?>
+           <div class="ratings">
+             <div class="rating-box">
+              <a href="<?php echo $path;?>">
+               <div class="rating" style="width:<?php echo $ratingSummary; ?>%"></div>
+             </a>
+           </div>
+           <span class="amount"><a href="<?php echo $path;?>"><?php echo $reviewsCount?> Review(s)</a></span>
+         </div>
+         <?php } ?>
+       </div>
+       <div class="actions">
+        <ul class="add-to-links">
+         <li><a href="<?php echo $wishlistUrl;?>" class="link-wishlist">Add to Wishlist</a></li>
+         <li class="link-compare-li"><span class="separator">|</span> <a href="<?php echo $compareUrl;?>" class="link-compare">Compare</a></li>
+       </ul>
+       <button type="button" title="View Details" class="button btn-cart" onclick="setLocation('<?php echo $path;?>')"><span><span>View Details</span></span></button>
+     </div>
+   </div>
+ </div>
+<?php endforeach ?>
+</div>
+</div>
+<?php } ?>

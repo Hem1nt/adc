@@ -77,7 +77,7 @@
                                 <li><a href="<?php echo $_product->getProductUrl(); ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
                             <?php endif; ?>
                             <?php if($_compareUrl=$this->getAddToCompareUrl($_product)):?>
-                                <li> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                                <li class="link-compare-li"> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Compare') ?></a></li>
                             <?php endif; ?>
                         </ul>
                     </div>
@@ -117,15 +117,15 @@
                         <?php if($_product->getBonus() != ""): echo $this->__('Double Pills Offer ');endif;?>
                     </div>
 
-                    <?php if($_product->getRatingSummary()): ?>
+                    <?php  // if($_product->getRatingSummary()): ?>
                         <?php
                         echo $this->getReviewsSummaryHtml($_product)
                             //echo $this->getChildHtml('custom_reviews');
                         ?>
-                    <?php endif; ?>
+                    <?php// endif; ?>
                     <?php //echo $this->getPriceHtml($_product, true) ?>
                     <?php if($_product->isSaleable()): ?>
-                        <p>
+                        <p class="actions_btn">
                             <button type="button" title="<?php echo $this->__('View Details') ?>" class="button btn-cart" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')">
                                 <span>
                                     <span><?php echo $this->__('View Details') ?></span>
@@ -149,7 +149,9 @@
                         <?php } ?>
                         </p>
                         <!-- <a title="<?php //echo $this->__('Notify Me') ?>" href="<?php //echo $_product->getProductUrl() ?>" class="link-notify"><?php //echo $this->__('Notify Me') ?></a> -->
+                        <div class="link-notify-wrapper">
                         <a title="<?php echo $this->__('Notify Me') ?>" href="<?php //echo $_product->getProductUrl() ?>" class="link-notify" data="<?php echo $_product->getSku(); ?>"><?php echo $this->__('Notify Me') ?></a>
+                        </div>
                         <div class="notify-me-boxwrapper">
                             <h1><span>Receive notification when the product is back in stock</span></h1>
                             <span class="notify-close-btn">
@@ -184,29 +186,45 @@
 
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
+        <ul class="products-grid">
     <?php $i=0; foreach ($_productCollection as $_product): ?>
         <?php if ($i++%$_columnCount==0): ?>
-        <ul class="products-grid">
         <?php endif ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif;if(!$_product->isSaleable()):echo ' out-of-stock-item';endif;?>">
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img class="lazy" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100); ?>" src="<?php echo $this->getSkinUrl('images/loading_spinner.gif') ?>" width="100" height="100" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img class="lazy" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100); ?>" src="<?php echo $this->getSkinUrl('images/loading_spinner.gif') ?>" width="" height="" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                <?php if(!$_product->isSaleable()): ?>
+                <p class="availability out-of-stock <?php echo $customClass;?>">
+                <?php if($custom_stock_status!='No' && $custom_stock_status!=''){ ?>
+                <span><?php if($custom_stock_status != 'Limited Supply') { echo $this->__($custom_stock_status); } else { echo '<a href='.$_product->getProductUrl().'>'.$this->__($custom_stock_status).'</a>'; } ?></span>
+                  <?php }else{ ?>
+                  <span><?php echo $this->__('Out of stock') ?></span>
+
+                <?php } ?>
+                </p>
+                 <?php endif; ?>
+
+                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                        <a href="<?php echo $_product->getProductUrl(); ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+                <?php endif; ?>
 
                 <div class="pr-details-height">
                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
 
-                <div class="generic_name">
-                    <?php echo $_frontendHelper->getGenericInfo($_product);?>
-                </div>
+                
+                        <div class="generic_name">
+                            <?php echo $_frontendHelper->getGenericInfo($_product);?>
+                        </div>
 
-                <div class="generic_for">
-                    <?php
-                    $usbrandName = $_frontendHelper->getUsBrandInfo($_product);
-                    if(!empty($usbrandName)):
-                        echo $this->__('Generic for ');
-                        echo $usbrandName;
-                    endif;
-                    ?>
-                </div>
+                        <div class="generic_for">
+                            <?php
+                            $usbrandName = $_frontendHelper->getUsBrandInfo($_product);
+                            if(!empty($usbrandName)):
+                                echo $this->__('Generic for ');
+                                echo $usbrandName;
+                            endif;
+                            ?>
+                        </div>
+                
                  <div class="manufactured_by">
                     <?php
                     $manufacturedby = $_frontendHelper->getManufacturerInfo($_product);
@@ -234,15 +252,26 @@
                         echo '<p class="bold_red_color" style="color:red;">Tadalafil is not for consumption in United States</p>';
                     }
                 ?>
-                <?php if($_product->getRatingSummary()): ?>
+                <?php //if($_product->getRatingSummary()): ?>
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                <?php endif; ?>
+                <?php //endif; ?>
                 <?php //echo $this->getPriceHtml($_product, true)
 
                     echo $this->getChildHtml('custom_reviews');
                 ?>
                 </div>
                 <div class="actions">
+
+                    <ul class="add-to-links">
+                        <?php /*if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $_product->getProductUrl(); ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; */ ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li class="link-compare-li"><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+
+
                     <?php if($_product->isSaleable()): ?>
                         <button type="button" title="<?php echo $this->__('View Details') ?>" class="button btn-cart" onclick="setLocation('<?php echo $_product->getProductUrl(); ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
                     <?php else: ?>
@@ -252,6 +281,7 @@
                             }
                         ?>
                         <div class="notify-main">
+                            <?php /*
                             <p class="availability out-of-stock <?php echo $customClass;?>">
                         <?php if($custom_stock_status!='No' && $custom_stock_status!=''){ ?>
                         <span><?php if($custom_stock_status != 'Limited Supply') { echo $this->__($custom_stock_status); } else { echo '<a href='.$_product->getProductUrl().'>'.$this->__($custom_stock_status).'</a>'; } ?></span>
@@ -260,9 +290,11 @@
 
                         <?php } ?>
                         </p>
-
+                        */ ?>
                         <?php if($custom_stock_status!='Limited Supply'){ ?>
+                        <div class="link-notify-wrapper">
                         <a title="<?php echo $this->__('Notify Me') ?>" href="<?php //echo $_product->getProductUrl() ?>" class="link-notify" data="<?php echo $_product->getSku(); ?>"><?php echo $this->__('Notify Me') ?></a>
+                       </div>
                         <?php } ?>
                         <div class="notify-me-boxwrapper">
                             <h1><span>Receive notification when the product is back in stock</span></h1>
@@ -285,23 +317,16 @@
                         </div>
 
                     <?php endif; ?>
-                    <ul class="add-to-links">
-                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                            <li><a href="<?php echo $_product->getProductUrl(); ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                        <?php endif; ?>
-                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-                        <?php endif; ?>
-                    </ul>
+                    
                 </div>
 
 
 
             </li>
         <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
-        </ul>
         <?php endif ?>
         <?php endforeach ?>
+        </ul>
         <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
     <?php endif; ?>
 
@@ -312,9 +337,10 @@
 <?php endif; ?>
 <div class="notify-overlay"></div>
 <script type="text/javascript">
-     //< ![CDATA[
+     <?php /* < ![CDATA[
         // var customForm = new VarienForm('notify_me_form<?php echo $_product->getSku();?>',true);
-    //]]>
+    //]]>  */ ?>
+    
 </script>
 <script type="text/javascript">
 

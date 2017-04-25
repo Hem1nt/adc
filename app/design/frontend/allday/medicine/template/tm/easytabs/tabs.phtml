@@ -46,14 +46,16 @@
             <div class="easytabs-content"
                 id="product_tabs_<?php echo $_tab['alias'] ?>_contents"
                 style="display:none">
-                <?php 
-                if(in_array($productSku, $infoSkuArr) && $_tab['alias'] == 'infographics'){
-                    echo '<img alt="'.$productName.'-infographics" src="'.$infoImage.'" width="90%" height="auto"/>';
-                }else{
-                    echo $_tab['child_html'];
-                }
-                 ?>
+                <div class="scroll_div_content">
+                    <?php 
+                    if(in_array($productSku, $infoSkuArr) && $_tab['alias'] == 'infographics'){
+                        echo '<img alt="'.$productName.'-infographics" src="'.$infoImage.'" width="90%" height="auto"/>';
+                    }else{
+                        echo $_tab['child_html'];
+                    }
+                     ?>
                 </div>
+            </div>
         <?php endforeach; ?>
     </div>
 

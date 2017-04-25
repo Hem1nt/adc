@@ -1,4 +1,7 @@
 /*new homepage header*/
+body, input, select, textarea, button{
+    font-family: 'Open Sans', sans-serif !important;
+}
 
 .header {
     padding: 1px 0;
@@ -7,8 +10,24 @@
  .header ..mobile-pr-category-icon{
         display: none;
 }
+
+.header li a.top-link-cart{
+    background: url(../images/header_cart.png) center left no-repeat!important;
+    background-size: 31px!important;
+    padding-left: 37px!important;
+}
+
+.header li.first.last a span.shopping_count{
+    font-size: 13px;
+}
+
+
 .header-top-block .h-left ul li a:hover, .header-top-block .h-right ul li a:hover {
     color: #f6770e;
+}
+
+.header-top-block .h-right ul.dropdown_links li a:hover  {
+    color: #fff;
 }
  .header-top-block {
     background: #f2f2f2;
@@ -29,14 +48,15 @@
 }
   a.home_icon {
     line-height: 28px;
-    padding: 2px 14px;
+    padding: 4px 14px 5px;
     border-radius: 25px;
-    margin: 6px 0;
+    margin: 4px 0;
     background-color: #9fb701;
 }
 body.catalog-product-view a.home_icon {
     line-height: 28px;
-    padding: 5px 14px;
+    padding: 4px 14px;
+    margin: 4px 0;
 }
  .header .form-search button.button {
     margin-left: -7px;
@@ -112,11 +132,21 @@ a.home_icon img {
   line-height: 28px;
     margin: 0;
     height: 30px;
-    padding: 5px 15px;
+    padding: 6px 15px;
     background: transparent;
 }
+
+.my-account input[type="text"], .my-account  select, .my-account  textarea, .my-account  input[type="email"], .my-account  input[type="password"]{
+    border-radius: 5px;
+    background: #fff;
+    padding: 6px 8px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid #aaaaaa!important;
+}
+
 .block .block-title strong span {
-    padding: 10px 25px;
+    padding: 10px 25px 8px;
     background: #72ae12;
     border-radius: 25px;
     height: 29px;
@@ -322,6 +352,213 @@ p.footer_content {
     font-size: 15px!important;
 }
 
+/* umesh css */
+
+.customer-address-index .my-account .button.button{
+    margin: 0;
+}
+.col-main .opc-messages-action .button span span, .customer-address-index .my-account .button.button span{
+    padding:0!important; 
+}
+
+.col-main .opc-messages-action .button span{
+    background: #9fb701 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+    padding: 8px 16px 8px 16px !important;
+    border-radius: 30px !important;
+    display: inline-block !important;
+    font-family: Open Sans, sans-serif !important;
+    height: auto !important;
+    font-weight: normal !important;
+    border-bottom: none !important;
+}
+
+.col-main button, .buttons-set p.back-link a, a.back,.buttons-set p.back-link a:hover, .newsletter-manage-index .buttons-set p.back-link a, 
+.newsletter-manage-index .buttons-set p.back-link a:hover, .sales-order-history .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a, 
+.review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a,
+.rewardpoints-index-referral .box-account .button-set button.button, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover, 
+.checkout-cart-index a.pr-continue-shop-cart-empty, .opc-wrapper-opc .btn, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon, .col-main #drop a, .col-main #drop a:hover, 
+.mini-cart-layer .inner-wrapper button.button span, .checkout-cart-index a.pr-continue-shop-cart-empty:hover, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button{
+    background: #9fb701;
+    color: #fff;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 30px;
+    margin-top: 12px;
+    display: inline-block;
+    font-family: Open Sans, sans-serif;
+    height: auto;
+    font-weight: normal;
+    border-bottom: none;
+}
+.col-main #drop a:hover{
+    border-bottom: none !important;
+    margin-top: 0;
+}
+.col-main #drop a{
+    margin-top: 0;
+}
+.col-main .opc-wrapper-opc .btn{
+    background: #9fb701 !important;
+    height: auto;
+}
+.col-main .opc-wrapper-opc .btn:hover span, button.button.apply-coupon:hover, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon:hover{
+    border-bottom: none !important;
+    background: #9fb701 !important;
+}
+.col-main .opc-wrapper-opc .discount-block input.button.apply-coupon{
+    padding: 8px 16px 8px 16px !important;
+    line-height: normal !important;
+    margin-top: 12px !important;
+}
+.col-main .opc-wrapper-opc .btn span span, .col-main .opc-wrapper-opc .btn span, .col-main .opc-wrapper-opc .btn:hover span{
+    background: none;
+    padding: 0;
+    font-weight: normal;
+    border-bottom: none;
+    line-height: normal;
+    height: auto;
+}
+.col-main .opc-wrapper-opc .btn-checkout span{
+    background: #9fb701;
+    border-radius: 30px;
+    height: auto;
+    line-height: normal;
+    border-bottom: none;
+    padding: 8px 16px 8px 16px !important;
+}
+.buttons-set p.back-link a, a.back,.buttons-set p.back-link a:hover, .newsletter-manage-index .buttons-set p.back-link a, 
+.newsletter-manage-index .buttons-set p.back-link a:hover, .sales-order-history .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a, 
+.review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover, 
+.customer-account-forgotpassword .forgot-pswd-text .buttons-set p.back-link a{
+    padding: 10.5px 16px;
+    background: #1f1f1f;
+}
+.newsletter-manage-index .buttons-set button.button > span, .newsletter-manage-index .buttons-set button.button:hover > span{
+    border-bottom: none !important;
+}
+.customer-account-forgotpassword .pr-forgot-pswd .forgot-pswd-text .buttons-set p.back-link a{
+    margin-top: 6px;
+}
+
+.my_account_col .buttons-set button.button, .my_account_col .buttons-set button.button span, .cart-table .btn-empty:hover{
+    background: #9fb701;
+}
+.col-main button span, button.button:hover > span, button.button span:hover span, button.button:hover span span, .my_account_col .buttons-set button.button:hover > span, 
+.my_account_col .buttons-set button.button:hover span, .my_account_col .buttons-set button.button:hover span span, .customer-account-edit .buttons-set button.button span, 
+.my_account_col .buttons-set button.button span, .customer-account-edit .buttons-set button.button span:hover, .customer-account-edit .buttons-set button.button span:hover span,
+.wishlist-index-index .data-table td .cart-cell button.button span, .rewardpoints-index-referral .box-account .button-set button.button span, .rewardpoints-index-referral .box-account .button-set button.button span:hover span,
+.rewardpoints-index-referral .box-account .button-set button.button:hover span, .checkout-onepage-success .col-main button.button span, .checkout-onepage-success .col-main button.button:hover span, 
+.checkout-onepage-success .col-main button.button:hover span span, .checkout-cart-index .cart-table .btn-continue > span, .checkout-cart-index .cart-table .btn-empty:hover span, .checkout-cart-index .cart-table .btn-update:hover span, 
+.cart-table .btn-empty span, .cart-table .btn-continue span, .cart-table .btn-update span, .checkout-cart-index .cart-table .btn-continue:hover > span, .checkout-cart-index .cart-table .btn-continue:hover span, .checkout-cart-index .cart-table .btn-continue:hover span span, 
+.checkout-cart-index .cart-table .btn-empty span, .checkout-cart-index .cart-table .btn-update span, .checkout-cart-index .cart-table .btn-empty span:hover span, .checkout-cart-index .cart-table .btn-update span:hover span, 
+button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-checkout.btn-checkout:hover span, button.button.btn-proceed-checkout.btn-checkout:hover span span, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span:hover, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button:hover > span, 
+.customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span:hover span{
+    padding:0;
+    border-bottom: none;
+    background: none;
+}
+.catalog-product-view .pr-add-to-compare a.link-compare:hover, .catalog-product-view .pr-write-review a.link-review:hover, .catalog-product-view .pr-email-friend a.link-email-friend:hover{
+    color: #fff;
+}
+.tag-customer-view .data-table td button.button span, .wishlist-index-index .data-table td .cart-cell button.button span, button.button.btn-proceed-checkout.btn-checkout > span, .button.button.btn-continue-shopping > span, 
+.customer-account-login .account-login .col-1 .content button.button span, .customer-account-login .account-login .col-2 .content button.button span, .customer-account-login .account-login .col-1 .content button.button:hover span, 
+.customer-account-login .account-login .col-2 .content button.button:hover span, .customer-account-login .col-main .account-login .col-1 .content button.button span:hover, .customer-account-login .col-main .account-login .col-2 .content button.button span:hover,
+.customer-account-create .account-create .fieldset .buttons-set button.button span, .customer-account-create .account-create .fieldset .buttons-set button.button:hover span, 
+.customer-account-create .account-create .fieldset .buttons-set button.button span:hover span{
+    background: none;
+    padding: 0;
+    border-bottom: none;
+    margin: 0;
+}
+.tag-customer-view .data-table td button.button:hover span span, .tag-customer-view .data-table td button.button span span, 
+.wishlist-index-index .data-table td .cart-cell button.button span span, .wishlist-index-index .data-table td .cart-cell button.button:hover span span{
+    border-bottom: none;
+    background: url(../images/sprite.png) -204px -293px no-repeat;
+    background-size: 500px;
+}
+.tag-customer-view .data-table td button.button:hover span, .wishlist-index-index .data-table td .cart-cell button.button:hover span, .catalog-category-view .products-list .product-shop button.button{
+    background: none;
+    border-bottom: none;
+}
+.tag-customer-view .data-table td button.button span, .wishlist-index-index .data-table td .cart-cell button.button span{
+    height: auto;
+    line-height: normal;
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .add-to-links{
+    width: 47%;
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .btn-cart{
+    font-weight: normal;
+    margin: 15px 10px 0 0;
+    border-left: none;
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .btn-cart span{
+    color: #fff;
+}
+.col-main button.slick-arrow{
+    background: none;
+    padding: 0;
+    margin: 0;
+    color: transparent;
+    line-height: normal;
+}
+.catalog-category-view .col-main .category-products .products-grid li.item .actions button.button{
+    background: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+.catalog-category-view .col-main .category-products .products-list li.item .product-shop .f-fix .actions_btn button.button span span{
+    color: #202020;
+}
+.col-main .opc-wrapper-opc .btn-checkout span span, .mini-cart-layer .inner-wrapper button.button span span{
+    padding: 0 !important;
+    font-size: 14px;
+    height: auto;
+    margin: 0;
+}
+.col-main .opc-wrapper-opc .btn-checkout span span, .mini-cart-layer .inner-wrapper button.button span{
+    margin-top: 0;
+}
+.col-main .opc-wrapper-opc .btn-checkout:hover span, .col-main .opc-wrapper-opc .btn-checkout:hover span span{
+    background: #9fb701;
+    border-bottom: none !important;
+}
+.customer-account-index .compare-block-tab .actions .button.button > span {
+    border-radius: 22px;
+    background: #9fb701 url(../images/compare_arrows.png) 14px 10px no-repeat;
+    top: 15px;
+}
+.customer-account-index .compare-block-tab .actions .button.button > span span{
+    background: none;
+    margin-left: 25px;
+}
+.customer-account-index .compare-block-tab .actions a{
+    padding: 10px 0;
+}
+.order_view_link{
+    font-weight: normal;
+}
+.customer-account-edit #more_info .form-list select{
+    height: 31px;
+    padding: 0 8px;
+    width: 120px;
+}
+.col-main{
+    box-sizing: border-box;
+}
+.rewardpoints-index-referral .col-main .box-account{
+    padding: 0 0 15px;
+}
+.rewardpoints-index-referral .buttons-set{
+    padding: 0;
+}
+/* umesh css */
+
 @media only screen and (max-width: 1024px){
 
         a.home_icon {
@@ -404,19 +641,25 @@ p.footer_content {
         
 }
 @media only screen and (max-width: 840px){
-        .home-banner-block.third {
-            display: none;
-        }
-        .customer-account-index .acc-pages-icons{
-            margin: -4px 10px;
-        }
-         #search_autocomplete {
-                width: 29% !important;
-         }
-        .header .form-search .search-autocomplete {
-            left: 35% !important;
-        }
-
+    .home-banner-block.third {
+        display: none;
+    }
+    .customer-account-index .acc-pages-icons{
+        margin: -4px 10px;
+    }
+     #search_autocomplete {
+            width: 29% !important;
+     }
+    .header .form-search .search-autocomplete {
+        left: 35% !important;
+    }
+    .block-compare, .block-layered-nav, .customer-account-index .sidebar .block-account .block-content{
+        right: 159px;
+        top: 180px;
+    }
+    .customer-account-index .sidebar .block-account .block-content{
+        right: 220px;
+    }
 }
 @media only screen and (max-width: 800px){
         .subscribe-innerdiv span.xtra-txt {
@@ -429,150 +672,325 @@ p.footer_content {
 }
 
 @media only screen and (max-width: 736px){
-         #search_autocomplete {
-                width: 83% !important;
-         }
-        .header .form-search .search-autocomplete {
-            left: 2% !important;
-        }
-        .adc-footer-links {
-            display: block;
-        }
-        .adc-footer-links ul li {
-          text-align: center;
-         display: inline-block;
-         float: left;
-         width: 50%;
-        }
-        .adc-footer-links ul {
-            margin-right: 3% !important;
-            width: 100% !important;
-            float: left !important;
-        }
-        .logged-in-user {
-            padding: 0;
-            width: 32px;
-            height: 35px;
-        }
-        .dropdown_links {
-              top: 54px;
-        }
-        .logged-in-user_normal {
-            right: 25px;
-        }
-        .header-container .new-mobile-header {
-            display: inline-block;
-            width: 100%;
-            height: 54px;
-            background: #f4f4f4;
-            cursor: pointer;
-        }
-        .header-container .new-mobile-header .mob-new-contact {
-            display: inline-block;
-            width: 40%;
-            margin-top: 20px;
-            float: left;
-            background: url(../images/mbl_call.png) no-repeat;
-            width: 24px;
-            height: 24px;
-            margin-left: 20px;
-             cursor: pointer;
-        }
-       .header-container .new-mobile-header .mob-right-icons {
-            float: right;
-            margin-top: 20px;
-            width: 52%;
-        }
-        .mobile-pr-cart-icon {
-            float: left;
-            background: url(../images/mbl_cart.png) no-repeat;
-        }
-            .mobile-pr-login-icon{
-            float: right;
-            background: url(../images/mbl_user.png) no-repeat;
-        }
-        .header .mobile-pr-category-icon{
-                display: block;
-        }
-        .header{
-            text-align: center;
-        }
-        .header h1.logo{
-            display: inline-block;
-            margin: 0;
-            float: none;
-            z-index: 99;
-        }
-         .header .mobile-pr-category-icon{
-            display: inline-block;
-            position: absolute;
-            background: url(../images/mbl_category.png) no-repeat;
-            width: 36px;
-            height: 36px;
-            background-size: 35px;
-            left: 10px;
-            top: 10px;
-        }
-        .block-title{
-            display: none;
-        }
-        .mobile-pr-cart-icon span {
-            background: #9fb701;
-            color: #e8edd1;
-            border: 1px solid #e8edd1;
-        }
-        .header .quick-access {
-            border: 0;
-            background: inherit;
-        }
-        .header .form-search input.input-text {
-            height: 35px;
-        }
-        .main-container {
-            margin-top: 78px !important;
-        }
-        .header .form-search button.button {
-            height: 41px;
-        }
-        .header .form-search input.input-text {
-            font-size: 17px;
-            font-family: arial;
-        }
-         #toTop_mobile {
-            display: none;
-        }
-        .adc-footer-links ul li a{
-            color: #242424;
-            line-height: 25px;
-            font-size: 12px;
-            font-weight: 600;
-            font-family: 'Open Sans', sans-serif;
-        }
-}
+    #search_autocomplete {
+        width: 83% !important;
+    }
+    .header .form-search .search-autocomplete {
+        left: 2% !important;
+    }
+    .adc-footer-links {
+        display: block;
+    }
+    .adc-footer-links ul li {
+        text-align: center;
+        display: inline-block;
+        float: left;
+        width: 50%;
+    }
+    .adc-footer-links ul {
+        margin-right: 3% !important;
+        width: 100% !important;
+        float: left !important;
+    }
+    .logged-in-user {
+        padding: 0;
+    }
+    .dropdown_links {
+        top: 54px;
+    }
+    .logged-in-user_normal {
+        right: 25px;
+    }
+    .header-container .new-mobile-header {
+        display: block;
+        float: left;
+        width: 100%;
+        background: #f4f4f4;
+        cursor: pointer;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    .header-container .new-mobile-header .mob-new-contact {
+        display: inline-block;
+        width: auto;
+        float: left;
+        background: url(../images/mbl_call.png) left center no-repeat;
+        background-size: 17px;
+        padding: 0 0 0 20px;
+        margin: 2px 0 0;
+        cursor: pointer;
+    }
+    .header-container .new-mobile-header .mob-new-contact a{
+        color: #666;
+        font-weight: bold;
+    }
+    .header-container .new-mobile-header .mob-right-icons {
+        float: right;
+        margin: 0;
+    }
+    .mobile-pr-cart-icon {
+        float: right;
+        background: url(../images/header_cart.png) center left no-repeat!important;
+        background-size: 32px !important;
+        padding-right: 10px;
+        margin: 13px 0 0;
+        width: 32px;
+        height: 32px;
+    }
+    .mobile-pr-login-icon{
+        float: right;
+        background: url(../images/mbl_user.png) no-repeat;
+        margin: 0;
+    }
+    .header .mobile-pr-category-icon{
+        display: block;
+    }
+    .header{
+        text-align: center;
+        float: left;
+        width: 100%;
+        padding: 10px 15px;
+        box-sizing: border-box;
+    }
+    .header h1.logo{
+        display: inline-block;
+        margin: 0;
+        float: none;
+        z-index: 99;
+    }
+    .header .mobile-pr-category-icon{
+        display: inline-block;
+        background: url(../images/mbl_category.png) no-repeat;
+        width: 36px;
+        height: 36px;
+        background-size: 35px;
+        margin: 10px 0 0;
 
-@media only screen and (max-width: 670px){
-            .header .form-search input.input-text {
-                width: 84% !important;
-            }    
+    }
+    .block-title{
+        display: none;
+    }
+    .mobile-pr-cart-icon span {
+        background: #666666;
+        color: #ffffff;
+        border: 1px solid #e8edd1;
+        right: 0;
+        top: -5px;
+        left: inherit;
+        font-size: 10px;
+    }
+    .header .quick-access {
+        border: 0;
+        background: inherit;
+        box-sizing: border-box;
+        padding: 0 !important;
+        position: relative;
+        top: 0;
+    }
+    .header .form-search input.input-text, .header .form-search button.button {
+        height: 40px;
+        box-sizing: border-box;
+    }
+    .main-container {
+        margin-top: 15px !important;
+    }
+    .header .form-search input.input-text {
+        font-size: 17px;
+        margin: 0;
+        width: 92% !important;
+        box-sizing: border-box;
+    }  
+    .header .form-search button.button{
+        margin-left: -2%;
+        width: 10%;
+        box-sizing: border-box;
+    }
+    #toTop_mobile {
+        display: none;
+    }
+    .adc-footer-links ul li a{
+        color: #242424;
+        line-height: 25px;
+        font-size: 12px;
+        font-weight: 600;
+        /*font-family: 'Open Sans', sans-serif;*/
+    }
+    #my-tags-table .add-to-links{
+        margin: 5px 0 0 5px;
+    }
+    .cart-wrap-cur button.button.btn-proceed-checkout.btn-checkout span, .cart-wrap-cur .button.button.btn-continue-shopping span{
+        padding: 0;
+    }
+    .checkout-cart-index .cart .cart-wrap-cur .title-buttons .checkout-types li{
+        float: right;
+        width: 50%;
+        text-align: left;
+    }
+    .checkout-cart-index .button.button.btn-proceed-checkout.btn-checkout, .checkout-cart-index .button.button.btn-continue-shopping{
+        width: auto;
+    }
+    .cart-wrap-cur button.button.btn-proceed-checkout.btn-checkout{
+        float: right;
+    }
+    .checkout-cart-index .cart_table_wrap #shopping-cart-table2{
+        display: none;
+    }
+    .checkout-cart-index .cart-remove-link button{
+        color: #fff;
+        border: none;
+        background: #1f1f1f;
+        margin: 0;
+    }
+    .checkout-cart-index table#shopping-cart-table tr td.a-center.cart-remove-link .btn-remove.btn-remove2{
+        color: #fff;
+        padding: 0;
+        }
+    .checkout-cart-index .cart_table_wrap.mid{
+        min-height: auto;
+    }
+    .checkout-cart-index .checkout-types button.button.btn-proceed-checkout.btn-checkout span, .checkout-cart-index .checkout-types .button.button.btn-continue-shopping span{
+        padding: 0;
+        width: 100%;
+    }
+    .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon{
+        margin-top: 0 !important;
+    }
+    .col-main button, .buttons-set p.back-link a, a.back, .buttons-set p.back-link a:hover, .newsletter-manage-index .buttons-set p.back-link a, .newsletter-manage-index .buttons-set p.back-link a:hover, .sales-order-history .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a, .rewardpoints-index-referral .box-account .button-set button.button, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover, .checkout-cart-index a.pr-continue-shop-cart-empty, .opc-wrapper-opc .btn, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon, .col-main #drop a, .col-main #drop a:hover, .mini-cart-layer .inner-wrapper button.button span, .checkout-cart-index a.pr-continue-shop-cart-empty:hover{
+        padding: 10px 16px;
+    }
+    .customer-account-login .account-login .col-2 .content button.button span{
+        border-bottom: none !important;
+        background: no-repeat !important;    
+    }
+    .customer-account-login .form-list input.input-text{
+        width: 100%;
+    }
+    .customer-account-login .account-login .col2-set .col-1.new-users{
+        margin: 15px 0 0;
+    }
+    .customer-account-login .account-login .col2-set .col-1.new-users .content, .customer-account-login .account-login .col2-set .registered-users .content{
+        text-align: center;
+    }
+    .customer-account-login .account-login .col-1 .content button.button, .customer-account-login .account-login .col-2 .content button.button{
+        display: inline-block;
+        min-width: 200px;
+        width: auto;
+        float: none;
+    }
+    .customer-account-login .validation-advice{
+        float: left;
+        padding: 0;
+    }
+    .customer-account-create .account-create .form-list label {
+        font-size: 13px;
+        width: 40%;
+        float: left;
+    }
+    .customer-account-create .account-create .form-list .input-box{
+        clear: none;
+        
+    }
+    .customer-account-create .account-create .form-list .input-box .validation-advice{
+        display: block;
+        padding: 0;
+        margin: -5px 0 10px;
+    }
+    .customer-account-create .account-create .create-acc-boxrt .form-list .input-box, .customer-account-create .account-create .form-list .input-box, 
+    .customer-account-create .account-create .create-acc-boxrt li.control{
+        width: 55%;
+    }
+    .customer-account-create .account-create .create-acc-boxlft, .customer-account-create .account-create .create-acc-boxrt{
+        width: 48%;
+    }
+    .customer-account-create .account-create .create-acc-boxrt li.control .input-box label{
+        width: 100%;
+    }
+    .my_account_col .col-main{
+        margin-top: 0;
+    }
+    .customer-account-login .col1-layout .col-main{
+        padding: 0 10px;
+    }
+    .customer-account-edit .buttons-set{
+        margin: 0;
+        padding: 0;
+    }
 }
-
-@media only screen and (max-width: 512px){
-            .header .form-search input.input-text {
-                width: 80% !important;
-            }    
+@media only screen and (max-width: 568px){
+    .customer-account-create .account-create .create-acc-boxlft, .customer-account-create .account-create .create-acc-boxrt, .customer-account-create .account-create .form-list label, 
+    .customer-account-create .account-create .create-acc-boxrt .form-list .input-box, .customer-account-create .account-create .form-list .input-box, .customer-account-create .account-create .create-acc-boxrt li.control{
+        width: 100%;
+    }
+    .header .form-search input.input-text, .header .form-search button.button{
+        height: 35px;
+    }
 }
-
 @media only screen and (max-width: 420px){
-            .all_categories_list {
-                padding-left: 10px;
-            }
-             .header .form-search input.input-text {
-                width: 73% !important;
-            }  
-            #search_autocomplete {
-                width: 74% !important;
-            }
-            .header .form-search .search-autocomplete {
-                left: 3% !important;
-            }
+    .all_categories_list {
+        padding-left: 10px;
+    }
+    #search_autocomplete {
+        width: 74% !important;
+    }
+    .header .form-search .search-autocomplete {
+        left: 3% !important;
+    }
+    .checkout-cart-index .cart .cart-wrap-cur .title-buttons .checkout-types li{
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+    .cart-wrap-cur button.button.btn-proceed-checkout.btn-checkout{
+        float: none;
+    }
+    .checkout-cart-index .cart .cart-wrap-cur .title-buttons .checkout-types li button, .checkout-cart-index .button.button.btn-proceed-checkout.btn-checkout, 
+    .checkout-cart-index .button.button.btn-continue-shopping{
+        display: inline-block;
+        min-width: 200px;
+    }
+    .checkout-cart-index .checkout-types li{
+        text-align: center;
+    }
+    .checkout-cart-index .cart-remove-link button{
+        padding: 5px 10px;
+    }
+    .col-main button, .buttons-set p.back-link a, a.back, .buttons-set p.back-link a:hover, .newsletter-manage-index .buttons-set p.back-link a, .newsletter-manage-index .buttons-set p.back-link a:hover, .sales-order-history .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a, .rewardpoints-index-referral .box-account .button-set button.button, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover, .checkout-cart-index a.pr-continue-shop-cart-empty, .opc-wrapper-opc .btn, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon, .col-main #drop a, .col-main #drop a:hover, .mini-cart-layer .inner-wrapper button.button span, .checkout-cart-index a.pr-continue-shop-cart-empty:hover{
+        padding: 0 15px;
+        height: 33px;
+        line-height: 33px;
+    }
+    .customer-account-forgotpassword .pr-forgot-pswd .forgot-pswd-text{
+        width: 90%;
+    }
+    .customer-account-edit #more_info .form-list select#timeval1, .customer-account-edit #more_info .form-list select#timeval2, .customer-account-edit #more_info .form-list select#timezone{
+        width: 75px !important;
+        min-width: auto;
+    }
+    .customer-account-edit #more_info .form-list .input-box{
+        width: 60%;
+    }
+    .customer-account-edit .form-list li, .customer-account-edit .form-list.edit-pswd .field{
+        margin: 0;
+    }
+    .customer-account-edit .form-list .customer-name-middlename .input-box, .customer-account-edit .form-list.edit-pswd .input-box{
+        margin: 0 0 10px;
+    }
+    .customer-account-edit #more_info .form-list li{
+        margin: 0 0 10px;
+    } 
+    .customer-address-index .my-account .title-buttons button.button{
+        background: none;
+    }
+    .customer-address-form .form-list li.wide input#street_1{
+        margin: 0 0 5px;
+    }
+    .header .form-search button.button {
+        margin-left: -6%;
+        width: 14%;
+    }
+}
+@media only screen and (max-width: 360px){
+    .footer-container .footer-our-partners span.our-partner-text{
+        width: 100%;
+    }
 }

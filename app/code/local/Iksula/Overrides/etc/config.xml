@@ -114,6 +114,15 @@
           </validation>
         </observers>
       </salesrule_validator_process>
+      <customer_group_change>
+        <observers>
+          <group_change>
+            <type>model</type>
+            <class>overrides/observer</class>
+            <method>customerOrderGroupChange</method>
+          </group_change>
+        </observers>
+      </customer_group_change>
     </events>
   </frontend>
   <admin>
@@ -138,6 +147,15 @@
        </overrides_core_block_abstract_prepare_layout_before>
      </observers>
    </core_block_abstract_prepare_layout_before>
+   <review_review_save_after>
+        <observers>
+          <admin_review_change>
+            <type>singleton</type>
+            <class>overrides/observer</class>
+            <method>reviewStatusChange</method>
+          </admin_review_change>            
+        </observers>  
+      </review_review_save_after>
  </events>
 </adminhtml>
 <global>

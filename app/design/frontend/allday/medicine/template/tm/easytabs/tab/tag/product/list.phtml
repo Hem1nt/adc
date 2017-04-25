@@ -26,15 +26,7 @@
 ?>
 <div class="box-collateral box-tags">
     <?php echo $this->getChildHtml('list_before')?>
-    <?php if( $this->getCount() ): ?>
-    <h3><?php echo $this->__('Other people marked this product with these tags:') ?></h3>
-    <ul class="product-tags">
-        <?php $_iterator = 0; ?>
-        <?php foreach( $this->getTags() as $_tag ): ?>
-            <li<?php if( 1 == ++$_iterator && $this->getCount() != 1 ): ?> class="first"<?php elseif($_iterator == $this->getCount()): ?> class="last"<?php endif; ?>><a href="<?php echo $_tag->getTaggedProductsUrl() ?>"><?php echo $this->htmlEscape($_tag->getName()) ?></a> (<?php echo $_tag->getPopularity() ?>)</li>
-        <?php endforeach; ?>
-    </ul>
-    <?php endif; ?>
+    
     <form id="addTagForm" action="<?php echo $this->getFormAction(); ?>" method="get">
         <div class="form-add">
             <label for="productTagName"><?php echo $this->__('Add Your Tags:') ?></label>
@@ -45,6 +37,16 @@
         </div>
     </form>
     <p class="note"><?php echo $this->__("Use spaces to separate tags. Use single quotes (') for phrases.") ?></p>
+
+    <?php if( $this->getCount() ): ?>
+    <!-- <h3><?php //echo $this->__('Other people marked this product with these tags:') ?></h3> -->
+    <ul class="product-tags">
+        <?php $_iterator = 0; ?>
+        <?php foreach( $this->getTags() as $_tag ): ?>
+            <li<?php if( 1 == ++$_iterator && $this->getCount() != 1 ): ?> class="first"<?php elseif($_iterator == $this->getCount()): ?> class="last"<?php endif; ?>><a href="<?php echo $_tag->getTaggedProductsUrl() ?>"><?php echo $this->htmlEscape($_tag->getName()) ?></a> <?php //echo $_tag->getPopularity() ?></li>
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
     <script type="text/javascript">
     //<![CDATA[
         var addTagFormJs = new VarienForm('addTagForm');

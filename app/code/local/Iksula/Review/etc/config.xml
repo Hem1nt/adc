@@ -5,7 +5,7 @@
       <version>0.1.0</version>
     </Iksula_Review>
   </modules>
-  <frontend>
+  <!-- <frontend>
     <routers>
       <review>
         <use>standard</use>
@@ -22,18 +22,18 @@
         </args>
       </review>
     </routers>
-  </frontend>
+  </frontend> -->
   <global>
 		<!-- <rewrite>         -->
             <!-- <iksula_review_review_productcontroller> -->
                 <!-- <from><![CDATA[#^/review/product/#]]></from> --> <!-- Mage_Review_ProductController  -->
-                <to>/review/review_product/</to> Iksula_Review_Review_ProductController 
+                <!-- <to>/review/review_product/</to> Iksula_Review_Review_ProductController  -->
             <!-- </iksula_review_review_productcontroller> -->
 		<!-- </rewrite> -->
     
   </global>
   <admin>
-	<routers>
+	<!-- <routers>
 	  <review>
 	    <use>admin</use>
   		<args>
@@ -41,6 +41,6 @@
 		  <frontName>review</frontName>
 		</args>
 	  </review>
-	</routers>
+	</routers> -->
   </admin>
 </config> 

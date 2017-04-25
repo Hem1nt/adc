@@ -1,0 +1,78 @@
+<?php
+$_product = Mage::registry('current_product');
+$related_product_collection = $_product->getRelatedProductIds();
+?>
+<?php 
+if(!empty($related_product_collection)){
+  ?>
+  <div class="frequently_bought_wrap">
+    <h2 class="page_head">Related Products</h2>
+    <div class="slider_wraper">
+      <?php
+      foreach($related_product_collection as $_item): ?>
+      <?php
+      $productData = Mage::getModel('catalog/product')->load($_item);
+      $pharmaceuticalForm = $productData->getAttributeText('pharmaceutical_form');
+      $perUnitPharmaceuticalForm = $productData->getAttributeText('per_unit_pharmaceutical_form');
+      $manufacturer = $productData->getAttributeText('manufacturer');
+      $formattedPrice= Mage::helper('core')->currency($productData->getFinalPrice(), true, false);
+      $usBrandName = $productData->getUsBrandName();
+      $genericName = $productData->getGenericName();
+      $imageCacheUrl = Mage::helper('catalog/image')->init($productData, 'image');
+      $path = Mage::getUrl().$productData->getUrlPath();
+      $summaryData = Mage::helper('frontend')->getproductReviews($productData->getId());
+      $reviewsCount = $summaryData['reviews_count'];
+      $ratingSummary = $summaryData['rating_summary'];
+      $compareUrl = Mage::helper('catalog/product_compare')->getAddUrl($productData);
+      $wishlistUrl = Mage::helper('wishlist')->getAddUrl($productData);
+      ?>
+      <div class="item_wrap">
+        <div class="item">
+          <a href="<?php echo $path;?>" title="<?php echo $productData->getName();?>" class="product-image"><img class="lazy" src="<?php echo $imageCacheUrl;?>" width="" height="" alt="<?php echo $productData->getName();?>" style="display: inline;"></a>
+          <div class="pr-details-height">
+            <h2 class="product-name"><a href="<?php echo $path;?>" title="<?php echo $productData->getName();?>"><?php echo $productData->getName();?></a></h2>
+            <?php if($genericName){ ?>
+            <div class="generic_name">
+             <?php echo $genericName; ?>                      
+           </div>
+           <?php } ?>
+           <?php if($usBrandName){ ?>
+           <div class="generic_for">
+             Generic for <?php echo $usBrandName; ?>                        
+           </div>
+           <?php } ?>
+           <?php if($manufacturer){ ?>
+           <div class="manufactured_by">
+             Manufactured by : <?php echo $manufacturer;?>                
+           </div>
+           <?php } ?>
+           <div class="first_child_info">
+             <div class="custom_price">
+               <span class="pack_size">1 <?php echo $perUnitPharmaceuticalForm;?></span>
+               <span class="regular_price"><?php echo $formattedPrice; ?></span>
+             </div>
+           </div>
+           <?php if($reviewsCount){ ?>
+           <div class="ratings">
+             <div class="rating-box">
+              <a href="<?php echo $path;?>">
+               <div class="rating" style="width:<?php echo $ratingSummary; ?>%"></div>
+             </a>
+           </div>
+           <span class="amount"><a href="<?php echo $path;?>"><?php echo $reviewsCount?> Review(s)</a></span>
+         </div>
+         <?php } ?>
+       </div>
+       <div class="actions">
+        <ul class="add-to-links">
+         <li><a href="<?php echo $wishlistUrl;?>" class="link-wishlist">Add to Wishlist</a></li>
+         <li class="link-compare-li"><span class="separator">|</span> <a href="<?php echo $compareUrl;?>" class="link-compare">Compare</a></li>
+       </ul>
+       <button type="button" title="View Details" class="button btn-cart" onclick="setLocation('<?php echo $path;?>')"><span><span>View Details</span></span></button>
+     </div>
+   </div>
+ </div>
+<?php endforeach ?>
+</div>
+</div>
+<?php } ?>

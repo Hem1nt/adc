@@ -23,7 +23,7 @@
     <modules>
         <ET_Reviewnotify>
             <name>ET Review Notify</name>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
             <descr>
                 <ru_RU><![CDATA[Модуль добавляет функцию оповещения владельца сайта о появлении новых отзывов и затрудняет спам-ботам автоматическое размещение отзывов.]]>
                 </ru_RU>
