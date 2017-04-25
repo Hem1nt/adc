@@ -45,7 +45,7 @@ jQuery(document).ready(function($){
 
     $(".scroll_div_content").mCustomScrollbar();
 
-    equalheight = function(container){
+   /* equalheight = function(container){
    var currentTallest = 0,
         currentRowStart = 0,
         rowDivs = new Array(),
@@ -79,6 +79,6 @@ jQuery(document).ready(function($){
 
  $(window).on('resize', function(){
    equalheight('ul.products-grid li.item');
- });
+ });*/
 
   });
