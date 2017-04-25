@@ -557,8 +557,31 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
 .rewardpoints-index-referral .buttons-set{
     padding: 0;
 }
+.overrides-method-productreview .review_desc .review_field_input textarea{
+    border-radius: 3px;
+    background: none;
+    border: 1px solid #a6a6a6;
+}
+.overrides-method-productreview .star_wrap  label.custom_css_label{
+    width: 18px;
+    height: 18px;
+}
+.overrides-method-productreview  .review_frm .rating_heading{
+    padding: 10px 0;
+}
+.star_wrap, .rating_heading{
+    line-height: normal;
+}
 /* umesh css */
 
+@media only screen and (max-width: 1225px){
+    .header, .nav-content-header, .main, .adc-footer-row1{
+        padding: 0 15px;
+    }
+    .header-top-block-content{
+        padding: 0 5px;
+    }
+}
 @media only screen and (max-width: 1024px){
 
         a.home_icon {
@@ -795,7 +818,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin-top: 15px !important;
     }
     .header .form-search input.input-text {
-        font-size: 17px;
+        font-size: 14px;
         margin: 0;
         width: 92% !important;
         box-sizing: border-box;
@@ -915,6 +938,22 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin: 0;
         padding: 0;
     }
+    .overlay-header{
+        background: transparent;
+    }
+    .mobile-pr-login-icon .logged-in-user a{
+        color: #fff;
+    }
+    .logged-in-user .dropdown_links.visible:before{
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: red;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+    }
 }
 @media only screen and (max-width: 568px){
     .customer-account-create .account-create .create-acc-boxlft, .customer-account-create .account-create .create-acc-boxrt, .customer-account-create .account-create .form-list label, 
@@ -988,9 +1027,33 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin-left: -6%;
         width: 14%;
     }
+    .review-customer-view .product-review .product-img-box, .review-customer-view .product-review .product-details{
+        width: 100%;
+        margin: 0;
+        clear: both;
+    }
+    .product-review .product-img-box .product-image, .product-review .product-img-box .product-image img{
+        width: 100%;
+        height: auto;
+    }
+    .review-customer-view .product-review .product-name{
+        padding: 10px 0;
+        margin: 0;
+    }
+    .review-customer-view .product-review .product-img-box .label{
+        margin: 5px 0;
+    }
+    .review-customer-view .product-review .product-img-box .ratings .rating-box{
+        margin: 0 0 6px;
+    }
 }
 @media only screen and (max-width: 360px){
     .footer-container .footer-our-partners span.our-partner-text{
         width: 100%;
+    }
+}
+@media only screen and (max-width: 320px){
+    .header .form-search input.input-text{
+        font-size: 13px;
     }
 }

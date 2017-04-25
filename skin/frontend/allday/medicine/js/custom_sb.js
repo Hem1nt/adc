@@ -95,10 +95,10 @@ jQuery(document).ready(function($){
    });
  } 
  
- equalheight('ul.products-grid li.item, .frequently_bought_wrap .pr-details-height');
+ equalheight('ul.products-grid li.item');
 
  $(window).on('resize', function(){
-   equalheight('ul.products-grid li.item, .frequently_bought_wrap .pr-details-height');
+   equalheight('ul.products-grid li.item');
  });
 
 

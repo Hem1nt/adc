@@ -263,6 +263,7 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
 
 <?php if($_product->isSaleable() && $custom_stock_status =='Coming Soon'){ ?>
 <div class="notify-me-boxwrapper">
+    <div class="out_of_stock_head">Out Of Stock</div>
     <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
     <span class="notify-close-btn">
         <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
@@ -289,6 +290,7 @@ if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'): ?>
 <!-- <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a> -->
 
 <div class="notify-me-boxwrapper">
+<div class="out_of_stock_head">Out Of Stock</div>
     <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
     <span class="notify-close-btn">
         <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
@@ -475,6 +477,12 @@ if($count){
               breakpoint: 737,
               settings: {
                 slidesToShow: 2
+              }
+            },
+            {
+              breakpoint: 361,
+              settings: {
+                slidesToShow: 1
               }
             }
           ]
