@@ -349,6 +349,13 @@ p.footer_content {
 
 /* umesh css */
 
+.footer-container #toTop .subscribe-innerdiv{
+    padding: 10px 0;
+}
+
+.fa-remove:before, .fa-close:before, .fa-times:before{
+    content: "x" !important;
+}
 .customer-address-index .my-account .button.button{
     margin: 0;
 }
@@ -605,10 +612,8 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
 @media only screen and (max-width: 1024px){
 
         a.home_icon {
-            line-height: 45px;
-            margin-left: 10px;
-            margin: 0;
-            margin-left: 10px;
+            margin: 4px 0;
+            line-height: 38px;
         }
         a.home_icon img {
             width: 70%;
@@ -620,6 +625,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             line-height: 25px;
             height: 25px;
             padding: 6px 8px;
+            margin: 0;
 
         }
         .block .block-title strong span {
@@ -676,10 +682,16 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             padding: 0 7px;
         }
         .nav-right-category {
-            margin: -4px 10px;
+            margin: 0 10px;
         }
         .catalog-category-view .tab-category-icons{
              margin: -4px 10px;
+        }
+        .categories-right-hom{
+            padding: 0;
+        }
+        .block .block-title strong.all-categories{
+            margin: 4px 0;
         }
         
 }
@@ -688,7 +700,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         display: none;
     }
     .customer-account-index .acc-pages-icons{
-        margin: -4px 10px;
+        margin: 0 10px;
     }
      #search_autocomplete {
             width: 29% !important;
@@ -697,11 +709,11 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         left: 35% !important;
     }
     .block-compare, .block-layered-nav, .customer-account-index .sidebar .block-account .block-content{
-        right: 159px;
+        right: 174px;
         top: 180px;
     }
     .customer-account-index .sidebar .block-account .block-content{
-        right: 220px;
+        right: 235px;
     }
 }
 @media only screen and (max-width: 800px){
@@ -988,6 +1000,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .main{
         padding: 0;
     }
+    .checkout-cart-index h1.cart-title-mob{
+        font-size: 17px;
+    }
 }
 @media only screen and (max-width: 670px){
     .customer-account-login .account-login .col2-set .col-1.new-users{
@@ -1001,6 +1016,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .header .form-search input.input-text, .header .form-search button.button{
         height: 35px;
+    }
+    .medical_history_field3 span, .medical_history_field4 span, .medical_history_field5 span{
+        line-height: 0;
     }
 }
 @media only screen and (max-width: 420px){
@@ -1034,6 +1052,10 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .col-main button, .buttons-set p.back-link a, a.back, .buttons-set p.back-link a:hover, .newsletter-manage-index .buttons-set p.back-link a, .newsletter-manage-index .buttons-set p.back-link a:hover, .sales-order-history .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a, .rewardpoints-index-referral .box-account .button-set button.button, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover, .checkout-cart-index a.pr-continue-shop-cart-empty, .opc-wrapper-opc .btn, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon, .col-main #drop a, .col-main #drop a:hover, .mini-cart-layer .inner-wrapper button.button span, .checkout-cart-index a.pr-continue-shop-cart-empty:hover{
         padding: 0 15px;
+        height: 33px;
+        line-height: 33px;
+    }
+    .col-main .opc-wrapper-opc .btn{
         height: 33px;
         line-height: 33px;
     }
@@ -1099,6 +1121,19 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         padding: 3px 15px 3px 15px;
         font-size: 13px;
         line-height: normal;
+    }
+    .opc-index-index .opc-messages{
+        width: 80%;
+        left: 10%;
+        margin: 0;
+    }
+}
+@media only screen and (max-width: 380px){
+    .checkout-cart-index table#shopping-cart-table td.a-center.cart-remove-link{
+        margin-left: 0 !important;
+        width: 68%;
+        float: right;
+        text-align: left !important;
     }
 }
 @media only screen and (max-width: 360px){

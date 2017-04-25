@@ -1832,6 +1832,11 @@ span.recomend-text {
 	}
 }
 
+@media only screen and (max-width: 640px){
+	.tc-widget-horizontal .tc-widget-horizontal-content .tc-widget-horizontal-item{
+		min-height: auto;
+	}
+}
 @media only screen and (max-width: 575px){
 	.catalog-product-view .customer_rating.review_graph .rating_box .star_image, .review-product-list .customer_rating.review_graph .rating_box .star_image {
 	    width: 90px;
