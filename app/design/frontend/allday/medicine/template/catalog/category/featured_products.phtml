@@ -1,4 +1,5 @@
 <div class="block block-list featured_products">
+
   <div class="block-title">
     <strong>
       <span>Featured Products</span>
@@ -70,13 +71,47 @@
 
 <script type="text/javascript">
 
-jQuery(document).ready(function($) {
+  jQuery(document).ready(function($) {
+    
+        $('.featured_products .products-grid').slick({
+                infinite: true,
+                centerMode: false,
+                slidesToShow: 1,
 
-  $('.featured_products .products-grid').slick({
-    infinite: true,
-    centerMode: false,
-    slidesToShow: 1
-  });  
-});
+                responsive: [ { 
+                    breakpoint: 900, 
+                        settings: { 
+                              slidesToShow: 3, 
+                              slidesToScroll: 1, 
+                              infinite: false, 
+                              //variableWidth: true, 
+                              dots: false 
+                        }
+                },
+
+                 { 
+                    breakpoint: 736, 
+                        settings: { 
+                              slidesToShow: 2, 
+                              slidesToScroll: 1, 
+                              infinite: false, 
+                              //variableWidth: true, 
+                              dots: false 
+                        }
+                },
+
+                { 
+                    breakpoint: 420, 
+                        settings: { 
+                              slidesToShow: 1, 
+                              slidesToScroll: 1, 
+                              infinite: false, 
+                              //variableWidth: true, 
+                              dots: false 
+                        }
+                }]
+        });
+  });
+
 
 </script>
