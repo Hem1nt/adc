@@ -1850,6 +1850,12 @@ dl#narrow-by-list dd ol li a {
   }
 }
 @media only screen and (max-width: 360px) {
+  .catalog-category-view .products-list .product-name,
+  .catalogsearch-result-index .products-list .product-name {
+    padding-right: 40px;
+    box-sizing: border-box;
+  }
+
   .catalog-category-view .col-main .category-products .products-grid li.item {
     width: 96% !important;
     margin: 10px 2%;
@@ -1890,7 +1896,8 @@ dl#narrow-by-list dd ol li a {
   }
   .catalog-category-view .col-main .category-products .products-list li.item .product-shop .f-fix .add-to-links a.link-wishlist {
     left: inherit;
-    right: -8%;
+    right: 0%;
+    width: auto;
   }
   .catalog-category-view .col-main .category-products .products-list li.item .product-shop .f-fix .add-to-links li.link-compare-li {
     width: 45%;
