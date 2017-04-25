@@ -67,11 +67,6 @@ body.catalog-product-view a.home_icon {
     font-style: normal;
 }
 
-body.catalog-product-view .header .form-search input.input-text{
-    height: 44px !important;
-    box-sizing: border-box;
-}
-
 .header .links {
     margin: 0;
     padding-bottom: 20px;
@@ -380,7 +375,8 @@ p.footer_content {
 .review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a,
 .rewardpoints-index-referral .box-account .button-set button.button, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover, 
 .checkout-cart-index a.pr-continue-shop-cart-empty, .opc-wrapper-opc .btn, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon, .col-main #drop a, .col-main #drop a:hover, 
-.mini-cart-layer .inner-wrapper button.button span, .checkout-cart-index a.pr-continue-shop-cart-empty:hover, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button{
+.mini-cart-layer .inner-wrapper button.button span, .checkout-cart-index a.pr-continue-shop-cart-empty:hover, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button,
+.catalog-product-compare-index .compare-table button.button, .catalog-product-compare-index .buttons-set button.button{
     background: #9fb701;
     color: #fff;
     font-size: 14px;
@@ -393,6 +389,13 @@ p.footer_content {
     height: auto;
     font-weight: normal;
     border-bottom: none;
+}
+.catalog-product-compare-index .buttons-set{
+    text-align: center;
+}
+.catalog-product-compare-index .buttons-set button.button{
+    margin: 0;
+    background: #000;
 }
 .col-main #drop a:hover{
     border-bottom: none !important;
@@ -456,10 +459,24 @@ p.footer_content {
 .cart-table .btn-empty span, .cart-table .btn-continue span, .cart-table .btn-update span, .checkout-cart-index .cart-table .btn-continue:hover > span, .checkout-cart-index .cart-table .btn-continue:hover span, .checkout-cart-index .cart-table .btn-continue:hover span span, 
 .checkout-cart-index .cart-table .btn-empty span, .checkout-cart-index .cart-table .btn-update span, .checkout-cart-index .cart-table .btn-empty span:hover span, .checkout-cart-index .cart-table .btn-update span:hover span, 
 button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-checkout.btn-checkout:hover span, button.button.btn-proceed-checkout.btn-checkout:hover span span, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span:hover, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button:hover > span, 
-.customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span:hover span{
+.customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span:hover span, .catalog-product-compare-index button.button span, .catalog-product-compare-index .compare-table button.button:hover > span, .catalog-product-compare-index button.button span:hover, .catalog-product-compare-index button.button span:hover span{
     padding:0;
     border-bottom: none;
     background: none;
+}
+.catalog-product-compare-index .compare-table button.button > span > span{
+    min-width: auto;
+    padding: 0;
+}
+.catalog-product-compare-index .compare-table button.button{
+    margin: 0;
+}
+.catalog-product-compare-index .compare-table a.link-wishlist, .catalog-product-compare-index .compare-table a.link-wishlist:hover{
+    background: url(../images/sprite.png) -10px -101px no-repeat;
+    color: #666 !important;
+    background-size: inherit !important;
+    padding: 9px 5px 10px 25px;
+    margin: 0 0 0 15px;
 }
 .catalog-product-view .pr-add-to-compare a.link-compare:hover, .catalog-product-view .pr-write-review a.link-review:hover, .catalog-product-view .pr-email-friend a.link-email-friend:hover{
     color: #fff;
@@ -557,8 +574,35 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
 .rewardpoints-index-referral .buttons-set{
     padding: 0;
 }
+<<<<<<< HEAD
+.overrides-method-productreview .review_desc .review_field_input textarea{
+    border-radius: 3px;
+    background: none;
+    border: 1px solid #a6a6a6;
+}
+.overrides-method-productreview .star_wrap  label.custom_css_label{
+    width: 18px;
+    height: 18px;
+}
+.overrides-method-productreview  .review_frm .rating_heading{
+    padding: 10px 0;
+}
+.star_wrap, .rating_heading{
+    line-height: normal;
+}
+=======
+
+>>>>>>> origin/dev/theme
 /* umesh css */
 
+@media only screen and (max-width: 1225px){
+    .header, .nav-content-header, .main, .adc-footer-row1{
+        padding: 0 15px;
+    }
+    .header-top-block-content{
+        padding: 0 5px;
+    }
+}
 @media only screen and (max-width: 1024px){
 
         a.home_icon {
@@ -795,7 +839,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin-top: 15px !important;
     }
     .header .form-search input.input-text {
-        font-size: 17px;
+        font-size: 14px;
         margin: 0;
         width: 92% !important;
         box-sizing: border-box;
@@ -915,6 +959,43 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin: 0;
         padding: 0;
     }
+<<<<<<< HEAD
+    .overlay-header{
+        background: transparent;
+    }
+    .mobile-pr-login-icon .logged-in-user a{
+        color: #fff;
+    }
+    .logged-in-user .dropdown_links.visible:before{
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: red;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+    }
+=======
+    .mobile-pr-login-icon .logged-in-user a{
+        color: #fff;
+    }
+    .logged-in-user .dropdown_links:before{
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 10px 10px;
+        border-color: transparent transparent #72ae12 transparent;
+        position: absolute;
+        right: 18px;
+        top: -10px;
+        display: block;
+    }
+    .mobile-pr-login-icon .logged-in-user .dropdown_links{
+        width: auto;
+    }
+>>>>>>> origin/dev/theme
 }
 @media only screen and (max-width: 568px){
     .customer-account-create .account-create .create-acc-boxlft, .customer-account-create .account-create .create-acc-boxrt, .customer-account-create .account-create .form-list label, 
@@ -988,9 +1069,49 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin-left: -6%;
         width: 14%;
     }
+<<<<<<< HEAD
+    .review-customer-view .product-review .product-img-box, .review-customer-view .product-review .product-details{
+        width: 100%;
+        margin: 0;
+        clear: both;
+    }
+    .product-review .product-img-box .product-image, .product-review .product-img-box .product-image img{
+        width: 100%;
+        height: auto;
+    }
+    .review-customer-view .product-review .product-name{
+        padding: 10px 0;
+        margin: 0;
+    }
+    .review-customer-view .product-review .product-img-box .label{
+        margin: 5px 0;
+    }
+    .review-customer-view .product-review .product-img-box .ratings .rating-box{
+        margin: 0 0 6px;
+=======
+    .cms-index-index .col-main .home-content h2{
+        width: 100%;
+    }
+    .nav-container .all_categories_list #nav li a {
+        background-position: 0 7px;
+    }
+    .nav-container .all_categories_list #nav li a:hover{
+        background-position: 0 -44px;
+    }
+    .nav-container .all_categories_list ul#nav li ul li a span {
+        padding: 3px 15px 3px 15px;
+        font-size: 13px;
+        line-height: normal;
+>>>>>>> origin/dev/theme
+    }
 }
 @media only screen and (max-width: 360px){
     .footer-container .footer-our-partners span.our-partner-text{
         width: 100%;
+    }
+}
+@media only screen and (max-width: 320px){
+    .header .form-search input.input-text{
+        font-size: 13px;
     }
 }
