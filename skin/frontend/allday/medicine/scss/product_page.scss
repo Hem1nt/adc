@@ -1906,6 +1906,11 @@ span.recomend-text {
 	    width: 100%;
 	}
 
+	.catalog-product-view .review-count-pr, .review-product-list .review-count-pr{
+	    margin-top: 0;
+    	border-top: 0;
+	}
+
 	.catalog-product-view .share.bordercolor{
 		margin-top: 36px!important;
 		width: 100%;
@@ -2035,6 +2040,7 @@ span.recomend-text {
 
 
 }
+
 @media only screen and (max-width: 360px){
 	.catalog-product-view .pr-add-to-compare a.link-compare, .review-product-list .pr-add-to-compare a.link-compare, 
 	.catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend, .catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend{
@@ -2079,9 +2085,9 @@ span.recomend-text {
 	}
 
 	.product-view .product-shop .ratings .rating-box .rating {
-    height: 15px;
-    background-size: 15px;
-}
+	    height: 15px;
+	    background-size: 15px;
+	}
 
 	.product-view .product-shop .ratings .rating-links a.review-scroll, .product-view .product-shop .ratings .rating-links a.add_your_review{
 		font-size: 13px;
@@ -2091,4 +2097,10 @@ span.recomend-text {
 		font-size: 12px;
 	}
 	
+}
+
+@media only screen and (max-width: 320px){
+	.catalog-product-view .easytabs-content{
+		padding: 10px;
+	}
 }
