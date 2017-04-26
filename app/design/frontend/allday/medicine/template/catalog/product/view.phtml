@@ -99,7 +99,7 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
 <?php echo $this->getChildHtml('extrahint') ?>
 
 <div class="description_related">
-    <?php if ($_product->getShortDescription()):?>
+    <?php /* if ($_product->getShortDescription()):?>
     <div class="short-description tablet">
         <!-- <h2><?php //echo $this->__('Quick Overview') ?></h2> -->
         <div class="std" itemprop="description">
@@ -114,8 +114,8 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
             ?>
         </div>
     </div>
-<?php endif;?>
-<div class="slider_wrap">
+<?php endif;*/ ?>
+<!-- <div class="slider_wrap"> -->
     <?php 
                    // $related_product_collection = $_product->getRelatedProductIds();
                    // $count = count($related_product_collection);
@@ -126,10 +126,10 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
                    //     $related_class = '';
                    // }
     ?> 
-</div> 
+<!-- </div>  -->
 <div class="s_desc_share_wrap">
  <?php if ($_product->getShortDescription()):?>
- <div class="short-description desktop">
+ <div class="short-description">
     <!-- <h2><?php //echo $this->__('Quick Overview') ?></h2> -->
     <div class="std" itemprop="description">
        <?php
@@ -207,9 +207,9 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
                 <?php 
                 $summaryData = Mage::helper('frontend')->getproductReviews($_product->getId());
                 if($summaryData['reviews_count']){
-                    $class = 'first-review';
-                }else{
                     $class = '';
+                }else{
+                    $class = 'first-review';
                 }
                 ?>
                 <div class="pr-links-right <?php echo $class; ?>">
@@ -263,6 +263,7 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
 
 <?php if($_product->isSaleable() && $custom_stock_status =='Coming Soon'){ ?>
 <div class="notify-me-boxwrapper">
+    <div class="out_of_stock_head">Out Of Stock</div>
     <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
     <span class="notify-close-btn">
         <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
@@ -289,6 +290,7 @@ if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'): ?>
 <!-- <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a> -->
 
 <div class="notify-me-boxwrapper">
+<div class="out_of_stock_head">Out Of Stock</div>
     <h1><span>This product is out of stock. To keep the track of product's availability, Kindly enter your email id below.</span></h1>
     <span class="notify-close-btn">
         <img src="<?php echo $this->getSkinUrl('images/notify-close.png') ?>" alt="" />
@@ -463,8 +465,30 @@ if($count){
         jQuery('.slider_wraper').slick({
           infinite: true,
           slidesToShow: 4,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          responsive: [
+            {
+              breakpoint: 981,
+              settings: {
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 737,
+              settings: {
+                slidesToShow: 2
+              }
+            },
+            {
+              breakpoint: 361,
+              settings: {
+                slidesToShow: 1
+              }
+            }
+          ]
       });
+
+        
 
         jQuery('.read_more').click(function() {
             var divPosition = jQuery('.easytabs li').offset();

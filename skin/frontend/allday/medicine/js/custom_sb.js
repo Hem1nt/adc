@@ -45,7 +45,27 @@ jQuery(document).ready(function($){
 
     $(".scroll_div_content").mCustomScrollbar();
 
-    equalheight = function(container){
+     $('.bxslider-pr-view').slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          responsive: [
+            {
+              breakpoint: 1025,
+              settings: {
+                slidesToShow: 3,
+              }
+            },
+            {
+              breakpoint: 737,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+      });
+
+  equalheight = function(container){
    var currentTallest = 0,
         currentRowStart = 0,
         rowDivs = new Array(),
@@ -80,5 +100,6 @@ jQuery(document).ready(function($){
  $(window).on('resize', function(){
    equalheight('ul.products-grid li.item');
  });
+
 
   });

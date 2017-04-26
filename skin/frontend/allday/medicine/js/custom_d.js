@@ -43,7 +43,7 @@ jQuery(document).ready(function($){
         }
         else
         {
-          $(".overlay-header").show();
+          $(".overlay-header").show().css("background","rgba(0, 0, 0, .5)");
         }
         $(".quick-access, .block-layered-nav, .block-compare, .logged-in-user .dropdown_links, .block-account .block-content").hide();
         $(".logged-in-user").removeClass("active");
@@ -221,7 +221,7 @@ jQuery(document).ready(function($){
             else
             {
               // alert("block");
-              $(".overlay-header").show();
+              $(".overlay-header").show().css("background","transparent");
             }
           $(".block-layered-nav, .all_categories_list, .quick-access, .block-compare").hide();
           $(".block-account .block-content").hide();

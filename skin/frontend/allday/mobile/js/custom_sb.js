@@ -1,12 +1,45 @@
-// jQuery(document).ready(function($){
 
-// $(".medical_nextbtn").live("click", function(){     
-//       $(".payment_tabs_area dd ul").each(function(){
-//         var display_status = $(this).css("display");
-//         if(display_status == "block"){
-//           var onload_method = $(this).find("h5").text();
-//             $(".select_method").text(onload_method);
-//         }
-//       });
-//     }); 
-// });
+jQuery(document).ready(function($){
+
+equalheight = function(container){
+   var currentTallest = 0,
+        currentRowStart = 0,
+        rowDivs = new Array(),
+        el,
+        topPosition = 0;
+    jQuery(container).each(function() {
+
+      el = jQuery(this);
+      jQuery(el).height('auto')
+      topPostion = el.position().top;
+
+      if (currentRowStart != topPostion) {
+        for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+          rowDivs[currentDiv].height(currentTallest);
+        }
+        rowDivs.length = 0; // empty the array
+        currentRowStart = topPostion;
+        currentTallest = el.height();
+        rowDivs.push(el);
+      } else {
+        rowDivs.push(el);
+        currentTallest = (currentTallest < el.height()) ? (el.height()) : (currentTallest);
+     }
+      for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+        rowDivs[currentDiv].height(currentTallest);
+      }
+   });
+ } 
+ 
+ equalheight('ul.products-grid li.item');
+
+ $(window).on('resize', function(){
+   equalheight('ul.products-grid li.item');
+ });
+
+ $('.bxslider-pr-view').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1
+  });
+
+  });

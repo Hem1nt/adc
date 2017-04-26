@@ -8615,11 +8615,7 @@ body.catalog-product-view br{
 body.catalog-product-view .wrapper br{
 	display: block;
 }
-body.catalog-product-view .header .form-search input.input-text {
-    
-    height: auto !important;
-    padding: 7px 8px;
-}
+
 body.catalog-product-view .nav-content-header {
     /*display: inline-block;*/
 }
