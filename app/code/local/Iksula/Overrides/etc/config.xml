@@ -204,6 +204,11 @@
               <country_collection>Iksula_Overrides_Model_Directory_Resource_Country_Collection</country_collection>
             </rewrite>
           </directory_resource>
+          <catalog>
+            <rewrite>
+              <product_visibility>Iksula_Overrides_Model_Catalog_Product_Visibility</product_visibility>
+            </rewrite>
+          </catalog>  
         </models>
       <blocks>
         <overrides>

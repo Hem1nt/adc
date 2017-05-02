@@ -1,3 +1,4 @@
+<?php  $parentIdsArray = array(); ?>
 <div class="block block-list featured_products">
 
   <div class="block-title">
@@ -11,107 +12,109 @@
       $bestSellingProducts = Mage::helper('overrides')->getBestSellingProducts();
       foreach ($bestSellingProducts->getItems() as $item) {
         $parentId = Mage::getModel('catalog/product_type_configurable')
-                ->getParentIdsByChild($item->getProductId());
-        $productData = Mage::helper('overrides')->getProductDetails($parentId[0]);
-        $pharmaceuticalForm = $productData->getAttributeText('pharmaceutical_form');
-        $perUnitPharmaceuticalForm = $productData->getAttributeText('per_unit_pharmaceutical_form');
-        $manufacturer = $productData->getAttributeText('manufacturer');
-        $formattedPrice= Mage::helper('core')->currency($productData->getFinalPrice(), true, false);
-        $usBrandName = $productData->getUsBrandName();
-        $genericName = $productData->getGenericName();
-        $imageCacheUrl = Mage::helper('catalog/image')->init($productData, 'image')->resize(100,100);
-        $path = Mage::getUrl().$productData->getUrlPath();
-        $summaryData = Mage::getModel('review/review_summary')->load($productData->getId());
-        $reviewsCount = $summaryData->getReviewsCount();
-        $ratingSummary = $summaryData->getRatingSummary();
-        ?>
-        <div class="item first">
-          <a href="<?php echo $path;?>" class="product-image"><img class="lazy" src="<?php echo $imageCacheUrl;?>" width="100" height="100" alt="<?php echo $productData->getName();?>" style="display: inline;"></a>
+        ->getParentIdsByChild($item->getProductId());
+        if(!in_array($parentId[0],$parentIdsArray)){
+          $productData = Mage::helper('overrides')->getProductDetails($parentId[0]);
+          $pharmaceuticalForm = $productData->getAttributeText('pharmaceutical_form');
+          $perUnitPharmaceuticalForm = $productData->getAttributeText('per_unit_pharmaceutical_form');
+          $manufacturer = $productData->getAttributeText('manufacturer');
+          $formattedPrice= Mage::helper('core')->currency($productData->getFinalPrice(), true, false);
+          $usBrandName = $productData->getUsBrandName();
+          $genericName = $productData->getGenericName();
+          $imageCacheUrl = Mage::helper('catalog/image')->init($productData, 'image')->resize(100,100);
+          $path = Mage::getUrl().$productData->getUrlPath();
+          $summaryData = Mage::getModel('review/review_summary')->load($productData->getId());
+          $reviewsCount = $summaryData->getReviewsCount();
+          $ratingSummary = $summaryData->getRatingSummary();
+          ?>
+          <div class="item first">
+            <a href="<?php echo $path;?>" class="product-image"><img class="lazy" src="<?php echo $imageCacheUrl;?>" width="100" height="100" alt="<?php echo $productData->getName();?>" style="display: inline;"></a>
 
-          <div class="pr-details-height">
-            <h2 class="product-name"><a href="<?php echo $path;?>" title="<?php echo $productData->getName();?>"><?php echo $productData->getName();?></a></h2>
-            <?php if($genericName){ ?>
-            <div class="generic_name">
-             <?php echo $genericName; ?>                      
+            <div class="pr-details-height">
+              <h2 class="product-name"><a href="<?php echo $path;?>" title="<?php echo $productData->getName();?>"><?php echo $productData->getName();?></a></h2>
+              <?php if($genericName){ ?>
+              <div class="generic_name">
+               <?php echo $genericName; ?>                      
+             </div>
+             <?php } ?>
+             <?php if($usBrandName){ ?>
+             <div class="generic_for">
+               Generic for <?php echo $usBrandName; ?>                        
+             </div>
+             <?php } ?>
+             <?php if($manufacturer){ ?>
+             <div class="manufactured_by">
+               Manufactured by : <?php echo $manufacturer;?>                
+             </div>
+             <?php } ?>
+             <div class="first_child_info">
+              <p class="custom_price"><span class="custom_child_1">1</span><span class="custom_child_2"> <?php echo $perUnitPharmaceuticalForm;?></span><span class="custom_child_3"> - <?php echo $formattedPrice; ?></span></p>                </div>
+              <div class="double_pill_offer">
+              </div>
+              <?php if($reviewsCount){ ?>
+              <div class="ratings">
+               <div class="rating-box">
+                <a href="<?php echo $path;?>">
+                 <div class="rating" style="width:<?php echo $ratingSummary; ?>%"></div>
+               </a>
+             </div>
+             <span class="amount"><a href="<?php echo $path;?>"><?php echo $reviewsCount?> Review(s)</a></span>
            </div>
            <?php } ?>
-           <?php if($usBrandName){ ?>
-           <div class="generic_for">
-             Generic for <?php echo $usBrandName; ?>                        
-           </div>
-           <?php } ?>
-           <?php if($manufacturer){ ?>
-           <div class="manufactured_by">
-             Manufactured by : <?php echo $manufacturer;?>                
-           </div>
-           <?php } ?>
-           <div class="first_child_info">
-            <p class="custom_price"><span class="custom_child_1">1</span><span class="custom_child_2"> <?php echo $perUnitPharmaceuticalForm;?></span><span class="custom_child_3"> - <?php echo $formattedPrice; ?></span></p>                </div>
-            <div class="double_pill_offer">
-            </div>
-            <?php if($reviewsCount){ ?>
-            <div class="ratings">
-             <div class="rating-box">
-              <a href="<?php echo $path;?>">
-               <div class="rating" style="width:<?php echo $ratingSummary; ?>%"></div>
-             </a>
-           </div>
-           <span class="amount"><a href="<?php echo $path;?>"><?php echo $reviewsCount?> Review(s)</a></span>
          </div>
-         <?php } ?>
+
+
        </div>
-
-
-     </div>
-     <?php } ?>
+       <?php  }
+       array_push($parentIdsArray,$parentId[0]);
+     } ?>
    </div>
  </div>
 </div>
 
-
 <script type="text/javascript">
 
-  jQuery(document).ready(function($) {
-    
-        $('.featured_products .products-grid').slick({
-                infinite: true,
-                centerMode: false,
-                slidesToShow: 1,
+jQuery(document).ready(function($) {
 
-                responsive: [ { 
-                    breakpoint: 900, 
-                        settings: { 
-                              slidesToShow: 3, 
-                              slidesToScroll: 1, 
-                              infinite: false, 
+  $('.featured_products .products-grid').slick({
+    infinite: true,
+    centerMode: false,
+    slidesToShow: 1,
+
+    responsive: [ { 
+      breakpoint: 900, 
+      settings: { 
+        slidesToShow: 3, 
+        slidesToScroll: 1, 
+        infinite: false, 
                               //variableWidth: true, 
                               dots: false 
-                        }
-                },
+                            }
+                          },
 
-                 { 
-                    breakpoint: 736, 
-                        settings: { 
+                          { 
+                            breakpoint: 736, 
+                            settings: { 
                               slidesToShow: 2, 
                               slidesToScroll: 1, 
                               infinite: false, 
                               //variableWidth: true, 
                               dots: false 
-                        }
-                },
+                            }
+                          },
 
-                { 
-                    breakpoint: 420, 
-                        settings: { 
+                          { 
+                            breakpoint: 420, 
+                            settings: { 
                               slidesToShow: 1, 
                               slidesToScroll: 1, 
                               infinite: false, 
                               //variableWidth: true, 
                               dots: false 
-                        }
-                }]
-        });
-  });
+                            }
+                          }]
+                        });
+});
 
 
 </script>

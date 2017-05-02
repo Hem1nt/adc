@@ -138,7 +138,7 @@ class Iksula_Overrides_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     public function getBestSellingProducts(){
-         return $collection = Mage::getResourceModel('sales/report_bestsellers_collection')->setPageSize(5);
+         return $collection = Mage::getResourceModel('sales/report_bestsellers_collection')->setPageSize(10);
     }
 
     public function getProductDetails($id){

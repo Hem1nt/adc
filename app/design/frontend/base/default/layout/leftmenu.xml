@@ -1,0 +1,23 @@
+<layout version="0.1.0">	
+	 <default>
+			<reference name="head">
+			  <!--action method="addJs"><script>leftmenu/jquery-1.8.2.min.js</script></action-->
+			  <action method="addJs"><script>leftmenu/leftmenu.js</script></action>
+		    <action method="addCss"><stylesheet>css/leftmenu.css</stylesheet></action>
+	    </reference>
+			<reference name="left">
+				<block type="leftmenu/navigation" name="leftmenu" before="catalog.leftnav" >	
+					<action method="setTemplate" ifconfig="categorylist_section/categorylist_group/cateorylist_left">
+						<template>leftmenu/left.phtml</template> 
+					</action>
+				</block>
+			</reference>
+			<reference name="right">
+				<block type="leftmenu/navigation" name="rightmenu" before="catalog.leftnav" >
+					<action method="setTemplate" ifconfig="categorylist_section/categorylist_group/cateorylist_right">
+						<template>leftmenu/left.phtml</template> 
+					</action>
+				</block>	
+			</reference>
+	</default>
+</layout>

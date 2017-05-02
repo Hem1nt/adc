@@ -1,0 +1,73 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">
+  <refillreminder_index_index>
+    <remove name="header" />
+    <remove name="footer" />
+    <remove name="right" />
+    <remove name="left" />
+    <remove name="page" />
+    <reference name="head">
+      <action method="addItem"><type>skin_css</type><name>css/reset_adc.css</name></action>
+    </reference>
+    <reference name="root">
+      <action method="setTemplate"><template>page/1column.phtml</template></action>
+    </reference>   
+    <reference name="content">   
+      <block type="refillreminder/index" name="refillreminder_index" template="refillreminder/index.phtml"/>   
+    </reference>   
+  </refillreminder_index_index>
+
+  <refillreminder_index_cartreminder>
+    <remove name="header" />
+    <remove name="footer" />
+    <remove name="right" />
+    <remove name="left" />
+    <remove name="page" />
+    <reference name="head">
+      <action method="addItem"><type>skin_css</type><name>css/reset_adc.css</name></action>
+    </reference>
+    <reference name="root">
+      <action method="setTemplate"><template>page/1column.phtml</template></action>
+    </reference>   
+    <reference name="content">   
+      <block type="refillreminder/index" name="refillreminder_index" template="refillreminder/cartreminder.phtml"/>   
+    </reference>   
+  </refillreminder_index_cartreminder>
+
+  <refillreminder_view_index>
+    <reference name="content">
+      <block type="refillreminder/index" name="refillreminder_view" template="refillreminder/view.phtml"/>   
+    </reference>   
+    <reference name="left">
+      <remove name="left.drugsearch" />
+      <remove name="left.drugindexsearch" />
+      <remove name="cart_sidebar" />
+      <remove name="top.menu"/>
+      <block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
+        <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+        <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>
+        <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+        <action method="addLink" translate="label" module="refillreminder"><name>refill_reminder</name><path>refillreminder/view/</path><label>Refill reminder</label></action>
+      </block>
+    </reference>   
+  </refillreminder_view_index>
+  <refillreminder_edit_index>
+    <remove name="header" />
+    <remove name="footer" />
+    <remove name="right" />
+    <remove name="left" />
+    <remove name="page" />
+    <reference name="head">
+      <action method="addItem"><type>skin_css</type><name>css/reset_adc.css</name></action>
+    </reference>
+    <reference name="root">
+      <action method="setTemplate"><template>page/1column.phtml</template></action>
+    </reference>   
+    <reference name="content">   
+      <block type="refillreminder/index" name="refillreminder_edit" template="refillreminder/edit.phtml"/>   
+    </reference>   
+  </refillreminder_edit_index>
+
+  
+
+</layout>

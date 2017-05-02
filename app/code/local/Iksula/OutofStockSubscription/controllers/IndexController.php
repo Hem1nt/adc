@@ -8,7 +8,7 @@ class Iksula_OutofStockSubscription_IndexController extends Mage_Core_Controller
        $product_id = $_POST['product_id'];
        $product_name = $_POST['product_name'];
        $subscription_email = $_POST['subscription_email'];
-       $date = Mage::getModel('core/date')->date('Y-m-d H:i:s');
+       $date = Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s');
        $url = $_POST['product_url'];
        $productModel = Mage::getModel('catalog/product');
        if($_POST['product_status'] == '')
