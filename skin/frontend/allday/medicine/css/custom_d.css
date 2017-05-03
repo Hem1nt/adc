@@ -2895,6 +2895,10 @@ button.button.notify-me:hover, .header .form-search button.button span:hover {
 	border: 0;
 }
 
+.checkout-cart-index #shopping-cart-table2{
+	margin-top: 0;
+}
+
 .checkout-cart-index .data-table tfoot tr {
 	background-color: #FFFFFF !important;
 }
@@ -5075,10 +5079,21 @@ strong.green {
 	text-decoration: none;
 }
 
+
+
 .wishlist-index-index .data-table td input.qty {
 	float: right;
 	display: block;
 	margin-bottom: 10px;
+	clear: both;
+}
+
+.wishlist-index-index .data-table{
+	margin-bottom: 35px;
+}
+
+.wishlist-index-index .buttons-set p.back-link{
+	margin-top: -35px;
 }
 
 .wishlist-index-index .buttons-set {
@@ -5113,8 +5128,12 @@ strong.green {
 }
 
 .wishlist-index-index p.wishlist-empty {
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   font-size: 1.3em;
+}
+
+.catalog-product-compare-index p.availability.out-of-stock{
+	padding:8px 0; 
 }
 
 .my-wishlist .buttons-set .btn-add span, .my-wishlist .buttons-set .btn-share span {
@@ -6660,8 +6679,8 @@ input.input-text, select, textarea {
 }
 
 .cart .discount button span, .cart .shipping button span {
-  border-color: #506F00;
-  background: #506F00;
+  border-color: transparent;
+  background: transparent;
 }
 
 /* Email Friend */
@@ -7991,6 +8010,7 @@ img#captchaimg {
 .wishlist-index-index .data-table td .add-to-cart-alt a {
   display: block;
   margin-top: 38px;
+  clear: both;
 }
 
 .customer-account-index .box-account .box-head h2 {
@@ -8034,7 +8054,30 @@ p.scroll-category {
 
 .customer-account-edit .form-list li.acc-gender {
   float: left;
+  clear: both;
 }
+
+.block .actions button.button{
+    background: #9fb701;
+    color: #fff;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 30px;
+    display: inline-block;
+    font-family: Open Sans, sans-serif;
+    height: auto;
+    font-weight: normal;
+    border-bottom: none;
+}
+
+.block .actions button.button span {
+    padding: 0;
+    line-height: inherit;
+    height: auto;
+    background: transparent;
+}
+
 
 #toTop {
 	z-index: 9999!important;

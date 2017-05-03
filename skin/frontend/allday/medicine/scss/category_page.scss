@@ -433,6 +433,9 @@ body *{
 					button.button{
 						width: 50%;
 						float: left;
+						margin: 0;
+					    background: transparent;
+					    padding: 0;
 
 						span{
 							background: transparent;
@@ -509,6 +512,20 @@ body *{
 		}
 
 		.products-list{
+
+			.no-rating{
+				a{
+					line-height: 28px;
+					padding: 2px 18px;
+					border-radius: 25px;
+					margin: 0;
+					background: #9fb701;
+					border-bottom: 0;
+					color: #fff;
+					display: inline-block;
+					margin-bottom: 8px;
+				}
+			}
 
 			li.item{
 					border: 1px solid #cdcdcd;
@@ -755,7 +772,7 @@ body *{
 									color: #202020;
 									font-weight: bold;
 									font-size: 13px;
-									padding: 0 46px;
+									padding: 0 38px;
 									position: relative;
 									width: 100%;
 									display: block;
@@ -811,6 +828,7 @@ body *{
 							button.button{
 								position: relative;
 								top: 50%;
+								background:transparent;
 								padding: 5px 10px;
 								margin-top: -21px;
 
@@ -900,9 +918,9 @@ body *{
 		}
         }
 
-		.sb_block{
+		.sb_block, .block-layered-nav{
 			margin: 0;
-		    	margin-bottom: 30px;
+	    	margin-bottom: 30px;
 		}
 
 		.block-content.sb_content{		

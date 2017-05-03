@@ -363,7 +363,7 @@ p.footer_content {
     padding:0!important; 
 }
 
-.col-main .opc-messages-action .button span{
+.col-main .opc-messages-action .button span, .opc-wrapper-opc .discount-block .discount-codes .button{
     background: #9fb701 !important;
     color: #fff !important;
     font-size: 14px !important;
@@ -466,7 +466,7 @@ p.footer_content {
 .cart-table .btn-empty span, .cart-table .btn-continue span, .cart-table .btn-update span, .checkout-cart-index .cart-table .btn-continue:hover > span, .checkout-cart-index .cart-table .btn-continue:hover span, .checkout-cart-index .cart-table .btn-continue:hover span span, 
 .checkout-cart-index .cart-table .btn-empty span, .checkout-cart-index .cart-table .btn-update span, .checkout-cart-index .cart-table .btn-empty span:hover span, .checkout-cart-index .cart-table .btn-update span:hover span, 
 button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-checkout.btn-checkout:hover span, button.button.btn-proceed-checkout.btn-checkout:hover span span, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span:hover, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button:hover > span, 
-.customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span:hover span, .catalog-product-compare-index button.button span, .catalog-product-compare-index .compare-table button.button:hover > span, .catalog-product-compare-index button.button span:hover, .catalog-product-compare-index button.button span:hover span{
+.customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span:hover span, .catalog-product-compare-index button.button span, .cart .discount button span, .cart .shipping button span, .catalog-product-compare-index .compare-table button.button:hover > span, .catalog-product-compare-index button.button span:hover, .catalog-product-compare-index button.button span:hover span{
     padding:0;
     border-bottom: none;
     background: none;
@@ -474,6 +474,10 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
 .catalog-product-compare-index .compare-table button.button > span > span{
     min-width: auto;
     padding: 0;
+}
+.opc-wrapper-opc .discount-block .discount-codes .button span{
+    height: auto;
+    line-height: normal;
 }
 .catalog-product-compare-index .compare-table button.button{
     margin: 0;
@@ -632,6 +636,12 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             background: transparent;
             padding: 14px 25px;
         }
+        .checkout-cart-index .cart-collaterals .block .block-title{
+            display: block;
+        }
+        .checkout-cart-index .cart-collaterals .block .block-title strong span{
+            padding: 0;
+        }
         .nav-left-category {
             margin-left: 170px;
         }
@@ -685,7 +695,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             margin: 0 10px;
         }
         .catalog-category-view .tab-category-icons{
-             margin: -4px 10px;
+             margin: 0 10px;
         }
         .categories-right-hom{
             padding: 0;
@@ -741,7 +751,15 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         display: inline-block;
         float: left;
         width: 50%;
+        padding-right: 5px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        
     }
+    .adc-footer-links ul li a{
+        line-height: 16px;
+    }
+
     .adc-footer-links ul {
         margin-right: 3% !important;
         width: 100% !important;
@@ -804,7 +822,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         text-align: center;
         float: left;
         width: 100%;
-        padding: 10px 15px;
+        padding: 10px 12px;
         box-sizing: border-box;
     }
     .header h1.logo{
@@ -821,9 +839,6 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         background-size: 35px;
         margin: 10px 0 0;
 
-    }
-    .block-title{
-        display: none;
     }
     .mobile-pr-cart-icon span {
         background: #666666;
@@ -1003,6 +1018,21 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .checkout-cart-index h1.cart-title-mob{
         font-size: 17px;
     }
+    .cms-home .register_user_categories{
+        padding: 0 15px;
+    }
+    .cms-home .col-main .banner_below_category_content .register_user_categories .slick-prev{
+        left: 15px;
+    }
+    .cms-home .col-main .banner_below_category_content .slick-next {
+        right: 15px !important;
+    }
+    .customer-account-index .box-fd-recent-tickets .box-head .actions{
+        float: left !important;
+    }
+    .customer-account-index .box-fd-recent-tickets #my-tickets-table{
+        margin: 5px 0 0;
+    }
 }
 @media only screen and (max-width: 670px){
     .customer-account-login .account-login .col2-set .col-1.new-users{
@@ -1127,6 +1157,15 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         left: 10%;
         margin: 0;
     }
+    .customer-account-index .box-fd-recent-tickets .ticket-div{
+        overflow: scroll;
+    }
+    .catalog-product-view .product-collateral .slider_wraper .pr-details-height{
+        text-align: left;
+    }
+    .catalog-product-view .frequently_bought_wrap .slider_wraper .btn-cart{
+        height: auto;
+    }
 }
 @media only screen and (max-width: 380px){
     .checkout-cart-index table#shopping-cart-table td.a-center.cart-remove-link{
@@ -1140,9 +1179,19 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .footer-container .footer-our-partners span.our-partner-text{
         width: 100%;
     }
+    .cms-index-index .banner_sec .bx-wrapper .bx-pager{
+        bottom: 0;
+    }
+    .cms-index-index .banner_sec .bx-wrapper .bx-pager.bx-default-pager a{
+        width: 10px;
+        height: 10px;
+    }
 }
 @media only screen and (max-width: 320px){
     .header .form-search input.input-text{
         font-size: 13px;
+    }
+    .customer-account-login .col-1.new-users .content p:after, .customer-account-login .col-1.new-users .content p:before{
+        width: 10%;
     }
 }

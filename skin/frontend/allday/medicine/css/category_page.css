@@ -369,6 +369,9 @@ body * {
 .catalog-category-view .col-main .category-products .products-grid li.item .actions button.button, .catalogsearch-result-index .col-main .category-products .products-grid li.item .actions button.button {
   width: 50%;
   float: left;
+  margin: 0;
+  background: transparent;
+  padding: 0;
 }
 .catalog-category-view .col-main .category-products .products-grid li.item .actions button.button span, .catalogsearch-result-index .col-main .category-products .products-grid li.item .actions button.button span {
   background: transparent;
@@ -426,6 +429,17 @@ body * {
 }
 .catalog-category-view .col-main .category-products .products-grid .out-of-stock-item, .catalogsearch-result-index .col-main .category-products .products-grid .out-of-stock-item {
   background: #fff !important;
+}
+.catalog-category-view .col-main .category-products .products-list .no-rating a, .catalogsearch-result-index .col-main .category-products .products-list .no-rating a {
+  line-height: 28px;
+  padding: 2px 18px;
+  border-radius: 25px;
+  margin: 0;
+  background: #9fb701;
+  border-bottom: 0;
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 8px;
 }
 .catalog-category-view .col-main .category-products .products-list li.item, .catalogsearch-result-index .col-main .category-products .products-list li.item {
   border: 1px solid #cdcdcd;
@@ -621,7 +635,7 @@ body * {
   color: #202020;
   font-weight: bold;
   font-size: 13px;
-  padding: 0 46px;
+  padding: 0 38px;
   position: relative;
   width: 100%;
   display: block;
@@ -668,6 +682,7 @@ body * {
 .catalog-category-view .col-main .category-products .products-list li.item .product-shop .f-fix .actions_btn button.button, .catalogsearch-result-index .col-main .category-products .products-list li.item .product-shop .f-fix .actions_btn button.button {
   position: relative;
   top: 50%;
+  background: transparent;
   padding: 5px 10px;
   margin-top: -21px;
 }
@@ -725,7 +740,7 @@ body * {
   background-color: #f4f4f4;
   border: 1px solid #cdcdcd;
 }
-.catalog-category-view .col-right.sidebar .sb_block, .catalogsearch-result-index .col-right.sidebar .sb_block {
+.catalog-category-view .col-right.sidebar .sb_block, .catalog-category-view .col-right.sidebar .block-layered-nav, .catalogsearch-result-index .col-right.sidebar .sb_block, .catalogsearch-result-index .col-right.sidebar .block-layered-nav {
   margin: 0;
   margin-bottom: 30px;
 }
