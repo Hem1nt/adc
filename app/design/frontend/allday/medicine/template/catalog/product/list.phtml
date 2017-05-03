@@ -119,7 +119,8 @@
 
                 <?php  // if($_product->getRatingSummary()): ?>
                 <?php
-                echo $this->getReviewsSummaryHtml($_product)
+                //echo $this->getReviewsSummaryHtml($_product)
+                echo $this->getReviewsSummaryHtml($_product, 'short') 
                             //echo $this->getChildHtml('custom_reviews');
                 ?>
                 <?php// endif; ?>

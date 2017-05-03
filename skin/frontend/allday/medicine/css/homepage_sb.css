@@ -345,8 +345,9 @@ body *, input, select, textarea, button{
 .cms-home .recently_view_category_content .register_user_category_name span{
     background-color: #506f00;
     color: #ffffff;
-    padding: 9px 32%;
+    padding: 9px;
     text-align: center;
+    display: block;
     border-radius: 35px;
     font-weight: 700;
     position: relative;
@@ -357,10 +358,10 @@ body *, input, select, textarea, button{
     height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-bottom: 11px solid #506f00;
+    border-top: 11px solid #506f00;
     position: absolute;
-    top: 30px;
-    transform: rotate(180deg);
+    top: 32px;
+    /*transform: rotate(180deg);*/
     left: 45%;
 }
 .cms-home .recently_view_category_content .register_user_categories ul.single-item {
@@ -430,7 +431,8 @@ body *, input, select, textarea, button{
     /*font-family: Droid sans-serif;*/
     color: #333333;
     text-align: center;
-    min-height: 38px;
+    height: 38px;
+    overflow: hidden;
     text-transform: uppercase;
 }
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .generic_name {
@@ -610,6 +612,8 @@ body *, input, select, textarea, button{
     font-size: 13px;
     /*font-family: Droid sans-serif;*/
     color: #333333;
+    height: 40px;
+    overflow: hidden;
     text-align: center;
     text-transform: uppercase;
 }
@@ -624,6 +628,8 @@ body *, input, select, textarea, button{
     font-size: 13px;
     /*font-family: Droid sans-serif;*/
     color: #333333;
+    height: 40px;
+    overflow: hidden;
     text-align: center;
     text-transform: uppercase;
 }
@@ -655,16 +661,16 @@ body *, input, select, textarea, button{
 .cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now {
     color: #fff;
     font-size: 14px;
-    text-transform: uppercase;
-    /*font-family: arial;*/
-    padding: 8px 18px;
-    background-color: #333333;
-    border-radius: 5px;
     border: 0;
     cursor: pointer;
+    background: #9fb701;
+    color: #fff;
+    line-height: 14px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 30px;
 }
 .cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now:hover{
-	background-color: #506f00;
+	background-color: #9fb701;
 }
 .slick-prev, .slick-next {
     z-index: 10;
@@ -773,7 +779,9 @@ body *, input, select, textarea, button{
             font-size: 13px;
         }
         .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .generic_name, .cms-home .banner_below_category_content .register_user_categories ul.multiple-items .slick-list .manu_name {
-            min-height: 40px;
+            height: 40px;
+            overflow: hidden;
+
         }
         .cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a img {
             width: 30%;
@@ -820,9 +828,19 @@ body *, input, select, textarea, button{
     .cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a img {
         width: 45%;
     }
-    .cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now {
-        background-color: #506f00;
+
+    .banner_below_category_content{
+        padding: 0 20px;
+        box-sizing: border-box;
     }
+
+    .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list .manu_name{
+        height: 60px;
+        overflow: hidden;
+    }
+    /*.cms-home .banner_below_category_content .register_user_categories .slick_list a.buy_now_click .btn.buy-now {
+        background-color: #506f00;
+    }*/
     .cms-home .main_config_page {
         margin-top: 0;
         margin-bottom: 20px;
@@ -1034,9 +1052,15 @@ body *, input, select, textarea, button{
         }
         .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev {
             left: 25px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
         }
         .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next {
             right: 25px;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
         }
         .cms-home .main_config_page .best_seller .best_seller_title span, .cms-home .main_config_page .popular_categories .popular_categories_title span, .cms-home .main_config_page .leading_online .leading_online_title span {
             padding: 9px 25%;

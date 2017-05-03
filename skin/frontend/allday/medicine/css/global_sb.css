@@ -751,7 +751,15 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         display: inline-block;
         float: left;
         width: 50%;
+        padding-right: 5px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        
     }
+    .adc-footer-links ul li a{
+        line-height: 16px;
+    }
+
     .adc-footer-links ul {
         margin-right: 3% !important;
         width: 100% !important;

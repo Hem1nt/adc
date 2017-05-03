@@ -1038,6 +1038,18 @@ span.recomend-text {
 	 					height: auto;
 	 				}
 	 			}
+
+	 			&:hover{
+	 				.link-compare, .btn-cart span{
+	 					color: #506f00;
+	 				}
+
+	 				.link-compare{
+	 					&:after{
+	 						background:#506f00;
+	 					}
+	 				}
+	 			}
 	 		}
 
 	 		.amount a {
@@ -1149,6 +1161,12 @@ span.recomend-text {
 	 					color: $dark_green; 
 	 				}
 	 			}
+
+	 			.generic_for, .generic_name {
+				    white-space: nowrap;
+				    overflow: hidden;
+				    text-overflow: ellipsis;
+				}
 
 	 			.manufactured_by{
 	 				height: 42px;
