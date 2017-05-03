@@ -187,9 +187,9 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
             <?php } ?>
             <?php } ?>
         </div>
+                    <?php $custom_stock_status = $_frontendHelper->getCustomStockStatus($_product);?>
                 <!-- <div class="pr-availibility"> 
                     <?php
-                       // $custom_stock_status = $_frontendHelper->getCustomStockStatus($_product);
                        // if($custom_stock_status!='No' && $custom_stock_status!=''){
                        //  echo '<p class="availability out-of-stock">';
                        //  echo '<span>';
@@ -285,7 +285,6 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
 <?php } ?>
 
 <?php
-
 if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'): ?>
 <!-- <a title="Notify Me" href="" class="pr-link-notify">Notify Me</a> -->
 

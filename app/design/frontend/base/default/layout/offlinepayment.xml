@@ -1,0 +1,12 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">   
+  <offlinepayment_index_index>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <reference name="content">   
+      <block type="offlinepayment/index" name="offlinepayment_index" template="offlinepayment/index.phtml"/>   
+    </reference>   
+  </offlinepayment_index_index>   
+</layout>   
+	

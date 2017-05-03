@@ -1,0 +1,27 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">   
+  <frontend_index_index>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <reference name="content">   
+      <block type="frontend/index" name="frontend_index" template="frontend/index.phtml"/>   
+    </reference>   
+  </frontend_index_index>   
+    <frontend_index_success translate="label">
+  	<update handle="checkout_onepage_success" />
+  	<reference name="content">
+  		<block type="checkout/onepage_success" name="checkout.success" template="checkout/success.phtml"/>
+  	</reference>
+  	<reference name="checkout.success">
+  		<block type="core/template" name="birthday" as="birthday" template="checkout/message/birthday.phtml" />
+  		<block type="core/template" name="test" as="test" template="checkout/message/test.phtml" />
+  		<block type="core/template" name="test1" template="checkout/message/test1.phtml"/>
+  		<block type="core/template" name="echeck_approved" template="checkout/message/echeck_approved.phtml"/>
+  		<block type="core/template" name="echeck_normal_approved" template="checkout/message/echeck_normal_approved.phtml"/>
+  		<block type="core/template" name="anytrans_approved" template="checkout/message/anytrans_approved.phtml"/>
+  		<block type="core/template" name="gspay_approved" template="checkout/message/gspay_approved.phtml"/>
+  	</reference>
+  </frontend_index_success>
+</layout>   
+	

@@ -30,9 +30,14 @@ class Iksula_Overrides_Model_Observer
 
     public function productRedirects($observer)
     {
-     $action         = $observer->getControllerAction();
+    $action = $observer->getControllerAction();
      $request = $observer->getEvent()->getControllerAction()->getRequest();
+     $controllerName = $request->getControllerName();
      $actionName = $request->getActionName();
+     $customUrl = $controllerName.'/'.$actionName;
+     if($customUrl != 'method/productReview'){
+        Mage::getSingleton('core/cookie')->delete('productCookie');
+     }
      $requestUrl = rtrim($request->getScheme() . '://' . $request->getHttpHost().$_SERVER['REQUEST_URI']);
      if(Mage::getStoreConfig('productredirect/general/enable')==1){      
         if(Mage::getStoreConfig('productredirect/general/upload') AND file_exists(Mage::getBaseDir('media') . '/productwise/redirects/' . Mage::getStoreConfig('productredirect/general/upload')))

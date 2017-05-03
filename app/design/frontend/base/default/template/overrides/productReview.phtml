@@ -1,6 +1,16 @@
 <?php
 $customerStatus = Mage::getSingleton('customer/session')->isLoggedIn(); 
 $currentProductId = $this->getCurrentProductId();
+$oldProductCookie = Mage::getSingleton('core/cookie')->get('productCookie');
+$hideFirstDiv = 1;
+if($oldProductCookie){
+	$productCookie = Mage::getSingleton('core/cookie')->get('productCookie');
+	if($productCookie == $currentProductId){
+		$hideFirstDiv = 0;
+	}
+}else{
+	$productCookie = Mage::getSingleton('core/cookie')->set('productCookie', 'productCookie' ,time()+86400,'/');
+}
 if(!$customerStatus){
 	Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getBaseUrl().'customer/account/login');
 }
@@ -13,6 +23,7 @@ $i = 1;
 $j = 1;
 $m = 1;
 ?>
+<?php if($hideFirstDiv){ ?>
 <h2 class="review_rating_heading">your reviews and ratings</h2>	
 <?php
 ?>
@@ -56,6 +67,7 @@ $m = 1;
 	</div>
 
 </form>
+<?php } ?>
 <?php 
 if($orderItemDetails->getSize()){
 	?>	
@@ -109,7 +121,8 @@ if($orderItemDetails->getSize()){
 
 		</form>
 		<?php   $m = $m + 5; } ?>
-		<?php } ?>
+		<?php } 
+		?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script>
 		jQuery(document).ready(function(){

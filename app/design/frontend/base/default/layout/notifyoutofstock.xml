@@ -1,0 +1,12 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">   
+  <notifyoutofstock_index_index>   
+    <reference name="root">   
+      <action method="setTemplate"><template>page/1column.phtml</template></action>   
+    </reference>   
+    <reference name="content">   
+      <block type="notifyoutofstock/index" name="notifyoutofstock_index" template="notifyoutofstock/index.phtml"/>   
+    </reference>   
+  </notifyoutofstock_index_index>   
+</layout>   
+	
