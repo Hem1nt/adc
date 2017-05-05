@@ -318,6 +318,10 @@ body *{
 								color: #acacac;
 							}
 						}
+
+						.custom_child_3 + span{
+							color: #5f7f0c;
+						}
 					}
 				}
 				.ratings{
