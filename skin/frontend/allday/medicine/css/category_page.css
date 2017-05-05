@@ -862,7 +862,7 @@ body * {
 }
 .catalog-category-view .col-right.sidebar .block-compare .actions .button.button > span, .catalogsearch-result-index .col-right.sidebar .block-compare .actions .button.button > span {
   border-radius: 22px;
-  background: #9fb701 url("../images/compare_arrows.png") 2px 0px no-repeat;
+  background: #9fb701 url("../images/compare_arrows.png") 14px 11px no-repeat;
   top: 15px;
   padding: 0 10px;
   line-height: 35px;

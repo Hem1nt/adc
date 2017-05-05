@@ -1009,6 +1009,11 @@ body *, input, select, textarea, button{
 
         .footer-container #toTop .subscribe-innerdiv .subscribe-input-go {
             width: 85%;
+            border:0;
+        }
+
+        .footer-container #toTop .subscribe-innerdiv{
+            border:0;
         }
         .footer-our-partners span {
             margin-right: 0;
