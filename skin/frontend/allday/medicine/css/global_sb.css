@@ -422,6 +422,11 @@ p.footer_content {
     height: 35px;
 }
 
+#product_comparison .page-popup .ratings .rating-box, #product_comparison .page-popup .ratings .amount{
+        float: none;
+        display: inline-block;
+}
+
 .pr-order-failure .pof-try, .pr-order-failure .pof-continue{
     background: #9fb701 !important;
     color: #fff !important;
