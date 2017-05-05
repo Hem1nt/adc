@@ -478,6 +478,10 @@ button.button:hover > span {
   vertical-align: middle;
 }
 
+.catalog-product-view .product-details-table table.new_product_list td.price_value span, .review-product-list .product-details-table table.new_product_list td.price_value span {
+  display: inline-block;
+}
+
 .catalog-product-view .new_product_list select {
   background: #ffffff;
   border: 1px solid #d4d4d4;
