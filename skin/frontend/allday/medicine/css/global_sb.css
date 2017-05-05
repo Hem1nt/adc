@@ -422,7 +422,7 @@ p.footer_content {
     height: 35px;
 }
 
-#product_comparison .page-popup .ratings .rating-box, #product_comparison .page-popup .ratings .amount{
+#product_comparison .ratings .rating-box, #product_comparison .ratings .amount{
         float: none;
         display: inline-block;
 }
