@@ -8007,6 +8007,13 @@ img#captchaimg {
 	height: 4em;
 }
 
+/*.col-left.sidebar .block-compare .actions button.button{
+	padding: 0px 5px 0px 5px;	
+}
+.my_account_col  .col-left.sidebar .block-compare .actions button.button{
+	padding: 0px 5px 0px 5px;
+}*/
+
 .wishlist-index-index .data-table td .add-to-cart-alt a , .wishlist-index-index .data-table td .add-to-cart-alt button {
   display: block;
   margin-top: 38px;

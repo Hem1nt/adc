@@ -595,14 +595,15 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     background: #9fb701;
     border-bottom: none !important;
 }
-.customer-account-index .compare-block-tab .actions .button.button > span {
+/*.customer-account-index .compare-block-tab .actions .button.button > span {
     border-radius: 22px;
     background: #9fb701 url(../images/compare_arrows.png) 14px 10px no-repeat;
     top: 15px;
-}
+}*/
 .customer-account-index .compare-block-tab .actions .button.button > span span{
-    background: none;
-    margin-left: 25px;
+    padding: 0;
+    line-height: inherit;
+    height: auto;
 }
 .customer-account-index .compare-block-tab .actions a{
     padding: 10px 0;
