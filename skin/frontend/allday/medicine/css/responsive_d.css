@@ -1835,8 +1835,8 @@
 	.block .block-title strong.all-categories {
 		display: none;
 	}
-	.block .block-title {
-		height: 0;
+	.nav-container.block .block-title{
+		height: 0 !important;
 	}
 	.header .quick-access {
 	  width: 100%;

@@ -941,20 +941,20 @@ body *{
 
 			input{
 				padding: 8px 10px;
-    				padding-left: 27%;
-    				font-size: 15px; 
-    				color: $light_gray;
+				padding-left: 55px;
+				font-size: 15px; 
+				color: $light_gray;
 			}
 
 			#name{
 				background-image: url('../images/user_name.png') !important;
 				background-repeat: no-repeat !important;
-				background-position: 27px 12px !important;
+				background-position: 22px  12px !important;
 
 				&.validation-failed {
 					background-image: url('../images/user_name.png') !important;
 					background-repeat: no-repeat !important;
-					background-position: 27px 12px !important;
+					background-position: 22px  12px !important;
 					background-color: #faebe7 !important;	
 				}
 			}
@@ -1175,6 +1175,11 @@ body *{
 			}
 		}
 	}
+}
+
+.catalog-category-view .col-right.sidebar .block-compare .actions .button.button, 
+.catalogsearch-result-index .col-right.sidebar .block-compare .actions .button.button {
+	padding: 0px 0 0px 5px;
 }
 
 // featured products

@@ -377,11 +377,16 @@ p.footer_content {
     border-bottom: none !important;
 }
 
+.checkout-cart-index .mini-products-list .item{
+    width: 100%;
+    margin-left: 0;
+}
+
 .col-main button, .buttons-set p.back-link a, a.back,.buttons-set p.back-link a:hover, .newsletter-manage-index .buttons-set p.back-link a, 
 .newsletter-manage-index .buttons-set p.back-link a:hover, .sales-order-history .buttons-set p.back-link a, .review-customer-index .buttons-set p.back-link a, 
 .review-customer-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a:hover, .wishlist-index-index .buttons-set p.back-link a,
 .rewardpoints-index-referral .box-account .button-set button.button, .rewardpoints-index-referral .buttons-set p.back-link a, .rewardpoints-index-referral .buttons-set p.back-link a:hover, 
-.checkout-cart-index a.pr-continue-shop-cart-empty, .opc-wrapper-opc .btn, .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon, .col-main #drop a, .col-main #drop a:hover, 
+.checkout-cart-index a.pr-continue-shop-cart-empty, .opc-wrapper-opc .btn, .col-main .opc-wrapper-opc .discount-block input.button, .col-main .opc-wrapper-opc .discount-block button, .col-main #drop a, .col-main #drop a:hover, 
 .mini-cart-layer .inner-wrapper button.button span, .checkout-cart-index a.pr-continue-shop-cart-empty:hover, .customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button,
 .catalog-product-compare-index .compare-table button.button, .catalog-product-compare-index .buttons-set button.button, .customer-testimonials .buttonset-readmore a{
     background: #9fb701;
@@ -397,6 +402,25 @@ p.footer_content {
     font-weight: normal;
     border-bottom: none;
 }
+
+.opc-wrapper-opc .discount-block input.button.remove-coupon {
+    background: #9fb701 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+    padding: 10px 16px 10px 16px !important;
+    border-radius: 30px !important;
+    display: inline-block !important;
+    font-family: Open Sans, sans-serif !important;
+    height: auto !important;
+    font-weight: normal !important;
+    border-bottom: none !important;
+}
+
+.testimonial-form-index button.button > span {
+    border-bottom: 0;
+}
+
 .catalog-product-compare-index .buttons-set{
     text-align: center;
 }
@@ -478,6 +502,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
 .opc-wrapper-opc .discount-block .discount-codes .button span{
     height: auto;
     line-height: normal;
+    background: transparent;
 }
 .catalog-product-compare-index .compare-table button.button{
     margin: 0;

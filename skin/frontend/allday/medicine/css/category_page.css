@@ -760,19 +760,19 @@ body * {
 }
 .catalog-category-view .col-right.sidebar .block-content.sb_content input, .catalogsearch-result-index .col-right.sidebar .block-content.sb_content input {
   padding: 8px 10px;
-  padding-left: 27%;
+  padding-left: 55px;
   font-size: 15px;
   color: #adacac;
 }
 .catalog-category-view .col-right.sidebar .block-content.sb_content #name, .catalogsearch-result-index .col-right.sidebar .block-content.sb_content #name {
   background-image: url("../images/user_name.png") !important;
   background-repeat: no-repeat !important;
-  background-position: 27px 12px !important;
+  background-position: 22px  12px !important;
 }
 .catalog-category-view .col-right.sidebar .block-content.sb_content #name.validation-failed, .catalogsearch-result-index .col-right.sidebar .block-content.sb_content #name.validation-failed {
   background-image: url("../images/user_name.png") !important;
   background-repeat: no-repeat !important;
-  background-position: 27px 12px !important;
+  background-position: 22px  12px !important;
   background-color: #faebe7 !important;
 }
 .catalog-category-view .col-right.sidebar .block-content.sb_content #email, .catalogsearch-result-index .col-right.sidebar .block-content.sb_content #email {
@@ -934,6 +934,11 @@ body * {
   color: #506f00;
   font-size: 14px;
   font-family: #333333;
+}
+
+.catalog-category-view .col-right.sidebar .block-compare .actions .button.button,
+.catalogsearch-result-index .col-right.sidebar .block-compare .actions .button.button {
+  padding: 0px 0 0px 5px;
 }
 
 .featured_products {
