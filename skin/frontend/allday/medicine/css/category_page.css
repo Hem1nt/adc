@@ -35,11 +35,6 @@ body * {
   font-family: 'Open Sans', sans-serif !important;
 }
 
-#product_comparison .page-popup .ratings .rating-box, #product_comparison .page-popup .ratings .amount {
-  float: none;
-  display: inline-block;
-}
-
 .catalog-category-view .breadcrumbs li strong, .catalogsearch-result-index .breadcrumbs li strong {
   color: #506f00;
 }
