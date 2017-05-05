@@ -431,7 +431,7 @@ p.footer_content {
     border-bottom: none !important;
 }
 
-.testimonial-form-index button.button > span {
+.testimonial-form-index button.button > span ,.testimonial-form-index button.button > span:hover{
     border-bottom: 0;
 }
 
@@ -1073,7 +1073,18 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .customer-account-index .box-fd-recent-tickets #my-tickets-table{
         margin: 5px 0 0;
     }
-}
+
+    input[type="button"],
+    input[type="button"],
+    input[type="submit"]{
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+    input[type="text"]{
+       -webkit-appearance: none;
+       box-shadow: none; 
+    }
+
 @media only screen and (max-width: 670px){
     .customer-account-login .account-login .col2-set .col-1.new-users{
         margin: 0;
