@@ -1005,12 +1005,20 @@ body *, input, select, textarea, button{
     }
 }
 
+@media all and (max-width: 480px){
+    .footer-container #toTop{
+        height: auto!important;
+    }
+}
+
 @media all and (max-width: 470px){
 
         .footer-container #toTop .subscribe-innerdiv .subscribe-input-go {
             width: 85%;
             border:0;
         }
+
+
 
         .footer-container #toTop .subscribe-innerdiv{
             border:0;

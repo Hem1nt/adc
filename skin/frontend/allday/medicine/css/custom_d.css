@@ -8713,6 +8713,19 @@ body.catalog-product-view .nav-right-category ul li.coupon-and-offer a , body.ca
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+.dynamicsitemap-index-index .sitecatul a, .dynamicsitemap-index-index .sitecatul a strong{
+	color: #6B9A63;
+}
+
+.col-2.addresses-additional li.item:nth-child(odd){
+	float: left !important;
+}
+
+.col-2.addresses-additional li.item:nth-child(even){
+	float: right !important;
+}
+
 .header .form-search .search-autocomplete li.selected, .header .form-search .search-autocomplete li{
 	background-color: #fff;
 	font-size: 14px;

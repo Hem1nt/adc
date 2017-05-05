@@ -320,7 +320,7 @@ body *{
 							color: #5f7f0c;
 
 							.old-price{
-								color: $layered_nav_bg_color;
+								color: #acacac;
 							}
 						}
 					}
@@ -659,8 +659,12 @@ body *{
 								color: $dark_green;
 
 								.old-price{
-									color: #666;
+									color: #acacac;
 								}
+							}
+
+							.custom_child_3 + span{
+								color: $dark_green;
 							}
 						}
 
@@ -1194,93 +1198,97 @@ body *{
 }
 
 // featured products
-	.featured_products{
-		// border: 1px solid #cdcdcd;
-		margin-bottom: 30px;
+.featured_products{
+	// border: 1px solid #cdcdcd;
+	margin-bottom: 30px;
 
-		.featured-block-tab{
-			.products-grid{
+	.featured-block-tab{
+		.products-grid{
+			width: 100%;
+			padding: 18px 15px;
+			background-color: $grey_background;
+
+			.slick-prev{
+				left: 5px !important;
+				top: 80px;
+				background: url(../images/left_arrow.png) center center no-repeat;
+				height: 25px;
+
+				&:before{
+					content: " " !important;
+				}
+			}
+			.slick-next{
+				right: 5px !important;
+				top: 80px;
+				background: url(../images/right_arrow.png) center center no-repeat;
+				height: 25px;
+
+				&:before{
+					content: " " !important;
+				}
+			}
+			.item{
 				width: 100%;
-				padding: 18px 15px;
-				background-color: $grey_background;
+				margin-right: 0;
+				padding: 0;
+				min-height: 270px;
+				box-sizing: border-box;
+				margin: 0 1%;
 
-				.slick-prev{
-					left: 5px !important;
-					top: 80px;
-					background: url(../images/left_arrow.png) center center no-repeat;
-					height: 25px;
-
-					&:before{
-						content: " " !important;
-					}
-				}
-				.slick-next{
-					right: 5px !important;
-					top: 80px;
-					background: url(../images/right_arrow.png) center center no-repeat;
-					height: 25px;
-
-					&:before{
-						content: " " !important;
-					}
-				}
-				.item{
-					width: 100%;
-					margin-right: 0;
-					padding: 0;
-					min-height: 270px;
+				.product-image{
+					border: 1px solid #d3d3d3;
+					display: block;
 					box-sizing: border-box;
-					margin: 0 1%;
+					text-align: center;
+					margin-bottom: 15px;
+				}
+				.pr-details-height{
+					text-align: left;
+					padding: 0;
 
-					.product-image{
-						border: 1px solid #d3d3d3;
+					.product-name,.generic_name, .generic_for{
+						text-overflow: ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
+						line-height: 17px;
+						font-weight: normal;
 						display: block;
-						box-sizing: border-box;
-						text-align: center;
-						margin-bottom: 15px;
 					}
-					.pr-details-height{
-						text-align: left;
-						padding: 0;
+					.product-name{
+						margin-bottom: 13px;
 
-						.product-name,.generic_name, .generic_for{
-							text-overflow: ellipsis;
+						a{
 							overflow: hidden;
-							white-space: nowrap;
-							line-height: 17px;
-							font-weight: normal;
-							display: block;
-						}
-						.product-name{
-							margin-bottom: 13px;
-
-							a{
-								overflow: hidden;
-							}
-						}
-						.manufactured_by{
-						        min-height: 30px;	
-						        line-height: 19px;	
-						        margin: 10px 0;	
-						        height: 38px;
-						        font-weight: normal;
 						}
 					}
-					.first_child_info{
-						.custom_price{
-							color: #202020;
+					.manufactured_by{
+					        min-height: 30px;	
+					        line-height: 19px;	
+					        margin: 10px 0;	
+					        height: 38px;
+					        font-weight: normal;
+					}
+				}
+				.first_child_info{
+					.custom_price{
+						color: #202020;
 
-							.custom_child_3 {
-								color: #5f7f0c;
-							}
+						.custom_child_3 {
+							color: #5f7f0c;
+						}
+
+						.custom_child_3 + span{
+							color: #5f7f0c;
 						}
 					}
 				}
 			}
 		}
 	}
+}
 
- .catalogsearch-result-index .block-layered-nav .block-subtitle, .elastic-search-result .block-layered-nav .block-subtitle {
+.catalogsearch-result-index .block-layered-nav .block-subtitle, .elastic-search-result .block-layered-nav .block-subtitle {
     /* font-family: arial; */
     font-size: 17px;
     color: #ffffff;
