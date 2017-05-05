@@ -1,6 +1,16 @@
 <?php
 $customerStatus = Mage::getSingleton('customer/session')->isLoggedIn(); 
 $currentProductId = $this->getCurrentProductId();
+$oldProductCookie = Mage::getSingleton('core/cookie')->get('productCookie');
+$hideFirstDiv = 1;
+if($oldProductCookie){
+	$productCookie = Mage::getSingleton('core/cookie')->get('productCookie');
+	if($productCookie == $currentProductId){
+		$hideFirstDiv = 0;
+	}
+}else{
+	$productCookie = Mage::getSingleton('core/cookie')->set('productCookie', 'productCookie' ,time()+86400,'/');
+}
 if(!$customerStatus){
 	Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getBaseUrl().'customer/account/login');
 }
@@ -13,6 +23,7 @@ $i = 1;
 $j = 1;
 $m = 1;
 ?>
+<?php if($hideFirstDiv){ ?>
 <h2 class="review_rating_heading">your reviews and ratings</h2>	
 <?php
 ?>
@@ -33,8 +44,8 @@ $m = 1;
 			</div>
 		</div>
 		<?php   $j = $j + 5; endforeach; ?>
-		<div class="review_field review_by review_posted_<?php echo $m; ?>" style="display:none">Review posted by <span><?php echo $customer->getFirstname();?></span></div>
-	</div>  
+		<div class="review_field review_by review_posted_<?php echo $m; ?>" style="display:none">Review posted by <span><?php echo $customer->getFirstname();?></span></div> 
+	</div> 
 	<div class="review_desc">                                      
 		<div id="summary_field_div" class="summary_field_div_<?php echo $m;?>" style="display:none">
 			<ul class="form-list">
@@ -47,7 +58,7 @@ $m = 1;
 					<div class="input-box review_field_input">
 						<textarea name="detail" value="Review" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
 					</div>
-				</li>                    
+				</li>                  
 				<div class="buttons-set summary_field_button_div_<?php echo $m;?>" id="summary_field_button_div">
 					<button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button disableButton"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 				</div>
@@ -56,6 +67,7 @@ $m = 1;
 	</div>
 
 </form>
+<?php } ?>
 <?php 
 if($orderItemDetails->getSize()){
 	?>	
@@ -99,7 +111,7 @@ if($orderItemDetails->getSize()){
 							<div class="input-box review_field_input">
 								<textarea name="detail" value="Review" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
 							</div>
-						</li>                 
+						</li>                   
 						<div class="buttons-set summary_field_button_div_<?php echo $m;?>" id="summary_field_button_div">
 							<button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button disableButton"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 						</div>
@@ -109,7 +121,8 @@ if($orderItemDetails->getSize()){
 
 		</form>
 		<?php   $m = $m + 5; } ?>
-		<?php } ?>
+		<?php } 
+		?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script>
 		jQuery(document).ready(function(){			
