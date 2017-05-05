@@ -111,27 +111,27 @@
                         case "pack_size":
                         $parentId = $_item->getId();
                         $_product = Mage::getModel('catalog/product')->load($parentId);
-                        $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null, $_product);
-                        for($i=0; $i<count($childProducts); $i++)
-                        {
+                        $configurable= Mage::getModel('catalog/product_type_configurable')->setProduct($_product);
+                        $simpleCollection = $configurable->getUsedProductCollection()->addAttributeToSelect('*');
+                        foreach($simpleCollection as $simpleProduct){
                             $child = $childProducts[$i];
-                            $pack_size = $child->getResource()->getAttribute('pack_size')->getFrontend()->getValue($child);
-                            $bonus = $child->getResource()->getAttribute('bonus')->getFrontend()->getValue($child);
+                            $pack_size = $simpleProduct->getResource()->getAttribute('pack_size')->getFrontend()->getValue($simpleProduct);
+                            $bonus = $simpleProduct->getResource()->getAttribute('bonus')->getFrontend()->getValue($simpleProduct);
                             if($pack_size != "NA" && !empty($pack_size))
                             {
                                 echo '<p class="custom_price">';
-                                echo '<span class="custom_child_1">'.$child->getResource()->getAttribute('pack_size')->getFrontend()->getValue($child);
+                                echo '<span class="custom_child_1">'.$simpleProduct->getResource()->getAttribute('pack_size')->getFrontend()->getValue($simpleProduct);
                                 if(!empty($bonus))
                                 {
-                                    echo ' + '.$child->getResource()->getAttribute('pack_size')->getFrontend()->getValue($child);
+                                    echo ' + '.$simpleProduct->getResource()->getAttribute('pack_size')->getFrontend()->getValue($simpleProduct);
                                 }
                                 echo '</span>';
                                 echo '<span class="custom_child_2"> '.$_product->getResource()->getAttribute('pharmaceutical_form')->getFrontend()->getValue($_product).'</span>';
 
-                                if($child->getSpecialPrice()) {
-                                    echo '<span class="custom_child_3"> - <span class="old-price">US$ '.number_format($child->getPrice(), 2, '.', '').'</span></span>&nbsp;&nbsp;<span>US$ '.number_format($child->getSpecialPrice(), 2, '.', '').'</span>';
+                                if($simpleProduct->getSpecialPrice()) {
+                                    echo '<span class="custom_child_3"> - <span class="old-price">US$ '.number_format($simpleProduct->getPrice(), 2, '.', '').'</span></span>&nbsp;&nbsp;<span>US$ '.number_format($simpleProduct->getSpecialPrice(), 2, '.', '').'</span>';
                                 } else {
-                                    echo '<span class="custom_child_3"> - US$ '.number_format($child->getPrice(), 2, '.', '').'</span>';
+                                    echo '<span class="custom_child_3"> - US$ '.number_format($simpleProduct->getPrice(), 2, '.', '').'</span>';
                                 }
                                 echo "</p>";
                             }

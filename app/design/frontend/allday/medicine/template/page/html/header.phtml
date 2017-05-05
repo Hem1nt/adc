@@ -57,14 +57,7 @@ if($freshdeskStatus==1){
     <div class="header-top-block-content">
         <div class="h-left">
             <ul>
-                <li><a href="<?php echo Mage::getUrl('aboutus');?>">About Us</a></li>
-                <li><a href="<?php echo Mage::getUrl('Article');?>">Articles</a></li>
-                <li><a href="<?php echo Mage::getUrl('guarantee');?>">Guarantee</a></li>
-                <li><a href="<?php echo Mage::getUrl('faq');?>">FAQ</a></li>
-                <li><a href="<?php echo Mage::getUrl('fight_spam');?>">AntiSpam Policy</a></li>
-                <li><a href="<?php echo Mage::getUrl('sales/order/history');?>">Order Status</a></li>
-                <li><a href="<?php echo $contatusUrl; ?>">Contact Us</a></li>
-                <li><a href="<?php echo Mage::getUrl('trackorder');?>">Track Order</a></li>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('head_menu')->toHtml(); ?>
             </ul>
         </div>
         <?php echo $this->getChildHtml('user-section') ?>

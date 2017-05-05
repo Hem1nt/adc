@@ -258,6 +258,7 @@
          <?php echo '<option value="1" disabled selected="selected">1</option>'; ?>
      </select>
      <?php  }?>
+     <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
  </td>
     <?php if (($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()) && !$_item->getNoSubtotal()): ?>
     <td class="a-right cart-price-exc-tax">
