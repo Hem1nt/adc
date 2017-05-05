@@ -8007,7 +8007,7 @@ img#captchaimg {
 	height: 4em;
 }
 
-.wishlist-index-index .data-table td .add-to-cart-alt a {
+.wishlist-index-index .data-table td .add-to-cart-alt a , .wishlist-index-index .data-table td .add-to-cart-alt button {
   display: block;
   margin-top: 38px;
   clear: both;
