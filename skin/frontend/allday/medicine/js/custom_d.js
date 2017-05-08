@@ -242,7 +242,7 @@ jQuery(document).ready(function($){
     });
 
     $("#search").focus(function(){
-       $(".block-compare, .all_categories_list, .block-account .block-content, .block-layered-nav").hide();
+       $(".block-compare, .all_categories_list, .block-layered-nav").hide();
     });
 
     
