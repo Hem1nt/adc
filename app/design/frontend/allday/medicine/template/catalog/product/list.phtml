@@ -413,7 +413,11 @@
             // window.productSku = jQuery(this).attr("data");
         });
 
-        jQuery("img.lazy").lazy();
+        jQuery("img.lazy").lazy({
+            afterLoad: function() {
+                equalheight('ul.products-grid li.item');
+            },
+        });
     });
 
            jQuery(document).ready(function($){
@@ -448,7 +452,12 @@
 });
            } 
 
-           equalheight('ul.products-grid li.item');
+            equalheight('ul.products-grid li.item');
+
+           /*$(window).on('load', function(){
+             equalheight('ul.products-grid li.item');
+           });*/
+          
 
            $(window).on('resize', function(){
                equalheight('ul.products-grid li.item');

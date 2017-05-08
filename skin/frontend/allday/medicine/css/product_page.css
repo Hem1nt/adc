@@ -492,6 +492,32 @@ button.button:hover > span {
   color: #000;
 }
 
+.catalog-product-view .new_product_list td .select_wrap {
+  display: inline-block;
+  position: relative;
+  border-radius: 30px;
+  border: 1px solid #d4d4d4;
+  overflow: hidden;
+}
+.catalog-product-view .new_product_list td .select_wrap select {
+  border: 0;
+  padding-right: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+.catalog-product-view .new_product_list td .select_wrap:after {
+  position: absolute;
+  content: "";
+  float: right;
+  border: 4px solid transparent;
+  border-top: 5px solid #000;
+  right: 6px;
+  top: 50%;
+  margin-top: -4px;
+}
+
 .catalog-product-view table.new_product_list a.related-buy-now, .review-product-list table.new_product_list a.related-buy-now {
   vertical-align: middle;
 }

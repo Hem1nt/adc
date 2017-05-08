@@ -1197,6 +1197,11 @@
 
 /* 736px */
 
+@media only screen and (min-width: 1024px) {
+	.mozilla.checkout-cart-index table#shopping-cart-table td:nth-child(3){
+		width: 18%;
+	}
+}
 @media only screen and (max-width: 736px) {
 
 	.desc_area_content .table_wrap{
