@@ -3,6 +3,11 @@ body, input, select, textarea, button{
     font-family: 'Open Sans', sans-serif !important;
 }
 
+body, html{
+    /*font-size: 100%!important;*/
+  -webkit-text-size-adjust: 100%;
+}
+
 .header {
     padding: 1px 0;
         z-index: 99;
