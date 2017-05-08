@@ -18,6 +18,9 @@ jQuery(document).ready(function($){
             }
           });
 
+            if ($('.desc_area_content table').length) {
+              $( ".desc_area_content table" ).wrap( "<div class='table_wrap'></div>" );
+            }
 
 
 

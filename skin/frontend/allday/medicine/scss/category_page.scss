@@ -1431,6 +1431,9 @@ dl#narrow-by-list dd ol li a {
 				}
 			}
 		}
+
+		
+
 		.col-right.sidebar{
 			.block-content.sb_content{
 
@@ -1444,7 +1447,7 @@ dl#narrow-by-list dd ol li a {
 					padding-left: 15%;
 				}
 
-				.input_suggestion_captcha{
+				 .input_suggestion_captcha{
 					#suggestion_captcha_code {
 						float: right;
 						width: 100%;
@@ -1456,23 +1459,29 @@ dl#narrow-by-list dd ol li a {
 					}
 
 					#suggestion_captcha_img{
-						display: none;
+						border:0;
+						float: none;
+						height: 32px;
+						display: inline-block;
 					}
 
-					
-
-					#suggestion_captcha_img_div{
+					/* #suggestion_captcha_img{
+						display: none;
+					} */
+					.captcha_img_wrap{
 						display: block;
 						width: 100%;
+						overflow: hidden;
+						text-align: center;
 						background: #fff;
 						text-align: center;
 						border: 1px solid #d6d6d6;
 						margin-bottom: 0;
 						border-bottom: 0;
-						padding: 6px 0px;
+						padding: 4px 0px;
 						box-sizing: border-box;
 					}
-				}
+				} 
 			}
 		}
 	}
@@ -1769,6 +1778,11 @@ dl#narrow-by-list dd ol li a {
 			}
 		}
 
+		.sb_block textarea#suggestion{
+			margin-bottom: 0;
+			border-radius: 0;
+		}
+
 		.col-right.sidebar {
 		    	width: 100%;
 		    	float: left;
@@ -1778,6 +1792,14 @@ dl#narrow-by-list dd ol li a {
 
 		    			.validation-advice{
 		    				margin: 0px 0 10px;
+		    			}
+
+		    			.input-box{
+		    				margin-bottom: 20px;
+		    			}
+		    			.input-box.sinput input, .sb_block .input-box.sinput textarea{
+		    				margin-bottom: 0;
+		    				border-radius: 0;
 		    			}
 
 		    			.input_name{
@@ -1798,10 +1820,12 @@ dl#narrow-by-list dd ol li a {
 			    			}	
 		    			}
 
+
+
 		    			.input_suggestion{
 						width: 48%;
 						float: left;
-						margin-top: 10px;
+						margin-top: 0;
 		    			}
 
 		    			input{
@@ -1816,47 +1840,63 @@ dl#narrow-by-list dd ol li a {
 		    			.enter_code{
 		    				display: none;
 		    			}
+
+	    				.click_here{
+	    					position: absolute;
+						    bottom: 0;
+						    left: 0;
+	    				}
+
 		    			.input_suggestion_captcha{
 		    				width: 50%;
-						float: right;
-						margin-top: 10px;
-						position: relative;
+	    				    padding-bottom: 24px;
+							float: right;
+							margin-top: 0;
+						    padding-left: 116px;
+	    					box-sizing: border-box;
+							position: relative;
 
-						#suggestion_captcha_img{
-							width: 40%;
-							display: inline-block;
-						    background: #fff;
-						    margin-bottom: 0;
-						    text-align: center;
-						    border-bottom: 0;
-						    border: 1px solid #d6d6d6;
-						    border-right: 0;
-						    padding: 1px;
-						    box-sizing: border-box;
-						    float: left;
-						}
+							
 
-						#suggestion_captcha_img_div{
-							display: none;
-							width: 40%;
-							background: #fff;
-							margin-bottom: 0;
-							text-align: center;
-							border-bottom: 0;
-							border: 1px solid #d6d6d6;
-							border-right: 0;
-							padding: 1px;
-							box-sizing: border-box;
-							float: left;
-						}
+							.captcha_img_wrap{
+							    display: block;
+							    width: auto;
+							    overflow: hidden;
+							    text-align: center;
+							    background: #fff;
+							    text-align: center;
+							    border: 0;
+							    margin-bottom: 0;
+							    border-bottom: 0;
+							    padding: 0;
+							    box-sizing: border-box;
+							    position: absolute;
+							    top: 0;
+							    left: 0;
+
+								#suggestion_captcha_img{
+									width: auto;
+								    display: inline-block;
+								    background: #fff;
+								    margin-bottom: 0;
+								    text-align: center;
+								    border-bottom: 0;
+								    border: 1px solid #d6d6d6;
+								    /* border-right: 0; */
+								    padding: 1px;
+								    box-sizing: border-box;
+								    float: left;
+								    height: 44px;
+								    padding: 0;
+								}
+							}
 		    			}
 
 					#suggestion_captcha_code{
-						width: 60%;
 						float: left;
-						padding-left: 12px;
-						padding: 11px 25px;
+						padding: 11px 12px;
 						margin-right: 0;
+					    width: 100%;
 						margin-top: 0;
 						margin-bottom: 0;	
 					}
@@ -1981,6 +2021,8 @@ dl#narrow-by-list dd ol li a {
 		box-sizing: border-box;
 	}
 	.catalog-category-view, .catalogsearch-result-index {
+
+
 
 		.col-main {
 			.category-products {
@@ -2446,6 +2488,7 @@ dl#narrow-by-list dd ol li a {
 }
 
 @media only screen and (max-width: 480px){
+
 	.catalog-category-view, .catalogsearch-result-index {
 		.col-main{
 			.category-products{
@@ -2480,7 +2523,7 @@ dl#narrow-by-list dd ol li a {
 			}
 		}
 		.col-right.sidebar{
-				.block-content.sb_content {
+				.block-content.sb_content {					
 				.sbox_form{
 					    padding: 20px 10px;
 					
@@ -2532,10 +2575,18 @@ dl#narrow-by-list dd ol li a {
 						}
 					}
 
+
 					.input_suggestion_captcha {
 						width: 100%;
 						float: left;
-						position: static;
+						padding-left: 107px;
+						
+						.captcha_img_wrap {
+
+							#suggestion_captcha_img{
+								height: 40px;
+							}
+						}
 
 						#suggestion_captcha_img_div{
 							margin-left: 0;
@@ -2549,16 +2600,16 @@ dl#narrow-by-list dd ol li a {
 					}
 
 					#suggestion_captcha_code {
-						padding: 9px 25px;
+						padding: 9px 12px;
 					}
 
 					.click_here {
-						font-size: 14px;
+						font-size: 13px;
 						color: $grey;
 						display: block;
 						text-align: center;
 						clear: both;
-						padding: 10px 0;
+						padding: 0 0;
 
 						a{
 							color: $dark_color;

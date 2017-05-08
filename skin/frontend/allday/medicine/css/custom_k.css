@@ -1093,7 +1093,7 @@ label.selected.label_checkmo {
 }
 
 .opc-wrapper-opc .discount-block input.button.apply-coupon, .opc-wrapper-opc .discount-block input.button.remove-coupon {
-  background: #F6770E;
+  background: #9fb701;
   font-size: 14px;
   width: auto!important;
   font-weight: normal;
@@ -1103,15 +1103,15 @@ label.selected.label_checkmo {
   display: inline-block;
   line-height: 31px !important;
   height: auto !important;
-  border-bottom: 2px solid #8E4407;
+  border-bottom: 0;
   color: #fff;
   margin: 5px 5px 0 0!important;
   cursor: pointer;
 }
 
 .opc-wrapper-opc .discount-block input.button.apply-coupon:hover, .opc-wrapper-opc .discount-block input.button.remove-coupon:hover {
-  background: #849b02 !important;
-  border-bottom: 2px solid #4A692E!important;
+  background: #9fb701 !important;
+  border-bottom: 0!important;
 }
 
 .opc-wrapper-opc .discount-block .validation-advice

@@ -1199,6 +1199,10 @@
 
 @media only screen and (max-width: 736px) {
 
+	.desc_area_content .table_wrap{
+		overflow-x: scroll;
+	}
+
 	/*christmas*/
 	.header_wrap {
     	/*background: url(../images/background_xmas_new.png) top right no-repeat;

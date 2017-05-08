@@ -31,12 +31,9 @@
 		            	<!-- <em class="sb_em">*</em> -->
 		            </label>
 		            <div class="input-box sinput input_suggestion_captcha">
-		                <img src="<?php echo $this->getUrl().'suggestion_captcha_file.php?rand='.rand(); ?>" id='suggestion_captcha_img'  >
-		                <div  id='suggestion_captcha_img_div'> 
-		                
-		                 <img src="<?php echo $this->getUrl().'suggestion_captcha_file.php?rand='.rand(); ?>">
+		                <div class="captcha_img_wrap">
+		                	<img src="<?php echo $this->getUrl().'suggestion_captcha_file.php?rand='.rand(); ?>" id='suggestion_captcha_img'  >
 		                </div>
-
 		                <input id="suggestion_captcha_code" class="required-entry validate_captcha sb_input_field" name="suggestion_captcha_code" type="text" placeholder="Enter code here">
 		                <small class="click_here">Can't read the image? click <a href='javascript: suggestion_refresh_Captcha();'>here</a> to refresh</small>
 		                <input type="hidden" id="check-me" />
