@@ -1165,6 +1165,12 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         height: 33px;
         line-height: 33px;
     }
+
+    .catalog-category-view .col-main .category-products .products-grid li.item .actions button.button, .catalogsearch-result-index .col-main .category-products .products-grid li.item .actions button.button{
+        height: auto;
+        line-height: inherit;
+    }
+
     .col-main .opc-wrapper-opc .btn{
         height: 33px;
         line-height: 33px;

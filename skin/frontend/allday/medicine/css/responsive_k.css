@@ -8,6 +8,7 @@
 }*/
 
 
+
 #co-billing-form > ul.form-list, #opc-address-form-shipping  ul.form-list, #tab-3 ul.form-list{
 	margin-left: 0;
 }
@@ -543,6 +544,9 @@ li.error-msg span{
 		display: none;
 	}
 
+	.opc-index-index .footer{
+		padding: 0 0 75px;
+	}
 
 
 }
@@ -691,6 +695,8 @@ li.error-msg span{
 
 
 
+
+
 @media only screen and (max-width: 420px){
 	.checkout_steps div span {
 	  border: 2px solid #c2c2c2;
@@ -698,6 +704,11 @@ li.error-msg span{
 	  border-radius: 50%;
 	  padding: 2px;
 	  background: #fff;
+	}
+
+	.customer-account-forgotpassword .forgot-pswd-text .buttons-set p.back-link a {
+	    padding: 1px 16px;
+	    margin-top: 7px!important;
 	}
 
 	.billing_part1, .billing_part2, .shiping_part1, .shipping_part2{

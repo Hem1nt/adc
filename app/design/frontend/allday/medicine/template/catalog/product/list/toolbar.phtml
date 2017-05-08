@@ -62,9 +62,10 @@
         <?php if( $this->isEnabledViewSwitcher() ): ?>
         <p class="view-mode">
             <?php $_modes = $this->getModes(); ?>
+            <?php uasort($_modes, function($a, $b){ return $a <= $b; }); ?>
             <?php if($_modes && count($_modes)>1): ?>
             <label><?php echo $this->__('Display') ?>:</label>
-            <?php foreach ($this->getModes() as $_code=>$_label): ?>
+            <?php foreach ($_modes as $_code=>$_label): ?>
                 <?php if($this->isModeActive($_code)): ?>
                     <strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>">
                         <?php
