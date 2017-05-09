@@ -1068,9 +1068,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .mobile-pr-login-icon .logged-in-user a{
         color: #fff;
     }
-    .mobile-pr-login-icon .logged-in-user a{
-        color: #fff;
-    }
+
     .logged-in-user .dropdown_links:before{
         content: "";
         width: 0;
@@ -1083,6 +1081,11 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         top: -10px;
         display: block;
     }
+
+    .dropdown_links li a:hover{
+        color: #000!important;
+    }
+
     .mobile-pr-login-icon .logged-in-user .dropdown_links{
         width: auto;
     } 
