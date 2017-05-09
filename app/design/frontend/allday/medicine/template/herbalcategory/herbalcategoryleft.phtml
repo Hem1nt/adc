@@ -16,176 +16,77 @@ if(in_array($currentCategory, $configId) || ($currentCategory==$configcategory_i
 ?>
 <!-- Start of Left Navigation for Herbal Category -->
 <div id='cssmenu'>
-  <ul><li><a href="<?php echo Mage::getBaseUrl();?>herbal.html"><h1><span>Herbal</span></h1></a></li></ul>
-  <ul>
-<?php 
-$_rootCatId     = $configcategory_id;
-$_rootCategory  = Mage::getModel('catalog/category')->load($_rootCatId);
-$_catName       = $_rootCategory->getName();
-if($_rootCategory->hasChildren()) 
-{
-$_collection = Mage::getResourceModel('catalog/category_collection')
-                ->addAttributeToFilter('is_active', 1)
-                ->addAttributeToSort('position', 'asc')
-                ->joinUrlRewrite();
-
-$_iterateCollection =$_collection->addIdFilter($_rootCategory->getChildren())->load();
-
-foreach($_iterateCollection AS $_sub)
-{
-    $_subCat    = Mage::getModel('catalog/category')->load($_sub->getId());
-
-    if($_subCat->hasChildren()) 
-    {   
-        echo '<li class="leve10 nav-'. $_subCat->getId() .'">';
-            echo '<a id="subCatLink" href="'. $_subCat->getUrl() .'">';
-                echo '<span>'. $this->htmlEscape($_subCat->getName()) .'</span><span class="arrowname"></span>
-                </a>';
-    
-        echo '<ul id="subCatUl" style="">';
-        $__collection = $_collection->addIdFilter($_subCat->getChildren())->load();
-
-        foreach($__collection AS $__sub)
-        {
-
-            $__subCat   = Mage::getModel('catalog/category')->load($__sub->getId());
-            if($currentCategory==$__subCat->getId()){
-              $status =  'current_category';
-            }else{
-              $status = '';
-            }
-            echo '<li class="leve20 nav-'. $__subCat->getId() .' '.$status.'">
-                    <a href="'. $__subCat->getUrl() .'">
-                     <span>'. $this->htmlEscape($__subCat->getName()) .'</span>
-                    </a>
-                 </li>';
-        }
-        echo '</ul></li>';
-    }
-    else
+  <div class="block">
+    <div class="block-title">
+        <a href="<?php echo Mage::getBaseUrl();?>herbal.html"><strong><span>Herbal</span></strong></a>
+    </div>
+      <div class="block-content">
+      <ul class="harbal_links">
+    <?php 
+    $_rootCatId     = $configcategory_id;
+    $_rootCategory  = Mage::getModel('catalog/category')->load($_rootCatId);
+    $_catName       = $_rootCategory->getName();
+    if($_rootCategory->hasChildren()) 
     {
-        echo '<li class="leve10 nav-'. $_subCat->getId() .'">
-            <a href="'. $_subCat->getUrl() .'">
-             <span>'. $this->htmlEscape($_subCat->getName()) .'</span>
-            </a>
-         </li>';
+    $_collection = Mage::getResourceModel('catalog/category_collection')
+                    ->addAttributeToFilter('is_active', 1)
+                    ->addAttributeToSort('position', 'asc')
+                    ->joinUrlRewrite();
+
+    $_iterateCollection =$_collection->addIdFilter($_rootCategory->getChildren())->load();
+
+    foreach($_iterateCollection AS $_sub)
+    {
+        $_subCat    = Mage::getModel('catalog/category')->load($_sub->getId());
+
+        if($_subCat->hasChildren()) 
+        {   
+            echo '<li class="leve10 nav-'. $_subCat->getId() .'">';
+                echo '<a id="subCatLink" href="'. $_subCat->getUrl() .'">';
+                    echo '<span>'. $this->htmlEscape($_subCat->getName()) .'</span><span class="arrowname"></span>
+                    </a>';
+        
+            echo '<ul id="subCatUl" style="">';
+            $__collection = $_collection->addIdFilter($_subCat->getChildren())->load();
+
+            foreach($__collection AS $__sub)
+            {
+
+                $__subCat   = Mage::getModel('catalog/category')->load($__sub->getId());
+                if($currentCategory==$__subCat->getId()){
+                  $status =  'current_category';
+                }else{
+                  $status = '';
+                }
+                echo '<li class="leve20 nav-'. $__subCat->getId() .' '.$status.'">
+                        <a href="'. $__subCat->getUrl() .'">
+                         <span>'. $this->htmlEscape($__subCat->getName()) .'</span>
+                        </a>
+                     </li>';
+            }
+            echo '</ul></li>';
+        }
+        else
+        {
+            echo '<li class="leve10 nav-'. $_subCat->getId() .'">
+                <a href="'. $_subCat->getUrl() .'">
+                 <span>'. $this->htmlEscape($_subCat->getName()) .'</span>
+                </a>
+             </li>';
+        }
     }
-}
-}
-?>
-</ul>
+    }
+    ?>
+    </ul>
+    </div>
+  </div>
 </div>
 
 <style type="text/css">
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
-#cssmenu,
-#cssmenu ul,
-#cssmenu li,
-#cssmenu a {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  list-style: none;
-  font-weight: normal;
-  text-decoration: none;
-  line-height: 1;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  position: relative;
 
-}
-#cssmenu a {
-  line-height: 1.3;
-  border-radius: 5px 5px 0 0;
-}
-.activeclass{color: #4c6804;}
-#cssmenu {
-  width: 250px;
-  margin: 29px 0px;
-
-}
-#cssmenu > ul > li > a {
-  /*padding-right: 40px;*/
-  font-size: 25px;
-  font-weight: bold;
-  display: block;
-  background: #9fb701;
-  color: #ffffff;
-  border-bottom: 1px solid #fff;
-  /*text-transform: uppercase;*/
-  position: relative;
-}
-#cssmenu > ul > li > a > h1{padding: 5px 7px;}
-#cssmenu > ul > li > a > span {
-  background: #ECE9E9;
-  padding: 10px;
-  display: block;
-  font-size: 13px;
-  font-weight: 300;
-  color: #494646;
-  text-transform: uppercase;
-}
-#cssmenu > ul > li > a:hover {
-  text-decoration: none;
-}
-#cssmenu > ul > li.active {
-  border-bottom: none;
-}
-#cssmenu > ul > li.active > a {
-  color: #fff;
-}
-#cssmenu > ul > li.active > a span {
-  background: #ECE9E9;
-}
-#cssmenu span.cnt {
-  position: absolute;
-  top: 8px;
-  right: 15px;
-  padding: 0;
-  margin: 0;
-  background: none;
-}
 #cssmenu ul ul {
   display: none;
 }
-#cssmenu ul ul li {
-  border: 1px solid #e0e0e0;
-  border-top: 0;
-}
-#cssmenu ul ul a {
-  padding: 10px;
-  display: block;
-  /*color: #4c6804;*/
-  font-size: 13px;
-}
-li.leve10 {
-margin-top: -1px!important;
-border-top: 1px solid #ccc!important;
-}
-/*#cssmenu ul ul a:hover {
-  color: #4c6804;
-}*/
-/*#cssmenu ul ul li.odd {
-  background: #f4f4f4;
-}
-#cssmenu ul ul li.even {
-  background: #fff;
-}*/
-.arrowname{
-  background: url("<?php echo Mage::getBaseUrl().'arrow.png'; ?>")!important;
-  background-size: 32px!important;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 0px;
-  left: 208px;
-}
-.arrow_top { 
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
-}
-.current_category a span{color: #9fb701;}
 </style>
 
 <script type="text/javascript">
