@@ -1968,6 +1968,12 @@ dl#narrow-by-list dd ol li a {
   /* .catalog-category-view .col-main .category-products .products-grid li.item .pr-details-height, 
   .catalogsearch-result-index .col-main .category-products .products-grid li.item .pr-details-height */
 }
+@media only screen and (max-width: 375px) {
+  .catalog-category-view .col-main .category-products .products-grid li.item, .catalogsearch-result-index .col-main .category-products .products-grid li.item {
+    width: 96% !important;
+    margin: 10px 2%;
+  }
+}
 @media only screen and (max-width: 360px) {
   .catalog-category-view .products-list .product-name,
   .catalogsearch-result-index .products-list .product-name {
@@ -1975,10 +1981,6 @@ dl#narrow-by-list dd ol li a {
     box-sizing: border-box;
   }
 
-  .catalog-category-view .col-main .category-products .products-grid li.item, .catalogsearch-result-index .col-main .category-products .products-grid li.item {
-    width: 96% !important;
-    margin: 10px 2%;
-  }
   .catalog-category-view .col-main .category-products .products-grid li.item .pr-details-height .manufactured_by, .catalogsearch-result-index .col-main .category-products .products-grid li.item .pr-details-height .manufactured_by {
     height: 36px;
   }

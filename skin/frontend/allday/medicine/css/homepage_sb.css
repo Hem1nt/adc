@@ -402,6 +402,21 @@ body *, input, select, textarea, button{
     margin: 0 auto;
     text-align: center;
 }
+
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .register_user_category_content{
+    position: relative;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items .register_user_category_content .stock_label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 14px;
+    color: #fff;
+    background: rgba(0,0,0,0.8);
+    border-radius: 0 10px 10px  0;
+    padding: 4px 8px;
+}
+
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .slick-list li.slick_list{
    border: 1px solid #e0e0e0;
     box-sizing: border-box;
@@ -886,6 +901,8 @@ body *, input, select, textarea, button{
         width: 100%;
         display: inline-block;
         margin: 0 auto;
+        padding: 0 15px;
+        box-sizing: border-box;
         float: left;
     }
     .cms-home .main_config_page .mobile_best_seller_title {
@@ -938,10 +955,10 @@ body *, input, select, textarea, button{
         margin: 0 auto;
     }
     .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev {
-        left: 185px;
+        left: 0;
     }
     .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next {
-        right: 185px;
+        right: 0;
     }
     .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev:before {
         content: "" !important;

@@ -22,6 +22,21 @@
             		<a href="<?php echo $productsCollection->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($productsCollection, 'small_image'), null, true) ?>" class="product_img">
                     <img src="<?php echo $productsCollection->getImageUrl(); ?>" alt="<?php echo $productsCollection->getName();?>">
                     </a>
+
+                    <?php if(!$productsCollection->isSaleable()):?>
+                        <div class="stock_label">
+                            <?php $custom_stock_status = $_frontendHelper->getCustomStockStatus($productsCollection);
+                            if($custom_stock_status!='No' && $custom_stock_status!=''){ ?>
+                                <h3 class="pr-out-of-stock-index">
+                                    <span><?php echo $this->__($custom_stock_status) ?></span>
+                                </h3>
+                            <?php } else{ ?>
+                                <h3 class="pr-out-of-stock-index">
+                                    <span><?php echo $this->__('Out of stock') ?></span>
+                                </h3>
+                            <?php }?>
+                        </div>
+                    <?php endif; ?> 
                     <div class="product_desc">
                         <div class="product_name">
                             <a href="<?php echo $productsCollection->getProductUrl();?>">
@@ -31,19 +46,7 @@
                                 ?>
                             </a>
                         </div>
-                        <?php if(!$productsCollection->isSaleable()):
-                            $custom_stock_status = $_frontendHelper->getCustomStockStatus($productsCollection);
-                            if($custom_stock_status!='No' && $custom_stock_status!=''){ ?>
-                                <h3 class="pr-out-of-stock-index">
-                                    <span><?php echo $this->__($custom_stock_status) ?></span>
-                                </h3>
-                            <?php } else{ ?>
-                                <h3 class="pr-out-of-stock-index">
-                                    <span><?php echo $this->__('Out of stock') ?></span>
-                                </h3>
-                            <?php }
-                            endif;
-                        ?>                    
+                                           
                        <!-- <div class="desc std">
                             <?php //echo $_frontendHelper->getGenericInfo($productsCollection);?>                
                         <!--</div>                    -->

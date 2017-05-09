@@ -2768,6 +2768,21 @@ dl#narrow-by-list dd ol li a {
 	/* .catalog-category-view .col-main .category-products .products-grid li.item .pr-details-height, 
 	.catalogsearch-result-index .col-main .category-products .products-grid li.item .pr-details-height */
 }
+@media only screen and (max-width: 375px){
+	.catalog-category-view,.catalogsearch-result-index    {
+		.col-main{
+			.category-products{
+				.products-grid{
+				 	li.item{
+						width: 96% !important;
+						margin: 10px 2%;
+				 	}
+				}
+			}
+		}
+	}
+}
+
 @media only screen and (max-width: 360px){
 	
 
@@ -2782,8 +2797,7 @@ dl#narrow-by-list dd ol li a {
 			.category-products{
 				.products-grid{
 				 	li.item{
-						width: 96% !important;
-						margin: 10px 2%;
+						
 
 						.pr-details-height{
 							.manufactured_by{
