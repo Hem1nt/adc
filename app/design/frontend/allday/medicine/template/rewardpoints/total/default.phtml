@@ -33,114 +33,61 @@ $ruleTitle = implode(',',$ruleNames);
 <tr>
     <td colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="totals-rewards">
         <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
-            <?php //echo $this->escapeHtml($this->getTotal()->getTitle()); ?>
-            <span class="dis_label">
-                <?php 
+        <?php //echo $this->escapeHtml($this->getTotal()->getTitle()); ?>
+        <span class="dis_label">
+            <?php 
                 // if($this->getTotal()->getTitle() == 'Discount'){ 
-                    echo '<b>Discount('.$ruleTitle.')</b>';
+            echo '<b>Discount('.$ruleTitle.')</b>';
                 // } else { 
                     // echo $this->getTotal()->getTitle();
                 // } ?></span>
-        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
-    </td>
-    <td style="<?php echo $this->getTotal()->getStyle() ?>">
-        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
-            <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
-        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
-    </td>
-</tr>
-<?php
-foreach(explode(",",$appliedRules) as $ruleID) {
-    $rule = $ruleCollection->load($ruleID);
-    $ruleAmount[] = $rule->getDiscountAmount();
-    if( $rule->getSimpleAction() != 'by_percent' ) {
-        $dummyTotal += $rule->getDiscountAmount();
-    }
-    // echo $dummyTotal;
-}
-?>
-<tbody class="discount_block" style="display:none;">
-    <?php if($rewardpoints): ?>
-    <tr>
-        <td colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="label"><strong><?php echo 'Rewardpoints Discount'; ?></strong></td>
-        <td><?php echo $this->helper('checkout')->formatPrice($rewardpoints); ?></td>
-    </tr>
-    <?php endif; ?>
-    <?php $count = 0; foreach(explode(",",$appliedRules) as $ruleID) {
-            //Load the rule object
+                <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
+            </td>
+            <td style="<?php echo $this->getTotal()->getStyle() ?>">
+                <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
+                <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
+                <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
+            </td>
+        </tr>
+        <?php
+        foreach(explode(",",$appliedRules) as $ruleID) {
             $rule = $ruleCollection->load($ruleID);
             $ruleAmount[] = $rule->getDiscountAmount();
-            // echo "<p>Rule - ".$rule->getName()." applied </p>";
-    ?>
-    <tr>
-        <td colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="label"><strong><?php if($rule->getDiscountAmount() > 0) { echo $rule->getName(); }?></strong></td>
-        <?php if( $rule->getSimpleAction() == 'by_percent' && $rule->getSimpleFreeShipping() == 0) { 
+            if( $rule->getSimpleAction() != 'by_percent' ) {
+                $dummyTotal += $rule->getDiscountAmount();
+            }
+    // echo $dummyTotal;
+        }
+
+        $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
+        $totalDiscount = abs(round($totals["discount"]->getValue(),2));
+        $finalDiscount = Mage::helper('core')->currency($totalDiscount, true, false);
+        ?>
+        <tbody class="discount_block" style="display:none;">
+            <?php if($rewardpoints): 
+                $ruleTitle .=',Rewardpoints Discount';
             ?>
+        <?php endif; ?>
+            <tr>
+                <td colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="label"><strong><?php if($rule->getDiscountAmount() > 0) { echo $ruleTitle; }?></strong></td>
             <td colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>">
-            <?php 
-                 $cart_dis = number_format(($subtotal*$rule->getDiscountAmount())/100,2);
-                            if($rule->getMaxDiscountAmount() > 1){
-                                    $cart_dis = number_format(($subtotal*$rule->getDiscountAmount())/100,2);
-                                    if($cart_dis >= $rule->getMaxDiscountAmount()){
-                                        echo $this->helper('checkout')->formatPrice($rule->getMaxDiscountAmount());  
-                                    }else{
-                                        if($dummyTotal){
-                                            $cart_dis = abs($order_totals)-$dummyTotal;
-                                            echo $this->helper('checkout')->formatPrice($cart_dis); 
-                                        }else{
-                                            $cart_dis = number_format((($subtotal-$cart_dis)*$rule->getDiscountAmount())/100,2);
-                                            echo $this->helper('checkout')->formatPrice($cart_dis); 
-                                        }
-                                    }                            
-                            }else{
-                                $cart_dis = number_format(($subtotal*$rule->getDiscountAmount())/100,2);
-                                echo $this->helper('checkout')->formatPrice($cart_dis);
-                            }
-                            //echo $this->helper('checkout')->formatPrice($cart_dis);
-            ?>
-            </td>
-         <?php } else if( $rule->getSimpleAction() == 'by_fixed' ) { ?>
-            <td>
-                <?php
-                    if($rule->getMaxDiscountAmount()){
-                                    $cart_dis = ($subtotal * $rule->getDiscountAmount()) / 100;
-                                    if($cart_dis >$rule->getMaxDiscountAmount()){
-                                        // echo '<br>';
-                                        // echo $rule->getMaxDiscountAmount();
-                                        if(abs($order_totals) < $rule->getMaxDiscountAmount()){
-                                            $cart_dis = abs($order_totals)-$dummyTotal;
-                                            echo $this->helper('checkout')->formatPrice($cart_dis);
-                                        }else{
-                                            echo $this->helper('checkout')->formatPrice($rule->getMaxDiscountAmount());  
-                                        }
-                                    }else{
-                                        // echo abs($order_totals)-$dummyTotal;
-                                        $cart_dis = abs($order_totals)-$dummyTotal;
-                                        echo $this->helper('checkout')->formatPrice($cart_dis); 
-                                    }                          
-                            }else{
-                                $cart_dis = ($subtotal * $rule->getDiscountAmount()) / 100;
-                                echo $this->helper('checkout')->formatPrice($cart_dis);
-                            }
+                <?php 
+                echo $finalDiscount;
                 ?>
             </td>
-        <?php } else { ?>
-            <td><?php  if($rule->getDiscountAmount() > 0) { echo $this->helper('checkout')->formatPrice($rule->getDiscountAmount()); }?></td>
-        <?php } ?>
-    </tr>
-    <?php $count++; } ?>
-</tbody>
-<script type="text/javascript">
-jQuery(document).ready(function(){
-    jQuery('#checkout-review-table .discount_block .label').attr("colspan", 3);
-    var img_url = "<?php echo Mage::getDesign()->getSkinUrl('images',array('_area'=>'frontend')) ?>"+'/j2t_add_one.png';
-    more_discount = jQuery(".totals-rewards").prepend('<span class="more_offers"><img src="'+img_url+'" style="height:100%; width:auto;"/></span>');
-    jQuery('.totals-rewards').click(function(){
-        jQuery('.discount_block').toggle();
+        </tr>
+    </tbody>
+    <script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('#checkout-review-table .discount_block .label').attr("colspan", 3);
+        var img_url = "<?php echo Mage::getDesign()->getSkinUrl('images',array('_area'=>'frontend')) ?>"+'/j2t_add_one.png';
+        more_discount = jQuery(".totals-rewards").prepend('<span class="more_offers"><img src="'+img_url+'" style="height:100%; width:auto;"/></span>');
+        jQuery('.totals-rewards').click(function(){
+            jQuery('.discount_block').toggle();
+        });
     });
-});
-</script>
-<style type="text/css">
-.totals-rewards { cursor: pointer; }
-.totals-rewards .more_offers { height: 20px; width: 20px; display: inline-block; }
-</style>
+    </script>
+    <style type="text/css">
+    .totals-rewards { cursor: pointer; }
+    .totals-rewards .more_offers { height: 20px; width: 20px; display: inline-block; }
+    </style>

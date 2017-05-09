@@ -9081,7 +9081,45 @@ body.catalog-product-view .nav-right-category ul li.coupon-and-offer a , body.ca
     display: block;
 }
 
+.category-image img{
+	width: 100%;
+}
 
+.herbal_products_grid{clear: both;}
+.herbal_title{background-color: #242424;width: 100%;color: #fff;padding: 5px;margin: 2px 0; box-sizing:border-box;}
+
+#cssmenu{
+	width: 100%!important;
+	margin: 0 0 30px!important;
+}
+
+.catalog-category-view #outer_ul li, .catalogsearch-result-index #outer_ul li, .elastic-search-result #outer_ul li{
+	padding-right: 8px;
+	line-height: 18px;
+	margin: 4px 0;
+}
+
+.herbal_title a{
+	margin-right: 10px;
+    margin-top: 3px;
+}
+
+
+
+.catalog-category-view .col-right.sidebar .harbal_links, .catalogsearch-result-index .col-right.sidebar .harbal_links {
+  padding: 14px 0;
+  padding-left: 6px;
+  margin: 0;
+}
+.catalog-category-view .col-right.sidebar .harbal_links li, .catalogsearch-result-index .col-right.sidebar .harbal_links li {
+  background: url("../images/black_arrows.png") 0 6px no-repeat;
+  margin: 4px 0;
+  padding:0 0 0 20px;
+}
+.catalog-category-view .col-right.sidebar .harbal_links li:hover a, .catalogsearch-result-index .col-right.sidebar .harbal_links li:hover a {
+  font-weight: 600;
+  color: #577704;
+}
 
 
 

@@ -13,8 +13,7 @@ $getSession = Mage::getSingleton('core/session')->getOrderReminderSuccess();
         <div class="subscribe-innerdiv">
         Subscribe to our Newsletter <span class="xtra-txt">&amp; never miss a latest product or offer</span>
         <div class="subscribe-input-go">
-	        <input type="text" id="txtEmailDiv" placeholder="Please enter E-mail address" class="subs"
-	        onblur="return showText(this, 'Please enter E-mail address')" onfocus="return hideText(this, 'Please enter E-mail address')">
+	        <input type="text" id="txtEmailDiv" placeholder="Please enter E-mail address" class="subs">
 	        <input type="button" id="subscribebtn" value="Go">
        </div>
     </div>
@@ -23,8 +22,8 @@ $getSession = Mage::getSingleton('core/session')->getOrderReminderSuccess();
 <div class="subscribe_msg" style="display:none;">
  <div class="subscribe-innerdiv">Thank you for Subscribing us.</div>
 </div>
-	<a id="show_subs" class="subs_a" onclick="" style="display:none; bottom: 15px; color: #FFFFFF; position: fixed; left: 4px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">&gt;</a>
-    <a id="close_subs" class="subs_a" onclick="" style="bottom: 15px; color: #FFFFFF; position: fixed; left: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">X</a>
+	<!-- <a id="show_subs" class="subs_a" onclick="" style="display:none; bottom: 15px; color: #FFFFFF; position: fixed; left: 4px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">&gt;</a>
+    <a id="close_subs" class="subs_a" onclick="" style="bottom: 15px; color: #FFFFFF; position: fixed; left: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">X</a> -->
 </div>
 
 <style type="text/css">
@@ -106,7 +105,7 @@ jQuery(document).ready(function(){
 	var subsclose_val = get_cookie("subsclose");
 
 	if(subsclose_val=="yes") {
-		CloseSubscription(1);
+		//CloseSubscription(1);
 	}
 	jQuery("#close_subs").click(function(){
 		CloseSubscription();
@@ -116,12 +115,13 @@ jQuery(document).ready(function(){
 	});
 
 
-	jQuery('#txtEmailDiv').click(function(){
-		jQuery('#txtEmailDiv').val('');
-	});
+	// jQuery('#txtEmailDiv').click(function(){
+	// 	jQuery('#txtEmailDiv').val('');
+	// });
 
 	jQuery('#subscribebtn').click(function(){
-		if(jQuery('#txtEmailDiv').val()==''){
+		var emailVal = jQuery('#txtEmailDiv').val();
+		if(emailVal==''){
 	       // alert('please enter the email id');
 	       jQuery('#txtEmailDiv').val('Please enter your email address here');
 	    }
@@ -144,10 +144,11 @@ jQuery(document).ready(function(){
 						jQuery('.subscribe').css('display','none');
 						jQuery('.subscribe_msg').html(resultData).css('display','block');
 						setTimeout(function(){
-							jQuery('.subscribe_msg').animate({display: "none"}, 500, function(){
+							jQuery('.subscribe_msg').animate({display: "none"}, 2000, function(){
+							jQuery('.subscribe_msg').html('');
 								jQuery('.subscribe').show(); jQuery('#toTop #txtEmailDiv').val('');
 								if(resultData == "Thank you for your subscription.") {
-									CloseSubscription();
+									//CloseSubscription();
 								}
 							});
 						}, 2000);

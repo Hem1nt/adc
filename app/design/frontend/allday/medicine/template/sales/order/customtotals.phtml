@@ -29,165 +29,109 @@
  */
 ?>
 <?php
-    $ruleName = array();
-    $ruleCollection = Mage::getModel('salesrule/rule');
-    $order_totals = array();
+$ruleName = array();
+$ruleCollection = Mage::getModel('salesrule/rule');
+$order_totals = array();
         //The order I want to check
-    $_order = $this->getOrder();
-    $order_id = $_order->getData('entity_id');
-    $order_discount = $_order->getData('discount_amount');
-    $subtotal = $_order->getData('subtotal');
+$_order = $this->getOrder();
+$order_id = $_order->getData('entity_id');
+$order_discount = $_order->getData('discount_amount');
+$rewardPoints = $_order->getData('rewardpoints');
+$subtotal = $_order->getData('subtotal');
 
 ?>
 <?php
 $appliedRules = $_order->getAppliedRuleIds();
-    foreach(explode(",",$appliedRules) as $ruleID) {
-        $rule = $ruleCollection->load($ruleID);
-        $ruleAmount[] = $rule->getDiscountAmount();
-        if( $rule->getSimpleAction() != 'by_percent' ) {
-            $dummyTotal += $rule->getDiscountAmount();
-        }
-        // echo $dummyTotal;
+foreach(explode(",",$appliedRules) as $ruleID) {
+    $rule = $ruleCollection->load($ruleID);
+    $ruleAmount[] = $rule->getDiscountAmount();
+    if($rule->getDiscountAmount() > 0) { 
+        $ruleNames[] = $rule->getName(); 
     }
-    ?>
+        // echo $dummyTotal;
+}
+$ruleTitle = implode(',',$ruleNames);
+if($rewardPoints){
+    $ruleTitle .=',Rewardpoints Discount';
+}
+?>
 <?php foreach ($this->getTotals() as $_code => $_total): ?>
     <?php if ($_total->getBlockName()): ?>
-        <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>
-    <?php else:?>
+    <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>
+<?php else:?>
     <tr class="<?php echo $_code?>">
         <td style="float:right; margin-right:30px; padding-bottom: 10px;" <?php echo $this->getLabelProperties()?> class="label data_<?php echo $_code ?>">
             <?php
-                if(strpos($this->escapeHtml($_total->getLabel()), "Shipping &amp; Handling") !== false)
-                {
-                    $shipping_name=floatval(Mage::getModel('core/variable')->loadByCode('shipping_rates')->getValue('plain'));
-                    $shipping_rate=$this->formatValue($_total);
+            if(strpos($this->escapeHtml($_total->getLabel()), "Shipping &amp; Handling") !== false)
+            {
+                $shipping_name=floatval(Mage::getModel('core/variable')->loadByCode('shipping_rates')->getValue('plain'));
+                $shipping_rate=$this->formatValue($_total);
                     //preg_match('{(\d+\.\d+)}', $shipping_rate, $matches);
-                    preg_match('{(\d+\.\d+)}', $shipping_rate, $matches);
-                    $matches=floatval($matches[0]);
-                    $shipping_flag=false;
-                    if($matches<=$shipping_name){
-                        $shipping_flag=true;
-                    }
+                preg_match('{(\d+\.\d+)}', $shipping_rate, $matches);
+                $matches=floatval($matches[0]);
+                $shipping_flag=false;
+                if($matches<=$shipping_name){
+                    $shipping_flag=true;
+                }
 
-                    if($shipping_flag)
-                    {
-            ?>
-
-                    <?php if ($_total->getStrong()):?>
-                    <strong><?php echo $this->escapeHtml($_total->getLabel()); ?></strong>
-                    <?php else:?>
-                    <?php echo $this->escapeHtml($_total->getLabel()); ?>
-                    <?php endif?>
-
-            <?php
-                    }else{
-            ?>
-
-                    <?php if ($_total->getStrong()):?>
-                    <strong><?php echo $this->escapeHtml($_total->getLabel())."(Including Extra Shipping)"; ?></strong>
-                    <?php else:?>
-                    <?php echo $this->escapeHtml($_total->getLabel())."(Including Extra Shipping)"; ?>
-                    <?php endif?>
-
-            <?php
-                    }
-                }else{
-            ?>
+                if($shipping_flag)
+                {
+                    ?>
 
                     <?php if ($_total->getStrong()):?>
                     <strong><?php echo $this->escapeHtml($_total->getLabel()); ?></strong>
-                    <?php else:?>
-                    <?php $labels = explode( ' (', $this->escapeHtml($_total->getLabel()) ); ?>
-                    <span class="left_label_<?php echo $_code ?>"><?php echo $labels[0]; ?></span>
-                    <?php endif?>
-
-            <?php } ?>
-
-        </td>
-        <td class="" colspan="" <?php echo $this->getValueProperties()?>>
-            <?php if ($_total->getStrong()):?>
-            <strong><?php echo $this->formatValue($_total) ?></strong>
-            <?php else:?>
-            <?php
-                echo $this->formatValue($_total);
-                $order_totals[] = $_total->getValue();
-            ?>
+                <?php else:?>
+                <?php echo $this->escapeHtml($_total->getLabel()); ?>
             <?php endif?>
-        </td>
-    </tr>
-    
-    <?php if($_code == 'discount') { ?>
-            <tbody class="discount_block" style="display:none;">
-                
-                <?php $count = 0; foreach(explode(",",$_order->getAppliedRuleIds()) as $ruleID) {        
-                    //Load the rule object
-                    $rule = $ruleCollection->load($ruleID); 
-                    // echo "<pre>"; print_r($rule->getData());
-                    $ruleAmount[] = $rule->getDiscountAmount();
-                    // echo "<p>Rule - ".$rule->getName()." applied </p>"; 
-                    // echo '<pre>';
-                    // print_r($ruleAmount);
-                    // print($ruleID);
-                    // // exit;
-                ?>
-                <tr>
-                    <td class="label" style="float:right; margin-right:15px; padding-bottom: 10px;"><strong><?php echo $rule->getName() ?></strong></td>
 
-                    <?php if( $rule->getSimpleAction() == 'by_percent' && $rule->getSimpleFreeShipping() == 0) { 
-                        if( $count > 0 ) { ?> 
-                            <td style="text-align:right;">
-                                <span class="price">
-                                    <?php 
-                                         $cart_dis = number_format(($subtotal*$rule->getDiscountAmount())/100,2);
-                                            if($rule->getMaxDiscountAmount() > 1 ){
-                                                    $cart_dis = number_format(($subtotal*$rule->getDiscountAmount())/100,2);
-                                                    if($cart_dis > $rule->getMaxDiscountAmount()){
-                                                        echo $this->helper('checkout')->formatPrice($rule->getMaxDiscountAmount());  
-                                                    }else{
-                                                        $cart_dis = abs($order_totals[2])-$dummyTotal;
-                                                        echo $this->helper('checkout')->formatPrice($cart_dis); 
-                                                    }                            
-                                            }else{
-                                                $$cart_dis = number_format(($subtotal*$rule->getDiscountAmount())/100,2);
-                                                echo $this->helper('checkout')->formatPrice($cart_dis);
-                                            }
-                                    ?>                                
-                                </span>
-                            </td>
-                        <?php } else { ?> 
-                            <td style="text-align:right;">
-                                <span class="price">
-                                    <?php
-                                        $cart_dis = ($_order->getSubtotal() * $rule->getDiscountAmount()) / 100;
-                                        // echo $this->helper('checkout')->formatPrice($cart_dis);
+            <?php
+        }else{
+            ?>
 
-                                        if($rule->getMaxDiscountAmount()){
-                                            $cart_dis = ($subtotal * $rule->getDiscountAmount()) / 100;
-                                            if($cart_dis > $rule->getMaxDiscountAmount()){
-                                                if(abs($order_totals) < $rule->getMaxDiscountAmount()){
-                                                    $catr_val = (abs($order_totals[2]))-$dummyTotal;
-                                                    echo $this->helper('checkout')->formatPrice($catr_val);
-                                                }else{
-                                                    echo $this->helper('checkout')->formatPrice($rule->getMaxDiscountAmount());  
-                                                }
-                                            }else{
-                                                 $cart_dis = abs($order_discount)-$dummyTotal;
-                                                echo $this->helper('checkout')->formatPrice($cart_dis);
-                                            }                          
-                                        }else{
-                                            $cart_dis = ($subtotal * $rule->getDiscountAmount()) / 100;
-                                            echo $this->helper('checkout')->formatPrice($cart_dis);
-                                        }
-                                    ?>
-                                </span>
-                            </td>
-                        <?php } ?> 
-                    <?php } else { ?>
-                        <td style="text-align:right;"><span class="price"><?php echo $this->helper('checkout')->formatPrice($rule->getDiscountAmount()) ?></span></td>
-                    <?php } ?>
-                </tr>
-                <?php $count++; } ?>
-            </tbody>
-    <?php } ?>
+            <?php if ($_total->getStrong()):?>
+            <strong><?php echo $this->escapeHtml($_total->getLabel())."(Including Extra Shipping)"; ?></strong>
+        <?php else:?>
+        <?php echo $this->escapeHtml($_total->getLabel())."(Including Extra Shipping)"; ?>
     <?php endif?>
+
+    <?php
+}
+}else{
+    ?>
+
+    <?php if ($_total->getStrong()):?>
+    <strong><?php echo $this->escapeHtml($_total->getLabel()); ?></strong>
+<?php else:?>
+    <?php $labels = explode( ' (', $this->escapeHtml($_total->getLabel()) ); ?>
+    <span class="left_label_<?php echo $_code ?>"><?php echo $labels[0]; ?></span>
+<?php endif?>
+
+<?php } ?>
+
+</td>
+<td class="" colspan="" <?php echo $this->getValueProperties()?>>
+    <?php if ($_total->getStrong()):?>
+    <strong><?php echo $this->formatValue($_total) ?></strong>
+<?php else:?>
+    <?php
+    echo $this->formatValue($_total);
+    $order_totals[] = $_total->getValue();
+    ?>
+<?php endif?>
+</td>
+</tr>
+
+<?php if($_code == 'discount') { ?>
+<tbody class="discount_block" style="display:none;">
+        <tr>
+            <td class="label" style="float:right; margin-right:30px; padding-bottom: 10px;"><strong><?php echo $ruleTitle; ?></strong></td>
+            <td style="">
+                <?php echo $order_discount; ?>
+            </td>
+
+
+        </tr>
+    </tbody>
+    <?php } ?>
+<?php endif?>
 <?php endforeach?>

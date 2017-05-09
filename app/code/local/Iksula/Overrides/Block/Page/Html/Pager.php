@@ -38,15 +38,17 @@ class Iksula_Overrides_Block_Page_Html_Pager extends Mage_Page_Block_Html_Pager
     public function getLastNum()
     {
         $collection = $this->getCollection();
+        $count = $collection->count();
         foreach ($collection as $key) {
             if($key->getTicketType()){
                 $count = $collection->count();
                 break;
             }else{
-                $count = count($collection->getData());
+                $count = $collection->count();
                 break;
             }
         }
+        // $count = $collection->count();
         return $collection->getPageSize()*($collection->getCurPage()-1)+$count;
     }
 }

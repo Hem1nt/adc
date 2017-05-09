@@ -27,14 +27,13 @@
                         <div class="stock_label">
                             <?php $custom_stock_status = $_frontendHelper->getCustomStockStatus($productsCollection);
                             if($custom_stock_status!='No' && $custom_stock_status!=''){ ?>
-                                <h3 class="pr-out-of-stock-index">
+
                                     <span><?php echo $this->__($custom_stock_status) ?></span>
-                                </h3>
                             <?php } else{ ?>
-                                <h3 class="pr-out-of-stock-index">
                                     <span><?php echo $this->__('Out of stock') ?></span>
-                                </h3>
-                            <?php }?>
+
+                               
+                            <?php } ?>
                         </div>
                     <?php endif; ?> 
                     <div class="product_desc">
@@ -46,7 +45,7 @@
                                 ?>
                             </a>
                         </div>
-                                           
+
                        <!-- <div class="desc std">
                             <?php //echo $_frontendHelper->getGenericInfo($productsCollection);?>                
                         <!--</div>                    -->

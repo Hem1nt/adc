@@ -241,11 +241,11 @@
            <order_print>Iksula_Overrides_Block_Sales_Order_Print</order_print>
          </rewrite>
        </sales>
-       <page>
+       <!-- <page>
           <rewrite>
            <html_pager>Iksula_Overrides_Block_Page_Html_Pager</html_pager>
          </rewrite>
-       </page>
+       </page> -->
        <googleanalytics>
         <rewrite>
           <ga>Iksula_Overrides_Block_GoogleAnalytics_Ga</ga>
