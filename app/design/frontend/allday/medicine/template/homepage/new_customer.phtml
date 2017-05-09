@@ -121,5 +121,29 @@
 <!-- Leading online pharmacy E -->	
 </div>
 <script type="text/javascript">
-	jQuery('.single-item').slick();
+	jQuery('.single-item').slick({
+		responsive: [
+	    {
+	      breakpoint: 736,
+	      settings: {
+	        slidesToShow: 3,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 630,
+	      settings: {
+	        slidesToShow: 2,
+	        slidesToScroll: 1
+	      }
+	    },
+	    {
+	      breakpoint: 420,
+	      settings: {
+	        slidesToShow: 1,
+	        slidesToScroll: 1
+	      }
+	    }
+	  ]
+	});
 </script>
