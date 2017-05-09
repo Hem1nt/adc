@@ -359,18 +359,18 @@ button.button:hover > span{
 			.std{
 				margin-bottom: 13px;
 			}
-			
+		}
 
-			.read_more{
-				position: absolute;
-				bottom: -30px;
-				left: 0;
-				cursor: pointer;
+		.read_more{
+			cursor: pointer;
+		    display: inline-block;
+    		margin-top: 7px;
 
-				b{
-					font-size: 14px;
-					font-weight: 600;
-				}
+			b{
+				font-size: 14px;
+				font-weight: 600;
+				color:#506f00;
+				text-decoration: underline;
 			}
 		}
 
@@ -1966,13 +1966,17 @@ span.recomend-text {
     	border-top: 0;
 	}
 
+	.product-view .product-shop .read_more{
+		margin-top: 0;
+	}
+
 	.catalog-product-view .share.bordercolor{
-		margin-top: 36px!important;
+		margin-top: 30px!important;
 		width: 100%;
 	}
-	.product-view .product-shop .short-description .read_more{
+	/* .product-view .product-shop .short-description .read_more{
 		bottom: -22px;
-	}
+	} */
 
 	.catalog-product-view div.notify-me-boxwrapper h1 span{
 		font-size: 13px;

@@ -958,8 +958,8 @@
 	}
 	.block-account .block-content {
 	  position: absolute;
-	  top: 193px;
-	  right: 0;
+      top: 178px;
+      right: 225px;
 	  width: 30%;
 	  border: 1px solid #9FB701;
 	  height: 189px;
@@ -1206,6 +1206,10 @@
 
 	.desc_area_content .table_wrap{
 		overflow-x: scroll;
+	}
+
+	.my_account_col .main-container{
+		margin-top: 60px!important;
 	}
 
 	.overrides-method-productreview .pager .pages{
@@ -2283,7 +2287,7 @@
 	  position: relative;
 	  width: 100%;
 	  text-align: left;
-	  z-index: 9998;
+	  z-index: 10;
 	}
 	.acc-pages-icons .my-account-icon:after {
 	  content: "";
@@ -2308,14 +2312,19 @@
 	  right: 6px;
 	  margin-top: 7px;
 	}
+	.my_account_col .acc-pages-icons{
+		margin: 0!important;
+	}
+
 	.block-account .block-content {
 	  background: #fff;
-	  top: 0;
+	  top: 0!important;
 	  left: 0px;
 	  width: 50%;
+	  position: fixed;
 	  box-sizing: border-box;
 	  height: 100%;
-	  margin-top: 120px;
+	  margin-top: 0;
 	  z-index: 9998;
 	}
 	.catalog-category-view .tab-category-icons, .catalogsearch-result-index .tab-category-icons, .my_account_col .acc-pages-icons {
@@ -3134,7 +3143,7 @@
 	  margin-left: 30px;
 	}
 	.block-account .block-content, .block-compare, .block-layered-nav {
-		width: 92%;
+		width: 85%;
 	}
 	.customer-account-login .form-list .input-box {
 		width: 65%;

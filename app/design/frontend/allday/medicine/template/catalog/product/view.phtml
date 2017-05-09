@@ -133,16 +133,18 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
     <!-- <h2><?php //echo $this->__('Quick Overview') ?></h2> -->
     <div class="std" itemprop="description">
        <?php
+       $flag = false;
        $string = $_product->getShortDescription();
        if (strlen($string) > 180) {
         $stringCut = substr($string, 0, 180);
-
-        $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <span class="read_more" id="read_more"><b>Read more</b></span>'; 
+        $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'...'; 
+        $flag = true;
+        echo $string;
     }
-    echo $string;
     ?>
 </div>
 </div>
+<?php echo $flag ? '<span class="read_more" id="read_more"><b>Read more</b></span> ': '' ; ?>
 <?php endif;?>
 <div class="share bordercolor"><!-- AddThis Button BEGIN -->
     <div class="addthis_toolbox addthis_default_style ">

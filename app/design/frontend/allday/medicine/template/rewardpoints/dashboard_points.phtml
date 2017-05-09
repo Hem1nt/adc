@@ -34,8 +34,7 @@
         <tbody>
             <tr>
                 <td><?php echo $this->getPointsCurrent(); ?></td>
-                <td>
-                    <?php echo $this->getPointsReceived(); ?>
+                <td><?php echo $this->getPointsReceived(); ?>
                     <?php if ($points_lost = $this->getPointsLost()):?>
                     <div class="j2t-point-lost"><?php echo $this->__("You also have %s expired points.", $points_lost);?></div>
                     <?php endif;?>
