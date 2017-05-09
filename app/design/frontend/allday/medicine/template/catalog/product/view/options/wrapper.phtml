@@ -90,11 +90,11 @@ if($_product->isConfigurable()) {
 
 
 		echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended."</td>";
-		echo "<td class='qty_value'><select id='p-".$child->getId()."'>";
+		echo "<td class='qty_value'><span class='select_wrap'><select id='p-".$child->getId()."'>";
 		for($i=1; $i<=5; $i++) {
 			echo "<option value='$i'>$i</option>";
 		}
-		echo "</select></td>";
+		echo "</select></span></td>";
 		echo "<td class='price_value'>".$perUnitCost."</td>";
 		echo "<td class='price_value'>".$priceLabel."</td>";
 		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';

@@ -22,7 +22,12 @@ jQuery(document).ready(function($){
               $( ".desc_area_content table" ).wrap( "<div class='table_wrap'></div>" );
             }
 
-
+             //window.onload = function() {
+                //  alert(navigator.userAgent);
+                  if (navigator.userAgent.indexOf("Firefox") > 0) {
+                      $("body ").addClass("mozilla");
+                  }
+              //}
 
 
 

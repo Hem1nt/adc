@@ -3596,7 +3596,7 @@ li.rewardpoints a {
   font-size: 13px;
 }
 
-.customer-address-index .block .actions button.button span, .catalog-category-view .block .actions button.button span {
+.my_account_col .col-left.sidebar .block-compare .compare-block-tab .actions button.button span, .my_account_col .col-left.sidebar .block-compare .compare-block-tab .actions button.button span {
   padding: 0 10px;
   line-height: 35px;
   height: 35px;
@@ -8340,6 +8340,10 @@ display: none;
 .customer-name-middlename .name-middlename {
 	width: 28%;
 	margin: 0 1%;
+}
+
+.opc-index-index .customer-name-middlename .name-middlename {
+	margin: 0 0%;
 }
 
 .customer-account-edit .form-list .customer-name-middlename .input-box {
