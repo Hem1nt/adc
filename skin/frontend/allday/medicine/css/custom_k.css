@@ -1114,6 +1114,12 @@ label.selected.label_checkmo {
   border-bottom: 0!important;
 }
 
+.opc-wrapper-opc .footer {
+    max-width: 100%;
+    padding: 0px 0 25px;
+    width: 100%;
+}
+
 .opc-wrapper-opc .discount-block .validation-advice
 {
 	margin-top: 3px;

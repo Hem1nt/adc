@@ -2203,7 +2203,6 @@ button.button:hover span {
 }
 
 .catalog-product-view .mini-products-list .product-details a, .review-product-list .mini-products-list .product-details a {
-  display: block;
   text-decoration: none;
   font-size: 14px;
 }
