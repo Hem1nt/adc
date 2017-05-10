@@ -406,10 +406,12 @@ body *, input, select, textarea, button{
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .register_user_category_content{
     position: relative;
 }
+
+
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .register_user_category_content .stock_label{
     position: absolute;
     top: 20px;
-    left: 15px;
+    left: 0;
     font-size: 14px;
     color: #fff;
     background: rgba(0,0,0,0.8);
@@ -600,6 +602,7 @@ body *, input, select, textarea, button{
     box-sizing: border-box;
     margin: 0 15px;
     padding: 10px;
+    position: relative;
 }
 .slick-initialized .slick-slide {
     display: block;
