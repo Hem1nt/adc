@@ -98,6 +98,11 @@
 	}
 }
 
+.customer-account-create .account-create .form-list select {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+}
 
 /* 1024px */
 
