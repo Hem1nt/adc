@@ -676,6 +676,13 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     line-height: normal;
 }
 
+
+.coming_soon_btn{
+    color: #506f00;
+    font-size: 14px;
+    line-height: 14px;
+    display: inline-block;
+}
 /* umesh css */
 
 @media only screen and (max-width: 1225px){
@@ -800,6 +807,12 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         right: 235px;
     }
 }
+@media only screen and (max-width: 840px){
+    .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon{
+        margin-top: 0 !important; 
+    }
+}
+
 @media only screen and (max-width: 800px){
         .subscribe-innerdiv span.xtra-txt {
             display: block;

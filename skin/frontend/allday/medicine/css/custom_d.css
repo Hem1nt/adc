@@ -1375,13 +1375,27 @@ ol#mini-cart .product-name {
 	border-bottom: 2px solid #9fb701;
 }
 
-.mCS-light-3.mCSB_scrollTools .mCSB_draggerRail, .mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail {
+.mCS-light-3.mCSB_scrollTools .mCSB_draggerRail, .mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail, .mCS-dark-2.mCSB_scrollTools .mCSB_draggerRail {
 	background-color: rgba(221, 221, 221, 0.4);
 }
 
-.mCS-light-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar, .mCS-dark-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+.mCS-light-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar, .mCS-dark-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar , .mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
 	background-color: rgba(159, 183, 1, 1);
 }
+
+.opc-index-index .opc-col-right .opc-review-block .mCSB_draggerRail{
+background-color: rgba(221, 221, 221, 0.4)!important;
+}
+
+.opc-index-index .opc-col-right .opc-review-block .mCSB_dragger .mCSB_dragger_bar{
+background-color: rgba(159, 183, 1, 1)!important;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar, .mCS-dark-2.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+
+    background-color: rgba(159, 183, 1, 1)!important;
+}
+
 
 .catalog-category-view #outer_ul li, .catalogsearch-result-index #outer_ul li, .elastic-search-result #outer_ul li {
   margin: 0;
