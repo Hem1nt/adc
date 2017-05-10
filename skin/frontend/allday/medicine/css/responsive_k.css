@@ -140,10 +140,10 @@ li.error-msg span{
 /* 1024px */
 
 @media only screen and (max-width: 1024px) {
-	.footer {
+	.opc-wrapper-opc .footer {
 	  max-width: 1110px;
-	  padding: 10px 15px 15px;
-	  width: auto;
+	  padding: 0 0 15px;
+	  width: 100%;
 	}
 	.adc-footer-links {
 		width: 100%;

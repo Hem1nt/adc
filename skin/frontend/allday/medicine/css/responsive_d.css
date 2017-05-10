@@ -87,6 +87,8 @@
 	}
 }
 
+
+
 /* 1050px */
 
 @media only screen and (max-width: 1050px) {
@@ -2488,6 +2490,10 @@
 	.cms-index-index .slider-block .products-grid li.item {
 		/*margin-right: 10px;*/
 		/*width: 183px !important;		 */
+	}
+
+	#createTicketForm .form-list li.wide .input-box, #createTicketForm .form-list li.wide input.input-text, #createTicketForm .form-list li.wide textarea , .freshdesk-ticket-create .form-list li.wide select{
+	    width: 100%;
 	}
 }
 
