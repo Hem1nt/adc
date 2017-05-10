@@ -408,8 +408,8 @@ body *, input, select, textarea, button{
 }
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items .register_user_category_content .stock_label{
     position: absolute;
-    top: 20;
-    left: 0;
+    top: 20px;
+    left: 15px;
     font-size: 14px;
     color: #fff;
     background: rgba(0,0,0,0.8);
