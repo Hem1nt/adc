@@ -63,6 +63,7 @@
 
 		</reference>
 		<reference name="header">
+			<block type="core/template" name="mobile_cartitem" as="mobile_cartitem" template="page/html/mobile_cartitem.phtml"/>
             <!-- <block type="checkout/cart_sidebar" name="topLinksMobile" as="topLinksMobile" template="page/html/links-mobile.phtml"/> -->
             <block type="checkout/cart_sidebar" name="topcart_mini" as="miniCart" template="checkout/cart/topcart.phtml" />
 			<block type="core/template" name="home_counter" template="homepage/home_counter.phtml" />

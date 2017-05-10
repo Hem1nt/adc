@@ -30,9 +30,7 @@
         $reviews = Mage::getModel('review/review')->getCollection()
         ->addStoreFilter(Mage::app()->getStore()->getId())
         ->addEntityFilter('product', $productId)
-        ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
-        ->setDateOrder()
-        ->addRateVotes();
+        ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED);
 ?>
 
 <div class="box-collateral box-reviews" id="customer-reviews">
@@ -59,7 +57,7 @@
             </div>
             <div class="review_right_block">
                 <div class="review_title">
-                    <a href="<?php echo $this->getReviewUrl($_review->getId()) ?>">"<?php echo $this->htmlEscape($_review->getTitle()) ?>"</a>
+                    "<?php echo $this->htmlEscape($_review->getTitle()) ?>"
                 </div>
                 
                 <div class="detail_msg"><?php echo nl2br($this->htmlEscape($_review->getDetail())) ?></div>

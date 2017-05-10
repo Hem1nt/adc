@@ -1,0 +1,5 @@
+<div class="mobile-pr-cart-icon">
+	<a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
+		<span><?php echo $cartItemsCount = Mage::helper('checkout/cart')->getCart()->getItemsCount(); 
+		?></span></a>
+	</div>

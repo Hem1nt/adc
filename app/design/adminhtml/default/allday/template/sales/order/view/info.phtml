@@ -229,18 +229,18 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                     </strong>
                 </td>
             </tr>
-            <tr class="paynowlink <?php echo $order_paynow_class;?>">
-                <td class="label"><label><?php echo Mage::helper('sales')->__('Online Payment Link') ?></label></td>
+           <!--  <tr class="paynowlink <?php //echo $order_paynow_class;?>">
+                <td class="label"><label><?php //echo Mage::helper('sales')->__('Online Payment Link') ?></label></td>
                 <td class="value">
                     <strong>
                         <?php
-                        $linkPayment = Mage::getStoreConfig('payment/offlinepayment/paymentlink');
-                        echo $linkPayment.'?order_id='.$encodedurl.'&utm_source=back-payment&utm_medium=chat&utm_campaign=online-link-payment';
+                        $linkPayment //= //Mage::getStoreConfig('payment/offlinepayment/paymentlink');
+                        //echo $linkPayment.'?order_id='.$encodedurl.'&utm_source=back-payment&utm_medium=chat&utm_campaign=online-link-payment';
 
                         ?>
                     </strong>
                 </td>
-            </tr>
+            </tr> -->
             <tr class="paynowlink <?php echo $order_paynow_class;?>">
                 <td class="label"><label><?php echo Mage::helper('sales')->__('Echek Payment Link') ?></label></td>
                 <td class="value">
@@ -284,20 +284,20 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                     </div>
                 </td>
             </tr>
-            <form action="#" onclick="return false; " method="get" id="update-order-total">
+            <!-- <form action="#" onclick="return false; " method="get" id="update-order-total">
                 <tr>
-                    <td class="label"><label><?php echo Mage::helper('sales')->__('Reason to Update Total Price'); ?></label></td>
+                    <td class="label"><label><?php //echo Mage::helper('sales')->__('Reason to Update Total Price'); ?></label></td>
                     <td class="value"><textarea style="width: 300px;height: 36px;" class="order_reason"></textarea></td>
                 </tr>
                 <tr>
-                    <td class="label"><label><?php echo Mage::helper('sales')->__('Price to be Updated'); ?></label></td>
+                    <td class="label"><label><?php //echo Mage::helper('sales')->__('Price to be Updated'); ?></label></td>
                     <td class="value">
                         <input type="text" class="order_amt" onkeypress="return isNumber(event)" />
                         <input type="submit" name="Submit" id="price_submit" />
                     </td>
 
                 </tr>
-            </form>
+            </form> -->
         </table>
         </fieldset>
     </div>
@@ -325,34 +325,34 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td class="label"><label><?php echo Mage::helper('sales')->__('From Date') ?></label></td>
+            <!-- <tr>
+                <td class="label"><label><?php //echo Mage::helper('sales')->__('From Date') ?></label></td>
                 <td class="value">
-                    <input id="fdate_order_view_id" type="hidden" name="fdate_order_view_id" value="<?php echo $_order->getId() ?>" />
-                    <input type="date" id="from_date" value="<?php echo $_order->getData('fromdate_message'); ?>" />
-                    <?php $fromdate_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savefromdate');
+                    <input id="fdate_order_view_id" type="hidden" name="fdate_order_view_id" value="<?php //echo $_order->getId() ?>" />
+                    <input type="date" id="from_date" value="<?php //echo $_order->getData('fromdate_message'); ?>" />
+                    <?php $fromdate_url //= $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savefromdate');
 
                     ?>
-                    <button id="fromdate_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="fromdate_comment('<?php echo $fromdate_url;?>')" style="">
+                    <button id="fromdate_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="fromdate_comment('<?php //echo $fromdate_url;?>')" style="">
                         <span>
                             <span><span>Submit</span></span>
                         </span>
                     </button>
                 </td>
-            </tr>
-            <tr>
-                <td class="label"><label><?php echo Mage::helper('sales')->__('To Date') ?></label></td>
+            </tr> -->
+            <!-- <tr>
+                <td class="label"><label><?php //echo Mage::helper('sales')->__('To Date') ?></label></td>
                 <td class="value">
-                    <input id="fdate_order_view_id" type="hidden" name="fdate_order_view_id" value="<?php echo $_order->getId() ?>" />
-                    <input type="date" id="to_date" value="<?php echo $_order->getData('todate_message'); ?>" />
-                    <?php $todate_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savetodate') ?>
-                    <button id="todate_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="todate_comment('<?php echo $todate_url;?>')" style="">
+                    <input id="fdate_order_view_id" type="hidden" name="fdate_order_view_id" value="<?php //echo $_order->getId() ?>" />
+                    <input type="date" id="to_date" value="<?php// echo $_order->getData('todate_message'); ?>" />
+                    <?php $todate_url// = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savetodate') ?>
+                    <button id="todate_btn" title="Edit" type="button" class="scalable customOrderBtn" onclick="todate_comment('<?php //echo $todate_url;?>')" style="">
                         <span>
                             <span><span>Submit</span></span>
                         </span>
                     </button>
                 </td>
-            </tr>
+            </tr> -->
         </table>
         </fieldset>
     </div>
