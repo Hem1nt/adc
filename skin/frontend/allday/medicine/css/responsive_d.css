@@ -2325,8 +2325,11 @@
 	  box-sizing: border-box;
 	  height: 100%;
 	  margin-top: 0;
-	  z-index: 9998;
+	  right: inherit!important;
+	  z-index: 9999;
 	}
+
+
 	.catalog-category-view .tab-category-icons, .catalogsearch-result-index .tab-category-icons, .my_account_col .acc-pages-icons {
 	  display: inline-block;
 	  width: 100%;
@@ -3454,7 +3457,7 @@
 	  margin-left: 40px;
 	}
 	.block-account .block-content, .block-compare, .block-layered-nav {
-	  width: 90%;
+	  width: 250px;
 	}
 	.customer-account-login .form-list input.input-text {
 		width: 95%;

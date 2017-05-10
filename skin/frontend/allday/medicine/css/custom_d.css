@@ -2518,7 +2518,7 @@ table#product-review-table {
   position: absolute;
   right: 6px;
   bottom: 6px;
-  z-index: 99;
+  z-index: 98;
 }
 
 .catalog-product-view .zoom-img img, .review-product-list .zoom-img img {
