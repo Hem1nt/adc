@@ -139,15 +139,15 @@ jQuery(document).ready(function($){
 
           if (account_status == "block") {
             $(".overlay-header").hide();
-            $(".block-account .block-content").hide();
+            $(".block-account .block-content").removeClass("show_acc_menu");
           } else {
             $(".overlay-header").show();
-            $(".block-account .block-content").show();
+            $(".block-account .block-content").addClass("show_acc_menu");
           }
         }
 
         else {
-          $(".block-account .block-content").toggle();
+          $(".block-account .block-content").toggleClass("show_acc_menu");
         }
 
         
@@ -407,7 +407,8 @@ jQuery(document).ready(function($){
     });
 
     $(".overlay-header").click(function(){
-      $(".quick-access, .all_categories_list, .overlay-header, .block-account .block-content").hide();
+      $(".quick-access, .all_categories_list, .overlay-header").hide();
+      $(".block-account .block-content").removeClass("show_acc_menu");
       $(".logged-in-user, .logged-in-user .dropdown_links").removeClass("visible");
       $(".logged-in-user").removeClass("active");
     });
