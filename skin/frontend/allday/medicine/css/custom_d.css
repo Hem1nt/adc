@@ -16,6 +16,10 @@ a, a:visited {
 p {
 	margin: 0;
 }
+
+.show_acc_menu{
+	display: block!important;
+}
 .wrapper {
   width: 100%;
   min-width: inherit;
@@ -27,6 +31,7 @@ p {
 	background: #fff;
 	min-height: 4px;
 }
+
 
 .catalog-category-view .col-main .category-products .products-list .no-rating a:hover, 
 	.catalogsearch-result-index .col-main .category-products .products-list .no-rating a:hover{
@@ -10044,22 +10049,19 @@ span.testimonial-date.testimonial-state {
 		position: fixed;
 		top:0;
 		z-index: 9999;
-/************************************************************************************/
-/*new year theme header*/
-.header_wrap {
-    /*background: url(../images/hny_background_new.png) top center no-repeat;*/
-   /* background: url(../images/ADC_Newyear_Theme_1.gif) top center no-repeat;
-    background-size: cover;
-    position: relative;*/
 }
-.year_responsive{
-	display: none;
-}
-.year_img {
-	display: none;
-    position: absolute;
-    right: 28%;
-    bottom: 10%;
+
+	.year_responsive{
+		display: none;
+	}
+
+
+	.year_img {
+		display: none;
+	    position: absolute;
+	    right: 28%;
+	    bottom: 10%;
+	}
 }
 
 @media all and (max-width: 1485px){
