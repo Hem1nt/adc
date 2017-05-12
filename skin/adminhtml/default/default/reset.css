@@ -73,3 +73,4 @@ dt                      { display:block; }
 /* Size */
 small                   { font-size:.9em; }
 big                     { font-size:1.25em; }
+.usercomment{font-weight: bold; font-size: 14px; color: #ff0000;}

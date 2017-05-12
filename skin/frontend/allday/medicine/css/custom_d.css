@@ -28,6 +28,11 @@ p {
 	min-height: 4px;
 }
 
+.catalog-category-view .col-main .category-products .products-list .no-rating a:hover, 
+	.catalogsearch-result-index .col-main .category-products .products-list .no-rating a:hover{
+		font-weight: normal!important;
+	}
+
 
 .header {
 	max-width: 1100px;
