@@ -25,4 +25,16 @@ class Iksula_Trustedcompany_IndexController extends Mage_Core_Controller_Front_A
       echo Mage::helper('trustedcompany')->sendEmail($data);
       exit;
     }
+
+    public function ReviewAction(){
+      $this->loadLayout(); 
+      $this->renderLayout(); 
+    }
+
+    public function ajaxReviewAction(){
+        $limit = $this->getRequest()->getParams();
+        $limit = $limit['limit'];
+        $obj = new Iksula_Trustedcompany_Block_Review();
+        echo $html = $obj->getAjaxReview($limit);
+    }
 }

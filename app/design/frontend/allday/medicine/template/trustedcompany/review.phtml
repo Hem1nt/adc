@@ -1,0 +1,58 @@
+<?php
+$ratings = $this->getRating();
+?>
+<h4><?php echo $ratings['rating'].'/5 "'.$ratings['ratingText'].'"';?></h4>
+<div class="trusted_company">
+<?php
+$reviews = $this->getReviews();
+foreach ($reviews as $key) {
+	$subject = $key['subject'];
+	$body = $key['body'];
+	$rating = $key['rating'];
+	$reviewer = $key['reviewer'];
+	$date = $key['date'];
+?>
+	<div class="review_details">
+		<div class="review_subject"><?php echo $subject; ?></div>
+		<div class="review_body"><?php echo $body; ?></div>
+		<div class="review_rating"><?php echo $rating; ?></div>
+		<div class="review_reviewer"><?php echo $reviewer; ?></div>
+		<div class="review_date"><?php echo $date; ?></div>
+	</div>
+<?php } ?>
+</div>
+<div class="loadergif"><img scr="http://adcupdate.iksulalive.com/media/images/loading.gif"></div>
+<script>
+jQuery(document).ready(function($){
+    // jQuery('.loadergif').hide();
+    var Counter = 0;
+    var limit = 0;
+    function moreData(limit){
+        jQuery.ajax({
+            url:'<?php echo $this->getUrl("trustedcompany/index/ajaxReview");?>',
+            data:'limit='+limit,
+            beforeSend: function() {
+               jQuery('.loadergif').show(); 
+            },
+            success:function(data){
+                jQuery('.loadergif').hide();
+                jQuery(".trusted_company").append(data);
+            }
+        })
+    }
+    function bindScroll(){
+        if(jQuery(window).scrollTop() + jQuery(window).height() > jQuery(document).height() - 900) {
+            var Counter = 1;
+            limit++;
+            jQuery(window).unbind('scroll');  
+            moreData(limit);
+            setTimeout(function(){    
+                jQuery(window).bind('scroll', bindScroll);    
+            }, 2000);
+        }
+    }
+    jQuery(window).scroll(bindScroll);
+});
+</script>
+
+
