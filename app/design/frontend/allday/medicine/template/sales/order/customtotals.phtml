@@ -52,7 +52,11 @@ foreach(explode(",",$appliedRules) as $ruleID) {
 }
 $ruleTitle = implode(',',$ruleNames);
 if($rewardPoints){
-    $ruleTitle .=',Rewardpoints Discount';
+    if($ruleTitle){
+        $ruleTitle .=',Rewardpoints Discount';
+    }else{
+        $ruleTitle .='Rewardpoints Discount';
+    }
 }
 ?>
 <?php foreach ($this->getTotals() as $_code => $_total): ?>
