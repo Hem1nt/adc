@@ -117,7 +117,7 @@ Category layered navigation layout
 
     <catalog_category_layered translate="label">
         <label>Catalog Category (Anchor)</label>
-        <reference name="left">
+        <reference name="right">
             <block type="catalog/layer_view" name="catalog.leftnav" after="top.menu" before="suggestionbox" template="catalog/layer/view.phtml"/>
         </reference>
         <reference name="content">

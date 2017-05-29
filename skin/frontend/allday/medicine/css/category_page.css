@@ -65,7 +65,8 @@ body * {
   float: right;
   width: 29%;
   padding: 0 2%;
-  line-height: 19px;
+  line-height: 18px;
+  font-size: 13px;
   padding-top: 20px;
 }
 .catalog-category-view .col-main .category_banner .banner_desc h1, .catalogsearch-result-index .col-main .category_banner .banner_desc h1 {
@@ -185,7 +186,7 @@ body * {
 .catalog-category-view .col-main .category-products .products-grid li.item .notify-me-boxwrapper .notify-input-box input, .catalogsearch-result-index .col-main .category-products .products-grid li.item .notify-me-boxwrapper .notify-input-box input {
   font-size: 14px;
   font-weight: 600;
-  text-transform: capitalize;
+  /*text-transform: capitalize;*/
 }
 .catalog-category-view .col-main .category-products .products-grid li.item .notify-me-boxwrapper .notify-input-box .blank_email, .catalogsearch-result-index .col-main .category-products .products-grid li.item .notify-me-boxwrapper .notify-input-box .blank_email {
   margin-bottom: 10px;
@@ -1106,6 +1107,15 @@ dl#narrow-by-list dd ol li a {
     margin-right: -15px;
   }
 }
+@media only screen and (max-width: 1225px){
+
+  .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image {
+    width: 64%;
+  }
+  .catalog-category-view .col-main .category_banner .banner_desc, .catalogsearch-result-index .col-main .category_banner .banner_desc {
+    width: 32%;
+  }
+}
 @media only screen and (max-width: 1129px) {
   .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image {
     width: 60%;
@@ -1213,13 +1223,13 @@ dl#narrow-by-list dd ol li a {
   }
 }
 @media only screen and (max-width: 1012px) {
-  .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image {
-    width: 70%;
-    display: inline-block;
-    float: left;
+  .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image{
+    width: 62%;
   }
-  .catalog-category-view .col-main .category_banner .banner_desc, .catalogsearch-result-index .col-main .category_banner .banner_desc {
-    width: 26%;
+  .catalog-category-view .col-main .category_banner .banner_desc, .catalogsearch-result-index .col-main .category_banner .banner_desc{
+    width: 34%;
+    font-size: 12px;
+    line-height: 17px;
   }
   .catalog-category-view .col-main .category_banner .banner_desc h1, .catalogsearch-result-index .col-main .category_banner .banner_desc h1 {
     font-size: 16px;
@@ -1250,10 +1260,10 @@ dl#narrow-by-list dd ol li a {
   }
 
   .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image {
-    width: 69%;
+    width: 64%;
   }
   .catalog-category-view .col-main .category_banner .banner_desc, .catalogsearch-result-index .col-main .category_banner .banner_desc {
-    width: 27%;
+    width: 32%;
   }
   .catalog-category-view .col-main .category_banner .banner_desc .desc_cat, .catalogsearch-result-index .col-main .category_banner .banner_desc .desc_cat {
     height: 110px;

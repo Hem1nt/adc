@@ -768,6 +768,15 @@ span.recomend-text {
   text-align: left;
 }
 
+.catalog-product-view .easytabs-content#product_tabs_infographics_contents .scroll_div_content{
+  max-height: inherit;
+  height: auto;
+}
+.catalog-product-view .easytabs-content#product_tabs_infographics_contents .scroll_div_content img{
+  width: auto;
+  max-width: 100%;
+}
+
 .catalog-product-view .product-view .box-tags .note {
   margin: 10px 0 0;
   padding: 0;

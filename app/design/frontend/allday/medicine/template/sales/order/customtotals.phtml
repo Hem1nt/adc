@@ -130,7 +130,7 @@ if($rewardPoints){
         <tr>
             <td class="label" style="float:right; margin-right:30px; padding-bottom: 10px;"><strong><?php echo $ruleTitle; ?></strong></td>
             <td style="">
-                <?php echo $order_discount; ?>
+                <?php echo Mage::helper('core')->currency($order_discount, true, false);  ?>
             </td>
 
 

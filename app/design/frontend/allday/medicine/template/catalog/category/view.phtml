@@ -61,7 +61,7 @@ if ($_imgUrl = $_category->getImageUrl()) {
             $string = $this->getCurrentCategory()->getDescription();
             if (strlen($string) > 500) {
 
-                $stringCut = substr($string, 0, 550);
+                $stringCut = substr($string, 0, 430);
                 $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <span style="cursor:pointer;color:#6B9A63" class="read_more" id="read_more"><b>Read More</b></span>'; 
             }
             echo $string
