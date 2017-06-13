@@ -8,10 +8,16 @@
       <block type="trustedcompany/index" name="trustedcompany_index" template="trustedcompany/index.phtml"/>   
     </reference>   
   </trustedcompany_index_index>  
-  <trustedcompany_index_review>   
+  
+  <trustedcompany_index_review> 
     <reference name="root">   
       <action method="setTemplate"><template>page/1column.phtml</template></action>   
-    </reference>   
+    </reference>     
+
+    <reference name="head">
+      <action method="addItem"><type>skin_css</type><name>css/custom_ry.css</name></action>
+    </reference>
+    
     <reference name="content">   
       <block type="trustedcompany/review" name="trustedcompany_review" template="trustedcompany/review.phtml"/>   
     </reference>   

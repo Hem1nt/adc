@@ -136,9 +136,9 @@
     if($role_name != "Administrators"){
         if($controllername != "sales_order" || $actionname != "view"){ ?>
             <script type="text/javascript">
-                jQuery(document).bind("contextmenu cut copy",function(e){
-                    e.preventDefault();
-                });
+//                jQuery(document).bind("contextmenu cut copy",function(e){
+  //                  e.preventDefault();
+    //            });
 
                 jQuery(document).on('click', function (e) {
                     if(e.ctrlKey)

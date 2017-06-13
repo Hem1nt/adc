@@ -50,6 +50,7 @@ class Iksula_Trustedcompany_Block_Review extends Mage_Core_Block_Template{
 	}
 
 	public function getAjaxReview($limit){
+		$ratingPercentage = array('1'=>'20','2'=>'40','3'=>'60','4'=>'80','5'=>'100');
 		$cUrl = $this->__companyUrl;
 		$publickey = $this->__publicKey;
 		$privateKey = $this->__privateKey;
@@ -75,11 +76,15 @@ class Iksula_Trustedcompany_Block_Review extends Mage_Core_Block_Template{
 		$date = $key['date'];
 
 		$html .= '<div class="review_details">
-					<div class="review_subject">'.$subject.'/div>
-					<div class="review_body">'.$body.'</div>
-					<div class="review_rating">'.$rating.'</div>
-					<div class="review_reviewer">'.$reviewer.'</div>
-					<div class="review_date">'.$date.'</div>
+				<div class="rating-box">
+					<div class="review_rating" style="width:'.$ratingPercentage[$rating].'%"></div>
+				</div>
+				<div class="review_reviewer">'.$reviewer.'
+					<span class="review_date">'.$date.'</span>
+				</div>
+				<div class="review_subject">'.$subject.'</div>
+				<div class="review_body">'.$body.'</div>					
+					
 				</div>';
 		}
 		return $html;
