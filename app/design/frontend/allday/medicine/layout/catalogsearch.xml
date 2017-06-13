@@ -52,9 +52,11 @@
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
         </reference>
-        <reference name="right">
+
+<!--        <reference name="right">
             <block type="catalogsearch/layer" name="catalogsearch.leftnav" after="top.menu" before="suggestionbox" template="catalog/layer/view.phtml"/>
-        </reference>
+        </reference> --> 
+
         <reference name="content">
             <block type="catalogsearch/result" name="search.result" template="catalogsearch/result.phtml">
                 <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml">

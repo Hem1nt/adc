@@ -9,10 +9,10 @@
 
             <backend>Cm_Cache_Backend_Redis</backend>
             <backend_options>
-                <server>127.0.0.1</server>
+                <server>10.176.98.81</server>
                 <port>6379</port>
-                <persistent>adccache-fpc</persistent>
-                <database>2</database>
+                <persistent>adcupdate-fpc</persistent>
+                <database>7</database>
                 <password></password>
                 <force_standalone>1</force_standalone>
                 <connect_retries>1</connect_retries>
