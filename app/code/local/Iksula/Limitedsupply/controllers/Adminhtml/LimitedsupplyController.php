@@ -2,6 +2,12 @@
 
 class Iksula_Limitedsupply_Adminhtml_LimitedsupplyController extends Mage_Adminhtml_Controller_Action
 {
+	protected function _isAllowed(){
+	        // return true;
+	        return Mage::getSingleton('admin/session')->isAllowed('limitedsupply');  
+	    }
+
+
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("limitedsupply/limitedsupply")->_addBreadcrumb(Mage::helper("adminhtml")->__("Limitedsupply  Manager"),Mage::helper("adminhtml")->__("Limitedsupply Manager"));

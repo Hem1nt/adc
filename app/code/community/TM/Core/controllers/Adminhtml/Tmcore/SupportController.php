@@ -1,7 +1,17 @@
 <?php
 
 class TM_Core_Adminhtml_Tmcore_SupportController extends Mage_Adminhtml_Controller_Action
-{
+{   
+
+
+
+
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('admin/templates_master'); 
+    }
+
+    
     protected function _initAction()
     {
         $this->loadLayout()

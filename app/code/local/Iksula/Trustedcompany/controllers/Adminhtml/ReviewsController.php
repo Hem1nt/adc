@@ -2,6 +2,11 @@
 
 class Iksula_Trustedcompany_Adminhtml_ReviewsController extends Mage_Adminhtml_Controller_Action
 {
+		protected function _isAllowed(){
+	        // return true;
+	        return Mage::getSingleton('admin/session')->isAllowed('trustedcompany');  
+	    }
+    
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("trustedcompany/reviews")->_addBreadcrumb(Mage::helper("adminhtml")->__("Reviews  Manager"),Mage::helper("adminhtml")->__("Reviews Manager"));

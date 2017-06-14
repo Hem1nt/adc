@@ -1,6 +1,10 @@
 <?php
 class Iksula_Prescription_Adminhtml_PrescriptionbackendController extends Mage_Adminhtml_Controller_Action
 {
+	protected function _isAllowed(){
+        // return true;
+        return Mage::getSingleton('admin/session')->isAllowed('prescription/prescriptionbackend');  
+    }
 	public function indexAction()
     {
        $this->loadLayout();

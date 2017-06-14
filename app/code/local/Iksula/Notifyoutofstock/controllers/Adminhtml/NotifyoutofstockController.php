@@ -2,6 +2,11 @@
 
 class Iksula_Notifyoutofstock_Adminhtml_NotifyoutofstockController extends Mage_Adminhtml_Controller_Action
 {
+		protected function _isAllowed(){
+	        // return true;
+	        return Mage::getSingleton('admin/session')->isAllowed('notifyoutofstock');  
+	    }
+    
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("notifyoutofstock/notifyoutofstock")->_addBreadcrumb(Mage::helper("adminhtml")->__("Notifyoutofstock  Manager"),Mage::helper("adminhtml")->__("Notifyoutofstock Manager"));

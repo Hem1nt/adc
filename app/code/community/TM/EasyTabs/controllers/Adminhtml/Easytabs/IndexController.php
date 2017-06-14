@@ -1,7 +1,15 @@
 <?php
 
 class TM_EasyTabs_Adminhtml_Easytabs_IndexController extends Mage_Adminhtml_Controller_Action
+{   
+
+
+
+    protected function _isAllowed()
 {
+    return true; 
+}
+
      protected function _initAction()
     {
         $this->loadLayout();

@@ -2,6 +2,10 @@
 
 class Iksula_Backendfaq_Adminhtml_BackendfaqController extends Mage_Adminhtml_Controller_Action
 {
+	 protected function _isAllowed(){
+        return Mage::getSingleton('admin/session')->isAllowed('backendfaq/backendfaq'); // It return true/false with acl set with user
+    }
+
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("backendfaq/backendfaq")->_addBreadcrumb(Mage::helper("adminhtml")->__("Backendfaq  Manager"),Mage::helper("adminhtml")->__("Backendfaq Manager"));

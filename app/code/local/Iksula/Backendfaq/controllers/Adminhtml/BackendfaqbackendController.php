@@ -1,6 +1,11 @@
 <?php
 class Iksula_Backendfaq_Adminhtml_BackendfaqbackendController extends Mage_Adminhtml_Controller_Action
 {
+
+  protected function _isAllowed(){
+        return Mage::getSingleton('admin/session')->isAllowed('backendfaq/backendfaqbackend'); // It return true/false with acl set with user
+    }
+
     public function indexAction()
       {
 

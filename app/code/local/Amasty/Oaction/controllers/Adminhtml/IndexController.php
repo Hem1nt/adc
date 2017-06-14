@@ -6,6 +6,11 @@
 */
 class Amasty_Oaction_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
 {
+    
+    protected function _isAllowed(){
+        return Mage::getSingleton('admin/session')->isAllowed('system/config'); // It return true/false with acl set with user
+    }
+
     public function doAction()
     {
         $ids         = $this->getRequest()->getParam('order_ids');

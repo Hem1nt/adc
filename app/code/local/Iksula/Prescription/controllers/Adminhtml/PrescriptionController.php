@@ -2,6 +2,11 @@
 
 class Iksula_Prescription_Adminhtml_PrescriptionController extends Mage_Adminhtml_Controller_Action
 {
+	protected function _isAllowed(){
+        // return true;
+        return Mage::getSingleton('admin/session')->isAllowed('prescription/prescription');  
+    }
+    
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("prescription/prescription")->_addBreadcrumb(Mage::helper("adminhtml")->__("Prescription  Manager"),Mage::helper("adminhtml")->__("Prescription Manager"));

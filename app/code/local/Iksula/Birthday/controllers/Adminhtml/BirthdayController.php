@@ -2,6 +2,12 @@
 
 class Iksula_Birthday_Adminhtml_BirthdayController extends Mage_Adminhtml_Controller_Action
 {
+
+		protected function _isAllowed(){
+	        return Mage::getSingleton('admin/session')->isAllowed('system/config'); // It return true/false with acl set with user
+	    }
+
+
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("birthday/birthday")->_addBreadcrumb(Mage::helper("adminhtml")->__("Birthday  Manager"),Mage::helper("adminhtml")->__("Birthday Manager"));

@@ -6,6 +6,12 @@ class Iksula_Reports_Adminhtml_Iksula_ReportsController extends Mage_Adminhtml_C
      * Initialize titles and navigation breadcrumbs
      * @return My_Reports_Adminhtml_ReportsController
      */
+
+    protected function _isAllowed(){
+        // return true;
+        return Mage::getSingleton('admin/session')->isAllowed('report/salesroot');  
+    }
+
     protected function _initAction()
     {
         $this->_title($this->__('Reports'))->_title($this->__('Sales'))->_title($this->__('Custom Reports'));
