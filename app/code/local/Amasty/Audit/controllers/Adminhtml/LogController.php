@@ -5,7 +5,13 @@
 * @package Amasty_Audit 
 */
 class Amasty_Audit_Adminhtml_LogController extends Mage_Adminhtml_Controller_Action
-{
+{   
+
+    protected function _isAllowed()
+    {
+        return true; 
+    }
+
     public function indexAction() 
     {
         $this->loadLayout(); 

@@ -1,6 +1,11 @@
 <?php
 class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Mage_Adminhtml_Controller_Action
 {
+	 protected function _isAllowed(){
+        // return true;
+        return Mage::getSingleton('admin/session')->isAllowed('customerdelete');  
+    }
+    
 	public function indexAction()
     {
        $this->loadLayout();

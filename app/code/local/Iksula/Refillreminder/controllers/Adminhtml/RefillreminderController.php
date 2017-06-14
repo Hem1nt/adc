@@ -2,6 +2,13 @@
 
 class Iksula_Refillreminder_Adminhtml_RefillreminderController extends Mage_Adminhtml_Controller_Action
 {
+
+	protected function _isAllowed(){
+        // return true;
+        return Mage::getSingleton('admin/session')->isAllowed('refillreminder');  
+    }
+
+    
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("refillreminder/refillreminder")->_addBreadcrumb(Mage::helper("adminhtml")->__("Refillreminder  Manager"),Mage::helper("adminhtml")->__("Refillreminder Manager"));

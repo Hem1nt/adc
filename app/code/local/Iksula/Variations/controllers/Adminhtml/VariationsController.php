@@ -2,6 +2,11 @@
 
 class Iksula_Variations_Adminhtml_VariationsController extends Mage_Adminhtml_Controller_Action
 {
+	protected function _isAllowed(){
+	        // return true;
+	        return Mage::getSingleton('admin/session')->isAllowed('variations');  
+	    }
+	    
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("variations/variations")->_addBreadcrumb(Mage::helper("adminhtml")->__("Variations  Manager"),Mage::helper("adminhtml")->__("Variations Manager"));

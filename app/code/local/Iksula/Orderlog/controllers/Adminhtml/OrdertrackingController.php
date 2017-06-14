@@ -2,6 +2,11 @@
 
 class Iksula_Orderlog_Adminhtml_OrdertrackingController extends Mage_Adminhtml_Controller_Action
 {
+	protected function _isAllowed(){
+		    // return true;
+		    return Mage::getSingleton('admin/session')->isAllowed('orderlog/ordertracking');  
+		}
+		
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("orderlog/ordertracking")->_addBreadcrumb(Mage::helper("adminhtml")->__("Ordertracking  Manager"),Mage::helper("adminhtml")->__("Ordertracking Manager"));

@@ -4,8 +4,8 @@ class Iksula_Cashback_Adminhtml_CashbackController extends Mage_Adminhtml_Contro
 {
 		protected function _isAllowed()
 		{
-		//return Mage::getSingleton('admin/session')->isAllowed('cashback/cashback');
-			return true;
+			// return true;
+			return Mage::getSingleton('admin/session')->isAllowed('cashback/cashback');
 		}
 
 		protected function _initAction()

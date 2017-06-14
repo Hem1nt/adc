@@ -2,6 +2,11 @@
 
 class Iksula_Shipmentinfo_Adminhtml_ShipmentinfoController extends Mage_Adminhtml_Controller_Action
 {
+	protected function _isAllowed(){
+        // return true;
+        return Mage::getSingleton('admin/session')->isAllowed('shipmentinfo/shipmentinfo');  
+    }
+    
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("shipmentinfo/shipmentinfo")->_addBreadcrumb(Mage::helper("adminhtml")->__("Shipmentinfo  Manager"),Mage::helper("adminhtml")->__("Shipmentinfo Manager"));

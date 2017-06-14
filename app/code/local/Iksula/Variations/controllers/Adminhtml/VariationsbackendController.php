@@ -1,6 +1,11 @@
 <?php
 class Iksula_Variations_Adminhtml_VariationsbackendController extends Mage_Adminhtml_Controller_Action
 {
+    protected function _isAllowed(){
+            // return true;
+            return Mage::getSingleton('admin/session')->isAllowed('variations');  
+        }
+        
 	public function indexAction()
     {
        $this->loadLayout();

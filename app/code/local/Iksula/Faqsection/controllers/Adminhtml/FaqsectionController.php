@@ -2,6 +2,12 @@
 
 class Iksula_Faqsection_Adminhtml_FaqsectionController extends Mage_Adminhtml_Controller_Action
 {
+
+	 protected function _isAllowed(){
+	        // return true;
+	        return Mage::getSingleton('admin/session')->isAllowed('faqsection/faqsection');  
+	    }
+	    
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("faqsection/faqsection")->_addBreadcrumb(Mage::helper("adminhtml")->__("Faqsection  Manager"),Mage::helper("adminhtml")->__("Faqsection Manager"));

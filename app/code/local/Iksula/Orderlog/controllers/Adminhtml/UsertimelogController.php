@@ -2,6 +2,11 @@
 
 class Iksula_Orderlog_Adminhtml_UsertimelogController extends Mage_Adminhtml_Controller_Action
 {
+	protected function _isAllowed(){
+		    // return true;
+		    return Mage::getSingleton('admin/session')->isAllowed('orderlog/usertimelog');  
+		}
+		
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("orderlog/usertimelog")->_addBreadcrumb(Mage::helper("adminhtml")->__("Usertimelog  Manager"),Mage::helper("adminhtml")->__("Usertimelog Manager"));

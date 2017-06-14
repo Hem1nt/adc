@@ -1,7 +1,15 @@
 <?php
 
 class Manoj_Abandoned_Adminhtml_AbandonedController extends Mage_Adminhtml_Controller_Action
-{
+{		
+
+
+		protected function _isAllowed()
+		{
+		    //return Mage::getSingleton('admin/session')->isAllowed('admin/cartsection');  
+		    return true;  
+		}
+
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("abandoned/abandoned")->_addBreadcrumb(Mage::helper("adminhtml")->__("Abandoned  Manager"),Mage::helper("adminhtml")->__("Abandoned Manager"));

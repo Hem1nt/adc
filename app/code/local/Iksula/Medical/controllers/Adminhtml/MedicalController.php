@@ -2,6 +2,11 @@
 
 class Iksula_Medical_Adminhtml_MedicalController extends Mage_Adminhtml_Controller_Action
 {
+		protected function _isAllowed(){
+	        // return true;
+	        return Mage::getSingleton('admin/session')->isAllowed('medical');  
+	    }
+
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("medical/medical")->_addBreadcrumb(Mage::helper("adminhtml")->__("Medical  Manager"),Mage::helper("adminhtml")->__("Medical Manager"));

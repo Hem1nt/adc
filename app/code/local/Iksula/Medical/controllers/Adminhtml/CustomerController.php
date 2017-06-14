@@ -2,7 +2,12 @@
 require_once "Mage/Adminhtml/controllers/CustomerController.php";  
 class Iksula_Medical_Adminhtml_CustomerController extends Mage_Adminhtml_CustomerController{
 
-	 public function medicalAction(){
+    protected function _isAllowed(){
+        // return true;
+        return Mage::getSingleton('admin/session')->isAllowed('medical');  
+    }
+
+	public function medicalAction(){
 	 //	echo "manoj";exit;
 	    $this->_initCustomer();
         $this->getResponse()->setBody(

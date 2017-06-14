@@ -2,6 +2,13 @@
 
 class Iksula_Homepagebanner_Adminhtml_HomesliderController extends Mage_Adminhtml_Controller_Action
 {
+	
+
+	protected function _isAllowed(){
+	        // return true;
+	        return Mage::getSingleton('admin/session')->isAllowed('homepagebanner');  
+	    }
+
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("homepagebanner/homeslider")->_addBreadcrumb(Mage::helper("adminhtml")->__("Homeslider  Manager"),Mage::helper("adminhtml")->__("Homeslider Manager"));

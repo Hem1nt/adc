@@ -6,6 +6,10 @@ class Iksula_Categorysales_Adminhtml_Iksula_CategorysalesController extends Mage
      * Initialize titles and navigation breadcrumbs
      * @return My_Reports_Adminhtml_ReportsController
      */
+
+    protected function _isAllowed(){
+        return Mage::getSingleton('admin/session')->isAllowed('report/salesroot');  
+    }
     protected function _initAction()
     {
         $this->_title($this->__('CategorySales'))->_title($this->__('Sales'))->_title($this->__('Custom Category Sales Reports'));

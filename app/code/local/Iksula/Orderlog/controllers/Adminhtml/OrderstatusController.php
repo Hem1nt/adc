@@ -2,6 +2,12 @@
 
 class Iksula_Orderlog_Adminhtml_OrderstatusController extends Mage_Adminhtml_Controller_Action
 {
+		protected function _isAllowed(){
+		    // return true;
+		    return Mage::getSingleton('admin/session')->isAllowed('orderlog/orderstatus');  
+		}
+    
+
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("orderlog/orderstatus")->_addBreadcrumb(Mage::helper("adminhtml")->__("Orderstatus  Manager"),Mage::helper("adminhtml")->__("Orderstatus Manager"));

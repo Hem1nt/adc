@@ -8,6 +8,11 @@
  */
 class Iksula_OutofStockSubscription_Adminhtml_SubscriberController extends Mage_Adminhtml_Controller_Action
 {
+    protected function _isAllowed(){
+            // return true;
+            return Mage::getSingleton('admin/session')->isAllowed('outofstocksubscription');  
+        }
+        
     public function IndexAction()
     {
 

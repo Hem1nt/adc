@@ -2,6 +2,13 @@
 
 class Iksula_Callforoffer_Adminhtml_CallforoffersController extends Mage_Adminhtml_Controller_Action
 {
+
+		protected function _isAllowed(){
+	        return Mage::getSingleton('admin/session')->isAllowed('callforoffer'); // It return true/false with acl set with user
+	    }
+
+
+
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("callforoffer/callforoffers")->_addBreadcrumb(Mage::helper("adminhtml")->__("Callforoffers  Manager"),Mage::helper("adminhtml")->__("Callforoffers Manager"));

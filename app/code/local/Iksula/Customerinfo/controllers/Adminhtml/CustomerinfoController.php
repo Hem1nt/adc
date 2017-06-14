@@ -2,6 +2,11 @@
 
 class Iksula_Customerinfo_Adminhtml_CustomerinfoController extends Mage_Adminhtml_Controller_Action
 {
+		 protected function _isAllowed(){
+	        // return true;
+	        return Mage::getSingleton('admin/session')->isAllowed('customerinfo');  
+	    }
+	    
 		protected function _initAction()
 		{
 				$this->loadLayout()->_setActiveMenu("customerinfo/customerinfo")->_addBreadcrumb(Mage::helper("adminhtml")->__("Customerinfo  Manager"),Mage::helper("adminhtml")->__("Customerinfo Manager"));

@@ -2,6 +2,11 @@
 
 class Iksula_Customerdelete_Adminhtml_CustomerdeleteController extends Mage_Adminhtml_Controller_Action
 {
+	 protected function _isAllowed(){
+        // return true;
+        return Mage::getSingleton('admin/session')->isAllowed('customerdelete');  
+    }
+
 	protected function _initAction(){
 		$this->loadLayout()->_setActiveMenu("customerdelete/customerdelete")->_addBreadcrumb(Mage::helper("adminhtml")->__("Customerdelete  Manager"),Mage::helper("adminhtml")->__("Customerdelete Manager"));
 		return $this;
