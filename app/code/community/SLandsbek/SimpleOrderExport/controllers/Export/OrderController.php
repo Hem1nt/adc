@@ -39,6 +39,10 @@ class SLandsbek_SimpleOrderExport_Export_OrderController extends Mage_Adminhtml_
      * when finished.
      */
 
+    protected function _isAllowed(){
+        return Mage::getSingleton('admin/session')->isAllowed('simpleorderexport');
+    }
+
     public function couponreportexportAction()
     {
       $orders = $this->getRequest()->getPost('order_ids', array());
