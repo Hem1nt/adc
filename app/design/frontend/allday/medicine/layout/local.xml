@@ -189,7 +189,7 @@
 			<!-- <block type="core/template"  name="category_banner123" template="custom/category_banner.phtml"/> -->
 		</reference>
 		<reference name="right">
-			<block type="core/template" name="herbalcategory" template="herbalcategory/herbalcategoryleft.phtml" before="-"/>
+			<!--<block type="core/template" name="herbalcategory" template="herbalcategory/herbalcategoryleft.phtml" before="-"/> -->
 			<block type="core/template" name="trustedcompany" template="trustedcompany/trustedcompany.phtml" />
 			<remove name="wishlist_sidebar"/>
 		</reference>
