@@ -21,5 +21,8 @@ rer434fgdt44dft4re343f/
 sitemap/sitemap.xml
 app/etc/modules/Nexcessnet_Turpentine.xml
 *.sql
-skin/frontend/allday/medicine/css/*.css.map
-skin/frontend/allday/medicine/.sass-cache
+*.map
+*.sass-cache
+fpc.xml
+adcmyadmin_HwNqzF7xQCFDkhZSP3HdbBcdcadG/
+blog/
