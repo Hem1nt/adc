@@ -2232,7 +2232,7 @@ button.button:hover span {
 }
 
 .catalog-product-view .review-count-pr, .review-product-list .review-count-pr {
-  width: 40%;
+  width: 40% !important;
   display: inline-block;
 }
 

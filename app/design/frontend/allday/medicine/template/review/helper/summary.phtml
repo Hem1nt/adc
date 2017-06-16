@@ -56,7 +56,7 @@ $pId = $this->getProduct()->getId();
             <?php
                 }else{
             ?>
-                 <a href="<?php $this->__(Mage::helper('customer')->getLoginUrl(), array('referer' => $referer))?>" class="review-scroll add_your_review"><?php echo $this->__('Add Your Review') ?></a>
+                 <a href="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="review-scroll add_your_review"><?php echo $this->__('Add Your Review') ?></a>
             <?php        
                 }
             ?>
@@ -70,7 +70,7 @@ $pId = $this->getProduct()->getId();
             <?php
                 }else{
             ?>
-                <p class="no-rating review-scroll"><a href="<?php echo $this->__(Mage::helper('customer')->getLoginUrl(), array('referer' => $referer)) ?>"><?php echo $this->__('Be the first to review this product') ?></a></p>
+                <p class="no-rating review-scroll"><a href="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer)) ?>"><?php echo $this->__('Be the first to review this product') ?></a></p>
             <?php        
                 }
             ?>
