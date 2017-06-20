@@ -95,6 +95,12 @@ if($freshdeskStatus==1){
             </div> -->
 
             <?php echo $this->getChildHtml('topLinks') ?>
+            <div class="new_arrival stock-desk">
+                 <a href="<?php echo $this->getUrl() ?>stock-clearance.html"><img src="<?php echo $this->getSkinUrl().'images/stock_clr_desktop_1.png'; ?>" /></a>               
+            </div>
+             <div class="new_arrival new_arrival_img">                 
+                <a href="<?php echo $this->getUrl() ?>new-products.html"><img src="<?php echo $this->getSkinUrl().'images/new_arrival.png'; ?>" /></a>
+            </div>
             <?php echo $this->getChildHtml('miniCart') ?>
             <?php echo $this->getChildHtml('store_language') ?>
         </div>
