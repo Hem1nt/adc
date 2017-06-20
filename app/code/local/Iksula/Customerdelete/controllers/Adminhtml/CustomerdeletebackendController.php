@@ -1,11 +1,10 @@
 <?php
 class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Mage_Adminhtml_Controller_Action
 {
-	 protected function _isAllowed(){
+	protected function _isAllowed(){
         // return true;
         return Mage::getSingleton('admin/session')->isAllowed('customerdelete');  
     }
-    
 	public function indexAction()
     {
        $this->loadLayout();
@@ -73,6 +72,15 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
 		$order->setDispatcherMessage($dispatcher_data)->save();
 		$data = array('entity_id'=>$order_id,'dispatcher_message'=>$dispatcher_data);
 		Mage::dispatchEvent('insert_dispatcher_message',array('data'=>$data));
+	}
+
+	public function savecommentAction(){
+		$major_comment = $this->getRequest()->getParam('major_comment');
+		$order_id = $this->getRequest()->getParam('orderid');
+		$order = Mage::getModel('sales/order')->load($order_id);
+		$orderGrid =  Mage::getResourceModel('sales/order_grid_collection')->addFieldToFilter('entity_id',$order_id);
+		$order->setMajorComment($major_comment)->save();
+		$orderGrid->getFirstitem()->setMajorComment($major_comment)->save();
 	}
 
 

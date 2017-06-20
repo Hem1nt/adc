@@ -30,7 +30,9 @@
         $reviews = Mage::getModel('review/review')->getCollection()
         ->addStoreFilter(Mage::app()->getStore()->getId())
         ->addEntityFilter('product', $productId)
-        ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED);
+        ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
+        ->setDateOrder()
+        ->addRateVotes();
 ?>
 
 <div class="box-collateral box-reviews" id="customer-reviews">

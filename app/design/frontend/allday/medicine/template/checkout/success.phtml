@@ -83,15 +83,15 @@ $paymentCode = $order->getPayment()->getMethodInstance()->getCode();
 </div>
 
 <script>
-jQuery('document').ready(function(){
-    var incrementId = jQuery('#incrementId').val();
-    var url = '<?php echo $this->getUrl("overrides/method/changeCustomerGroup");?>';
-    jQuery.ajax({
-        type:'post',
-        url:url,
-        data:'incrementId='+incrementId,
-        success:function(res){
-        }
-    })
-})
+// jQuery('document').ready(function(){
+//     var incrementId = jQuery('#incrementId').val();
+//     var url = '<?php echo $this->getUrl("overrides/method/changeCustomerGroup");?>';
+//     jQuery.ajax({
+//         type:'post',
+//         url:url,
+//         data:'incrementId='+incrementId,
+//         success:function(res){
+//         }
+//     })
+// })
 </script>
