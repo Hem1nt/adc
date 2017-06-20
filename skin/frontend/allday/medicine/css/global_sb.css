@@ -685,6 +685,33 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
 }
 /* umesh css */
 
+
+/*new arrival*/
+
+.header .quick-access {
+    position: relative;
+}
+.new_arrival.stock-desk {
+    position: absolute;
+    right: 23%;
+    top: 20%;
+}
+.new_arrival.new_arrival_img {
+    position: absolute;
+    right: 12%;
+    top: 20%;
+}
+.new_arrival.stock-desk a, .new_arrival.new_arrival_img a{
+    display: block;
+}
+.new_arrival.stock-desk a img, .new_arrival.new_arrival_img a img{
+    width: 100%;
+    height: auto;
+}
+.mobile_stock{
+    display: none;
+}
+
 @media only screen and (max-width: 1225px){
     .header, .nav-content-header, .main, .adc-footer-row1{
         padding: 0 15px;
@@ -694,6 +721,12 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         padding: 0 5px;
     }
 }
+/*@media only screen and (max-width: 1100px){
+
+    .new_arrival {
+        margin: 0 1% 0 0;
+    }
+}*/
 @media only screen and (max-width: 1024px){
 
         a.home_icon {
@@ -729,6 +762,17 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         .adc-footer-links ul {
             margin-right: 2% !important;
             width: auto !important;
+        }
+        .new_arrival.stock-desk{
+            width: 9%;
+            top: 29%;
+            width: 50px;
+        } 
+        .new_arrival.new_arrival_img {
+           width: 9%;
+           right: 14%;
+           top: 29%;
+           width: 50px;
         }
 
 }
@@ -806,6 +850,12 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .customer-account-index .sidebar .block-account .block-content{
         right: 235px;
     }
+    .new_arrival.stock-desk {
+        right: 36%;
+    }
+    .new_arrival.new_arrival_img {
+        right: 22%;
+    }
 }
 @media only screen and (max-width: 840px){
     .col-main .opc-wrapper-opc .discount-block input.button.apply-coupon{
@@ -824,6 +874,44 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
 }
 
 @media only screen and (max-width: 736px){
+
+    .mobile_stock {
+        color: #fff;
+        background: #f16606;
+        /* text-align: center; */
+        display: block;
+        overflow: hidden;
+    }
+    .stock-text {
+        font-size: 16px;
+        line-height: 18px;
+        display: inline;
+        padding: 0 0 0 10px;
+        color: #fff;
+        vertical-align: text-bottom;
+        line-height: 36px;
+    }
+    .stock-btn {
+        line-height: 18px;
+        padding: 10px 22px;
+        color: #FFF;
+        vertical-align: text-bottom;
+        font-size: 12px;
+        text-decoration: underline;
+        text-transform: uppercase;
+        float: right;
+        background: rgba(0,0,0,0.2);
+    }
+    .new_arrival.new_arrival_img{
+        position: absolute;
+        right: 9%;
+        top: -60px;
+        width: 45px;
+    }
+    .new_arrival.stock-desk{
+        display: none;
+    }
+
     #search_autocomplete {
         width: 100% !important;
         left: 0!important;
@@ -1136,7 +1224,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
        -webkit-appearance: none;
        box-shadow: none; 
     }
-
+}
 @media only screen and (max-width: 670px){
     .customer-account-login .account-login .col2-set .col-1.new-users{
         margin: 0;
