@@ -7,7 +7,11 @@
                 $productsCollection = Mage::getModel('catalog/product')->load($key);}
 ?>
 <!-- Recently Viewed item's S -->
-
+<div class="mobile_stock">
+    <a href="<?php echo $this->getUrl() ?>stock-clearance.html">
+        <span class="stock-text"><b>Stock Clearance Sale</b></span><span class="stock-btn">View more</span>
+    </a>              
+</div>
 <div class="recently_view_category_content">
 <div class="register_user_categories">
 	<div class="register_user_category_name">

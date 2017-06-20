@@ -155,10 +155,6 @@
         -webkit-transition: all 0.3s linear;
 }
 
-
-
-
-
 /*override product review*/
 .rating_section {
     display: inline-block;
@@ -468,6 +464,7 @@ input[type="radio"]{
     }
 
 @media only screen and (max-width: 736px){
+
     .footer-payment-types span span#siteseal img {
         display: none;
     }
@@ -488,15 +485,16 @@ input[type="radio"]{
     .footer-payment-types {
         margin-top: 0;
     }
-               .overrides-method-productreview .review_desc {
-                    float: right;
-                    width: 100%;
-                }
-                .overrides-method-productreview  .review_frm .rating_heading {
-                    margin-right: 0;
-                    font-size: 14px;
-                    line-height: 28px;
-                }
+   .overrides-method-productreview .review_desc {
+        float: right;
+        width: 100%;
+    }
+    .overrides-method-productreview  .review_frm .rating_heading {
+        margin-right: 0;
+        font-size: 14px;
+        line-height: 28px;
+    }
+    
 
 }
 
