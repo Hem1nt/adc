@@ -136,11 +136,11 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
        $flag = false;
        $string = $_product->getShortDescription();
        if (strlen($string) > 180) {
-        $stringCut = substr($string, 0, 180);
-        $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'...'; 
-        $flag = true;
+            $stringCut = substr($string, 0, 180);
+            $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'...'; 
+            $flag = true;
+        }
         echo $string;
-    }
     ?>
 </div>
 </div>
