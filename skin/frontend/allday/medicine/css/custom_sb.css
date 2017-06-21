@@ -435,7 +435,9 @@ input[type="radio"]{
     text-align: center;
 }
 
-
+#my-orders-table img.pay_now_image {
+    width: 75px;
+}
 
 @media only screen and (max-width: 920px){
     .testimonial-form-index .form-list .input-box {
