@@ -273,6 +273,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
             if (!empty($login['username']) && !empty($login['password'])) {
                 try {
                     $session->login($login['username'], $login['password']);
+                    $this->getLayout()->createBlock('core/template')->setTemplate('customer/ga.phtml')->toHtml();
                     if ($session->getCustomer()->getIsJustConfirmed()) {
                         $this->_welcomeCustomer($session->getCustomer(), true);
                     }
