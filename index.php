@@ -56,12 +56,12 @@ if (!file_exists($mageFilename)) {
     exit;
 }
 
-$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-$aip = $_SERVER['HTTP_TRUE_CLIENT_IP'];
-$allowed = array('203.123.47.194','114.143.241.74');
+//$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+//$aip = $_SERVER['HTTP_TRUE_CLIENT_IP'];
+//$allowed = array('203.123.47.194','114.143.241.74');
 
-if (file_exists($maintenanceFile) && !in_array($ip, $allowed) && !in_array($aip, $allowed)) {
-#if (file_exists($maintenanceFile)) {
+//if (file_exists($maintenanceFile) && !in_array($ip, $allowed) && !in_array($aip, $allowed)) {
+if (file_exists($maintenanceFile)) {
     include_once dirname(__FILE__) . '/errors/503.php';
     exit;
 }
