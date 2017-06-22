@@ -439,6 +439,30 @@ input[type="radio"]{
     width: 75px;
 }
 
+/*infographics on product page*/
+.catalog-product-view .easytabs-content ul.one-time li.slick-slide{
+    text-align: center;
+    padding: 25px 0;
+}
+.catalog-product-view .easytabs-content ul.one-time li img{
+    width: 60%;
+    margin: 0 auto;
+}
+.catalog-product-view .easytabs-content ul.one-time .slick-dots{
+    top: 0 !important;
+    bottom: inherit !important;
+}
+.catalog-product-view .easytabs-content ul.one-time .slick-dots li.slick-active button{
+    background: #506f00;
+}
+.catalog-product-view .easytabs-content ul.one-time .slick-dots li button{
+    background: #818181;
+    margin-top: 0;
+}
+.catalog-product-view .easytabs-content ul.one-time .slick-dots li button:before{
+    color: transparent;
+}
+
 @media only screen and (max-width: 920px){
     .testimonial-form-index .form-list .input-box {
         width: 70%;
@@ -466,7 +490,7 @@ input[type="radio"]{
     }
 
 @media only screen and (max-width: 736px){
-
+    
     .footer-payment-types span span#siteseal img {
         display: none;
     }
@@ -497,7 +521,9 @@ input[type="radio"]{
         line-height: 28px;
     }
     
-
+    .catalog-product-view .easytabs-content ul.one-time li img {
+        width: 90%;
+    }
 }
 
 @media only screen and (max-width: 670px){
