@@ -47,6 +47,7 @@
     $selectedPayment = 'checkmo';
     $usCustomerMessage = Mage::getStoreConfig('custom_shipping/general/us_customer');
     $nonUsCustomerMessage = Mage::getStoreConfig('custom_shipping/general/non_us_customer');
+    $offerValidMsg = Mage::getStoreConfig('custom_shipping/general/offer_valid');
     $otherOfferMsg = Mage::getStoreConfig('custom_shipping/general/other_offer_msg');
     $quote = Mage::getSingleton('checkout/session')->getQuote();
     $billingCountry = $quote->getBillingAddress()->getCountry();
@@ -74,20 +75,20 @@
         <div class="checkout_note">
             <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
             <div class="text_2"><?php echo $usCustomerMessage;?></div>
-            <div class="red_note">*OFFER VALID FOR LIMITED PERIOD</div>
+            <div class="red_note"><?php echo $offerValidMsg;?></div>
         </div>
     <?php }else{ ?>
             <div class="checkout_note">
             <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
             <div class="text_2"><?php echo $nonUsCustomerMessage;?></div>
-            <div class="red_note">*OFFER VALID FOR LIMITED PERIOD</div>
+            <div class="red_note"><?php echo $offerValidMsg;?></div>
         </div>
     <?php } ?>
     <?php } else{?>
             <div class="checkout_note">
             <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
             <div class="text_2"><?php echo $otherOfferMsg;?></div>
-            <div class="red_note">*OFFER VALID FOR LIMITED PERIOD</div>
+            <div class="red_note"><?php echo $offerValidMsg;?></div>
             </div>
         <?php }?>
    
