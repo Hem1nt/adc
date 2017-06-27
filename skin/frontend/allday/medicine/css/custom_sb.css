@@ -439,10 +439,10 @@ input[type="radio"]{
     background-color: #fff;
 }
 /*pay now*/
-.sales-order-history .col-main .data-table td a.link-paylink{
+.customer-account-index .col-main .data-table td a.link-paylink{
     display: inline-block;
 }
-.sales-order-history .col-main .data-table td a.link-paylink .pay_now_image{
+.customer-account-index .col-main .data-table td a.link-paylink .pay_now_image{
     height: 22px;
     display: inline-block;
 }
