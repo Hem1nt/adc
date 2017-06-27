@@ -1,12 +1,12 @@
 /*ry*/
-.trustedcompany-index-review{
+.trustedcompany-review-index{
 	position: relative;
     padding:0;
     color: #333;
     font-size: 16px;
     text-align: left;
 }
-.trustedcompany-index-review .aggregate-rating {
+.trustedcompany-review-index .aggregate-rating {
     color: #333;
     background-color: #fff;
     margin: 0;
@@ -14,18 +14,18 @@
     font-size: 1.5em;
     font-weight: 400;
 }
-.trustedcompany-index-review .aggregate-rating em{
+.trustedcompany-review-index .aggregate-rating em{
 	font-weight:500;
 }
-.trustedcompany-index-review .aggregate-rating .agg-title-light{
+.trustedcompany-review-index .aggregate-rating .agg-title-light{
 	opacity: .5;
     font-weight: 300;
 }
-.trustedcompany-index-review .review_details{
+.trustedcompany-review-index .review_details{
 	padding: .5em 0;
     border: 0;
 }
-.trustedcompany-index-review .review_details .rating-box {
+.trustedcompany-review-index .review_details .rating-box {
 	  
     line-height: 0;
     width: 89px;
@@ -40,12 +40,12 @@
     margin-bottom: 5px;
     display: inline-block;
 }
-.trustedcompany-index-review .review_details .rating-box .review_rating {
+.trustedcompany-review-index .review_details .rating-box .review_rating {
     height: 18px;
     background: url(../images/yellow_star.png) 0 100% repeat-x;
 }
 
-.trustedcompany-index-review .review_details .review_reviewer{
+.trustedcompany-review-index .review_details .review_reviewer{
 	float: right;
 	color: #333;
 	font-weight: 600;
@@ -57,12 +57,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.trustedcompany-index-review .review_details .review_reviewer span {
+.trustedcompany-review-index .review_details .review_reviewer span {
     margin-left: 5px;
     opacity: .75;
 }
 
-.trustedcompany-index-review .review_details .review_subject{
+.trustedcompany-review-index .review_details .review_subject{
 	font-size: .8em;
     font-weight: 600;
     line-height: 1.4em;
@@ -72,7 +72,7 @@
     text-overflow: ellipsis;
     color: #333;
 }
-.trustedcompany-index-review .review_details .review_body{
+.trustedcompany-review-index .review_details .review_body{
 	font-size: .8em;
     margin-bottom: .75em;
     line-height: 1.5em;
@@ -81,11 +81,11 @@
 .no-display{
 	display: none;
 }
-.trustedcompany-index-review .loader-trusted-com{
+.trustedcompany-review-index .loader-trusted-com{
 height: 80px;
   position: relative;  
 }
-.trustedcompany-index-review .loader-trusted-com .loadergif{
+.trustedcompany-review-index .loader-trusted-com .loadergif{
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -97,7 +97,7 @@ height: 80px;
 
 /*media*/
 @media (max-width: 480px){
- .trustedcompany-index-review .review_details .review_reviewer{
+ .trustedcompany-review-index .review_details .review_reviewer{
     display: block;
     width: 100%;
     text-align: left;
