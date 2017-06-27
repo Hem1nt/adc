@@ -43,20 +43,20 @@ echo "<table class=\"new_product_list\" valign=\"center\">
 		<th><strong>Pack Size</strong></th>
 
 		<th><strong>Price</strong></th>
-		<th></th>
-		<th></th>
+		<th><strong>Wishlist</strong></th>
+		<th><strong>Cart</strong></th>
 	</tr>";
 
 	echo "<tr>";
 	echo "<td class='pack_size_value'>".$packSizeLabel."</td>";
 
 	echo "<td class='price_value'>".$priceLabel."</td>";
-	echo "<td>";
-	echo "<div class='add-to-cart'>
-		<button type='button' title='".$buttonTitle ."' class='button btn-cart' onclick='productAddToCartForm.submit(this)'><span><span> ". $buttonTitle ."</span></span></button>
-		</div>";
+	echo '<td class="simple_wishlist"><a id="s-'.$_product->getId().'" class="refill_reminder_open" href="'.$url.'wishlist/index/add/product/'.$_product->getData('entity_id').'"></a></td>';
+
+	echo "<td class='add_to_cart_button'>
+		<a type='button' title='".$buttonTitle ."' class='button btn-cart related-buy-now' onclick='productAddToCartForm.submit(this)'></a>";
 	echo "</td>";
-	echo '<td class="simple_wishlist"><a id="s-'.$_product->getId().'" class="refill_reminder_open" href="'.$url.'wishlist/index/add/product/'.$_product->getData('entity_id').'">Wishlist</a></td>';
+	
 	echo "</tr>";
 echo "</table>";
 ?>

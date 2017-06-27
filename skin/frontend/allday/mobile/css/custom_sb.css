@@ -316,6 +316,20 @@
 	}
 }
 @media only screen and (max-width: 736px){
+	.catalog-product-view .easytabs-content ul.one-time .slick-dots {
+	    top: 0 !important;
+	    bottom: inherit !important;
+	}
+	.catalog-product-view .easytabs-content ul.one-time .slick-dots li.slick-active button {
+	    background: #506f00;
+	}
+	.catalog-product-view .easytabs-content ul.one-time .slick-dots li button {
+	    background: #818181;
+	    margin-top: 0;
+	}
+	.catalog-product-view .easytabs-content ul.one-time .slick-dots li button:before {
+	    color: transparent;
+	}
 	.new_arrival{
 		display: block;
 		position: absolute;
