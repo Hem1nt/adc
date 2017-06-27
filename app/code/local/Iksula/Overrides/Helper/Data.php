@@ -144,6 +144,30 @@ class Iksula_Overrides_Helper_Data extends Mage_Core_Helper_Abstract
     public function getProductDetails($id){
         return Mage::getModel('catalog/product')->load($id);
     }
+
+     public function getImageAttr(){
+        $productAttrs = Mage::getResourceModel('catalog/product_attribute_collection');
+        foreach ($productAttrs as $productAttr) {
+            if($productAttr->getFrontendInput() == 'media_image' && $productAttr->getIsUserDefined() == '1'){
+                $mediaImgAttr[] = $productAttr->getAttributeCode();
+            }
+        }
+        return $mediaImgAttr;
+    }
+    
+    public function getImageAttrVal($product,$mediaImgAttr){
+        $curProduct = Mage::registry('current_product');
+        $productName = $curProduct->getName();
+        $html = '';
+        foreach ($mediaImgAttr as $key) {
+            $attrVal = $product->getData($key);
+            if($attrVal && $attrVal != 'no_selection'){
+                $infoImage = Mage::helper('catalog/image')->init($product, $key);
+                $html .= '<li><img alt="'.$productName.'-Infographics" src="'.$infoImage.'" width="100%" height="auto"/> </li>';
+            }
+        }
+        return $html;
+    }
     
 }
 

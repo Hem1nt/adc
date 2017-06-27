@@ -37,7 +37,7 @@ $lecount=count($le);
      ?>
       <li>
        <div class="item">
-        <a href="" class="link-wishlist">Add to Wishlist</a>
+        <a href="<?php echo $_item->getProductUrl() ?>" class="link-wishlist">Add to Wishlist</a>
         <div class="product-image">
           <a href="<?php echo $_item->getProductUrl() ?>">
             <img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(150); ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" />

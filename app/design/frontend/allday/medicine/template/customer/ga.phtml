@@ -1,0 +1,14 @@
+<script>
+<?php 
+$customer = Mage::getSingleton('customer/session')->getCustomer()->getData();
+$entityId = $customer['entity_id'];
+function getCustomeIdAfterLogIn(&$entityId){
+return <<<HTML
+ga('create', '{ezini('Google', 'Analytics')}', {ldelim} 'userId': '{$entityId}' {rdelim});
+    ga('set', 'LoggedInUsers', '{$entityId}' );
+    ga('send', 'pageview');
+HTML;
+}
+getCustomeIdAfterLogIn($entityId);
+?>
+</script>

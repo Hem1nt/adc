@@ -2,7 +2,8 @@
     $_cartQty = $this->getSummaryCount();
     $quote = Mage::getModel('checkout/session')->getQuote();
     $quote->setTotalsCollectedFlag(false)->collectTotals();
-    $_grandTotal= Mage::helper('core')->currency($quote->getGrandTotal(), true, false);
+    $_grandTotal= Mage::helper('core')->currency($quote->getSubtotal(), true, false);
+    //$_grandTotal= Mage::helper('core')->currency($quote->getGrandTotal(), true, false);
 ?>
 <div class="min_cart_overlay"></div>
 <div class="cart-icon mini-cart-layer">

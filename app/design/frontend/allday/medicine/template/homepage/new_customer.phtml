@@ -10,7 +10,7 @@
 	$banner_1_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_1_url');
 	$banner_2_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_2_url');
 	$banner_3_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_3_url');
-	$categotryPlaceHolder = Mage::getStoreConfig('homepage_conf/guest_group/popular_category_default_placeholder');
+	$categoryDefaultImg = Mage::getStoreConfig('homepage_conf/guest_group/popular_category_default_placeholder');
 ?>
 <div class="main_config_page">
 <!-- Best Seller S-->
@@ -82,9 +82,14 @@
 			$popularCatUrl = $_popularCat->getUrl();
 			$popularCatImage = $_popularCat->getPopularBanner(); 
 		?>
+		<?php $imageCategory = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/category/'.$popularCatImage;?>
 		<li>
 			<a href="<?php echo $popularCatUrl; ?>">
-				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/category/'.$popularCatImage;?>">
+			<?php if($popularCatImage):?>
+					<img src="<?php echo $imageCategory;?>">
+				<?php else:	?>
+					<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $categoryDefaultImg;?>">
+				<?php endif;?>
 				<span class="popular_name"><?php echo $popularCatName; ?></span>
 			</a>
 		</li>

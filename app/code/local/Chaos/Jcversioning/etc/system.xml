@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <jcversioning translate="label" module="jcversioning">
+            <label>JCVersioning Settings</label>
+            <sort_order>10</sort_order>
+        </jcversioning>
+    </tabs>
+    <sections>
+        <jcversioning translate="label" module="jcversioning">
+            <label>General Settings</label>
+            <tab>jcversioning</tab>
+            <sort_order>110</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <jcversioning_group translate="label" module="jcversioning">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <jcversioning_enabled translate="label">
+                            <label>Enable appending version to CSS and JavaScript files: </label>
+                            <comment>Enabled / Disabled</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </jcversioning_enabled>
+                        <jcversioning_version translate="label">
+                            <label>Version: </label>
+                            <comment>Enter version number. E.g. 1.0.0</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jcversioning_version>
+                    </fields>
+                </jcversioning_group>
+            </groups>
+        </jcversioning>
+    </sections>
+</config>

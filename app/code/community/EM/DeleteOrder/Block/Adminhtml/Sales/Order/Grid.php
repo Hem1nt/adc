@@ -172,9 +172,16 @@ class EM_DeleteOrder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
             'index'  => 'customer_group_id',
             'type'   =>  'options',
             'width'  => '80px',
+            'filter_index' => 'customer_group_id',
             'options'      =>  $groups,
-            'filter_condition_callback' => array($this, 'customerGroupFilter'),
-            'renderer' => 'EM_DeleteOrder_Block_Adminhtml_Sales_Order_Renderer_Customergroup',
+        ));
+
+        $this->addColumn('major_comment', array(
+            'header'=> Mage::helper('sales')->__('Major Comment'),
+            'width' => '80px',
+            'type'  => 'text',
+            'index' => 'major_comment',
+            'filter_index' => 'major_comment',
         ));
 
         /*customer group end*/
@@ -338,16 +345,5 @@ class EM_DeleteOrder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
     {
         return $this->getUrl('*/*/grid', array('_current'=>true));
     }
-
-
-    protected function customerGroupFilter($collection, $column)
-{
-    if (!$value = $column->getFilter()->getValue()) {
-        return $collection;
-    }
-    $value = $column->getFilter()->getValue();
-    $collection->addAttributeToFilter('customer_group_id',$value);
-    return $collection;
-}
 
 }

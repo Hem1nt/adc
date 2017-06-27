@@ -31,12 +31,36 @@ if (! $iwd_av_class) {
 			
 			if (Mage::helper ( 'opc' )->isEnable ()) {
 				$this->_redirect ( 'onepage', array (
-						'_secure' => $secure 
-				) );
+					'_secure' => $secure 
+					) );
 				return;
 			} else {
 				parent::indexAction ();
 			}
+		}
+
+		public function successAction()
+		{
+			$session = $this->getOnepage()->getCheckout();
+			if (!$session->getLastSuccessQuoteId()) {
+				$this->_redirect('checkout/cart');
+				return;
+			}
+
+			$lastQuoteId = $session->getLastQuoteId();
+			$lastOrderId = $session->getLastOrderId();
+			$lastRecurringProfiles = $session->getLastRecurringProfileIds();
+			if (!$lastQuoteId || (!$lastOrderId && empty($lastRecurringProfiles))) {
+				$this->_redirect('checkout/cart');
+				return;
+			}
+
+			$session->clear();
+			$this->loadLayout();
+			$this->_initLayoutMessages('checkout/session');
+			Mage::dispatchEvent('checkout_onepage_controller_success_action', array('order_ids' => array($lastOrderId)));
+			Mage::dispatchEvent('customer_group_change', array('order_ids' => array($lastOrderId)));
+			$this->renderLayout();
 		}
 	}
 } else {
