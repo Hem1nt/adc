@@ -302,6 +302,9 @@
     .new_arrival a img{
 	    margin: -14% 0 0;
 	}
+	.catalog-product-view .product-details-table .product-options-bottom {
+	    background-color: #fff;
+	}
 }
 
 @media only screen and (max-width: 768px){
@@ -379,6 +382,9 @@
 	    border-bottom: 2px solid #2a360c;
 	    padding: 0 12px;
 	    font-size: 12px;
+	}
+	.catalog-product-view .product-details-table .product-options-bottom {
+	    background-color: #fff;
 	}
 }
 @media only screen and (max-width: 568px){
