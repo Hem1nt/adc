@@ -467,6 +467,24 @@ input[type="radio"]{
 .trustedcompany-review-index .col-main .review_details .review_subject,.trustedcompany-review-index .col-main .review_details .review_body{
     font-size: 14px;
 }
+/*infographics*/
+
+    .catalog-product-view .easytabs-content ul.one-time .slick-dots {
+        top: 0 !important;
+        bottom: inherit !important;
+    }
+    .catalog-product-view .easytabs-content ul.one-time .slick-dots li.slick-active button {
+        background: #506f00;
+    }
+    .catalog-product-view .easytabs-content ul.one-time .slick-dots li button {
+        background: #818181;
+        margin-top: 0;
+    }
+    .catalog-product-view .easytabs-content ul.one-time .slick-dots li button:before {
+        color: transparent;
+    }
+
+    
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
@@ -535,6 +553,8 @@ input[type="radio"]{
     }
 
 }
+
+
 
 @media only screen and (max-width: 670px){
     .testimonial-form-index .form-list .input-box {
