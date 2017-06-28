@@ -452,6 +452,21 @@ input[type="radio"]{
 .catalog-product-view .product-shop .add_to_cart_button ..price-label{
     font-size: 14px;
 }
+
+/*trusted company reviews*/
+
+.trustedcompany-review-index .col-main .aggregate-rating{
+    margin-bottom: 10px;
+} 
+.trustedcompany-review-index .col-main .trusted_company .review_details{
+    background-color: #f4f4f4;
+    border: 1px solid #cdcdcd;
+    margin-bottom: 30px;
+    padding: 20px;
+} 
+.trustedcompany-review-index .col-main .review_details .review_subject,.trustedcompany-review-index .col-main .review_details .review_body{
+    font-size: 14px;
+}
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
