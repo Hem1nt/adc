@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_ExtendedReview>
+      <version>0.1.0</version>
+    </Iksula_ExtendedReview>
+  </modules>
+	
+
+
+	<frontend>
+	<routers>
+	<extendedreview>
+	    <use>standard</use>
+	    <args>
+	        <module>Iksula_ExtendedReview</module>
+	        <frontName>extendedreview</frontName>
+	    </args>
+	</extendedreview>
+	</routers>
+	</frontend>
+
+
+
+	
+  <global>
+    <helpers>
+      <extendedreview>
+        <class>Iksula_ExtendedReview_Helper</class>
+      </extendedreview>
+    </helpers>
+	<blocks>
+	  <extendedreview>
+		<class>Iksula_ExtendedReview_Block</class>
+	  </extendedreview>
+		<review>
+			<rewrite>
+				<product_view_list>Iksula_ExtendedReview_Block_Review_Product_View_List</product_view_list>
+			</rewrite>
+		</review>
+	</blocks>
+	
+	<models>
+	  <extendedreview>
+		<class>Iksula_ExtendedReview_Model</class>
+		<resourceModel>extendedreview_mysql4</resourceModel>
+	  </extendedreview>
+	  <extendedreview_mysql4>
+		<class>Iksula_ExtendedReview_Model_Mysql4</class>
+		<entities>		  
+			  <extendedreview>
+				<table>extended_review</table>
+			  </extendedreview>
+		</entities>
+	  </extendedreview_mysql4>
+	</models>
+
+	<resources>
+	  <extendedreview_setup>
+		<setup>
+		  <module>Iksula_ExtendedReview</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </extendedreview_setup>
+	  <extendedreview_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </extendedreview_write>
+	  <extendedreview_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </extendedreview_read>
+	</resources>
+  </global>
+</config> 

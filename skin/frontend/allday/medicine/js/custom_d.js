@@ -495,3 +495,79 @@ jQuery(document).ready(function(){
       }
   });
 });
+
+
+
+// EXTENDED REVIEW SCRIPT
+// Get review form
+jQuery(document).ready(function(){
+  jQuery('.reply-review').on('click',function(){
+    
+    var review = jQuery(this).attr('data-review-id');
+    var request_url = jQuery(this).attr('data-request-url');
+    var error_url = jQuery(this).attr('data-error-url');
+
+
+    var request = jQuery.ajax({
+      url: request_url,
+      method: "POST",
+      data: { 'review' : review,'error_url': error_url},
+      dataType: "json"
+    });
+             
+    request.done(function( result ) {
+        if(result.success == true)
+            jQuery('#divReview'+review).html(result.html);
+        else
+            jQuery('#review-error-msg').html('Sorry , error occured');
+    });
+             
+    request.fail(function( jqXHR, result ) {
+        jQuery('#review-error-msg').html('Sorry , error occured');
+    });
+  });
+
+  // Close div 
+  jQuery(document).on('click','.lnkExtendedReview',function(){
+    var review = jQuery(this).attr('data-review-id');
+    jQuery('#divReview'+review).html('');
+  });
+
+  // Save review form
+  jQuery(document).on('click','.btnExtendedReview',function(){
+    
+    var review = jQuery(this).attr('data-review-id');
+    var request_url = jQuery(this).attr('data-request-url');
+
+    var request = jQuery.ajax({
+      url: request_url,
+      method: "POST",
+      data: jQuery('#frmReview'+review).serialize(),
+      dataType: "json"
+    });
+             
+    request.done(function( result ) {
+        if(result.success == true){
+          jQuery('#review-success-msg').html('Your reply has been saved for moderation');
+          jQuery('#divReview'+review).html('');
+        }
+        else{
+          if(result.err_code == 100){
+            window.location.replace(result.error_url);
+          }else if(result.err_code == 101){
+            jQuery('#review-error-msg').html('Please provide valid comment');
+          }else if(result.err_code == 102){
+            jQuery('#review-error-msg').html('Sorry , error occured');
+          }else{
+            jQuery('#review-error-msg').html('Sorry , error occured');
+          }
+        }
+    });
+         
+    request.fail(function( jqXHR, result ) {
+        jQuery('#review-error-msg').html('Sorry , error occured');
+    });
+  });
+
+});
+

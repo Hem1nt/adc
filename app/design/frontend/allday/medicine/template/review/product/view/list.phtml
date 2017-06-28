@@ -33,12 +33,25 @@
         ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED);
 ?>
 
+
+<?php $referer = Mage::helper('core')->urlEncode(Mage::helper('core/url')->getCurrentUrl()); ?>
+<div id="review-success-msg"></div>
+<div id="review-error-msg"></div>
+
 <div class="box-collateral box-reviews" id="customer-reviews">
     <?php if (count($_items)):?>
         <h2><?php echo $this->__('Customer Reviews') ?></h2>
         <?php //echo $pager = $this->getLayout()->createBlock('page/html_pager', 'product_review_list.toolbar')->setCollection($reviews)->toHtml();
         ?>
         <?php foreach ($_items as $_review):?>
+
+        <div id="divReview<?php echo $_review->getId(); ?>"></div>
+        
+        <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-request-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewForm'); ?>" data-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review">review reply</a>
+
+        <!-- <a href="javascript:void(0);" class="reply-comment">comment reply</a> -->
+
+
         <div class="review-cover">
             <div class="review_left_block">
                 <div class="nickname">
@@ -71,3 +84,5 @@
     <?php endif;?>
     <?php echo $this->getChildHtml('review_form') ?>
 </div>
+
+
