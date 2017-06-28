@@ -483,8 +483,15 @@ input[type="radio"]{
     .catalog-product-view .easytabs-content ul.one-time .slick-dots li button:before {
         color: transparent;
     }
+    .catalog-product-view .easytabs-content ul.one-time li.slick-slide{
+        text-align: center;
+    }
+    .catalog-product-view .easytabs-content img {
+        margin: 20px 0;
+        width: 80%;
+        display: inline-block;
+    }
 
-    
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
