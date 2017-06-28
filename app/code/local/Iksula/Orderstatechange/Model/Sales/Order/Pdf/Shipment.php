@@ -242,7 +242,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 						}
 
 						$product_type_id  = $product->getData('type_id');
-						$p_us_brand = $product->getName();
+						// $p_us_brand = $product->getName();
 						if($product_type_id=='bundle'){
 							$total_pills = $qty;
 							$qty = number_format($itemArr['qty'])."X".number_format($itemArr['qty']). ' ' . $pharm;

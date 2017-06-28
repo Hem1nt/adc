@@ -919,7 +919,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .new_arrival.new_arrival_img{
         position: absolute;
         right: 9%;
-        top: -60px;
+        top: -50px;
         width: 45px;
     }
     .new_arrival.stock-desk{
@@ -1263,7 +1263,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         top: 35px!important;
     }
     .new_arrival.new_arrival_img {
-        right: 12%;
+        right: 10%;
     }
 }
 @media only screen and (max-width: 420px){

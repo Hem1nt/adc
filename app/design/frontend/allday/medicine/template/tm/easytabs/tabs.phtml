@@ -39,27 +39,48 @@
         </ul>
     </div>
     <div class="padder easytabs-content-wrapper">
-        <?php foreach ($tabs as $_index => $_tab) : ?>
-            <a href="#product_tabs_<?php echo $_tab['alias'] ?>"
-                class="easytabs-anchor easytabs-a easytabs-a-accordion"
-            ><?php echo $this->__($_tab['title']); ?></a>
-            <div class="easytabs-content"
-                id="product_tabs_<?php echo $_tab['alias'] ?>_contents"
-                style="display:none">
-                <div class="scroll_div_content">
-                    <?php 
-                    if(in_array($productSku, $infoSkuArr) && $_tab['alias'] == 'infographics'){
-                        echo '<img alt="'.$productName.'-infographics" src="'.$infoImage.'" width="90%" height="auto"/>';
-                    }else{
-                        echo $_tab['child_html'];
-                    }
-                     ?>
-                </div>
-            </div>
+    <?php
+        $productName = $curProduct->getName();
+        // $productInfographics = $curProduct->getInfographics();
+        // $productNewInfographics = $curProduct->getInfoSecond();
+        $mediaImgAttr = Mage::helper('overrides')->getImageAttr();
+    ?>
+    <?php foreach ($tabs as $_index => $_tab) : ?>
+    <a href="#product_tabs_<?php echo $_tab['alias'] ?>"
+        class="easytabs-anchor easytabs-a easytabs-a-accordion"
+    ><?php echo $this->__($_tab['title']); ?></a>
+    <div class="easytabs-content"
+        id="product_tabs_<?php echo $_tab['alias'] ?>_contents"
+        style="display:none">
+        <?php 
+        if(in_array($productSku, $infoSkuArr) && $_tab['alias'] == 'infographics'){
+            echo '<ul class="one-time">';
+            echo Mage::helper('overrides')->getImageAttrVal($curProduct,$mediaImgAttr);
+            echo '</ul>';
+        }elseif(!in_array($productSku, $infoSkuArr) && $_tab['title'] == 'infographics'){
+            continue;
+        }else{
+            echo $this->getChildHtml($_tab['alias']);  
+        }
+         ?>
+        </div>
         <?php endforeach; ?>
     </div>
 
     <script type="text/javascript">
         var easytabs = new EasyTabs();
+        var infographics_slider = jQuery('.one-time').slick({
+          dots: true,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 1,
+          adaptiveHeight: true,
+          prevArrow: false,
+          nextArrow: false
+        });
+
+        jQuery(".tabs li a").click(function(){
+            infographics_slider.slick("refresh");
+        });
     </script>
 </div>

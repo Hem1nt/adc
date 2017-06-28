@@ -35,7 +35,7 @@ foreach ($reviews as $key) {
 <?php } ?>
 </div>
 <div class="loader-trusted-com">
-<img class="loadergif" width="80px" height="80px" src="http://adcupdate.iksulalive.com/media/images/new_loader.gif">
+<img class="loadergif" width="80px" height="80px" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>images/new_loader.gif">
 </div>
 <script>
 jQuery(document).ready(function($){
@@ -44,7 +44,7 @@ jQuery(document).ready(function($){
     var limit = 0;
     function moreData(limit){
         jQuery.ajax({
-            url:'<?php echo $this->getUrl("trustedcompany/index/ajaxReview");?>',
+            url:'<?php echo $this->getUrl("trustedcompany/review/ajaxReview");?>',
             data:'limit='+limit,
             beforeSend: function() {
                jQuery('.loadergif').show(); 

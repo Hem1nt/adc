@@ -434,9 +434,30 @@ input[type="radio"]{
     width: 100%;
     text-align: center;
 }
+.catalog-product-view .product-details-table .product-options-bottom {
+    border: 0;
+    background-color: #fff;
+}
+/*pay now*/
+.customer-account-index .col-main .data-table td a.link-paylink{
+    display: inline-block;
+}
+.customer-account-index .col-main .data-table td a.link-paylink .pay_now_image{
+    height: 22px;
+    display: inline-block;
+}
 
+/*value pack*/
 
-
+.catalog-product-view .product-shop .add_to_cart_button ..price-label{
+    font-size: 14px;
+}
+@media only screen and (max-width: 1023px){
+    .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
+        margin-top: 12px;
+        margin-left: 0px;
+    }
+}
 @media only screen and (max-width: 920px){
     .testimonial-form-index .form-list .input-box {
         width: 70%;
@@ -494,7 +515,9 @@ input[type="radio"]{
         font-size: 14px;
         line-height: 28px;
     }
-    
+    .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
+        float: left;
+    }
 
 }
 

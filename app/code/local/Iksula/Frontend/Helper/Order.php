@@ -43,5 +43,30 @@ class Iksula_Frontend_Helper_Order extends Mage_Core_Helper_Abstract{
 		return $_orderCount;
 
 	}
+	public function getCustomersOrdersStatus($_order){
+		$status = Mage::getStoreConfig('order_status/general/selected_status');
+		$statusArray = explode(',',$status);
+		$orderStatus = $_order->getStatus();
+		if(in_array($orderStatus,$statusArray)){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
+	public function getEcheckLink($_order){
+	    $frontendHelper = Mage::helper('frontend');
+	    $encodedurl = $frontendHelper->encrypt_decrypt('encrypt',$_order->getData('entity_id'));
+	    $linkPayment = Mage::getStoreConfig('payment/newofflinepayment/newpaymentlink');
+	    $link = $linkPayment.'?order_id='.$encodedurl.'&utm_source=back-payment&utm_medium=chat&utm_campaign=online-link-payment';
+	    return $link;
+	}
+	public function getCountryId($_order){
+		
+	        $orderId = $_order->getIncrementId();
+	        $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+	        $billingAddress = $order->getBillingAddress();
+	        $countryId = $billingAddress->getCountryId();
+    		return $countryId;
+	}
 }
 ?>

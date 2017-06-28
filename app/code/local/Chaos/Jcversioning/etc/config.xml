@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Chaos_Jcversioning>
+            <version>1.0</version>
+        </Chaos_Jcversioning>
+    </modules>
+    <global>
+        <blocks>
+            <jcversioning>
+                <class>Chaos_Jcversioning_Class</class>
+            </jcversioning>
+            
+            <page>
+                <rewrite>
+                    <html_head>Chaos_Jcversioning_Block_Html_Head</html_head>
+                </rewrite>
+            </page>
+        </blocks>
+        <helpers>
+            <jcversioning>
+                <class>Chaos_Jcversioning_Helper</class>
+            </jcversioning>
+        </helpers>
+    </global>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <jcversioning>
+                                            <title>JCVersioning</title>
+                                        </jcversioning>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+    <default>
+        <jcversioning>
+            <jcversioning_group>
+                <jcversioning_enabled>1</jcversioning_enabled>
+                <jcversioning_version>1.0.0</jcversioning_version>
+            </jcversioning_group>
+        </jcversioning>
+   </default>
+</config>

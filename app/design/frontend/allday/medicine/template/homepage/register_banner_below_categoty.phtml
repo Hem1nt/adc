@@ -35,6 +35,9 @@ foreach ($catData as $key) {
 						$summaryData = Mage::helper('frontend')->getproductReviews($key->getId());
 						$reviewsCount = $summaryData['reviews_count'];
 						$ratingSummary = $summaryData['rating_summary'];
+						$urlKey = $key->getUrlKey();
+						$pId = $key->getEntityId();
+						$path = Mage::getBaseurl().$urlKey.'/review/'.$pId;
 						?>
 						<a href ="<?php echo $productUrl;?>"><img src="<?php echo $imageUrl; ?>" alt="<?php echo $name; ?>"></a>
 						<?php
@@ -78,10 +81,14 @@ foreach ($catData as $key) {
 		<?php foreach ($productCollection as $key) { ?>				
 		<div class="register_user_category_content">
 			<li class="slick_list">
-				<?php		  				
+				<?php
 				$name = $key->getName();
 				$imageUrl = $key->getImageUrl();
-				$productUrl = $key->getProductUrl();?>
+				$productUrl = $key->getProductUrl();
+				$urlKey = $key->getUrlKey();
+				$pId = $key->getEntityId();
+				$path = Mage::getBaseurl().$urlKey.'/review/'.$pId;
+				?>
 				
 				<a  class="product_img" href ="<?php echo $productUrl;?>"><img src="<?php echo $imageUrl; ?>" alt="<?php echo $name; ?>"></a>
 				<?php

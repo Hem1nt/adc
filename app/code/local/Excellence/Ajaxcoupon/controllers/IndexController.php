@@ -285,6 +285,7 @@ class Excellence_Ajaxcoupon_IndexController extends Mage_Checkout_CartController
       public function addAction(){
         $cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
+        $parentIdBundle = Mage::helper('ajaxcoupon')->getCartParentId();
         try {
           if (isset($params['qty'])) {
             $filter = new Zend_Filter_LocalizedToNormalized(
@@ -302,8 +303,16 @@ class Excellence_Ajaxcoupon_IndexController extends Mage_Checkout_CartController
               $this->_goBack();
               return;
             }
-
-            $cart->addProduct($product, $params);
+            /*For bundle Product S*/
+            if(in_array($params['product'], $parentIdBundle))
+            { 
+              /*Replace the old pack size with new pack size(Same Product)*/
+                $removeProduct = Mage::helper('ajaxcoupon')->removeProduct($parentIdBundle,$params['product']);
+                $cart->addProduct($product, $params);
+            }else{
+                  $cart->addProduct($product, $params);
+            }
+            /*For bundle Product E*/
             if (!empty($related)) {
               $cart->addProductsByIds(explode(',', $related));
             }

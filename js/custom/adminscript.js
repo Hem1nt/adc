@@ -45,6 +45,26 @@ jQuery(document).ready(function(){
 
  }
 
+ function savecomment(url){
+
+	var major_comment = jQuery('#major_comment').val();
+	var orderid = jQuery('#des_order_view_id').val();
+	if(major_comment){
+		new Ajax.Request(url, {
+			method: 'Post',
+			parameters: {major_comment:major_comment,orderid:orderid},
+			onComplete: function(transport) {
+
+				alert('Data updated successfully');
+
+			}
+		});
+	}else{
+		alert('Please enter appropriate descriptor name');
+	}
+
+ }
+
 
  function fromdate_comment(url){
 	var fromdate_data = jQuery('#from_date').val();

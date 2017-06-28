@@ -249,9 +249,11 @@ class Amasty_Oaction_Model_Command_Status extends Amasty_Oaction_Model_Command_A
                         $name = $vars['cust_name'];
                         $status = $vars['staus_label'];
                         // Mage::log($vars,null,'emailer.log');
-                        $model->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
-                        if (!$mailTemplate->getSentSuccess()) {
-                                throw new Exception();
+                        if($val != 'e_check_payment_accepted'){
+                            $model->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
+                            if (!$mailTemplate->getSentSuccess()) {
+                                    throw new Exception();
+                            }
                         }
                         $translate->setTranslateInline(true);
                     }
