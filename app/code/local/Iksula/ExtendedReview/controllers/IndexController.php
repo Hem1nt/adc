@@ -24,12 +24,41 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 
 		$this->getResponse()->setHeader('Content-type', 'application/json');
 		$this->getResponse()->setBody(json_encode($result));
+	}
+
+
+	public function getReplyToReviewCommentFormAction(){
+		
+		$comment_id = Mage::app()->getRequest()->getParam('commentid');
+		$review_id = Mage::app()->getRequest()->getParam('review');
+		$error_url = Mage::app()->getRequest()->getParam('error_url');
+		$html = "";
+
+		if(strlen($comment_id)){
+			$html .= "<a href='javascript:void(0)' class='lnkExtendedReviewComment' data-review-comment-id='".$comment_id."'>close</a>";
+			$html .= "<form id='frmReview".$comment_id."'>";
+			$html .= "<input name='txtReviewComment'>";
+			$html .= "<input type='hidden' name='hdnCommentId' value=".$comment_id.">";
+			$html .= "<input type='hidden' name='hdnReviewId' value=".$review_id.">";
+			$html .= "<input type='hidden' name='hdnErrorUrl' value=".$error_url.">";
+			$html .= "<button type='button' class='btnExtendedReview' data-request-url='".Mage::getUrl('extendedreview/index/saveReplyToReview')."' data-review-id='".$comment_id."'> Reply </button>";
+			$html .= "</form>";
+		}
+
+		if(strlen($html))
+			$result =array('success'=>true,'html'=>$html);
+		else
+			$result =array('success'=>false);
+
+		$this->getResponse()->setHeader('Content-type', 'application/json');
+		$this->getResponse()->setBody(json_encode($result));
 	}	
 
 
 	public function saveReplyToReviewAction(){
 		$review_id = Mage::app()->getRequest()->getParam('hdnReviewId');
 		$comment = Mage::app()->getRequest()->getParam('txtReviewComment');
+		echo "--!".$comment_id = Mage::app()->getRequest()->getParam('hdnCommentId');
 		$error_url = Mage::app()->getRequest()->getParam('hdnErrorUrl');
 
 		$customer_id = null;
@@ -56,12 +85,24 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 
 		// SAVE COMMENT FOR REVIEW
 		if(!isset($result['err_code'])){
-			$model = Mage::getModel('extendedreview/extendedreview')
-				->setData(array(
-					'review_id'=>$review_id,
-					'customer_id'=>$customer_id,
-					'comment' => $comment,
-					'status' => 0 ));
+			if(isset($comment_id)){
+				$model = Mage::getModel('extendedreview/extendedreview')
+					->setData(array(
+						'review_id'=>$review_id,
+						'customer_id'=>$customer_id,
+						'comment' => $comment,
+						'comment_id' => $comment_id,
+						'status' => 0 ));
+
+			}else{
+				$model = Mage::getModel('extendedreview/extendedreview')
+					->setData(array(
+						'review_id'=>$review_id,
+						'customer_id'=>$customer_id,
+						'comment_id' => 0,
+						'comment' => $comment,
+						'status' => 0 ));
+			}
 			try{
 				$model->save();
 				$result['success'] = true;

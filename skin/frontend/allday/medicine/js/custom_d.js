@@ -569,5 +569,40 @@ jQuery(document).ready(function(){
     });
   });
 
+
+  jQuery('.reply-review-comment').on('click',function(){
+
+    var review = jQuery(this).attr('data-review-id');
+    var commentid = jQuery(this).attr('data-reviewcomment-id');
+    var request_url = jQuery(this).attr('data-request-comment-url');
+    var error_url = jQuery(this).attr('data-comment-error-url');
+
+
+    var request = jQuery.ajax({
+      url: request_url,
+      method: "POST",
+      data: { 'review' : review, 'commentid' : commentid,'error_url': error_url},
+      dataType: "json"
+    });
+             
+    request.done(function( result ) {
+        if(result.success == true)
+            jQuery('#divReviewComment'+commentid).html(result.html);
+        else
+            jQuery('#review-error-msg').html('Sorry , error occured');
+    });
+             
+    request.fail(function( jqXHR, result ) {
+        jQuery('#review-error-msg').html('Sorry , error occured');
+    });
+  });
+
+  // Close comment div 
+  jQuery(document).on('click','.lnkExtendedReviewComment',function(){
+    var commentid = jQuery(this).attr('data-review-comment-id'); 
+    jQuery('#divReviewComment'+commentid).html('');
+  });
+
+
 });
 
