@@ -57,6 +57,7 @@ body, html{
     border-radius: 25px;
     margin: 4px 0;
     background-color: #9fb701;
+    text-align: center;
 }
 body.catalog-product-view a.home_icon {
     line-height: 28px;

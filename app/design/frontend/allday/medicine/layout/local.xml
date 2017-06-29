@@ -298,4 +298,10 @@
 			<action method="addItem"><type>skin_css</type><name>css/category_page.css</name></action>
 		</reference>
      </catalogsearch_result_index>
+
+     <trustedcompany_review_index>
+     	<reference name="root">
+			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+		</reference>
+     </trustedcompany_review_index>
 </layout>
