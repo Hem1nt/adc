@@ -483,8 +483,8 @@ jQuery(document).ready(function($){
 });
 
 
-jQuery(document).ready(function(){
-  jQuery(window).scroll(function () {     
+/*jQuery(document).ready(function(){
+  jQuery(window).on("scroll", function () {     
       var scroll = jQuery(window).scrollTop();
       if(scroll >= '10'){
         jQuery("body").addClass("reduce_content");
@@ -494,4 +494,4 @@ jQuery(document).ready(function(){
         jQuery("body").removeClass("reduce_content");
       }
   });
-});
+});*/
