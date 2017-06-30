@@ -303,5 +303,8 @@
      	<reference name="root">
 			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
 		</reference>
+		<!-- <reference name="footer">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference> -->
      </trustedcompany_review_index>
 </layout>
