@@ -94,10 +94,15 @@
                         if($childrev->getComment()){
                             ?>
                             <span class="review_comment_span_customername">
-                                            <?php echo "BY : ".$extHelper->getCustomerName($childrev->getCustomerId()); ?>
+                                            <?php echo "Comment by : ".$extHelper->getCustomerName($childrev->getCustomerId()); ?>
                                         </span><br>
                             <span class="review_comment_span">
+                            <p>
                             <?php echo $childrev->getComment(); ?>
+                            </p>
+                            <p>
+                           <?php echo "(Commented on ".date('m/d/Y', strtotime($childrev->getCreatedAt())).")"; ?>
+                            </p>    
                             <div id="divReviewComment<?php echo $childrev->getId(); ?>"></div>
         
                             <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-reviewcomment-id="<?php echo $childrev->getId(); ?>"  data-request-comment-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewCommentForm'); ?>" data-comment-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review-comment">Comment Reply</a>
@@ -116,11 +121,16 @@
                                     if($childrevcomment->getComment()){
                                         ?>
                                         <span class="review_comment_span_customername">
-                                            <?php echo "BY : ".$extHelper->getCustomerName($childrevcomment->getCustomerId()); ?>
+                                            <?php echo "Comment by : ".$extHelper->getCustomerName($childrevcomment->getCustomerId()); ?>
                                         </span>
                                         <br>
                                         <span class="review_comment_span">
+                                        <p>
                                         <?php echo $childrevcomment->getComment(); ?>
+                                        </p>
+                                         <p>
+                                        <?php echo "(Commented on ".date('m/d/Y', strtotime($childrevcomment->getCreatedAt())).")"; ?>
+                                        </p>    
                                         <!-- <div id="divReviewComment<?php //echo $childrevcomment->getId(); ?>"></div>
                     
                                         <a href="javascript:void(0);" data-review-id="<?php //echo $_review->getId(); ?>" data-reviewcomment-id="<?php //echo $childrev->getId(); ?>"  data-request-comment-url= "<?php //echo Mage::getUrl('extendedreview/index/getReplyToReviewCommentForm'); ?>" data-comment-error-url="<?php// echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review-comment">Comment Reply</a> -->

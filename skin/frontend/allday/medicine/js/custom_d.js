@@ -550,6 +550,7 @@ jQuery(document).ready(function(){
         if(result.success == true){
           jQuery('#review-success-msg').html('Your reply has been saved for moderation');
           jQuery('#divReview'+review).html('');
+          jQuery('#divReviewComment'+review).html('');
         }
         else{
           if(result.err_code == 100){

@@ -58,7 +58,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 	public function saveReplyToReviewAction(){
 		$review_id = Mage::app()->getRequest()->getParam('hdnReviewId');
 		$comment = Mage::app()->getRequest()->getParam('txtReviewComment');
-		echo "--!".$comment_id = Mage::app()->getRequest()->getParam('hdnCommentId');
+		$comment_id = Mage::app()->getRequest()->getParam('hdnCommentId');
 		$error_url = Mage::app()->getRequest()->getParam('hdnErrorUrl');
 
 		$customer_id = null;
