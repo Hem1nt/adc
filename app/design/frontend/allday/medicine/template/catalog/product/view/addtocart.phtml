@@ -53,9 +53,9 @@ echo "<table class=\"new_product_list\" valign=\"center\">
 	echo "<td class='price_value'>".$priceLabel."</td>";
 	echo '<td class="simple_wishlist"><a id="s-'.$_product->getId().'" class="refill_reminder_open" href="'.$url.'wishlist/index/add/product/'.$_product->getData('entity_id').'"></a></td>';
 
-	echo "<td class='add_to_cart_button'>
-		<a type='button' title='".$buttonTitle ."' class='button btn-cart related-buy-now' onclick='productAddToCartForm.submit(this)'></a>";
-	echo "</td>";
+	echo "<td class='add-to-cart'>
+		<button type='button' title='".$buttonTitle ."' class='button btn-cart' onclick='productAddToCartForm.submit(this)'><span><span> ". $buttonTitle ."</span></span></button>
+		</td>";
 	
 	echo "</tr>";
 echo "</table>";

@@ -19,7 +19,12 @@
     </reference>
     
     <reference name="content">   
-      <block type="trustedcompany/review" name="trustedcompany_review" template="trustedcompany/review.phtml"/>   
+      <action method="setTemplate"><template>page/2column-right.phtml</template></action>   
+      <block type="trustedcompany/review" name="trustedcompany_review" template="trustedcompany/review.phtml">   
+        <reference name="right">
+          <block type="bought/bought" name="trustedcompany_bought" template="bought/bestseller.phtml"/>   
+        </reference>
+      </block>
     </reference>   
   </trustedcompany_review_index>   
 </layout>   

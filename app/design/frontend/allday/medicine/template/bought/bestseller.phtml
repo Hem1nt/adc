@@ -1,0 +1,107 @@
+<?php
+    $title = Mage::getStoreConfig('catalog/best_selling/frontend_text'); 
+    $title = strtoupper($title); 
+    $enableStatus = Mage::getStoreConfig('catalog/best_selling/enable');
+    $_productCollection = Mage::helper('configfile')->getBestSellingProducts();
+    $categoryUrl = Mage::helper('configfile')->getBestSellingCategory();
+    $_helper = $this->helper('catalog/output');
+    $_frontendHelper = $this->helper('frontend/data');
+?>
+<?php
+    $cart = Mage::getModel('checkout/cart')->getQuote();
+          foreach ($cart->getAllItems() as $item) {
+            $productId = $item->getProduct()->getId();
+          }
+        $productCount = count($this->getBoughtProducts($productId));
+?>
+<?php if($productCount<=3): ?>
+    <?php if($enableStatus==1): ?>
+           <div class="block block-list bestselling_products slider-block">
+                <div class="block-title">
+                    <strong>
+                      <span>Bestselling Products</span>
+                    </strong>
+                </div>
+                <div class="block-content bestselling-block-tab">
+                    <div class="best_selling products-grid">
+                <?php foreach ($_productCollection as $_product):?>
+                        <div class="best_selling_product item">
+<!--                                 <div class="best_selling_image"> -->
+                                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName() ?>"    class="product-image" rel="nofollow">
+                                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100); ?>" alt="<?php echo $_product->getName() ?>" />
+                                    </a>
+                                <!-- </div> -->
+                                    <!-- <a href="<?php //echo $_product->getProductUrl() ?>" title="<?php //echo $_product->getName() ?>"    class="product-image" rel="nofollow">
+                                    </a> -->
+                            <div class="best_selling_wrapper pr-details-height">
+                                <div class="best_selling_name product-name">
+                                        <h2><a><?php echo $_product->getName();?></a></h2>
+                                </div>
+                                    <?php if($_product->getGenericName()):?>
+                                        <div class="generic_name">
+                                            <?php echo $_product->getGenericName();?>
+                                        </div>
+                                    <?php endif;?>
+                                    <?php $manufacturedBy = $_frontendHelper->getManufacturerInfo($_product);?>
+                                    <?php if($manufacturedBy):?>
+                                        <div class="manu_name">Manufactured by : <?php echo $manufacturedBy;?></div>
+                                    <?php endif;?>
+                                    <div class="first_child_info">
+                                        <!-- <p class="custom_price"> -->
+                                    <?php $firstChildInfo = $_frontendHelper->getFirstChildPrice($_product);
+                                    if(!empty($firstChildInfo)):
+                                        echo $firstChildInfo;
+                                    endif;              
+                    ?>
+                                        <!-- <span class="regular-price">
+                                            <?php //if($_product->getSpecialPrice()):?>
+                                                <span class="old-price"><?php //echo Mage::helper('core')->currency($_product->getPrice());?></span>
+                                                <span class="special-price"><?php// echo Mage::helper('core')->currency($_product->getSpecialPrice(),true,false);?></span>
+                                            <?php //else:?>
+                                                <span class="price"><?php //echo Mage::helper('core')->currency($_product->getPrice(),true,false);?></span>
+                                            <?php// endif;?>
+                                        </span> -->
+                                        <!-- </p> -->
+                                    </div>
+                                    <?php $summaryData = Mage::helper('frontend')->getproductReviews($_product->getId());
+                                          $reviewsCount = $summaryData['reviews_count'];
+                                          $ratingSummary = $summaryData['rating_summary'];?>
+                                    <?php if($reviewsCount){ ?>
+                                        <div class="ratings">
+                                            <div class="rating-box">
+                                                <a href="<?php echo $path;?>">
+                                                    <div class="rating" style="width:<?php echo $ratingSummary; ?>%"></div>
+                                                </a>
+                                            </div>
+                                            <span class="amount"><a href="<?php echo $path;?>"><?php echo $reviewsCount;?> Review(s)</a></span>
+                                        </div>
+                                        <?php }else{ ?>
+                                        <div class="add_your_review_wrap"><a class="add_your_review" href="<?php echo $path;?>">Add Your review</a></div>
+                                        <?php } ?>
+                                   <!--  <a href="<?php //echo $_product->getProductUrl() ?>" title="<?php //echo $_product->getName() ?>"  rel="nofollow">
+                                        <span class="view_details"><?php// echo "View Details";?></span>
+                                    </a> -->
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                </div>
+           </div>
+        <?php endif;?>
+<?php endif;?>
+
+
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+    alert("hi");
+  // $('.best_selling').slick({
+  //   infinite: true,
+  //   centerMode: false,
+  //   slidesToShow: 1
+    
+  //   });
+});
+
+
+</script>
