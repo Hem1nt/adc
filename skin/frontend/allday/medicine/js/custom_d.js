@@ -538,11 +538,12 @@ jQuery(document).ready(function(){
     
     var review = jQuery(this).attr('data-review-id');
     var request_url = jQuery(this).attr('data-request-url');
-
+    var validator  = new Validation('frmReview');
+       if(validator.validate()) {
     var request = jQuery.ajax({
       url: request_url,
       method: "POST",
-      data: jQuery('#frmReview'+review).serialize(),
+      data: jQuery('#frmReview').serialize(),
       dataType: "json"
     });
              
@@ -568,6 +569,7 @@ jQuery(document).ready(function(){
     request.fail(function( jqXHR, result ) {
         jQuery('#review-error-msg').html('Sorry , error occured');
     });
+    }
   });
 
 
@@ -577,7 +579,6 @@ jQuery(document).ready(function(){
     var commentid = jQuery(this).attr('data-reviewcomment-id');
     var request_url = jQuery(this).attr('data-request-comment-url');
     var error_url = jQuery(this).attr('data-comment-error-url');
-
 
     var request = jQuery.ajax({
       url: request_url,
@@ -596,6 +597,7 @@ jQuery(document).ready(function(){
     request.fail(function( jqXHR, result ) {
         jQuery('#review-error-msg').html('Sorry , error occured');
     });
+
   });
 
   // Close comment div 

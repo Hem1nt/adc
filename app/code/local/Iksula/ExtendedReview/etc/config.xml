@@ -2,13 +2,10 @@
 <config>
   <modules>
     <Iksula_ExtendedReview>
-      <version>0.1.0</version>
+      <version>0.1.1</version>
     </Iksula_ExtendedReview>
   </modules>
-	
-
-
-	<frontend>
+  <frontend>
 	<routers>
 	<extendedreview>
 	    <use>standard</use>
@@ -19,10 +16,6 @@
 	</extendedreview>
 	</routers>
 	</frontend>
-
-
-
-	
   <global>
     <helpers>
       <extendedreview>
@@ -30,7 +23,7 @@
       </extendedreview>
     </helpers>
 	<blocks>
-	  <extendedreview>
+	   <extendedreview>
 		<class>Iksula_ExtendedReview_Block</class>
 	  </extendedreview>
 		<review>
@@ -39,7 +32,6 @@
 			</rewrite>
 		</review>
 	</blocks>
-	
 	<models>
 	  <extendedreview>
 		<class>Iksula_ExtendedReview_Model</class>
@@ -51,10 +43,9 @@
 			  <extendedreview>
 				<table>extended_review</table>
 			  </extendedreview>
-		</entities>
+        </entities>
 	  </extendedreview_mysql4>
 	</models>
-
 	<resources>
 	  <extendedreview_setup>
 		<setup>
@@ -76,4 +67,58 @@
 	  </extendedreview_read>
 	</resources>
   </global>
+  <admin>
+	<routers>
+	  <extendedreview>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_ExtendedReview</module>
+		  <frontName>admin_extendedreview</frontName>
+		</args>
+	  </extendedreview>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <extendedreview module="extendedreview">
+		<title>ExtendedReview</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <extendedreview module="extendedreview">
+		    <title>Manage Extendedreview</title>
+			<sort_order>0</sort_order>
+			<action>admin_extendedreview/adminhtml_extendedreview</action>
+		  </extendedreview>
+		</children>
+	  </extendedreview>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<extendedreview translate="title" module="extendedreview">
+			  <title>ExtendedReview</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <extendedreview translate="title">
+			<title>Manage Extendedreview</title>
+			<sort_order>0</sort_order>
+		  </extendedreview>
+			  </children>
+			</extendedreview>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<extendedreview>
+		  <file>extendedreview.xml</file>
+		</extendedreview>
+	  </updates>
+	</layout>
+  </adminhtml>
 </config> 
