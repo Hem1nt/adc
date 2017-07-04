@@ -26,11 +26,11 @@
 	   <extendedreview>
 		<class>Iksula_ExtendedReview_Block</class>
 	  </extendedreview>
-		<review>
+		<!-- <review>
 			<rewrite>
 				<product_view_list>Iksula_ExtendedReview_Block_Review_Product_View_List</product_view_list>
 			</rewrite>
-		</review>
+		</review> -->
 	</blocks>
 	<models>
 	  <extendedreview>
@@ -80,17 +80,21 @@
   </admin>
   <adminhtml>
 	<menu>
-	  <extendedreview module="extendedreview">
-		<title>ExtendedReview</title>
-		<sort_order>100</sort_order>
-		<children>
+		<catalog>
+        <children>
 		  <extendedreview module="extendedreview">
-		    <title>Manage Extendedreview</title>
-			<sort_order>0</sort_order>
-			<action>admin_extendedreview/adminhtml_extendedreview</action>
+			<title>Review's Comments</title>
+			<sort_order>100</sort_order>
+			<children>
+			  <extendedreview module="extendedreview">
+			    <title>Manage Review's Comments</title>
+				<sort_order>0</sort_order>
+				<action>admin_extendedreview/adminhtml_extendedreview</action>
+			  </extendedreview>
+			</children>
 		  </extendedreview>
 		</children>
-	  </extendedreview>
+		</catalog>
 	</menu>
 	<acl>
 	  <resources>
