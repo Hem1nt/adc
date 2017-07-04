@@ -7,6 +7,8 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
 					->addFieldToFilter('review_id',$reviewId)
 					->addFieldToFilter('comment_id',0)
 					->addFieldToFilter('status',2);
+          // ->setPageSize(20)
+          //   ->setCurPage(1);
 					return $Comments;
     }
 
@@ -16,6 +18,8 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
 					->addFieldToFilter('review_id',$reviewId)
 					->addFieldToFilter('comment_id',$commentid)
 					->addFieldToFilter('status',2);
+           // ->setPageSize(20)
+          //   ->setCurPage(1);
 
 					return $Comments;
     }
@@ -60,8 +64,8 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
       // $templateId = 13;
      
       // Set sender information     
-      $senderName = 'Arman Khan';//Mage::getStoreConfig('trans_email/ident_support/name');
-      $senderEmail = 'arman.k@iksula.com';//Mage::getStoreConfig('trans_email/ident_support/email');
+      $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
+      $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');
       $sender = array('name' => $senderName,
                 'email' => $senderEmail); 
       
