@@ -52,7 +52,7 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 						'header' => Mage::helper('extendedreview')->__('Status'),
 						'index' => 'status',
 						'type' => 'options',
-						'options'=>Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getOptionArray6(),				
+						'options'=>Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getOptionArray5(),				
 						));
 						
 				$this->addColumn("created_at", array(
@@ -71,7 +71,7 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 
 		public function getRowUrl($row)
 		{
-			   return '#';
+			   return $this->getUrl("*/*/edit", array("id" => $row->getId()));
 		}
 
 
@@ -104,17 +104,17 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 			return $this;
 		}
 			
-		static public function getOptionArray6()
+		static public function getOptionArray5()
 		{
             $data_array=array(); 
 			$data_array[1]='Not Approved';
 			$data_array[2]='Approved';
             return($data_array);
 		}
-		static public function getValueArray6()
+		static public function getValueArray5()
 		{
             $data_array=array();
-			foreach(Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getOptionArray6() as $k=>$v){
+			foreach(Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getOptionArray5() as $k=>$v){
                $data_array[]=array('value'=>$k,'label'=>$v);		
 			}
             return($data_array);
