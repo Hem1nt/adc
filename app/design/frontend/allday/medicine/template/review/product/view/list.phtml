@@ -40,6 +40,8 @@
 ?>
 
 
+
+
 <?php $referer = Mage::helper('core')->urlEncode(Mage::helper('core/url')->getCurrentUrl()); ?>
 <div id="review-success-msg"></div>
 <div id="review-error-msg"></div>
@@ -47,6 +49,7 @@
 <div class="box-collateral box-reviews" id="customer-reviews">
     <?php if (count($_items)):?>
         <h2><?php echo $this->__('Customer Reviews') ?></h2>
+        <div class="review_scroll">
         <?php //echo $pager = $this->getLayout()->createBlock('page/html_pager', 'product_review_list.toolbar')->setCollection($reviews)->toHtml();
         ?>
         <?php foreach ($_items as $_review):                
@@ -110,9 +113,9 @@
                                             <?php echo $childrev->getComment(); ?>
                                             </p>
                                                
+                                            <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-reviewcomment-id="<?php echo $childrev->getId(); ?>"  data-request-comment-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewCommentForm'); ?>" data-comment-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review-comment">Add Comment</a>
                                             <div id="divReviewComment<?php echo $childrev->getId(); ?>"></div>
                         
-                                                <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-reviewcomment-id="<?php echo $childrev->getId(); ?>"  data-request-comment-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewCommentForm'); ?>" data-comment-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review-comment">Add Comment</a>
                                         </div>
                                     </div>
                                 
@@ -166,12 +169,12 @@
                         }
                         ?>
                     </div>
-                </div>
-            </div>
         
             <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-request-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewForm'); ?>" data-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review add_comment">Add Comment on Review</a>
 
             <div id="divReview<?php echo $_review->getId(); ?>" class="add_review_wrap"></div>
+                </div>
+            </div>
         <!-- <a href="javascript:void(0);" class="reply-comment">comment reply</a> -->
 
         </div>
@@ -182,5 +185,15 @@
     <?php endif;?>
     <?php echo $this->getChildHtml('review_form') ?>
 </div>
+</div>
 
 
+<script>
+
+
+    jQuery(document).ready(function() {
+        // jQuery(".review_scroll").mCustomScrollbar({
+        //         axis:"y" // vertical and horizontal scrollbar
+        //     });
+    });
+</script>

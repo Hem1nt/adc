@@ -13,7 +13,7 @@
 	    float: right;
 	    margin-bottom: 15px;
 	}
-	.catalog-product-view #customer-reviews .btnExtendedReview,.lnkExtendedReview{
+	.catalog-product-view #customer-reviews .btnExtendedReview,.catalog-product-view #customer-reviews .close_review{
 	    color: #fff !important;
 	    font-size: 14px;
 	    line-height: 14px;
@@ -47,7 +47,12 @@
 	    color: #506f00;
 	    font-weight: 600;
 	}
-
+	.catalog-product-view #customer-reviews .add_comment {
+        width: 100%;
+    }
+    .catalog-product-view #customer-reviews .review_wrapper .add_review_wrap{
+        width: 100%;
+    }
 	.catalog-product-view #customer-reviews .review_right_block .review_comment,
 	.catalog-product-view #customer-reviews .review_right_block .review_comment .review_comment_level2{
 	    width: 96%;
@@ -627,9 +632,18 @@
 	}
 }
 @media only screen and (max-width: 736px){
-	.catalog-product-view #customer-reviews .add_comment {
-		width: 70%;
+	.catalog-product-view #customer-reviews .add_review_form1 #register_captcha_code{
+	    width: 159px;
 	}
+	.catalog-product-view #customer-reviews .add_review_form1 textarea{
+		width: 265px;
+	}
+	.catalog-product-view #customer-reviews .add_comment {
+		width: 96%;
+	}
+	 .catalog-product-view #customer-reviews .review_wrapper .add_review_wrap{
+        width: 96%;
+    }
 	.catalog-product-view #customer-reviews .review_comment_span_customername {
 	    display: block;
 	}

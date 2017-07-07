@@ -17,7 +17,8 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			// $html .= "<form id='frmReview".$review_id."'>";
 			$html .= "<form id='frmReview' class='add_review_form1'>";
 			$html .= "<div class='field'>
-                        <!--<label for='register_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->                      
+                        <!--<label for='register_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->
+                        <textarea name='txtReviewComment' class='required-entry' placeholder='Your message' maxlength='80'></textarea>                      
                         <div class='input-box sinput captcha_input_box'>
                             <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='register_captcha_img'/>                            
                             
@@ -28,11 +29,11 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
                             <input type='hidden' id='check-me' />
                         </div>                        
                     </div>";
-			$html .= "<textarea name='txtReviewComment' class='required-entry' placeholder='Your message'></textarea>";
+			//$html .= "<textarea name='txtReviewComment' class='required-entry' placeholder='Your message'></textarea>";
 			$html .= "<input type='hidden' name='hdnReviewId' value=".$review_id.">";
 			$html .= "<input type='hidden' name='hdnErrorUrl' value=".$error_url.">";
 			$html .= "<button type='button' class='btnExtendedReview' data-request-url='".Mage::getUrl('extendedreview/index/saveReplyToReview')."' data-review-id='".$review_id."'> <span>submit review </span></button>";
-			$html .= "<a href='javascript:void(0)' class='lnkExtendedReview' data-review-id='".$review_id."'>close</a>";
+			$html .= "<a href='javascript:void(0)' class='lnkExtendedReview close_review' data-review-id='".$review_id."'>close</a>";
 			$html .= "</form>";
 			$html .= "<script type='text/javascript'>
 				    //<![CDATA[
@@ -75,21 +76,22 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			$html .= "<form id='frmReview' class='add_review_form1'>";
 			$html .= "<div class='field'>
                         <!--<label for='register_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->                        
+                        <textarea name='txtReviewComment' class='required-entry' maxlength='80'></textarea>
                         <div class='input-box sinput captcha_input_box'>
                             <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='register_captcha_img'/>                            
                         	<div id='cap_box'>
                             <input id='register_captcha_code' class='input-text required-entry validate_captcha sb_input_field' name='register_captcha_code' type='text'>
                             </div>
                             <p class='captcha_small'>Click <a href='javascript: register_refresh_Captcha();'>here</a> to refresh Image !</p>
-                            <input type='hidden' id='check-me' />
-                        </div> ";                      
-			$html .= "<textarea name='txtReviewComment' class='required-entry'></textarea>";
+                            <input type='hidden' id='check-me' />";
+                                            
+			//$html .= "<textarea name='txtReviewComment' class='required-entry'></textarea>";
 			$html .= "<input type='hidden' name='hdnCommentId' value=".$comment_id.">";
 			$html .= "<input type='hidden' name='hdnReviewId' value=".$review_id.">";
 			$html .= "<input type='hidden' name='hdnErrorUrl' value=".$error_url.">";
 			$html .= "<button type='button' class='btnExtendedReview' data-request-url='".Mage::getUrl('extendedreview/index/saveReplyToReview')."' data-review-id='".$comment_id."'> <span>submit review </span></button>";
-			$html .= "<a href='javascript:void(0)' class='lnkExtendedReviewComment' data-review-comment-id='".$comment_id."'>close</a>
-                    </div>";
+			$html .= "<a href='javascript:void(0)' class='lnkExtendedReviewComment close_review' data-review-comment-id='".$comment_id."'>close</a>
+                    </div></div>";
 			$html .= "</form>";
 			$html .= "<script type='text/javascript'>
 				    //<![CDATA[
