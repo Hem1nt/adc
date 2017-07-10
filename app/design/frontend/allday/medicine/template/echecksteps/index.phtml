@@ -11,14 +11,14 @@ foreach ($data as $value) {
 	?>
 	<input type="hidden" data-count="<?php echo $totalcolunt;?>" class="echck-current-step" value="<?php echo $value['steps_order']?>">
 	<div class="echeck-flow-images"  id="echeck_<?php echo $value['steps_order']?>" data-id="<?php echo $value['steps_order']?>" style="display:block;">
-		<img height='100' width="100"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).DS.$value['image_name']; ?>">
+		<img   src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).DS.$value['image_name']; ?>">
 	</div>
 	<?php
 	}else{
 	?>
-	<input type="hidden" class="echck-current-step" value="<?php echo $value['steps_order']?>">
+	<input type="hidden"  data-count="<?php echo $totalcolunt;?>"  class="echck-current-step" value="<?php echo $value['steps_order']?>">
 	<div class="echeck-flow-images"  id="echeck_<?php echo $value['steps_order']?>" data-id="<?php echo $value['steps_order']?>" style="display:none;">
-		<img height='100' width="100"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).DS.$value['image_name']; ?>">
+		<img   src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).DS.$value['image_name']; ?>">
 	</div>
 	<?php
 	}
@@ -43,19 +43,40 @@ foreach ($data as $value) {
 </div>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
+		$('.echeck-previous').prop('disabled', true);		
 		$('.steps_button').on('click',function(){
 			var id = jQuery(this).attr('data-id'); 
 			$('.echeck-flow-images').css('display','none');
 			$('.echck-current-step').val(id);
 			$('#echeck_'+id).css('display','block');
+			var curid = $('.echck-current-step').val();
+			var lastitem = $('.echck-current-step').attr('data-count');
+			if(parseInt(id)!=(parseInt(lastitem))){
+				$('.echeck-next').prop('disabled', false);				
+			}
+			if(parseInt(curid)<=1 && parseInt(id)<parseInt(lastitem)){
+				$('.echeck-previous').prop('disabled', true);
+			}else{
+				$('.echeck-previous').prop('disabled', false);
+				$('.echeck-next').prop('disabled', true);
+
+			}
 		});
 		$('.echeck-next').on('click',function(){
 			$('.echeck-flow-images').css('display','none');
 			var id = $('.echck-current-step').val();
-			var id= parseInt(id);			
-			var nextid= id+1;
-			$('.echck-current-step').val(nextid);
-			$('#echeck_'+nextid).css('display','block');
+			var lastitem = $('.echck-current-step').attr('data-count');
+			if(parseInt(id)==(parseInt(lastitem)-1)){
+				$('.echeck-next').prop('disabled', true);
+
+			}
+			if(parseInt(id)>0 && parseInt(id)<parseInt(lastitem)){
+				$('.echeck-previous').prop('disabled', false);
+			}
+				var id= parseInt(id);			
+				var nextid= id+1;
+				$('.echck-current-step').val(nextid);
+				$('#echeck_'+nextid).css('display','block');
 
 		});
 		$('.echeck-previous').on('click',function(){
@@ -65,6 +86,11 @@ foreach ($data as $value) {
 			var nextid= id-1;
 			$('.echck-current-step').val(nextid);
 			$('#echeck_'+nextid).css('display','block');
+			if(parseInt(nextid)==1){
+				$('.echeck-previous').prop('disabled', true);
+				$('.echeck-next').prop('disabled', false);
+			}
+
 
 		});
 	});
