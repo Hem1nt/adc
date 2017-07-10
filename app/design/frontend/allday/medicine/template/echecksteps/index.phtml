@@ -1,0 +1,71 @@
+<h2>Echeck working flow</h2>
+<?php 
+$data = $this->getecheckData();
+$totalcolunt =  count($data);
+?>
+<div class="image_section">
+<?php
+$counter = 1;
+foreach ($data as $value) {
+	if($counter==1){
+	?>
+	<input type="hidden" data-count="<?php echo $totalcolunt;?>" class="echck-current-step" value="<?php echo $value['steps_order']?>">
+	<div class="echeck-flow-images"  id="echeck_<?php echo $value['steps_order']?>" data-id="<?php echo $value['steps_order']?>" style="display:block;">
+		<img height='100' width="100"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).DS.$value['image_name']; ?>">
+	</div>
+	<?php
+	}else{
+	?>
+	<input type="hidden" class="echck-current-step" value="<?php echo $value['steps_order']?>">
+	<div class="echeck-flow-images"  id="echeck_<?php echo $value['steps_order']?>" data-id="<?php echo $value['steps_order']?>" style="display:none;">
+		<img height='100' width="100"  src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).DS.$value['image_name']; ?>">
+	</div>
+	<?php
+	}
+	$counter++;
+}
+?>
+</div>
+<div class="steps_section">
+<button class="echeck-previous">Previous</button>
+<button class="echeck-next" >Next</button>
+<?php
+$count = 1;
+foreach ($data as $value) {
+	?>
+	<div class="echeck-flow-images-steps"  id="echeck_<?php echo $value['steps_order']?>">
+		<span class="steps_button" data-id="<?php echo $value['steps_order']?>" id="echeck_<?php echo $value['steps_order']?>">Step <?php echo $count; ?></span>
+	</div>
+	<?php
+	$count++;
+}
+?>
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('.steps_button').on('click',function(){
+			var id = jQuery(this).attr('data-id'); 
+			$('.echeck-flow-images').css('display','none');
+			$('.echck-current-step').val(id);
+			$('#echeck_'+id).css('display','block');
+		});
+		$('.echeck-next').on('click',function(){
+			$('.echeck-flow-images').css('display','none');
+			var id = $('.echck-current-step').val();
+			var id= parseInt(id);			
+			var nextid= id+1;
+			$('.echck-current-step').val(nextid);
+			$('#echeck_'+nextid).css('display','block');
+
+		});
+		$('.echeck-previous').on('click',function(){
+			$('.echeck-flow-images').css('display','none');
+			var id = $('.echck-current-step').val();
+			var id= parseInt(id);			
+			var nextid= id-1;
+			$('.echck-current-step').val(nextid);
+			$('#echeck_'+nextid).css('display','block');
+
+		});
+	});
+</script>
