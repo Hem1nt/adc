@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_ExtendedReview>
+      <version>0.1.1</version>
+    </Iksula_ExtendedReview>
+  </modules>
+  <frontend>
+	<routers>
+	<extendedreview>
+	    <use>standard</use>
+	    <args>
+	        <module>Iksula_ExtendedReview</module>
+	        <frontName>extendedreview</frontName>
+	    </args>
+	</extendedreview>
+	</routers>
+	</frontend>
+  <global>
+    <helpers>
+      <extendedreview>
+        <class>Iksula_ExtendedReview_Helper</class>
+      </extendedreview>
+    </helpers>
+	<blocks>
+	   <extendedreview>
+		<class>Iksula_ExtendedReview_Block</class>
+	  </extendedreview>
+		<!-- <review>
+			<rewrite>
+				<product_view_list>Iksula_ExtendedReview_Block_Review_Product_View_List</product_view_list>
+			</rewrite>
+		</review> -->
+	</blocks>
+	<models>
+	  <extendedreview>
+		<class>Iksula_ExtendedReview_Model</class>
+		<resourceModel>extendedreview_mysql4</resourceModel>
+	  </extendedreview>
+	  <extendedreview_mysql4>
+		<class>Iksula_ExtendedReview_Model_Mysql4</class>
+		<entities>		  
+			  <extendedreview>
+				<table>extended_review</table>
+			  </extendedreview>
+        </entities>
+	  </extendedreview_mysql4>
+	</models>
+	<resources>
+	  <extendedreview_setup>
+		<setup>
+		  <module>Iksula_ExtendedReview</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </extendedreview_setup>
+	  <extendedreview_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </extendedreview_write>
+	  <extendedreview_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </extendedreview_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <extendedreview>
+	    <use>admin</use>
+		<args>
+		  <module>Iksula_ExtendedReview</module>
+		  <frontName>admin_extendedreview</frontName>
+		</args>
+	  </extendedreview>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+		<catalog>
+        <children>
+		  <extendedreview module="extendedreview">
+			<title>Review's Comments</title>
+			<sort_order>100</sort_order>
+			<children>
+			  <extendedreview module="extendedreview">
+			    <title>Manage Review's Comments</title>
+				<sort_order>0</sort_order>
+				<action>admin_extendedreview/adminhtml_extendedreview</action>
+			  </extendedreview>
+			</children>
+		  </extendedreview>
+		</children>
+		</catalog>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<extendedreview translate="title" module="extendedreview">
+			  <title>ExtendedReview</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <extendedreview translate="title">
+			<title>Manage Extendedreview</title>
+			<sort_order>0</sort_order>
+		  </extendedreview>
+			  </children>
+			</extendedreview>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<extendedreview>
+		  <file>extendedreview.xml</file>
+		</extendedreview>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <extendedreview_adminhtml_extendedreview_index>
+	<reference name="content">
+	  <block type="extendedreview/adminhtml_extendedreview" name="extendedreview" />
+	</reference>
+  </extendedreview_adminhtml_extendedreview_index>
+</layout>
