@@ -25,4 +25,14 @@ app/etc/modules/Nexcessnet_Turpentine.xml
 *.sass-cache
 fpc.xml
 adcmyadmin_HwNqzF7xQCFDkhZSP3HdbBcdcadG/
-blog/
+*.log
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-cache-config.php
+wp-content/plugins/hello.php
