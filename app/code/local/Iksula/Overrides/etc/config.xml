@@ -176,6 +176,11 @@
                 <product_indexer_eav_source>Iksula_Overrides_Model_Resource_Product_Indexer_Eav_Source</product_indexer_eav_source>
             </rewrite>
           </catalog_resource> -->
+          <sales_resource>
+            <rewrite>
+                <order>Iksula_Overrides_Model_Sales_Resource_Order</order>
+            </rewrite>
+          </sales_resource>
           <overrides>
             <class>Iksula_Overrides_Model</class>
           </overrides>
