@@ -1,7 +1,8 @@
-<h2>Echeck working flow</h2>
+<h2>How eCheck Works</h2>
 <?php 
 $data = $this->getecheckData();
 $totalcolunt =  count($data);
+if($totalcolunt){
 ?>
 <div class="image_section">
 <?php
@@ -54,6 +55,9 @@ foreach ($data as $value) {
 }
 ?>
 </div>
+<?php
+}
+?>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
 		$('.steps_button').first().addClass("active");
