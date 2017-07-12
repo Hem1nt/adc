@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Iksula_Echecksteps>
-      <version>0.1.0</version>
+      <version>0.1.1</version>
     </Iksula_Echecksteps>
   </modules>
   <frontend>
@@ -11,7 +11,7 @@
         <use>standard</use>
           <args>
             <module>Iksula_Echecksteps</module>
-            <frontName>echeckst</frontName>
+            <frontName>echecksteps</frontName>
           </args>
       </echecksteps>
     </routers>

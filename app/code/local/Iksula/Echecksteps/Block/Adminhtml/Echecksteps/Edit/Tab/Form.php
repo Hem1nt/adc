@@ -14,6 +14,10 @@ class Iksula_Echecksteps_Block_Adminhtml_Echecksteps_Edit_Tab_Form extends Mage_
 						'name' => 'image_name',
 						'note' => '(*.jpg, *.png, *.gif)',
 						));
+						$fieldset->addField("description", "textarea", array(
+						"label" => Mage::helper("echecksteps")->__("Description"),
+						"name" => "description",
+						));
 						$fieldset->addField("steps_order", "text", array(
 						"label" => Mage::helper("echecksteps")->__("Steps"),
 						"name" => "steps_order",

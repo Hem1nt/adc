@@ -27,28 +27,46 @@ foreach ($data as $value) {
 ?>
 </div>
 <div class="steps_section">
-<button class="echeck-previous">Previous</button>
-<button class="echeck-next" >Next</button>
+	<div class="nav-div">
+		<button class="echeck-previous">Previous</button>
+		<button class="echeck-next" >Next</button>
+	</div>
 <?php
 $count = 1;
 foreach ($data as $value) {
+	if($count==1){
+
 	?>
 	<div class="echeck-flow-images-steps"  id="echeck_<?php echo $value['steps_order']?>">
 		<span class="steps_button" data-id="<?php echo $value['steps_order']?>" id="echeck_<?php echo $value['steps_order']?>">Step <?php echo $count; ?></span>
+		<span class="steps_description" data-id="<?php echo $value['steps_order']?>" id="echeck_desc_<?php echo $value['steps_order']?>" style="display:block;"><?php echo $value['description']; ?></span>
 	</div>
 	<?php
+}else{
+	?>
+	<div class="echeck-flow-images-steps"  id="echeck_<?php echo $value['steps_order']?>">
+		<span class="steps_button" data-id="<?php echo $value['steps_order']?>" id="echeck_<?php echo $value['steps_order']?>">Step <?php echo $count; ?></span>
+		<span class="steps_description" data-id="<?php echo $value['steps_order']?>" id="echeck_desc_<?php echo $value['steps_order']?>" style="display:none;"><?php echo $value['description']; ?></span>
+	</div>
+	<?php
+}
 	$count++;
 }
 ?>
 </div>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
+		$('.steps_button').first().addClass("active");
 		$('.echeck-previous').prop('disabled', true);		
 		$('.steps_button').on('click',function(){
 			var id = jQuery(this).attr('data-id'); 
+			$('.steps_button').removeClass("active");
+			$(this).addClass("active");
 			$('.echeck-flow-images').css('display','none');
+			$('.steps_description').hide();
 			$('.echck-current-step').val(id);
 			$('#echeck_'+id).css('display','block');
+			$('#echeck_desc_'+id).show();
 			var curid = $('.echck-current-step').val();
 			var lastitem = $('.echck-current-step').attr('data-count');
 			if(parseInt(id)!=(parseInt(lastitem))){
@@ -64,6 +82,7 @@ foreach ($data as $value) {
 		});
 		$('.echeck-next').on('click',function(){
 			$('.echeck-flow-images').css('display','none');
+			$('.steps_description').hide();
 			var id = $('.echck-current-step').val();
 			var lastitem = $('.echck-current-step').attr('data-count');
 			if(parseInt(id)==(parseInt(lastitem)-1)){
@@ -77,15 +96,18 @@ foreach ($data as $value) {
 				var nextid= id+1;
 				$('.echck-current-step').val(nextid);
 				$('#echeck_'+nextid).css('display','block');
+				$('#echeck_desc_'+nextid).show();
 
 		});
 		$('.echeck-previous').on('click',function(){
 			$('.echeck-flow-images').css('display','none');
+			$('.steps_description').hide();
 			var id = $('.echck-current-step').val();
 			var id= parseInt(id);			
 			var nextid= id-1;
 			$('.echck-current-step').val(nextid);
 			$('#echeck_'+nextid).css('display','block');
+			$('#echeck_desc_'+nextid).show();
 			if(parseInt(nextid)==1){
 				$('.echeck-previous').prop('disabled', true);
 				$('.echeck-next').prop('disabled', false);

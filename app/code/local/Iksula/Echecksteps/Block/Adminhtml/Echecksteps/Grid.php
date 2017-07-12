@@ -39,6 +39,10 @@ class Iksula_Echecksteps_Block_Adminhtml_Echecksteps_Grid extends Mage_Adminhtml
 				'index' => 'image_name',
 				'renderer' => 'Iksula_Echecksteps_Block_Adminhtml_Echecksteps_Renderer_Image',				
 				));
+				$this->addColumn("description", array(
+				"header" => Mage::helper("echecksteps")->__("Description"),
+				"index" => "description",
+				));
 				$this->addColumn("created_at", array(
 				"header" => Mage::helper("echecksteps")->__("Created At"),
 				"index" => "created_at",
