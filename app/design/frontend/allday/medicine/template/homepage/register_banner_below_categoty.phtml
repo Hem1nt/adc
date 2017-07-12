@@ -50,8 +50,14 @@ foreach ($catData as $key) {
 						<?php else:?>
 						<div class="product_name"><?php echo $usbrandName;?></div>
 					<?php endif;?>
+					<?php if($genericName !='N/A' && $genericName !='No'):?>
 					<div class="generic_name">Generic for : <?php echo $genericName;?></div>
+				<?php else:?><div class="generic_name"></div>
+					<?php endif;?>
+					<?php if($manufacturedBy !='N/A' && $manufacturedBy !='No'):?>
 					<div class="manu_name">Manufactured by : <?php echo $manufacturedBy;?></div>
+					<?php else:?><div class="manu_name"></div>
+					<?php endif;?>
 					<?php $firstChildInfo = $_frontendHelper->getFirstChildPrice($key);
 					if(!empty($firstChildInfo)):
 						echo $firstChildInfo;
@@ -104,8 +110,14 @@ foreach ($catData as $key) {
 				<?php else:?>
 				<div class="product_name"><?php echo $usbrandName;?></div>
 			<?php endif;?>
+			<?php if($genericName !='N/A' && $genericName !='No'):?>
 			<div class="generic_name">Generic for <?php echo $genericName;?></div>
+			<?php else:?><div class="generic_name"></div>
+			<?php endif;?>
+			<?php if($manufacturedBy !='N/A' && $manufacturedBy !='No'):?>
 			<div class="manu_name">Manufactured by <?php echo $manufacturedBy;?></div>
+			<?php else:?><div class="manu_name"></div>
+			<?php endif;?>
 			<?php $firstChildInfo = $_frontendHelper->getFirstChildPrice($key);
 			if(!empty($firstChildInfo)):
 				echo $firstChildInfo;

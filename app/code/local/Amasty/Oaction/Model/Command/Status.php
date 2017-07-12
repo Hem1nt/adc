@@ -237,7 +237,7 @@ class Amasty_Oaction_Model_Command_Status extends Amasty_Oaction_Model_Command_A
                         
                         $customer['item'] = Mage::helper('amoaction')->getItemsHtml($order);
                         $customer['shippingitem'] = Mage::helper('amoaction')->getShippingHtml($order);
-                        $customer['recommendedproducts'] = Mage::helper('amoaction')->getRecommendedProducts($order);
+                        //$customer['recommendedproducts'] = Mage::helper('amoaction')->getRecommendedProducts($order);
                         //$customer['shippedProducts'] = Mage::helper('amoaction/shippeditem')->getShippedItemsHtml($order);
 						$customer['completeShipment'] = Mage::helper('amoaction/shippeditem')->getCompleteShipment($order);
                         

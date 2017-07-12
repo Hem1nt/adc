@@ -1,4 +1,5 @@
 <?php
+echo "hii";exit;
 $_productCollection=$this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
 $_frontendHelper = $this->helper('frontend/data');
@@ -44,7 +45,11 @@ $categoryUrl = $category->getUrl();
                 ?>
 
                 <div class="desc std">
-                     <?php echo $_frontendHelper->getGenericInfo($_product);?>
+                     <?php $genericName = $_frontendHelper->getGenericInfo($_product);
+                        if($genericName !='N/A' && $genericName !='No'):
+                            echo $genericName;
+                        endif;
+                    ?>
                 </div>
                 <div class="generic_for">
                         <?php
