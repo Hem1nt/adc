@@ -1,0 +1,123 @@
+<h2>How eCheck Works</h2>
+<?php 
+$data = $this->getecheckData();
+$totalcolunt =  count($data);
+if($totalcolunt){
+?>
+<div class="image_section">
+<?php
+$counter = 1;
+foreach ($data as $value) {
+	if($counter==1){
+	?>
+	<input type="hidden" data-count="<?php echo $totalcolunt;?>" class="echck-current-step" value="<?php echo $value['steps_order']?>">
+	<div class="echeck-flow-images"  id="echeck_<?php echo $value['steps_order']?>" data-id="<?php echo $value['steps_order']?>" style="display:block;">
+		<img   src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).DS.$value['image_name']; ?>">
+	</div>
+	<?php
+	}else{
+	?>
+	<input type="hidden"  data-count="<?php echo $totalcolunt;?>"  class="echck-current-step" value="<?php echo $value['steps_order']?>">
+	<div class="echeck-flow-images"  id="echeck_<?php echo $value['steps_order']?>" data-id="<?php echo $value['steps_order']?>" style="display:none;">
+		<img   src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).DS.$value['image_name']; ?>">
+	</div>
+	<?php
+	}
+	$counter++;
+}
+?>
+</div>
+<div class="steps_section">
+	<div class="nav-div">
+		<button class="echeck-previous">Previous</button>
+		<button class="echeck-next" >Next</button>
+	</div>
+<?php
+$count = 1;
+foreach ($data as $value) {
+	if($count==1){
+
+	?>
+	<div class="echeck-flow-images-steps"  id="echeck_<?php echo $value['steps_order']?>">
+		<span class="steps_button" data-id="<?php echo $value['steps_order']?>" id="echeck_<?php echo $value['steps_order']?>">Step <?php echo $count; ?></span>
+		<span class="steps_description" data-id="<?php echo $value['steps_order']?>" id="echeck_desc_<?php echo $value['steps_order']?>" style="display:block;"><?php echo $value['description']; ?></span>
+	</div>
+	<?php
+}else{
+	?>
+	<div class="echeck-flow-images-steps"  id="echeck_<?php echo $value['steps_order']?>">
+		<span class="steps_button" data-id="<?php echo $value['steps_order']?>" id="echeck_<?php echo $value['steps_order']?>">Step <?php echo $count; ?></span>
+		<span class="steps_description" data-id="<?php echo $value['steps_order']?>" id="echeck_desc_<?php echo $value['steps_order']?>" style="display:none;"><?php echo $value['description']; ?></span>
+	</div>
+	<?php
+}
+	$count++;
+}
+?>
+</div>
+<?php
+}
+?>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('.steps_button').first().addClass("active");
+		$('.echeck-previous').prop('disabled', true);		
+		$('.steps_button').on('click',function(){
+			var id = jQuery(this).attr('data-id'); 
+			$('.steps_button').removeClass("active");
+			$(this).addClass("active");
+			$('.echeck-flow-images').css('display','none');
+			$('.steps_description').hide();
+			$('.echck-current-step').val(id);
+			$('#echeck_'+id).css('display','block');
+			$('#echeck_desc_'+id).show();
+			var curid = $('.echck-current-step').val();
+			var lastitem = $('.echck-current-step').attr('data-count');
+			if(parseInt(id)!=(parseInt(lastitem))){
+				$('.echeck-next').prop('disabled', false);				
+			}
+			if(parseInt(curid)<=1 && parseInt(id)<parseInt(lastitem)){
+				$('.echeck-previous').prop('disabled', true);
+			}else{
+				$('.echeck-previous').prop('disabled', false);
+				$('.echeck-next').prop('disabled', true);
+
+			}
+		});
+		$('.echeck-next').on('click',function(){
+			$('.echeck-flow-images').css('display','none');
+			$('.steps_description').hide();
+			var id = $('.echck-current-step').val();
+			var lastitem = $('.echck-current-step').attr('data-count');
+			if(parseInt(id)==(parseInt(lastitem)-1)){
+				$('.echeck-next').prop('disabled', true);
+
+			}
+			if(parseInt(id)>0 && parseInt(id)<parseInt(lastitem)){
+				$('.echeck-previous').prop('disabled', false);
+			}
+				var id= parseInt(id);			
+				var nextid= id+1;
+				$('.echck-current-step').val(nextid);
+				$('#echeck_'+nextid).css('display','block');
+				$('#echeck_desc_'+nextid).show();
+
+		});
+		$('.echeck-previous').on('click',function(){
+			$('.echeck-flow-images').css('display','none');
+			$('.steps_description').hide();
+			var id = $('.echck-current-step').val();
+			var id= parseInt(id);			
+			var nextid= id-1;
+			$('.echck-current-step').val(nextid);
+			$('#echeck_'+nextid).css('display','block');
+			$('#echeck_desc_'+nextid).show();
+			if(parseInt(nextid)==1){
+				$('.echeck-previous').prop('disabled', true);
+				$('.echeck-next').prop('disabled', false);
+			}
+
+
+		});
+	});
+</script>
