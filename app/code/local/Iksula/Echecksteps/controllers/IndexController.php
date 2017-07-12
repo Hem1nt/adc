@@ -3,7 +3,7 @@ class Iksula_Echecksteps_IndexController extends Mage_Core_Controller_Front_Acti
     public function IndexAction() {
 
     $this->loadLayout();   
-    $this->getLayout()->getBlock("head")->setTitle($this->__("Echeck working flow"));
+    $this->getLayout()->getBlock("head")->setTitle($this->__("How eCheck Works"));
           $breadcrumbs = $this->getLayout()->getBlock("breadcrumbs");
       $breadcrumbs->addCrumb("home", array(
                 "label" => $this->__("Home Page"),
@@ -11,9 +11,9 @@ class Iksula_Echecksteps_IndexController extends Mage_Core_Controller_Front_Acti
                 "link"  => Mage::getBaseUrl()
        ));
 
-      $breadcrumbs->addCrumb("echeck working flow", array(
-                "label" => $this->__("Echeck working flow"),
-                "title" => $this->__("Echeck working flow")
+      $breadcrumbs->addCrumb("how eCheck works", array(
+                "label" => $this->__("How eCheck Works"),
+                "title" => $this->__("How eCheck Works")
        ));
 
       $this->renderLayout(); 

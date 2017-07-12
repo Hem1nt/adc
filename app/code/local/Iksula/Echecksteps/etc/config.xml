@@ -11,7 +11,7 @@
         <use>standard</use>
           <args>
             <module>Iksula_Echecksteps</module>
-            <frontName>echecksteps</frontName>
+            <frontName>howecheckworks</frontName>
           </args>
       </echecksteps>
     </routers>
