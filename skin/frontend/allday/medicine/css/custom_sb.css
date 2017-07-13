@@ -782,7 +782,10 @@ input[type="radio"]{
     box-sizing: border-box;
     display: block;
 }
+.catalog-product-view #customer-reviews .review-nologged b{
+    display: inline-block;
 
+}
 .comment_wraper{
     padding:10px;
     border: 1px solid #ccc;
@@ -815,6 +818,7 @@ input[type="radio"]{
     text-align: left !important;
     margin: 5px 0 0px 0;
 }
+
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
