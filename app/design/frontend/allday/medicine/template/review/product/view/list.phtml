@@ -112,8 +112,20 @@
                                             <p>
                                             <?php echo $childrev->getComment(); ?>
                                             </p>
-                                               
+                                            <?php
+                                                if(!Mage::getSingleton('customer/session')->isLoggedIn()) {
+                                            ?>
+                                                <p class="review-nologged">
+                                                <span style="font-size:14px"><b>Only registered users can write Comment. Please, <a href="<?php echo Mage::getUrl('customer/account/login'); ?>">log in</a> or <a href="<?php echo Mage::getUrl('customer/account/create'); ?>">register</a></b></span>
+                                                </p>
+                                            <?php
+                                                }else{
+
+                                            ?>   
                                             <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-reviewcomment-id="<?php echo $childrev->getId(); ?>"  data-request-comment-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewCommentForm'); ?>" data-comment-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review-comment">Add Comment</a>
+                                            <?php
+                                                }
+                                            ?>
                                             <div id="divReviewComment<?php echo $childrev->getId(); ?>"></div>
                         
                                         </div>
@@ -169,8 +181,20 @@
                         }
                         ?>
                     </div>
-        
-            <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-request-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewForm'); ?>" data-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review add_comment">Add Comment on Review</a>
+            <?php
+                if(!Mage::getSingleton('customer/session')->isLoggedIn()) {
+            ?>
+                <p class="review-nologged">
+                <span style="font-size:14px"><b>Only registered users can write Comment. Please, <a href="<?php echo Mage::getUrl('customer/account/login'); ?>">log in</a> or <a href="<?php echo Mage::getUrl('customer/account/create'); ?>">register</a></b></span>
+                </p>
+            <?php
+                }else{
+
+            ?>
+                 <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-request-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewForm'); ?>" data-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review add_comment">Add Comment on Review</a>
+            <?php 
+                } 
+            ?>
 
             <div id="divReview<?php echo $_review->getId(); ?>" class="add_review_wrap"></div>
                 </div>
