@@ -32,7 +32,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			//$html .= "<textarea name='txtReviewComment' class='required-entry' placeholder='Your message'></textarea>";
 			$html .= "<input type='hidden' name='hdnReviewId' value=".$review_id.">";
 			$html .= "<input type='hidden' name='hdnErrorUrl' value=".$error_url.">";
-			$html .= "<button type='button' class='btnExtendedReview' data-request-url='".Mage::getUrl('extendedreview/index/saveReplyToReview')."' data-review-id='".$review_id."'> <span>submit review </span></button>";
+			$html .= "<button type='button' class='btnExtendedReview' data-request-url='".Mage::getUrl('extendedreview/index/saveReplyToReview')."' data-review-id='".$review_id."'> <span>submit comment </span></button>";
 			$html .= "<a href='javascript:void(0)' class='lnkExtendedReview close_review' data-review-id='".$review_id."'>close</a>";
 			$html .= "</form>";
 			$html .= "<script type='text/javascript'>
@@ -89,7 +89,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			$html .= "<input type='hidden' name='hdnCommentId' value=".$comment_id.">";
 			$html .= "<input type='hidden' name='hdnReviewId' value=".$review_id.">";
 			$html .= "<input type='hidden' name='hdnErrorUrl' value=".$error_url.">";
-			$html .= "<button type='button' class='btnExtendedReview' data-request-url='".Mage::getUrl('extendedreview/index/saveReplyToReview')."' data-review-id='".$comment_id."'> <span>submit review </span></button>";
+			$html .= "<button type='button' class='btnExtendedReview' data-request-url='".Mage::getUrl('extendedreview/index/saveReplyToReview')."' data-review-id='".$comment_id."'> <span>submit comment </span></button>";
 			$html .= "<a href='javascript:void(0)' class='lnkExtendedReviewComment close_review' data-review-comment-id='".$comment_id."'>close</a>
                     </div></div>";
 			$html .= "</form>";
