@@ -78,6 +78,9 @@ foreach ($data as $value) {
 			}
 			if(parseInt(curid)<=1 && parseInt(id)<parseInt(lastitem)){
 				$('.echeck-previous').prop('disabled', true);
+			}else if(parseInt(curid)==(parseInt(lastitem))){
+				$('.echeck-next').prop('disabled', true);
+
 			}else{
 				// alert(1);
 				$('.echeck-previous').prop('disabled', false);
@@ -119,8 +122,8 @@ foreach ($data as $value) {
 			$('#echeck_step_'+nextid).addClass("active");
 			if(parseInt(nextid)==1){
 				$('.echeck-previous').prop('disabled', true);
-				$('.echeck-next').prop('disabled', false);
 			}
+			$('.echeck-next').prop('disabled', false);
 
 
 		});
