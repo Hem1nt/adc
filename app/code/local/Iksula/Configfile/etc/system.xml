@@ -725,6 +725,7 @@
                         <show_in_website>1</show_in_website>
                         <show_in_store>1</show_in_store>
                       </query_email>
+
                       <paymentlink translate="label">
                         <label>Payment Link</label>
                         <frontend_type>text</frontend_type>
@@ -764,6 +765,25 @@
                     </fields>
 
                   </snippet>
+                  <offers_skus translate="label">
+                <label>List Of Offers Skus</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>0</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <offers_sku_id translate="label">
+                    <label>Enter Offer Sku: </label>
+                    <comment>Please Enter the Sku Comma Seperated</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    </offers_sku_id>
+                </fields>
+            </offers_skus>
                 </groups>
               </custom_snippet>
               <custom_snippet_email>
