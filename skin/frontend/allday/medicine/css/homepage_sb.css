@@ -749,7 +749,7 @@ body *, input, select, textarea, button{
     background-color: #999999;
     color: #fff;
     text-transform: uppercase;
-    cursor: pointer;
+    /*cursor: pointer;*/
     padding: 5px 5px;
     border-top: 1px solid #666666;
     outline: none;
@@ -899,7 +899,9 @@ body *, input, select, textarea, button{
         .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1, .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2  {
              margin: 0; 
         } 
-        
+        .echecksteps-index-index .main-container .col-main{
+            width: 90%;
+        }
 }
 
 @media all and ( max-width: 910px){
@@ -910,6 +912,19 @@ body *, input, select, textarea, button{
                 display: inline-block;
                 min-height: 144px;
             }
+            .echecksteps-index-index .main-container .col-main{
+            width: 100%;
+        }
+
+}
+@media all and ( max-width: 800px) {
+    .echecksteps-index-index .main-container .image_section
+     {
+    width: 55%;
+}
+ .echecksteps-index-index .main-container .steps_section {
+    width: 37%;
+}
 }
 
 @media all and ( max-width: 736px) {
@@ -1095,7 +1110,21 @@ body *, input, select, textarea, button{
         font-size: 13px;
     }
 }
-
+@media all and (max-width: 600px){
+ .echecksteps-index-index .main-container .image_section
+     {
+    width: 100%;
+    margin:20px 0;
+    
+}
+ .echecksteps-index-index .main-container .steps_section {
+    width: 94%;
+    margin: 0 auto;
+}
+.echecksteps-index-index .main-container .col-main h2{
+    font-size: 24px;
+}
+}
 @media all and (max-width: 480px){
     .footer-container #toTop{
         height: auto!important;
