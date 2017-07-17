@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Spadar_Login>
+            <active>true</active>
+            <codePool>community</codePool>
+            <self_name></self_name>
+            <priority>1001</priority>
+            <depends>
+                <Mage_Customer />
+                <Mage_Adminhtml />
+            </depends>
+        </Spadar_Login>
+    </modules>
+</config>
