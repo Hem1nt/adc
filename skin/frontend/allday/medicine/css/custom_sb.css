@@ -688,6 +688,9 @@ input[type="radio"]{
 .header-container {
     margin-top: 30px;
 }
+.echeck-flow-images-steps {
+    font-size: 15px;
+}
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
