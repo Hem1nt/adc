@@ -71,12 +71,10 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 			  {
 				$invoice = $invoiceArray;
 			  }
-
-
 		    foreach ($invoice as $invoices) {
-					if ($invoices->getStoreId()) {
-						Mage::app()->getLocale()->emulate($invoices->getStoreId());
-						Mage::app()->setCurrentStore($invoices->getStoreId());
+					if ($invoice->getStoreId()) {
+						Mage::app()->getLocale()->emulate($invoice->getStoreId());
+						Mage::app()->setCurrentStore($invoice->getStoreId());
 					}
 					$pdf->AddPage();
 					$order = $invoices->getOrder();
@@ -267,7 +265,10 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 										   $p_us_brand = $product->getUsBrandName();
 										   $p_genericname = $product->getGenericName();
 										   $p_strength = $product->getConfigurableAttribute();
+										   $newPackSize = $product->getAttributeText('pack_size');
 										   $item_sku = explode("-",$itemArr['sku']);
+										   $newPackSizeExplode = explode("+", $newPackSize);
+                						   $pack_size = array_sum($newPackSizeExplode);
 											
 										   $parent_sku = $item_sku[0];
 										   $strength = $p_strength;
@@ -291,10 +292,21 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 										   {
 										     $p_bonus = 0;
 										   }
+										   if(strpos($newPackSize, '+') !== false)
+										   {
+										   $p_packagesize = $pack_size;
+										   }else{
 										   $p_packagesize = trim($item_sku[1])." ".$pharm;
+										   }
 
 										   $qty = number_format($itemArr['qty']);
+										   //$total_pills = (trim($item_sku[1]) + $p_bonus) * $itemArr['qty'];
+										   if(strpos($newPackSize, '+') !== false)
+										   {
+										   $total_pills = ($p_packagesize + $p_bonus) * $itemArr['qty'];
+										   }else{
 										   $total_pills = (trim($item_sku[1]) + $p_bonus) * $itemArr['qty'];
+										   }
 										   $price = "$".sprintf ("%.2f", $itemArr['price']);
 										   $total_price = "$".sprintf ("%.2f", $itemArr['row_total_incl_tax']);							
 										   $productcode=$itemArr['sku'];//code
@@ -712,7 +724,10 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 										   $p_us_brand = $product->getUsBrandName();
 										   $p_genericname = $product->getGenericName();
 										   $p_strength = $product->getConfigurableAttribute();
+										   $newPackSize = $product->getAttributeText('pack_size');
 										   $item_sku = explode("-",$itemArr['sku']);
+										   $newPackSizeExplode = explode("+", $newPackSize);
+                						   $pack_size = array_sum($newPackSizeExplode);
 											
 										   $parent_sku = $item_sku[0];
 										   $strength = $p_strength;
@@ -736,10 +751,21 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 										   {
 										     $p_bonus = 0;
 										   }
+										   if(strpos($newPackSize, '+') !== false)
+										   {
+										   $p_packagesize = $pack_size;
+										   }else{
 										   $p_packagesize = trim($item_sku[1])." ".$pharm;
+										   }
+										   //$p_packagesize = trim($item_sku[1])." ".$pharm;
 
 										   $qty = number_format($itemArr['qty']);
+										   if(strpos($newPackSize, '+') !== false)
+										   {
+										   $total_pills = ($p_packagesize + $p_bonus) * $itemArr['qty'];
+										   }else{
 										   $total_pills = (trim($item_sku[1]) + $p_bonus) * $itemArr['qty'];
+										   }
 										   $price = "$".sprintf ("%.2f", $itemArr['price']);
 										   $total_price = "$".sprintf ("%.2f", $itemArr['row_total_incl_tax']);							
 										   $productcode=$itemArr['sku'];//code

@@ -202,6 +202,9 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 						$p_strength = $product->getConfigurableAttribute();
 						$p_bonus = $product->getBonus();
 						$item_sku = explode("-",$itemArr['sku']);
+						$newPackSize = $product->getAttributeText('pack_size');
+						$newPackSizeExplode = explode("+", $newPackSize);
+                		$pack_size = array_sum($newPackSizeExplode);
 
 						//$product = Mage::getModel('catalog/product');
 						$parent_sku = trim($item_sku[0]);
@@ -217,8 +220,13 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 						if(empty($strength)) {
 							$strength = "";
 						}
-						
-						$p_packagesize = trim($item_sku[1]) + $p_bonus;
+						if(strpos($newPackSize, '+') !== false)
+						{
+							$p_packagesize = $pack_size;
+						}else{
+						   	$p_packagesize = trim($item_sku[1]) + $p_bonus;
+						}
+						//$p_packagesize = trim($item_sku[1]) + $p_bonus;
 
 						$pharmaceuticalformId = $product->getPharmaceuticalForm();
 						$pharm = $attr->getSource()->getOptionText($pharmaceuticalformId);
@@ -551,7 +559,16 @@ public function getallprintPdf($invoiceArray = array(),$shipmentsArray = array()
 										   $p_strength = $product->getConfigurableAttribute();
 										   $p_bonus = $product->getBonus();
 										   $item_sku = explode("-",$itemArr['sku']);
-										   $p_packagesize = trim($item_sku[1])." ".$pharm;
+										   $newPackSize = $product->getAttributeText('pack_size');
+										   $newPackSizeExplode = explode("+", $newPackSize);
+                						   $pack_size = array_sum($newPackSizeExplode);
+										   //$p_packagesize = trim($item_sku[1])." ".$pharm;
+										   if(strpos($newPackSize, '+') !== false)
+											{
+												$p_packagesize = $pack_size;
+											}else{
+											   	$p_packagesize = trim($item_sku[1])." ".$pharm;
+											}
 
 										   $qty = number_format($itemArr['qty']);
 										   $total_pills = (trim($item_sku[1]) * $itemArr['qty'])+$p_bonus;
@@ -877,7 +894,16 @@ public function getallprintPdf($invoiceArray = array(),$shipmentsArray = array()
 						$p_strength = $product->getConfigurableAttribute();
 						$p_bonus = $product->getBonus();
 						$item_sku = explode("-",$itemArr['sku']);
-						$p_packagesize = trim($item_sku[1]) + $p_bonus;
+						$newPackSize = $product->getAttributeText('pack_size');
+					    $newPackSizeExplode = explode("+", $newPackSize);
+					    $pack_size = array_sum($newPackSizeExplode);
+						//$p_packagesize = trim($item_sku[1]) + $p_bonus;
+						if(strpos($newPackSize, '+') !== false)
+						{
+							$p_packagesize = $pack_size;
+						}else{
+						   	$p_packagesize = trim($item_sku[1]) + $p_bonus;
+						}
 						//$qty = number_format($itemArr['qty'])."X".$p_packagesize;
 						$qty = number_format($itemArr['qty'])."X".$p_packagesize . ' ' . $pharm;
 						//Us brand Name Reference----
@@ -937,7 +963,16 @@ public function getallprintPdf($invoiceArray = array(),$shipmentsArray = array()
 										$p_strength = $product->getConfigurableAttribute();
 										$p_bonus = $product->getBonus();
 										$item_sku = explode("-",$itemArr['sku']);
-										$p_packagesize = trim($item_sku[1]) + $p_bonus;
+										$newPackSize = $product->getAttributeText('pack_size');
+									    $newPackSizeExplode = explode("+", $newPackSize);
+									    $pack_size = array_sum($newPackSizeExplode);
+										//$p_packagesize = trim($item_sku[1]) + $p_bonus;
+										if(strpos($newPackSize, '+') !== false)
+										{
+											$p_packagesize = $pack_size;
+										}else{
+										   	$p_packagesize = trim($item_sku[1]) + $p_bonus;
+										}
 										//$qty = number_format($itemArr['qty'])."X".$p_packagesize;
 										$qty = number_format($itemArr['qty'])."X".$p_packagesize . ' ' . $pharm;
 										//Indian brand Name Reference----
