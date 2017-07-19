@@ -54,7 +54,9 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
       	$HTML = '';
 
         foreach ($shipmentsArray as $shipment) {
-       	
+       	$multiShipArr = $shipment->getData();// for multi dimestion array check
+			if(is_array($multiShipArr[0])) //for sales order
+            {
         	
 			foreach ($shipment as $shipments)
 			{		
@@ -344,6 +346,305 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 
 							
 							
+			}
+			}else{
+				foreach ($shipmentsArray as $shipments)
+			{		
+					if ($shipments->getStoreId()) {
+						Mage::app()->getLocale()->emulate($shipments->getStoreId());
+						Mage::app()->setCurrentStore($shipments->getStoreId());
+					}
+					$order = $shipments->getOrder();
+						$invoice_no = '&nbsp';
+						$invoice_Date = '&nbsp;';
+
+					if($order->hasInvoices()) {
+					
+						foreach ($order->getInvoiceCollection() as $_eachInvoice) {
+							$invoice_no = $_eachInvoice->getData('increment_id');
+							$invoice_Date =date('d/m/Y', time($_eachInvoice->getData('created_at')));
+						}
+					}
+					$order_date = date('d/m/Y', time($order->getData('created_at')));
+					$trackArr = $shipments->getTracksCollection()->getData();
+						//$carrier_code = $trackArr[0]['carrier_code'];
+						$track_title = $trackArr[0]['title'];
+						$track_number = $trackArr[0]['track_number'];
+						$shipping_add = $shipments->getShippingAddress();
+
+						$shippingAdd 		= $shipments->getShippingAddress()->getData();
+						$c_name 				= $shippingAdd['firstname'].' '.$shippingAdd['lastname'];
+						$filename = $shippingAdd['firstname'].$shippingAdd['lastname'];
+						$company_name 					= $shipping_add->getCompany();
+						$street1 					= $shipping_add->getStreet(1);
+						$street2 					= $shipping_add->getStreet(2);
+						$city 						= $shippingAdd['city'];
+						$postcode 			= $shippingAdd['postcode'];
+						$region 					= $shippingAdd['region'];
+						$telephone			= $shippingAdd['telephone'];
+						$fax				= $shippingAdd['fax'];
+						$country = $shippingAdd['country_id'];
+						$country=Mage::app()->getLocale()->getCountryTranslation($country);
+						$address = Mage::getModel('customer/address')->load($shippingAdd['customer_address_id']);
+
+						$shippingNo 			= $shipments->getIncrementId();
+
+						$orderId 				= $order->getData('increment_id');
+
+						if($order->getData('customer_order_increment_id')) {
+							$custom_order_increment_id = $order->getData('customer_order_increment_id');
+						}else {
+							$custom_order_increment_id ='';
+						}
+
+						$shippingDate 		= date('d/m/Y', $shipments->getCreatedAtDate()->getTimestamp());
+
+						$HTML .='<table class="space">
+								<tr>
+									<td width="700" >
+										<p class="para">
+											<strong>'.strtoupper($c_name).'</strong>
+										</p>';
+						if($company_name!=''){
+							$flag_ship = 'true';
+							$HTML.='<p class="para">
+										<strong>'.strtoupper($company_name).'</strong>
+									</p>';
+						}
+						
+						$HTML .= '<p class="para">	
+									<strong>'.strtoupper($street1).'</strong>
+								  </p>';
+									
+						if(ucwords($country) == "United States")
+						{
+							$country = "USA";
+						}
+						if($street2 != "")
+						{
+
+							$HTML.='<p class="para">
+										<strong>'.strtoupper($street2).'</strong>
+									</p>';
+						}
+						
+						$HTML .='<p class="para">
+									<strong>'.strtoupper($city).'</strong><strong>, '.strtoupper($region).' </strong><strong>&nbsp;'.$postcode.'</strong>
+								</p>';
+									
+								$HTML .='<p class="para">
+											<strong>'.strtoupper($country).'</strong>
+										</p>
+										<p class="para">
+											'.$shippingNo.'
+										</p>
+									</td>
+									<td width="400">
+										<p class="para">
+											<strong>Checked By-</strong>
+										</p>
+										<p class="para">
+											<strong>REF. NO : </strong>'.$shippingNo.'
+										</p>
+										<p class="para">
+											<strong>Order NO : </strong>'.$orderId.'
+										</p>
+
+									</td>
+								</tr>
+								
+								</table>
+								<p class="para"></p>
+								<p class="para"></p>
+								<p class="para">
+									<span><strong>Date :</strong>'.$order_date.'</span>
+								</p>
+								
+								<p class="para">
+									<span><strong>Custom Order NO.</strong>'.$custom_order_increment_id.'</span>
+								</p>
+								
+								<p class="align">
+									<strong><span>CUSTOMER REFERENCE GUIDE</span></strong>
+								</p>
+								
+								
+								 <table >
+									<tr>
+										<td class="tableBorder" colspan="1"  width="300" ><strong>US Brand Name/s (for reference purpose)</strong></td>
+										<td class="tableBorder" colspan="1"  width="300" ><strong>Equivalent Indian Product/s </strong></td>
+										<td class="tableBorder" colspan="1"  width="300" ><strong>Strength</strong></td>
+										<td class="tableBorder" colspan="1"  width="300" ><strong>Quantity</strong></td>
+										<td class="tableBorder" colspan="1"  width="300" ><strong>Total Quantity</strong></td>
+										<td class="tableBorder" colspan="1"  width="300" ><strong>Name of Active Ingredient (generic name)</strong></td>
+									</tr>';
+
+
+					/* Add body */
+					$count = 0;
+					foreach ($shipments->getAllItems() as $item) {
+						if ($item->getOrderItem()->getParentItem()) {
+							continue;
+						}
+						$itemArr = $item->getData();
+						$product = Mage::getModel('catalog/product')->load($itemArr['product_id']);
+						 $attr = $product->getResource()->getAttribute("pharmaceutical_form");
+						//product detail
+						$p_us_brand = $product->getUsBrandName();
+						$p_genericname = $product->getGenericName();
+						$p_strength = $product->getConfigurableAttribute();
+						$p_bonus = $product->getBonus();
+						$item_sku = explode("-",$itemArr['sku']);
+						$newPackSize = $product->getAttributeText('pack_size');
+						$newPackSizeExplode = explode("+", $newPackSize);
+                		$pack_size = array_sum($newPackSizeExplode);
+
+						//$product = Mage::getModel('catalog/product');
+						$parent_sku = trim($item_sku[0]);
+						$productModel = Mage::getModel('catalog/product')->loadByAttribute('sku', $parent_sku);
+						
+						if($productModel){
+							$prod = $productModel->getData();
+						}else{
+							$prod = $product->getData();
+						}
+
+						$strength = $prod['configurable_attribute'];
+						if(empty($strength)) {
+							$strength = "";
+						}
+						if(strpos($newPackSize, '+') !== false)
+						{
+							$p_packagesize = $newPackSize;
+						}else{
+						   	$p_packagesize = trim($item_sku[1]) + $p_bonus;
+						}
+						//$p_packagesize = trim($item_sku[1]) + $p_bonus;
+
+						$pharmaceuticalformId = $product->getPharmaceuticalForm();
+						$pharm = $attr->getSource()->getOptionText($pharmaceuticalformId);
+						$qty = number_format($itemArr['qty'])."X".$p_packagesize . ' ' . $pharm;
+						if(strpos($newPackSize, '+') !== false)
+						{	$total_qty = number_format($itemArr['qty'])*$pack_size . ' ' . $pharm;
+						}else{							
+							$total_qty = number_format($itemArr['qty'])*$p_packagesize . ' ' . $pharm;
+						}
+									
+						$p_brand = $product->getName();
+						
+						//product detail
+						//configureble product name
+						
+						$simpleProductId = $item->getProductId();
+						$parentIds = Mage::getResourceSingleton('catalog/product_type_configurable')->getParentIdsByChild($simpleProductId);
+						$config_product = Mage::getModel('catalog/product')->load($parentIds[0]);
+						if(strpos($p_brand,'-') !== false){
+							$itemNameArray=explode('-', $p_brand);
+							$p_brand = $itemNameArray[0];
+						}
+						if($p_brand==''){
+
+							$p_brand=$config_product->getName();
+						}
+
+						$product_type_id  = $product->getData('type_id');
+						// $p_us_brand = $product->getName();
+						if($product_type_id=='bundle'){
+							$total_pills = $qty;
+							$qty = number_format($itemArr['qty'])."X".number_format($itemArr['qty']). ' ' . $pharm;
+							$p_genericname = '';
+							$product_id = $product->getData('entity_id');
+
+							$bundled_product = new Mage_Catalog_Model_Product();
+							$bundled_product->load($product_id);
+							$selectionCollection = $bundled_product->getTypeInstance(true)->getSelectionsCollection(
+								$bundled_product->getTypeInstance(true)->getOptionsIds($bundled_product), $bundled_product
+								);
+							$bundled_items = array();
+							foreach($selectionCollection as $option) {
+								$attr = $bundled_product->getResource()->getAttribute("active_ingridients");
+								if ($attr->usesSource()) {
+									$bundle_active_ingridients[] = $attr->getSource()->getOptionText($option['active_ingridients']);
+								}
+
+							}
+							$p_genericname = implode(' , ', $bundle_active_ingridients);
+							$p_us_brand = $product->getName();
+							$HTML.='<tr>
+							<td class="tableBorder" colspan="1"  width="300">'.$p_us_brand.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$p_brand.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$strength.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$qty.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$total_qty.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$p_genericname.'</td>
+							</tr>';
+
+						}else{
+
+							$HTML.='<tr>
+							<td class="tableBorder" colspan="1"  width="300">'.$p_us_brand.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$p_brand.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$strength.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$qty.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$total_qty.'</td>
+							<td class="tableBorder" colspan="1"  width="300">'.$p_genericname.'</td>
+							</tr>';
+
+						}
+						/* Draw item */
+						$count++;
+					}
+					
+					$HTML.='</table>
+							
+							<p class="para">
+								<span><strong>Name of Patient and Address:-</strong></span>
+							</p>
+							<p class="oneSpace"></p>
+							<p class="oneSpace"></p>
+							<p class="para">
+								<span><strong>'.strtoupper($c_name).'</strong></span>
+								
+							</p>';
+
+					if($company_name!=''){
+						$com = true;
+					$HTML.='<p class="para">
+							<span><strong>'.strtoupper($company_name).'</strong></span>
+						</p>';
+					}
+
+
+					$HTML.='<p class="para">
+								<span><strong>'.strtoupper($street1).'</strong></span>
+							</p>
+							';
+							if(ucwords($country) == "United States")
+							{
+								$country = "USA";
+							}
+							if($street2 != "")
+							{
+
+							$HTML.='<p class="para">
+										<span><strong>'.strtoupper($street2).'</strong></span>
+									</p>';
+							}
+					 $HTML.='<p class="oneSpace">
+								<span><strong>'.strtoupper($city).'</strong><strong>, '.strtoupper($region).' </strong><strong>&nbsp;'.$postcode.'</strong></span>
+							</p>
+							<p class="oneSpace">
+								<span><strong>'.strtoupper($country).'</strong></span>
+							</p>
+							<p class="oneSpace"></p>
+							<p>
+								<span>'.$shippingNo.'</span>
+							</p> 
+							<pagebreak></pagebreak> ';
+
+							
+							
+			}
 			}
 
         }
