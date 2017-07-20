@@ -34,11 +34,11 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Edit_Tab_Form extends
 						"name" => "approved_by",
 						));
 									
-						 $fieldset->addField('status', 'select', array(
-						'label'     => Mage::helper('extendedreview')->__('Status'),
-						'values'   => Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getValueArray5(),
-						'name' => 'status',
-						));
+						//  $fieldset->addField('status', 'label', array(
+						// 'label'     => Mage::helper('extendedreview')->__('Status'),
+						// 'values'   => Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getValueArray5(),
+						// 'name' => 'status',
+						// ));
 
 				if (Mage::getSingleton("adminhtml/session")->getExtendedreviewData())
 				{

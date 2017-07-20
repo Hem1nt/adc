@@ -52,7 +52,7 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
         $EmailOfReviewUser = $cust1->getEmail();
         $NameOfReviewUser = $cust1->getFirstname()." ".$cust1->getLastname();
         
-        $msgForReview = " Mr.".$NameOfCommentedUser." has Commented on your review.";
+        $msgForReview = $NameOfCommentedUser." has Commented on your review.";
         $this->sendTransactionalEmail($EmailOfReviewUser,$NameOfReviewUser,$msgForReview);
 
       }else{
@@ -64,15 +64,14 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
         $EmailOfReviewUser1 = $cust1->getEmail();
         $NameOfReviewUser1 = $cust1->getFirstname()." ".$cust1->getLastname();
         
-        $msgForReview = " Mr.".$NameOfCommentedUser." has Commented on your review.";
+        $msgForReview1 = $NameOfCommentedUser." has Commented on your review.";
         $this->sendTransactionalEmail($EmailOfReviewUser1,$NameOfReviewUser1,$msgForReview1);
       }
       
 
       $msgForComment = "Thanks for your suggession, Your Comment has been approved.";
       
-    	$this->sendTransactionalEmail($EmailOfCommentedUser,$NameOfCommentedUser,$msgForComment);
-      exit;
+    	$this->sendTransactionalEmail($EmailOfCommentedUser,$NameOfCommentedUser,$msgForComment);      
     }
     public function sendTransactionalEmail($recepientEmail,$recepientName,$msg)
     {
