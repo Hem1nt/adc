@@ -38,22 +38,41 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
     public function sendApprovalEmail($id){  	
     	$commentCollection = Mage::getModel('extendedreview/extendedreview')->load($id);
     	$IdOfCommentedUser = $commentCollection->getCustomerId();
-    	
-    	$reviewId = $commentCollection->getReviewId();
-    	$reviewcollection = Mage::getModel('review/review')->load($reviewId);    	
-    	$cust1= Mage::getModel('customer/customer')->load($reviewcollection->getCustomerId());
-    	$EmailOfReviewUser = $cust1->getEmail();
-    	$NameOfReviewUser = $cust1->getFirstname()." ".$cust1->getLastname();
-    	
 
-    	$cust= Mage::getModel('customer/customer')->load($IdOfCommentedUser);
-    	$EmailOfCommentedUser = $cust->getEmail();
-    	$NameOfCommentedUser = $cust->getFirstname()." ".$cust->getLastname();
-    	$msgForComment = "Thanks for your suggession, Your Comment has been approved.";
-    	$msgForReview = " Mr.".$NameOfCommentedUser." has Commented on your review.";
-    	
-    	$this->sendTransactionalEmail($EmailOfReviewUser,$NameOfReviewUser,$msgForReview);
+      $cust= Mage::getModel('customer/customer')->load($IdOfCommentedUser);
+      $EmailOfCommentedUser = $cust->getEmail();
+      $NameOfCommentedUser = $cust->getFirstname()." ".$cust->getLastname();
+
+
+      if($commentCollection->getCommentId()==0){
+
+        $reviewId = $commentCollection->getReviewId();
+        $reviewcollection = Mage::getModel('review/review')->load($reviewId);     
+        $cust1= Mage::getModel('customer/customer')->load($reviewcollection->getCustomerId());
+        $EmailOfReviewUser = $cust1->getEmail();
+        $NameOfReviewUser = $cust1->getFirstname()." ".$cust1->getLastname();
+        
+        $msgForReview = " Mr.".$NameOfCommentedUser." has Commented on your review.";
+        $this->sendTransactionalEmail($EmailOfReviewUser,$NameOfReviewUser,$msgForReview);
+
+      }else{
+
+        $commentId = $commentCollection->getCommentId();
+        $commentCollection1 = Mage::getModel('extendedreview/extendedreview')->load($commentId);
+        $IdOfCommentedUser1 = $commentCollection1->getCustomerId();
+        $cust1= Mage::getModel('customer/customer')->load($IdOfCommentedUser1);
+        $EmailOfReviewUser1 = $cust1->getEmail();
+        $NameOfReviewUser1 = $cust1->getFirstname()." ".$cust1->getLastname();
+        
+        $msgForReview = " Mr.".$NameOfCommentedUser." has Commented on your review.";
+        $this->sendTransactionalEmail($EmailOfReviewUser1,$NameOfReviewUser1,$msgForReview1);
+      }
+      
+
+      $msgForComment = "Thanks for your suggession, Your Comment has been approved.";
+      
     	$this->sendTransactionalEmail($EmailOfCommentedUser,$NameOfCommentedUser,$msgForComment);
+      exit;
     }
     public function sendTransactionalEmail($recepientEmail,$recepientName,$msg)
     {
