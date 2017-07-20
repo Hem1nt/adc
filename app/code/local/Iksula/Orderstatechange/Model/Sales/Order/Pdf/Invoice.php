@@ -76,8 +76,8 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 			  }
 		    foreach ($invoice as $invoices) {
 					if ($invoices->getStoreId()) {
-						Mage::app()->getLocale()->emulate($invoice->getStoreId());
-						Mage::app()->setCurrentStore($invoice->getStoreId());
+						Mage::app()->getLocale()->emulate($invoices->getStoreId());
+						Mage::app()->setCurrentStore($invoices->getStoreId());
 					}
 					$pdf->AddPage();
 					$order = $invoices->getOrder();
@@ -502,8 +502,8 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 		}else{
 			foreach ($invoiceArray as $invoices) {
 					if ($invoices->getStoreId()) {
-						Mage::app()->getLocale()->emulate($invoice->getStoreId());
-						Mage::app()->setCurrentStore($invoice->getStoreId());
+						Mage::app()->getLocale()->emulate($invoices->getStoreId());
+						Mage::app()->setCurrentStore($invoices->getStoreId());
 					}
 					$pdf->AddPage();
 					$order = $invoices->getOrder();
