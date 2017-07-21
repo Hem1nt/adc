@@ -168,7 +168,7 @@ class Iksula_ExtendedReview_Adminhtml_ExtendedreviewController extends Mage_Admi
 						}	
 
 				}
-				Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Item(s) was successfully removed"));
+				Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Status for Item(s) has been successfully updated."));
 			}
 			catch (Exception $e) {
 				Mage::getSingleton("adminhtml/session")->addError($e->getMessage());
