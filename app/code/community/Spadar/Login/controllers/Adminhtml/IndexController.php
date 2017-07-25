@@ -40,4 +40,7 @@ class Spadar_Login_Adminhtml_IndexController extends Mage_Adminhtml_Controller_A
         	'_store' => $customer->getStoreId(), 
             ));
     }
+    protected function _isAllowed(){
+        return true;
+    }
 }
