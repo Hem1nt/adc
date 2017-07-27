@@ -39,11 +39,11 @@ $lecount=count($le);
        if($productCount%4==1) {
          echo "<li>";
        }
-
+      $productUrl = $_item->getResource()->getAttribute('url_key')->getFrontend()->getValue($_item);
        ?>
        <div class="item">
         <div class="product-image">
-          <a href="<?php echo $_item->getProductUrl() ?>">
+          <a href="<?php echo $productUrl; ?>">
             <img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(200); ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" width="50" height="50" />
           </a>
         </div>
@@ -55,12 +55,12 @@ $lecount=count($le);
            $simpleProduct = $_frontendHelper->getFirstChildInfo($_item);
            $activeingredient = $_frontendHelper->getActiveIngredients($_item);
          ?>
-         <a href="<?php echo $_item->getProductUrl() ?>">
+         <a href="<?php echo $productUrl; ?>">
           <!--b><?php //echo $this->htmlEscape($_item->getName()).' '.$strength.'</b> <br/>'; ?> -->
           <b><?php echo $this->htmlEscape($_item->getName()).'</b> <br/>'; ?>
         </a>
          <span class="equivalentSty">(<?php echo 'Generic for '.' '.trim($us_brand_name)?>)</span>
-         <a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($activeingredient) ?></a>
+         <a href="<?php echo $productUrl; ?>"><?php echo $this->htmlEscape($activeingredient) ?></a>
          <?php echo $simpleProduct; ?>
          <?php if($_item->isSaleable()): ?>
              <div class="clear"  ></div>

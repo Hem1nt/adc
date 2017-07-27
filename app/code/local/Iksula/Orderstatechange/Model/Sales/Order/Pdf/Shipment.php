@@ -88,6 +88,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 						$company_name 					= $shipping_add->getCompany();
 						$street1 					= $shipping_add->getStreet(1);
 						$street2 					= $shipping_add->getStreet(2);
+						$street3 					= $shipping_add->getStreet(3);
 						$city 						= $shippingAdd['city'];
 						$postcode 			= $shippingAdd['postcode'];
 						$region 					= $shippingAdd['region'];
@@ -135,6 +136,13 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 
 							$HTML.='<p class="para">
 										<strong>'.strtoupper($street2).'</strong>
+									</p>';
+						}
+						if($street3 != "")
+						{
+
+							$HTML.='<p class="para">
+										<strong>'.strtoupper($street3).'</strong>
 									</p>';
 						}
 						
@@ -332,6 +340,13 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 										<span><strong>'.strtoupper($street2).'</strong></span>
 									</p>';
 							}
+							if($street3 != "")
+							{
+
+							$HTML.='<p class="para">
+										<span><strong>'.strtoupper($street3).'</strong></span>
+									</p>';
+							}
 					 $HTML.='<p class="oneSpace">
 								<span><strong>'.strtoupper($city).'</strong><strong>, '.strtoupper($region).' </strong><strong>&nbsp;'.$postcode.'</strong></span>
 							</p>
@@ -378,6 +393,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 						$company_name 					= $shipping_add->getCompany();
 						$street1 					= $shipping_add->getStreet(1);
 						$street2 					= $shipping_add->getStreet(2);
+						$street3 					= $shipping_add->getStreet(3);
 						$city 						= $shippingAdd['city'];
 						$postcode 			= $shippingAdd['postcode'];
 						$region 					= $shippingAdd['region'];
@@ -425,6 +441,13 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 
 							$HTML.='<p class="para">
 										<strong>'.strtoupper($street2).'</strong>
+									</p>';
+						}
+						if($street3 != "")
+						{
+
+							$HTML.='<p class="para">
+										<strong>'.strtoupper($street3).'</strong>
 									</p>';
 						}
 						
@@ -630,6 +653,13 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Shipment extends Mage_Sales_
 										<span><strong>'.strtoupper($street2).'</strong></span>
 									</p>';
 							}
+							if($street3 != "")
+							{
+
+							$HTML.='<p class="para">
+										<span><strong>'.strtoupper($street3).'</strong></span>
+									</p>';
+							}
 					 $HTML.='<p class="oneSpace">
 								<span><strong>'.strtoupper($city).'</strong><strong>, '.strtoupper($region).' </strong><strong>&nbsp;'.$postcode.'</strong></span>
 							</p>
@@ -721,6 +751,7 @@ public function getallprintPdf($invoiceArray = array(),$shipmentsArray = array()
 					$b_name 		= $billing->getName();
 					$b_street1 		= $billing->getStreet(1);
 					$b_street2 		= $billing->getStreet(2);
+					$b_street3 		= $billing->getStreet(3);
 					$b_city 		= $billing->getCity();
 					$b_postcode 	= $billing->getPostcode();
 					$b_region 		= $billing->getRegion();
@@ -737,6 +768,7 @@ public function getallprintPdf($invoiceArray = array(),$shipmentsArray = array()
 					$s_name 		= $shipping->getName();
 					$s_street1 		= $shipping->getStreet(1);
 					$s_street2		= $shipping->getStreet(2);
+					$s_street3		= $shipping->getStreet(3);
 					$s_city 		= $shipping->getCity();
 					$s_postcode 	= $shipping->getPostcode();
 					$s_region 		= $shipping->getRegion();
@@ -776,9 +808,9 @@ public function getallprintPdf($invoiceArray = array(),$shipmentsArray = array()
 					    </tr>
 						<tr>
 							<td colspan="1" style="text-align:left"><strong>Address2 </strong></td>
-							<td colspan="1" style="text-align:left">'.ucwords($b_street2).'</td>
+							<td colspan="1" style="text-align:left">'.ucwords($b_street2).' '.ucwords($b_street3).'</td>
 							<td colspan="1" style="text-align:left"><strong>Address2 </strong></td>
-							<td colspan="1" style="text-align:left">'.ucwords($s_street2).'</td>
+							<td colspan="1" style="text-align:left">'.ucwords($s_street2).' '.ucwords($s_street2).'</td>
 					    </tr>
 						<tr>
 							<td colspan="1" style="text-align:left"><strong>City  </strong></td>
@@ -1114,6 +1146,7 @@ public function getallprintPdf($invoiceArray = array(),$shipmentsArray = array()
 						$filename = $shippingAdd['firstname'].$shippingAdd['lastname'];
 						$street1 					= $shipping_add->getStreet(1);
 						$street2 					= $shipping_add->getStreet(2);
+						$street3 					= $shipping_add->getStreet(3);
 						$city 						= $shippingAdd['city'];
 						$postcode 			= $shippingAdd['postcode'];
 						$region 					= $shippingAdd['region'];
@@ -1314,6 +1347,13 @@ public function getallprintPdf($invoiceArray = array(),$shipmentsArray = array()
 
 							$HTML.='<tr>
 										<td colspan="3" style="text-align:left"><strong>'.ucwords($street2).'</strong></td>
+									</tr>';
+							}
+							if($street3 != "")
+							{
+
+							$HTML.='<tr>
+										<td colspan="3" style="text-align:left"><strong>'.ucwords($street3).'</strong></td>
 									</tr>';
 							}
 					 $HTML.='<tr>

@@ -76,8 +76,8 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 			  }
 		    foreach ($invoice as $invoices) {
 					if ($invoices->getStoreId()) {
-						Mage::app()->getLocale()->emulate($invoice->getStoreId());
-						Mage::app()->setCurrentStore($invoice->getStoreId());
+						Mage::app()->getLocale()->emulate($invoices->getStoreId());
+						Mage::app()->setCurrentStore($invoices->getStoreId());
 					}
 					$pdf->AddPage();
 					$order = $invoices->getOrder();
@@ -502,8 +502,8 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 		}else{
 			foreach ($invoiceArray as $invoices) {
 					if ($invoices->getStoreId()) {
-						Mage::app()->getLocale()->emulate($invoice->getStoreId());
-						Mage::app()->setCurrentStore($invoice->getStoreId());
+						Mage::app()->getLocale()->emulate($invoices->getStoreId());
+						Mage::app()->setCurrentStore($invoices->getStoreId());
 					}
 					$pdf->AddPage();
 					$order = $invoices->getOrder();
@@ -520,6 +520,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 					$b_name 		= $billing->getName();
 					$b_street1 		= $billing->getStreet(1);
 					$b_street2 		= $billing->getStreet(2);
+					$b_street3 		= $billing->getStreet(3);
 					$b_city 		= $billing->getCity();
 					$b_postcode 	= $billing->getPostcode();
 					$b_region 		= $billing->getRegion();
@@ -536,6 +537,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 					$s_name 		= $shipping->getName();
 					$s_street1 		= $shipping->getStreet(1);
 					$s_street2 		= $shipping->getStreet(2);
+					$s_street3 		= $shipping->getStreet(3);
 					$s_city 		= $shipping->getCity();
 					$s_postcode 	= $shipping->getPostcode();
 					$s_region 		= $shipping->getRegion();
@@ -601,9 +603,9 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 					    </tr>
 						<tr>
 							<td colspan="1" style="text-align:left"><strong>Address2 </strong></td>
-							<td colspan="1" style="text-align:left">'.ucwords($b_street2).'</td>
+							<td colspan="1" style="text-align:left">'.ucwords($b_street2).' '.ucwords($b_street3).'</td>
 							<td colspan="1" style="text-align:left"><strong>Address2 </strong></td>
-							<td colspan="1" style="text-align:left">'.ucwords($s_street2).'</td>
+							<td colspan="1" style="text-align:left">'.ucwords($s_street2).' '.ucwords($s_street3).'</td>
 					    </tr>
 						<tr>
 							<td colspan="1" style="text-align:left"><strong>City  </strong></td>
@@ -984,6 +986,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 					$b_name 		= $billing->getName();
 					$b_street1 		= $billing->getStreet(1);
 					$b_street2 		= $billing->getStreet(2);
+					$b_street3 		= $billing->getStreet(3);
 					$b_city 		= $billing->getCity();
 					$b_postcode 	= $billing->getPostcode();
 					$b_region 		= $billing->getRegion();
@@ -1000,6 +1003,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 					$s_name 		= $shipping->getName();
 					$s_street1 		= $shipping->getStreet(1);
 					$s_street2 		= $shipping->getStreet(2);
+					$s_street3 		= $shipping->getStreet(3);
 					$s_city 		= $shipping->getCity();
 					$s_postcode 	= $shipping->getPostcode();
 					$s_region 		= $shipping->getRegion();
@@ -1063,11 +1067,11 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 							<td colspan="1" style="text-align:left"><strong>Address1 </strong></td>
 							<td colspan="1" style="text-align:left">'.ucwords($s_street1).'</td>
 					    </tr>
-						<tr>
+					    <tr>
 							<td colspan="1" style="text-align:left"><strong>Address2 </strong></td>
-							<td colspan="1" style="text-align:left">'.ucwords($b_street2).'</td>
+							<td colspan="1" style="text-align:left">'.ucwords($b_street2).' '.ucwords($b_street3).'</td>
 							<td colspan="1" style="text-align:left"><strong>Address2 </strong></td>
-							<td colspan="1" style="text-align:left">'.ucwords($s_street2).'</td>
+							<td colspan="1" style="text-align:left">'.ucwords($s_street2).' '.ucwords($s_street3).'</td>
 					    </tr>
 						<tr>
 							<td colspan="1" style="text-align:left"><strong>City  </strong></td>
