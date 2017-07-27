@@ -15,6 +15,8 @@ class Amasty_Oaction_Helper_Data extends Mage_Core_Helper_Abstract
 			$parentAttributs = $this->getParentAttributs($item);
 			if($parentAttributs['productType'] != 'bundle' && $parentAttributs['productType'] != ''){
 				$packSize = $this->getAttributeLabel('pack_size',$item->getProduct()->getData('pack_size'));
+				$newPackSizeExplode = explode("+", $packSize);
+	    		$pack_size_NEW = array_sum($newPackSizeExplode);
 				$pharmaceuticalForm = $this->getAttributeLabel('pharmaceutical_form',$item->getProduct()->getData('pharmaceutical_form'));
 				$qty = round($item->getQtyOrdered());
 				$total = $item->getRowTotal();
@@ -28,7 +30,11 @@ class Amasty_Oaction_Helper_Data extends Mage_Core_Helper_Abstract
 				if(empty($imgPath)){
 					$imgPath = $defaultImage;
 				}
+				if(strpos($packSize, '+') !== false){
+				$totalQty = ($pack_size_NEW+$bonus)*$qty;
+				}else{
 				$totalQty = ($packSize+$bonus)*$qty;
+				}
 				$genericName = $item->getProduct()->getData('generic_name'); 
 				$html.='<tr>
           	<td align="center" valign="middle" style="border-left:1px solid #aeaeae; border-bottom:1px solid #aeaeae; font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:20px 0;">

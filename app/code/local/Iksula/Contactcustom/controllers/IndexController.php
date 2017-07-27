@@ -294,7 +294,14 @@ class Iksula_Contactcustom_IndexController extends Mage_Core_Controller_Front_Ac
 				$bonus = $productObject->getData('bonus') * $orderedQty;
 				//exit;
 				$pack_size_label = $pack_size_text.' '.$pharmaceutical_form_label;
+				$newPackSizeExplode = explode("+", $pack_size_text);
+	    		$pack_size_NEW = array_sum($newPackSizeExplode);
+				if(strpos($pack_size_text, '+') !== false)
+	    		{
+				$totalquantity = ($pack_size_NEW * $orderedQty) + $bonus.' '.$pharmaceutical_form_label;
+	    		}else{
 				$totalquantity = ($pack_size_text * $orderedQty) + $bonus.' '.$pharmaceutical_form_label;
+	    		}
 				$orderprice = $item->getData('base_price');
 				$totalprice = $orderprice * $orderedQty;
 				$us_brand_name = $productObject->getData('us_brand_name');

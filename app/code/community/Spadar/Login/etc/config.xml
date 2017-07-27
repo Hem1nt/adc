@@ -114,6 +114,9 @@
                         </customer>
                     </children>
                 </admin>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
             </resources>
         </acl>
     </adminhtml>
