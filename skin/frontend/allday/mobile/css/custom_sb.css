@@ -494,6 +494,26 @@
 	.trustedcompany-review-index .col-main .review_details .review_subject,.trustedcompany-review-index .col-main .review_details .review_body{
 	    font-size: 14px;
 	}
+
+	/*echeck cms page*/
+	.cms-content-114-echeck .col-main .std{
+	    position: relative;
+	}
+	.cms-content-114-echeck .main .col-main .howecheckworks{
+	    position: absolute;
+	    right: 0;
+	    top: -54px;
+	    margin: 0;
+	    padding: 0px 13px !important;
+	    line-height: 25px !important;
+	    background: #72ae12;
+	    border-radius: 25px;
+	    height: 25px;
+	    color: #fff!important;
+	}
+	.cms-content-114-echeck .col-main .std .howecheckworks a{
+	    color: #fff;
+	}
 }
 
 @media only screen and (max-width: 768px){
@@ -505,6 +525,18 @@
 	}
 	.testimonial-form-index div#ratingBox{
 		margin-left: 11% !important;
+	}
+	.cms-content-114-echeck .main .col-main .howecheckworks{
+	    position: absolute;
+	    right: 0;
+	    top: -38px;
+	    margin: 0;
+	    padding: 0px 13px !important;
+	    line-height: 25px !important;
+	    background: #72ae12;
+	    border-radius: 25px;
+	    height: 25px;
+	    color: #fff!important;
 	}
 }
 @media only screen and (max-width: 736px){

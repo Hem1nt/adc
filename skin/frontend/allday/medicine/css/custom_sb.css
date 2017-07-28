@@ -975,18 +975,6 @@ input[type="radio"]{
         width: 100%;
         box-sizing: border-box;
     }
-    .cms-content-114-echeck .main .col-main .howecheckworks {
-        position: absolute;
-        right: 0;
-        top: -41px;
-        margin: 0;
-        padding: 0px 13px !important;
-        line-height: 28px !important;
-        background: #72ae12;
-        border-radius: 25px;
-        height: 27px;
-        color: #fff!important;
-    }
 }
 
 @media only screen and (max-width: 670px){
