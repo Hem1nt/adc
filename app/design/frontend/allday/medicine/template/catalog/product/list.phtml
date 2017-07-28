@@ -82,24 +82,32 @@
                     </ul>
                 </div>
                 <div class="generic_name">
-                    <?php echo $_frontendHelper->getGenericInfo($_product);?>
+                    <?php $genericName = $_frontendHelper->getGenericInfo($_product);
+                        if($genericName !='N/A' && $genericName !='No'):
+                            echo $genericName;
+                        endif;
+                    ?>
                 </div>
                 <span class="separator">|</span>
                 <div class="generic_for">
                     <?php
+                    if($usbrandName !='N/A' && $usbrandName !='No'):
                     $usbrandName = $_frontendHelper->getUsBrandInfo($_product);
-                    if(!empty($usbrandName)):
-                        echo $this->__('Generic for ');
-                    echo $usbrandName;
+                        if(!empty($usbrandName)):
+                            echo $this->__('Generic for ');
+                        echo $usbrandName;
+                        endif;
                     endif;
                     ?>
                 </div>
                 <div class="manufactured_by">
                     <?php
+                    if($manufacturedby !='N/A' && $manufacturedby !='No'):
                     $manufacturedby = $_frontendHelper->getManufacturerInfo($_product);
-                    if(!empty($manufacturedby)):
-                        echo $this->__('Manufactured by : ');
-                    echo $manufacturedby;
+                        if(!empty($manufacturedby)):
+                            echo $this->__('Manufactured by : ');
+                        echo $manufacturedby;
+                        endif;
                     endif;
                     ?>
                 </div>
@@ -224,25 +232,33 @@
 
 
     <div class="generic_name">
-        <?php echo $_frontendHelper->getGenericInfo($_product);?>
+        <?php $genericName = $_frontendHelper->getGenericInfo($_product);
+        if($genericName !='N/A' && $genericName !='No'):
+            echo $genericName;
+        endif;
+        ?>
     </div>
 
     <div class="generic_for">
         <?php
+        if($usbrandName !='N/A' && $usbrandName !='No'):
         $usbrandName = $_frontendHelper->getUsBrandInfo($_product);
-        if(!empty($usbrandName)):
-            echo $this->__('Generic for ');
-        echo $usbrandName;
+            if(!empty($usbrandName)):
+                echo $this->__('Generic for ');
+            echo $usbrandName;
+            endif;
         endif;
         ?>
     </div>
 
     <div class="manufactured_by">
         <?php
+        if($manufacturedby !='N/A' && $manufacturedby !='No'):
         $manufacturedby = $_frontendHelper->getManufacturerInfo($_product);
-        if(!empty($manufacturedby)):
-            echo $this->__('Manufactured by : ');
-        echo $manufacturedby;
+            if(!empty($manufacturedby)):
+                echo $this->__('Manufactured by : ');
+            echo $manufacturedby;
+            endif;
         endif;
         ?>
     </div>

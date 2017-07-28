@@ -83,6 +83,9 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
               $attr = $_productModel->getResource()->getAttribute("pack_size");
               if ($attr->usesSource()) {
                 $pack_size = $attr->getSource()->getOptionText($item->getProduct()->getPackSize());
+                $newPackSizeExplode = explode("+", $pack_size);
+                $pack_size = array_sum($newPackSizeExplode);
+
               }
               $configValue = Mage::getStoreConfig('custom_snippet/offers_skus/offers_sku_id');
               $offers_sku = explode(",",$configValue);
