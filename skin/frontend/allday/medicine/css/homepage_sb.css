@@ -694,10 +694,80 @@ body *, input, select, textarea, button{
     z-index: 10;
 }
 
-
-
-
-
+/*ranjeet css */
+.echecksteps-index-index .main-container .image_section{
+    width: 66%;
+    float: left;
+    display: block;
+    margin-right: 20px;
+}
+.echecksteps-index-index .main-container .col-main {
+    float: none;
+    width: 75%;
+    margin: 0 auto;
+}
+.echecksteps-index-index .main-container .col-main h2{
+    text-align: center;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600px;
+    margin: 10px 0px;
+}
+.echecksteps-index-index .main-container .steps_section{
+    width: 28%;
+    float: left;
+    display: block;
+    background: #e9e9ea;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+}
+.echecksteps-index-index .main-container .steps_section .nav-div{
+    display: block;
+    overflow: hidden;
+    margin: 5px 0px;
+    padding: 10px;
+    background-color: #bebbbb;
+}
+.echecksteps-index-index .main-container .steps_section .echeck-previous{
+    float: left;
+    margin-top: 0px
+}
+.echecksteps-index-index .main-container .steps_section .echeck-next{
+    float: right;
+     margin-top: 0px
+}
+.echecksteps-index-index .main-container .steps_section .echeck-flow-images-steps{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+   
+}
+.echecksteps-index-index .main-container .image_section .echeck-flow-images img{
+    width: 100%;
+}
+.echecksteps-index-index .main-container .steps_section .echeck-flow-images-steps .steps_button{
+    background-color: #999999;
+    color: #fff;
+    text-transform: uppercase;
+    /*cursor: pointer;*/
+    padding: 5px 5px;
+    border-top: 1px solid #666666;
+    outline: none;
+    width: 100%;
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+}
+.echecksteps-index-index .main-container .steps_section .echeck-flow-images-steps .steps_button.active{
+    background-color:#d1d0d0;
+}
+.echecksteps-index-index .main-container .steps_section .echeck-flow-images-steps .steps_description{
+    background-color: #fff;
+    width: 92%;
+    display: block;
+    padding: 10px;
+    overflow: hidden;
+}
 @media all and (max-width: 1024px){
 
     /*banner*/
@@ -829,7 +899,9 @@ body *, input, select, textarea, button{
         .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1, .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown2  {
              margin: 0; 
         } 
-        
+        .echecksteps-index-index .main-container .col-main{
+            width: 90%;
+        }
 }
 
 @media all and ( max-width: 910px){
@@ -840,6 +912,19 @@ body *, input, select, textarea, button{
                 display: inline-block;
                 min-height: 144px;
             }
+            .echecksteps-index-index .main-container .col-main{
+            width: 100%;
+        }
+
+}
+@media all and ( max-width: 800px) {
+    .echecksteps-index-index .main-container .image_section
+     {
+    width: 55%;
+}
+ .echecksteps-index-index .main-container .steps_section {
+    width: 37%;
+}
 }
 
 @media all and ( max-width: 736px) {
@@ -1025,7 +1110,21 @@ body *, input, select, textarea, button{
         font-size: 13px;
     }
 }
-
+@media all and (max-width: 600px){
+ .echecksteps-index-index .main-container .image_section
+     {
+    width: 100%;
+    margin:20px 0;
+    
+}
+ .echecksteps-index-index .main-container .steps_section {
+    width: 94%;
+    margin: 0 auto;
+}
+.echecksteps-index-index .main-container .col-main h2{
+    font-size: 24px;
+}
+}
 @media all and (max-width: 480px){
     .footer-container #toTop{
         height: auto!important;

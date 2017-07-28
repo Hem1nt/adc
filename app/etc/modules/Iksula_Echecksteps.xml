@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Echecksteps>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Iksula_Echecksteps>
+  </modules>
+</config>
