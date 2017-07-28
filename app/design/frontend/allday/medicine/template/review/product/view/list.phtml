@@ -24,8 +24,12 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-
-<?php $_items = $this->getReviewsCollection()->getItems();
+<?php 
+// echo get_class($this);
+    // print_r($this->getReviewsCollection()->getData());
+// exit;
+        $extHelper = Mage::helper('extendedreview/data');        
+        $_items = $this->getReviewsCollection()->getItems();
         $productId = Mage::registry('current_product')->getId();
         $reviews = Mage::getModel('review/review')->getCollection()
         ->addStoreFilter(Mage::app()->getStore()->getId())
@@ -35,36 +39,167 @@
         ->addRateVotes();
 ?>
 
+
+
+
+<?php $referer = Mage::helper('core')->urlEncode(Mage::helper('core/url')->getCurrentUrl()); ?>
+
+
 <div class="box-collateral box-reviews" id="customer-reviews">
     <?php if (count($_items)):?>
         <h2><?php echo $this->__('Customer Reviews') ?></h2>
+        <div class="review_scroll">
         <?php //echo $pager = $this->getLayout()->createBlock('page/html_pager', 'product_review_list.toolbar')->setCollection($reviews)->toHtml();
         ?>
-        <?php foreach ($_items as $_review):?>
-        <div class="review-cover">
-            <div class="review_left_block">
-                <div class="nickname">
-                     <?php echo $this->__('Review by <span>%s</span>', $this->htmlEscape($_review->getNickname())) ?>
+        <?php foreach ($_items as $_review):                
+        ?>
+        <div class="review_wrapper">
+            <div class="review-cover">
+                <div class="review_left_block">
+                    <div class="nickname">
+                         <?php echo $this->__('Review by <span>%s</span>', $this->htmlEscape($_review->getNickname())) ?>
+                    </div>
+                    <small class="date"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small>
+                    <div class="review_star">
+                         <?php $_votes = $_review->getRatingVotes(); ?>
+                        <?php if (count($_votes)): ?>
+                                <?php foreach ($_votes as $_vote): ?>
+                                    <div class="rating-box">
+                                        <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+                                    </div>
+                                <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <div class="review_star">
-                     <?php $_votes = $_review->getRatingVotes(); ?>
-                    <?php if (count($_votes)): ?>
-                            <?php foreach ($_votes as $_vote): ?>
-                                <div class="rating-box">
-                                    <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
-                                </div>
-                            <?php endforeach; ?>
-                    <?php endif; ?>
+                <div class="review_right_block">
+                    <div class="comment_wraper">
+                        <div class="review_title">
+                            "<?php echo $this->htmlEscape($_review->getTitle()) ?>"
+                        </div>
+                        
+                        <div class="detail_msg"><?php echo nl2br($this->htmlEscape($_review->getDetail())) ?></div>
+                    </div>
+                    <!-- <small class="date"><?php //echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small> -->
+                    
+                    <div class="review_comment">
+                        
+                        <?php
+                        $childReview =  $extHelper->getChildComments($_review->getId());
+
+                        if(count($childReview)){
+                            ?>
+                                <div class="comment_count"><b >Comments on this Review (<?php echo count($childReview); ?>)</b></div>
+                            <?php
+                        }
+                        foreach ($childReview as $childrev) {
+                            // print_r($childrev->getComment());
+                            // exit();
+                            if($childrev->getComment()){
+                                ?>
+                                    <div class="comment_wraper">
+                                        <div>
+                                            <span class="review_comment_span_customername">
+                                                        <?php echo "Comment by : ".$extHelper->getCustomerName($childrev->getCustomerId()); ?>
+                                                </span>
+                                            <span class="separator">|</span>
+                                            <span>
+                                                <?php echo "(Commented on ".date('m/d/Y', strtotime($childrev->getCreatedAt())).")"; ?>
+                                            </span> 
+
+                                        </div>
+                                        <div class="review_comment_span">
+                                            <p>
+                                            <?php echo $childrev->getComment(); ?>
+                                            </p>
+                                            <?php
+                                                if(!Mage::getSingleton('customer/session')->isLoggedIn()) {
+                                            ?>
+                                                <p class="review-nologged">
+                                                <span style="font-size:14px"><b>Only registered users can write Comment. Please, <a href="<?php echo Mage::getUrl('customer/account/login'); ?>">log in</a> or <a href="<?php echo Mage::getUrl('customer/account/create'); ?>">register</a></b></span>
+                                                </p>
+                                            <?php
+                                                }else{
+
+                                            ?>   
+                                            <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-reviewcomment-id="<?php echo $childrev->getId(); ?>"  data-request-comment-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewCommentForm'); ?>" data-comment-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review-comment">Add Comment</a>
+                                            <?php
+                                                }
+                                            ?>
+                                            <div id="divReviewComment<?php echo $childrev->getId(); ?>"></div>
+                        
+                                        </div>
+                                    </div>
+                                
+                                    <?php
+                                    $childReviewComment =  $extHelper->getChildCommentslevel2($_review->getId(),$childrev->getId());
+                                    if(count($childReviewComment)){
+                                        ?>
+                                        <div class="review_comment_level2">
+                                            <div class="comment_count"> <b >Comments on this Review's Comment</b></div>
+                                        <?php
+                                     
+                                            foreach ($childReviewComment as $childrevcomment) {
+                                                // print_r($childrev->getComment());
+                                                // exit();
+                                                if($childrevcomment->getComment()){
+                                                    ?>
+                                                    <div class="comment_wraper">
+                                                        <div>
+                                                            <span class="review_comment_span_customername">
+                                                                <?php echo "Comment by : ".$extHelper->getCustomerName($childrevcomment->getCustomerId()); ?>
+                                                            </span>
+                                                            <span class="separator">|</span>
+                                                            <span>
+                                                            <?php echo "(Commented on ".date('m/d/Y', strtotime($childrevcomment->getCreatedAt())).")"; ?>
+                                                            </span>
+                                                        </div> 
+                                                        <div>
+                                                            <span class="review_comment_span">
+                                                            <p>
+                                                            <?php echo $childrevcomment->getComment(); ?>
+                                                            </p>
+                                                                
+                                                            <?php /* <!-- <div id="divReviewComment<?php //echo $childrevcomment->getId(); ?>"></div>
+                                        
+                                                            <a href="javascript:void(0);" data-review-id="<?php //echo $_review->getId(); ?>" data-reviewcomment-id="<?php //echo $childrev->getId(); ?>"  data-request-comment-url= "<?php //echo Mage::getUrl('extendedreview/index/getReplyToReviewCommentForm'); ?>" data-comment-error-url="<?php// echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review-comment">Add Comment</a> -->
+                                                            */ ?>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                                  
+                                    
+                                            }
+                                    ?>
+                                </div>  
+
+                                <?php
+                                }
+                            }                    
+                        }
+                        ?>
+                    </div>
+            <?php
+                if(!Mage::getSingleton('customer/session')->isLoggedIn()) {
+            ?>
+                <p class="review-nologged">
+                <span style="font-size:14px"><b>Only registered users can write Comment. Please, <a href="<?php echo Mage::getUrl('customer/account/login'); ?>">log in</a> or <a href="<?php echo Mage::getUrl('customer/account/create'); ?>">register</a></b></span>
+                </p>
+            <?php
+                }else{
+
+            ?>
+                 <a href="javascript:void(0);" data-review-id="<?php echo $_review->getId(); ?>" data-request-url= "<?php echo Mage::getUrl('extendedreview/index/getReplyToReviewForm'); ?>" data-error-url="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="reply-review add_comment">Add Comment on Review</a>
+            <?php 
+                } 
+            ?>
+
+            <div id="divReview<?php echo $_review->getId(); ?>" class="add_review_wrap"></div>
                 </div>
             </div>
-            <div class="review_right_block">
-                <div class="review_title">
-                    "<?php echo $this->htmlEscape($_review->getTitle()) ?>"
-                </div>
-                
-                <div class="detail_msg"><?php echo nl2br($this->htmlEscape($_review->getDetail())) ?></div>
-                <small class="date"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small>
-            </div>
+        <!-- <a href="javascript:void(0);" class="reply-comment">comment reply</a> -->
+
         </div>
         <?php endforeach; ?>
         <?php 
@@ -73,3 +208,15 @@
     <?php endif;?>
     <?php echo $this->getChildHtml('review_form') ?>
 </div>
+</div>
+
+
+<script>
+
+
+    jQuery(document).ready(function() {
+        jQuery(".review_scroll").mCustomScrollbar({
+                axis:"y" // vertical and horizontal scrollbar
+            });
+    });
+</script>
