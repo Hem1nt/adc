@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <echecksteps_adminhtml_echecksteps_index>
+	<reference name="content">
+	  <block type="echecksteps/adminhtml_echecksteps" name="echecksteps" />
+	</reference>
+  </echecksteps_adminhtml_echecksteps_index>
+</layout>
