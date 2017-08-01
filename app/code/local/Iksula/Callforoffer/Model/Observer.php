@@ -7,9 +7,9 @@ class Iksula_Callforoffer_Model_Observer
 		$productid = $item->getData('product_id');
 		$item = ($item->getParentItem() ? $item->getParentItem() : $item );
 
-		$price = $this->_getPriceByItem($item,$productid);
-		$item->setCustomPrice($price);
-		$item->setOriginalCustomPrice($price);
+		// $price = $this->_getPriceByItem($item,$productid);
+		// $item->setCustomPrice($price);
+		// $item->setOriginalCustomPrice($price);
               // echo '<pre>';print_r($item->getData());exit;
 		$storeinfo = $productid.'------'.$price;
 		Mage::log($storeinfo,null,'addtocart.log');

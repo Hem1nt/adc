@@ -688,8 +688,14 @@ input[type="radio"]{
 .header-container {
     margin-top: 30px;
 }
+<<<<<<< HEAD
 
 
+=======
+.echeck-flow-images-steps {
+    font-size: 15px;
+}
+>>>>>>> master_freegift
 /*customer review*/
 .catalog-product-view #customer-reviews .review_scroll .pager{
     padding: 20px;
@@ -818,9 +824,41 @@ input[type="radio"]{
     text-align: left !important;
     margin: 5px 0 0px 0;
 }
+
 .echeck-flow-images-steps {
     font-size: 15px;
 }
+
+
+/*echeck cms page*/
+.cms-content-114-echeck .col-main .std{
+    position: relative;
+}
+.cms-content-114-echeck .main .col-main .howecheckworks{
+    position: absolute;
+    right: 37%;
+    top: -68px;
+    margin: 0;
+    padding: 4px 13px !important;
+    line-height: 28px !important;
+    background: #72ae12;
+    border-radius: 25px;
+    height: 29px;
+    color: #fff!important;
+    font-size: 15px;
+}
+.cms-content-114-echeck .col-main .std .howecheckworks a{
+    color: #fff;
+}
+.morecontent span { display: none;
+}
+.morelink { display: block;
+}
+.morelink { display: block; background: #2a2d83; color: #ffffff; font-size: 13px; padding: 1px 15px; border-bottom: 2px solid #cd0079; font-weight: 600; cursor: pointer; margin: 10px 0 10px 0;
+} 
+.dot_color{ color: #6B9A63;
+}
+
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
@@ -956,6 +994,18 @@ input[type="radio"]{
         margin-left: 0;
         width: 100%;
         box-sizing: border-box;
+    }
+    .cms-content-114-echeck .main .col-main .howecheckworks {
+        position: absolute;
+        right: 0;
+        top: -41px;
+        margin: 0;
+        padding: 0px 13px !important;
+        line-height: 28px !important;
+        background: #72ae12;
+        border-radius: 25px;
+        height: 27px;
+        color: #fff!important;
     }
 }
 
