@@ -1,16 +1,6 @@
 <div class="footer-our-partners">
 	<span class="our-partner-text">Our Partners:</span>
-	<a rel="nofollow" href="https://www.mcafeesecure.com/RatingVerify?ref=www.alldaychemist.com" id="mcaffee_logo" class="footer_logos" onclick="window.open(this.href, 'mcafee_new',
-		'width=1000,height=500,toolbar=1,resizable=0'); return false;">
-		<span class="op1"></span>
-	</a>
-	<a  href="https://seal.godaddy.com/verifySeal?sealID=516304681046fb4bc11011f1400b8da37d719429464659303720420694" rel="nofollow" style="cursor: pointer" id="godaddy_logo" onclick="window.open(this.href, 'godaddy_new',
-		'width=700,height=500,toolbar=1,resizable=0'); return false;" class="footer_logos">
-		<span class="op2"></span>
-	</a>
-	<a href="http://www.copyscape.com/dmca-copyright-protection/" rel="nofollow" id="copyscap_logo" class="footer_logos target_blank">
-		<span class="op3"></span>
-	</a>
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('our_partners')->toHtml(); ?>
 </div>
 
 <div class="footer_imp_msg">
