@@ -261,6 +261,26 @@
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
 			            </sidebar_image_4_url>
+			            <image_above_trusted translate="label">
+			              <label>For Image above trusted Company:</label>
+			              <comment>Upload image if want to display above trusted comapny widget</comment>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
+			              <base_url type="media" scope_info="1">sidebanner</base_url>
+			              <sort_order>8</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </image_above_trusted>
+			            <image_above_trusted_url translate="label" module="configurehomepage">
+			              <label>For Image above trusted Company</label>
+			              <frontend_type>text</frontend_type>
+			              <sort_order>9</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
+			            </image_above_trusted_url>
 			            <cart_sidebar_image translate="label">
 			              <label>Offer Banner For Cart Page</label>
 			              <frontend_type>image</frontend_type>
@@ -283,7 +303,7 @@
 			            <mobile_number translate="label">
                             <label>Contact Number for mobile theme header:</label>
 							<frontend_type>text</frontend_type>
-                            <sort_order>8</sort_order>
+                            <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
