@@ -1,0 +1,109 @@
+<head>
+<style>
+#sigpaddiv
+{
+    float: left;
+    height: 135px;
+    margin-top: 5px;
+}
+.sigPad
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0px;
+    top:0px
+}
+.sigPad .clearSig
+{
+   left: 0px;
+    margin: 0px;
+    padding: 0.6em;
+    position: absolute;
+    text-align: left;
+    top: 91px;
+}
+.form-list label
+{
+  padding: 0;
+}
+.info {background-color: #2196F3;} /* Blue */
+.info:hover {background: #0b7dda;}
+
+
+.voucher_req{margin: 0px; margin-bottom: 15px; border-bottom: 1px solid #ccc; margin-bottom: 30px;}
+</style>
+
+</head>
+<fieldset class="form-list">
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+    <h5>Don't have Voucher?</h5>
+        <li class= "voucher_req drc_li">
+            <div class="input-box">
+                <label for="emailid"><?php echo $this->__('Please submit your email address to receive the voucher.') ?></label><br />
+                <input  id="emailid" name="email" class="" placeholder="Enter Valid Email Id" type="email">
+                <span class="email_validation_advice" style="display: none; color: #d90000;">Email is Required</span>
+                <span class="dcr_email"><p>Your request has been received and is being reviewed by our support staff</p></span>
+            </div>
+        <button type="button" title="<?php echo $this->__('Submit Request') ?>" class="button submit-request-voucher btn info"><span><span><?php echo $this->__('Submit Request') ?></span></span></button>
+        </li>
+        <li class="drc_li">
+        <h5>Already have Voucher?</h5>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_voucher_number"><?php echo $this->__('Voucher Number') ?> <em>*</em></label><br />
+                <input  id="<?php echo $_code ?>_voucher_number" name="payment[voucher_number]" class="required-entry validate-length maximum-length-18 minimum-length-18 validate-digits" placeholder="Enter 18 Digit Voucher Number">
+            </div>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_cvv"><?php echo $this->__('CVV') ?> <em>*</em></label><br />
+                <input id="<?php echo $_code ?>_cvv" name="payment[voucher_cvv]" class="required-entry validate-length maximum-length-3 minimum-length-3 validate-digits" placeholder="3 Digit CVV">
+            </div>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_exp"><?php echo $this->__('Expiration Date') ?> <em>*</em></label><br />
+                <input id="<?php echo $_code ?>_exp" name="payment[voucher_exp]" class="required-entry validate-length maximum-length-4 minimum-length-4 validate-digits" placeholder="MMYY">
+            </div>
+            <button type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Make Payment') ?></span></span></button>
+        </li>
+    </ul>
+</fieldset>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('.submit-request-voucher').click(function(e) {
+            if($('#emailid').val() != ''){
+                e.preventDefault();
+                var url_request = "<?php echo $this->getUrl('drc/index/save')?>";
+                $.ajax({
+                    type:'POST',
+                    url:url_request,
+                    data: { email : $('#emailid').val()} ,
+                    dataType: 'json',
+                    success:function(response){
+                        // console.log('success');
+                        // if (response != '') {
+                        //     console.log(response);
+                        // }
+                    }
+                });
+                location.href = "<?php echo $this->getUrl('checkout/cart/')?>";
+            }
+            if($('#emailid').val() == ''){
+                $('.email_validation_advice').show();
+            }
+        });
+    });
+    jQuery(document).ready(function($) {
+        $('.dcr_email').hide();
+            $(".submit-request-voucher").click(function(){
+                if($('#emailid').val()){
+                    $(".dcr_email").show();
+                    $('.email_validation_advice').hide();
+                }else{
+                    $(".dcr_email").hide();
+
+                }
+            });
+        });
+</script>
