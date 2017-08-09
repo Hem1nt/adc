@@ -402,6 +402,33 @@ public function paymentMethodIsActive(Varien_Event_Observer $observer) {
 
         }
     }
+    public function showAllPayments(Varien_Event_Observer $observer){
+        $event           = $observer->getEvent();
+        $method          = $event->getMethodInstance();
+        $result          = $event->getResult();
+        if(Mage::getSingleton('customer/session')->isLoggedIn())
+          {
+            $customer = Mage::getSingleton('customer/session')->getCustomer();
+            $customerID = $customer->getEntityId();
+          }
+        $cookieAdminUser = Mage::getModel('core/cookie')->get('login_admin');
+        $isFrontend = Mage::getDesign()->getArea();
+        if($isFrontend =='frontend'){
+          /*Client can see all payment methods*/
+            $allPaymentMethod = $this->allPayments();
+              if ($cookieAdminUser == $customerID && in_array($method->getCode(),$allPaymentMethod)) {
+                  $result->isAvailable = true;
+              } else {
+                  $result->getActiveMethods = true;
+              }
+          }
+
+    }
+    public function allPayments(){
+       $allPaymentMethod = Mage::getStoreConfig('payment/allpayment/allpayment_method');
+       $methods = array_filter(explode(",",$allPaymentMethod));
+       return $methods;
+    }
 
     protected function _ipTextToArray($text)
     {
