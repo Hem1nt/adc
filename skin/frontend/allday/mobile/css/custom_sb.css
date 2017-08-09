@@ -618,6 +618,27 @@
 	.trustedcompany-review-index .col-main .review_details .review_subject,.trustedcompany-review-index .col-main .review_details .review_body{
 	    font-size: 14px;
 	}
+
+	/*echeck cms page*/
+	.cms-content-114-echeck .col-main .std{
+	    position: relative;
+	}
+	.cms-content-114-echeck .main .col-main .howecheckworks{
+	   position: absolute;
+	    right: 0;
+	    top: -60px;
+	    margin: 0;
+	    padding: 1px 13px !important;
+	    line-height: 28px !important;
+	    background: #72ae12;
+	    border-radius: 25px;
+	    height: 29px;
+	    color: #fff!important;
+	    font-size: 14px;
+	}
+	.cms-content-114-echeck .col-main .std .howecheckworks a{
+	    color: #fff;
+	}
 }
 
 @media only screen and (max-width: 768px){
@@ -650,6 +671,20 @@
 	.catalog-product-view #customer-reviews .separator {
 	    display: none;
 	}
+=======
+	.cms-content-114-echeck .main .col-main .howecheckworks{
+	   position: absolute;
+	    right: 0;
+	    top: -45px;
+	    margin: 0;
+	    padding: 1px 13px !important;
+	    line-height: 28px !important;
+	    background: #72ae12;
+	    border-radius: 25px;
+	    height: 29px;
+	    color: #fff!important;
+	    font-size: 14px;
+	} 	
 	.trustedcompany-review-index .col-right {
 	  width: 100%;
 	}

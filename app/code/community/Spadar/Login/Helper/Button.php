@@ -18,11 +18,16 @@
 class Spadar_Login_Helper_Button extends Mage_Core_Helper_Abstract
 {
     public function getButtonData()
-    {
+    {   /*Set Cookie S*/
+        $name= 'login_admin';
+        $value= $this->getCustomerId();
         return array(
             'label'   => $this->__('Log in customer'), 
-            'onclick' => 'window.open(\''.Mage::getModel('adminhtml/url')->getUrl('spadarloginadmin/', array('id' => $this->getCustomerId())).'\', \'customer\');', 
+            'onclick' => 'window.open(\''.Mage::getModel('adminhtml/url')->getUrl('spadarloginadmin/', array('id' => $this->getCustomerId())).'\', \'customer\');',
+            'cookie' => Mage::getModel('core/cookie')->set($name, $value), 
             );
+        /*Set Cookie E*/      
+        
     }
 
     protected function getCustomerId()

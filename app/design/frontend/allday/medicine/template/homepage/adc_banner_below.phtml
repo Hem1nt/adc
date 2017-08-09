@@ -1,3 +1,15 @@
+<?php
+	$right_banner_1 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_1');
+		$right_banner_1_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_1_url');
+	$right_banner_2 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_2');
+		$right_banner_2_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_2_url');
+	 $right_banner_3 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_3');
+	 	$right_banner_3_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_3_url');
+	$right_banner_4 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_4');
+		$right_banner_4_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_4_url');
+	$image_above_trusted = Mage::getStoreConfig('homepage_conf/common_group/image_above_trusted');
+		$image_above_trusted_url = Mage::getStoreConfig('homepage_conf/common_group/image_above_trusted_url');
+?>
 <div class="below_banner_main_area">
 	<div class="below_banner_area">
 		<div class="iframe_wrap">
@@ -5,22 +17,19 @@
 			            '_secure' => Mage::app()->getFrontController()->getRequest()->isSecure()
 			        ));?>"></iframe>
 		</div>
+		<?php if($image_above_trusted):?>
+		<div class="home-banner-block">
+			<a class="comboclass" href="<?php echo $image_above_trusted;?>">
+				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $image_above_trusted; ?>"/>
+			</a>			
+		</div>
+		<?php endif;?>
         <div class="trustedcompany-widget">
 			<div id="TRUSTEDCOMPANY_widget_86428">
 				<script async src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXh4BFAMkFgoRGR0LEhgAFkIHHQJYU0JcV08"
 				></script>
 			</div>
 		</div>
-		<?php
-		$right_banner_1 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_1');
-			$right_banner_1_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_1_url');
-		$right_banner_2 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_2');
-			$right_banner_2_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_2_url');
-		$right_banner_3 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_3');
-			$right_banner_3_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_3_url');
-		$right_banner_4 = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_4');
-			$right_banner_4_url = Mage::getStoreConfig('homepage_conf/common_group/sidebar_image_4_url');
-		?>
 		<?php if($right_banner_1):?>
 		<div class="home-banner-block">
 			<a class="comboclass" href="<?php echo $right_banner_1_url;?>">
