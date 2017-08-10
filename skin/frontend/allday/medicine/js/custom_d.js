@@ -503,7 +503,8 @@ jQuery(document).ready(function($){
 // Get review form
 jQuery(document).ready(function(){
   jQuery('.reply-review').on('click',function(){
-    
+    jQuery('.add_review_wrap').html('');
+    jQuery('.add_review_wrap_comment').html('');
     var review = jQuery(this).attr('data-review-id');
     var request_url = jQuery(this).attr('data-request-url');
     var error_url = jQuery(this).attr('data-error-url');
@@ -575,7 +576,8 @@ jQuery(document).ready(function(){
 
 
   jQuery('.reply-review-comment').on('click',function(){
-
+    jQuery('.add_review_wrap').html('');
+    jQuery('.add_review_wrap_comment').html('');
     var review = jQuery(this).attr('data-review-id');
     var commentid = jQuery(this).attr('data-reviewcomment-id');
     var request_url = jQuery(this).attr('data-request-comment-url');
