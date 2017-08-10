@@ -4,9 +4,6 @@
 body *{
 	font-family: 'Open Sans', sans-serif !important;
 }
-
-
-
 .catalog-category-view, .catalogsearch-result-index {
  	.breadcrumbs{
  		li{
@@ -967,17 +964,17 @@ body *{
 					background-position: 22px  12px !important;
 					background-color: #faebe7 !important;	
 				}
-			}
+			} 
 
 			#email{
 				background-image: url('../images/email.png');
 				background-repeat: no-repeat;
-				background-position: 27px 12px;
+				background-position: 22px 12px;
 
 				&.validation-failed {
 					background-image: url('../images/email.png') !important;
 					background-repeat: no-repeat !important;
-					background-position: 27px 12px !important;
+					background-position: 22px 12px !important;
 					background-color: #faebe7 !important;	
 				}
 			}
