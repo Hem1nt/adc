@@ -39,17 +39,26 @@ $categoryUrl = $category->getUrl();
                     endif;
                 ?>
                 <div class="desc std">
-                     <?php echo $_frontendHelper->getGenericInfo($_product);?>
+                    <?php $genericName = $_frontendHelper->getGenericInfo($_product);
+                        if($genericName !='N/A' && $genericName !='No'):
+                            echo $genericName;
+                        endif;
+                    ?>
                 </div>
+                <?php $usbrandName = $_frontendHelper->getUsBrandInfo($_product);
+                        if($usbrandName !='N/A' && $usbrandName !='No'):?>
                 <div class="generic_for">
                         <?php
-                        $usbrandName = $_frontendHelper->getUsBrandInfo($_product);
                         if(!empty($usbrandName)):
                             echo $this->__('Generic for ');
                             echo $usbrandName;
                         endif;
                         ?>
                     </div>
+                <?php else:?><div class="generic_for"></div>
+                <?php
+                $manufacturedby = $_frontendHelper->getManufacturerInfo($_product);
+                if($manufacturedby !='N/A' && $manufacturedby !='No'):?>
                <div class="wrapper">
                     <div class="list-reviews grid-manufacturer">
                         <?php
@@ -61,6 +70,7 @@ $categoryUrl = $category->getUrl();
                         ?>
                   </div>
                 </div>
+                <?php else:?><div class="wrapper"></div>
                 <?php
                     $firstChildInfo = $_frontendHelper->getFirstChildPrice($_product);
                     if(!empty($firstChildInfo)):

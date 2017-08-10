@@ -551,9 +551,11 @@ jQuery(document).ready(function(){
              
     request.done(function( result ) {
         if(result.success == true){
-          jQuery('#review-success-msg').html('Your reply has been saved for moderation');
+          // jQuery('#review-success-msg').html('Your reply has been saved for moderation');
           jQuery('#divReview'+review).html('');
+          jQuery('#divReview'+review).html('Your reply has been saved for moderation');
           jQuery('#divReviewComment'+review).html('');
+          jQuery('#divReviewComment'+review).html('Your reply has been saved for moderation');
         }
         else{
           if(result.err_code == 100){

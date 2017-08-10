@@ -53,19 +53,23 @@
                        <!-- <div class="desc std">
                             <?php //echo $_frontendHelper->getGenericInfo($productsCollection);?>                
                         <!--</div>                    -->
+                        <?php $usbrandName = $_frontendHelper->getUsBrandInfo($productsCollection);
+                        if($usbrandName !='N/A' && $usbrandName !='No' ):?>
                         <div class="generic_name">
-                            <?php
-                                $usbrandName = $_frontendHelper->getUsBrandInfo($productsCollection);
+                            <?php                                
                                 if(!empty($usbrandName)):
                                     echo $this->__('Generic for : ');
                                     echo $usbrandName;
                                 endif;
                             ?>                    
-                        </div>                    
+                        </div>
+                        <?php else:?><div class="generic_name"></div>
+                        <?php endif;?>
+                        <?php $manufacturedby = $_frontendHelper->getManufacturerInfo($productsCollection);
+                        if($manufacturedby !='N/A' && $manufacturedby !='No'):?>                    
                         <div class="manu_name">
                             <div class="list-reviews grid-manufacturer">
                                 <?php
-                                    $manufacturedby = $_frontendHelper->getManufacturerInfo($productsCollection);
                                     if(!empty($manufacturedby)):
                                         echo $this->__('Manufactured by : ');
                                         echo $manufacturedby;
@@ -73,6 +77,8 @@
                                 ?>                  
                             </div>
                         </div>
+                        <?php else:?><div class="manu_name"></div>
+                        <?php endif;?>
                     </div>
                     <?php
                         // $firstChildInfo = $_frontendHelper->getFirstChildPrice($productsCollection);

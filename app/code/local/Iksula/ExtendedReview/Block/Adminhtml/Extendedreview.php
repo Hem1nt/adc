@@ -11,7 +11,7 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview extends Mage_Adminhtm
 	$this->_headerText = Mage::helper("extendedreview")->__("Extendedreview Manager");
 	$this->_addButtonLabel = Mage::helper("extendedreview")->__("Add New Item");
 	parent::__construct();
-	// $this->_removeButton('add');
+	$this->_removeButton('add');
 	}
 
 }

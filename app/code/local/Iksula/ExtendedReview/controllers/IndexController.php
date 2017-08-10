@@ -17,13 +17,13 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			// $html .= "<form id='frmReview".$review_id."'>";
 			$html .= "<form id='frmReview' class='add_review_form1'>";
 			$html .= "<div class='field'>
-                        <!--<label for='register_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->
+                        <!--<label for='review_comment_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->
                         <textarea name='txtReviewComment' class='required-entry' placeholder='Your message' maxlength='80'></textarea>                      
                         <div class='input-box sinput captcha_input_box'>
-                            <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='register_captcha_img'/>                            
+                            <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='review_commment_captcha_img'/>                            
                             
                             <div id='cap_box'>
-                            <input id='register_captcha_code' class='input-text required-entry validate_captcha sb_input_field' name='register_captcha_code' type='text'>
+                            <input id='review_comment_captcha_code' class='input-text required-entry validate_captcha sb_input_field' name='review_comment_captcha_code' type='text'>
                             </div>
                             <p class='captcha_small'>Click <a href='javascript: register_refresh_Captcha();'>here</a> to refresh Image !</p>
                             <input type='hidden' id='check-me' />
@@ -75,12 +75,12 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			// $html .= "<form id='frmReview".$comment_id."'>";
 			$html .= "<form id='frmReview' class='add_review_form1'>";
 			$html .= "<div class='field'>
-                        <!--<label for='register_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->                        
+                        <!--<label for='review_comment_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->                        
                         <textarea name='txtReviewComment' class='required-entry' maxlength='80'></textarea>
                         <div class='input-box sinput captcha_input_box'>
-                            <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='register_captcha_img'/>                            
+                            <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='review_commment_captcha_img'/>                            
                         	<div id='cap_box'>
-                            <input id='register_captcha_code' class='input-text required-entry validate_captcha sb_input_field' name='register_captcha_code' type='text'>
+                            <input id='review_comment_captcha_code' class='input-text required-entry validate_captcha sb_input_field' name='review_comment_captcha_code' type='text'>
                             </div>
                             <p class='captcha_small'>Click <a href='javascript: register_refresh_Captcha();'>here</a> to refresh Image !</p>
                             <input type='hidden' id='check-me' />";
@@ -181,12 +181,12 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 		$aaa = "<script type='text/javascript'>
     var new_form = new VarienForm('frmReview');
     jQuery('#frmReview').submit(function(){
-        var register_captcha_img =jQuery('#register_captcha_code').val();
+        var review_commment_captcha_img =jQuery('#review_comment_captcha_code').val();
         if(new_form.validator.validate()){
             jQuery.ajax({
                 type : 'POST',
                 success:function(content){
-                    jQuery('#register_captcha_code').val('');
+                    jQuery('#review_comment_captcha_code').val('');
                     register_refresh_Captcha();
                 }
             }); 
@@ -197,13 +197,16 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 <!-- Captcha Validation referesh -->
 <script language='JavaScript' type='text/javascript'>
     function register_refresh_Captcha(){
-        var img = document.images['register_captcha_img'];
+        var img = document.images['review_commment_captcha_img'];
         img.src = img.src.substring(0,img.src.lastIndexOf('?'))+'?rand='+Math.random()*1000;
         setTimeout('RegisterRefreshCaptcha()', 500);
     }
 </script>
 <!-- Captcha Validation to match the input with image -->
 <script type='text/javascript'>
+	jQuery(document).ready(function(){
+		register_refresh_Captcha();
+	});
     Validation.add('validate_captcha','Enter valid code',function(field_val){
        if(jQuery('#check-me').val() != '')   {
             var me = jQuery('#check-me').val().split('_');
