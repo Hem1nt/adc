@@ -1,6 +1,130 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
+		/*customer review*/
+	.catalog-product-view #customer-reviews .review_wrapper{
+	    border-bottom: 1px solid #c9c9c9;
+	    display: inline-block;
+	    width: 100%;
+	}
+	.catalog-product-view #customer-reviews .review_wrapper .add_review_wrap{
+	    width: 80%;
+	    display: inline-block;
+	    float: right;
+	    margin-bottom: 15px;
+	}
+	.catalog-product-view #customer-reviews .btnExtendedReview,.catalog-product-view #customer-reviews .close_review{
+	    color: #fff !important;
+	    font-size: 14px;
+	    line-height: 14px;
+	    padding: 8px 24px 8px 24px;
+	    float: left;
+	    border-radius: 30px;
+	    display: inline-block;
+	    font-family: Open Sans, sans-serif;
+	    height: auto;
+	    font-weight: normal;
+	    margin: 15px 5px;
+	    float: none;
+	    background: #9fb701;
+	    border: 0;
+	    font-weight: normal !important;
+	}
+
+	.catalog-product-view #customer-reviews .btnExtendedReview span{
+	    padding: 0;
+	    background: transparent;
+	}
+	.catalog-product-view #customer-reviews .review-cover{
+	    border-bottom: 0 !important;
+	}
+	.catalog-product-view #customer-reviews .add_comment {
+	    font-size: 14px;
+	    text-transform: capitalize;
+	    width: 80%;
+	    display: inline-block;
+	    float: right;
+	    color: #506f00;
+	    font-weight: 600;
+	}
+	.catalog-product-view #customer-reviews .add_comment {
+        width: 100%;
+    }
+    .catalog-product-view #customer-reviews .review_wrapper .add_review_wrap{
+        width: 100%;
+    }
+	.catalog-product-view #customer-reviews .review_right_block .review_comment,
+	.catalog-product-view #customer-reviews .review_right_block .review_comment .review_comment_level2{
+	    width: 96%;
+	    display: inline-block;
+	    float: right;
+	}
+	.catalog-product-view #customer-reviews .add_review_form1 #register_captcha_code{
+	    font-size: 14px;
+	    background: #fff;
+	    border-radius: 5px;
+	    border: 1px solid #aaaaaa;
+	    height: 35px;
+	    box-sizing: border-box;
+	    width: 180px;
+	    float: left;
+	}
+	.catalog-product-view #customer-reviews .add_review_form1 #register_captcha_img{
+	    border: 1px solid #aaa;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    height: 35px;
+	    border-radius: 5px;
+	    overflow: hidden;
+	    box-sizing: border-box;
+	}
+	.catalog-product-view #customer-reviews .add_review_form1 textarea{
+	    height: 100px;
+	    width: 285px;
+	    padding: 10px;
+	    font-size: 14px;
+	    background: #fff;
+	    border-radius: 5px;
+	    border: 1px solid #aaaaaa;
+	    box-sizing: border-box;
+	    display: block;
+	}
+
+	.comment_wraper{
+	    padding:10px;
+	    border: 1px solid #ccc;
+	    border-radius: 8px; 
+	    clear: both;
+	    margin-bottom: 15px;
+	}
+
+	.comment_count{
+	    margin-bottom: 5px;
+	}
+	.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box{
+	    display: inline-block;
+	    font-size: 14px;
+	    position: relative;
+	    margin-top: 10px;
+	}
+	.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .captcha_small {
+	    text-align: left;
+	    font-size: 14px;
+	    margin: 10px 0;
+	    display: inline-block;
+	    width: 100%;
+	}
+	.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .captcha_small a{
+	    font-weight: bold;
+	}
+
+	.catalog-product-view #customer-reviews small.date{
+	    text-align: left !important;
+	    margin: 5px 0 0px 0;
+	}
+
+	/*review closed*/
 	.catalog-product-view .product-details-table .product-options-bottom .add-to-cart{
 	    float: left;
 	}
@@ -529,6 +653,24 @@
 	}
 }
 @media only screen and (max-width: 736px){
+	.catalog-product-view #customer-reviews .add_review_form1 #register_captcha_code{
+	    width: 159px;
+	}
+	.catalog-product-view #customer-reviews .add_review_form1 textarea{
+		width: 265px;
+	}
+	.catalog-product-view #customer-reviews .add_comment {
+		width: 96%;
+	}
+	 .catalog-product-view #customer-reviews .review_wrapper .add_review_wrap{
+        width: 96%;
+    }
+	.catalog-product-view #customer-reviews .review_comment_span_customername {
+	    display: block;
+	}
+	.catalog-product-view #customer-reviews .separator {
+	    display: none;
+	}
 	.cms-content-114-echeck .main .col-main .howecheckworks{
 	   position: absolute;
 	    right: 0;
@@ -646,6 +788,12 @@
 	}
 }
 @media only screen and (max-width: 480px){
+	.catalog-product-view #customer-reviews .add_comment {
+	    width: 97%;
+	}
+	.catalog-product-view #customer-reviews .review_wrapper .add_review_wrap {
+	    width: 97%;
+	}
 	.testimonial-form-index .form-list label {
 	    margin-bottom: 5px;
 	}
