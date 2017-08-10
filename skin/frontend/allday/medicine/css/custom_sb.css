@@ -803,12 +803,26 @@ input[type="radio"]{
     position: relative;
     margin-top: 10px;
 }
+.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box img{
+    float: left;
+}
 .catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .captcha_small {
     text-align: left;
     font-size: 14px;
     margin: 10px 0;
     display: inline-block;
     width: 100%;
+}
+
+.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .cap_box_div{
+    width: auto;
+    float: left;
+    padding-left: 20px;
+}
+.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .cap_box_div input{
+    width: 158px;
+    height: 30px;
+    border-radius: 5px;
 }
 .catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .captcha_small a{
     font-weight: bold;
