@@ -232,7 +232,8 @@ class BluePay_Echeck_Model_EcheckPayment extends Mage_Paygate_Model_Authorizenet
 					$post_string = implode ('&', $post_items);
 					//echo $post_string;exit;
 					//create cURL connection
-					$curl_connection = curl_init('https://theecheck.com/backoffice/api.php');
+					//$curl_connection = curl_init('https://theecheck.com/backoffice/api.php'); // OLD
+					$curl_connection = curl_init('https://api.theecheck.com/api'); // NEW Required URL for API communication
 					//set options
 					curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
 					curl_setopt($curl_connection, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 6.0; WindowsNT 5.1)");
@@ -278,7 +279,8 @@ class BluePay_Echeck_Model_EcheckPayment extends Mage_Paygate_Model_Authorizenet
 					}
 			//create the final string to be posted using implode()
 					$post_string = implode ('&', $post_items);
-					$curl_connection = curl_init('https://theecheck.com/backoffice/api.php');
+					//$curl_connection = curl_init('https://theecheck.com/backoffice/api.php');
+					$curl_connection = curl_init('https://api.theecheck.com/api'); // NEW Required URL for API communication
 			//set options
 					curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
 					curl_setopt($curl_connection, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 6.0; WindowsNT 5.1)");

@@ -26,6 +26,11 @@
 ?>
 <?php /** @var $this Mage_Adminhtml_Block_Sales_Order_View_Tab_Info */ ?>
 <?php $_order = $this->getOrder() ?>
+<?php
+$payment = $_order->getPayment();
+$voucherCode = $payment->getVoucherNumber();
+$voucherTransactionId = $_order->getVoucherTransactionId();
+?>
 <div>
     <div id="order-messages">
         <?php echo $this->getChildHtml('order_messages') ?>
@@ -43,7 +48,12 @@
                 <h4 class="icon-head head-payment-method"><?php echo Mage::helper('sales')->__('Payment Information') ?></h4>
             </div>
             <fieldset>
-                <?php echo $this->getPaymentHtml() ?>
+                <?php //echo $this->getPaymentHtml() ?>
+                <?php echo $this->getPaymentHtml()."<br>"; ?>
+                <?php if ($voucherCode || $voucherTransactionId):?>
+                <?php echo "VoucherNumber:- ". $voucherCode."<br>"; ?>
+                <?php echo "Transaction Id:- ". $voucherTransactionId."<br>"; ?>
+                <?php endif;?>
                 <div><?php echo Mage::helper('sales')->__('Order was placed using %s', $_order->getOrderCurrencyCode()) ?></div>
             </fieldset>
         </div>
