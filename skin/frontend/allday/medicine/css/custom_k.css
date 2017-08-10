@@ -473,6 +473,10 @@ span.footer-logo-adc {
 	height: 35px;
 	margin-bottom: 18px;
 }
+.opc-wrapper-opc #payment_form_drc .voucher_req .drc_li li {
+  padding-bottom: 15px!important;
+  margin-bottom: 15px!important;
+}
 
 .radio-box p.have_account {
   font-size: 14px;
