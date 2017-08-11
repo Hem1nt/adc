@@ -416,10 +416,12 @@ public function paymentMethodIsActive(Varien_Event_Observer $observer) {
         if($isFrontend =='frontend'){
           /*Client can see all payment methods*/
             $allPaymentMethod = $this->allPayments();
-              if ($cookieAdminUser == $customerID && in_array($method->getCode(),$allPaymentMethod)) {
-                  $result->isAvailable = true;
-              } else {
-                  $result->getActiveMethods = true;
+            if($cookieAdminUser){
+                  if ($cookieAdminUser == $customerID && in_array($method->getCode(),$allPaymentMethod)) {
+                      $result->isAvailable = true;
+                  } else {
+                      $result->getActiveMethods = true;
+                  }
               }
           }
 
