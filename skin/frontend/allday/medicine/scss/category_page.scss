@@ -1,21 +1,24 @@
 @import 'partials/var';
 @import 'partials/mixin';
 
+
 body *{
+
 	font-family: 'Open Sans', sans-serif !important;
 }
+
 .catalog-category-view, .catalogsearch-result-index {
  	.breadcrumbs{
  		li{
  			strong{
  				color: $dark_green;
- 			}
+ 			} 
  		}
  	}
 	.col-main{
 		width: 73.5%;
 		padding: 0;
-	
+	 
 	.category-title{
 		display: none;
 	}
@@ -503,7 +506,7 @@ body *{
 						}				
 					}
 				}
-		}
+			}
 
 			li.item.last{
 				margin-right: 0;
