@@ -85,11 +85,13 @@
 		<?php $imageCategory = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/category/'.$popularCatImage;?>
 		<li>
 			<a href="<?php echo $popularCatUrl; ?>">
+			<div class="popular_img_wrapper">
 			<?php if($popularCatImage):?>
 					<img src="<?php echo $imageCategory;?>">
 				<?php else:	?>
 					<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $categoryDefaultImg;?>">
 				<?php endif;?>
+			</div>
 				<span class="popular_name"><?php echo $popularCatName; ?></span>
 			</a>
 		</li>
