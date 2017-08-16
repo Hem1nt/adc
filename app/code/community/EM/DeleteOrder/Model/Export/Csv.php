@@ -45,6 +45,7 @@ class EM_DeleteOrder_Model_Export_Csv extends EM_DeleteOrder_Model_Export_Abstra
             'Order #',
             'Custom Order #',
 			'Echeck Transactionid',
+            'Voucher Transactionid',
             'Purchased On',
             'Bill to Name',
 			'Shipping Country',
@@ -65,6 +66,7 @@ class EM_DeleteOrder_Model_Export_Csv extends EM_DeleteOrder_Model_Export_Abstra
             $order->getRealOrderId(),
             $order->getCustomerOrderIncrementId(), //customer order increment id
 			$order->getData('echeck_transactionid'),
+            $order->getData('voucher_transaction_id'),
 			$order->getData('created_at'),
 			$billingAddress->getName(),
 			$shippingAddress ? $shippingAddress->getCountry() : '',
