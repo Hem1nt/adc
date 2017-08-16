@@ -22,7 +22,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
                         <div class='input-box sinput captcha_input_box'>
                             <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='review_commment_captcha_img'/>                            
                             
-                            <div id='cap_box'>
+                            <div id='cap_box' class='cap_box_div'>
                             <input id='review_comment_captcha_code' class='input-text required-entry validate_captcha sb_input_field' name='review_comment_captcha_code' type='text'>
                             </div>
                             <p class='captcha_small'>Click <a href='javascript: register_refresh_Captcha();'>here</a> to refresh Image !</p>
@@ -79,7 +79,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
                         <textarea name='txtReviewComment' class='required-entry' maxlength='80'></textarea>
                         <div class='input-box sinput captcha_input_box'>
                             <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='review_commment_captcha_img'/>                            
-                        	<div id='cap_box'>
+                        	<div id='cap_box' class='cap_box_div'>
                             <input id='review_comment_captcha_code' class='input-text required-entry validate_captcha sb_input_field' name='review_comment_captcha_code' type='text'>
                             </div>
                             <p class='captcha_small'>Click <a href='javascript: register_refresh_Captcha();'>here</a> to refresh Image !</p>

@@ -103,6 +103,7 @@ class SLandsbek_SimpleOrderExport_Model_Export_Couponreportexport extends SLands
         return array(
            'Order #',
 			'Echeck Transactionid',
+            'Voucher Transactionid',
             'Customer Email',
             'Purchased On',
             'Bill to Name',
@@ -184,7 +185,8 @@ class SLandsbek_SimpleOrderExport_Model_Export_Couponreportexport extends SLands
 		//echo "<pre>"; print_r($order->getData()); exit;
         return array(
             $order->getRealOrderId(),
-			$order->getData('echeck_transactionid'),
+            $order->getData('echeck_transactionid'),
+			$order->getData('voucher_transaction_id'),
             //Mage::helper('core')->formatDate($order->getCreatedAt(), 'medium', true),
             $order->getCustomerEmail(),
             $order->getData('created_at'),
