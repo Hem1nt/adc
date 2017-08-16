@@ -98,7 +98,9 @@
 	    clear: both;
 	    margin-bottom: 15px;
 	}
-
+	.catalog-product-view #customer-reviews .review_right_block .review_title{
+	    color: #f06405;
+	}
 	.comment_count{
 	    margin-bottom: 5px;
 	}
