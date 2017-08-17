@@ -23,10 +23,11 @@
                 ?>
             <div class="register_user_category_content">
                 <li class="slick_list">
+                    <!--lazy loading starts-->
             		<a href="<?php echo $productsCollection->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($productsCollection, 'small_image'), null, true) ?>" class="product_img">
-                    <img src="<?php echo $productsCollection->getImageUrl(); ?>" alt="<?php echo $productsCollection->getName();?>">
+                    <img class="lazy" src="<?php echo $this->getSkinUrl('images/loading_1.gif'); ?>" data-src="<?php echo $productsCollection->getImageUrl(); ?>" width="100" height="100" alt="<?php echo $productsCollection->getName();?>">
                     </a>
-
+                    <!--lazy loading end-->
                     <?php if(!$productsCollection->isSaleable()):?>
                         <div class="stock_label">
                             <?php $custom_stock_status = $_frontendHelper->getCustomStockStatus($productsCollection);
@@ -52,7 +53,7 @@
 
                        <!-- <div class="desc std">
                             <?php //echo $_frontendHelper->getGenericInfo($productsCollection);?>                
-                        <!--</div>                    -->
+                        </div>                    -->
                         <?php $usbrandName = $_frontendHelper->getUsBrandInfo($productsCollection);
                         if($usbrandName !='N/A' && $usbrandName !='No' ):?>
                         <div class="generic_name">
@@ -118,4 +119,13 @@
         }
         ] 
 	});
+    //lazyload function
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+  jQuery('img.lazy').lazy({
+   threshold : 5
+});
+   });
 </script>
