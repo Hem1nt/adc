@@ -21,7 +21,9 @@
 }*/
 .catalog-product-view .review-count-pr .ratings .rating-links {
     font-size: 14px;
-
+}
+.catalog-product-view #customer-reviews .review_right_block .review_title{
+    color: #f06405;
 }
 /*myaccount cashback coupon*/
  li.cashback_offer a {
@@ -804,12 +806,26 @@ input[type="radio"]{
     position: relative;
     margin-top: 10px;
 }
+.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box img{
+    float: left;
+}
 .catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .captcha_small {
     text-align: left;
     font-size: 14px;
     margin: 10px 0;
     display: inline-block;
     width: 100%;
+}
+
+.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .cap_box_div{
+    width: auto;
+    float: left;
+    padding-left: 20px;
+}
+.catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .cap_box_div input{
+    width: 158px;
+    height: 30px;
+    border-radius: 5px;
 }
 .catalog-product-view #customer-reviews .add_review_form1 .captcha_input_box .captcha_small a{
     font-weight: bold;
@@ -819,6 +835,46 @@ input[type="radio"]{
     text-align: left !important;
     margin: 5px 0 0px 0;
 }
+/*echeck cms page*/
+.cms-content-114-echeck .col-main .std{
+    position: relative;
+}
+.cms-content-114-echeck .main .col-main .howecheckworks{
+    position: absolute;
+    right: 37%;
+    top: -68px;
+    margin: 0;
+    padding: 4px 13px !important;
+    line-height: 28px !important;
+    background: #72ae12;
+    border-radius: 25px;
+    height: 29px;
+    color: #fff!important;
+    font-size: 15px;
+}
+.cms-content-114-echeck .col-main .std .howecheckworks a{
+    color: #fff;
+}
+.morecontent span { 
+    display: none;
+}
+.morelink { 
+    display: block;
+}
+.morelink { 
+    display: block; background: #2a2d83; 
+    color: #ffffff; font-size: 13px; 
+    padding: 1px 15px; 
+    border-bottom: 2px solid #cd0079; 
+    font-weight: 600; 
+    cursor: pointer; 
+    margin: 10px 0 10px 0;
+} 
+.dot_color{ 
+    color: #6B9A63;
+}
+
+/**/
 
 /*echeck cms page*/
 .cms-content-114-echeck .col-main .std{

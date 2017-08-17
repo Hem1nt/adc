@@ -102,7 +102,8 @@ class SLandsbek_SimpleOrderExport_Model_Export_Csv extends SLandsbek_SimpleOrder
     {
         return array(
            'Order #',
-			'Echeck Transactionid',
+            'Echeck Transactionid',
+			'Voucher Transactionid',
             'Purchased On',
             'Browser Details',
             'Bill to Name',
@@ -237,7 +238,8 @@ class SLandsbek_SimpleOrderExport_Model_Export_Csv extends SLandsbek_SimpleOrder
 		//echo "<pre>"; print_r($order->getData()); exit;
         return array(
             $order->getRealOrderId(),
-			$order->getData('echeck_transactionid'),
+            $order->getData('echeck_transactionid'),
+			$order->getData('voucher_transaction_id'),
             //Mage::helper('core')->formatDate($order->getCreatedAt(), 'medium', true),
 			$order->getData('created_at'),
             $order->getBrowserDetails(),

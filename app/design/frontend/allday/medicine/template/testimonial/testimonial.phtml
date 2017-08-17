@@ -41,7 +41,9 @@
                             }
                         ?>
                     </div>
-					<?php echo $obj->getTestimonial();?>
+                    <span class="more buttonset-readmore" >
+						<?php echo $obj->getTestimonial();?>
+					</span>
 				</div>
 				<div id="ratingBox">
 				<?php
@@ -52,7 +54,7 @@
 				}
 				?>
 				</div>
-				<div class="buttonset-readmore"><a href="">Read more</a></div>
+				<!-- <div class="buttonset-readmore"><a href="">Read more</a></div> -->
 			</div>
 			<?php endif ?>
 			<?php $i++; ?>
@@ -62,4 +64,33 @@
 		<p class="note-msg"><?php echo $this->__('There is no testimonial submitted.'); ?></p>
 	<?php endif ?>
 </div>
-
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+    // Configure/customize these variables.
+    var showChar = 200;  // How many characters are shown by default
+    var ellipsestext = " ....";
+    var moretext = "Read more";
+    var lesstext = "Read less";
+    jQuery('.more').each(function() {
+        var content = jQuery(this).html(); 
+        if(content.length > showChar) { 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar); 
+            var html = c + '<span class="moreellipses"><span class="dot_color">' + ellipsestext+ '</span>&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>'; 
+            jQuery(this).html(html);
+        } 
+    });
+    jQuery(".morelink").click(function(){
+        if(jQuery(this).hasClass("less")) {
+            jQuery(this).removeClass("less");
+            jQuery(this).html(moretext);
+        } else {
+            jQuery(this).addClass("less");
+            jQuery(this).html(lesstext);
+        }
+        jQuery(this).parent().prev().toggle();
+        jQuery(this).prev().toggle();
+        return false;
+    });
+});
+</script>

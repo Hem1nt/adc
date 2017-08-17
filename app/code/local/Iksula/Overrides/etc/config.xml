@@ -328,8 +328,22 @@
             <class>Iksula_Overrides_Model_Observer</class>
             <method>paymentMethodIsActive</method>
           </paymentfilter_payment_method_is_active>
+          <paymentfilter_payment_method_is_active_showPayment>
+            <type>singleton</type>
+            <class>Iksula_Overrides_Model_Observer</class>
+            <method>showAllPayments</method>
+          </paymentfilter_payment_method_is_active_showPayment>
         </observers>
       </payment_method_is_active>
+      <!-- <payment_method_is_active>
+        <observers>
+          <paymentfilter_payment_method_is_active>
+            <type>singleton</type>
+            <class>Iksula_Overrides_Model_Observer</class>
+            <method>showAllPayments</method>
+          </paymentfilter_payment_method_is_active>
+        </observers>
+      </payment_method_is_active> -->
       <catalog_product_save_commit_after>
         <observers>
           <paymentfilter_catalog_product_save_commit_after>

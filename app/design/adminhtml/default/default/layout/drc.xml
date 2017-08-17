@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <drc_adminhtml_drcbackend_index>
+	<reference name="content">
+	  <block type="drc/adminhtml_drcbackend" name="drcbackend" template="drc/drcbackend.phtml"/>
+	</reference>
+  </drc_adminhtml_drcbackend_index>
+  <drc_adminhtml_managevoucher_index>
+	<reference name="content">
+	  <block type="drc/adminhtml_managevoucher" name="managevoucher" />
+	</reference>
+  </drc_adminhtml_managevoucher_index>
+</layout>
