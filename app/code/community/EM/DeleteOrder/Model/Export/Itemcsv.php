@@ -372,6 +372,7 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
         '',
         '',
         '',
+        '',
         );
     }
     protected function getHeadRowValues()
@@ -390,6 +391,7 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
           'State/Province*',
           'Postal Code*',
           'Country*',
+          'Shipping Amount',
           'SKU Code',
           'Supplier Product Name|(Product Variation Details)*',
           'Site Product Name*',
@@ -466,6 +468,7 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
             $shipingAddress ? $shipingAddress->getRegion(): '',
             $shipingAddress ? "'".$shipingAddress->getData("postcode"): '',
             $shipingAddress ? $shipingAddress->getCountry() : '',
+            $order->getShippingAmount(),
         );
     }
 
