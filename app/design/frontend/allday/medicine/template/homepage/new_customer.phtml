@@ -11,6 +11,7 @@
 	$banner_2_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_2_url');
 	$banner_3_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_3_url');
 	$categoryDefaultImg = Mage::getStoreConfig('homepage_conf/guest_group/popular_category_default_placeholder');
+	//var_dump($categoryDefaultImg);die;
 ?>
 <div class="main_config_page">
 <!-- Best Seller S-->
@@ -18,7 +19,7 @@
 		<div class="best_seller_title">
 			<span><?php echo strtoupper($bestSellingTitle);?></span>
 		</div>
-		<div class="best_seller_data ">
+		<div class="best_seller_data">
 			<ul class="single-item">
 				<?php
 					$i = 0;
@@ -30,7 +31,9 @@
 						if($i%2 != 0):?>
 						<li>
 							<a href="<?php echo $productUrl;?>">
-								<img src="<?php echo $productImage; ?>" alt="<?php echo $productName;?>"/>
+								<img class="lazy" data-src="<?php echo $productImage; ?>"
+								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
+								 alt="<?php echo $productName;?>" width="100" height="100"/>
 								<span><?php echo $productName;?></span>
 							</a>
 						<?php else:?>						
@@ -81,6 +84,7 @@
 			$popularCatName = $_popularCat->getName();
 			$popularCatUrl = $_popularCat->getUrl();
 			$popularCatImage = $_popularCat->getPopularBanner(); 
+			//var_dump($popularCatImage);die;
 		?>
 		<?php $imageCategory = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/category/'.$popularCatImage;?>
 		<li>
@@ -151,4 +155,14 @@
 	    }
 	  ]
 	});
+</script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery("img.lazy").lazy({
+          	threshold : 5
+        });
+
+});
+
+
 </script>

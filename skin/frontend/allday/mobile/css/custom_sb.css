@@ -626,6 +626,16 @@
 	    position: relative;
 	}
 	.cms-content-114-echeck .main .col-main .howecheckworks{
+	    position: absolute;
+	    right: 0;
+	    top: -54px;
+	    margin: 0;
+	    padding: 0px 13px !important;
+	    line-height: 25px !important;
+	    background: #72ae12;
+	    border-radius: 25px;
+	    height: 25px;
+	    color: #fff!important;
 	   position: absolute;
 	    right: 0;
 	    top: -60px;
@@ -637,6 +647,7 @@
 	    height: 29px;
 	    color: #fff!important;
 	    font-size: 14px;
+
 	}
 	.cms-content-114-echeck .col-main .std .howecheckworks a{
 	    color: #fff;
@@ -652,6 +663,18 @@
 	}
 	.testimonial-form-index div#ratingBox{
 		margin-left: 11% !important;
+	}
+	.cms-content-114-echeck .main .col-main .howecheckworks{
+	    position: absolute;
+	    right: 0;
+	    top: -38px;
+	    margin: 0;
+	    padding: 0px 13px !important;
+	    line-height: 25px !important;
+	    background: #72ae12;
+	    border-radius: 25px;
+	    height: 25px;
+	    color: #fff!important;
 	}
 }
 @media only screen and (max-width: 736px){

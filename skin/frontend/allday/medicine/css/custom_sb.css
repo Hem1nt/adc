@@ -883,6 +883,26 @@ input[type="radio"]{
 }
 /**/
 
+/*echeck cms page*/
+.cms-content-114-echeck .col-main .std{
+    position: relative;
+}
+.cms-content-114-echeck .main .col-main .howecheckworks{
+    position: absolute;
+    right: 37%;
+    top: -68px;
+    margin: 0;
+    padding: 4px 13px !important;
+    line-height: 28px !important;
+    background: #72ae12;
+    border-radius: 25px;
+    height: 29px;
+    color: #fff!important;
+    font-size: 15px;
+}
+.cms-content-114-echeck .col-main .std .howecheckworks a{
+    color: #fff;
+}
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
