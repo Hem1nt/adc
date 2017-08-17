@@ -903,6 +903,21 @@ input[type="radio"]{
 .cms-content-114-echeck .col-main .std .howecheckworks a{
     color: #fff;
 }
+
+
+/*popular categories on homepage*/
+.cms-home .main_config_page .popular_categories .popular_categories_data li .popular_img_wrapper{
+    border-radius: 50%;
+    /*border: 1px solid #666;*/
+    display: inline-block;
+    overflow: hidden;
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li img{
+    width: 100%;
+    height: auto;
+}
+/**/
+
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;

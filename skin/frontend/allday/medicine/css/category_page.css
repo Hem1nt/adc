@@ -64,9 +64,8 @@ body * {
   display: inline-block;
   float: right;
   width: 29%;
+  line-height: 19px;
   padding: 0 2%;
-  line-height: 18px;
-  font-size: 13px;
   padding-top: 20px;
 }
 .catalog-category-view .col-main .category_banner .banner_desc h1, .catalogsearch-result-index .col-main .category_banner .banner_desc h1 {
@@ -186,7 +185,7 @@ body * {
 .catalog-category-view .col-main .category-products .products-grid li.item .notify-me-boxwrapper .notify-input-box input, .catalogsearch-result-index .col-main .category-products .products-grid li.item .notify-me-boxwrapper .notify-input-box input {
   font-size: 14px;
   font-weight: 600;
-  /*text-transform: capitalize;*/
+  text-transform: capitalize;
 }
 .catalog-category-view .col-main .category-products .products-grid li.item .notify-me-boxwrapper .notify-input-box .blank_email, .catalogsearch-result-index .col-main .category-products .products-grid li.item .notify-me-boxwrapper .notify-input-box .blank_email {
   margin-bottom: 10px;
@@ -785,12 +784,12 @@ body * {
 .catalog-category-view .col-right.sidebar .block-content.sb_content #email, .catalogsearch-result-index .col-right.sidebar .block-content.sb_content #email {
   background-image: url("../images/email.png");
   background-repeat: no-repeat;
-  background-position: 27px 12px;
+  background-position: 22px 12px;
 }
 .catalog-category-view .col-right.sidebar .block-content.sb_content #email.validation-failed, .catalogsearch-result-index .col-right.sidebar .block-content.sb_content #email.validation-failed {
   background-image: url("../images/email.png") !important;
   background-repeat: no-repeat !important;
-  background-position: 27px 12px !important;
+  background-position: 22px 12px !important;
   background-color: #faebe7 !important;
 }
 .catalog-category-view .col-right.sidebar .block-content.sb_content .input_suggestion_captcha #suggestion_captcha_img, .catalogsearch-result-index .col-right.sidebar .block-content.sb_content .input_suggestion_captcha #suggestion_captcha_img {
@@ -1107,15 +1106,6 @@ dl#narrow-by-list dd ol li a {
     margin-right: -15px;
   }
 }
-@media only screen and (max-width: 1225px){
-
-  .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image {
-    width: 64%;
-  }
-  .catalog-category-view .col-main .category_banner .banner_desc, .catalogsearch-result-index .col-main .category_banner .banner_desc {
-    width: 32%;
-  }
-}
 @media only screen and (max-width: 1129px) {
   .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image {
     width: 60%;
@@ -1223,13 +1213,13 @@ dl#narrow-by-list dd ol li a {
   }
 }
 @media only screen and (max-width: 1012px) {
-  .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image{
-    width: 62%;
+  .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image {
+    width: 70%;
+    display: inline-block;
+    float: left;
   }
-  .catalog-category-view .col-main .category_banner .banner_desc, .catalogsearch-result-index .col-main .category_banner .banner_desc{
-    width: 34%;
-    font-size: 12px;
-    line-height: 17px;
+  .catalog-category-view .col-main .category_banner .banner_desc, .catalogsearch-result-index .col-main .category_banner .banner_desc {
+    width: 26%;
   }
   .catalog-category-view .col-main .category_banner .banner_desc h1, .catalogsearch-result-index .col-main .category_banner .banner_desc h1 {
     font-size: 16px;
@@ -1260,10 +1250,10 @@ dl#narrow-by-list dd ol li a {
   }
 
   .catalog-category-view .col-main .banner_image, .catalogsearch-result-index .col-main .banner_image {
-    width: 64%;
+    width: 69%;
   }
   .catalog-category-view .col-main .category_banner .banner_desc, .catalogsearch-result-index .col-main .category_banner .banner_desc {
-    width: 32%;
+    width: 27%;
   }
   .catalog-category-view .col-main .category_banner .banner_desc .desc_cat, .catalogsearch-result-index .col-main .category_banner .banner_desc .desc_cat {
     height: 110px;
