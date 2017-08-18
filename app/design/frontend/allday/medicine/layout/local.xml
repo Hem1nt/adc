@@ -14,7 +14,9 @@
 		<remove name="left.permanent.callout" />
 
 		<reference name="head">
+
 			<action method="addItem"><type>skin_js</type><name>js/noconflict.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.lazyload.js</name></action>
 			<action method="addItem"><type>skin_css</type><name>css/font-awesome.css</name></action>
 			<action method="addJs"><script>jquery-1.7.min.js</script></action>
 			<action method="addItem"><type>skin_js</type><name>js/jquery.accordion.2.0.js</name></action>
