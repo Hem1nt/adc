@@ -29,7 +29,7 @@
 			<action method="addItem"><type>skin_css</type><name>css/jquery.bxslider.css</name></action>
 			<action method="addItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
 			<!-- <action method="addItem"><type>skin_css</type><name>css/ico-font.css</name></action> -->
-			<action method="addItem"><type>skin_js</type><name>js/little.js</name></action>
+			<!--action method="addItem"><type>skin_js</type><name>js/little.js</name></action-->
 			<action method="addItem"><type>skin_js</type><name>js/custom_d.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>js/custom_sb.js</name></action>
 
