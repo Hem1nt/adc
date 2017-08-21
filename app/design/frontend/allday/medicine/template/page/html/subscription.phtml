@@ -125,20 +125,14 @@ function CloseSubscription(val) {
 			var time = now.getTime();
 			time += 3600 * 1000 * 700;
 			now.setTime(time);
-			document.cookie =
-			'subsclose=yes' +
-			'; expires=' + now.toGMTString() +
-			'; path=/';
+			document.cookie ='subsclose=yes; expires=' + now.toGMTString() +'; path=/';
 		}
 	}
 	function ShowSubscription() {
 		jQuery('#toTop').animate({width: window.innerWidth}, 500, function(){
 			jQuery('#toTop .subscribe').show(); jQuery('#close_subs').show(); jQuery('#show_subs').hide();
 		});
-		document.cookie =
-		'subsclose=no' +
-		'; expires=Thu, 01 Jan 1970 00:00:01 GMT'
-		'; path=/';
+		document.cookie ='subsclose=no; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 	}
 	function get_cookie(Name) {
 		var search = Name + "="
