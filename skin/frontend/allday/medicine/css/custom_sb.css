@@ -881,6 +881,7 @@ input[type="radio"]{
 .dot_color{ 
     color: #6B9A63;
 }
+<<<<<<< HEAD
 .opc-wrapper-opc .payment-block .payment_below_outer {
     display: inline-block;
     margin-left: 35px;
@@ -924,6 +925,19 @@ input[type="radio"]{
     width: 100%;
     height: auto;
     color: #ff0000;}
+}
+.opc-wrapper-opc .payment-block .payment_below_outer {
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px;
+    color: #ff0000;
+    font-weight: 600;
+}
+.opc-wrapper-opc .payment-block .payment_below_outer p{
+    font-size: 14px;
+    color: #ff0000;
+}
+>>>>>>> 975f8ad977a492e179c0343a180417c34d004458
 /**/
 /*subscription*/
 

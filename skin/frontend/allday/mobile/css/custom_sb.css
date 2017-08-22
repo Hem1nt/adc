@@ -12,6 +12,7 @@
 	    font-size: 14px;
 	    color: #ff0000;
 	}	
+
 		/*subscription*/
 
 	.footer-container .subs_a {
@@ -100,8 +101,17 @@
 
 	/*subscription end*/
 
-
-
+	.opc-wrapper-opc .payment-block .payment_below_outer {
+	    display: inline-block;
+	    margin-left: 35px;
+	    margin-top: 10px;
+	    color: #ff0000;
+	    font-weight: 600;
+	}
+	.opc-wrapper-opc .payment-block .payment_below_outer p{
+	    font-size: 14px;
+	    color: #ff0000;
+	}	
 		/*customer review*/
 	.catalog-product-view #customer-reviews .review_wrapper{
 	    border-bottom: 1px solid #c9c9c9;
