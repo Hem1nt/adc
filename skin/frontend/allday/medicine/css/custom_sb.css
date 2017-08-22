@@ -885,11 +885,12 @@ input[type="radio"]{
     display: inline-block;
     margin-left: 35px;
     margin-top: 10px;
-    color: #393939;
+    color: #ff0000;
     font-weight: 600;
 }
 .opc-wrapper-opc .payment-block .payment_below_outer p{
     font-size: 14px;
+}
 /**/
 
 /*echeck cms page*/
@@ -922,7 +923,7 @@ input[type="radio"]{
 .cms-home .main_config_page .popular_categories .popular_categories_data li img{
     width: 100%;
     height: auto;
-}
+    color: #ff0000;}
 /**/
 /*subscription*/
 
