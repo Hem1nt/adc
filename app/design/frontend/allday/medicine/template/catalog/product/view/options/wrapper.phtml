@@ -88,8 +88,20 @@ if($_product->isConfigurable()) {
 			}
 		}
 
+		$giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
 
-		echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended."</td>";
+		$giftSpan = '';
+		if($giftProds){
+			$giftProdsArr = explode(',', $giftProds);
+			$giftProdsArr=array_map('trim',$giftProdsArr);
+			
+			$currSku = $child->getSku();
+			if(in_array($currSku, $giftProdsArr)){
+				$giftSpan = ' <span class="product_free_gift" title="Get a free gift">Will free gift</span>';
+			}
+		}
+
+		echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$giftSpan."</td>";
 		echo "<td class='qty_value'><span class='select_wrap'><select id='p-".$child->getId()."'>";
 		for($i=1; $i<=5; $i++) {
 			echo "<option value='$i'>$i</option>";

@@ -881,6 +881,7 @@ input[type="radio"]{
 .dot_color{ 
     color: #6B9A63;
 }
+
 /**/
 
 /*echeck cms page*/
@@ -913,6 +914,17 @@ input[type="radio"]{
 .cms-home .main_config_page .popular_categories .popular_categories_data li img{
     width: 100%;
     height: auto;
+}
+.opc-wrapper-opc .payment-block .payment_below_outer {
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px;
+    color: #ff0000;
+    font-weight: 600;
+}
+.opc-wrapper-opc .payment-block .payment_below_outer p{
+    font-size: 14px;
+    color: #ff0000;
 }
 /**/
 /*subscription*/

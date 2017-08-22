@@ -143,6 +143,20 @@
         <?php $oneMethod = $_code; ?>
     <?php endif; ?>
         <label for="p_method_<?php echo $_code ?>"class="<?php if($baseOriginalMethod==$_code || $selectedPayment==$_code): ?>selected<?php endif; ?> label_<?php echo $_code ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+        <?php /* Code to Display Message Below Payment S */ ?>
+            <?php
+            switch ($_code) {   
+                case 'drc':
+                    echo "<div class='payment_below_outer'><p class= 'payment_below_msg'>";
+                        echo "PAY INSTANTLY. Chat with our customer care expert now.";
+                    echo "</p></div>";
+                    break;
+                default: 
+                    echo "";
+                    break;
+            }
+            ?>
+        <?php /* Code to Display Message Below Payment E */ ?>
     </dt>
 <?php endforeach; ?>
 </div>

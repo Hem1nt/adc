@@ -406,6 +406,8 @@ public function paymentMethodIsActive(Varien_Event_Observer $observer) {
         $event           = $observer->getEvent();
         $method          = $event->getMethodInstance();
         $result          = $event->getResult();
+        $quote = Mage::getSingleton('checkout/session')->getQuote();
+        $billingCountry = $quote->getBillingAddress()->getCountry();
         if(Mage::getSingleton('customer/session')->isLoggedIn())
           {
             $customer = Mage::getSingleton('customer/session')->getCustomer();
@@ -423,6 +425,16 @@ public function paymentMethodIsActive(Varien_Event_Observer $observer) {
                       $result->getActiveMethods = true;
                   }
               }
+              /*Hiding DRC From US Customers S*/
+              if(!$cookieAdminUser && $method->getCode()== 'drc'){
+                if($billingCountry == 'US')
+                  {
+                    $result->isAvailable = false;
+                  }else{
+                    $result->isAvailable = true;
+                  }
+              }
+              /*Hiding DRC From US Customers E*/
           }
 
     }
