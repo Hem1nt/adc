@@ -1,6 +1,22 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
+	.catalog-category-view .products-list .product-image{
+	    text-align: center;
+	}
+	.featured_products .featured-block-tab .products-grid .item .product-image img {
+	    width: auto !important;
+        max-width: 100%;
+	}
+	.catalog-category-view .col-main .category-products .products-grid li.item .product-image img.lazy,
+	.catalog-category-view .col-main .category-products .products-list li.item .product-image img.lazy{
+		width: auto !important;
+        max-width: 100%;
+	}
+	.cms-home .main_config_page .leading_online .leading_online_data ul li a img {
+        width: auto !important;
+        max-width: 100%;
+    }
 	.opc-wrapper-opc .payment-block .payment_below_outer {
 	    display: inline-block;
 	    margin-left: 35px;
@@ -694,10 +710,10 @@
 	    font-size: 12px;
 	}
 	.catalog-product-view .review-count-pr{
-	width: 100%;
-	display: inline-block;
-	margin: 0 auto;
-	text-align: center;
+		width: 100%;
+		display: inline-block;
+		margin: 0 auto;
+		text-align: center;
 	}
 	.catalog-product-view .review-count-pr .rating-box{
 	    display: inline-block;
@@ -936,6 +952,11 @@
 		    padding: 5px 0;
 		    margin: 0;
 	}
+	.cms-home .main_config_page .leading_online .leading_online_data ul li a img {
+        width: auto !important;
+        max-width: 100%;
+    }
+
 
 }
 @media only screen and (max-width: 568px){
