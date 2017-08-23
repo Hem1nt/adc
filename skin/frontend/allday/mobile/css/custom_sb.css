@@ -30,7 +30,9 @@
         max-width: 100%;
 	}
 	.catalog-category-view .col-main .category-products .products-grid li.item .product-image img.lazy,
-	.catalog-category-view .col-main .category-products .products-list li.item .product-image img.lazy{
+	.catalog-category-view .col-main .category-products .products-list li.item .product-image img.lazy,
+	 .catalogsearch-result-index .col-main .category-products .products-grid li.item .product-image img.lazy,
+	 .catalogsearch-result-index .col-main .category-products .products-list li.item .product-image img.lazy{
 		width: auto !important;
         max-width: 100%;
 	}
