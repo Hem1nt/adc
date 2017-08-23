@@ -693,6 +693,9 @@ input[type="radio"]{
 .echeck-flow-images-steps {
     font-size: 15px;
 }
+.echeck-flow-images-steps {
+    font-size: 15px;
+}
 /*customer review*/
 .catalog-product-view #customer-reviews .review_scroll .pager{
     padding: 20px;
@@ -835,6 +838,11 @@ input[type="radio"]{
     text-align: left !important;
     margin: 5px 0 0px 0;
 }
+
+.echeck-flow-images-steps {
+    font-size: 15px;
+}
+
 /*echeck cms page*/
 .cms-content-114-echeck .col-main .std{
     position: relative;
@@ -873,17 +881,7 @@ input[type="radio"]{
 .dot_color{ 
     color: #6B9A63;
 }
-.opc-wrapper-opc .payment-block .payment_below_outer {
-    display: inline-block;
-    margin-left: 35px;
-    margin-top: 10px;
-    color: #ff0000;
-    font-weight: 600;
-}
-.opc-wrapper-opc .payment-block .payment_below_outer p{
-    font-size: 14px;
-    color: #ff0000;
-}
+
 /**/
 
 /*echeck cms page*/
@@ -906,6 +904,116 @@ input[type="radio"]{
 .cms-content-114-echeck .col-main .std .howecheckworks a{
     color: #fff;
 }
+/*popular categories on homepage*/
+.cms-home .main_config_page .popular_categories .popular_categories_data li .popular_img_wrapper{
+    border-radius: 50%;
+    /*border: 1px solid #666;*/
+    display: inline-block;
+    overflow: hidden;
+}
+.cms-home .main_config_page .popular_categories .popular_categories_data li img{
+    width: 100%;
+    height: auto;
+}
+.opc-wrapper-opc .payment-block .payment_below_outer {
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px;
+    color: #ff0000;
+    font-weight: 600;
+}
+.opc-wrapper-opc .payment-block .payment_below_outer p{
+    font-size: 14px;
+    color: #ff0000;
+}
+/**/
+/*subscription*/
+
+.footer-container .subs_a {
+    cursor: pointer;
+}
+.footer-container #toTop{
+    width: 100%; position: 
+    relative; bottom: 0px; 
+    position: fixed; 
+    background-color: #ccc; 
+    padding: 10px; 
+    margin: 0px auto; 
+    left: 0px; z-index: 190;
+}
+.footer-container .subscribe,.subscribe_msg{
+    text-align: center;
+}
+.footer-container .subscribe_msg{
+    padding: 5px;
+}
+.footer-container .subscribe-innerdiv{
+    margin:auto;
+    width:100%; 
+    display: inline-block;
+}
+.footer-container #toTop {
+position: fixed;
+bottom: 0px;
+cursor: default;
+color: #fff;
+font-size: 11px;
+text-align: center;
+width: 100%;
+height:30px;
+background: #000000 !important;
+font-size: 14px;
+font-weight: bold;
+padding: 5px 0;
+left: 0;
+z-index: 500;
+}
+
+.footer-container #toTop input.subs {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 0px solid #ccc;
+    padding: 5px;
+    width: 200px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.footer-container #subscribebtn {
+    -webkit-align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: #fff;
+    border: 0!important;
+    padding: 2px 10px 3px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    box-sizing: border-box;
+}
+
+.footer-container div#order_reminder_success {
+    position: fixed;
+    display: block;
+    bottom: 52px;
+    cursor: default;
+    color: #fff;
+    font-size: 11px;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    background: #000000 !important;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0;
+    left: 0;
+    z-index: 500;
+}
+
+/*subscription end*/
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;

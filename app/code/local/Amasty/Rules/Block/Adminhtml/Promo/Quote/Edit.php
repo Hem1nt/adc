@@ -52,10 +52,23 @@ class Amasty_Rules_Block_Adminhtml_Promo_Quote_Edit extends Mage_Adminhtml_Block
                 if (s) s.up().up().show();
 
                 $('rule_actions_fieldset').up().show();
-                $('rule_promo_sku').up().up().hide();
-                $('rule_promo_cats').up().up().hide();
-                $('rule_each_m').up().up().hide();
-                $('rule_buy_x_get_n').up().up().hide();
+
+                if ($('rule_promo_sku') != undefined){
+                    $('rule_promo_sku').up().up().hide();
+                }
+
+                if ($('rule_promo_cats') != undefined){
+                    $('rule_promo_cats').up().up().hide();                    
+                }
+
+                if ($('rule_each_m') != undefined){
+                    $('rule_each_m').up().up().hide();                    
+                }
+
+                if ($('rule_buy_x_get_n') != undefined){
+                    $('rule_buy_x_get_n').up().up().hide();                
+                }
+
                 //$('rule_ampromo_type').up().up().hide();
 
                 var s = $('rule_ampromo_type');
@@ -65,14 +78,23 @@ class Amasty_Rules_Block_Adminhtml_Promo_Quote_Edit extends Mage_Adminhtml_Block
 
                 $('rule_simple_free_shipping').up().up().show();
 
-                $('rule_price_selector').up().up().show();
-                $('rule_max_discount').up().up().show();
+                if ($('rule_price_selector') != undefined){
+                    $('rule_price_selector').up().up().show();                    
+                }
+
+                if ($('rule_max_discount') != undefined){
+                    $('rule_max_discount').up().up().show();
+                }    
 
                 if ($('rule_simple_action').value=='by_percent' || $('rule_simple_action').value=='by_fixed'
                 || $('rule_simple_action').value=='cart_fixed' || $('rule_simple_action').value=='buy_x_get_y')
                 {
-                    $('rule_price_selector').up().up().hide();
-                    $('rule_max_discount').up().up().hide();
+                    if ($('rule_price_selector') != undefined){
+                        $('rule_price_selector').up().up().hide();                        
+                    }
+                    if ($('rule_max_discount') != undefined){
+                        $('rule_max_discount').up().up().hide();                        
+                    }
                 }
 
                 if ('ampromo_cart' == $('rule_simple_action').value) {
@@ -83,14 +105,19 @@ class Amasty_Rules_Block_Adminhtml_Promo_Quote_Edit extends Mage_Adminhtml_Block
                     $('rule_discount_step').up().up().hide();
 
                     if (s) s.up().up().hide();
-                    $('rule_promo_sku').up().up().show();
+
+                    if ($('rule_promo_sku') != undefined){
+                        $('rule_promo_sku').up().up().show();                        
+                    }
                     $('rule_ampromo_type').up().up().show();
                 }
                 if ('ampromo_items' == $('rule_simple_action').value){
                     $('rule_simple_free_shipping').up().up().hide();
 
                     if (s) s.up().up().hide();
-                    $('rule_promo_sku').up().up().show();
+                    if ($('rule_promo_sku') != undefined){
+                        $('rule_promo_sku').up().up().show();                        
+                    }
                     $('rule_ampromo_type').up().up().show();
                 }
                 if ('ampromo_product' == $('rule_simple_action').value){
@@ -121,22 +148,36 @@ class Amasty_Rules_Block_Adminhtml_Promo_Quote_Edit extends Mage_Adminhtml_Block
                 }
 
                 if ('$each_m_perc' == $('rule_simple_action').value || '$each_m_disc' == $('rule_simple_action').value || '$each_m_fix' == $('rule_simple_action').value){
-                    $('rule_each_m').up().up().show();
+                    if ($('rule_each_m') != undefined){
+                        $('rule_each_m').up().up().show();
+                    }
+
                     $$('label[for=\"rule_discount_step\"]').first().update('".$this->__('Qty X')."')
                 }
 
 				if ('$percent' == $('rule_simple_action').value || '$fixed' == $('rule_simple_action').value || '$fixdisc' == $('rule_simple_action').value || 
                 '$setof_percent' == $('rule_simple_action').value || '$setof_fixed' == $('rule_simple_action').value){
 
-					$('rule_promo_sku').up().up().show();
-					$('rule_promo_cats').up().up().show();
+                    if ($('rule_promo_sku') != undefined){
+					   $('rule_promo_sku').up().up().show();
+                    }
+                    if ($('rule_promo_cats') != undefined){
+					   $('rule_promo_cats').up().up().show();
+                    }
 				}
 
                 if ('$buyxbetnfixed' == $('rule_simple_action').value || '$buyxbetnpercent' == $('rule_simple_action').value || '$buyxbetnfixdisc' == $('rule_simple_action').value ){
 
-					$('rule_promo_sku').up().up().show();
-					$('rule_promo_cats').up().up().show();
-					$('rule_buy_x_get_n').up().up().show();
+                    if ($('rule_promo_sku') != undefined){
+					   $('rule_promo_sku').up().up().show();
+                    }
+
+                    if ($('rule_promo_cats') != undefined){
+					   $('rule_promo_cats').up().up().show();
+                    }
+                    if ($('rule_buy_x_get_n') != undefined){
+					   $('rule_buy_x_get_n').up().up().show();                    
+                    }
 				}
 
                 ampromo_note();
