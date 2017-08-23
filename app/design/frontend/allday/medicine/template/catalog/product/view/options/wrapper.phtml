@@ -52,7 +52,9 @@ if($_product->isConfigurable()) {
 		}
 		$packUnitsize = $attrPackSize->getSource()->getOptionText($child->getData('pack_size'));
 		if($child->getData('bonus')) {
-			$packSizeLabel = $child->getData('bonus')." + ".$packSizeLabel." Extra";
+			//$packSizeLabel = $child->getData('bonus')." + ".$packSizeLabel." Extra";
+			$bonusImage = $this->getSkinUrl().'images/free_gift.jpg';
+			$packSizeLabel = $packSizeLabel.'<img src='.$bonusImage.'>';
 			$packUnitsize = $packUnitsize + $child->getData('bonus');
 		}
 		$childPrice = Mage::helper('core')->currency($child->getPrice(),true,false);
