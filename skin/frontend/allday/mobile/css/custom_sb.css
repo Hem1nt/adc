@@ -1,6 +1,27 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
+
+	.related_slider .product-images a{
+		text-align: center;
+	}
+	 .related_slider .product-images img{
+	    width: auto !important;
+	    max-width: 100%;	
+	    display: inline-block;    
+	}
+	.catalog-product-view .main-container .mini-products-list .product-image img, 
+	.review-product-list .main-container .mini-products-list .product-image img {
+		width: auto;
+	    height: auto;
+	    max-width: 100%;
+	    min-width: initial;
+    	min-height: initial;
+	}
+	.catalog-product-view .main-container .mini-products-list .product-image a, 
+	.review-product-list .main-container .mini-products-list .product-image a {
+		text-align: center;
+	}
 	.catalog-category-view .products-list .product-image{
 	    text-align: center;
 	}
@@ -9,7 +30,9 @@
         max-width: 100%;
 	}
 	.catalog-category-view .col-main .category-products .products-grid li.item .product-image img.lazy,
-	.catalog-category-view .col-main .category-products .products-list li.item .product-image img.lazy{
+	.catalog-category-view .col-main .category-products .products-list li.item .product-image img.lazy,
+	 .catalogsearch-result-index .col-main .category-products .products-grid li.item .product-image img.lazy,
+	 .catalogsearch-result-index .col-main .category-products .products-list li.item .product-image img.lazy{
 		width: auto !important;
         max-width: 100%;
 	}
