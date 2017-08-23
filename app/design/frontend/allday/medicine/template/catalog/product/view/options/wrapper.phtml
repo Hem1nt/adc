@@ -53,7 +53,7 @@ if($_product->isConfigurable()) {
 		$packUnitsize = $attrPackSize->getSource()->getOptionText($child->getData('pack_size'));
 		if($child->getData('bonus')) {
 			//$packSizeLabel = $child->getData('bonus')." + ".$packSizeLabel." Extra";
-			$bonusImage = $this->getSkinUrl().'images/free_gift.jpg';
+			$bonusImage = $this->getSkinUrl().'images/double_pill.jpg';
 			$packSizeLabel = $packSizeLabel.'<img src='.$bonusImage.'>';
 			$packUnitsize = $packUnitsize + $child->getData('bonus');
 		}
