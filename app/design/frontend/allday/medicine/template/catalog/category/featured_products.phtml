@@ -28,7 +28,11 @@
           $ratingSummary = $summaryData->getRatingSummary();
           ?>
           <div class="item first">
-            <a href="<?php echo $path;?>" class="product-image"><img class="lazy" src="<?php echo $imageCacheUrl;?>" width="100" height="100" alt="<?php echo $productData->getName();?>" style="display: inline;"></a>
+            <a href="<?php echo $path;?>" class="product-image">
+           
+
+            <img class="lazy" data-src="<?php echo $imageCacheUrl;?>" width="100" height="100" alt="<?php echo $productData->getName();?>" style="display: inline;" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
+            </a>
 
             <div class="pr-details-height">
               <h2 class="product-name"><a href="<?php echo $path;?>" title="<?php echo $productData->getName();?>"><?php echo $productData->getName();?></a></h2>
@@ -114,6 +118,14 @@ jQuery(document).ready(function($) {
                             }
                           }]
                         });
+
+
+
+
+    jQuery("img.lazy").lazy();
+
+
+
 });
 
 

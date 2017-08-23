@@ -1,6 +1,122 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
+	.catalog-category-view .products-list .product-image{
+	    text-align: center;
+	}
+	.featured_products .featured-block-tab .products-grid .item .product-image img {
+	    width: auto !important;
+        max-width: 100%;
+	}
+	.catalog-category-view .col-main .category-products .products-grid li.item .product-image img.lazy,
+	.catalog-category-view .col-main .category-products .products-list li.item .product-image img.lazy{
+		width: auto !important;
+        max-width: 100%;
+	}
+	.cms-home .main_config_page .leading_online .leading_online_data ul li a img {
+        width: auto !important;
+        max-width: 100%;
+    }
+	.opc-wrapper-opc .payment-block .payment_below_outer {
+	    display: inline-block;
+	    margin-left: 35px;
+	    margin-top: 10px;
+	    color: #ff0000;
+	    font-weight: 600;
+	}
+	.opc-wrapper-opc .payment-block .payment_below_outer p{
+	    font-size: 14px;
+	    color: #ff0000;
+	}	
+
+		/*subscription*/
+
+	.footer-container .subs_a {
+	    cursor: pointer;
+	}
+	.footer-container #toTop{
+	    width: 100%; position: 
+	    relative; bottom: 0px; 
+	    position: fixed; 
+	    background-color: #ccc; 
+	    padding: 10px; 
+	    margin: 0px auto; 
+	    left: 0px; z-index: 190;
+	}
+	.footer-container .subscribe,.subscribe_msg{
+	    text-align: center;
+	}
+	.footer-container .subscribe_msg{
+	    padding: 5px;
+	}
+	.footer-container .subscribe-innerdiv{
+	    margin:auto;
+	    width:100%; 
+	    display: inline-block;
+	}
+	.footer-container #toTop {
+	position: fixed;
+	bottom: 0px;
+	cursor: default;
+	color: #fff;
+	font-size: 11px;
+	text-align: center;
+	width: 100%;
+	height:30px;
+	background: #000000 !important;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0;
+	left: 0;
+	z-index: 500;
+	}
+
+	.footer-container #toTop input.subs {
+	    -moz-border-radius: 3px;
+	    -webkit-border-radius: 3px;
+	    border-radius: 3px;
+	    border: 0px solid #ccc;
+	    padding: 5px;
+	    width: 200px;
+	    margin-left: 10px;
+	    font-size: 12px;
+	}
+
+	.footer-container #subscribebtn {
+	    -webkit-align-items: flex-start;
+	    text-align: center;
+	    cursor: default;
+	    color: #fff;
+	    border: 0!important;
+	    padding: 2px 10px 3px;
+	    border-image-source: initial;
+	    border-image-slice: initial;
+	    border-image-width: initial;
+	    border-image-outset: initial;
+	    border-image-repeat: initial;
+	    box-sizing: border-box;
+	}
+
+	.footer-container div#order_reminder_success {
+	    position: fixed;
+	    display: block;
+	    bottom: 52px;
+	    cursor: default;
+	    color: #fff;
+	    font-size: 11px;
+	    text-align: center;
+	    width: 100%;
+	    height: 30px;
+	    background: #000000 !important;
+	    font-size: 14px;
+	    font-weight: bold;
+	    padding: 5px 0;
+	    left: 0;
+	    z-index: 500;
+	}
+
+	/*subscription end*/
+
 	.opc-wrapper-opc .payment-block .payment_below_outer {
 	    display: inline-block;
 	    margin-left: 35px;
@@ -594,10 +710,10 @@
 	    font-size: 12px;
 	}
 	.catalog-product-view .review-count-pr{
-	width: 100%;
-	display: inline-block;
-	margin: 0 auto;
-	text-align: center;
+		width: 100%;
+		display: inline-block;
+		margin: 0 auto;
+		text-align: center;
 	}
 	.catalog-product-view .review-count-pr .rating-box{
 	    display: inline-block;
@@ -836,6 +952,11 @@
 		    padding: 5px 0;
 		    margin: 0;
 	}
+	.cms-home .main_config_page .leading_online .leading_online_data ul li a img {
+        width: auto !important;
+        max-width: 100%;
+    }
+
 
 }
 @media only screen and (max-width: 568px){
