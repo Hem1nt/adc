@@ -1064,6 +1064,16 @@ a.product_img[data-src~="http"] {
     width: auto !important;
     max-width: 100%; 
 }
+.catalog-product-view .frequently_bought_wrap .slider_wraper .item .product-image img, 
+.review-product-list .frequently_bought_wrap .slider_wraper .item .product-image img {
+    width: auto !important;
+    max-width: 100%;
+    height: auto;
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .item .product-image, 
+.review-product-list .frequently_bought_wrap .slider_wraper .item .product-image {
+    text-align: center;
+}
 /*lazyload end*/
 
 @media only screen and (max-width: 1023px){
