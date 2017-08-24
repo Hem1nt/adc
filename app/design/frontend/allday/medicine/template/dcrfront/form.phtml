@@ -1,0 +1,35 @@
+<head>
+<style>
+.form-list1 li span
+{
+    float:left;
+    font-weight: bold;
+    margin-right:5px;
+}
+.form-list1 li
+{
+    list-style: disc outside none;
+    margin: 0 0 7px 20px;
+}
+</style>
+</head>
+<?php
+    $billing_countryCode = Mage::getSingleton('checkout/type_onepage')->getQuote()->getBillingAddress()->getCountryId();
+    $shipping_countryCode = Mage::getSingleton('checkout/type_onepage')->getQuote()->getShippingAddress()->getCountryId();
+    if($billing_countryCode=='US'){
+        $name_of_company = Mage::getStoreConfig("custom_snippet/snippet/company_us_name");
+    }else{
+        $name_of_company = Mage::getStoreConfig("custom_snippet/snippet/company_name");
+
+    }
+?>
+<fieldset class="form-list1" >
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+        <h5>Pay By Virtual Voucher</h5>
+         <!-- <p><span>This will help us to process your order as soon as possible.</span></p> -->
+         <p>Regards</p>
+         <p>AllDayChemist Sales Team</p>
+         <button type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+    </ul>
+</fieldset>
