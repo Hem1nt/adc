@@ -15,13 +15,21 @@
                             <span class="minicart-title-text">Your Cart.</span>
                             <span class="minicart-title-price">Total <?php echo $_grandTotal;?></span>
                         </div>
-                        <?php $_items = $this->getRecentItems() ?>
+                        <?php //$_items = $this->getRecentItems() ?>
+                        <?php
+                        /*To show all product in cart S*/
+                            $quote = Mage::getSingleton('checkout/session')->getQuote();
+                            $_items = $quote->getAllVisibleItems();
+                        /*To show all product in cart E*/
+                        ?>
                         <?php if(count($_items)): ?>
-                            <ol id="mini-cart" class="mini-products-list">
-                                <?php foreach($_items as $_item): ?>
-                                    <?php echo $this->getItemHtml($_item); ?>
-                                <?php endforeach; ?>
-                            </ol>
+                            <div class="cart_item_wrap">
+                                <ol id="mini-cart" class="mini-products-list">
+                                    <?php foreach($_items as $_item): ?>
+                                        <?php echo $this->getItemHtml($_item); ?>
+                                    <?php endforeach; ?>
+                                </ol>
+                            </div>
                             <script type="text/javascript">decorateList('mini-cart', 'none-recursive')</script>
                         <?php else: ?>
                             <p class="cart-empty">
@@ -43,13 +51,6 @@
 
 <script type="text/javascript">
 jQuery(document).ready(function($){
-
-    jQuery(window).on("load",function(){
-        jQuery(".mini-products-list").mCustomScrollbar({
-            theme:"dark"
-    });
-
-});
-  
+    jQuery(".cart_item_wrap").mCustomScrollbar();
 });
 </script>
