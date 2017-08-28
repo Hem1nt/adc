@@ -14,7 +14,7 @@ class Iksula_Dcrfront_Model_Observer
             $customerPlaced = $customer->getEmail();
             $customerFirstname = $customer->getFirstname();
             /*Email Function S*/
-                $templateId = Mage::getStoreConfig('payment/dcrfront/email_template');
+                $templateId = Mage::getStoreConfig('payment/virtual_dcrfront/email_template');
                 // Set sender information            
                 $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
                 $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');        
