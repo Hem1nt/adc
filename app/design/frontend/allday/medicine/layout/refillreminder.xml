@@ -1,5 +1,5 @@
 <?xml version="1.0"?>   
-<layout version="0.1.0">
+<layout version="0.1.1">
   <refillreminder_index_index>
     <remove name="header" />
     <remove name="footer" />
@@ -12,9 +12,9 @@
     <reference name="root">
       <action method="setTemplate"><template>page/1column.phtml</template></action>
     </reference>   
-    <reference name="content">   
+    <!-- <reference name="content">   
       <block type="refillreminder/index" name="refillreminder_index" template="refillreminder/index.phtml"/>   
-    </reference>   
+    </reference>  -->  
   </refillreminder_index_index>
 
   <refillreminder_index_cartreminder>
@@ -70,6 +70,13 @@
     </reference>   
   </refillreminder_edit_index>
 
+  <!--custom layout refil reminder starts-->
+   <!-- <refillreminder_index_save>
+   <reference name="content">   
+      <block type="core/template" name="refillreminder_index" template="refillreminder/index.phtml"/>
+    </reference>  
+  </refillreminder_index_save>  -->
+  <!--custom layout refil reminder end-->
   
 
 </layout>

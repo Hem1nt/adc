@@ -33,29 +33,35 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 				"header" => Mage::helper("refillreminder")->__("Customer Email"),
 				"index" => "customer_email",
 				));
-				$this->addColumn("product_sku", array(
+				//orderIds
+				$this->addColumn("order_Id", array(
+				"header" => Mage::helper("refillreminder")->__("Order Id"),
+				"index" => "order_Id",
+				));
+				
+			/*	$this->addColumn("product_sku", array(
 				"header" => Mage::helper("refillreminder")->__("Product SKU"),
 				"index" => "product_sku",
-				));
+				));*/
 
-				$this->addColumn("product_name", array(
+			/*	$this->addColumn("product_name", array(
 				"header" => Mage::helper("refillreminder")->__("Product Name"),
 				"index" => "product_name",
 				));
-
+*/
 
 				$this->addColumn("customer_telephone", array(
 				"header" => Mage::helper("refillreminder")->__("Phone # "),
 				"index" => "customer_telephone",
 				));
 
-				$this->addColumn("modified_date", array(
+				/*$this->addColumn("modified_date", array(
 				"header" => Mage::helper("refillreminder")->__("Purchase Date"),
 				"index" => "modified_date",
 				'type'      => 'date',
-				));
+				));*/
 
-				$this->addColumn("last_mail_sent", array(
+			/*	$this->addColumn("last_mail_sent", array(
 				"header" => Mage::helper("refillreminder")->__("Refill Due Order"),
 				"index" => "last_mail_sent",
 				'type'      => 'date',
@@ -65,7 +71,7 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 				"header" => Mage::helper("refillreminder")->__("Next reminder on"),
 				"index" => "next_mail_on",
 				 "type" => "date",
-				));
+				));*/
 
 				$this->addColumn("status", array(
 				"header" => Mage::helper("refillreminder")->__("Status"),
@@ -74,10 +80,10 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 				'options' => array('0' => 'Disabled','1' => 'Enabled')
 				));
 
-				$this->addColumn("comment", array(
+				/*$this->addColumn("comment", array(
 				"header" => Mage::helper("refillreminder")->__("Comment"),
 				"index" => "comment",
-				));
+				));*/
 			$this->addExportType('*/*/exportCsv', Mage::helper('sales')->__('CSV')); 
 			$this->addExportType('*/*/exportExcel', Mage::helper('sales')->__('Excel'));
 
