@@ -15,6 +15,17 @@
                 </args>
             </dcrfront>
         </routers>
+        <events>
+            <sales_order_place_after>
+              <observers>
+                <sales_order_place_after_dcrfront>
+                  <type>singleton</type>
+                  <class>Iksula_Dcrfront_Model_Observer</class>
+                  <method>sendEmailDcrFront</method>
+                </sales_order_place_after_dcrfront>
+              </observers>
+            </sales_order_place_after>
+        </events>
     </frontend> 
     <global>
         <models>
