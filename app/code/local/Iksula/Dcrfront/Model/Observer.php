@@ -9,7 +9,11 @@ class Iksula_Dcrfront_Model_Observer
     	$order = $observer->getEvent()->getOrder();
         $payment = $order->getPayment()->getMethodInstance()->getCode();
         if($payment == 'virtual_dcrfront')
-        {
+        {   
+            $frontendHelper = Mage::helper('frontend');
+            $encodedurl = $frontendHelper->encrypt_decrypt('encrypt',$order->getData('entity_id'));
+            $paymentLinkUrl = Mage::getStoreConfig('custom_snippet/snippet/paymentlink');
+            $payNowLink = $paymentLinkUrl.'?order_id='.$encodedurl.'&utm_source=back-payment&utm_medium=email&utm_campaign=pay-link';
             $customer = Mage::getSingleton('customer/session')->getCustomer();
             $customerPlaced = $customer->getEmail();
             $customerFirstname = $customer->getFirstname();
@@ -18,7 +22,7 @@ class Iksula_Dcrfront_Model_Observer
                 // Set sender information            
                 $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
                 $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');        
-                $sender = array('name' => $senderName,'email' => $senderEmail);    
+                $sender = array('link'=>$payNowLink,'name' => $senderName,'email' => $senderEmail);    
                 // Set recepient information
                 $recepientEmail = $customerPlaced;
                 $recepientName = $customerFirstname;  
