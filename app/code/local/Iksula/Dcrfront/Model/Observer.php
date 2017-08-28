@@ -22,7 +22,7 @@ class Iksula_Dcrfront_Model_Observer
                 // Set sender information            
                 $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
                 $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');        
-                $sender = array('link'=>$payNowLink,'name' => $senderName,'email' => $senderEmail);    
+                $sender = array('pay_link'=>$payNowLink,'name' => $senderName,'email' => $senderEmail);    
                 // Set recepient information
                 $recepientEmail = $customerPlaced;
                 $recepientName = $customerFirstname;  
