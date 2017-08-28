@@ -15,19 +15,24 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Edit_Tab_Form extends
 						"required" => false,
 						"name" => "customer_email",
 						));
-					
-						$fieldset->addField("product_sku", "text", array(
+					    $fieldset->addField("order_Id", "text", array(
+						"label" => Mage::helper("refillreminder")->__("Order Id"),					
+						// "class" => "required-entry",
+						"required" => false,
+						"name" => "order_Id",
+						));
+						/*$fieldset->addField("product_sku", "text", array(
 						"label" => Mage::helper("refillreminder")->__("Product SKU"),					
 						// "class" => "required-entry",
 						"required" => false,
 						"name" => "product_sku",
-						));
-						$fieldset->addField("product_name", "text", array(
+						));*/
+						/*$fieldset->addField("product_name", "text", array(
 						"label" => Mage::helper("refillreminder")->__("Product Name"),					
 						// "class" => "required-entry",
 						"required" => false,
 						"name" => "product_name",
-						));
+						));*/
 						$fieldset->addField("customer_telephone", "text", array(
 						"label" => Mage::helper("refillreminder")->__("Customer Telephone"),					
 						// "class" => "required-entry",
@@ -45,7 +50,7 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Edit_Tab_Form extends
 							Mage_Core_Model_Locale::FORMAT_TYPE_SHORT
 						);
 
-						$fieldset->addField("last_mail_sent", "date", array(
+						/*$fieldset->addField("last_mail_sent", "date", array(
 						"label" => Mage::helper("refillreminder")->__("Last Email Date"),					
 						// "class" => "required-entry",
 						"required" => false,
@@ -53,9 +58,9 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Edit_Tab_Form extends
 						'time' => true,
 						'image'        => $this->getSkinUrl('images/grid-cal.gif'),
 						'format'       => $dateFormatIso
-						));
+						));*/
 
-						$fieldset->addField("next_mail_on", "date", array(
+						/*$fieldset->addField("next_mail_on", "date", array(
 						"label" => Mage::helper("refillreminder")->__("Next Reminder Date"),					
 						// "class" => "required-entry",
 						"required" => false,
@@ -64,7 +69,7 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Edit_Tab_Form extends
 						'image'        => $this->getSkinUrl('images/grid-cal.gif'),
 						'format'       => $dateFormatIso
 						));
-
+*/
 
 
 						$fieldset->addField("remind_flag", "select", array(
