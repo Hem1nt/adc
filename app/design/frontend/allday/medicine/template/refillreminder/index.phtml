@@ -14,6 +14,8 @@ if($customerLoggedIn)
 	$customerEmail = $customerData->getEmail();
 	//$custPhone = $customerData->getPrimaryBillingAddress()->getTelephone();
 	$custPhone = "";
+	
+	//print_r(customer_name);
 	//$customerOrder = $customerData->getEmail();
 }
 ?>
@@ -24,7 +26,7 @@ if($customerLoggedIn)
 		<ul>
 			<li><label>Name</label></li>
 			<li>
-				<input class="input-text required-entry validate-phone" id="name" name="name" value="<?php echo $custPhone; ?>" />
+				<input class="input-text required-entry validate-name" id="customer_name" name="customer_name" value="<?php //echo $custPhone; ?>" />
 			</li>
 			
 			<li><label>Email</label></li>
@@ -95,8 +97,9 @@ jQuery("#form_refill_reminder").submit(function(){
 		 var values = jQuery("#order_id").val();
 		 //alert(values);
 		
-		var values = {'order_id':jQuery("#order_id").val(),'name':jQuery("#name").val(),'txtmail':jQuery("#txtmail").val(), 'txtproduct_id': jQuery("#txtproduct_id").val(), 'txtphone': jQuery("#txtphone").val(), 'remind_days': days};
+		var values = {'order_id':jQuery("#order_id").val(),'customer_name':jQuery("#customer_name").val(),'txtmail':jQuery("#txtmail").val(), 'txtproduct_id': jQuery("#txtproduct_id").val(), 'txtphone': jQuery("#txtphone").val(), 'remind_days': days};
 		//alert(values);
+		//console.log(values);
 
 		jQuery.ajax({
 			url: url,

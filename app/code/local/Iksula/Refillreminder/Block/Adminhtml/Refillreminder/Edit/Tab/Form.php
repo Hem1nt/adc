@@ -21,6 +21,12 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Edit_Tab_Form extends
 						"required" => false,
 						"name" => "order_Id",
 						));
+						$fieldset->addField("customer_name", "text", array(
+						"label" => Mage::helper("refillreminder")->__("Customer Name"),					
+						// "class" => "required-entry",
+						"required" => false,
+						"name" => "customer_name",
+						));
 						/*$fieldset->addField("product_sku", "text", array(
 						"label" => Mage::helper("refillreminder")->__("Product SKU"),					
 						// "class" => "required-entry",

@@ -15,6 +15,8 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 		protected function _prepareCollection()
 		{
 				$collection = Mage::getModel("refillreminder/refillreminder")->getCollection();
+				// echo "<pre>";
+				// var_dump($collection);die;
 				//echo $collection->getSelect(); exit;
 				$this->setCollection($collection);
 				return parent::_prepareCollection();
@@ -28,16 +30,29 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 			    "type" => "number",
 				"index" => "reminder_id",
 				));
-                
-				$this->addColumn("customer_email", array(
-				"header" => Mage::helper("refillreminder")->__("Customer Email"),
-				"index" => "customer_email",
-				));
-				//orderIds
+
+				//order Id
 				$this->addColumn("order_Id", array(
 				"header" => Mage::helper("refillreminder")->__("Order Id"),
 				"index" => "order_Id",
 				));
+
+				//customer name
+				$this->addColumn("customer_name", array(
+				//"align" =>"right",
+				"width" => "50px",
+				"header" => Mage::helper("refillreminder")->__("Customer Name"),
+				"index" => "customer_name",
+				));
+                //customer email
+				$this->addColumn("customer_email", array(
+				"header" => Mage::helper("refillreminder")->__("Customer Email"),
+				"index" => "customer_email",
+				));
+				
+				
+				//orderIds
+				
 				
 			/*	$this->addColumn("product_sku", array(
 				"header" => Mage::helper("refillreminder")->__("Product SKU"),

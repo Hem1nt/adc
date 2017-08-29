@@ -479,7 +479,8 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
       {// $block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/index.phtml");
       // echo $block->toHtml();
     $order_id = $this->getRequest()->getParam('order_id');  
-    $name=$this->getRequest()->getParam('name');
+    $name=$this->getRequest()->getParam('customer_name'); 
+    //var_dump($name);die;
     $mail=$this->getRequest()->getParam('txtmail');
     $phone=$this->getRequest()->getParam('txtphone');
     //$ProductId = $this->getRequest()->getPost('txtproduct_id');
@@ -498,13 +499,57 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
                     'customer_telephone'=>$phone,
                     'customer_telephone'=>$phone,
                     );
+      // print_r($data);die;
             try {
                     $model->setData($data)->save();
-                   // print_r( $model->setData($data)->save());die;
+                    //print_r( $model->setData($data)->save());
                   
-                } catch (Exception $e) {
-                    echo $e->getMessage();
-                }
+               // } 
+
+//email functionality starts
+      // Transactional Email Template's ID
+          $templateId = 124; 
+          //set the sender information
+          $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
+          //var_dump($senderName);die; All day chemist
+          $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');  
+          //var_dump($senderEmail);die; //cs@alldaychemist.com
+          $sender = array('name' => $senderName,
+                'email' => $senderEmail);
+          //var_dump($sender);die; array(2) { ["name"]=> string(13) "AllDayChemist" ["email"]=> string(20) "cs@alldaychemist.com" }
+          $order = Mage::getModel('sales/order')->loadByIncrementId($order_id); 
+          $shippingAddress = $order->getShippingAddress();
+          $customeremail=$shippingAddress->getEmail();
+          //var_dump($customeremail);die;prashant.g@gmail.com
+
+          //store email Id
+          $storeemail=Mage::getStoreConfig('trans_email/ident_general/email');
+          //var_dump($storeemail);die;noreply@alldaychemist.com
+          
+          // Get Store ID   
+           $store = Mage::app()->getStore()->getId();
+
+           $reciever= array($customeremail, $storeemail);
+           //var_dump($reciever);die;
+     
+           // Set variables that can be used in email template
+            $vars = array('customer_name' => $name,
+              'order_id' => $order_id);
+           // print_r($vars);die;
+            //var_dump($vars);die;
+            $translate  = Mage::getSingleton('core/translate');
+            // Send Transactional Email
+            Mage::getModel('core/email_template')
+              ->sendTransactional($templateId,$sender,$reciever,$vars, $storeId);
+                    
+            $translate->setTranslateInline(true); 
+
+            } //try block ends
+           // print_r($translate->setTranslateInline(true));die;
+            catch (Exception $e) 
+            {
+              echo $e->getMessage();
+            }
                 
     }
 }
