@@ -11,6 +11,7 @@
 	$banner_2_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_2_url');
 	$banner_3_url = Mage::getStoreConfig('homepage_conf/guest_group/leading_image_3_url');
 	$categoryDefaultImg = Mage::getStoreConfig('homepage_conf/guest_group/popular_category_default_placeholder');
+	//var_dump($categoryDefaultImg);die;
 ?>
 <div class="main_config_page">
 <!-- Best Seller S-->
@@ -18,7 +19,7 @@
 		<div class="best_seller_title">
 			<span><?php echo strtoupper($bestSellingTitle);?></span>
 		</div>
-		<div class="best_seller_data ">
+		<div class="best_seller_data">
 			<ul class="single-item">
 				<?php
 					$i = 0;
@@ -30,12 +31,17 @@
 						if($i%2 != 0):?>
 						<li>
 							<a href="<?php echo $productUrl;?>">
-								<img src="<?php echo $productImage; ?>" alt="<?php echo $productName;?>"/>
+								<img class="lazy" data-src="<?php echo $productImage; ?>"
+								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
+								 alt="<?php echo $productName;?>" />
 								<span><?php echo $productName;?></span>
 							</a>
 						<?php else:?>						
 							<a href="<?php echo $productUrl;?>">
-								<img src="<?php echo $productImage; ?>" alt="<?php echo $productName;?>"/>
+
+								<img class="lazy" data-src="<?php echo $productImage; ?>"
+								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
+								 alt="<?php echo $productName;?>" />
 								<span><?php echo $productName;?></span>
 							</a>
 						</li>
@@ -60,7 +66,10 @@
 						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(81,176);?>
 						<li>
 							<a href="<?php echo $productUrl;?>">
-								<img src="<?php echo $productImage; ?>" alt="<?php echo $productName;?>"/>
+
+								<img class="lazy" data-src="<?php echo $productImage; ?>"
+								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
+								 alt="<?php echo $productName;?>" />
 								<span><?php echo $productName;?></span>
 							</a>
 						</li>
@@ -81,15 +90,22 @@
 			$popularCatName = $_popularCat->getName();
 			$popularCatUrl = $_popularCat->getUrl();
 			$popularCatImage = $_popularCat->getPopularBanner(); 
+			//var_dump($popularCatImage);die;
 		?>
 		<?php $imageCategory = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/category/'.$popularCatImage;?>
 		<li>
 			<a href="<?php echo $popularCatUrl; ?>">
+			<div class="popular_img_wrapper">
 			<?php if($popularCatImage):?>
-					<img src="<?php echo $imageCategory;?>">
+
+					<img class="lazy" data-src="<?php echo $imageCategory;?>"
+					src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
+					alt="<?php echo $imageCategory;?>" />
+
 				<?php else:	?>
 					<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $categoryDefaultImg;?>">
 				<?php endif;?>
+			</div>
 				<span class="popular_name"><?php echo $popularCatName; ?></span>
 			</a>
 		</li>
@@ -107,17 +123,28 @@
 			<ul>
 				<li class="leading_online_banner">
 					<a href="<?php echo $banner_1_url;?>">
-						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_1; ?>"/>
+					<!-- <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_1; ?>"/> -->
+
+					<img class="lazy" 
+					data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_1; ?>"
+					src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
 					</a>
 				</li>
 				<li class="leading_online_banner">
 					<a href="<?php echo $banner_2_url;?>">
-						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_2; ?>"/>
+					<!-- <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_2; ?>"/> -->
+
+					<img class="lazy" 
+					data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_2; ?>"
+					src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
 					</a>				
 				</li>
 				<li class="leading_online_banner">
 					<a href="<?php echo $banner_3_url;?>">
-						<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_3; ?>"/>
+					<!-- <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_3; ?>"/> -->
+					<img class="lazy" 
+					data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'onlinePharmacy/'. $banner_3; ?>"
+					src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
 					</a>				
 				</li>
 			</ul>
@@ -151,4 +178,12 @@
 	    }
 	  ]
 	});
+</script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	//alert(34);
+	jQuery("img.lazy").lazy();
+});
+
+
 </script>

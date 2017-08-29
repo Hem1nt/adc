@@ -19,7 +19,10 @@ if(!empty($related_product_collection)){
     <li>
         <div class="item_wrap">
             <div class="product-images">
-                <a href="<?php echo $productData->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($productData, 'thumbnail')->resize(50) ?>" alt="<?php echo $this->htmlEscape($productData->getName()) ?>" width="50" height="50" /></a>
+                <a href="<?php echo $productData->getProductUrl() ?>">
+
+                <img class="lazy" data-src="<?php echo $this->helper('catalog/image')->init($productData, 'thumbnail')->resize(50) ?>" alt="<?php echo $this->htmlEscape($productData->getName()) ?>" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
+                </a>
             </div>
             <div class="product-details">
                     <a class="p_name" href="<?php echo $productData->getProductUrl() ?>"><?php echo $this->htmlEscape($productData->getName()) ?></a>
@@ -61,5 +64,8 @@ jQuery(document).ready(function($){
     // instead of a settings object
   ]
     });
+
+    jQuery("img.lazy").lazy();
+
 });
 </script>
