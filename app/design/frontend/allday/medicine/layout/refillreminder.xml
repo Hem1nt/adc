@@ -36,10 +36,11 @@
 
   <refillreminder_view_index>
     <update handle="customer_account"/>
-    
-    <reference name="content">
+    <!--view support-->
+     <reference name="content">
       <block type="refillreminder/index" name="refillreminder_view" template="refillreminder/view.phtml"/>   
     </reference>   
+    
  <!--    <reference name="left">
       <remove name="left.drugsearch" />
       <remove name="left.drugindexsearch" />

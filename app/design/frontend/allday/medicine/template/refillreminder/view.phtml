@@ -1,18 +1,60 @@
+<?php
+$model1 = Mage::getModel('refillreminder/refillreminder')->getCollection();
+
+
+
+
+
+?>
 <div class="page-title">
     <h1><?php echo $this->__('Refill Reminder') ?></h1>
 </div>
-<?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php
 $customerSession = Mage::getSingleton('customer/session');
+// echo "<pre>";
+// print_r($customerSession);exit;
 $productModel = Mage::getModel('catalog/product');
+$salesModel=Mage::getModel('sales/order')->getCollection();
+
 $childProductModel = Mage::getModel('catalog/product');
+
+
 $productConfModel = Mage::getModel('catalog/product_type_configurable');
-$model = Mage::getModel('refillreminder/refillreminder'); //model to process reminder checking data
+$model = Mage::getModel('refillreminder/refillreminder');
+ //$url = Mage::getUrl('sales/order/history');
+//print_r($model);die;
+//var_dump($model);die;
+// $customerId=Mage::getSingleton('customer/session')->getId();
+// //print_r($customerId);die;
+ $customerEmail=$customerSession->getCustomer()->getEmail();
+
+
+
+
+/*$model = Mage::getModel('refillreminder/refillreminder')->getData();
+echo "<pre>";
+print_r($model);*/
+
+
+//var_dump($customer_email);die;
+
+
+//var_dump($customerId);die;
+//d$model->load
+
+//custom code 
+
+// echo "<pre>";
+// print_r($model);die; //model to process reminder checking data
 if($customerSession->isLoggedIn()) {
 	$email = $customerSession->getCustomer()->getEmail();
+	$name = $customerSession->getCustomer()->getName();
+	//var_dump($email);die;
 }
 $collection = $model->getCollection();
 $collection->addFieldToFilter('customer_email', array('eq'=>$email));
+//->addFieldToFilter('order_id',array('eq'=>$name));
 ?>
 <?php echo $this->getToolbarHtml(); ?>
 <?php if($collection->getSize()) { ?>
@@ -27,10 +69,15 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
     <col width="1" />
     <thead>
         <tr>
-            <th><?php echo $this->__('SKU') ?></th>
-            <th><?php echo $this->__('Product Name') ?></th>
-            <th><?php echo $this->__('Pack size') ?></th>
-            <th><?php echo $this->__('Product Image') ?></th>
+            <!-- <th><?php echo $this->__('SKU') ?></th> -->
+            <!-- <th><?php echo $this->__('Product Name') ?></th> -->
+             <th><?php echo $this->__('Customer Name') ?></th>
+             <th><?php echo $this->__('Customer Email') ?></th>
+             <th><?php echo $this->__('Order Id') ?></th>
+             <th><?php echo $this->__('Customer Phone') ?></th>
+
+         <!--    <th><?php echo $this->__('Pack size') ?></th>
+            <th><?php echo $this->__('Product Image') ?></th> -->
             <th><?php echo $this->__('Remind in') ?></th>
             <th><?php echo $this->__('Next reminder') ?></th>
             <!-- <th><span class="nobr"><?php //echo $this->__('Options') ?></span></th> -->
@@ -38,6 +85,14 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
     </thead>
 	<?php
 		foreach($collection->getData() as $myAllReminders) {
+			$order_id=$myAllReminders['order_Id'];
+			$order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
+			//echo "<pre>";
+			//print_r($order->getEntityId());exit;
+			$enityId=$order->getEntityId();
+
+
+
 			$child_id = $productModel->getIdBySku($myAllReminders['product_sku']);
 			$childProduct = $productModel->load($child_id);
 			$parent_ids = $productConfModel->getParentIdsByChild($child_id);
@@ -58,7 +113,10 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			$separateSkuPackSize = explode("-", $myAllReminders['product_sku']);
 			$tblData = '<tr>';
 			$tblData.= '<td class="first_img_td"><a href="'.$product->getProductUrl().'"><img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
-			$tblData.= '<td class="sku first">'.$separateSkuPackSize[0]/*$product->getSku()*/;
+			/*$tblData.= '<td class="sku first">'.$separateSkuPackSize[0]/*$product->getSku()*/;
+
+			$tblData.= '<td class="sku first">'.$name/*$product->getSku()*/;
+
 			$tblData.= '<div class="refill-action"><div class="action_links">';
 			if($myAllReminders['remind_flag'] == 1) {
 				$tblData.= '<a id="edit_link'.$myAllReminders['reminder_id'].'" class="edit_link" href="'.$this->getUrl().'refillreminder/edit?remind_id='.$myAllReminders['reminder_id'].'">Edit</a> |';
@@ -69,9 +127,17 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			}
 			$tblData.= '<a class="remove_reminder" id="rdata_"'.$myAllReminders['reminder_id'].' href="'.$this->getUrl().'refillreminder/view/delete?remind_id='.$myAllReminders['reminder_id'].'">Remove</a></div>'.$notice.'</div>';
 			$tblData.= '</td>';
-			$tblData.= '<td class="product_name"><a href="'.$product->getProductUrl().'">'.$product->getName().'</a></td>';
-			$tblData.= '<td>'.$separateSkuPackSize[1].'</td>';
-			$tblData.= '<td class="mid_img_td"><a href="'.$product->getProductUrl().'"><img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
+/*
+			$tblData.= '<td class="product_name"><a href="'.$product->getProductUrl().'">'.$product->getName().'</a></td>';*/
+		$tblData.= '<td class="product_name"> '.$email .' </td>';
+
+			/*$tblData.= '<td class="product_name">'.$separateSkuPackSize[1].'</td>';*/
+			$tblData.= '<td class="product_name"><a href="'.$this->getUrl().'sales/order/view/order_id/'.$enityId.'"</a>'.$myAllReminders['order_Id'].'</td>';
+			$tblData.= '<td class="mid_img_td"><a href="#">
+
+			'.$myAllReminders['customer_telephone'].'<img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
+			// $tblData.= '<td class="mid_img_td" width="150px">'.$myAllReminders['customer_telephone'].'</td>';
+			/*$tblData.= '<td class="mid_img_td">'.$myAllReminders['customer_telephone'].'</td>';*/
 			$tblData.= '<td>'.$remindIn.'</td>';
 			$tblData.= '<td>'.date("Y-m-d", strtotime($lastRemindDate. ' + '.$myAllReminders['reminder_days'].' days'));
 			

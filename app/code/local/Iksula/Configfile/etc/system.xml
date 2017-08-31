@@ -569,6 +569,29 @@
                       </ext_name>
                     </fields>
                   </custom_orderid>
+                  <!--custom refil reminder-->
+                  <custom_templateid translate="label">
+                    <label>Custom template Id for Refil Reminder</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <ext_template translate="label">
+                        <label>Template Id</label>
+                         <comment>template id for Refil Reminder</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>3</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </ext_template>
+                    </fields>
+                  </custom_templateid>
+                  <!--custom order Id extention-->
+
+
+
                   <best_value translate="label">
                     <label>Best value listing</label>
                     <sort_order>10</sort_order>

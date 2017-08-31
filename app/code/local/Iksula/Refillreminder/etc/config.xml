@@ -166,10 +166,10 @@
   </adminhtml>    
     <crontab>
         <jobs>            
-			<refillreminder_sendrefillreminder>
+			<iksula_refillreminder>
                 <schedule><cron_expr>* 12 * * *</cron_expr></schedule>
                 <run><model>refillreminder/cron::SendRefillReminder</model></run>
-            </refillreminder_sendrefillreminder>
+            </iksula_refillreminder>
         </jobs>
     </crontab>
 </config> 

@@ -1,6 +1,9 @@
 <?php
 class Iksula_Refillreminder_ViewController extends Mage_Core_Controller_Front_Action{
+
     public function indexAction() {
+      
+       // echo "hie";
         $customerSession = Mage::getSingleton('customer/session');
         if(!$customerSession->isLoggedIn()) {
             $this->getResponse()->setRedirect(Mage::getUrl('customer/account'));
