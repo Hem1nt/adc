@@ -78,7 +78,7 @@
                <!--  <div class="test1"><input type="hidden" name="name" value="abc" /></div> -->
                 <span class="separator">|</span> 
                <!--  <a href="javascript:void(0)" data-orderid="<?php echo $_order->getId(); ?>" class="link-refill refilreminder-action"> -->
-                <a href="javascript:void(0)" data-orderid="<?php echo $_order['customer_order_increment_id']; ?>" class="link-refill refilreminder-action">
+                <a href="javascript:void(0)" data-orderid="<?php echo $_order->getIncrementId(); ?>" class="link-refill refilreminder-action">
                     <?php echo $this->__('Refill Reminder') ?>
                     
                 </a>
