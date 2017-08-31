@@ -70,7 +70,7 @@ if ($zoomHeight) {
     <?php foreach ($this->getGalleryImages() as $_image): ?>
         <li>
             <a href='<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile());?>'  data-gal="prettyPhoto[gallery]" class="fancybox" id="fancybox">
-            <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(56, 56);?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+            <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(56, 56);?>" alt='<?php echo $this->htmlEscape($this->getImageLabel());?>'/>
             </a>
         </li>
     <?php endforeach; ?>
@@ -94,7 +94,7 @@ if ($zoomHeight) {
         <li>
             <a href='<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize($bigImageWidth, $bigImageHeight);?>'   class='cloud-zoom-gallery' title='<?php echo $this->htmlEscape($_image->getLabel()) ?>'
             rel="useZoom: 'zoom1', smallImage: '<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize(298, 298);?>' ">
-            <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(91, 91);?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+            <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(91, 91);?>" alt='<?php echo $this->htmlEscape($this->getImageLabel());?>'/>
             </a>
         </li>
     <?php endforeach; ?>
