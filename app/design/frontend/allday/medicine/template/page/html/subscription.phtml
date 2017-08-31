@@ -26,76 +26,7 @@ $getSession = Mage::getSingleton('core/session')->getOrderReminderSuccess();
     <a id="close_subs" class="subs_a" onclick="" style="bottom: 15px; color: #FFFFFF; position: fixed; left: 8px; text-decoration: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #fff; padding: 0 6px">X</a> -->
 </div>
 
-<style type="text/css">
-.subs_a {cursor: pointer;}
-#toTop{width: 100%; position: relative; bottom: 0px; position: fixed; background-color: #ccc; padding: 10px; margin: 0px auto; left: 0px; z-index: 190;}
-.subscribe,.subscribe_msg{text-align: center;}
-.subscribe_msg{padding: 5px;}
-.subscribe-innerdiv{margin:auto;width:100%; display: inline-block;}
-#toTop {
-position: fixed;
-bottom: 0px;
-cursor: default;
-color: #fff;
-font-size: 11px;
-text-align: center;
-width: 100%;
-height:30px;
-background: #000000 !important;
-font-size: 14px;
-font-weight: bold;
-padding: 5px 0;
-left: 0;
-z-index: 500;
-}
 
-#toTop input.subs {
--moz-border-radius: 3px;
--webkit-border-radius: 3px;
-border-radius: 3px;
-border: 0px solid #ccc;
-padding: 5px;
-width: 200px;
-margin-left: 10px;
-font-size: 12px;
-}
-
-#subscribebtn {
--webkit-align-items: flex-start;
-text-align: center;
-cursor: default;
-color: buttontext;
-padding: 2px 10px 3px;
-border: 2px outset buttonface;
-border-image-source: initial;
-border-image-slice: initial;
-border-image-width: initial;
-border-image-outset: initial;
-border-image-repeat: initial;
-background-color: buttonface;
-box-sizing: border-box;
-}
-
-div#order_reminder_success {
-	position: fixed;
-	display: block;
-	bottom: 52px;
-	cursor: default;
-	color: #fff;
-	font-size: 11px;
-	text-align: center;
-	width: 100%;
-	height: 30px;
-	background: #000000 !important;
-	font-size: 14px;
-	font-weight: bold;
-	padding: 5px 0;
-	left: 0;
-	z-index: 500;
-}
-
-
-</style>
  <script type="text/javascript">
 
 jQuery(document).ready(function(){
@@ -194,20 +125,14 @@ function CloseSubscription(val) {
 			var time = now.getTime();
 			time += 3600 * 1000 * 700;
 			now.setTime(time);
-			document.cookie =
-			'subsclose=yes' +
-			'; expires=' + now.toGMTString() +
-			'; path=/';
+			document.cookie ='subsclose=yes; expires=' + now.toGMTString() +'; path=/';
 		}
 	}
 	function ShowSubscription() {
 		jQuery('#toTop').animate({width: window.innerWidth}, 500, function(){
 			jQuery('#toTop .subscribe').show(); jQuery('#close_subs').show(); jQuery('#show_subs').hide();
 		});
-		document.cookie =
-		'subsclose=no' +
-		'; expires=Thu, 01 Jan 1970 00:00:01 GMT'
-		'; path=/';
+		document.cookie ='subsclose=no; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 	}
 	function get_cookie(Name) {
 		var search = Name + "="

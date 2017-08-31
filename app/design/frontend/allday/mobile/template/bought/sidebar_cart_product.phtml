@@ -44,7 +44,8 @@ $lecount=count($le);
        <div class="item">
         <div class="product-image">
           <a href="<?php echo $_item->getProductUrl() ?>">
-            <img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(200); ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" width="50" height="50" />
+
+            <img class="lazy" data-src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(200); ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" style="display: inline;" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
           </a>
         </div>
         <div class="product-details">
@@ -96,4 +97,9 @@ $lecount=count($le);
 //   infiniteLoop: false,
 //   hideControlOnEnd: true
 // });
+
+
+jQuery(document).ready(function($) {
+    jQuery("img.lazy").lazy();
+});
 </script>

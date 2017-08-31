@@ -51,6 +51,15 @@
        </updates>
      </layout>
      <events>
+      <customer_logout>
+        <observers>
+            <overrides_remove_cookies_Observer>
+                <type>singleton</type>
+                <class>overrides/observer</class>
+                <method>removeCookie</method>
+            </overrides_remove_cookies_Observer>
+        </observers>
+      </customer_logout>
       <controller_action_predispatch>
         <observers>
           <overrides_redirects_model_redirector>

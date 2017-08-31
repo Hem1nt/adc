@@ -28,7 +28,9 @@ if(!empty($related_product_collection)){
       ?>
       <div class="item_wrap">
         <div class="item">
-          <a href="<?php echo $path;?>" title="<?php echo $productData->getName();?>" class="product-image"><img class="lazy" src="<?php echo $imageCacheUrl;?>" width="" height="" alt="<?php echo $productData->getName();?>" style="display: inline;"></a>
+          <a href="<?php echo $path;?>" title="<?php echo $productData->getName();?>" class="product-image">
+              <img class="lazy" data-src="<?php echo $imageCacheUrl;?>" width="" height="" alt="<?php echo $productData->getName();?>" style="display: inline;" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
+          </a>
           <div class="pr-details-height">
             <h2 class="product-name"><a href="<?php echo $path;?>" title="<?php echo $productData->getName();?>"><?php echo $productData->getName();?></a></h2>
             <?php if($genericName){ ?>
@@ -68,7 +70,7 @@ if(!empty($related_product_collection)){
        </div>
        <div class="actions">
         <ul class="add-to-links">
-         <li><a href="<?php echo $wishlistUrl;?>" class="link-wishlist">Add to Wishlist</a></li>
+         <li><a href="<?php echo $wishlistUrl;?>" class="link-wishlist" title="wishlist">Add to Wishlist</a></li>
          <li class="link-compare-li"><span class="separator">|</span> <a href="<?php echo $compareUrl;?>" class="link-compare">Compare</a></li>
        </ul>
        <button type="button" title="View Details" class="button btn-cart" onclick="setLocation('<?php echo $path;?>')"><span><span>View Details</span></span></button>
@@ -79,3 +81,14 @@ if(!empty($related_product_collection)){
 </div>
 </div>
 <?php } ?>
+
+
+
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+    jQuery("img.lazy").lazy();
+});
+
+
+</script>
