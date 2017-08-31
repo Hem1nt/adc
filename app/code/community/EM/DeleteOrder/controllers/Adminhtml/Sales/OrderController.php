@@ -303,6 +303,11 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 		$this->loadLayout();
 		$this->renderLayout();
 	}
+	public function exportcustomerAction()
+	{
+		$this->loadLayout();
+		$this->renderLayout();
+	}
 
 	public function bulkinvoicepdfAction()
 	{
@@ -980,6 +985,51 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     	$emailIdsData = array_unique($emailIds);
     	return $emailIdsData;
     }
+    public function exportCustomerCsvAction()	{
+
+    try {
+            //save text file
+    		$salesModel = Mage::getModel('sales/order');
+    		$uploader = new Varien_File_Uploader('export_customerdata');
+    		$uploader->setAllowedExtensions(array('csv','xls'));
+    		$path = Mage::app()->getConfig()->getTempVarDir() . '/import/';
+    		$uploader->save($path);
+            //If file is uploaded
+    		if ($uploadFile = $uploader->getUploadedFileName()) {
+                //load file
+    			$filePath = $path . $uploadFile;
+    			$lines = file($filePath);
+    			$csv = new Varien_File_Csv();
+    			$data = $csv->getData($filePath);
+    			array_shift($data);
+    			$content = "Order id,Customer Name,Customer Email\n";
+    			foreach (array_chunk($data,100) as $order) {
+				$product = Mage::getModel('sales/order')->getCollection()
+							->addAttributeToFilter('increment_id', array('in' => $order))
+							->addFieldToSelect('increment_id')
+							->addFieldToSelect('customer_firstname')
+							->addFieldToSelect('customer_lastname')
+							->addFieldToSelect('customer_email');
+				foreach ($product as $products) {
+					$product_data = array();
+					$product_data['Order_id'] = $products->getData('increment_id');
+					$product_data['customer_Name'] = $products->getCustomerName();
+					$product_data['customer_email'] = $products->getData('customer_email');
+					$csvdata[] = $product_data;
+					$content .= implode(',', $product_data)."\n";
+						}
+					}
+				$fileName       = 'customer_data_'.time().'.csv';
+				$this->_prepareDownloadResponse($fileName, $content);
+		
+
+    		}
+    	}catch(Exception $e){
+    		Mage::getSingleton('adminhtml/session')->addError($this->__('An error occured : %s', $e->getMessage()));
+            return false;
+    	}
+
+	}
 
     public function importTrackinnumberAction()	{
 	    try {
