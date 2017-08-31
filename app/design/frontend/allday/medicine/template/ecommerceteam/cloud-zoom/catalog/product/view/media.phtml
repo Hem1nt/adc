@@ -61,7 +61,7 @@ if ($zoomHeight) {
 <?php if ($product->getImage() != 'no_selection' && $product->getImage()): ?>
 <div class="zoom-inner"><p class="product-image">
     <a href='<?php echo $this->helper('catalog/image')->init($product, 'image')->resize($bigImageWidth, $bigImageHeight);?>' class = 'cloud-zoom' id='zoom1' rel="<?php echo implode($config, ',');?>">
-        <img src="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize(298, 298);?>" alt='' title="<?php echo $this->htmlEscape($this->getImageLabel());?>" itemprop="image"/>
+        <img src="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize(298, 298);?>" alt='<?php echo $this->htmlEscape($this->getImageLabel());?>' title="<?php echo $this->htmlEscape($this->getImageLabel());?>" itemprop="image"/>
     </a>
 <?php if (count($this->getGalleryImages()) > 0): ?>
 <div class="zoom-img">
