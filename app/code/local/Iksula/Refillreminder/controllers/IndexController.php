@@ -479,6 +479,7 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
       {// $block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/index.phtml");
       // echo $block->toHtml();
     $order_id = $this->getRequest()->getParam('order_id');  
+    //var_dump($order_id);die;
     $name=$this->getRequest()->getParam('customer_name'); 
     //var_dump($name);die;
     $mail=$this->getRequest()->getParam('txtmail');
@@ -501,14 +502,39 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
                     );
             try {
                     $model->setData($data)->save();
+                    //var_dump($model->setData($data)->save());die;
                     //print_r( $model->setData($data)->save());
                   
                // } 
 
 //email functionality starts
       // Transactional Email Template's ID
-          $templateId = 124; 
-          $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
+          //$templateId = 124; 
+              $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
+              $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');  
+              $sender = array('name' => $senderName,
+                    'email' => $senderEmail);
+              $order = Mage::getModel('sales/order')->loadByIncrementId($order_id); 
+              $shippingAddress = $order->getShippingAddress();
+              $customeremail=$shippingAddress->getEmail();
+              
+              //store email Id
+              $storeemail=Mage::getStoreConfig('trans_email/ident_general/email');
+              // Get Store ID   
+               $store = Mage::app()->getStore()->getId();
+
+               $reciever= array($customeremail, $storeemail);
+               // Set variables that can be used in email template
+                $vars = array('customer_name' => $name,
+                  'order_Id' => $order_id);
+                $translate  = Mage::getSingleton('core/translate');
+          
+                Mage::getModel('core/email_template')
+                  ->sendTransactional($templateId,$sender,$reciever,$vars, $storeId);
+                        
+                $translate->setTranslateInline(true); 
+  } 
+     /*     $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
           $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');  
           $sender = array('name' => $senderName,
                 'email' => $senderEmail);
@@ -538,9 +564,9 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
             Mage::getModel('core/email_template')
               ->sendTransactional($templateId,$sender,$reciever,$vars, $storeId);
                     
-            $translate->setTranslateInline(true); 
+            $translate->setTranslateInline(true); */
 
-            } 
+            //} 
             //try block ends 
            // print_r($translate->setTranslateInline(true));die;
             catch (Exception $e) 

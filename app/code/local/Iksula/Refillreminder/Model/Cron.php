@@ -7,7 +7,24 @@ class Iksula_Refillreminder_Model_Cron{
           //var_dump($template_Id);
           echo  $template_Id;
 		      //$templateId = 124; 
+          $customerSession = Mage::getSingleton('customer/session');
+          if($customerSession->isLoggedIn()) {
+          $email = $customerSession->getCustomer()->getEmail();
+          $name = $customerSession->getCustomer()->getName();
+  //var_dump($email);die;
+            }
           $model = Mage::getModel('refillreminder/refillreminder');
+          $collection = $model->getCollection();
+          foreach($collection->getData() as $myAllReminders) 
+          {
+            $order_id=$myAllReminders['order_Id'];
+            $order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
+           // $enityId=$order->getEntityId();
+
+          }
+
+
+
 
           $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
           $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');  
@@ -25,7 +42,7 @@ class Iksula_Refillreminder_Model_Cron{
            $reciever= array($customeremail, $storeemail);
            // Set variables that can be used in email template
             $vars = array('customer_name' => $name,
-              'order_id' => $order_id);
+              'order_Id' => $order_id);
             $translate  = Mage::getSingleton('core/translate');
       
             Mage::getModel('core/email_template')

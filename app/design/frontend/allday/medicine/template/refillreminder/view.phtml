@@ -1,11 +1,4 @@
-<?php
-$model1 = Mage::getModel('refillreminder/refillreminder')->getCollection();
 
-
-
-
-
-?>
 <div class="page-title">
     <h1><?php echo $this->__('Refill Reminder') ?></h1>
 </div>
@@ -91,7 +84,8 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			//print_r($order->getEntityId());exit;
 			$enityId=$order->getEntityId();
 
-
+			/*$days=$myAllReminders['reminder_days'];
+			var_dump($days);die;*/
 
 			$child_id = $productModel->getIdBySku($myAllReminders['product_sku']);
 			$childProduct = $productModel->load($child_id);
@@ -99,20 +93,25 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			$product = $productModel->load($parent_ids[0]);
 			if($myAllReminders['reminder_days']>30) {
 				$remindIn = round($myAllReminders['reminder_days']/30)." Months";
+				//print_r($remindIn);die;
 				if(round($myAllReminders['reminder_days']/30) == "1") {
 					$remindIn = round($myAllReminders['reminder_days']/30)." Month";
+					//var_dump($remindIn);die;
 				}
 			}
 			else {
+				//print_r($myAllReminders['reminder_days']);die;
 				$remindIn = $myAllReminders['reminder_days']." Days";
+				//var_dump($remindIn);die;
 				if($myAllReminders['reminder_days'] == "1") {
 					$remindIn = $myAllReminders['reminder_days']." Day";
 				}
 			}
 			$lastRemindDate = date("Y-m-d", strtotime($myAllReminders['last_mail_sent']));
+			//print_r($lastRemindDate);die;
 			$separateSkuPackSize = explode("-", $myAllReminders['product_sku']);
 			$tblData = '<tr>';
-			$tblData.= '<td class="first_img_td"><a href="'.$product->getProductUrl().'"><img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
+			// $tblData.= '<td class="first_img_td"><a href="'.$product->getProductUrl().'"><img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
 			/*$tblData.= '<td class="sku first">'.$separateSkuPackSize[0]/*$product->getSku()*/;
 
 			$tblData.= '<td class="sku first">'.$name/*$product->getSku()*/;
@@ -133,7 +132,7 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 
 			/*$tblData.= '<td class="product_name">'.$separateSkuPackSize[1].'</td>';*/
 			$tblData.= '<td class="product_name"><a href="'.$this->getUrl().'sales/order/view/order_id/'.$enityId.'"</a>'.$myAllReminders['order_Id'].'</td>';
-			$tblData.= '<td class="mid_img_td"><a href="#">
+			$tblData.= '<td class="mid_img_td">
 
 			'.$myAllReminders['customer_telephone'].'<img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
 			// $tblData.= '<td class="mid_img_td" width="150px">'.$myAllReminders['customer_telephone'].'</td>';
