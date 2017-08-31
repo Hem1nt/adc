@@ -911,6 +911,17 @@ input[type="radio"]{
 .top-cart .inner-wrapper .mini-products-list .item .price{
     margin-right: 10px;
 }
+
+/*pdp pack size value*/
+.catalog-product-view .product-details-table table.new_product_list span.size_label {
+    width: 85px;
+    display: inline-block;
+}
+.catalog-product-view .product-details-table table.new_product_list .double_pill_img{
+    width: 43px;
+    height: 43px;
+}
+/*pdp pack size value end*/
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
