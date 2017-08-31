@@ -92,7 +92,7 @@ if ($zoomHeight) {
     <ul class="bxslider-pr-view">
     <?php foreach ($this->getGalleryImages() as $_image): ?>
         <li>
-            <a href='<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize($bigImageWidth, $bigImageHeight);?>'   class='cloud-zoom-gallery' title='<?php echo $this->htmlEscape($_image->getLabel()) ?>'
+            <a href='<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize($bigImageWidth, $bigImageHeight);?>'   class='cloud-zoom-gallery' title='<?php echo $this->htmlEscape($this->getImageLabel());?>'
             rel="useZoom: 'zoom1', smallImage: '<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize(298, 298);?>' ">
             <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(91, 91);?>" alt='<?php echo $this->htmlEscape($this->getImageLabel());?>'/>
             </a>
