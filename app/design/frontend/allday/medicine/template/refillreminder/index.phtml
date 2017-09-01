@@ -4,6 +4,13 @@ body {
 }
 </style>
 <?php
+$customerSession = Mage::getSingleton('customer/session');
+if($customerSession->isLoggedIn()) {
+	$email = $customerSession->getCustomer()->getEmail();
+	$name = $customerSession->getCustomer()->getName();
+	$getCreatedAt = $customerSession->getCustomer()->getCreatedAt();
+	//var_dump($getCreatedAt);die;
+}
 $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
 //var_dump($customerLoggedIn);die;
 $customerEmail = ""; $custPhone = "";
@@ -26,7 +33,7 @@ if($customerLoggedIn)
 		<ul>
 			<li><label>Name</label></li>
 			<li>
-				<input class="input-text required-entry validate-name" id="customer_name" name="customer_name" value="<?php //echo $custPhone; ?>" />
+				<input class="input-text required-entry validate-name" id="customer_name" name="customer_name" value="<?php echo $name; ?>" disabled/>
 			</li>
 			
 			<li><label>Email</label></li>
