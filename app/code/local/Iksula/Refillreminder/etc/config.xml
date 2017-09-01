@@ -129,7 +129,7 @@
 		   <orderreminder module="refillreminder">
 		    <title>Manage Orderreminder</title>
 			<sort_order>151</sort_order>
-			<action>refillreminder/adminhtml_orderreminder</action>
+			<action>refillreminder/adminhtml_refillreminder</action>
 		  </orderreminder>
 		</children>
 	<!--   </refillreminder> -->
