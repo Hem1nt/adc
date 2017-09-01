@@ -3,29 +3,40 @@ class Iksula_Refillreminder_Model_Cron{
 
 	public function SendRefillReminder(){
 		//do something
-		      $template_Id = Mage::getStoreConfig('hide_attribute_frontend/custom_templateid/ext_template');
+    //current date calulcation
+         $model = Mage::getModel('refillreminder/refillreminder');
+          $collection = $model->getCollection();
+          foreach($collection->getData() as $myAllReminders) 
+          {
+            $order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
+            $enityId=$order->getEntityId();
+
+          
+          $currentDate = Mage::getModel('core/date')->date('d');
+          // $order_id=$myAllReminders['order_Id'];
+         // $createDate=$myAllReminders['created_date'];
+          //create date in days
+            $currentDate = Mage::getModel('core/date')->date('d');
+          // $order_id=$myAllReminders['order_Id'];
+          $createDate=$myAllReminders['created_date'];
+          $createDate = new DateTime($createDate);
+
+          $strip = $createDate->format('d');
+          
+
+          //create date end in days
+          $reminderDate=$myAllReminders['reminder_days'];
+          if(($strip+$currentDate) % $reminderDate =='0')
+          {
+            $template_Id = Mage::getStoreConfig('hide_attribute_frontend/custom_templateid/ext_template');
           //var_dump($template_Id);
           echo  $template_Id;
-		      //$templateId = 124; 
+          //$templateId = 124; 
           $customerSession = Mage::getSingleton('customer/session');
           if($customerSession->isLoggedIn()) {
           $email = $customerSession->getCustomer()->getEmail();
           $name = $customerSession->getCustomer()->getName();
-  //var_dump($email);die;
             }
-          $model = Mage::getModel('refillreminder/refillreminder');
-          $collection = $model->getCollection();
-          foreach($collection->getData() as $myAllReminders) 
-          {
-            $order_id=$myAllReminders['order_Id'];
-            $order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
-           // $enityId=$order->getEntityId();
-
-          }
-
-
-
-
           $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
           $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');  
           $sender = array('name' => $senderName,
@@ -49,5 +60,15 @@ class Iksula_Refillreminder_Model_Cron{
               ->sendTransactional($templateId,$sender,$reciever,$vars, $storeId);
                     
             $translate->setTranslateInline(true); 
+          }
+          else
+          {
+            echo "no email fired";
+          }
+
+
+          }
+
+		      
 	} 
 }
