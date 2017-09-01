@@ -61,7 +61,7 @@ if ($zoomHeight) {
 <?php if ($product->getImage() != 'no_selection' && $product->getImage()): ?>
 <div class="zoom-inner"><p class="product-image">
     <a href='<?php echo $this->helper('catalog/image')->init($product, 'image')->resize($bigImageWidth, $bigImageHeight);?>' class = 'cloud-zoom' id='zoom1' rel="<?php echo implode($config, ',');?>">
-        <img src="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize(298, 298);?>" alt='' title="<?php echo $this->htmlEscape($this->getImageLabel());?>" itemprop="image"/>
+        <img src="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize(298, 298);?>" alt="<?php echo $this->htmlEscape($this->getImageLabel());?>" title="<?php echo $this->htmlEscape($this->getImageLabel());?>" itemprop="image"/>
     </a>
 <?php if (count($this->getGalleryImages()) > 0): ?>
 <div class="zoom-img">
@@ -70,7 +70,7 @@ if ($zoomHeight) {
     <?php foreach ($this->getGalleryImages() as $_image): ?>
         <li>
             <a href='<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile());?>'  data-gal="prettyPhoto[gallery]" class="fancybox" id="fancybox">
-            <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(56, 56);?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+            <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(56, 56);?>" alt="<?php echo $this->htmlEscape($this->getImageLabel());?>"/>
             </a>
         </li>
     <?php endforeach; ?>
@@ -92,9 +92,9 @@ if ($zoomHeight) {
     <ul class="bxslider-pr-view">
     <?php foreach ($this->getGalleryImages() as $_image): ?>
         <li>
-            <a href='<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize($bigImageWidth, $bigImageHeight);?>'   class='cloud-zoom-gallery' title='<?php echo $this->htmlEscape($_image->getLabel()) ?>'
+            <a href='<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize($bigImageWidth, $bigImageHeight);?>'   class='cloud-zoom-gallery' title='<?php echo $this->htmlEscape($this->getImageLabel());?>'
             rel="useZoom: 'zoom1', smallImage: '<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize(298, 298);?>' ">
-            <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(91, 91);?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+            <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(91, 91);?>" alt="<?php echo $this->htmlEscape($this->getImageLabel());?>"/>
             </a>
         </li>
     <?php endforeach; ?>

@@ -21,6 +21,15 @@ class Iksula_Overrides_Block_Adminhtml_Sales_Order extends Mage_Adminhtml_Block_
                     )
             );
         }
+        if (Mage::getSingleton('admin/session')->isAllowed('simpleorderexport/actions/exportcustomer')) {            
+            $this->_addButton(
+                'exportcustomer', array(
+                'label' => Mage::helper('sales')->__('Export Customer Data'),
+                'onclick' => "window.location.href='" . $this->getUrl('*/sales_order/exportcustomer') . "'",
+                'level' => -2
+                    )
+            );
+        }
          if (Mage::getSingleton('admin/session')->isAllowed('simpleorderexport/actions/importtracking')) {
             $this->_addButton(
                 'importtracking', array(

@@ -881,7 +881,17 @@ input[type="radio"]{
 .dot_color{ 
     color: #6B9A63;
 }
-
+<<<<<<< HEAD
+.opc-wrapper-opc .payment-block .payment_below_outer {
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px;
+    color: #ff0000;
+    font-weight: 600;
+}
+.opc-wrapper-opc .payment-block .payment_below_outer p{
+    font-size: 14px;
+}
 /**/
 
 /*echeck cms page*/
@@ -914,6 +924,7 @@ input[type="radio"]{
 .cms-home .main_config_page .popular_categories .popular_categories_data li img{
     width: 100%;
     height: auto;
+    color: #ff0000;}
 }
 .opc-wrapper-opc .payment-block .payment_below_outer {
     display: inline-block;
@@ -1012,8 +1023,67 @@ z-index: 500;
     left: 0;
     z-index: 500;
 }
-
 /*subscription end*/
+
+/*lazyload*/
+.catalog-category-view .products-list .product-image{
+    text-align: center;
+}
+a.product_img[data-src~="http"] {
+    width: 54px !important;
+}
+.cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a img {
+    margin: 0 auto;
+    width: auto !important;
+    display: inline-block;
+    max-width: 60%;
+}
+.below_banner_area .home-banner-block{
+    width: 100%;
+    text-align: center;
+    max-width: 100%;
+}
+.below_banner_area .home-banner-block a{
+    display: block;
+}
+.below_banner_area .home-banner-block a img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+.cms-home .main_config_page .leading_online .leading_online_data ul li a img {
+    width: auto !important;
+    max-width: 100%;
+}
+.catalog-category-view .col-main .category-products .products-grid li.item .product-image img.lazy,
+.catalog-category-view .col-main .category-products .products-list li.item .product-image img.lazy,
+.catalogsearch-result-index .col-main .category-products .products-grid li.item .product-image img.lazy ,
+.catalogsearch-result-index .col-main .category-products .products-list li.item .product-image img.lazy {
+    width: auto !important;
+    max-width: 100%;
+}
+.featured_products .featured-block-tab .products-grid .item .product-image img {
+    width: auto !important;
+    max-width: 100%; 
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .item .product-image img, 
+.review-product-list .frequently_bought_wrap .slider_wraper .item .product-image img {
+    width: auto !important;
+    max-width: 100%;
+    height: auto;
+}
+.catalog-product-view .frequently_bought_wrap .slider_wraper .item .product-image, 
+.review-product-list .frequently_bought_wrap .slider_wraper .item .product-image {
+    text-align: center;
+}
+.featured_products .featured-block-tab .products-grid .item .product-image {
+    display: inline-block !important;
+}
+.featured_products .featured-block-tab .products-grid{
+    box-sizing: border-box !important;
+}
+/*lazyload end*/
+
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;

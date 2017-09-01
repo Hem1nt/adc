@@ -16,6 +16,14 @@ class Iksula_Overrides_Model_Observer
         }
     }
 
+    public function removeCookie($observer)
+    {
+        $loginAsCustomer = Mage::getModel('core/cookie')->get('login_admin');
+        if($loginAsCustomer)
+        {
+            Mage::getModel('core/cookie')->delete('login_admin');
+        }
+    }
     public function countrySession($observer)
     {
         $userIpAddress = Mage::helper('core/http')->getRemoteAddr();

@@ -20,7 +20,10 @@
 		<?php if($image_above_trusted):?>
 		<div class="home-banner-block">
 			<a class="comboclass" href="<?php echo $image_above_trusted;?>">
-				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $image_above_trusted; ?>"/>
+				<!-- <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $image_above_trusted; ?>"/> -->
+
+				<img class="lazy" data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $image_above_trusted; ?>"
+					src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
 			</a>			
 		</div>
 		<?php endif;?>
@@ -33,30 +36,49 @@
 		<?php if($right_banner_1):?>
 		<div class="home-banner-block">
 			<a class="comboclass" href="<?php echo $right_banner_1_url;?>">
-				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_1; ?>"/>
+				<!-- <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_1; ?>"/> -->
+
+				<img class="lazy" data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_1; ?>" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
 			</a>			
 		</div>
 		<?php endif;?>
 		<?php if($right_banner_2):?>
 		<div class="home-banner-block mid">
 			<a class="comboclass" href="<?php echo $right_banner_2_url;?>">
-				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_2; ?>"/>
+				<!-- <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_2; ?>"/> -->
+
+				<img class="lazy" data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_2; ?>" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
 			</a>
 		</div>		
 		<?php endif;?>
 		<?php if($right_banner_3):?>
 		<div class="home-banner-block third">
 			<a class="comboclass" href="<?php echo $right_banner_3_url;?>">
-				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_3; ?>"/>
+				<!-- <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_3; ?>"/> -->
+
+				<img class="lazy" data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_3; ?>" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
 			</a>			
 		</div>
 		<?php endif;?>
 		<?php if($right_banner_4):?>
 		<div class="home-banner-block forth">
 			<a class="comboclass" href="<?php echo $right_banner_4_url;?>">
-				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_4; ?>"/>
+				<!-- <img src="<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_4; ?>"/> -->
+
+				<img class="lazy" data-src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'sidebanner/'. $right_banner_4; ?>" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
 			</a>			
 		</div>
 		<?php endif;?> 		
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	//alert(34);
+	jQuery("img.lazy").lazy();
+});
+
+
+</script>

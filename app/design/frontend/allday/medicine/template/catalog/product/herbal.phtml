@@ -63,7 +63,12 @@ $categorycoll = Mage::getModel("catalog/category")->load($this->getData('categor
     <?php endif ?>
     <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
      <!-- <div class="grid-inner"> -->
-     <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img class="pr-img lazy" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+     <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+
+    <img class="pr-img lazy" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" style="display: inline;" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"/>
+
+
+     </a>
      <?php if(!$_product->isSaleable()): ?>
      <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
    <?php endif; ?>
@@ -167,5 +172,8 @@ jQuery(document).ready(function($){
 $(window).on('load', function(){
      equalheight('ul.products-grid li.item');
    });
+
+  jQuery("img.lazy").lazy();
+  
 });
 </script>
