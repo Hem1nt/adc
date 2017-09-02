@@ -76,7 +76,7 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 				'type'      => 'date',
 				));*/
 
-			/*	$this->addColumn("last_mail_sent", array(
+				$this->addColumn("last_mail_sent", array(
 				"header" => Mage::helper("refillreminder")->__("Refill Due Order"),
 				"index" => "last_mail_sent",
 				'type'      => 'date',
@@ -86,7 +86,7 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 				"header" => Mage::helper("refillreminder")->__("Next reminder on"),
 				"index" => "next_mail_on",
 				 "type" => "date",
-				));*/
+				));
 
 				$this->addColumn("status", array(
 				"header" => Mage::helper("refillreminder")->__("Status"),
