@@ -61,13 +61,8 @@ class Iksula_Refillreminder_Model_Cron{
                     
             $translate->setTranslateInline(true); 
           }
-          else
-          {
-            echo "no email fired";
-          }
-
-
-          }
+          
+    }
 
 		      
 	} 
