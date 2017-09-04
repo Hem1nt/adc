@@ -82,7 +82,7 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 				));
 				
 				$this->addColumn("reminder_days", array(
-				"header" => Mage::helper("refillreminder")->__("Refill Reminder Days"),
+				"header" => Mage::helper("refillreminder")->__("Remind in"),
 				"index" => "reminder_days",
 				//'type'      => 'date',
 				));
