@@ -1166,7 +1166,13 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
             $uploader = new Varien_File_Uploader('import_csvstatus');
             $uploader->setAllowedExtensions(array('csv','xls'));
             $path = Mage::app()->getConfig()->getTempVarDir() . '/import/';
-            $uploader->save($path);
+            $fname = $_FILES['import_csvstatus']['name']; //file name
+            $adminuser = Mage::getSingleton('admin/session')->getUser()->getUsername();
+            $ext = pathinfo($fname, PATHINFO_EXTENSION);
+            $newFile = 'orderstatus_'.$adminuser.'_'.date('Y-m-d_H-i-s',time()).'.'.$ext;
+            
+            $uploader->save($path,$newFile);
+            
 
             //If file is uploaded
             if ($uploadFile = $uploader->getUploadedFileName()) {
