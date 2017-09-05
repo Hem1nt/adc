@@ -152,7 +152,7 @@
           <show_in_store>0</show_in_store>
           <fields>
             <payment_banner_1 translate="label">
-              <label>Payment Banner 1:</label>
+              <label>Payment Mcafeesecure Banner 1:</label>
               <comment>Image uploaded her will be visble on payment page</comment>
               <frontend_type>image</frontend_type>
               <backend_model>adminhtml/system_config_backend_image</backend_model>
@@ -164,7 +164,7 @@
               <show_in_store>1</show_in_store>
             </payment_banner_1>
             <payment_banner_2 translate="label">
-              <label>Payment Banner 2:</label>
+              <label>Payment Godaddy Banner 2:</label>
               <comment>Image uploaded her will be visble on payment page</comment>
               <frontend_type>image</frontend_type>
               <backend_model>adminhtml/system_config_backend_image</backend_model>
