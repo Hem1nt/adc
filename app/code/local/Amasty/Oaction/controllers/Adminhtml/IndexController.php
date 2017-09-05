@@ -8,7 +8,8 @@ class Amasty_Oaction_Adminhtml_IndexController extends Mage_Adminhtml_Controller
 {
     
     protected function _isAllowed(){
-        return Mage::getSingleton('admin/session')->isAllowed('system/config'); // It return true/false with acl set with user
+        //return Mage::getSingleton('admin/session')->isAllowed('system/config'); // It return true/false with acl set with user
+        return true;
     }
 
     public function doAction()
@@ -16,7 +17,6 @@ class Amasty_Oaction_Adminhtml_IndexController extends Mage_Adminhtml_Controller
         $ids         = $this->getRequest()->getParam('order_ids');
         $val         = trim($this->getRequest()->getParam('amoaction_value'));        
         $commandType = trim($this->getRequest()->getParam('command'));
-       // echo "jjjiiiii----".$commandType;exit; 
         try {
             $command = Amasty_Oaction_Model_Command_Abstract::factory($commandType);
             
