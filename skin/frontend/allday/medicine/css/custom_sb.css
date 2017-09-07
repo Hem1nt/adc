@@ -1013,12 +1013,15 @@ input[type="radio"]{
 }
 
 .top-cart .inner-wrapper .cart_item_wrap{
-    height: 260px;
+    max-height: 260px;
     margin-bottom: 8px;
 }
 .top-cart .inner-wrapper .mini-products-list .item .btn-remove,
 .top-cart .inner-wrapper .mini-products-list .item .price{
     margin-right: 10px;
+}
+.mCSB_inside > .mCSB_container {
+    margin-right: 0;
 }
 /*subscription*/
 
