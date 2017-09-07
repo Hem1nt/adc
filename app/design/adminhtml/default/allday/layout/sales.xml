@@ -1083,16 +1083,21 @@
 	-->
     <adminhtml_sales_order_importcsv>
         <reference name="content">
-            <block type="adminhtml/template"  name="importcsv" template="sales/order/importcsv/importcsv.phtml" output="toHtml"></block>
+            <block type="adminhtml/template"  name="importcsv" template="sales/order/importcsv/importcsv.phtml"></block>
         </reference>
     </adminhtml_sales_order_importcsv>
+    <adminhtml_sales_order_exportcustomer>
+        <reference name="content">
+            <block type="adminhtml/template"  name="exportcustomer" template="sales/order/exportcustomer.phtml"></block>
+        </reference>
+    </adminhtml_sales_order_exportcustomer>
 	
 	<!--
 		add block file for importtracking for selected order trackingnumber change.
 	-->
 	<adminhtml_sales_order_importtracking>
         <reference name="content">
-            <block type="adminhtml/template"  name="importtracking" template="sales/order/importtracking/importtracking.phtml" output="toHtml"></block>
+            <block type="adminhtml/template"  name="importtracking" template="sales/order/importtracking/importtracking.phtml"></block>
         </reference>
     </adminhtml_sales_order_importtracking>
 </layout>

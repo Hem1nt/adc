@@ -43,6 +43,9 @@
                                     <importtracking translate="title">
                                         <title>Import Trakingnumber</title>
                                     </importtracking>
+                                    <exportcustomer translate="title">
+                                        <title>Export Customer Data</title>
+                                    </exportcustomer>
                                     <bulkinvoice translate="title">
                                         <title>Bulk Invoice</title>
                                     </bulkinvoice>
