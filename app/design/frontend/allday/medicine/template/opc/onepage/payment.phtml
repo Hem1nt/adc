@@ -6,6 +6,28 @@
     var lastPrice;
 //]]>
 </script>
+<div class="trust_banner">
+    <span class="banner-1 trust_banners">
+        <?php $payment_banner1 = Mage::getStoreConfig('payment/allpayment/payment_banner_1');?>
+        <a href="https://www.mcafeesecure.com/RatingVerify?ref=www.alldaychemist.com" id="mcaffee_logo" onclick="window.open(this.href, 'mcafee_new','width=1000,height=500,toolbar=1,resizable=0'); return false;" rel="nofollow">
+        <span class="op1"></span>
+            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'paymentbanner/'. $payment_banner1; ?>"/>  
+        </a>
+    </span>
+    <span class="banner-2 trust_banners">
+        <?php $payment_banner2 = Mage::getStoreConfig('payment/allpayment/payment_banner_2');?>
+        <a class="footer_logos" href="https://seal.godaddy.com/verifySeal?sealID=516304681046fb4bc11011f1400b8da37d719429464659303720420694" id="godaddy_logo" onclick="window.open(this.href, 'godaddy_new','width=700,height=500,toolbar=1,resizable=0'); return false;" rel="nofollow" style="cursor: pointer;"> <span class="op2"></span>
+            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'paymentbanner/'. $payment_banner2; ?>"/>
+        </a>  
+    </span>
+    <span class="banner-3 trust_banners">
+        <?php $payment_banner3 = Mage::getStoreConfig('payment/allpayment/payment_banner_3');?>
+        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'paymentbanner/'. $payment_banner3; ?>"/>
+        <span class="banner-3_message">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('payment_banner_message')->toHtml(); ?>
+        </span>
+    </span>
+</div>
 <form action="" id="co-payment-form">	
     <fieldset id="checkout-payment-method-load">
         <?php echo $this->getChildHtml('methods') ?>
@@ -36,4 +58,15 @@
 //<![CDATA[
     payment.currentMethod = "<?php echo $this->getChild('methods')->getSelectedMethodCode() ?>";
 //]]>
+
+jQuery( document ).ready(function() {
+
+    jQuery('.banner-3_message').css("opacity","0");
+    
+    jQuery(".banner-3").hover(function(){
+        jQuery('.banner-3_message').css("opacity","1");
+        },function(){
+            jQuery('.banner-3_message').css("opacity","0");
+    });
+});
 </script>

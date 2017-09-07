@@ -438,14 +438,71 @@ input[type="radio"]{
 }
 
 /*pay now*/
-.customer-account-index .col-main .data-table td a.link-paylink{
+.my-account .data-table td a.link-paylink{
     display: inline-block;
 }
-.customer-account-index .col-main .data-table td a.link-paylink .pay_now_image{
+.my-account .data-table td a.link-paylink .pay_now_image{
     height: 22px;
     display: inline-block;
 }
+/*payment-block */
+.opc-index-index .payment-block .trust_banner{
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.opc-index-index .payment-block .trust_banner .trust_banners{
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+    text-align: center;
+    position: relative;
+}
+.opc-index-index .payment-block .trust_banner .trust_banners a{
+    display: inline-block;
+}
+.opc-index-index .payment-block .trust_banner .trust_banners img{
+    width: auto;
+    height: auto;
+}
 
+.opc-index-index .payment-block .trust_banner .banner-3_message p{
+    font-size: 13px;
+    color: #393939;
+    font-weight: 600;
+    text-align: justify;
+}
+.opc-index-index .payment-block .trust_banner span.banner-3_message {
+    display: block !important;
+    width: 100%;
+    position: absolute !important;
+    left: 50%;
+    top: 50%;
+    /* border: 1px solid #ccc; */
+    box-shadow: 0 0 5px #ccc;
+    background: #efefef;
+    padding: 12px;
+    text-align: justify;
+    -webkit-transition: all 0.3s;
+    transition: all 1.3s;
+    border-radius: 5px;
+    z-index: 999;
+}
+.opc-index-index .payment-block .trust_banner span.banner-3_message::after {
+    width: 10px;
+    height: 10px;
+    content: "";
+    position: absolute;
+    /*border-left: 1px solid #ccc;*/
+    /*border-bottom: 1px solid #ccc;*/
+    top: -6px;
+    left: 10%;
+    transform: rotate(135deg);
+    background: #efefef;
+}
 /*value pack*/
 
 .catalog-product-view .product-shop .add_to_cart_button .price-label{
@@ -881,7 +938,6 @@ input[type="radio"]{
 .dot_color{ 
     color: #6B9A63;
 }
-<<<<<<< HEAD
 .opc-wrapper-opc .payment-block .payment_below_outer {
     display: inline-block;
     margin-left: 35px;
@@ -1084,10 +1140,26 @@ a.product_img[data-src~="http"] {
 }
 /*lazyload end*/
 
+/*voucher payment*/
+.opc-wrapper-opc .payment-block .payment_below_outer {
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px;
+}
+.payment_below_outer .payment_below_msg{
+    color: red;
+}
+
+/*voucher payment end*/
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
         margin-left: 0px;
+    }
+}
+@media only screen and (max-width: 980px){
+    .opc-index-index .payment-block .trust_banner .trust_banners {
+        width: 100%;
     }
 }
 @media only screen and (max-width: 920px){
@@ -1167,6 +1239,13 @@ a.product_img[data-src~="http"] {
         float: left !important;
         padding: 2px 2% !important;
     }
+    .opc-index-index .payment-block .trust_banner span.banner-3_message::after {
+        left: 50%;
+    }
+    .opc-index-index .payment-block .trust_banner span.banner-3_message {
+        left: 10%;
+        width: 80%;
+    }
 }
 @media only screen and (max-width: 800px) {
     .catalog-product-view #customer-reviews .add_comment {
@@ -1231,6 +1310,26 @@ a.product_img[data-src~="http"] {
         border-radius: 25px;
         height: 27px;
         color: #fff!important;
+    }
+    .opc-wrapper-opc .payment-block .payment_tabs dt {
+        height: 40px;
+    }
+    .opc-wrapper-opc .payment-block dt .label_virtual_dcrfront {
+        height: 36px;
+        line-height: 19px;
+    }
+    .opc-wrapper-opc .payment-block .payment_below_outer {
+        display: inline-block;
+        margin-left: 8px;
+        margin-top: 18px;
+        line-height: 10px;
+        width: auto;
+    }
+    .opc-wrapper-opc .payment-block .payment_below_outer p {
+        font-size: 12px;
+        color: #ff0000;
+        text-align: center;
+        margin: 0;
     }
 }
 
