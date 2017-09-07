@@ -124,7 +124,7 @@
             <action method="removeItem"><type>skin_js</type><name>js/tm/easytabs.js</name></action>
             <action method="removeItem"><type>skin_js</type><name>js/jquery.accordion.2.0.js</name></action>
             <action method="removeItem"><type>skin_js</type><name>js/jquery.prettyPhoto.js</name></action>
-            <action method="removeItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
 		</reference>
 	</cms_index_index>
 	<homepagebanner_index_index>
