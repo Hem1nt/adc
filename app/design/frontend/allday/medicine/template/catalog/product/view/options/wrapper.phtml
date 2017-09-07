@@ -54,7 +54,7 @@ if($_product->isConfigurable()) {
 		if($child->getData('bonus')) {
 			//$packSizeLabel = $child->getData('bonus')." + ".$packSizeLabel." Extra";
 			$bonusImage = $this->getSkinUrl().'images/double_pill.jpg';
-			$packSizeLabel = $packSizeLabel.'<img src='.$bonusImage.'>';
+			$packSizeLabel = '<span class="size_label">'.$packSizeLabel.'</span><img class="double_pill_img" src='.$bonusImage.'>';
 			$packUnitsize = $packUnitsize + $child->getData('bonus');
 		}
 		$childPrice = Mage::helper('core')->currency($child->getPrice(),true,false);
