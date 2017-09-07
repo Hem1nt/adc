@@ -16,7 +16,7 @@
     $pharmaceuticalformId = $_product->getPharmaceuticalForm();
     $_frontendHelper = $this->helper('frontend/data');
     // echo $_product->getData('bonus');exit;
-    $bonus = $_product->getData('bonus');
+    $bonus = $_childproduct->getData('bonus');
     $prname =explode("-",$this->getProductName());
 
 ?>
@@ -48,7 +48,7 @@
                 echo $this->htmlEscape($_product->getName());
                 echo "<br>"; echo $this->htmlEscape($_product->getGenericName());
                 if($bonus) {
-                    echo "<br>"; echo "Pack Size : ". $prname[1]." + ".$_frontendHelper->getCartPackSize($_childproduct);
+                    echo "<br>"; echo "Pack Size : ". $bonus." + ".$_frontendHelper->getCartPackSize($_childproduct);
                 } 
                 else {
                     echo "<br>"; echo "Pack Size : ". $_frontendHelper->getCartPackSize($_childproduct);

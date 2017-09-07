@@ -1,7 +1,50 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
-
+	/*payment-block */
+	.opc-index-index .payment-block .trust_banner{
+	    width: 100%;
+	    display: inline-block;
+	    margin-bottom: 25px;
+	    text-align: center;
+	}
+	.opc-index-index .payment-block .trust_banner .trust_banners{
+	    display: inline-block;
+	    width: 100%;
+	    text-align: center;
+	    border: 1px solid #ccc;
+    	box-shadow: 0 0 5px #ccc;
+	}
+	.opc-index-index .payment-block .trust_banner .trust_banners a{
+	    display: inline-block;
+	}
+	.opc-index-index .payment-block .trust_banner .trust_banners img{
+	    width: auto;
+	    height: auto;
+	}
+	.opc-index-index .payment-block .trust_banner span.banner-3_message::after {
+        left: 50%;
+    }
+    .opc-index-index .payment-block .trust_banner span.banner-3_message {
+        left: 10%;
+        width: 80%;
+        opacity: 1!important;
+    }
+    .opc-index-index .payment-block .trust_banner span.banner-3_message p {
+	    font-size: 14px;
+	    margin: 0;
+	    padding: 15px;
+	    color: black;
+	    font-weight: 600;
+	}
+	/*pay now*/
+	.my-account .data-table td a.link-paylink{
+	    display: inline-block;
+	}
+	.my-account .data-table td a.link-paylink .pay_now_image{
+	    height: 22px;
+	    display: inline-block;
+	}
 	.related_slider .product-images a{
 		text-align: center;
 	}
@@ -828,6 +871,16 @@
 	}
 }
 @media only screen and (max-width: 736px){
+	.opc-index-index .payment-block .trust_banner span.banner-3_message {
+        opacity: 1!important;
+    }
+    .opc-index-index .payment-block .trust_banner span.banner-3_message p {
+	    font-size: 14px;
+	    margin: 0;
+	    padding: 15px;
+	    color: black;
+	    font-weight: 600;
+	}
 	.catalog-product-view #customer-reviews .add_review_form1 #register_captcha_code{
 	    width: 159px;
 	}
