@@ -19,7 +19,8 @@ class Iksula_Dcrfront_Model_Observer
             $customerFirstname = $customer->getFirstname();
             /*Email Function S*/
                 $templateId = Mage::getStoreConfig('payment/virtual_dcrfront/email_template');
-                // Set sender information            
+                // Set sender information
+                if($templateId){
                 $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
                 $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');        
                 $sender = array('name' => $senderName,'email' => $senderEmail);    
@@ -35,7 +36,8 @@ class Iksula_Dcrfront_Model_Observer
                 Mage::getModel('core/email_template')
                 ->addBcc($senderEmail)
                 ->sendTransactional($templateId, $sender, $recepientEmail, $recepientName, $vars, $storeId);
-                $translate->setTranslateInline(true);    
+                $translate->setTranslateInline(true); 
+                }   
             /*Email Function E*/
 
         }
