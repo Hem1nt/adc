@@ -2,8 +2,8 @@
 class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Mage_Adminhtml_Controller_Action
 {
 	protected function _isAllowed(){
-        // return true;
-        return Mage::getSingleton('admin/session')->isAllowed('customerdelete');  
+        return true;
+        //return Mage::getSingleton('admin/session')->isAllowed('customerdelete');  
     }
 	public function indexAction()
     {
@@ -115,7 +115,6 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
 	}
 
 	public function saveemailsAction(){
-		// echo 'manoj';exit;
 		$order_id = $this->getRequest()->getParam('orderid');
 		$email_address = $this->getRequest()->getParam('email');
 		// print_r($this->getRequest()->getParams());
