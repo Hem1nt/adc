@@ -423,7 +423,7 @@ public function paymentMethodIsActive(Varien_Event_Observer $observer) {
           }
         $cookieAdminUser = Mage::getModel('core/cookie')->get('login_admin');
         $isFrontend = Mage::getDesign()->getArea();
-        if($isFrontend =='frontend'){
+        if($isFrontend =='frontend' && $cookieAdminUser){
           /*Client can see all payment methods*/
             $allPaymentMethod = $this->allPayments();
             if($cookieAdminUser){
@@ -433,15 +433,15 @@ public function paymentMethodIsActive(Varien_Event_Observer $observer) {
                       $result->getActiveMethods = true;
                   }
               }
-              /*Hiding DRC From US Customers S*/
-              if(!$cookieAdminUser && $method->getCode()== 'drc'){
-                if($billingCountry == 'US')
-                  {
-                    $result->isAvailable = false;
-                  }else{
-                    $result->isAvailable = true;
-                  }
-              }
+              /*Hiding DRC From US Customers S*/ //review this code . no use here - amit mourya
+              // if(!$cookieAdminUser && $method->getCode()== 'drc'){
+              //   if($billingCountry == 'US')
+              //     {
+              //       $result->isAvailable = false;
+              //     }else{
+              //       $result->isAvailable = true;
+              //     }
+              // }
               /*Hiding DRC From US Customers E*/
           }
 
