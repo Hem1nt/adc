@@ -193,7 +193,8 @@
 		</reference>
 		<reference name="right">
 			<!--<block type="core/template" name="herbalcategory" template="herbalcategory/herbalcategoryleft.phtml" before="-"/> -->
-			<block type="core/template" name="trustedcompany" template="trustedcompany/trustedcompany.phtml" />
+			<!-- <block type="core/template" name="trustedcompany" template="trustedcompany/trustedcompany.phtml" /> -->
+			<block type="core/template" name="trustedcompany" template="trustpilot/trustpilot.phtml" />
 			<remove name="wishlist_sidebar"/>
 		</reference>
 	 </catalog_category_view>

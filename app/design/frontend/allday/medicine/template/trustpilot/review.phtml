@@ -1,0 +1,120 @@
+<?php
+$ratings = $this->getRating();
+$ratingPercentage = array('1'=>'20','2'=>'40','3'=>'60','4'=>'80','5'=>'100');
+$averageSummary = ($ratings['rating']*100)/5;
+?>
+<div class="trusted_company_wrapper">
+<div class="aggregate-rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <span class="no-display" itemprop="worstRating">0</span>
+    <span class="no-display" itemprop="bestRating">100</span>
+    <span><?php echo $ratings['rating'];?></span><span class="agg-title-light">/5</span> <em>"<?php echo $ratings['ratingText'];?>"</em>
+    <span class="no-display" itemprop="reviewCount"><?php echo $ratings['reviewCount'];?></span>
+    <span class="no-display" itemprop="ratingValue"><?php echo $averageSummary; ?></span>
+</div>
+
+<div class="trusted_company">
+<?php
+$reviews = $this->getReviews();
+foreach ($reviews as $key) {
+	$subject = $key['subject'];
+	$body = $key['body'];
+	$rating = $key['rating'];
+	$reviewer = $key['reviewer'];
+	$date = $key['date'];
+?>
+	<div class="review_details">
+        <div class="rating-box">
+             <div class="review_rating" style="width:<?php echo $ratingPercentage[$rating]; ?>%"></div>
+        </div>
+        <div class="review_reviewer"><?php echo $reviewer; ?>
+            <span class="review_date"><?php echo $date; ?></span>
+        </div>
+        
+		<div class="review_subject"><?php echo $subject; ?></div>
+		<div class="review_body"><?php echo $body; ?></div>
+        
+	</div>
+<?php } ?>
+</div>
+<div class="loader-trusted-com">
+<img class="loadergif" width="80px" height="80px" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>images/new_loader.gif">
+</div>
+</div>
+
+<!-- <div class= "featured_products_bought">
+    <div class = "featured_products">
+        <?php //echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/featured_products.phtml')->toHtml(); ?>
+    </div>
+    <div class = "bought">
+        <?php //echo $this->getChildHtml('bought.cart') ?>
+    </div>
+</div> -->
+
+<script>
+jQuery(document).ready(function($){
+    jQuery('.loadergif').hide();
+    var Counter = 0;
+    var limit = 0;
+    function moreData(limit){
+        jQuery.ajax({
+            url:'<?php echo $this->getUrl("trustedcompany/review/ajaxReview");?>',
+            data:'limit='+limit,
+            beforeSend: function() {
+               jQuery('.loadergif').show(); 
+            },
+            success:function(data){
+                setTimeout(function(){
+                    jQuery('.loadergif').hide();
+                    jQuery(".trusted_company").append(data);
+                },200);
+            }
+        })
+    }
+    function bindScroll(){
+        if(jQuery(window).scrollTop() + jQuery(window).height() > jQuery(document).height() - 900) {
+            var Counter = 1;
+            limit++;
+            jQuery(window).unbind('scroll');  
+            moreData(limit);
+            setTimeout(function(){    
+                jQuery(window).bind('scroll', bindScroll);    
+            }, 2000);
+        }
+    }
+    jQuery(window).scroll(bindScroll);
+
+
+
+    jQuery('.products-grid').slick({
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          responsive: [
+            {
+              breakpoint: 900,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+              }
+            },
+            {
+              breakpoint: 700,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 421,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+      });
+
+});
+</script>
+
+
