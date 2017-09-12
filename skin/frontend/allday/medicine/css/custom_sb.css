@@ -995,7 +995,7 @@ input[type="radio"]{
 }
 /**/
 .top-cart .inner-wrapper {
-    display: block!important;
+    /*display: block!important;*/
     width: 40%;
 }
 
@@ -1036,7 +1036,7 @@ input[type="radio"]{
     margin-right: 0;
 }
 .top-cart .mini-products-list .product-details {
-    width: 65%;
+    width: 62%;
     padding-left: 10px;
     padding-right: 30px;
 }
