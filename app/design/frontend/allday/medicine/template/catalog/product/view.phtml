@@ -38,6 +38,7 @@
 $_product = $this->getProduct();
 $_frontendHelper = $this->helper('frontend/data');
 $schemaUnitPrice = min(array_column($_frontendHelper->getUnitPrice($_product), 'unit_price'));
+$getSimpleProductPrice = $_frontendHelper->allSimplePrice();
 
 ?>
 <script type="text/javascript">
@@ -71,7 +72,7 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
                              <span itemprop="price">
                                 <?php
 
-                                echo Mage::helper('core')->currency($schemaUnitPrice); 
+                                echo Mage::helper('core')->currency($getSimpleProductPrice); 
                                 ?>
                             </span>
                             <link itemprop="availability" href="http://schema.org/InStock" />
