@@ -1,11 +1,40 @@
 <?php
 class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_Action{
+    
     public function indexAction() {
-      $this->loadLayout();
-      $this->getLayout()->getBlock("head")->setTitle($this->__("Refill Reminder"));
-      $this->renderLayout();
-      /*$block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/index.phtml");
-      echo $block->toHtml();*/
+     
+      $block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/index.phtml");
+      echo $block->toHtml();
+     // $helperdata = Mage::helper("refillreminder/data")->calculatedate();
+      // $this->renderLayout();
+    //     $order_id = $this->getRequest()->getParam('pid'); 
+    //     //var_dump($order_id);die;
+    //     $name=$this->getRequest()->getParam('name');
+    // $mail=$this->getRequest()->getParam('txtmail');
+    // $phone=$this->getRequest()->getParam('txtphone');
+    // //$ProductId = $this->getRequest()->getPost('txtproduct_id');
+    // $Days = $this->getRequest()->getPost('remind_days');
+    // //var_dump($Days);die;
+
+
+    // $model = Mage::getModel('refillreminder/refillreminder');
+
+
+    //    $data = array('customer_email'=>$mail,
+    //                 'customer_name'=>$name,
+    //                 'reminder_days'=>$Days,
+    //                 'remind_flag'=>1,
+    //                 'customer_telephone'=>$phone,
+    //                 //'order_id'=>$orderIncrementId,
+    //                 );
+    //         try {
+    //                 $model->setData($data)->save();
+    //                 // print_r($model);exit();
+
+    //             } catch (Exception $e) {
+    //                 echo $e->getMessage();
+    //             }
+
     }
 
     public function postAction() {
@@ -445,5 +474,41 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
     }
     public function OrderEditAction() {
       echo "Hello"; exit;
+    }
+    public function saveAction()
+
+      {
+       // $helperdata = Mage::helper("refillreminder/data")->calculatedate();    
+    $order_id = $this->getRequest()->getParam('order_id');  
+    //var_dump($order_id);die;
+    $name=$this->getRequest()->getParam('customer_name'); 
+    //var_dump($name);die;
+    $mail=$this->getRequest()->getParam('txtmail');
+    $phone=$this->getRequest()->getParam('txtphone');
+    //$ProductId = $this->getRequest()->getPost('txtproduct_id');
+    $Days = $this->getRequest()->getPost('remind_days');
+    //var_dump($Days);die;
+    $model = Mage::getModel('refillreminder/refillreminder');
+
+
+       $data = array('customer_email'=>$mail,
+                    'customer_name'=>$name,
+                    'reminder_days'=>$Days,
+                    'order_Id'=>$order_id,
+                    'remind_flag'=>1,
+                    'customer_telephone'=>$phone,
+                    'customer_telephone'=>$phone,
+                    );
+            try {
+                    $model->setData($data)->save();
+                    
+
+                } 
+     
+            catch (Exception $e) 
+            {
+              echo $e->getMessage();
+            }
+                
     }
 }
