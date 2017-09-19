@@ -37,7 +37,6 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
     }
 
     public function postAction() {
-
       $ProductId = $this->getRequest()->getPost('txtproduct_id');
       $Days = $this->getRequest()->getPost('remind_days');
       $CustomerMail = $this->getRequest()->getPost('txtmail');
