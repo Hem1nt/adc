@@ -4,43 +4,56 @@ body {
 }
 </style>
 <?php
+$customerSession = Mage::getSingleton('customer/session');
+if($customerSession->isLoggedIn()) {
+	$email = $customerSession->getCustomer()->getEmail();
+	$name = $customerSession->getCustomer()->getName();
+	$getCreatedAt = $customerSession->getCustomer()->getCreatedAt();
+}
 $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
 $customerEmail = ""; $custPhone = "";
 if($customerLoggedIn)
 {
 	$customerData = Mage::getSingleton('customer/session')->getCustomer();
 	$customerEmail = $customerData->getEmail();
-	//$custPhone = $customerData->getPrimaryBillingAddress()->getTelephone();
 	$custPhone = "";
 }
 ?>
 <div class="reminderdiv"><span>Reminder</span></div>
 <div class="reminder-container">
 	<div style="display:none; padding:10px" id="adc_msg">Congratulation! This product has been added in reminder</div>
-	<form id="form_refill_reminder" action="<?php echo $this->getUrl(); ?>refillreminder/index/post" name="form_refill_remind" method="post">
+	<form id="form_refill_reminder" action="<?php echo $this->getUrl(); ?>refillreminder/index/save" name="form_refill_remind" method="post">
 		<ul>
+			<li><label>Name</label></li>
+			<li>
+				<input class="input-text required-entry validate-name" id="customer_name" name="customer_name" value="<?php echo $name; ?>" disabled/>
+			</li>			
 			<li><label>Email</label></li>
 			<li><input class="input-text required-entry validate-email" type="text" name="txtmail" id="txtmail" value="<?php echo $customerEmail; ?>" /> <input type="hidden" name="txtproduct_id" id="txtproduct_id" value="<?php echo $this->getRequest()->getParam("product_id"); ?>" /> </li>
 			<li><label>Telephone</label></li>
 			<li>
 				<input class="input-text required-entry validate-phone" id="txtphone" name="txtphone" value="<?php echo $custPhone; ?>" /></li>
+					<li><label>Order Id</label></li>
+					<li>
+				<input class="input-text" id="order_id" name="order_id" disabled> 
+			 </li>
+				<!---oRDER__ID END-->
 			<li><label>Remind Me In</label></li>
-			<li>
+				<li>
 				<select id="remind_count">
-					<?php
-					for($i=1; $i<=30; $i++) {
+					<?php for($i=1; $i<=30; $i++) {
 						echo '<option value="'.$i.'">'.$i.'</option>';
-					}
-					?>
+					}?>s
 				</select>
 				<select id="remind_type">
 					<option value="d">Day(s)</option>
-					<option value="m">Month(s)</option>
-				</select></li>
+					<!-- <option value="m">Month(s)</option> -->
+				</select>
+			</li>
 			<li>
 				<label for='message'>Enter the code</label>
                 <div class="input-box">
-                    <img src="<?php echo $this->getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' ><br/>
+                    <img src="<?php echo Mage::getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' ><br/>
                     <input id="3_letters_code" class="required-entry validate-captcha" name="3_letters_code" type="text"><br/>
                     <small>Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
                 </div>
@@ -66,15 +79,14 @@ jQuery("#form_refill_reminder").submit(function(){
 		else {
 			days = jQuery("#remind_count").val()*30;
 		}
-		//var values = jQuery(this).serialize();
-		
-		var values = {'txtmail':jQuery("#txtmail").val(), 'txtproduct_id': jQuery("#txtproduct_id").val(), 'txtphone': jQuery("#txtphone").val(), 'remind_days': days};
-		//return false;
+		 var values = jQuery("#order_id").val();		
+		var values = {'order_id':jQuery("#order_id").val(),'customer_name':jQuery("#customer_name").val(),'txtmail':jQuery("#txtmail").val(), 'txtproduct_id': jQuery("#txtproduct_id").val(), 'txtphone': jQuery("#txtphone").val(), 'remind_days': days};
 		jQuery.ajax({
 			url: url,
 			type: "post",
 			data: values,
 			success: function(data){
+				//alert(data);
 				jQuery("#form_refill_reminder").hide();
 				jQuery("#adc_msg").html(data).show();
 				setTimeout(function(){ parent.jQuery.fancybox.close(); },2000);

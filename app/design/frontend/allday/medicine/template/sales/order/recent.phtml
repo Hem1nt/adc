@@ -26,6 +26,7 @@
 ?> 
 <div class="box-account box-recent">
 <?php $_orders = $this->getOrders(); ?>
+<div class="popup_refill"></div>
     <div class="box-head">
         <h2><?php echo $this->__('Recent Orders') ?></h2>
         <?php if( sizeof($_orders->getItems()) > 0 ): ?><a href="<?php echo $this->getUrl('sales/order/history') ?>"><?php echo $this->__('View All') ?></a><?php endif; ?>
@@ -67,6 +68,10 @@
                         <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
                             <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
                         <?php endif ?>
+                        <span class="separator">|</span>
+                        <a href="javascript:void(0)" data-orderid="<?php echo $_order->getCustomerOrderIncrementId(); ?>" class="link-refill refilreminder-action">                        
+                            <?php echo $this->__('Refill Reminder') ?>
+                        </a>
                         <!-- Echeck Pay Now FOR US-->
                         <?php
                             $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
@@ -95,3 +100,23 @@
     <p><?php echo $this->__('You have placed no orders.'); ?></p>
 <?php endif; ?>
 </div>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    jQuery('.refilreminder-action').on('click',function(){
+        var orderId = jQuery(this).data("orderid");      
+            jQuery.ajax({
+            url: "<?php echo $this->getUrl('refillreminder/index/index') ?>",
+            type: "POST",
+            data: 
+            {// format: 'json',
+               pid : orderId
+            },
+            success: function(data){
+            jQuery(".popup_refill").html(data);
+            jQuery("#order_id").val(orderId);
+            //jQuery('.link-refill').html(data);
+            }  
+        });
+    });
+});
+</script>
