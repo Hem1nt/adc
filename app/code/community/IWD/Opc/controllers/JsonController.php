@@ -700,10 +700,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
         // $billingCountry = $this->getOnepage()->getQuote()->getBillingAddress()->getCountry();
         
         $allowCountries = explode(',', (string)Mage::getStoreConfig('general/country/allow'));
-        /*To allow all countries to place order S*/
-        $loginAsCustomer = Mage::getModel('core/cookie')->get('login_admin');
-        /*To allow all countries to place order E*/
-        if(!in_array($shippingCountry,$allowCountries) && ! $loginAsCustomer){
+        if(!in_array($shippingCountry,$allowCountries)){
         	$result['error'] = $this->__('We dont ship to your country.');
 			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
 			return;

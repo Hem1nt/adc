@@ -87,25 +87,7 @@
                     <div class="field">
                         <label for="billing:country_id" class="required"><?php echo $this->__('Country') ?><em>*</em></label>
                         <div class="input-box">
-                        <?php $loginAsCustomer = Mage::getModel('core/cookie')->get('login_admin');
-                            if($loginAsCustomer){
-                                $countryCollection = Mage::helper('overrides')->getAllCountryCollection();?>
-                           <?php $_countries = Mage::getResourceModel('directory/country_collection')
-                                    ->loadData()
-                                    ->toOptionArray(false) ?>
-                            <?php if (count($_countries) > 0): ?>
-                                <select name="billing[country_id]" id="billing:country_id" class="validate-select" title="Country">
-                                    <option value="">-- Please Select --</option>
-                                    <?php foreach($_countries as $_country): ?>
-                                        <option value="<?php echo $_country['value'] ?>">
-                                            <?php echo $_country['label'] ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            <?php endif; ?>
-                        <?php }else{
-                                echo $this->getCountryHtmlSelect('billing');
-                            } ?>
+                            <?php echo $this->getCountryHtmlSelect('billing') ?>
                         </div>
                     </div>
                 </li>
@@ -127,12 +109,7 @@
                                 $('billing:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
                             //]]>
                             </script>
-                            <?php $loginAsCustomer = Mage::getModel('core/cookie')->get('login_admin');
-                            if($loginAsCustomer){?>
-                            <input type="text" id="billing:region" name="billing[region]" title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('opc')->getAttributeValidationClass('region') ?>" style="display:none;" />
-                            <?php }else{?>
                             <input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('opc')->getAttributeValidationClass('region') ?>" style="display:none;" />
-                            <?php } ?>
                         </div>
                     </div>
                 </li>
@@ -169,7 +146,7 @@
                     
                 <?php endif; ?>
                 <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
-                    <div class="clear"></div>
+                	<div class="clear"></div>
                     <li class="control">
                         <input type="checkbox" name="billing[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="billing:save_in_address_book" onchange="if(window.shipping) shipping.setSameAsBilling(false);"<?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" /><label for="billing:save_in_address_book" class="save-add-book"><?php echo $this->__('Save in address book') ?></label>
                     </li>
@@ -185,31 +162,31 @@
     <?php echo $this->getChildHtml('checkout.onepage.billing.extra')?>
     <?php if(!$this->isCustomerLoggedIn()): ?>
     
-        <?php
-        $guest_allowed = $this->getQuote()->isAllowedGuestCheckout();
-        if($guest_allowed): ?>
-        <li class="control">
-                <input type="checkbox" name="billing[create_account]" id="billing:create_account" value="1" title="<?php echo  $this->__('Create an account for later use') ?>"  class="checkbox" /><label for="billing:create_account" class="create-acc-for-later"><?php echo  $this->__('Create an account for later use') ?></label>
-        </li>
-        <?php else:?>
-            <input type="hidden" name="billing[create_account]" id="billing:create_account" value="1" />
-        <?php endif;?>
+    	<?php
+    	$guest_allowed = $this->getQuote()->isAllowedGuestCheckout();
+    	if($guest_allowed): ?>
+	    <li class="control">
+	            <input type="checkbox" name="billing[create_account]" id="billing:create_account" value="1" title="<?php echo  $this->__('Create an account for later use') ?>"  class="checkbox" /><label for="billing:create_account" class="create-acc-for-later"><?php echo  $this->__('Create an account for later use') ?></label>
+	    </li>
+	    <?php else:?>
+	    	<input type="hidden" name="billing[create_account]" id="billing:create_account" value="1" />
+	    <?php endif;?>
         
-        <li class="fields <?php if($guest_allowed):?>hidden<?php endif;?>" id="register-customer-password">
-            <div class="field">
-                <label for="billing:customer_password" class="required"><?php echo $this->__('Password') ?><em>*</em></label>
-                <div class="input-box">
-                    <input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="input-text validate-password <?php if(!$guest_allowed):?>required-entry<?php endif;?>" autocomplete="off"/>
-                </div>
-            </div>
-            <div class="field">
-                <label for="billing:confirm_password" class="required"><?php echo $this->__('Confirm Password') ?><em>*</em></label>
-                <div class="input-box">
-                    <input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text validate-cpassword <?php if(!$guest_allowed):?>required-entry<?php endif;?>" autocomplete="off"/>
-                </div>
-            </div>
-        </li>
-        <div class="clear"></div>
+		<li class="fields <?php if($guest_allowed):?>hidden<?php endif;?>" id="register-customer-password">
+			<div class="field">
+				<label for="billing:customer_password" class="required"><?php echo $this->__('Password') ?><em>*</em></label>
+				<div class="input-box">
+					<input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="input-text validate-password <?php if(!$guest_allowed):?>required-entry<?php endif;?>" autocomplete="off"/>
+				</div>
+			</div>
+			<div class="field">
+				<label for="billing:confirm_password" class="required"><?php echo $this->__('Confirm Password') ?><em>*</em></label>
+				<div class="input-box">
+					<input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text validate-cpassword <?php if(!$guest_allowed):?>required-entry<?php endif;?>" autocomplete="off"/>
+				</div>
+			</div>
+		</li>
+		<div class="clear"></div>
     
     <?php endif;?>
     

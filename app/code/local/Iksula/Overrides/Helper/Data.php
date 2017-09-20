@@ -168,11 +168,6 @@ class Iksula_Overrides_Helper_Data extends Mage_Core_Helper_Abstract
         }
         return $html;
     }
-    public function getAllCountryCollection()
-    {
-        $countryCollection = Mage::getModel('directory/country_api')->items();
-        return $countryCollection;
-    }
     
 }
 
