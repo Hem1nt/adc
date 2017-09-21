@@ -95,7 +95,7 @@
                                     ->toOptionArray(false) ?>
                             <?php if (count($_countries) > 0): ?>
                                 <select name="billing[country_id]" id="billing:country_id" class="validate-select" title="Country">
-                                    <option value="">-- Please Select --</option>
+                                    <option value="">-- Please Select Country --</option>
                                     <?php foreach($_countries as $_country): ?>
                                         <option value="<?php echo $_country['value'] ?>">
                                             <?php echo $_country['label'] ?>
