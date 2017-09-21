@@ -491,6 +491,7 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
             {
               echo $e->getMessage();
             }
+            //echo Mage::Helper('refillreminder')->sendNewOrderReminder(); exit;
 
     /*Send Email after request S*/
     $requestTemplateId = Mage::getStoreConfig('order_reminder/order_reminder_templates/request_template');
@@ -516,6 +517,9 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
         $translate->setTranslateInline(true);  
       } 
     /*Send Email after request E*/
+    /*called helper for test*/
+    
+
                 
     }
 }
