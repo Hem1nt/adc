@@ -142,13 +142,6 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
 
 
     }
-
-    public function testAction() {
-      $this->sendProductReminder();
-       $this->sendOrderReminder();
-      // echo 'hJJJi';
-    }
-
     public function sendProductReminder() {
         $model = Mage::getModel('refillreminder/refillreminder'); //model to process reminder checking data
 
@@ -470,10 +463,8 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
 
         // echo "Success";
     }
-    public function saveAction()
-
-      {
-       // $helperdata = Mage::helper("refillreminder/data")->calculatedate();    
+    public function saveAction(){
+    // $helperdata = Mage::helper("refillreminder/data")->calculatedate();    
     $order_id = $this->getRequest()->getParam('order_id');  
     //var_dump($order_id);die;
     $name=$this->getRequest()->getParam('customer_name'); 
@@ -484,26 +475,47 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
     $Days = $this->getRequest()->getPost('remind_days');
     //var_dump($Days);die;
     $model = Mage::getModel('refillreminder/refillreminder');
-
-
-       $data = array('customer_email'=>$mail,
+    $data = array('customer_email'=>$mail,
                     'customer_name'=>$name,
                     'reminder_days'=>$Days,
                     'order_Id'=>$order_id,
                     'remind_flag'=>1,
                     'customer_telephone'=>$phone,
                     'customer_telephone'=>$phone,
-                    );
+                  );
             try {
-                    $model->setData($data)->save();
-                    
-
+                  $model->setData($data)->save();           
                 } 
      
             catch (Exception $e) 
             {
               echo $e->getMessage();
             }
+
+    /*Send Email after request S*/
+    $requestTemplateId = Mage::getStoreConfig('order_reminder/order_reminder_templates/request_template');
+    if($requestTemplateId){
+        $senderName = Mage::getStoreConfig('trans_email/ident_support/name');
+        $senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+        $customerPlaced = $customer->getEmail();
+        $customerFirstname = $customer->getFirstname();
+        $sender = array('name' => $senderName,'email' => $senderEmail);    
+        // Set recepient information
+        $recepientEmail = $customerPlaced;
+        $recepientName = $customerFirstname;  
+        // Get Store ID        
+        $storeId = Mage::app()->getStore()->getId();
+        // Set variables that can be used in email template
+        $vars = array('customer_name' => $customerFirstname);
+        $translate  = Mage::getSingleton('core/translate');
+        // Send Transactional Email
+        Mage::getModel('core/email_template')
+        ->addBcc($senderEmail)
+        ->sendTransactional($requestTemplateId, $sender, $recepientEmail, $recepientName, $vars, $storeId);
+        $translate->setTranslateInline(true);  
+      } 
+    /*Send Email after request E*/
                 
     }
 }

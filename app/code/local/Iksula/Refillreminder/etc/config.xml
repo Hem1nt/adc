@@ -121,11 +121,6 @@
 	 <title>Refillreminder</title>
 		<sort_order>100</sort_order> 
 		<children>
-		  <refillreminder module="refillreminder">
-		    <title>Manage Refillreminder</title>
-			<sort_order>150</sort_order>
-			<action>refillreminder/adminhtml_refillreminder</action>
-		  </refillreminder>
 		   <orderreminder module="refillreminder">
 		    <title>Manage Orderreminder</title>
 			<sort_order>151</sort_order>

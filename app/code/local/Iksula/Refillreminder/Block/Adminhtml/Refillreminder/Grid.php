@@ -8,16 +8,13 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 				parent::__construct();
 				$this->setId("refillreminderGrid");
 				$this->setDefaultSort("reminder_id");
-				$this->setDefaultDir("ASC");
+				$this->setDefaultDir("DESC");
 				$this->setSaveParametersInSession(true);
 		}
 
 		protected function _prepareCollection()
 		{
 				$collection = Mage::getModel("refillreminder/refillreminder")->getCollection();
-				// echo "<pre>";
-				// var_dump($collection);die;
-				//echo $collection->getSelect(); exit;
 				$this->setCollection($collection);
 				return parent::_prepareCollection();
 		}
@@ -66,7 +63,7 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 */
 
 				$this->addColumn("customer_telephone", array(
-				"header" => Mage::helper("refillreminder")->__("Phone # "),
+				"header" => Mage::helper("refillreminder")->__("Phone Number # "),
 				"index" => "customer_telephone",
 				));
 
@@ -81,11 +78,11 @@ class Iksula_Refillreminder_Block_Adminhtml_Refillreminder_Grid extends Mage_Adm
 				'type'      => 'date',
 				));
 				
-				$this->addColumn("reminder_days", array(
-				"header" => Mage::helper("refillreminder")->__("Remind in"),
-				"index" => "reminder_days",
-				//'type'      => 'date',
-				));
+				// $this->addColumn("reminder_days", array(
+				// "header" => Mage::helper("refillreminder")->__("Remind in"),
+				// "index" => "reminder_days",
+				// //'type'      => 'date',
+				// ));
 				
 				
 				$this->addColumn("next_mail_on", array(
