@@ -19,27 +19,35 @@ if($customerLoggedIn)
 	$custPhone = "";
 }
 ?>
-<div class="reminderdiv"><span>Reminder</span></div>
+<span class="popup_refill_close">
+    <img class="close-btn" src="<?php echo $this->getSkinUrl('images/notify-close.png');?>" alt=" <?php echo $this->__('close button') ?>" />
+</span>
+<div class="reminderdiv"><span>Order Reminder Form</span></div>
 <div class="reminder-container">
 	<div style="display:none; padding:10px" id="adc_msg">Congratulation! This product has been added in reminder</div>
 	<form id="form_refill_reminder" action="<?php echo $this->getUrl(); ?>refillreminder/index/save" name="form_refill_remind" method="post">
 		<ul>
-			<li><label>Name</label></li>
-			<li>
+			<?php /*<li class="label">Name</li>
+			<li class="input_text_field">
 				<input class="input-text required-entry validate-name" id="customer_name" name="customer_name" value="<?php echo $name; ?>" disabled/>
-			</li>			
-			<li><label>Email</label></li>
-			<li><input class="input-text required-entry validate-email" type="text" name="txtmail" id="txtmail" value="<?php echo $customerEmail; ?>" /> <input type="hidden" name="txtproduct_id" id="txtproduct_id" value="<?php echo $this->getRequest()->getParam("product_id"); ?>" /> </li>
-			<li><label>Telephone</label></li>
-			<li>
-				<input class="input-text required-entry validate-phone" id="txtphone" name="txtphone" value="<?php echo $custPhone; ?>" /></li>
-					<li><label>Order Id</label></li>
-					<li>
+			</li>
+			<li class="label">Email</li>			
+			
+			<li class="input_text_field">
+			<input class="input-text required-entry validate-email" type="text" name="txtmail" id="txtmail" value="<?php echo $customerEmail; ?>" /> <input type="hidden" name="txtproduct_id" id="txtproduct_id" value="<?php echo $this->getRequest()->getParam("product_id"); ?>" /> </li>
+			
+			<li class="label">Telephone</li>
+			<li class="input_text_field">
+				<input class="input-text required-entry validate-phone" id="txtphone" name="txtphone" value="<?php echo $custPhone; ?>" />
+			</li>
+			<li class="label">Order Id</li>
+			<li class="input_text_field">
 				<input class="input-text" id="order_id" name="order_id" disabled> 
-			 </li>
+			 </li> */ ?>
 				<!---oRDER__ID END-->
-			<li><label>Remind Me In</label></li>
-				<li>
+			
+			<li class="label">Remind Me In</li>
+				<li class="input_text_field">
 				<select id="remind_count">
 					<?php for($i=1; $i<=30; $i++) {
 						echo '<option value="'.$i.'">'.$i.'</option>';
@@ -47,19 +55,21 @@ if($customerLoggedIn)
 				</select>
 				<select id="remind_type">
 					<option value="d">Day(s)</option>
-					<!-- <option value="m">Month(s)</option> -->
+					<option value="m">Month(s)</option>
 				</select>
 			</li>
-			<li>
-				<label for='message'>Enter the code</label>
-                <div class="input-box">
-                    <img src="<?php echo Mage::getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' ><br/>
-                    <input id="3_letters_code" class="required-entry validate-captcha" name="3_letters_code" type="text"><br/>
-                    <small>Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
-                </div>
+			
+				<li class="label">Enter the code</li>
+                <li class="input-box input_text_field">
+                    <img src="<?php echo Mage::getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' >
+                    <input id="3_letters_code" class="captcha_input" class="required-entry validate-captcha" name="3_letters_code" type="text"><br/>
+                    <small class="click_here">Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
+                </li>
                 <input type="hidden" id="check_me" />
+			<li class="label"></li>
+			<li class="input_text_field submit_btn_li">
+				<button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button>
 			</li>
-			<li style="padding-top:10px"><button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button></li>
 		</ul>
 	</form>
 </div>
