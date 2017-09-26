@@ -447,18 +447,20 @@ class Iksula_Frontend_Helper_Data extends Mage_Core_Helper_Abstract{
     public function allSimplePrice(){
         $currentProduct = Mage::registry('current_product');
         $product = Mage::getModel('catalog/product')->load($currentProduct->getId()); 
-        $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null,$product);
-        foreach($childProducts as $child){            
-            $productSimple = Mage::getModel('catalog/product')->loadByAttribute('sku', $child->getSku());
-            $simplepackSize = $child->getAttributeText('pack_size');
-            if($child->getSpecialPrice()){
-                $lowestPrice = round(($child->getSpecialPrice()/$simplepackSize),2);
-            }else{
-                $lowestPrice = round(($productSimple->getPrice()/$simplepackSize),2);
+        if($product->isConfigurable() ){
+            $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null,$product);
+            foreach($childProducts as $child){            
+                $productSimple = Mage::getModel('catalog/product')->loadByAttribute('sku', $child->getSku());
+                $simplepackSize = $child->getAttributeText('pack_size');
+                if($child->getSpecialPrice()){
+                    $lowestPrice = round(($child->getSpecialPrice()/$simplepackSize),2);
+                }else{
+                    $lowestPrice = round(($productSimple->getPrice()/$simplepackSize),2);
+                }
+                $unitPrice[] = $lowestPrice;
             }
-            $unitPrice[] = $lowestPrice;
+            return min($unitPrice);
         }
-        return min($unitPrice);
     }
 }
 
