@@ -34,7 +34,7 @@ body *, input, select, textarea, button{
 }
  .below_banner_area iframe{
 	height: 170px;
-	margin-bottom: 22px;
+	/*margin-bottom: 22px;*/
 }
  .frontend-index-allbrands #search_sidebar_form .drugSearch li{
 	padding: 22px 0 !important;

@@ -58,18 +58,18 @@ class Iksula_Orderlog_Block_Adminhtml_Orderstatus_Grid extends Mage_Adminhtml_Bl
 
 
 		
-		protected function _prepareMassaction()
-		{
-			$this->setMassactionIdField('id');
-			$this->getMassactionBlock()->setFormFieldName('ids');
-			$this->getMassactionBlock()->setUseSelectAll(true);
-			$this->getMassactionBlock()->addItem('remove_orderstatus', array(
-					 'label'=> Mage::helper('orderlog')->__('Remove Orderstatus'),
-					 'url'  => $this->getUrl('*/adminhtml_orderstatus/massRemove'),
-					 'confirm' => Mage::helper('orderlog')->__('Are you sure?')
-				));
-			return $this;
-		}
+		// protected function _prepareMassaction()
+		// {
+		// 	$this->setMassactionIdField('id');
+		// 	$this->getMassactionBlock()->setFormFieldName('ids');
+		// 	$this->getMassactionBlock()->setUseSelectAll(true);
+		// 	$this->getMassactionBlock()->addItem('remove_orderstatus', array(
+		// 			 'label'=> Mage::helper('orderlog')->__('Remove Orderstatus'),
+		// 			 'url'  => $this->getUrl('*/adminhtml_orderstatus/massRemove'),
+		// 			 'confirm' => Mage::helper('orderlog')->__('Are you sure?')
+		// 		));
+		// 	return $this;
+		// }
 			
 
 }

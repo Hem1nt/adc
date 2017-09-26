@@ -121,7 +121,7 @@
             <action method="removeItem"><type>skin_js</type><name>js/tm/easytabs.js</name></action>
             <action method="removeItem"><type>skin_js</type><name>js/jquery.accordion.2.0.js</name></action>
             <action method="removeItem"><type>skin_js</type><name>js/jquery.prettyPhoto.js</name></action>
-            <action method="removeItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
 		</reference>
 	</cms_index_index>
 	<homepagebanner_index_index>
@@ -190,7 +190,8 @@
 		</reference>
 		<reference name="right">
 			<!--<block type="core/template" name="herbalcategory" template="herbalcategory/herbalcategoryleft.phtml" before="-"/> -->
-			<block type="core/template" name="trustedcompany" template="trustedcompany/trustedcompany.phtml" />
+			<!-- <block type="core/template" name="trustedcompany" template="trustedcompany/trustedcompany.phtml" /> -->
+			<block type="core/template" name="trustedcompany" template="trustpilot/trustpilot.phtml" />
 			<remove name="wishlist_sidebar"/>
 		</reference>
 	 </catalog_category_view>
