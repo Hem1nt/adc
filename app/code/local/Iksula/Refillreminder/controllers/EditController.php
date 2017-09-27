@@ -11,11 +11,12 @@ class Iksula_Refillreminder_EditController extends Mage_Core_Controller_Front_Ac
     	$block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/view.phtml");
 		echo $block->toHtml();
     }
-    public function SaveAction() {
-
+    public function saveAction() {
+    echo "edit";exit;
         
         $remind_id = $this->getRequest()->getParam('txtRemindId');
         $remind_days = $this->getRequest()->getParam('remind_days');
+        //print_r($remind_days);exit;
         $custPhone = $this->getRequest()->getParam('txtPhone');
         $email = "";
         $customerSession = Mage::getSingleton('customer/session');
@@ -72,5 +73,10 @@ class Iksula_Refillreminder_EditController extends Mage_Core_Controller_Front_Ac
         $this->loadLayout();   
         $this->getLayout()->getBlock("head")->setTitle($this->__("Refill Reminder"));
         $this->renderLayout();
+    }
+    public function editpopupAction()
+    {
+         $block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/edit.phtml");
+         echo $block->toHtml();
     }
 }

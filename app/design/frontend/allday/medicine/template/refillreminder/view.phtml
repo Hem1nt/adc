@@ -57,6 +57,7 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
             <!-- <th><span class="nobr"><?php //echo $this->__('Options') ?></span></th> -->
         </tr>
     </thead>
+    
 	<?php
 		foreach($collection->getData() as $myAllReminders) {
 			$currentDate = Mage::getModel('core/date')->date('d');
@@ -110,7 +111,8 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 
 			$tblData.= '<div class="refill-action"><div class="action_links">';
 			if($myAllReminders['remind_flag'] == 1) {
-				$tblData.= '<a id="edit_link'.$myAllReminders['reminder_id'].'" class="edit_link" href="'.$this->getUrl().'refillreminder/edit?remind_id='.$myAllReminders['reminder_id'].'">Edit</a> |';
+				// $tblData.= '<a id="edit_link '.$myAllReminders['reminder_id'].'" class="edit_link edit_link2" href="'.$this->getUrl().'refillreminder/edit?remind_id='.$myAllReminders['reminder_id'].'">Edit1</a> |';
+						$tblData.= '<a href="javascript:void(0)" data-refilid="'.$myAllReminders['reminder_id'].'"id="edit_link" class="edit_link edit_link2">Edit</a>';
 				$notice = "";
 			}
 			else {
@@ -126,7 +128,7 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			$tblData.= '<td class="product_name"><a href="'.$this->getUrl().'sales/order/view/order_id/'.$enityId.'"</a>'.$myAllReminders['order_Id'].'</td>';
 			$tblData.= '<td class="mid_img_td">
 
-			'.$myAllReminders['customer_telephone'].'<img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
+			'.$myAllReminders['customer_telephone'].'<img width="150px"/></a></td>';
 			// $tblData.= '<td class="mid_img_td" width="150px">'.$myAllReminders['customer_telephone'].'</td>';
 			/*$tblData.= '<td class="mid_img_td">'.$myAllReminders['customer_telephone'].'</td>';*/
 			$tblData.= '<td>'.$remindIn .'</td>';
@@ -140,6 +142,7 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			echo $tblData;
 		}
 	?>
+	<div class="edit_refil"></div>
 </table>
 <?php echo $this->getToolbarHtml(); ?>
 <?php }else { ?>
@@ -170,12 +173,39 @@ jQuery(".remove_reminder").click(function(){
 	});
 	return false;
 });*/
-jQuery(".edit_link").click(function(){
-	jQuery("#"+this.id).fancybox({
-			type: "iframe",
-			width: "300px",
-			height: "300px"
-		});
-});
+// jQuery(".edit_link").click(function(){
+// 	jQuery("#"+this.id).fancybox({
+// 		//alert(this.id);
+// 		//alert("hello");
+// 			type: "iframe",
+// 			width: "300px",
+// 			height: "300px"
+			
+// 		});
+// });
 </script>
+<script type="text/javascript">
+jQuery(".edit_link2").on('click',function(){
+	var editId = jQuery(this).data("refilid");
+	//alert(editId);
+	jQuery.ajax({
+		url: "<?php echo $this->getUrl('refillreminder/edit/editpopup') ?>",
+		type: "POST",
+		data: 
+            {// format: 'json',
+               editId : editId
+            },
+            success: function(data){
+            jQuery(".edit_refil").html(data);
+            //jQuery("#order_id").val(orderId);
+            //jQuery('.link-refill').html(data);
+            }
+
+
+	})
+})
+
+</script>
+
+
 

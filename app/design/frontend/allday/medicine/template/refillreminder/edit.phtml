@@ -5,6 +5,7 @@ body {
 </style>
 <?php
 	$remind_id = $this->getRequest()->getParam('remind_id');
+	//print_r($remind_id);exit;
 	$customerSession = Mage::getSingleton('customer/session');
 	$refillModel = Mage::getModel('refillreminder/refillreminder');
 	$email = "";
@@ -21,6 +22,7 @@ body {
 	<!-- <span class="reminder-close-btn">
         <img src="http://adc.iksulalive.com/skin/frontend/allday/medicine/images/notify-close.png" alt="">
     </span> -->
+
 	<form id="form_refill_reminder" action="<?php echo $this->getUrl(); ?>refillreminder/edit/save" name="form_refill_remind" method="post">
 		<ul>
 			<input class="required-entry" type="hidden" name="txtRemindId" id="txtRemindId" value="<?php echo $remind_id; ?>" />
@@ -30,7 +32,9 @@ body {
 			<li>
 				<select id="remind_count">
 					<?php
-					$days = $product[0]['reminder_days']; $month = false; $opt = "";
+					$days = $product[0]['reminder_days']; 
+
+					$month = false; $opt = "";
 					if($days>30) {
 						$days = $days/30; $month = true;
 					}
@@ -52,6 +56,7 @@ body {
 		</ul>
 	</form>
 </div>
+
 <script type="text/javascript">
 var valReminder = new Validation('form_refill_reminder');
 jQuery("#form_refill_reminder").submit(function(){
@@ -61,19 +66,21 @@ jQuery("#form_refill_reminder").submit(function(){
 		var rType = jQuery("#remind_type").val();
 		if(rType=="d") {
 			days = jQuery("#remind_count").val();
+			//alert(days);
 		}
 		else {
 			days = jQuery("#remind_count").val()*30;
 		}
 		//var values = jQuery(this).serialize();
 		var values = {'txtRemindId':jQuery("#txtRemindId").val(), 'remind_days': days, 'txtPhone': jQuery("#txtphone").val()};
+		//alert(values);
 		//return false;
 		jQuery.ajax({
 			url: url,
 			type: "post",
 			data: values,
 			success: function(data){
-				alert(data);
+				//alert(data);
 				parent.location.reload();
 			},
 			error:function(){
