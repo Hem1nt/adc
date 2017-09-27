@@ -250,6 +250,17 @@ class Iksula_Refillreminder_Helper_Data extends Mage_Core_Helper_Abstract
       	}
 	
 	}
+	public function sendNewOrderReminder()
+	{
+		$refillReminder = Mage::getModel('refillreminder/refillreminder')->getCollection();
+		 foreach($refillReminder as $reminderData) 
+          {
+          	echo $currentDate = Mage::getModel('core/date')->date('d');
+          	echo "<br>";
+          	echo $reminderData->getCreatedDate();
+          	//$createDate=$myAllReminders['created_date'];
+          }
+	}
 
 }
 	 

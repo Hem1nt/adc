@@ -32,6 +32,10 @@
 											<title>Best Selling Section</title>
 											<sort_order>5</sort_order>
 										</best_seller>
+										<order_reminder>
+											<title>Order Reminder Template Section</title>
+											<sort_order>6</sort_order>
+										</order_reminder>
 									</children>
 								</config>
 							</children>
