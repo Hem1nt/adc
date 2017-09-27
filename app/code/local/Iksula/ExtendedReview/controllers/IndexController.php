@@ -18,7 +18,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			$html .= "<form id='frmReview' class='add_review_form1'>";
 			$html .= "<div class='field'>
                         <!--<label for='review_comment_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->
-                        <textarea name='txtReviewComment' class='required-entry' placeholder='Your message' maxlength='80'></textarea>                      
+                        <textarea name='txtReviewComment' class='required-entry' placeholder='Your message'></textarea>                      
                         <div class='input-box sinput captcha_input_box'>
                             <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='review_commment_captcha_img'/>                            
                             
@@ -76,7 +76,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			$html .= "<form id='frmReview' class='add_review_form1'>";
 			$html .= "<div class='field'>
                         <!--<label for='review_comment_captcha_code' class='required'>".$this->__('Captcha')."<em>*</em></label>-->                        
-                        <textarea name='txtReviewComment' class='required-entry' maxlength='80'></textarea>
+                        <textarea name='txtReviewComment' class='required-entry'></textarea>
                         <div class='input-box sinput captcha_input_box'>
                             <img src='".$url_of_website.'extended_review_captcha_code_file.php?rand='.rand()."' id='review_commment_captcha_img'/>                            
                         	<div id='cap_box' class='cap_box_div'>
