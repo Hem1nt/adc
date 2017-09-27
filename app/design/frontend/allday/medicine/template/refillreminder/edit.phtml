@@ -25,7 +25,7 @@ body {
 
 	<form id="form_refill_reminder" action="<?php echo $this->getUrl(); ?>refillreminder/edit/save" name="form_refill_remind" method="post">
 		<ul>
-			<input class="required-entry" type="hidden" name="txtRemindId" id="txtRemindId" value="<?php echo $remind_id; ?>" />
+			<input class="required-entry1" type="hidden" name="txtRemindId" id="txtRemindId" value="<?php echo $remind_id; ?>" />
 			<li><label>Telephone</label></li>
 			<li><input class="input-text required-entry validate-phone" name="txtphone" id="txtphone" value="<?php echo $product[0]['customer_telephone']; ?>" /></li>
 			<li><label>Remind in</label></li>

@@ -7,8 +7,10 @@
 <?php
 $customerSession = Mage::getSingleton('customer/session');
 
+
 $productModel = Mage::getModel('catalog/product');
 $salesModel=Mage::getModel('sales/order')->getCollection();
+//print_r($salesModel);exit;
 
 $childProductModel = Mage::getModel('catalog/product');
 
@@ -27,7 +29,9 @@ if($customerSession->isLoggedIn()) {
 	//var_dump($getCreatedAt);die;
 }
 $collection = $model->getCollection();
-$collection->addFieldToFilter('customer_email', array('eq'=>$email));
+//$collection->addFieldToFilter('customer_email', array('eq'=>$email));
+
+//echo "<pre>";print_r($collection->getData());
 //->addFieldToFilter('order_id',array('eq'=>$name));
 ?>
 <?php echo $this->getToolbarHtml(); ?>
@@ -68,12 +72,8 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			$reminderDate=$myAllReminders['reminder_days'];
 			// var_dump($reminderDate);die;
 			$order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
-			//echo "<pre>";
-			//print_r($order->getEntityId());exit;
 			$enityId=$order->getEntityId();
 
-			/*$days=$myAllReminders['reminder_days'];
-			var_dump($days);die;*/
 
 			$child_id = $productModel->getIdBySku($myAllReminders['product_sku']);
 			$childProduct = $productModel->load($child_id);
@@ -90,7 +90,7 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			else {
 				
 				$remindIn = $myAllReminders['reminder_days']." Days";
-				//var_dump($remindIn);die;
+				
 				if($myAllReminders['reminder_days'] == "1") {
 					$remindIn = $myAllReminders['reminder_days']." Day";
 				}
@@ -131,7 +131,7 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			'.$myAllReminders['customer_telephone'].'<img width="150px"/></a></td>';
 			// $tblData.= '<td class="mid_img_td" width="150px">'.$myAllReminders['customer_telephone'].'</td>';
 			/*$tblData.= '<td class="mid_img_td">'.$myAllReminders['customer_telephone'].'</td>';*/
-			$tblData.= '<td>'.$remindIn .'</td>';
+			$tblData.= '<td class="reminder_days">'.$remindIn .'</td>';
 			
 			/*$tblData.= '<td>'.date("Y-m-d", strtotime($lastRemindDate. ' + '.$myAllReminders['reminder_days'].' days'));*/
 			$tblData.= '<td>'.date("Y-m-d", strtotime($lastRemindDate. ' + '.$myAllReminders['reminder_days'].' days'));
