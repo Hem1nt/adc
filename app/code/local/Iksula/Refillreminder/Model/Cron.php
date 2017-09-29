@@ -10,23 +10,20 @@ class Iksula_Refillreminder_Model_Cron{
           {
             $order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
             $enityId=$order->getEntityId();
-
           
           $currentDate = Mage::getModel('core/date')->date('d');
-          // $order_id=$myAllReminders['order_Id'];
-         // $createDate=$myAllReminders['created_date'];
-          //create date in days
-            $currentDate = Mage::getModel('core/date')->date('d');
-          // $order_id=$myAllReminders['order_Id'];
+          
+          $order_id=$myAllReminders['order_Id'];
           $createDate=$myAllReminders['created_date'];
           $createDate = new DateTime($createDate);
 
-          $strip = $createDate->format('d');
+          $createdate1 = $createDate->format('d');
+           //print_r($stripdate);exit;
           
-
+          $daysdiff=(abs($currentDate-$createdate1)); 
           //create date end in days
           $reminderDate=$myAllReminders['reminder_days'];
-          if(($strip+$currentDate) % $reminderDate =='0')
+          if(($daysdiff) % $reminderDate == 0)
           {
             $template_Id = Mage::getStoreConfig('hide_attribute_frontend/custom_templateid/ext_template');
           //var_dump($template_Id);

@@ -2,8 +2,15 @@
 class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_Action{
     
     public function indexAction() {
-      $block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/refill_popup.phtml");
+      $order_id=$this->getRequest()->getParam('pid');
+      // $this->_forward('save',NULL,NULL,$order_id);
+
+      //print_r($order_id);exit;
+      $block = $this->getLayout()->createBlock("core/template")->setOrderid($order_id)->setTemplate("refillreminder/refill_popup.phtml");
+      //print_r($block);exit;
+
       echo $block->toHtml();
+
      
     }
 
@@ -436,29 +443,40 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
     }
     public function saveAction(){
     //echo "saveaction";exit;
+      // $block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/refill_popup.phtml");
+      //  echo $block->toHtml();
+    $customerSession = Mage::getSingleton('customer/session');
+    //print_r($customerSession);exit;
+    $customerId=$customerSession->getId();
+    
+    $email = $customerSession->getCustomer()->getEmail();
+//print_r($email);exit;
+   
 
-    $order_id = $this->getRequest()->getParam('order_id');  
-    //var_dump($order_id);die;
     $name=$this->getRequest()->getParam('customer_name'); 
     //var_dump($name);die;
     $mail=$this->getRequest()->getParam('txtmail');
     $phone=$this->getRequest()->getParam('txtphone');
+    $order_id=$this->getRequest()->getParam('order_id');
+    //print_r($order_id);exit;
+   
    
     $Days = $this->getRequest()->getPost('remind_days');
     //var_dump($Days);die;
     $model = Mage::getModel('refillreminder/refillreminder');
    
-    $data = array('customer_email'=>$mail,
+    $data = array('customer_email'=>$email,
                     'customer_name'=>$name,
                     'reminder_days'=>$Days,
                     'order_Id'=>$order_id,
                     'remind_flag'=>1,
                     'customer_telephone'=>$phone,
+                    'customer_id'=>$customerId,
                 
                   );
             try {
                   $model->setData($data)->save(); 
-
+                  //$this->_redirectUrl('refillreminder/view/index');
                 } 
      
             catch (Exception $e) 
@@ -489,9 +507,8 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
         ->addBcc($senderEmail)
         ->sendTransactional($requestTemplateId, $sender, $recepientEmail, $recepientName, $vars, $storeId);
         $translate->setTranslateInline(true);  
-      } 
 
-    
+      } 
 
                 
     }

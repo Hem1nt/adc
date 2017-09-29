@@ -19,6 +19,7 @@ if($customerLoggedIn)
 	$custPhone = "";
 }
 ?>
+
 <span class="popup_refill_close">
     <img class="close-btn" src="<?php echo $this->getSkinUrl('images/notify-close.png');?>" alt=" <?php echo $this->__('close button') ?>" />
 </span>
@@ -58,8 +59,10 @@ if($customerLoggedIn)
 					<option value="m">Month(s)</option>
 				</select>
 			</li>
-			
+			    <input type="hidden" name="custom_order_id" id="order_id11" value="<?php echo $this->getOrderid();?>" />
 				<li class="label">Enter the code</li>
+				
+				<li class="label"></label>
                 <li class="input-box input_text_field">
                     <img src="<?php echo Mage::getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' >
                     <input id="3_letters_code" class="captcha_input" class="required-entry validate-captcha" name="3_letters_code" type="text"><br/>
@@ -68,20 +71,27 @@ if($customerLoggedIn)
                 <input type="hidden" id="check_me" />
 			<li class="label"></li>
 			<li class="input_text_field submit_btn_li">
-				<button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button>
+				<button type="submit" title="Submit" class="button refilclose"><span><span>Submit</span></span></button>
 			</li>
 		</ul>
 	</form>
 </div>
+
 <script type="text/javascript">
 jQuery(document).ready(function(){
     refreshCaptcha();
 });
+jQuery(document).ready(function(){
+	jQuery('.refilclose').click(function(){
+		jQuery("#popup_refill 123").hide();
+	});
+})
 var valReminder = new Validation('form_refill_reminder');
 jQuery("#form_refill_reminder").submit(function(){
 	if(valReminder.validate())
 	{
 		var url = jQuery(this).attr('action'), days;
+		
 		var rType = jQuery("#remind_type").val();
 		if(rType=="d") {
 			days = jQuery("#remind_count").val();
@@ -89,8 +99,10 @@ jQuery("#form_refill_reminder").submit(function(){
 		else {
 			days = jQuery("#remind_count").val()*30;
 		}
-		 var values = jQuery("#order_id").val();		
-		var values = {'order_id':jQuery("#order_id").val(),'customer_name':jQuery("#customer_name").val(),'txtmail':jQuery("#txtmail").val(), 'txtproduct_id': jQuery("#txtproduct_id").val(), 'txtphone': jQuery("#txtphone").val(), 'remind_days': days};
+		 var values = jQuery("#order_id").val();
+		 var values1 = jQuery("#order_id11").val();	
+		 //alert(values1);	
+		var values = {'order_id':jQuery("#order_id11").val(),'customer_name':jQuery("#customer_name").val(),'txtmail':jQuery("#txtmail").val(), 'txtproduct_id': jQuery("#txtproduct_id").val(), 'txtphone': jQuery("#txtphone").val(), 'remind_days': days};
 		jQuery.ajax({
 			url: url,
 			type: "post",
@@ -99,7 +111,7 @@ jQuery("#form_refill_reminder").submit(function(){
 				//alert(data);
 				jQuery("#form_refill_reminder").hide();
 				jQuery("#adc_msg").html(data).show();
-				setTimeout(function(){ parent.jQuery.fancybox.close(); },2000);
+				//setTimeout(function(){ parent.jQuery.fancybox.close(); },2000);
 				/*parent.jQuery.fancybox.close();*/
 			},
 			error:function(){
@@ -148,3 +160,4 @@ function refreshCaptcha()
 	setTimeout('RefreshCapcha()', 200);
 }
 </script>
+<!--controllers code-->

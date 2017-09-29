@@ -8,6 +8,7 @@
 $customerSession = Mage::getSingleton('customer/session');
 
 
+
 $productModel = Mage::getModel('catalog/product');
 $salesModel=Mage::getModel('sales/order')->getCollection();
 //print_r($salesModel);exit;
@@ -21,15 +22,32 @@ $model = Mage::getModel('refillreminder/refillreminder');
 //print_r($customerId);die;
  $customerEmail=$customerSession->getCustomer()->getEmail();
 
+
 // print_r($model);die; //model to process reminder checking data
 if($customerSession->isLoggedIn()) {
 	$email = $customerSession->getCustomer()->getEmail();
 	$name = $customerSession->getCustomer()->getName();
 	$getCreatedAt = $customerSession->getCustomer()->getCreatedAt();
-	//var_dump($getCreatedAt);die;
+	$customerId=$customerSession->getId();
 }
+//customer phone 
+$customer = Mage::getModel('customer/customer')
+    ->load($customerId);
+    foreach ($customer->getAddresses() as $address)
+{
+    $telephone = $address['telephone'];
+    //print_r($data);exit;
+}
+
+
+    
+
+
+//$customer->setWebsiteId(Mage::app()->getWebsite()->getId()); 
 $collection = $model->getCollection();
-//$collection->addFieldToFilter('customer_email', array('eq'=>$email));
+$collection->addFieldToFilter('customer_id', array('eq'=>$customerId))
+->addFieldToSelect('*')
+->addFieldToFilter('customer_email', array('eq'=>$email));
 
 //echo "<pre>";print_r($collection->getData());
 //->addFieldToFilter('order_id',array('eq'=>$name));
@@ -47,30 +65,33 @@ $collection = $model->getCollection();
     <col width="1" />
     <thead>
         <tr>
-            <!-- <th><?php echo $this->__('SKU') ?></th> -->
-            <!-- <th><?php echo $this->__('Product Name') ?></th> -->
+      
              <th><?php echo $this->__('Customer Name') ?></th>
              <th><?php echo $this->__('Customer Email') ?></th>
              <th><?php echo $this->__('Order Id') ?></th>
              <th><?php echo $this->__('Customer Phone') ?></th>
-
-          <!--  <th><?php echo $this->__('Created At') ?></th> -->
-           <!--   <th><?php echo $this->__('Product Image') ?></th> -->
             <th><?php echo $this->__('Remind in') ?></th>
             <th><?php echo $this->__('Next reminder') ?></th>
-            <!-- <th><span class="nobr"><?php //echo $this->__('Options') ?></span></th> -->
         </tr>
     </thead>
     
 	<?php
+
 		foreach($collection->getData() as $myAllReminders) {
+		
+
 			$currentDate = Mage::getModel('core/date')->date('d');
-			//var_dump($currentDate);die;
-			$order_id=$myAllReminders['order_Id'];
+		
+			$order_id=$myAllReminders['order_id'];
+			//print_r($order_id);exit;
+			
 			$createDate=$myAllReminders['created_date'];
 		
 			$reminderDate=$myAllReminders['reminder_days'];
-			// var_dump($reminderDate);die;
+
+			//$nextReminder=$createDate+$reminderDate;
+			//print_r($nextReminder);exit;
+		
 			$order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
 			$enityId=$order->getEntityId();
 
@@ -81,10 +102,10 @@ $collection = $model->getCollection();
 			$product = $productModel->load($parent_ids[0]);
 			if($myAllReminders['reminder_days']>30) {
 				$remindIn = round($myAllReminders['reminder_days']/30)." Months";
-				//print_r($remindIn);die;
+				
 				if(round($myAllReminders['reminder_days']/30) == "1") {
 					$remindIn = round($myAllReminders['reminder_days']/30)." Month";
-					//var_dump($remindIn);die;
+					
 				}
 			}
 			else {
@@ -98,7 +119,7 @@ $collection = $model->getCollection();
 			//currentdays
 			$remindIn = $myAllReminders['reminder_days']." Day";
 			$system_date=Mage::getModel('core/date')->gmtDate('d');
-			//print_r($myAllReminders['last_mail_sent']);
+			
 			$lastRemindDate = date("Y-m-d", strtotime($myAllReminders['last_mail_sent']));
 			
 			$separateSkuPackSize = explode("-", $myAllReminders['product_sku']);
@@ -120,15 +141,12 @@ $collection = $model->getCollection();
 			}
 			$tblData.= '<a class="remove_reminder" id="rdata_"'.$myAllReminders['reminder_id'].' href="'.$this->getUrl().'refillreminder/view/delete?remind_id='.$myAllReminders['reminder_id'].'">Remove</a></div>'.$notice.'</div>';
 			$tblData.= '</td>';
-/*
-			$tblData.= '<td class="product_name"><a href="'.$product->getProductUrl().'">'.$product->getName().'</a></td>';*/
-		$tblData.= '<td class="product_name"> '.$email .' </td>';
+			$tblData.= '<td class="product_name"> '.$email .' </td>';
 
-			/*$tblData.= '<td class="product_name">'.$separateSkuPackSize[1].'</td>';*/
 			$tblData.= '<td class="product_name"><a href="'.$this->getUrl().'sales/order/view/order_id/'.$enityId.'"</a>'.$myAllReminders['order_Id'].'</td>';
 			$tblData.= '<td class="mid_img_td">
 
-			'.$myAllReminders['customer_telephone'].'<img width="150px"/></a></td>';
+			'.$telephone.'<img width="150px"/></a></td>';
 			// $tblData.= '<td class="mid_img_td" width="150px">'.$myAllReminders['customer_telephone'].'</td>';
 			/*$tblData.= '<td class="mid_img_td">'.$myAllReminders['customer_telephone'].'</td>';*/
 			$tblData.= '<td class="reminder_days">'.$remindIn .'</td>';
@@ -154,7 +172,6 @@ $collection = $model->getCollection();
 jQuery(".remove_reminder").click(function(){
 	var r=confirm("Are you sure?");
 	if (r==true) {
-		//alert(jQuery(this).attr('href'));
 		jQuery.post(jQuery(this).attr('href'), function(data) {
 			jQuery('#reminder_table').replaceWith(data);
 		});
@@ -165,24 +182,7 @@ jQuery(".remove_reminder").click(function(){
 		return false;
 	}
 });
-/*jQuery(".open_edit").click(function(){
-	var str = this.id;
-	var splitdash = str.split("-");
-	jQuery.post(jQuery("#"+this.id).attr('href'), function(data) {
-		jQuery("#editbox-"+splitdash[1]).html(data);
-	});
-	return false;
-});*/
-// jQuery(".edit_link").click(function(){
-// 	jQuery("#"+this.id).fancybox({
-// 		//alert(this.id);
-// 		//alert("hello");
-// 			type: "iframe",
-// 			width: "300px",
-// 			height: "300px"
-			
-// 		});
-// });
+
 </script>
 <script type="text/javascript">
 jQuery(".edit_link2").on('click',function(){
@@ -197,8 +197,7 @@ jQuery(".edit_link2").on('click',function(){
             },
             success: function(data){
             jQuery(".edit_refil").html(data);
-            //jQuery("#order_id").val(orderId);
-            //jQuery('.link-refill').html(data);
+            
             }
 
 
