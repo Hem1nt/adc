@@ -4,16 +4,18 @@ class Iksula_Refillreminder_Model_Cron{
 	public function SendRefillReminder(){
 		//do something
     //current date calulcation
+        //$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
          $model = Mage::getModel('refillreminder/refillreminder');
           $collection = $model->getCollection();
           foreach($collection->getData() as $myAllReminders) 
           {
-            $order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
-            $enityId=$order->getEntityId();
+            
           
           $currentDate = Mage::getModel('core/date')->date('d');
           
           $order_id=$myAllReminders['order_Id'];
+          $order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
+            $enityId=$order->getEntityId();
           $createDate=$myAllReminders['created_date'];
           $createDate = new DateTime($createDate);
 

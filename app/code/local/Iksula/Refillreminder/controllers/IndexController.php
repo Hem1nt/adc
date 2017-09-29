@@ -442,15 +442,13 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
         // echo "Success";
     }
     public function saveAction(){
-    //echo "saveaction";exit;
-      // $block = $this->getLayout()->createBlock("core/template")->setTemplate("refillreminder/refill_popup.phtml");
-      //  echo $block->toHtml();
+  
     $customerSession = Mage::getSingleton('customer/session');
     //print_r($customerSession);exit;
     $customerId=$customerSession->getId();
     
     $email = $customerSession->getCustomer()->getEmail();
-//print_r($email);exit;
+    //print_r($email);exit;
    
 
     $name=$this->getRequest()->getParam('customer_name'); 
@@ -464,6 +462,7 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
     $Days = $this->getRequest()->getPost('remind_days');
     //var_dump($Days);die;
     $model = Mage::getModel('refillreminder/refillreminder');
+   // print_r($model);exit;
    
     $data = array('customer_email'=>$email,
                     'customer_name'=>$name,
@@ -476,7 +475,7 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
                   );
             try {
                   $model->setData($data)->save(); 
-                  //$this->_redirectUrl('refillreminder/view/index');
+                  Mage::getSingleton('core/session')->addSuccess('Data Saved Sucessfully');
                 } 
      
             catch (Exception $e) 
@@ -507,6 +506,7 @@ class Iksula_Refillreminder_IndexController extends Mage_Core_Controller_Front_A
         ->addBcc($senderEmail)
         ->sendTransactional($requestTemplateId, $sender, $recepientEmail, $recepientName, $vars, $storeId);
         $translate->setTranslateInline(true);  
+
 
       } 
 
