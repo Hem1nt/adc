@@ -71,7 +71,7 @@ if($customerLoggedIn)
                 <input type="hidden" id="check_me" />
 			<li class="label"></li>
 			<li class="input_text_field submit_btn_li">
-				<button type="submit" title="Submit" class="button refilclose"><span><span>Submit</span></span></button>
+				<button type="submit" title="Submit" onclick="callController()" class="button"><span><span>Submit</span></span></button>
 			</li>
 		</ul>
 	</form>
@@ -81,11 +81,11 @@ if($customerLoggedIn)
 jQuery(document).ready(function(){
     refreshCaptcha();
 });
-jQuery(document).ready(function(){
-	jQuery('.refilclose').click(function(){
-		jQuery("#popup_refill 123").hide();
-	});
-})
+// jQuery(document).ready(function(){
+// 	jQuery('.refilclose').click(function(){
+// 		jQuery("#popup_refill 123").hide();
+// 	});
+// })
 var valReminder = new Validation('form_refill_reminder');
 jQuery("#form_refill_reminder").submit(function(){
 	if(valReminder.validate())
@@ -109,7 +109,7 @@ jQuery("#form_refill_reminder").submit(function(){
 			data: values,
 			success: function(data){
 				//alert(data);
-				jQuery("#form_refill_reminder").hide();
+				//jQuery("#form_refill_reminder").hide();
 				jQuery("#adc_msg").html(data).show();
 				//setTimeout(function(){ parent.jQuery.fancybox.close(); },2000);
 				/*parent.jQuery.fancybox.close();*/
@@ -161,3 +161,10 @@ function refreshCaptcha()
 }
 </script>
 <!--controllers code-->
+<script type="text/javascript">
+ function callController()
+ {  var redirectview = '<?php echo Mage::getBaseUrl().'refillreminder/view/index';?>';
+    window.location.href=redirectview;
+
+ }
+</script>
