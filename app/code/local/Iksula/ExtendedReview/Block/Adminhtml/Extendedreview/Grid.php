@@ -13,9 +13,15 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 		}
 
 		protected function _prepareCollection()
-		{
+		{       
+			    
 				$collection = Mage::getModel("extendedreview/extendedreview")->getCollection();
+			    //->addFieldToSelect('*');
+
+				//$collection->getSelect()->group('review_id');
+					//;
 				$this->setCollection($collection);
+			
 				return parent::_prepareCollection();
 		}
 		protected function _prepareColumns()
@@ -39,6 +45,9 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 				$this->addColumn("comment", array(
 				"header" => Mage::helper("extendedreview")->__("Comment"),
 				"index" => "comment",
+				'renderer' => 'Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment',
+		
+				
 				));
 				$this->addColumn("customer_id", array(
 				"header" => Mage::helper("extendedreview")->__("Customer Id"),
