@@ -1251,6 +1251,9 @@ a.product_img[data-src~="http"] {
 .catalog-category-view .filter-block-wrap.block-layered-nav dl#narrow-by-list dd ol li a{
     display: initial;
 }
+.catalog-category-view .filter-block-wrap.block-layered-nav dt{
+    margin: 0;
+}
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
@@ -1326,6 +1329,9 @@ a.product_img[data-src~="http"] {
   .trustedcompany-review-index .col-right.sidebar .bestselling_products .bestselling-block-tab .products-grid .slick-prev {
     top: 200px;
   }
+  .catalog-category-view .filter-block-wrap.block-layered-nav dt {
+        padding: 10px 0 10px 12px;
+    }
 }
 @media only screen and (max-width: 800px) {
 }
