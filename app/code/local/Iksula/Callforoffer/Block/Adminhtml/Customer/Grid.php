@@ -46,7 +46,7 @@ class Iksula_Callforoffer_Block_Adminhtml_Customer_Grid extends Mage_Adminhtml_B
             'width'     => '150',
             'index'     => 'email',
             'type'      => 'text',
-            //'renderer'  => 'Iksula_Callforoffer_Block_Adminhtml_Render_Email' uncomment to show blank value 
+            'renderer'  => 'Iksula_Callforoffer_Block_Adminhtml_Render_Email'
 
         ));
 
@@ -67,7 +67,7 @@ class Iksula_Callforoffer_Block_Adminhtml_Customer_Grid extends Mage_Adminhtml_B
             'header'    => Mage::helper('customer')->__('Telephone'),
             'width'     => '100',
             'index'     => 'billing_telephone',
-            //'renderer'  => 'Iksula_Callforoffer_Block_Adminhtml_Render_Telephone' uncomment to show blank value 
+            'renderer'  => 'Iksula_Callforoffer_Block_Adminhtml_Render_Telephone'
         ));
 
         $this->addColumn('gender', array(
