@@ -22,7 +22,7 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
           //$count++;
         echo "<br/>";
         echo "Comment ".$count.":";
-        echo '<strong style="margin:0 6px 16px 44px;">'.$value->getComment().'</strong>';
+        echo '<strong style="margin:0 6px 16px 18px;">'.$value->getComment().'</strong>';
         $count++; 
        }
 
