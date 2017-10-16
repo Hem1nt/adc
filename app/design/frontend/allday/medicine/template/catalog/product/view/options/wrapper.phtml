@@ -4,6 +4,9 @@
 
 
 if($_product->isConfigurable()) {
+	$_frontendHelper = $this->helper('frontend/data');
+	/*To get the lowest unit price*/
+	$getSimpleProductPrice = $_frontendHelper->allSimplePrice();
 	//$productModel = Mage::getModel('catalog/product');
 
 	$proModel = Mage::getModel('catalog/product');
@@ -40,6 +43,7 @@ if($_product->isConfigurable()) {
 	$bestValue = $_product->getBestValue();
 	//$bestValueListingOrder = Mage::getStoreConfig('custom_snippet/best_value/best_value_listing'); 
 	$productCounter = 0;
+	$backendSku = 0;
 	// echo "<pre>";
 	foreach($newChildProducts as $child) {
 		//print_r();
@@ -77,19 +81,38 @@ if($_product->isConfigurable()) {
 			$perUnit = $child->getPrice()/$packUnitsize;
 		}
 		$perUnitCost = Mage::helper('core')->currency($perUnit,true,false);
+		/*New logic Recommended Starts*/
 		$recommended = $recommendeclass = '';
-			if(!empty($bestValue)){
-				if($productCounter==($bestValue-1)){
+		$lowestPrice = round($perUnit,2);
+		$bestValueImage = Mage::getStoreConfig('custom_snippet/best_value_sku/sku_product');
+		if($bestValueImage){
+			$bestValueArr = explode(',', $bestValueImage);
+			$bestValueArr=array_map('trim',$bestValueArr);
+			$currSku = $child->getSku();
+
+			if(in_array($currSku, $bestValueArr)){
+				$backendSku = 1;
+				$recommended = '<span class="recomend-text">( Recommended )</span>';
+				$recommendeclass = 'packsize_recommended';
+			}else{
+				if($getSimpleProductPrice == $lowestPrice && $backendSku == 0 && $productCounter > 1){
 				$recommended = '<span class="recomend-text">( Recommended )</span>';
 				$recommendeclass = 'packsize_recommended';
 			}
-		}else{
-			if($productCounter==2){
-				$recommended = '<span class="recomend-text">( Recommended )</span>';
-				$recommendeclass = 'packsize_recommended';
 			}
 		}
-
+		/*New logic Recommended Ends*/
+		// if(!empty($bestValue)){
+		// 	if($productCounter==($bestValue-1)){
+		// 		$recommended = '<span class="recomend-text">( Recommended )</span>';
+		// 		$recommendeclass = 'packsize_recommended';
+		// 	}
+		// }else{
+			// if($getSimpleProductPrice == $lowestPrice){
+			// 	$recommended = '<span class="recomend-text">( Recommended )</span>';
+			// 	$recommendeclass = 'packsize_recommended';
+			// }
+		//}
 		$giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
 
 		$giftSpan = '';
@@ -138,6 +161,7 @@ if($_product->isConfigurable()) {
 			window.location.href = jQuery(this).attr("href")+"&qty="+value;
 
 		});
+		var numItems = jQuery('.recomend-text').length;
 		// jQuery(".refill_reminder_open").fancybox({
 		// 	type: "iframe",
 		// 	width: "300px",
