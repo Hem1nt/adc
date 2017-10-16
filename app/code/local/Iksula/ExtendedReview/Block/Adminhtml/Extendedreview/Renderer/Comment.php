@@ -15,7 +15,7 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
         $commentCollection=Mage::getModel("extendedreview/extendedreview")->getCollection()
         ->addFieldToSelect('*')
         ->addFieldToFilter('id',array('in' => array($id)))
-        
+
        // ->addFieldToFilter('comment_id',array('in' => array($commentId)))
         ->addFieldToFilter('customer_id',$customer_id)
         ;
