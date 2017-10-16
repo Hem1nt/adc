@@ -17,7 +17,7 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
         ->addFieldToFilter('customer_id',$customer_id)
         ;
         $count = 1;
-        echo "<p>".'Actual Review :'.'<br/>'.$Comment_detail."</p>";
+        echo "<p><i>".'Actual Review :'.'<br/>'.$Comment_detail."</i></p>";
        foreach ($commentCollection as $value) {
           //$count++;
         echo "<br/>";
