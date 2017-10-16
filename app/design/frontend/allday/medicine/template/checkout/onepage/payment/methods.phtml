@@ -69,7 +69,7 @@
         $customer = Mage::getSingleton('customer/session')->getCustomer(); 
         $email =$customer->getEmail();
         $customerSuccess = Mage::helper('frontend/order')->getCustomersOrdersCount($email);
-        if($customerSuccess==0 ){
+        //if($customerSuccess==0 ){
     ?>
     <?php if($billingCountry == 'US'){ ?>
         <div class="checkout_note">
@@ -78,19 +78,19 @@
             <div class="red_note"><?php echo $offerValidMsg;?></div>
         </div>
     <?php }else{ ?>
-            <div class="checkout_note">
+            <?php /* <div class="checkout_note">
             <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
             <div class="text_2"><?php echo $nonUsCustomerMessage;?></div>
             <div class="red_note"><?php echo $offerValidMsg;?></div>
-        </div>
+        </div> */ ?>
     <?php } ?>
-    <?php } else{?>
+    <?php /*} else{?>
             <div class="checkout_note">
             <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
             <div class="text_2"><?php echo $otherOfferMsg;?></div>
             <div class="red_note"><?php echo $offerValidMsg;?></div>
             </div>
-        <?php }?>
+        <?php } */?>
    
 <?php endif;?>
 

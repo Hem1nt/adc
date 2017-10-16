@@ -30,6 +30,11 @@
  * @see Mage_Catalog_Block_Navigation
  */
 ?>
+<style type="text/css">
+    .current{
+        color: red !important;
+    }
+</style>
 <?php if (!Mage::registry('current_category')) return ?>
 <?php $_categories = $this->getCurrentChildCategories() 
 //print_r($_categories);exit;
@@ -37,7 +42,7 @@
 ?>
 <?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
 <?php if($_count): ?>
-<div class="block block-layered-nav">
+<div class="block block-layered-nav filter-block-wrap">
     <div class="block-title">
         <strong><span><?php echo $this->__('Filter By') ?></span></strong>
     </div>
@@ -50,8 +55,8 @@
                 <?php foreach ($_categories as $_category): 
                 ?>
                     <?php if($_category->getIsActive()): ?>
-                    <li>
-                        <a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->htmlEscape($_category->getName()) ?></a> (<?php echo $_category->getProductCount() ?>)
+                    <li <?php if(Mage::registry('current_category')->getId() == $_category->getEntityId() ):?> class="current" <?php endif;?>>
+                        <a href="<?php echo $this->getCategoryUrl($_category) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a> (<?php echo $_category->getProductCount() ?>)
                     </li>
                     <?php endif; ?>
                 <?php endforeach ?>
@@ -61,4 +66,44 @@
         <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
     </div>
 </div>
+<?php else: ?>
+<!-- To show parent sub categories in child category S -->
+<?php $childCatId = $this->getCurrentCategory()->getParentCategory()->getId();
+    $category = Mage::getModel('catalog/category')->load($childCatId);
+    $subCat = explode(',',$category->getChildren()); 
+    $collection  = $category
+                    ->getCollection()
+                    ->addAttributeToSelect("*")
+                    ->addFieldToFilter("entity_id", array("in", $subCat) );?>
+    <div class="block block-layered-nav filter-block-wrap">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Filter By') ?></span></strong>
+    </div>
+    <div class="block-content filter-block-tab">
+    <p class="block-subtitle"><?php echo $this->__('Shopping Options') ?></p>
+        <dl id="narrow-by-list">
+            <dt><?php echo $this->__('Category') ?></dt>
+            <dd>
+                <ol>
+                <?php foreach($collection as $catname):
+                /*Get enable and visble product count S*/
+                    $category = Mage::getModel('catalog/category')->load($catname->getEntityId());
+                    $prodCollection = Mage::getResourceModel('catalog/product_collection')->addCategoryFilter($category);
+                    Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($prodCollection);
+                    Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($prodCollection);
+                /*Get enable and visble product count E*/
+                ?>
+                <?php if($catname->getIsActive()): ?>
+                    <li <?php if(Mage::registry('current_category')->getId() == $catname->getEntityId() ):?> class="current" <?php endif;?>>
+                        <a href="<?php echo $this->getCategoryUrl($catname) ?>"><?php echo $this->htmlEscape($catname->getName()) ?></a> (<?php echo $prodCollection->count() ?>)
+                    </li>
+                    <?php endif; ?>
+                <?php endforeach ?>
+                </ol>
+            </dd>
+        </dl>
+        <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
+    </div>
+</div>
+<!-- To show parent sub categories in child category E -->
 <?php endif; ?>
