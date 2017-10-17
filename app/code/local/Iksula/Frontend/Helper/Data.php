@@ -437,11 +437,30 @@ class Iksula_Frontend_Helper_Data extends Mage_Core_Helper_Abstract{
         endif;
      }
 
-     public function getproductReviews($id){
+    public function getproductReviews($id){
         $summaryData = Mage::getModel('review/review_summary')->load($id);
         $reviews['reviews_count'] = $summaryData->getReviewsCount();
         $reviews['rating_summary'] = $summaryData->getRatingSummary();
         return $reviews;
      }
+
+    public function allSimplePrice(){
+        $currentProduct = Mage::registry('current_product');
+        $product = Mage::getModel('catalog/product')->load($currentProduct->getId()); 
+        if($product->isConfigurable() ){
+            $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null,$product);
+            foreach($childProducts as $child){            
+                $productSimple = Mage::getModel('catalog/product')->loadByAttribute('sku', $child->getSku());
+                $simplepackSize = $child->getAttributeText('pack_size');
+                if($child->getSpecialPrice()){
+                    $lowestPrice = round(($child->getSpecialPrice()/$simplepackSize),2);
+                }else{
+                    $lowestPrice = round(($productSimple->getPrice()/$simplepackSize),2);
+                }
+                $unitPrice[] = $lowestPrice;
+            }
+            return min($unitPrice);
+        }
+    }
 }
 

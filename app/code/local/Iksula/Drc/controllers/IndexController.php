@@ -49,7 +49,7 @@ class Iksula_Drc_IndexController extends Mage_Core_Controller_Front_Action{
           $recepientEmail = $email;
           $recepientName = '';  
           // Get Store ID        
-          $store = Mage::app()->getStore()->getId();
+          $storeId = Mage::app()->getStore()->getId();
           // Set variables that can be used in email template
           $vars = array('cart_url' => $cartUrl, 'customer_name' => $requestedByFirstname);
           $translate  = Mage::getSingleton('core/translate');

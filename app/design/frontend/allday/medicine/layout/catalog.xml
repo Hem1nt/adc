@@ -119,7 +119,7 @@ Category layered navigation layout
         <label>Catalog Category (Anchor)</label>
         <reference name="right">
             <!-- <block type="catalog/layer_view" name="catalog.leftnav" after="top.menu" before="suggestionbox" template="catalog/layer/view.phtml"/> -->
-            <block type="catalog/navigation" name="catalog.leftnav" after="top.menu" before="suggestionbox" template="catalog/navigation/left.phtml"/>
+            <block type="catalog/navigation" name="catalog.leftnav" before="featured_products" template="catalog/navigation/left.phtml"/>
         </reference>
         <reference name="content">
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
