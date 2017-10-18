@@ -32,7 +32,9 @@
 <?php
 $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
 $urlKey = $this->getProduct()->getUrlKey();
+$url=$this->getProduct()->getUrl();
 $pId = $this->getProduct()->getId();
+
 ?>
 <?php if ($this->getReviewsCount()): ?>
     <div class="ratings" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
@@ -45,14 +47,18 @@ $pId = $this->getProduct()->getId();
                 <div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
             </div>
         <?php endif;?>
+
         <p class="rating-links">
-            <a class="rating_review_count"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
+         
+            <a href="<?php echo Mage::getBaseUrl().'extendedreview/index/reviewpage'."?product_id=".$pId ?>" class="rating_review_count" target="_blank"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
             <span class="separator review_separator">|</span>
+
             <?php
                 if($customerLoggedIn){  
                     
             ?>
-                <a href="<?php echo $this->getBaseurl().$urlKey.'/review/'.$pId; ?>" class="add_your_review"><?php echo $this->__('Add Your Review') ?></a>
+                <a class="add_your_review"><?php echo $this->__('Add Your Review') ?>
+                </a>
             <?php
                 }else{
             ?>
@@ -93,7 +99,7 @@ $pId = $this->getProduct()->getId();
 
 // });
 
-jQuery('.rating_review_count').click(function() {
+jQuery('.add_your_review').click(function() {
     jQuery('html, body').animate({
         scrollTop: jQuery('#customer-reviews').offset().top
     }, 2000);

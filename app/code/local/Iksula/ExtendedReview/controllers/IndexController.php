@@ -1,4 +1,5 @@
 <?php 
+//require_once "Mage/Review/controllers/ProductController.php"; 
 class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_Action{
 	
 	public function getReplyToReviewFormAction(){
@@ -111,7 +112,8 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 	}
 	public function reviewpageAction()
     {
-       
+    	//echo "happy deewali";exit;
+
            $this->loadLayout();
            $this->renderLayout();
        

@@ -2,7 +2,9 @@
 class Iksula_ExtendedReview_Block_Review_Product_View_List extends Mage_Review_Block_Product_View_List{
 
     public function getReviewsCollection(){
+    
     	$collection = parent::getReviewsCollection();
+
     	// $collection->getSelect()->joinLeft(
      //        array('extre' => $collection->getTable('extendedreview/extendedreview')),
      //        'extre.review_id = main_table.review_id');
@@ -17,7 +19,7 @@ class Iksula_ExtendedReview_Block_Review_Product_View_List extends Mage_Review_B
     //         ->group('main_table.review_id');
     //     return $collection;
     }
-    
+   
 
 
 }
