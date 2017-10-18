@@ -57,8 +57,7 @@ $pId = $this->getProduct()->getId();
                 if($customerLoggedIn){  
                     
             ?>
-                <a class="add_your_review"><?php echo $this->__('Add Your Review') ?>
-                </a>
+               <a href="<?php echo $this->getBaseurl().$urlKey.'/review/'.$pId; ?>" class="add_your_review"><?php echo $this->__('Add Your Review') ?></a>
             <?php
                 }else{
             ?>
@@ -99,7 +98,7 @@ $pId = $this->getProduct()->getId();
 
 // });
 
-jQuery('.add_your_review').click(function() {
+jQuery('.rating_review_count').click(function() {
     jQuery('html, body').animate({
         scrollTop: jQuery('#customer-reviews').offset().top
     }, 2000);
