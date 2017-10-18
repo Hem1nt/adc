@@ -451,9 +451,10 @@ class Iksula_Frontend_Helper_Data extends Mage_Core_Helper_Abstract{
             $childProducts = Mage::getModel('catalog/product_type_configurable')->getUsedProducts(null,$product);
             foreach($childProducts as $child){            
                 $productSimple = Mage::getModel('catalog/product')->loadByAttribute('sku', $child->getSku());
-                $simplepackSize = $child->getAttributeText('pack_size');
-                if($child->getSpecialPrice()){
-                    $lowestPrice = round(($child->getSpecialPrice()/$simplepackSize),2);
+                $simplepackSize = $productSimple->getAttributeText('pack_size');
+                //$simplepackSize = $child->getAttributeText('pack_size');
+                if($productSimple->getSpecialPrice()){
+                    $lowestPrice = round(($productSimple->getSpecialPrice()/$simplepackSize),2);
                 }else{
                     $lowestPrice = round(($productSimple->getPrice()/$simplepackSize),2);
                 }
