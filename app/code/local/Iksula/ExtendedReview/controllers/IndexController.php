@@ -108,7 +108,14 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 
 		$this->getResponse()->setHeader('Content-type', 'application/json');
 		$this->getResponse()->setBody(json_encode($result));
-	}	
+	}
+	public function reviewpageAction()
+    {
+       
+           $this->loadLayout();
+           $this->renderLayout();
+       
+    }	
 
 
 	public function saveReplyToReviewAction(){

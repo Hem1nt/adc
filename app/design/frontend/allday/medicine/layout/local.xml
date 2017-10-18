@@ -156,6 +156,8 @@
 		</reference>
 
 	</checkout_onepage_index>
+	<!--extended review new page-->
+
 
 	<!-- <opc_index_index>
 		<reference name="head">
@@ -313,4 +315,17 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 		</reference> -->
      </trustedcompany_review_index>
+
+      <extendedreview_index_reviewpage>
+        <!--
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>-->
+       
+         <reference name="content">
+	        <block type="core/template" name="product.reviews" as="reviews" template="review/product/view/list.phtml" after="additional"/>
+	        <action method="addToParentGroup"><group>detailed_info</group></action>
+	        <action method="setTitle" translate="value"><value>Reviews</value></action>
+    </reference>
+    </extendedreview_index_reviewpage>
 </layout>
