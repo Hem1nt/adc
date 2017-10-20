@@ -32,8 +32,10 @@
 <?php
 $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
 $urlKey = $this->getProduct()->getUrlKey();
+//print_r($urlKey);exit;
 $url=$this->getProduct()->getUrl();
 $pId = $this->getProduct()->getId();
+//print_r($pId);exit;
 
 ?>
 <?php if ($this->getReviewsCount()): ?>

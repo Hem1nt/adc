@@ -24,9 +24,14 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
+<?php $referer = Mage::helper('core')->urlEncode(Mage::helper('core/url')->getCurrentUrl()); 
+
+?>
 <?php 
-        
+        $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
         $productId=$this->getRequest()->getParams('product_id');
+        $productId=implode(" ",$productId);
         $extHelper = Mage::helper('extendedreview/data');        
         $reviews = Mage::getModel('review/review')->getCollection()
         ->addStoreFilter(Mage::app()->getStore()->getId())
@@ -35,21 +40,76 @@
         ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
         ->setDateOrder()
         ->addRateVotes();
-     
-?>
 
+
+
+       //product name and image along with review and ratings
+
+        $_product=Mage::getSingleton('catalog/product');
+        $_product=$_product->load($productId);
+        $urlKey = $_product->getUrlKey();
+        $productMediaConfig = Mage::getModel('catalog/product_media_config');
+        $baseImageUrl = $productMediaConfig->getMediaUrl($_product->getImage());
+        
+        $smallImageUrl = $productMediaConfig->getMediaUrl($_product->getSmallImage());
+    
+        $productSku=$_product->getSku();
+ 
+        $productUrl =  Mage::getModel('catalog/product')->loadByAttribute('sku',$productSku)->getProductUrl();
+       
+      ?>
 
 
 
 <?php $referer = Mage::helper('core')->urlEncode(Mage::helper('core/url')->getCurrentUrl()); ?>
+<style type="text/css">
+.add_your_review1
+{
+        background: #9fb701;
+    color: #fff;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 30px;
+    margin-top: 12px;
+    display: inline-block;
+    font-family: Open Sans, sans-serif;
+    height: auto;
+    font-weight: normal;
+    background-size: 600px;
+}
+</style>
+<div class="product-image">
+       <div class="small-images">
+            <a href="<?php echo $productUrl;?>"><img width="100" height="100" src="<?php echo $baseImageUrl; ?>" alt="product description" name="product-name" /></a>
+      </div> 
+    
+        <div class="product_name">
+                <p title="<?php echo $_product->getName(); ?>"><a href="<?php echo $productUrl;?>"><?php echo $_product->getName(); ?></a></p>
+        </div>
+<!--Add Your review-->
+         <p class="rating-links1" style="font-size: 14px !important;">
+                    <?php
+                        if($customerLoggedIn){    
+                    ?>
+                       <a href="<?php echo $this->getBaseurl().$urlKey.'/review/'.$productId; ?>" class="add_your_review1"><?php echo $this->__('Add Your Review') ?></a>
+                    <?php
+                        }else{
+                    ?>
+                         <a href="<?php echo Mage::getUrl('customer/account/login', array('referer' => $referer))?>" class="review-scroll add_your_review"><?php echo $this->__('Add Your Review') ?></a>
+                    <?php        
+                        }
 
+                    ?>
+                    
+        </p>
 
+        <!--Add Your Review ends-->
+</div>
 <div class="box-collateral box-reviews" id="customer-reviews">
     <?php if (count($reviews)):?>
         <h2><?php echo $this->__('Customer Reviews') ?></h2>
         <div class="review_scroll">
-        <?php //echo $pager = $this->getLayout()->createBlock('page/html_pager', 'product_review_list.toolbar')->setCollection($reviews)->toHtml();
-        ?>
         <?php foreach ($reviews as $_review):                
         ?>
         <div class="review_wrapper">
@@ -196,21 +256,18 @@
             ?>
 
             <div id="divReview<?php echo $_review->getId(); ?>" class="add_review_wrap"></div>
-                </div>
+      </div>
+               
+                <?php echo $this->getChildHtml('featured_products'); ?>
             </div>
         <!-- <a href="javascript:void(0);" class="reply-comment">comment reply</a> -->
 
         </div>
         <?php endforeach; ?>
-        <?php 
-            //echo $pager = $this->getLayout()->createBlock('page/html_pager', 'product_review_list.toolbar')->setCollection($reviews)->toHtml();
-         ?>
     <?php endif;?>
-    <?php echo $this->getChildHtml('review_form') ?>
+    <?php //echo $this->getChildHtml('review_form') ?>
 </div>
 </div>
-
-
 <script>
 
 
