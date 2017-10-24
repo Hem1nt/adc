@@ -5,4 +5,8 @@ Class Iksula_Overrides_Block_Adminhtml_Customer_Edit_Tab_View extends Mage_Admin
     {
         return $this->getCustomer()->getRegisterIp();
     }
+    public function getContactNumber()
+    {
+        return $this->getCustomer()->getContactNumber();
+    }
 }
