@@ -58,7 +58,8 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
              * Initialize customer group id
              */
             $customer->getGroupId();
-
+            //$telephone=$this->getRequest()->getParam('telephone');
+            //print_r($telephone);exit;
             if ($this->getRequest()->getPost('create_address')) {
                 /* @var $address Mage_Customer_Model_Address */
                 $address = Mage::getModel('customer/address');
@@ -120,8 +121,10 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                         return;
                     } else {
                         $session->setCustomerAsLoggedIn($customer);
-                        $url = $this->_welcomeCustomer($customer);
-                        $this->_redirectSuccess($url);
+                        //$url = $this->_welcomeCustomer($customer);
+                        //$this->_redirectSuccess($url);
+                        $url = $this->_getUrl('*/*/edit', array('_secure' => true));
+                        $this->_redirectError($url);
                         return;
                     }
                 } else {
