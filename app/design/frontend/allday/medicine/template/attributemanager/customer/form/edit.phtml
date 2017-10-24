@@ -31,6 +31,13 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
         <?php if ($_gender->isEnabled()): ?>
             <li class="acc-gender"><?php echo $_gender->setGender($this->getCustomer()->getGender())->toHtml() ?></li>
         <?php endif ?>
+       <?php /* <li>
+            <!-- New Contact Number S -->
+            <label for="contact_number" class="required">Contact Number: </label>
+            </br>
+            <input type="text" name="contact_number" id= "contact_number">
+            <!-- New Contact Number E -->        
+        </li> */ ?>
             <li class="control">
                 <input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="<?php echo $this->__('Change Password') ?>"<?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> class="checkbox" /><label for="change_password" class="change-pswd"><?php echo $this->__('Change Password') ?></label>
             </li>
@@ -297,4 +304,5 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
 	}
 	setExtraValidation(true);
 //]]>
+//jQuery('#contact_number').prop('required',true);
 </script>

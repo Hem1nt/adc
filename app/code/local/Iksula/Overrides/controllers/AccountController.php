@@ -120,8 +120,10 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                         return;
                     } else {
                         $session->setCustomerAsLoggedIn($customer);
-                        $url = $this->_welcomeCustomer($customer);
+                        //$url = $this->_welcomeCustomer($customer);
+                        $url = $this->_getUrl('*/*/edit', array('_secure' => true));
                         $this->_redirectSuccess($url);
+                        Mage::getSingleton('core/session')->addSuccess('Account has been created, please enter your contact number.'); 
                         return;
                     }
                 } else {
@@ -157,6 +159,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
 
     public function editPostAction()
     {
+ 
         if (!$this->_validateFormKey()) {
             return $this->_redirect('*/*/edit');
         }
@@ -241,7 +244,8 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                     $customer->sendChangedPasswordOrEmail();
                 }
 
-                $this->_redirect('customer/account');
+                //$this->_redirect('customer/account');
+                $this->_redirect('*/*/edit');
                 return;
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->setCustomerFormData($this->getRequest()->getPost())
