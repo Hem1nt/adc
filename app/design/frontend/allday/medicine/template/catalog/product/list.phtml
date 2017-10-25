@@ -150,7 +150,7 @@
                         <span class="amount"><a href="<?php echo $seeReview;?>"><?php echo $reviewsCount;?> Review(s)</a></span>
                     </div>
                 <?php }else{ ?>
-                    <div class="add_your_review_wrap"><a class="add_your_review" href="<?php echo $path;?>">Add Your review</a></div>
+                    <div class="add_your_review_wrap no-rating"><a class="add_your_review" href="<?php echo $path;?>">Add Your review</a></div>
                 <?php } ?>
                 <?php// endif; ?>
                 <?php //echo $this->getPriceHtml($_product, true) ?>
@@ -321,7 +321,7 @@
             <span class="amount"><a href="<?php echo $seeReview;?>"><?php echo $reviewsCount;?> Review(s)</a></span>
         </div>
     <?php }else{ ?>
-        <div class="add_your_review_wrap"><a class="add_your_review" href="<?php echo $path;?>">Add Your review</a></div>
+        <div class="add_your_review_wrap no-rating"><a class="add_your_review" href="<?php echo $path;?>">Add Your review</a></div>
     <?php } ?>
     <?php //echo $this->getReviewsSummaryHtml($_product, 'short') ?>
     <?php //endif; ?>
