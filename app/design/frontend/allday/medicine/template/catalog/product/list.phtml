@@ -223,6 +223,12 @@
     </p>
 <?php endif; ?>
 
+<!-- discount tag-->
+<?php if ($_product->getSpecialPrice() && $_product->getDiscountTag() != '') : ?>
+    <span class="discount_tag"><?php echo $_product->getData('discount_tag') ?></span>
+<?php endif; ?>
+<!-- discount tag-->
+
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
     <a href="<?php echo $_product->getProductUrl(); ?>" title="Add to Wishlist" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
 <?php endif; ?>
