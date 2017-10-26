@@ -120,9 +120,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                         return;
                     } else {
                         $session->setCustomerAsLoggedIn($customer);
-                        //$url = $this->_welcomeCustomer($customer);
-                        Mage::getSingleton('core/session')->addSuccess('Welcome to AllDayChemist.'); 
-                        $url = $this->_getUrl('*/*/index/', array('_secure' => true));
+                        $url = $this->_welcomeCustomer($customer);
                         $this->_redirectSuccess($url);
                         return;
                     }
@@ -142,7 +140,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                     $url = Mage::getUrl('customer/account/forgotpassword');
                     //$message = $this->__('There is already an account with this email address. If you are sure that it is your email address, <a href="%s">click here</a> to get your password and access your account.', $url);
                     $message = $this->__('An account already exists with the same email address. Login or create an account with another email address.', $url);
-					$session->setEscapeMessages(false);
+                    $session->setEscapeMessages(false);
                 } else {
                     $message = $e->getMessage();
                 }
@@ -159,7 +157,6 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
 
     public function editPostAction()
     {
- 
         if (!$this->_validateFormKey()) {
             return $this->_redirect('*/*/edit');
         }
@@ -245,7 +242,6 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                 }
 
                 $this->_redirect('customer/account');
-                //$this->_redirect('*/*/edit');
                 return;
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->setCustomerFormData($this->getRequest()->getPost())
