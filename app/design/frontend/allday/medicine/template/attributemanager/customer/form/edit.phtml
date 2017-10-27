@@ -31,6 +31,13 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
         <?php if ($_gender->isEnabled()): ?>
             <li class="acc-gender"><?php echo $_gender->setGender($this->getCustomer()->getGender())->toHtml() ?></li>
         <?php endif ?>
+       <?php /* <li>
+            <!-- New Contact Number S -->
+            <label for="contact_number" class="required">Contact Number: </label>
+            </br>
+            <input type="text" name="contact_number" id= "contact_number">
+            <!-- New Contact Number E -->        
+        </li> */ ?>
             <li class="control">
                 <input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="<?php echo $this->__('Change Password') ?>"<?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> class="checkbox" /><label for="change_password" class="change-pswd"><?php echo $this->__('Change Password') ?></label>
             </li>
@@ -63,7 +70,7 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
         </ul>
     </div>
 
-    <div class="fieldset" id="more_info">
+    <div class="fieldset more_info_custom" id="more_info">
         	<h1><?php echo $this->__('More Information') ?></h1>
             <ul class="form-list">
             	<?php
@@ -99,7 +106,7 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
                         // echo $timeoptionval[0];
                         ?>
                             
-                      <div class="input-box">
+                      <div class="input-box time_to_call">
                           <select id="timeval1" style="width:80px;float:left;margin-right:10px;">
                           <?php $timecounter = 1;
                         for($time=1; $time <=24 ; $time++) { 
@@ -297,4 +304,5 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
 	}
 	setExtraValidation(true);
 //]]>
+//jQuery('#contact_number').prop('required',true);
 </script>
