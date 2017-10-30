@@ -40,7 +40,7 @@ foreach ($catData as $key) {
 						$path = Mage::getBaseurl().$urlKey.'/review/'.$pId;
 						?>
 						<!-- discount tag-->
-		                <?php if ($key->getSpecialPrice() && $key->getDiscountTag() != '') :?>
+		                <?php if ($key->getSpecialPrice() != '' && $key->getDiscountTag() != '' && ($key->isSaleable() || $key->getIsInStock()!=0)) :?>
 		                <span class="discount_tag"><?php echo $key->getDiscountTag() ?></span>
 		                <?php endif; ?>
 		                <!-- discount tag-->
@@ -102,7 +102,7 @@ foreach ($catData as $key) {
 				?>
 				
 				<!-- discount tag-->
-                <?php if ($key->getSpecialPrice()) :?>
+                <?php if ($key->getSpecialPrice() != '' && $key->getDiscountTag() != '' && ($key->isSaleable() || $key->getIsInStock()!=0)) :?>
                 <span class="discount_tag"><?php echo $key->getDiscountTag() ?></span>
                 <?php endif; ?>
                 <!-- discount tag-->

@@ -105,7 +105,7 @@ if($_product->isConfigurable()) {
 
 		//discount tag
 		$discountTag = ' ';
-		if($child->getSpecialPrice() && $child->getData('discount_tag') != ''){
+		if($child->getSpecialPrice() != '' && $child->getData('discount_tag') != '' && ($child->isSaleable() || $child->getIsInStock()!=0)){
 			$discountTag = '<span class="discount_tag">'.$child->getData('discount_tag').'</span>';
 		}
 		//discount tag

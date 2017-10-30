@@ -30,7 +30,7 @@
                     <!--lazy loading end-->
 
                     <!-- discount tag-->
-                    <?php if ($productsCollection->getSpecialPrice() && $productsCollection->getDiscountTag() != '') : ?>
+                    <?php if ($productsCollection->getSpecialPrice() != '' && $productsCollection->getDiscountTag() != '' && ($productsCollection->isSaleable() || $productsCollection->getIsInStock()!=0)) : ?>
                     <span class="discount_tag"><?php echo $productsCollection->getData('discount_tag') ?></span>
                     <?php endif; ?>
                     <!-- discount tag-->
