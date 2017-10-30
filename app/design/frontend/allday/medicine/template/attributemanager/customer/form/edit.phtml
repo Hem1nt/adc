@@ -305,4 +305,8 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
 	setExtraValidation(true);
 //]]>
 //jQuery('#contact_number').prop('required',true);
+jQuery(document).ready(function() {
+    jQuery('#contact_number').select();
+    jQuery("#contact_number").css("background-color", "#FFFF99");
+});
 </script>

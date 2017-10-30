@@ -120,7 +120,13 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                         return;
                     } else {
                         $session->setCustomerAsLoggedIn($customer);
-                        $url = $this->_welcomeCustomer($customer);
+                        $productCartCount = Mage::helper('checkout/cart')->getItemsCount();
+                        if($productCartCount){
+                            $url = $this->_welcomeCustomer($customer);                            
+                        }else{
+                            $url =  $url = $this->_getUrl('*/*/edit', array('_secure' => true));
+                            Mage::getSingleton('core/session')->addSuccess('Welcome to AllDayChemsit. Please enter your contact number.'); 
+                        }
                         $this->_redirectSuccess($url);
                         return;
                     }
