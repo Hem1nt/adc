@@ -30,15 +30,26 @@
 						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(81,176);
 						if($i%2 != 0):?>
 						<li>
+							
 							<a href="<?php echo $productUrl;?>">
+								<!-- discount tag-->
+			                    <?php if ($bestProducts->getSpecialPrice() && $bestProducts->getDiscountTag() != '') :?>
+			                    <span class="discount_tag"><?php echo $bestProducts->getDiscountTag() ?></span>
+			                    <?php endif; ?>
+			                    <!-- discount tag-->
 								<img class="lazy" data-src="<?php echo $productImage; ?>"
 								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
 								 alt="<?php echo $productName;?>" />
 								<span><?php echo $productName;?></span>
 							</a>
-						<?php else:?>						
+						<?php else:?>
+												
 							<a href="<?php echo $productUrl;?>">
-
+								<!-- discount tag-->
+			                    <?php if ($bestProducts->getSpecialPrice() && $bestProducts->getDiscountTag() != '') :?>
+			                    <span class="discount_tag"><?php echo $bestProducts->getDiscountTag() ?></span>
+			                    <?php endif; ?>
+			                    <!-- discount tag-->
 								<img class="lazy" data-src="<?php echo $productImage; ?>"
 								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
 								 alt="<?php echo $productName;?>" />
