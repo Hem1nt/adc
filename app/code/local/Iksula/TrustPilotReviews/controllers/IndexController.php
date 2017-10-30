@@ -25,7 +25,7 @@ class Iksula_TrustPilotReviews_IndexController extends Mage_Core_Controller_Fron
      $nextpage_apiurl = $this->getRequest()->getPost('apiurl');
       if($nextpage_apiurl){
         Mage::getSingleton('core/session')->setNextPageApiUrl($nextpage_apiurl);
-        $block = Mage::app()->getLayout()->createBlock('trustpilotreviews/index')->getReviews();
+        $block = Mage::app()->getLayout()->createBlock('trustpilotreviews/reviews')->getReviews();
         foreach ($block['links'] as $links) {
           if($links['rel'] == 'next-page'){
             $url = $links['href'];
