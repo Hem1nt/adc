@@ -1280,6 +1280,11 @@ a.product_img[data-src~="http"] {
 .review-product-list .product-details-table table.new_product_list td.price_value span {
     display: block !important;
 }
+.catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
+.review-product-list .product-details-table table.new_product_list td.price_value span.discount_tag {
+    color: #e20209;
+    font-weight: bold;
+}
 /*discount tag end*/
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {

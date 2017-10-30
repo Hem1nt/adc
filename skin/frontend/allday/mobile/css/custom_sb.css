@@ -2,6 +2,11 @@
 
 @media only screen and (max-width: 1024px){
 	/*discount tag*/
+	.catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
+	.review-product-list .product-details-table table.new_product_list td.price_value span.discount_tag {
+	    color: #e20209;
+	    font-weight: bold;
+	}
 	.catalog-product-view .product-details-table table.new_product_list td.price_value span, 
 	.review-product-list .product-details-table table.new_product_list td.price_value span {
 	    display: block !important;
@@ -1059,6 +1064,11 @@
         width: auto !important;
         max-width: 100%;
     }
+    .catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
+	.review-product-list .product-details-table table.new_product_list td.price_value span.discount_tag {
+	    color: #e20209;
+	    font-weight: bold;
+	}
 
 
 }

@@ -140,7 +140,7 @@ if($_product->isConfigurable()) {
 		}
 		echo "</select></span></td>";
 		echo "<td class='price_value'>".$perUnitCost."</td>";
-		echo "<td class='price_value'>".$priceLabel.$discountTag."</td>";
+		echo "<td class='price_value'>".$discountTag.$priceLabel."</td>";
 		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" 
 		title="Add to Wishlist" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';
 		if($attributeLabel == 'Coming Soon'){
