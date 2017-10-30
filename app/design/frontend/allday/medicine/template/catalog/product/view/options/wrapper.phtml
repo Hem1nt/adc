@@ -36,6 +36,7 @@ if($_product->isConfigurable()) {
 				<th class='qty'><strong>Qty</strong></th>
 				<th class=\"price_per_pill\"><strong>Price Per Pill or Unit</strong></th>
 				<th><strong>Price</strong></th>
+				<th><strong>Discount</strong></th>
 				<th><strong>Wishlist</strong></th>
 				<th><strong>Cart</strong></th>
 			</tr>";
@@ -101,6 +102,14 @@ if($_product->isConfigurable()) {
 			}
 			}
 		}
+
+		//discount tag
+		$discountTag = ' ';
+		if($child->getSpecialPrice() != '' && $child->getData('discount_tag') != '' && ($child->isSaleable() || $child->getIsInStock()!=0)){
+			$discountTag = '<span class="discount_tag">'.$child->getData('discount_tag').'</span>';
+		}
+		//discount tag
+
 		/*New logic Recommended Ends*/
 		// if(!empty($bestValue)){
 		// 	if($productCounter==($bestValue-1)){
@@ -125,7 +134,6 @@ if($_product->isConfigurable()) {
 				$giftSpan = ' <span class="product_free_gift" title="Get a free gift">Will free gift</span>';
 			}
 		}
-
 		echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$giftSpan."</td>";
 		echo "<td class='qty_value'><span class='select_wrap'><select id='p-".$child->getId()."'>";
 		for($i=1; $i<=5; $i++) {
@@ -134,6 +142,7 @@ if($_product->isConfigurable()) {
 		echo "</select></span></td>";
 		echo "<td class='price_value'>".$perUnitCost."</td>";
 		echo "<td class='price_value'>".$priceLabel."</td>";
+		echo "<td class='discount_tag'>".$discountTag."</td>";
 		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" 
 		title="Add to Wishlist" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';
 		if($attributeLabel == 'Coming Soon'){
