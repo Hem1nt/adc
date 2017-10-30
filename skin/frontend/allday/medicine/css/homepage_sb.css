@@ -425,6 +425,7 @@ body *, input, select, textarea, button{
     box-sizing: border-box;
     margin: 0 15px;
     padding: 10px;
+    position: relative;
 }
 .slick-initialized .slick-slide {
     display: block;
@@ -1099,6 +1100,9 @@ body *, input, select, textarea, button{
         font-size: 16px;
         color: #333333;
         /*font-family: Droid sans-serif;*/
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item .slick-list li a span.discount_tag {
+        left: 20px;
     }
     .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(2) {
         /*width: 48.5%;*/
