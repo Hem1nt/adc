@@ -770,8 +770,9 @@ body *, input, select, textarea, button{
     padding: 10px;
     overflow: hidden;
 }
-.cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-slide{
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-slide a{
     position: relative;
+    display: block;
 }
 .cms-home span.discount_tag{
     position: absolute;
