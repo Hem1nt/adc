@@ -1,0 +1,65 @@
+<div id="review_loader"><img class="lazy" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'frontend/allday/medicine/images/loading_1.gif'; ?>" width="" height="" alt="Ropark - 0.25 mg" style="display: inline;"></div>
+<div class='trustpilot_reviews'>
+<?php
+	$reviewsCollection = $this->getReviews();
+	//echo '<pre>';
+	//print_r($reviewsCollection);
+	foreach ($reviewsCollection['links'] as $links) {
+		if($links['rel'] == 'next-page'){
+			$url = $links['href'];
+		}
+	}
+	foreach ($reviewsCollection['reviews'] as $reviews):
+		echo $reviews['consumer']['displayName'].'<br>';
+?>
+		<image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>">
+<?php
+	$timpestamp =  strtotime($reviews['createdAt']);
+	echo date('Y-m-d',$timpestamp);
+	echo $reviews['title'].'<br>';
+	echo $reviews['text'].'<br>';
+	echo $reviews['companyReply']['text'].'<br>';
+	endforeach;
+?>
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('#review_loader').hide();
+		localStorage.apiurl = "<?php echo $url ?>";
+		var hit_ajax_after_scroll = 900;
+		var i = 1;
+		var apiurl = '';
+		$(window).scroll(function () {
+			$('#review_loader').hide('slow');
+		var updated_height =  hit_ajax_after_scroll * i;
+        	if($(window).scrollTop() >= updated_height){
+        		$('#review_loader').show('slow');
+				apiurl = localStorage.apiurl;
+				$.ajax({
+			        url: "<?php echo $this->getUrl("trustpilot-reviews/index/ajaxReview")?>",
+			        type: "post",
+			        data:{apiurl:apiurl},
+			        success: function (response) {
+			        	var obj = JSON.parse(response);
+			        	if(obj.success == 'true'){
+			        		localStorage.apiurl = obj.apiurl;
+			        		$('.trustpilot_reviews').append(obj.data);
+			        		$('#review_loader').hide('slow');
+			        	}
+			        },
+			        timeout: 10000
+			    });
+
+				i++;
+        	}
+    	});
+	})
+	 
+</script>
+
+<style type="text/css">
+	.main-container #review_loader{
+		    position: fixed;
+    		left: 50%;
+	}
+</style>
