@@ -14,8 +14,6 @@ class Iksula_TrustPilotReviews_Helper_Data extends Mage_Core_Helper_Abstract
 		   'apikey: ' . $apiKey
 		);
 
-		try{
-
 		$rest = curl_init();  
 		curl_setopt($rest,CURLOPT_URL,$url); 
 		curl_setopt($rest,CURLOPT_HTTPHEADER,$headers); 
@@ -24,14 +22,11 @@ class Iksula_TrustPilotReviews_Helper_Data extends Mage_Core_Helper_Abstract
 		$response = curl_exec($rest);
 		$status_code = curl_getinfo($rest, CURLINFO_HTTP_CODE);
 		curl_close($rest);
-			if($status_code == 200){
-				Mage::getSingleton('core/session')->unsNextPageApiUrl();
-				return json_decode($response,true);
-			}
-		}catch(exception $e){
-			echo $e->getMessage();
-		}
 		
+		Mage::getSingleton('core/session')->unsNextPageApiUrl();
+		if($status_code == 200){
+			return json_decode($response,true);
+		}
 	}
 
 	public function getBusinessId($apiKey)
@@ -46,7 +41,8 @@ class Iksula_TrustPilotReviews_Helper_Data extends Mage_Core_Helper_Abstract
 			$rest = curl_init();  
 			curl_setopt($rest,CURLOPT_URL,$url); 
 			curl_setopt($rest,CURLOPT_HTTPHEADER,$headers); 
-			curl_setopt($rest,CURLOPT_RETURNTRANSFER, true);  
+			curl_setopt($rest,CURLOPT_RETURNTRANSFER, true); 
+			curl_setopt($rest, CURLOPT_SSL_VERIFYPEER, false);  
 			$response = curl_exec($rest);
 			$status_code = curl_getinfo($rest, CURLINFO_HTTP_CODE);
 			curl_close($rest);
@@ -65,4 +61,3 @@ class Iksula_TrustPilotReviews_Helper_Data extends Mage_Core_Helper_Abstract
 			}
 	}
 }
-	 

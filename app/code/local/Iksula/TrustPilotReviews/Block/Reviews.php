@@ -1,4 +1,4 @@
-<?php   
+<?php
 class Iksula_TrustPilotReviews_Block_Reviews extends Mage_Core_Block_Template{   
 
 	public function getReviews()

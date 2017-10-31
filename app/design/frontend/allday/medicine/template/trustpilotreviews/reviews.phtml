@@ -2,42 +2,44 @@
 <div class='trustpilot_reviews trustpilot_reviews_wrapper'>
 <?php
 	$reviewsCollection = $this->getReviews();
-	//echo '<pre>';
-	//print_r($reviewsCollection);
 	foreach ($reviewsCollection['links'] as $links) {
 
 		if($links['rel'] == 'next-page'){
 			$url = $links['href'];
 		}
 	}
-	foreach ($reviewsCollection['reviews'] as $reviews):
-		echo '<div class="trustpilot_reviews_inner">';
-		echo '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
+	if(array_key_exists('reviews',$reviewsCollection)){
+		foreach ($reviewsCollection['reviews'] as $reviews):
+			echo '<div class="trustpilot_reviews_inner">';
+			echo '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
 ?>
-		<div class="review_img"><image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>"></div>
+			<div class="review_img"><image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>"></div>
 <?php
-	$timpestamp =  strtotime($reviews['createdAt']);
-	echo "<div class='review_date'>".date('Y-m-d',$timpestamp)."</div>";
-	echo "<div class='review_title'>".$reviews['title']."</div>";
-	echo "<div class='review_txt'>".$reviews['text']."</div>";
-	echo "<div class='companyReply'>".$reviews['companyReply']['text']."</div>";
-	echo "</div>";
-	endforeach;
+			$timpestamp =  strtotime($reviews['createdAt']);
+			echo "<div class='review_date'>".date('Y-m-d',$timpestamp)."</div>";
+			echo "<div class='review_title'>".$reviews['title']."</div>";
+			echo "<div class='review_txt'>".$reviews['text']."</div>";
+			echo "<div class='companyReply'>".$reviews['companyReply']['text']."</div>";
+			echo "</div>";
+		endforeach;
 ?>
 </div>
+<button type="button" id="load_more_reviews">Load More Reviews</button>
+<span id='error_message'></span>
+<?php 
+    }else{
+        	echo 'No Reviews';
+		}
+?>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
 		$('#review_loader').hide();
-		localStorage.apiurl = "<?php echo $url ?>";
-		var hit_ajax_after_scroll = 900;
-		var i = 1;
-		var apiurl = '';
-		$(window).scroll(function () {
-			$('#review_loader').hide('slow');
-		var updated_height =  hit_ajax_after_scroll * i;
-        	if($(window).scrollTop() >= updated_height){
-        		$('#review_loader').show('slow');
-				apiurl = localStorage.apiurl;
+		var apiurl = "<?php echo $url ?>";
+		$('#load_more_reviews').click(function(){
+			var click_event = this;
+			$('#error_message').hide();
+			$(click_event).prop('disabled', true);
+			$('#review_loader').show('slow');
 				$.ajax({
 			        url: "<?php echo $this->getUrl("trustpilot-reviews/index/ajaxReview")?>",
 			        type: "post",
@@ -45,17 +47,20 @@
 			        success: function (response) {
 			        	var obj = JSON.parse(response);
 			        	if(obj.success == 'true'){
-			        		localStorage.apiurl = obj.apiurl;
-			        		$('.trustpilot_reviews').append(obj.data);
 			        		$('#review_loader').hide('slow');
+			        		apiurl = obj.apiurl;
+			        		$('.trustpilot_reviews').append(obj.data);
+			        		$(click_event).prop('disabled', false);
+			        	}else{
+			        		$('#review_loader').hide('slow');
+			        		$('#error_message').show();
+			        		$('#error_message').html(obj.message);
+			        		$(click_event).prop('disabled', false);
 			        	}
 			        },
-			        timeout: 10000
-			    });
-
-				i++;
-        	}
-    	});
+			    timeout: 10000
+			});
+		});
 	})
 	 
 </script>
