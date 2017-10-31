@@ -8,7 +8,7 @@ class Amasty_Audit_Adminhtml_LoginController extends Mage_Adminhtml_Controller_A
 {   
 
 
-      protected function _isAllowed()
+    protected function _isAllowed()
     {
         return true; 
     }
