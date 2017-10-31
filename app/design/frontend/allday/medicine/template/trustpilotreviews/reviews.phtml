@@ -5,11 +5,13 @@
 	//echo '<pre>';
 	//print_r($reviewsCollection);
 	foreach ($reviewsCollection['links'] as $links) {
+
 		if($links['rel'] == 'next-page'){
 			$url = $links['href'];
 		}
 	}
 	foreach ($reviewsCollection['reviews'] as $reviews):
+		echo '<div class="trustpilot_reviews_inner">';
 		echo '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
 ?>
 		<div class="review_img"><image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>"></div>
@@ -19,6 +21,7 @@
 	echo "<div class='review_title'>".$reviews['title']."</div>";
 	echo "<div class='review_txt'>".$reviews['text']."</div>";
 	echo "<div class='companyReply'>".$reviews['companyReply']['text']."</div>";
+	echo "</div>";
 	endforeach;
 ?>
 </div>

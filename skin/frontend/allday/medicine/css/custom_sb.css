@@ -1274,6 +1274,55 @@ a.product_img[data-src~="http"] {
     margin-top: 10px;
     width: 80px !important;
 }
+/*trusted review*/
+.trustpilot_reviews_wrapper {
+    display: inline-block;
+    width: 100%;
+}
+.trustpilot_reviews_wrapper .consumer_name {
+    text-transform: capitalize;
+    color: #72ae12;
+    text-align: left;
+    clear: both;
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+}
+.review_img {
+    margin: 5px 0;
+    display: inline-block;
+}
+.review_date {
+    text-transform: capitalize;
+    color: #1f1f1f;
+    text-align: left;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+}
+.review_title {
+    text-align: left;
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #f06405;
+}
+.review_txt {
+    color: #333;
+    text-align: left;
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+/*trusted review end*/
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
