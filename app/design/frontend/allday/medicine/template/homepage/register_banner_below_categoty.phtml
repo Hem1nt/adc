@@ -39,12 +39,15 @@ foreach ($catData as $key) {
 						$pId = $key->getEntityId();
 						$path = Mage::getBaseurl().$urlKey.'/review/'.$pId;
 						?>
+						<a href ="<?php echo $productUrl;?>">
+						<img src="<?php echo $imageUrl; ?>" alt="<?php echo $name; ?>">
 						<!-- discount tag-->
 		                <?php if ($key->getSpecialPrice() != '' && $key->getDiscountTag() != '' && ($key->isSaleable() || $key->getIsInStock()!=0)) :?>
 		                <span class="discount_tag"><?php echo $key->getDiscountTag() ?></span>
 		                <?php endif; ?>
 		                <!-- discount tag-->
-						<a href ="<?php echo $productUrl;?>"><img src="<?php echo $imageUrl; ?>" alt="<?php echo $name; ?>"></a>
+
+						</a>
 						<?php
 						$usbrandName = $_frontendHelper->getUsBrandInfo($key);
 						$genericName = $_frontendHelper->getGenericInfo($key);
@@ -101,13 +104,15 @@ foreach ($catData as $key) {
 				$path = Mage::getBaseurl().$urlKey.'/review/'.$pId;
 				?>
 				
+
+				<a  class="product_img" href ="<?php echo $productUrl;?>">
+				<img src="<?php echo $imageUrl; ?>" alt="<?php echo $name; ?>">
 				<!-- discount tag-->
                 <?php if ($key->getSpecialPrice() != '' && $key->getDiscountTag() != '' && ($key->isSaleable() || $key->getIsInStock()!=0)) :?>
                 <span class="discount_tag"><?php echo $key->getDiscountTag() ?></span>
                 <?php endif; ?>
                 <!-- discount tag-->
-
-				<a  class="product_img" href ="<?php echo $productUrl;?>"><img src="<?php echo $imageUrl; ?>" alt="<?php echo $name; ?>"></a>
+				</a>
 				<?php
 				$usbrandName = $_frontendHelper->getUsBrandInfo($key);
 				$genericName = $_frontendHelper->getGenericInfo($key);

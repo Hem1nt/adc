@@ -36,7 +36,6 @@ if($_product->isConfigurable()) {
 				<th class='qty'><strong>Qty</strong></th>
 				<th class=\"price_per_pill\"><strong>Price Per Pill or Unit</strong></th>
 				<th><strong>Price</strong></th>
-				<th><strong>Discount</strong></th>
 				<th><strong>Wishlist</strong></th>
 				<th><strong>Cart</strong></th>
 			</tr>";
@@ -141,8 +140,7 @@ if($_product->isConfigurable()) {
 		}
 		echo "</select></span></td>";
 		echo "<td class='price_value'>".$perUnitCost."</td>";
-		echo "<td class='price_value'>".$priceLabel."</td>";
-		echo "<td class='discount_tag'>".$discountTag."</td>";
+		echo "<td class='price_value'>".$discountTag.$priceLabel."</td>";
 		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" 
 		title="Add to Wishlist" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';
 		if($attributeLabel == 'Coming Soon'){
