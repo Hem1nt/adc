@@ -1,5 +1,5 @@
 <div id="review_loader"><img class="lazy" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'frontend/allday/medicine/images/loading_1.gif'; ?>" width="" height="" alt="Ropark - 0.25 mg" style="display: inline;"></div>
-<div class='trustpilot_reviews'>
+<div class='trustpilot_reviews trustpilot_reviews_wrapper'>
 <?php
 	$reviewsCollection = $this->getReviews();
 	//echo '<pre>';
@@ -10,15 +10,15 @@
 		}
 	}
 	foreach ($reviewsCollection['reviews'] as $reviews):
-		echo $reviews['consumer']['displayName'].'<br>';
+		echo '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
 ?>
-		<image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>">
+		<div class="review_img"><image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>"></div>
 <?php
 	$timpestamp =  strtotime($reviews['createdAt']);
-	echo date('Y-m-d',$timpestamp);
-	echo $reviews['title'].'<br>';
-	echo $reviews['text'].'<br>';
-	echo $reviews['companyReply']['text'].'<br>';
+	echo "<div class='review_date'>".date('Y-m-d',$timpestamp)."</div>";
+	echo "<div class='review_title'>".$reviews['title']."</div>";
+	echo "<div class='review_txt'>".$reviews['text']."</div>";
+	echo "<div class='companyReply'>".$reviews['companyReply']['text']."</div>";
 	endforeach;
 ?>
 </div>
