@@ -4,15 +4,23 @@
 	/*discount tag*/
 	.catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
 	.review-product-list .product-details-table table.new_product_list td.price_value span.discount_tag {
-	    color: #e20209;
+	    color: #fff;
 	    font-weight: bold;
+	    border: 1px solid red;
+	    border-radius: 12px;
+	    background: red;
+	    text-align: center;
 	}
 	.catalog-product-view .product-details-table table.new_product_list td.price_value span, 
 	.review-product-list .product-details-table table.new_product_list td.price_value span {
 	    display: block !important;
 	}
+	.catalog-product-view .product-details-table table.new_product_list td.custom_price_center, 
+	.review-product-list .product-details-table table.new_product_list td.custom_price_center{
+	    text-align: center !important; 
+	}
 	 .cms-home span.discount_tag, .catalog-category-view span.discount_tag,
- .catalogsearch-result-index span.discount_tag {
+ 	.catalogsearch-result-index span.discount_tag {
 	    position: absolute;
 	    top: 5px;
 	    left: 5px;
@@ -1066,11 +1074,17 @@
     }
     .catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
 	.review-product-list .product-details-table table.new_product_list td.price_value span.discount_tag {
-	    color: #e20209;
+	   color: #fff;
 	    font-weight: bold;
+	    border: 1px solid red;
+	    border-radius: 12px;
+	    background: red;
+	    text-align: center;
 	}
-
-
+	.catalog-product-view .product-details-table table.new_product_list td.custom_price_center, 
+	.review-product-list .product-details-table table.new_product_list td.custom_price_center{
+	    text-align: center !important; 
+	}
 }
 @media only screen and (max-width: 568px){
 	.testimonial-form-index div#ratingBox{
