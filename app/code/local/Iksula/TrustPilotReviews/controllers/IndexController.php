@@ -35,13 +35,13 @@ class Iksula_TrustPilotReviews_IndexController extends Mage_Core_Controller_Fron
         if(array_key_exists('reviews',$reviewsCollection)){
           $html = '';
           foreach ($reviewsCollection['reviews'] as $reviews){
-            echo '<div class="trustpilot_reviews_inner">';
+            $html .=  '<div class="trustpilot_reviews_inner">';
             $html .=  '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
             $html .=  '<div class="review_img"><image src="http://images-static.trustpilot.com/api/stars/'.$reviews['stars'].'/130x24.png" ></div>'; 
             $html .=  "<div class='review_title'>".$reviews['title'].'</div>';
             $html .=  "<div class='review_txt'>".$reviews['text'].'</div>';
-            $html .=  "<div class='companyReply'><div style='color:red;font-weight: normal;
-      color: #333;font-weight: 600;'>Company Reply: </div><br>".$reviews['companyReply']['text'].'</div></div>'; 
+            if($reviews['companyReply']['text'] != ''):$html .=  "<div class='companyReply'><div style='color:red;font-weight: normal;
+            color: #333;font-weight: 600;'>Company Reply: </div><br>".$reviews['companyReply']['text'].'</div></div>';endif;
           }
           echo json_encode(array('success'=>'true','apiurl'=>$url,'data'=>$html));
         }else{

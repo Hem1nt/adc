@@ -19,14 +19,11 @@
 <?php
 			echo "<div class='review_title'>".$reviews['title']."</div>";
 			echo "<div class='review_txt'>".$reviews['text']."</div>";
-			echo "<div class='companyReply'><div style='color:red;font-weight: normal;
-			color: #333;font-weight: 600;'>Company Reply: </div><br>".$reviews['companyReply']['text']."</div>";
+			if($reviews['companyReply']['text'] != ''):echo "<div class='companyReply'><div style='color:red;font-weight: normal;
+			color: #333;font-weight: 600;'>Company Reply: </div><br>".$reviews['companyReply']['text']."</div>";endif;
 			echo "</div>";
 		endforeach;
 ?>
-</div>
-<div class="load_more_reviews_btn">
-	<button type="button" id="load_more_reviews">Load More Reviews</button>
 </div>
 <div class="review_error_message">
 	<span id='error_message'></span>
@@ -40,11 +37,23 @@
 	jQuery(document).ready(function($){
 		$('#review_loader').hide();
 		var apiurl = "<?php echo $url ?>";
-		$('#load_more_reviews').click(function(){
-			var click_event = this;
-			$('#error_message').hide();
-			$(click_event).prop('disabled', true);
-			$('#review_loader').show('slow');
+		var hit_ajax_after_scroll = 1500;
+		var updated_height = '';
+		var is_ajax_running = false;
+		var i = 1;
+		$(window).scroll(function () {
+			$('#review_loader').hide('slow');
+			
+			if(is_ajax_running){
+        			return;
+        		}
+
+			updated_height =  hit_ajax_after_scroll * i;
+
+        	if($(window).scrollTop() >= updated_height){
+        		is_ajax_running = true;
+        		$('#review_loader').show('slow');
+        		$('#error_message').hide();
 				$.ajax({
 			        url: "<?php echo $this->getUrl("trustpilot-reviews/index/ajaxReview")?>",
 			        type: "post",
@@ -52,20 +61,22 @@
 			        success: function (response) {
 			        	var obj = JSON.parse(response);
 			        	if(obj.success == 'true'){
-			        		$('#review_loader').hide('slow');
+			        		is_ajax_running = false;
 			        		apiurl = obj.apiurl;
 			        		$('.trustpilot_reviews').append(obj.data);
-			        		$(click_event).prop('disabled', false);
+			        		$('#review_loader').hide('slow');
 			        	}else{
 			        		$('#review_loader').hide('slow');
 			        		$('#error_message').show();
 			        		$('#error_message').html(obj.message);
-			        		$(click_event).prop('disabled', false);
 			        	}
 			        },
-			    timeout: 10000
-			});
-		});
+			        timeout: 10000
+			    });
+
+				i++;
+        	}
+    	});
 	})
 	 
 </script>
