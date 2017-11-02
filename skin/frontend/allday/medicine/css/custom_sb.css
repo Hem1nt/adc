@@ -1275,8 +1275,9 @@ a.product_img[data-src~="http"] {
     width: 80px !important;
 }
 /*product desc*/
-.catalog-product-view #product_tabs_description_tabbed_contents h1{
-    font-size: 16px!important;
+.catalog-product-view #product_tabs_description_tabbed_contents h1,
+.catalog-product-view #product_tabs_description_tabbed_contents h1 strong{
+    font-size: 18px!important;
     text-align: center !important;
     display: inline-block;
     width: 100%;
@@ -1285,7 +1286,7 @@ a.product_img[data-src~="http"] {
 }
 .catalog-product-view #product_tabs_description_tabbed_contents h2,
 .catalog-product-view #product_tabs_description_tabbed_contents h2 strong{
-    font-size: 15px!important;
+    font-size: 16px!important;
 }
 .catalog-product-view #product_tabs_description_tabbed_contents .std p,
 .catalog-product-view #product_tabs_description_tabbed_contents .std p span{
