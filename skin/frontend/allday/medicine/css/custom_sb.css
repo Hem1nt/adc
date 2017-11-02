@@ -1274,6 +1274,20 @@ a.product_img[data-src~="http"] {
     margin-top: 10px;
     width: 80px !important;
 }
+/*product desc*/
+.catalog-product-view #product_tabs_description_tabbed_contents h1{
+    font-size: 16px!important;
+    text-align: center !important;
+    display: inline-block;
+    width: 100%;
+    color: #333;
+    font-weight: bold;
+}
+.catalog-product-view #product_tabs_description_tabbed_contents .std p,
+.catalog-product-view #product_tabs_description_tabbed_contents .std p span{
+    font-size: 15px!important;
+}
+/*product desc end*/
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
