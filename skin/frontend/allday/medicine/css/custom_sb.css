@@ -1283,8 +1283,15 @@ a.product_img[data-src~="http"] {
     color: #333;
     font-weight: bold;
 }
+.catalog-product-view #product_tabs_description_tabbed_contents h2,
+.catalog-product-view #product_tabs_description_tabbed_contents h2 strong{
+    font-size: 15px!important;
+}
 .catalog-product-view #product_tabs_description_tabbed_contents .std p,
 .catalog-product-view #product_tabs_description_tabbed_contents .std p span{
+    font-size: 15px!important;
+}
+.catalog-product-view .easytabs-content * {
     font-size: 15px!important;
 }
 /*product desc end*/
