@@ -121,10 +121,21 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                         return;
                     } else {
                         $session->setCustomerAsLoggedIn($customer);
+
                         //$url = $this->_welcomeCustomer($customer);
                         //$this->_redirectSuccess($url);
                         $url = $this->_getUrl('*/*/edit', array('_secure' => true));
                         $this->_redirectError($url);
+
+                        $productCartCount = Mage::helper('checkout/cart')->getItemsCount();
+                        if($productCartCount){
+                            $url = $this->_welcomeCustomer($customer);                            
+                        }else{
+                            $url =  $url = $this->_getUrl('*/*/edit', array('_secure' => true));
+                            Mage::getSingleton('core/session')->addSuccess('Welcome to AllDayChemsit. Please enter your contact number.'); 
+                        }
+                        $this->_redirectSuccess($url);
+
                         return;
                     }
                 } else {
@@ -143,7 +154,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                     $url = Mage::getUrl('customer/account/forgotpassword');
                     //$message = $this->__('There is already an account with this email address. If you are sure that it is your email address, <a href="%s">click here</a> to get your password and access your account.', $url);
                     $message = $this->__('An account already exists with the same email address. Login or create an account with another email address.', $url);
-					$session->setEscapeMessages(false);
+                    $session->setEscapeMessages(false);
                 } else {
                     $message = $e->getMessage();
                 }

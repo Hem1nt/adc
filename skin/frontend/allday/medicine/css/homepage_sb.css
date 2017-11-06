@@ -425,6 +425,7 @@ body *, input, select, textarea, button{
     box-sizing: border-box;
     margin: 0 15px;
     padding: 10px;
+    position: relative;
 }
 .slick-initialized .slick-slide {
     display: block;
@@ -769,6 +770,30 @@ body *, input, select, textarea, button{
     padding: 10px;
     overflow: hidden;
 }
+.cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-slide a{
+    position: relative;
+    display: block;
+}
+.cms-home span.discount_tag{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 45px;
+    background-color: #4f6b05;
+    color: #fff !important;
+    border-radius: 0 0 20px 20px;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
+    width: 49px;
+    height: 40px;
+    background-size: 46px;
+}
 @media all and (max-width: 1024px){
 
     /*banner*/
@@ -1077,6 +1102,9 @@ body *, input, select, textarea, button{
         color: #333333;
         /*font-family: Droid sans-serif;*/
     }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item .slick-list li a span.discount_tag {
+        left: 20px;
+    }
     .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(2) {
         /*width: 48.5%;*/
     }
@@ -1109,6 +1137,29 @@ body *, input, select, textarea, button{
         margin: 0;
         margin-left: 15px;
         font-size: 13px;
+    }
+    .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item .slick-slide{
+        position: relative;
+    }
+    .cms-home span.discount_tag{
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 45px;
+        background-color: #4f6b05;
+        color: #fff !important;
+        border-radius: 0 0 20px 20px;
+        padding-top: 10px;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 14px;
+        text-transform: uppercase;
+        text-align: center;
+        background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
+        width: 49px;
+        height: 40px;
+        background-size: 46px;
     }
 }
 @media all and (max-width: 600px){
