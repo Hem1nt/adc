@@ -48,6 +48,12 @@
 		  <use>core_setup</use>
 		</connection>
 	  </customerinfo_setup>
+	<customerinfo_setup> <!-- Replace with your module name -->
+		<setup>
+	  		<module>Iksula_Customerinfo</module> <!-- Replace with your module name -->
+	  		<class>Mage_Customer_Model_Entity_Setup</class>
+	 	</setup>
+	</customerinfo_setup>
 	  <customerinfo_write>
 		<connection>
 		  <use>core_write</use>

@@ -1359,6 +1359,88 @@ a.product_img[data-src~="http"] {
 .catalog-category-view .filter-block-wrap.block-layered-nav dt{
     margin: 0;
 }
+/*more info*/
+.customer-account-edit .col-main .more_info_custom .form-list {
+    display: flex;
+    flex-direction: column;
+}
+.customer-account-edit .col-main .more_info_custom .form-list li:nth-child(2){
+   order: -1;
+}
+.customer-account-edit #more_info .form-list .input-box.time_to_call {
+    float: none;
+    margin-top: 10px;
+}
+.customer-account-edit #more_info .form-list select {
+    width: 175px !important;
+}
+.customer-account-edit #more_info .form-list .input-box.time_to_call select{
+    float: none;
+    margin-top: 10px;
+    width: 80px !important;
+}
+/*discount tag*/
+ .cms-home span.discount_tag, .catalog-category-view span.discount_tag,
+ .catalogsearch-result-index span.discount_tag{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 45px;
+    background-color: #4f6b05;
+    color: #fff !important;
+    border-radius: 0 0 20px 20px;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
+    width: 49px;
+    height: 40px;
+    background-size: 46px;
+}
+.catalog-product-view .product-details-table table.new_product_list td.price_value span, 
+.review-product-list .product-details-table table.new_product_list td.price_value span {
+    display: block !important;
+}
+.catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
+.review-product-list .product-details-table table.new_product_list td.price_value span.discount_tag {
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid red;
+    border-radius: 12px;
+    background: red;
+    text-align: center;
+}
+.catalog-product-view .product-details-table table.new_product_list td.custom_price_center, 
+.review-product-list .product-details-table table.new_product_list td.custom_price_center{
+    text-align: center !important; 
+}
+/*discount tag end*/
+/*product desc*/
+.catalog-product-view #product_tabs_description_tabbed_contents h1,
+.catalog-product-view #product_tabs_description_tabbed_contents h1 strong{
+    font-size: 18px!important;
+    text-align: center !important;
+    display: inline-block;
+    width: 100%;
+    color: #333;
+    font-weight: bold;
+}
+.catalog-product-view #product_tabs_description_tabbed_contents h2,
+.catalog-product-view #product_tabs_description_tabbed_contents h2 strong{
+    font-size: 16px!important;
+}
+.catalog-product-view #product_tabs_description_tabbed_contents .std p,
+.catalog-product-view #product_tabs_description_tabbed_contents .std p span{
+    font-size: 15px!important;
+}
+.catalog-product-view .easytabs-content * {
+    font-size: 15px!important;
+}
+/*product desc end*/
 @media only screen and (max-width: 1023px){
     .catalog-product-view .product-view .product-shop .ratings .rating-links a.add_your_review {
         margin-top: 12px;
