@@ -18,7 +18,7 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 				$collection = Mage::getModel("extendedreview/extendedreview")->getCollection();
 			    //->addFieldToSelect('*');
 
-				//$collection->getSelect()->group('review_id');
+				//$collection->getSelect()->group('id');
 					//;
 				$this->setCollection($collection);
 			
