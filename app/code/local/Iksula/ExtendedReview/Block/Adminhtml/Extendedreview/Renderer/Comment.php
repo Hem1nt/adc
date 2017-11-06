@@ -20,7 +20,7 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
                         
         foreach ($commentCollection as $value) {
 
-             echo "<br/>Comment ".$count++.":".'<strong style="margin:0 6px 20px 27px; color:#ea7601 !important; ">'.$value->getComment().'</strong>';
+             echo "<br/>Comment ".$count++.":".'<b style="margin:0 6px 20px 27px; color:#000000 !important; ">'.$value->getComment().'</b>';
 
         }
     }
@@ -37,7 +37,7 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
         foreach ($commentCollection as $value) {
             
           
-               echo "<br/> Comment ".$count.":".'<strong style="margin:0 6px 16px 18px; color:#ea7601 !important;">'.$value->getComment().'</strong>';
+               echo "<br/> Comment ".$count.":".'<strong style="margin:0 6px 16px 18px; color:#000000 !important;">'.$value->getComment().'</strong>';
         }
     }
       $count++;
