@@ -29,7 +29,6 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
 
        foreach ($commentCollection as $value) {
         $comment_id=$value['comment_id'];
-        //print_r($comment_id);exit;
         if($comment_id=='0')
         {
            echo "<br/>";
@@ -41,11 +40,9 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
         else
         {
            echo "<br/>";
-        echo "Sub Comment ".$count.":";
-
-        // echo '<strong style="margin:0 6px 16px 18px;">'.$value->getComment().'</strong>';
+        echo "sub comment :";
         echo '<strong style="margin:0 6px 20px 27px; color:#ea7601 !important;">'.$value->getComment().'</strong>';
-        $count++;
+       // $count++;
         }
        
        
