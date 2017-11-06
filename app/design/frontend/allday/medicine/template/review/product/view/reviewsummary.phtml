@@ -32,7 +32,7 @@
         $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
         $productId=$this->getRequest()->getParams('product_id');
         $productId=implode(" ",$productId);
-        $extHelper = Mage::helper('extendedreview/data');        
+        $extHelper = Mage::helper('extendedreview/data');      
         $reviews = Mage::getModel('review/review')->getCollection()
         ->addStoreFilter(Mage::app()->getStore()->getId())
         ->addFieldToSelect('*')
@@ -40,9 +40,7 @@
         ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
         ->setDateOrder()
         ->addRateVotes();
-
-
-
+        
        //product name and image along with review and ratings
 
         $_product=Mage::getSingleton('catalog/product');
