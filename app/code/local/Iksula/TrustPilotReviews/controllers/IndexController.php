@@ -36,7 +36,13 @@ class Iksula_TrustPilotReviews_IndexController extends Mage_Core_Controller_Fron
           $html = '';
           foreach ($reviewsCollection['reviews'] as $reviews){
             $html .=  '<div class="trustpilot_reviews_inner">';
+
             $html .=  '<div class="review_background">';
+
+            $html .=  '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
+            $timpestamp =  strtotime($reviews['createdAt']);
+            $html .=  "<div class='review_date'>".date('Y-m-d',$timpestamp)."</div>";
+
             $html .=  '<div class="review_img"><image src="http://images-static.trustpilot.com/api/stars/'.$reviews['stars'].'/130x24.png" ></div>'; 
             $html .=  '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
             $html .=  '</div>';
