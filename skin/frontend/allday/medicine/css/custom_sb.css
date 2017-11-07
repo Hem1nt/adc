@@ -1296,11 +1296,10 @@ a.product_img[data-src~="http"] {
 }
 .trustpilot_reviews_wrapper .consumer_name {
     text-transform: capitalize;
-    color: #72ae12;
+    color: #1f1f1f;
     text-align: left;
     margin: 0 10px;
     display: inline-block;
-    color: #506f00;
     font-weight: 600;
     font-size: 14px;
     float: left;
@@ -1322,6 +1321,9 @@ a.product_img[data-src~="http"] {
     font-weight: normal;
     float: right;
     margin: 0 10px;
+    background: url(../images/adc_review_clock.png) 2px 4px no-repeat;
+    background-size: 16px;
+    padding-left: 28px;
 }
 .trustpilot_reviews_wrapper .review_wrap {
     display: inline-block;
@@ -1333,13 +1335,13 @@ a.product_img[data-src~="http"] {
     display: inline-block;
     font-size: 14px;
     margin-bottom: 5px;
-    color: #333;
+    color: #506f00;
     text-transform: capitalize;
     font-weight: 600;
     width: 100%;
 }
 .trustpilot_reviews_wrapper .review_txt {
-    color: #333;
+    color: #1f1f1f;
     text-align: left;
     margin: 10px 0;
     display: inline-block;
@@ -1349,7 +1351,7 @@ a.product_img[data-src~="http"] {
     text-transform: capitalize;
 }
 .trustpilot_reviews_wrapper .companyReply {
-    color: #333;
+    color: #1f1f1f;
     text-align: left;
     margin: 10px 0;
     display: inline-block;

@@ -43,6 +43,17 @@
 	    font-weight: bold;
 	    float: right;
 	    margin: 10px 0;
+	    background: url(../images/adc_review_clock.png) 2px 4px no-repeat;
+	    background-size: 16px;
+	    padding-left: 28px;
+	}
+	.trustpilot_reviews_wrapper .review_wrap {
+	    display: inline-block;
+	    width: 100%;
+	}
+	.trustpilot_reviews_wrapper .review_background {
+	    display: inline-block;
+	    width: 100%;
 	}
 	.trustpilot_reviews_wrapper .review_title {
 	    text-align: left;
@@ -50,12 +61,11 @@
 	    display: inline-block;
 	    font-size: 14px;
 	    margin-bottom: 5px;
-	    color: #f06405;
 	    text-transform: capitalize;
         font-weight: 600;
+        color: #506f00;
 	}
 	.trustpilot_reviews_wrapper .review_txt {
-	    color: #333;
 	    text-align: left;
 	    margin: 10px 0;
 	    display: inline-block;
@@ -63,9 +73,9 @@
 	    font-size: 14px;
 	    margin-bottom: 5px;
 	    text-transform: capitalize;
+	    color: #1f1f1f;
 	}
 	.trustpilot_reviews_wrapper .companyReply {
-	    color: #333;
 	    text-align: left;
 	    margin: 10px 0;
 	    display: inline-block;
@@ -73,8 +83,6 @@
 	    font-size: 14px;
 	    margin-bottom: 5px;
 	    text-transform: capitalize;
-	    /*font-weight: 600;*/
-	    color: #333;
 	    text-align: left;
 	    margin: 10px 0;
 	    display: inline-block;
@@ -86,6 +94,7 @@
 	    width: 96%;
 	    display: inline-block;
 	    float: right;
+	    color: #1f1f1f;
 	}
 	.trustpilotreviews-index-index .load_more_reviews_btn{
 	    display: inline-block;
@@ -1005,12 +1014,7 @@
 	}
 }
 @media only screen and (max-width: 736px){
-	.trustpilot_reviews_wrapper .review_date {
-	    float: none;
-	}
-	.trustpilot_reviews_wrapper .consumer_name {
-		float: none;
-	}
+	
 	.opc-index-index .payment-block .trust_banner span.banner-3_message {
         opacity: 1!important;
     }
