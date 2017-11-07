@@ -2,6 +2,7 @@
 <div class='trustpilot_reviews trustpilot_reviews_wrapper'>
 <?php
 	$reviewsCollection = $this->getReviews();
+	$class = '';
 	foreach ($reviewsCollection['links'] as $links) {
 
 		if($links['rel'] == 'next-page'){
@@ -21,7 +22,8 @@
 			echo "</div>";
 ?>
 <?php   	
-			echo '<div class="review_wrap">';
+			if($reviews['companyReply']['text'] != ''):$class = 'review_wrap_highlight';endif;
+			echo '<div class="review_wrap '.$class.'">';
 			echo "<div class='review_title'>".$reviews['title']."</div>";
 			echo "<div class='review_txt'>".$reviews['text']."</div>";
 			echo "</div>";
@@ -88,3 +90,8 @@
 
 	 
 </script>
+<style type="text/css">
+	.review_wrap_highlight{
+		background: #c5c1c1;
+	}
+</style>

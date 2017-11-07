@@ -31,7 +31,8 @@ class Iksula_TrustPilotReviews_IndexController extends Mage_Core_Controller_Fron
             $url = $links['href'];
           }
         }
-        // unset($reviewsCollection);
+        // unset($reviewsCollection);      
+        $class = '';
         if(array_key_exists('reviews',$reviewsCollection)){
           $html = '';
           foreach ($reviewsCollection['reviews'] as $reviews){
@@ -46,7 +47,8 @@ class Iksula_TrustPilotReviews_IndexController extends Mage_Core_Controller_Fron
 
             
             $html .=  '</div>';
-            $html .=  '<div class="review_wrap">';
+            if($reviews['companyReply']['text'] != ''):$class = 'review_wrap_highlight';endif;
+            $html .=  '<div class="review_wrap '.$class.'">';
             $html .=  "<div class='review_title'>".$reviews['title'].'</div>';
             $html .=  "<div class='review_txt'>".$reviews['text'].'</div>';
             $html .=  '</div>';
