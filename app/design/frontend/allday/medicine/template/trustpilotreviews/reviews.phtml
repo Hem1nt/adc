@@ -11,14 +11,18 @@
 	if(array_key_exists('reviews',$reviewsCollection)){
 		foreach ($reviewsCollection['reviews'] as $reviews):
 			echo '<div class="trustpilot_reviews_inner">';
-			echo '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
-			$timpestamp =  strtotime($reviews['createdAt']);
-			echo "<div class='review_date'>".date('Y-m-d',$timpestamp)."</div>";
-?>
-			<div class="review_img"><image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>"></div>
-<?php
+		?>
+			<div class="review_background">
+				<div class="review_img"><image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>"></div>
+				<?php
+				echo '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
+				$timpestamp =  strtotime($reviews['createdAt']);
+				echo "<div class='review_date'>".date('Y-m-d',$timpestamp)."</div>";
+			echo "</div>";
+			echo'<div class="review_wrap">';
 			echo "<div class='review_title'>".$reviews['title']."</div>";
 			echo "<div class='review_txt'>".$reviews['text']."</div>";
+			echo "</div>";
 			if($reviews['companyReply']['text'] != ''):echo "<div class='companyReply'><div style='color:red;font-weight: normal;
 			color: #333;font-weight: 600;'>Company Reply: </div><br>".$reviews['companyReply']['text']."</div>";endif;
 			echo "</div>";

@@ -1289,11 +1289,16 @@ a.product_img[data-src~="http"] {
     box-sizing: border-box;
     display: inline-block;
 }
+.trustpilot_reviews_wrapper .trustpilot_reviews_inner .review_background {
+    display: inline-block;
+    width: 100%;
+    background-color: #ebebeb;
+}
 .trustpilot_reviews_wrapper .consumer_name {
     text-transform: capitalize;
     color: #72ae12;
     text-align: left;
-    margin: 10px 0;
+    margin: 0 10px;
     display: inline-block;
     color: #506f00;
     font-weight: 600;
@@ -1304,19 +1309,23 @@ a.product_img[data-src~="http"] {
     /*margin: 5px 0;
     display: inline-block;
     width: 100%;*/
-    margin: 9px 9px 0;
+    margin: 0;
     display: inline-block;
-    float: right;
+    float: left;
 }
 .trustpilot_reviews_wrapper .review_date {
     text-transform: capitalize;
-    color: #1f1f1f;
+    color: #404040;
     text-align: left;
     display: inline-block;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: normal;
     float: right;
-    margin: 10px 0;
+    margin: 0 10px;
+}
+.trustpilot_reviews_wrapper .review_wrap {
+    display: inline-block;
+    width: 100%;
 }
 .trustpilot_reviews_wrapper .review_title {
     text-align: left;
