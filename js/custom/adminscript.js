@@ -153,6 +153,24 @@ jQuery(document).ready(function(){
 	}
 
  }
+
+ function saveCustomerBehavior(url,customerId){
+    var orderid = jQuery('.orderid').val();
+    var behavior_id = jQuery('input[name=behavior]:checked').val();
+    var behavior_value = jQuery('input[name=behavior]:checked').parent('label').text();
+	if(behavior_id && orderid && customerId){
+		new Ajax.Request(url, {
+			method: 'Post',
+			parameters: {isAjax: 1, method: 'POST',behavior_id:behavior_id,behavior_value:behavior_value,orderid:orderid,customerId:customerId},
+			onComplete: function(transport) {
+				console.log(transport);
+			}
+		});
+	}else{
+		alert('Please Select Behavior');
+	}
+
+ }
 // jQuery(document).ready(function(){
 // 	var img_url = <?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'images/plus-sign1.png' ?>
 // 	more_discount = jQuery(".data_2").prepend('<span class="more_offers"><img src="'+img_url+'" style="height:100%"/></span>');

@@ -131,4 +131,27 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
 		// return;
 
 	}
+
+	public function saveCustomerBehaviorAction(){
+		$order_id = $this->getRequest()->getParam('orderid');
+		$behavior_id = $this->getRequest()->getParam('behavior_id');
+		$behavior_value = $this->getRequest()->getParam('behavior_value');
+		$customerId = $this->getRequest()->getParam('customerId');
+		if($behavior_id!='' && $order_id!='' && $customerId != ''):
+			$data = json_encode(array('behavior_id'=>$behavior_id,'behavior_value'=>$behavior_value));
+			//order table
+			$order = Mage::getModel('sales/order')->load($order_id);
+			$order->getBillingAddress()->setData('customer_behavior',$data);
+			$order->setCustomerBehavior($data)->save();
+			return true;
+		endif;
+		//customer table
+		/*$storeId = Mage::app()->getStore()->getStoreId();
+   		$store = Mage::getModel('core/store')->load($storeId);
+		$customerData = Mage::getModel('customer/customer')->setStore($store)->load($customerId);
+    	//$customerData->setData('customer_behavior','test');
+		$customerData->setTest($data);
+    	$customerData->save();
+		print_r($customerData->getData());*/
+	}
 }

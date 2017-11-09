@@ -1010,6 +1010,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 							->addFieldToSelect('customer_firstname')
 							->addFieldToSelect('customer_lastname')
 							->addFieldToSelect('customer_email');
+							->addFieldToSelect('customer_behavior');
 				foreach ($product as $products) {
 					$product_data = array();
 					$product_data['Order_id'] = $products->getData('increment_id');

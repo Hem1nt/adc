@@ -176,6 +176,28 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                         </td>
                         <?php }?>
                     </tr>
+                    <tr id="customer_behavior_property">
+                        <td class="value"><label><?php echo Mage::helper('sales')->__('Customer Behavior') ?></label></td>
+                        <td>
+                            <?php 
+                                $customer_beavior = json_decode($_order->getData('customer_behavior'),true);
+                                if($customer_beavior['behavior_id'] != ''){
+                                    $set_default_behavior_id = $customer_beavior['behavior_id'];
+                                }
+                            ?>
+                            <?php $customer_behavior_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savecustomerbehavior');?>
+                            <form action="#" onsubmit="return false;" method="post" class="customer_behavior_form_class">
+                                <label><input type="radio" name="behavior" value="1"> Good </label>
+                                <label><input type="radio" name="behavior" value="2"> Bad </label>
+                                <label><input type="radio" name="behavior" value="3"> Poor </label>
+                                <button id="customer_behavior" title="Edit" type="button" class="scalable" onclick="saveCustomerBehavior('<?php echo $customer_behavior_url;?>','<?php echo $_order->getData('customer_id');?>')" style="">
+                                    <span>
+                                        <span><span>Save Behavior</span></span>
+                                    </span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
                     <?php
                         if($customercomment != ""){ ?>
                         <tr>
@@ -465,4 +487,11 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
         return true;
     }
 
+    jQuery(function() {
+        var radios = jQuery('input:radio[name=behavior]');
+        var set_default_behavior_id = '<?php echo $set_default_behavior_id ?>';
+        if(radios.is(':checked') === false) {
+            radios.filter('[value='+set_default_behavior_id+']').prop('checked', true);
+        }
+    });
 </script>
