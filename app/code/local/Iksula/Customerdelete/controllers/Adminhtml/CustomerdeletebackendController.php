@@ -137,21 +137,17 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
 		$behavior_id = $this->getRequest()->getParam('behavior_id');
 		$behavior_value = $this->getRequest()->getParam('behavior_value');
 		$customerId = $this->getRequest()->getParam('customerId');
+		$customer_email = $this->getRequest()->getParam('email');//Mage::getModel('customer/customer')->load($customerId)->getData('email');
 		//if($behavior_id!='' && $order_id!='' && $customerId != ''):
-		if($behavior_id!='' && $order_id!=''):
+		if($behavior_id != '' && $order_id != ''):
 			$data = json_encode(array('behavior_id'=>$behavior_id,'behavior_value'=>$behavior_value));
 			//order table
-			$order = Mage::getModel('sales/order')->load($order_id);
-			$order->getBillingAddress()->setData('customer_behavior',$data);
-			$order->setCustomerBehavior($data)->save();
-		endif;
-		//customer table
-		/*$storeId = Mage::app()->getStore()->getStoreId();
-   		$store = Mage::getModel('core/store')->load($storeId);
-		$customerData = Mage::getModel('customer/customer')->setStore($store)->load($customerId);
-    	//$customerData->setData('customer_behavior','test');
-		$customerData->setTest($data);
-    	$customerData->save();
-		print_r($customerData->getData());*/
+			$orders = Mage::getModel('sales/order')->getCollection()
+    		->addAttributeToFilter('customer_email',$customer_email);
+			foreach($orders as $order)
+			{ 
+		       $order->setCustomerBehavior($data)->save();
+		    }
+ 		endif;
 	}
 }

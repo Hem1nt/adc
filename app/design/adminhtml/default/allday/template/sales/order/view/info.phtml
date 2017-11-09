@@ -198,6 +198,12 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                             </form>
                         </td>
                     </tr>
+                    <tr>
+                        <td><span>
+                                <span><span id='behavior_message'></span></span>
+                            </span>
+                        </td>
+                    </tr>
                     <?php
                         if($customercomment != ""){ ?>
                         <tr>
@@ -495,3 +501,9 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
         }
     });
 </script>
+<style type="text/css">
+    #behavior_message{
+        color:#f77c16;
+        margin-left: 40px;
+    }
+</style>
