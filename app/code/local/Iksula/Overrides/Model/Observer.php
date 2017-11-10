@@ -243,18 +243,18 @@ public function paymentMethodIsActive(Varien_Event_Observer $observer) {
 
                         /**/
 
-                        if($method->getCode()=='pay'){
-                        //     if($billingCountry!='US'){
-                            $payOrderCount = $this->payOrderCount($customerEmail);
-                            if($payOrderCount>=1){
-                                $result->isAvailable = true;
-                            }else{
-                                $result->isAvailable = false;
-                            }
+                        // if($method->getCode()=='pay'){
+                        // //     if($billingCountry!='US'){
+                        //     $payOrderCount = $this->payOrderCount($customerEmail);
+                        //     if($payOrderCount>=1){
+                        //         $result->isAvailable = true;
                         //     }else{
                         //         $result->isAvailable = false;
-                        //     }    
-                        }
+                        //     }
+                        // //     }else{
+                        // //         $result->isAvailable = false;
+                        // //     }    
+                        // }
 
                        /* if($method->getCode()=='otherpayments'){
                             if($billingCountry=='US'){
@@ -349,18 +349,18 @@ public function paymentMethodIsActive(Varien_Event_Observer $observer) {
                     //     }
                     // }
 
-                    if($method->getCode()=='pay'){
-                            // if($billingCountry!='US'){
-                        $payOrderCount = $this->payOrderCount($customerEmail);
-                        if($payOrderCount>=1){
-                            $result->isAvailable = true;
-                        }else{
-                            $result->isAvailable = false;
-                        }
-                            // }else{
-                                // $result->isAvailable = false;
-                            // }    
-                    }
+                    // if($method->getCode()=='pay'){
+                    //         // if($billingCountry!='US'){
+                    //     $payOrderCount = $this->payOrderCount($customerEmail);
+                    //     if($payOrderCount>=1){
+                    //         $result->isAvailable = true;
+                    //     }else{
+                    //         $result->isAvailable = false;
+                    //     }
+                    //         // }else{
+                    //             // $result->isAvailable = false;
+                    //         // }    
+                    // }
 
                     // if($method->getCode()=='esafepayment'){
                     //     if($billingCountry=='US'){

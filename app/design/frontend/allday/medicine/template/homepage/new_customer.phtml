@@ -33,7 +33,7 @@
 							
 							<a href="<?php echo $productUrl;?>">
 								<!-- discount tag-->
-			                    <?php if ($bestProducts->getSpecialPrice() && $bestProducts->getDiscountTag() != '') :?>
+			                    <?php if ($bestProducts->getSpecialPrice() != '' && $bestProducts->getDiscountTag() != '' && ($bestProducts->isSaleable() || $bestProducts->getIsInStock()!=0)) :?>
 			                    <span class="discount_tag"><?php echo $bestProducts->getDiscountTag() ?></span>
 			                    <?php endif; ?>
 			                    <!-- discount tag-->
@@ -46,7 +46,7 @@
 												
 							<a href="<?php echo $productUrl;?>">
 								<!-- discount tag-->
-			                    <?php if ($bestProducts->getSpecialPrice() && $bestProducts->getDiscountTag() != '') :?>
+			                    <?php if ($bestProducts->getSpecialPrice() != '' && $bestProducts->getDiscountTag() != '' && ($bestProducts->isSaleable() || $bestProducts->getIsInStock()!=0)) :?>
 			                    <span class="discount_tag"><?php echo $bestProducts->getDiscountTag() ?></span>
 			                    <?php endif; ?>
 			                    <!-- discount tag-->
@@ -77,7 +77,11 @@
 						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(81,176);?>
 						<li>
 							<a href="<?php echo $productUrl;?>">
-
+								<!-- discount tag-->
+			                    <?php if ($bestProducts->getSpecialPrice() != '' && $bestProducts->getDiscountTag() != '' && ($bestProducts->isSaleable() || $bestProducts->getIsInStock()!=0)) :?>
+			                    <span class="discount_tag"><?php echo $bestProducts->getDiscountTag() ?></span>
+			                    <?php endif; ?>
+			                    <!-- discount tag-->
 								<img class="lazy" data-src="<?php echo $productImage; ?>"
 								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
 								 alt="<?php echo $productName;?>" />

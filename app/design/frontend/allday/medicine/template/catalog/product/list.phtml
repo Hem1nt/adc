@@ -73,7 +73,7 @@
                         <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
                         <div class="category-list-row1">
                             <!-- discount tag list view-->
-                            <?php if ($_product->getSpecialPrice() && $_product->getDiscountTag() != '') : ?>
+                            <?php if ($_product->getSpecialPrice() != '' && $_product->getDiscountTag() != '' && ($_product->isSaleable() || $_product->getIsInStock()!=0)) : ?>
                                 <span class="discount_tag"><?php echo $_product->getData('discount_tag') ?></span>
                             <?php endif; ?>
                             <!-- discount tag list view-->
@@ -230,7 +230,7 @@
 <?php endif; ?>
 
 <!-- discount tag gridd view-->
-<?php if ($_product->getSpecialPrice() && $_product->getDiscountTag() != '') : ?>
+<?php if ($_product->getSpecialPrice() != '' && $_product->getDiscountTag() != '' && ($_product->isSaleable() || $_product->getIsInStock()!=0)) : ?>
     <span class="discount_tag"><?php echo $_product->getData('discount_tag') ?></span>
 <?php endif; ?>
 <!-- discount tag gridd view-->
