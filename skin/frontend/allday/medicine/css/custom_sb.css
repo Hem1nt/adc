@@ -1348,7 +1348,6 @@ a.product_img[data-src~="http"] {
     width: 100%;
     font-size: 14px;
     margin-bottom: 5px;
-    text-transform: capitalize;
 }
 .trustpilot_reviews_wrapper .companyReply {
     color: #1f1f1f;
@@ -1358,7 +1357,6 @@ a.product_img[data-src~="http"] {
     width: 100%;
     font-size: 14px;
     margin-bottom: 5px;
-    text-transform: capitalize;
     /*font-weight: 600;*/
     width: 96%;
     display: inline-block;

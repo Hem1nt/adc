@@ -18,17 +18,17 @@
 			<?php
 			echo '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
 			$timpestamp =  strtotime($reviews['createdAt']);
-			echo "<div class='review_date'>".date('Y-m-d',$timpestamp)."</div>";
+			echo "<div class='review_date'>".date('M d, Y',$timpestamp)."</div>";
 			echo "</div>";
 ?>
 <?php   	
 			if($reviews['companyReply']['text'] != ''):$class = 'review_wrap_highlight';endif;
 			echo '<div class="review_wrap '.$class.'">';
 			echo "<div class='review_title'>".$reviews['title']."</div>";
-			echo "<div class='review_txt'>".$reviews['text']."</div>";
+			echo "<div class='review_txt'>".ucfirst(strtolower($reviews['text']))."</div>";
 			echo "</div>";
 			if($reviews['companyReply']['text'] != ''):echo "<div class='companyReply'><div style='color:red;font-weight: normal;
-			color: #333;font-weight: 600;'>Company Reply: </div><br>".$reviews['companyReply']['text']."</div>";endif;
+			color: #333;font-weight: 600;'>AllDayChemist Reply: </div><br>".ucfirst(strtolower($reviews['companyReply']['text']))."</div>";endif;
 			echo "</div>";
 		endforeach;
 ?>
