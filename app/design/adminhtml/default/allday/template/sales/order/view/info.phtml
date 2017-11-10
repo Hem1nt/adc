@@ -187,9 +187,9 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                             ?>
                             <?php $customer_behavior_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savecustomerbehavior');?>
                             <form action="#" onsubmit="return false;" method="post" class="customer_behavior_form_class">
-                                <label><input type="radio" name="behavior" value="1"> Good </label>
-                                <label><input type="radio" name="behavior" value="2"> Bad </label>
-                                <label><input type="radio" name="behavior" value="3"> Poor </label>
+                                <label><input type="radio" name="behavior" value="1">Good</label>
+                                <label><input type="radio" name="behavior" value="2">Neutral</label>
+                                <label><input type="radio" name="behavior" value="3">Poor</label>
                                 <button id="customer_behavior" title="Edit" type="button" class="scalable" onclick="saveCustomerBehavior('<?php echo $customer_behavior_url;?>','<?php echo $_order->getData('customer_id');?>')" style="">
                                     <span>
                                         <span><span>Save Behavior</span></span>
