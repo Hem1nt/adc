@@ -483,7 +483,7 @@ body *, input, select, textarea, button{
 }
 
 .cms-home .recently_view_category_content .register_user_categories ul.multiple-items li a span {
-    font-size: 16px;
+    font-size: 14px;
     color: #333333;
     /*font-family: Droid sans-serif;*/
 }
