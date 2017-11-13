@@ -1255,8 +1255,31 @@ a.product_img[data-src~="http"] {
     margin: 0;
 }
 /*discount tag*/
- .cms-home span.discount_tag, .catalog-category-view span.discount_tag,
- .catalogsearch-result-index span.discount_tag{
+ .cms-home span.discount_tag, 
+ .catalog-category-view span.discount_tag,
+ .catalogsearch-result-index span.discount_tag, 
+ .catalog-product-view .product-img-box .product-image span.discount_tag{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 45px;
+    background-color: #4f6b05;
+    color: #fff !important;
+    border-radius: 0 0 20px 20px;
+    padding-top: 10px;
+    padding: 10px 6px;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 14px;
+    text-transform: capitalize;
+    text-align: center;
+    background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
+    width: 48px;
+    height: 52px;
+    background-size: 59px;
+}
+.catalog-product-view .pr-social-icons-wrapper .pr-name-social-icons span.discount_tag{
     position: absolute;
     top: 5px;
     left: 5px;
@@ -1269,7 +1292,7 @@ a.product_img[data-src~="http"] {
     font-weight: bold;
     font-size: 15px;
     line-height: 14px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     text-align: center;
     background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
     width: 49px;

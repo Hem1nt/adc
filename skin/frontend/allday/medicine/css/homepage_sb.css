@@ -223,7 +223,7 @@ body *, input, select, textarea, button{
     margin: 0 auto;
 }
 .cms-home .main_config_page .best_seller .best_seller_data ul.single-item .slick-list li a span{
-    font-size: 16px;
+    font-size: 14px;
     color: #333333;
     /*font-family: Droid sans-serif;*/
 }
@@ -784,15 +784,16 @@ body *, input, select, textarea, button{
     color: #fff !important;
     border-radius: 0 0 20px 20px;
     padding-top: 10px;
+    padding: 10px 6px;
     font-weight: bold;
     font-size: 15px;
     line-height: 14px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     text-align: center;
     background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
-    width: 49px;
-    height: 40px;
-    background-size: 46px;
+    width: 48px;
+    height: 52px;
+    background-size: 59px;
 }
 @media all and (max-width: 1024px){
 
@@ -1104,6 +1105,7 @@ body *, input, select, textarea, button{
     }
     .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data ul.single-item .slick-list li a span.discount_tag {
         left: 20px;
+        font-size: 14px;
     }
     .frontend-index-allbrands #search_sidebar_form .drugSearch li:nth-child(2) {
         /*width: 48.5%;*/
@@ -1151,15 +1153,16 @@ body *, input, select, textarea, button{
         color: #fff !important;
         border-radius: 0 0 20px 20px;
         padding-top: 10px;
+        padding: 10px 6px;
         font-weight: bold;
         font-size: 15px;
         line-height: 14px;
-        text-transform: uppercase;
+        text-transform: capitalize;
         text-align: center;
         background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
-        width: 49px;
-        height: 40px;
-        background-size: 46px;
+        width: 48px;
+        height: 52px;
+        background-size: 59px;
     }
 }
 @media all and (max-width: 600px){
