@@ -96,7 +96,11 @@ if ($zoomHeight) {
             <!-- <a href='<?php //echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize($bigImageWidth, $bigImageHeight);?>'   class='cloud-zoom-gallery' title='<?php //echo $this->htmlEscape($_image->getLabel()) ?>'
             rel="useZoom: 'zoom1', smallImage: '<?php //echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize(298, 298);?>' "> -->
             <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $_image->getFile())->resize(500, 500);?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
-            <span class="discount_tag">40% off</span>
+            <!-- discount tag-->
+                <?php if ($product->getSpecialPrice() != '' && $product->getDiscountTag() != '' && ($product->isSaleable() || $product->getIsInStock()!=0)) :?>
+                <span class="discount_tag"><?php echo $product->getDiscountTag() ?></span>
+                <?php endif; ?>
+            <!-- discount tag-->
             <!-- </a> -->
         </li>
     <?php endforeach; ?>
