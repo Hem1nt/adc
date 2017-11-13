@@ -153,6 +153,8 @@
 		</reference>
 
 	</checkout_onepage_index>
+	<!--extended review new page-->
+
 
 	<!-- <opc_index_index>
 		<reference name="head">
@@ -306,8 +308,19 @@
      	<reference name="root">
 			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
 		</reference>
-		<!-- <reference name="footer">
-			<action method="setTemplate"><template>page/1column.phtml</template></action>
-		</reference> -->
      </trustedcompany_review_index>
+
+      <extendedreview_index_reviewpage>
+         <reference name="content">
+         	 <reference name="root">
+           	  <action method="setTemplate"><template>page/1column.phtml</template></action>
+        	</reference>
+        	<reference name="right">
+            <block type="catalog/product_compare_sidebar" before="-" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+            <block type="core/template" name="featured_products" after="catalog.compare.sidebar" template="catalog/category/featured_products.phtml" />
+        </reference>
+	        <block type="extendedreview/review_product_view_summary" name="product.reviews" template="review/product/view/reviewsummary.phtml" />
+    		</reference>
+    		
+    </extendedreview_index_reviewpage>
 </layout>
