@@ -269,7 +269,6 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 
 
 	public function saveBillingAction(){
-
 		if ($this->_expireAjax()) {
 			return;
 		}
@@ -277,6 +276,16 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 
 		if ($this->getRequest()->isPost()) {
 
+		/*Customer Telephone S*/
+			if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+				$customer = Mage::getSingleton('customer/session')->getCustomer();
+				if (!$customer->getContactNumber()){
+					$data = $this->getRequest()->getPost('billing', array());
+					$customer->setData('contact_number', $data['telephone']);
+		    		$customer->save();
+				}
+			}
+		/*Customer Telephone E*/
 			$data = $this->getRequest()->getPost('billing', array());
 			Mage::getSingleton('core/session')->setTimeforcall($data['timetocall']);
 			$timeforcall = Mage::getSingleton('core/session')->getTimeforcall();

@@ -26,8 +26,15 @@
                     <!--lazy loading starts-->
             		<a href="<?php echo $productsCollection->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($productsCollection, 'small_image'), null, true) ?>" class="product_img">
                     <img class="lazy" src="<?php echo $this->getSkinUrl('images/loading_1.gif'); ?>" data-src="<?php echo $productsCollection->getImageUrl(); ?>" alt="<?php echo $productsCollection->getName();?>">
+                    <!-- discount tag-->
+                    <?php if ($productsCollection->getSpecialPrice() != '' && $productsCollection->getDiscountTag() != '' && ($productsCollection->isSaleable() || $productsCollection->getIsInStock()!=0)) : ?>
+                    <span class="discount_tag"><?php echo $productsCollection->getData('discount_tag') ?></span>
+                    <?php endif; ?>
+                    <!-- discount tag-->
                     </a>
                     <!--lazy loading end-->
+
+
                     <?php if(!$productsCollection->isSaleable()):?>
                         <div class="stock_label">
                             <?php $custom_stock_status = $_frontendHelper->getCustomStockStatus($productsCollection);

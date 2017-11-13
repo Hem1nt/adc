@@ -1,6 +1,66 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
+	/*more info*/
+	.customer-account-edit .col-main .more_info_custom .form-list {
+	    display: flex;
+	    flex-direction: column;
+	}
+	.customer-account-edit .col-main .more_info_custom .form-list li:nth-child(2){
+	   order: -1;
+	}
+	.customer-account-edit #more_info .form-list .input-box.time_to_call {
+	    float: none;
+	    margin-top: 10px;
+	}
+	.customer-account-edit #more_info .form-list select {
+	    width: 175px !important;
+	}
+	.customer-account-edit #more_info .form-list .input-box.time_to_call select{
+	    float: none;
+	    margin-top: 10px;
+	    width: 80px !important;
+	}
+	/*discount tag*/
+	.catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
+	.review-product-list .product-details-table table.new_product_list td.price_value span.discount_tag {
+	    color: #fff;
+	    font-weight: bold;
+	    border: 1px solid red;
+	    border-radius: 12px;
+	    background: red;
+	    text-align: center;
+	}
+	.catalog-product-view .product-details-table table.new_product_list td.price_value span, 
+	.review-product-list .product-details-table table.new_product_list td.price_value span {
+	    display: block !important;
+	}
+	.catalog-product-view .product-details-table table.new_product_list td.custom_price_center, 
+	.review-product-list .product-details-table table.new_product_list td.custom_price_center{
+	    text-align: center !important; 
+	}
+	 .cms-home span.discount_tag, .catalog-category-view span.discount_tag,
+ 	.catalogsearch-result-index span.discount_tag {
+	    position: absolute;
+	    top: 5px;
+	    left: 5px;
+	    width: 40px;
+	    height: 45px;
+	    background-color: #4f6b05;
+	    color: #fff !important;
+	    border-radius: 0 0 20px 20px;
+	    padding-top: 10px;
+	    font-weight: bold;
+	    font-size: 15px;
+	    line-height: 14px;
+	    text-transform: uppercase;
+	    text-align: center;
+	    background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
+	    width: 49px;
+	    height: 40px;
+	    background-size: 46px;
+		}
+/*discount tag end*/
 	/*payment-block */
 	.opc-index-index .payment-block .trust_banner{
 	    width: 100%;
@@ -1122,8 +1182,19 @@
         width: auto !important;
         max-width: 100%;
     }
-
-
+    .catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
+	.review-product-list .product-details-table table.new_product_list td.price_value span.discount_tag {
+	   color: #fff;
+	    font-weight: bold;
+	    border: 1px solid red;
+	    border-radius: 12px;
+	    background: red;
+	    text-align: center;
+	}
+	.catalog-product-view .product-details-table table.new_product_list td.custom_price_center, 
+	.review-product-list .product-details-table table.new_product_list td.custom_price_center{
+	    text-align: center !important; 
+	}
 }
 @media only screen and (max-width: 568px){
 	.testimonial-form-index div#ratingBox{
