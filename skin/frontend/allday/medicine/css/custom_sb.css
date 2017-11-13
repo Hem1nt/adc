@@ -1261,7 +1261,112 @@ a.product_img[data-src~="http"] {
 .payment_below_outer .payment_below_msg{
     color: red;
 }
-
+/*refill remainder popup*/
+.popup_refill_overlay{
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+.popup_refill{
+    top: 50%;
+    left: 50%;
+    margin-top: -90px;
+    width: 340px;
+    height: 180px;
+    text-align: center;
+    z-index: 99999999;
+    display: none;
+    margin-left: -200px;
+    background: #FFF;
+    /* border: 2px solid #1f1f1f; */
+    padding: 30px;
+    border-radius: 5px;
+    position: fixed;
+}
+.reminderdiv {
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #678c05;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+}
+.reminder-container ul li {
+    margin-bottom: 10px;
+}
+.popup_refill .reminder-container {
+    position: static;
+}
+.reminder-container ul li.label {
+    float: left;
+    width: 30%;
+    text-align: left;
+    line-height: 28px;
+    font-size: 13px;
+}
+.reminder-container ul li.input_text_field {
+    float: left;
+    width: 70%;
+    text-align: right;
+    line-height: 30px;
+}
+.reminder-container ul li input.input-text {
+    border-radius: 5px;
+    border: 1px solid #aaa !important;
+    padding: 7px 10px;
+    width: 80%;
+    float: left;
+    font-size: 13px;
+}
+.my-account .reminder-container input[type="text"]{
+    /*border: 1px solid #ddd !important;*/
+    font-size: 13px !important;
+    float: left;
+}
+.my-account .reminder-container ul li select{
+    padding: 3px 10px;
+    float: left;
+    margin-right: 10px;
+}
+.my-account .reminder-container ul li #captchaimg{
+    float: left;
+    width: 100px;
+    height: 27px;
+    border-radius: 5px;
+}
+.my-account .reminder-container .captcha_input{
+    margin-top: 0;
+    width: 80px;
+    margin-left: 10px;
+}
+.my-account .reminder-container .click_here{
+    display: inline-block;
+    text-align: left;
+    font-size: 12px;
+}
+.my-account .reminder-container ul li.submit_btn_li{
+    text-align: left;
+}
+.reminder-container ul li button.button {
+    margin: 0;
+}
+ .popup_refill_close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.popup_refill .validation-advice {
+    text-align: left;
+}
+/*refill remainder popup end*/
 /*voucher payment end*/
 .catalog-category-view .filter-block-wrap .block-content.filter-block-tab {
     border-top: 0 !important;

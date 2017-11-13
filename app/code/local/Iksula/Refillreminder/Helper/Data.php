@@ -228,6 +228,39 @@ class Iksula_Refillreminder_Helper_Data extends Mage_Core_Helper_Abstract
 		}
 		return $parentIds;
 	}
+	public function calculatedate()
+	{
+		$currentDate=Mage::getModel('core/date')->date('d');
+		$model = Mage::getModel('refillreminder/refillreminder');
+          $collection = $model->getCollection();
+          foreach($collection->getData() as $myAllReminders) 
+          {
+            $order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
+            $enityId=$order->getEntityId();
+
+          
+          $currentDate = Mage::getModel('core/date')->date('d');
+          // $order_id=$myAllReminders['order_Id'];
+          $createDate=$myAllReminders['created_date'];
+          $createDate = new DateTime($createDate);
+
+			$strip = $createDate->format('d');
+         
+          $reminderDate=$myAllReminders['reminder_days'];
+      	}
+	
+	}
+	public function sendNewOrderReminder()
+	{
+		$refillReminder = Mage::getModel('refillreminder/refillreminder')->getCollection();
+		 foreach($refillReminder as $reminderData) 
+          {
+          	echo $currentDate = Mage::getModel('core/date')->date('d');
+          	echo "<br>";
+          	echo $reminderData->getCreatedDate();
+          	//$createDate=$myAllReminders['created_date'];
+          }
+	}
 
 }
 	 

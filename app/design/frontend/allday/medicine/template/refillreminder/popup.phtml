@@ -1,0 +1,47 @@
+<div class="reminderdiv"><span>Reminder</span></div>
+<div class="reminder-container">
+	<div id="refill_reminder_msg"></div>
+	<form id="form_refill_reminder" action="<?php echo Mage::getUrl(); ?>refillreminder/index/post" name="form_refill_remind" method="post">
+		<ul>
+			<li>
+				<select id="remind_count">
+					<?php for($i=1; $i<=30; $i++) {
+						echo '<option value="'.$i.'">'.$i.'</option>';
+					}?>s
+				</select>
+				<select id="remind_type">
+					<option value="d">Day(s)</option>
+					<option value="m">Month(s)</option>
+				</select>
+			</li>
+			<li>
+				<label for='message'>Enter the code</label>
+                <div class="input-box">
+                    <img src="<?php echo Mage::getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' ><br/>
+                    <input id="3_letters_code" class="required-entry validate-captcha" name="3_letters_code" type="text"><br/>
+                    <small>Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
+                </div>
+                <input type="hidden" id="check_me" />
+			</li>
+			<li><button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button></li>
+		</ul>
+	</form>
+</div>
+<script type="text/javascript">
+var valReminder = new Validation('form_refill_reminder');
+jQuery(document).ready(function() {
+	window.RefreshCapcha = function(){
+		 jQuery.post('<?php echo $this->getUrl()."captcha_code_file.php?code=".rand();?>', function(data){
+	        if(data!="")
+			{
+				jQuery("#check_me").val(data);
+			}
+	    });
+	}
+	window.refreshCaptcha = function(){
+	    var img = document.images['captchaimg'];
+	    img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
+		setTimeout('RefreshCapcha()', 200);
+	}
+});
+</script>
