@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Iksula_Customerdelete>
-      <version>0.1.0</version>
+      <version>0.1.1</version>
     </Iksula_Customerdelete>
   </modules>
   <frontend>
@@ -111,38 +111,38 @@
 		<title>Custom Modules</title>
 		<sort_order>100</sort_order>
 		<children>
-		  <customerdeletebackend module="customerdelete">
+		  <!-- <customerdeletebackend module="customerdelete">
 			<title>Ratio Calculator</title>
 			<sort_order>0</sort_order>
 			<action>customerdelete/adminhtml_customerdeletebackend</action>
-		  </customerdeletebackend>
-		  <productwiseqty module="customerdelete">
+		  </customerdeletebackend> -->
+		  <!-- <productwiseqty module="customerdelete">
 				<title>Manage Reports</title>
 				<sort_order>1</sort_order>
 				<action>customerdelete/adminhtml_customerdeletebackend/productwiseqty</action>
-			</productwiseqty>
+			</productwiseqty> -->
 <!-- 		  <customerdelete module="customerdelete">
 		    <title>Manage Customerdelete</title>
 			<sort_order>0</sort_order>
 			<action>customerdelete/adminhtml_customerdelete</action>
 		  </customerdelete> -->
-		  <callforoffers module="callforoffer">
+		  <!-- <callforoffers module="callforoffer">
 		  	<title>Manage Callforoffers</title>
 		  	<sort_order>0</sort_order>
 		  	<action>callforoffer/adminhtml_callforoffers</action>
 		  </callforoffers>
-
+ -->
 		  <!-- <refillreminder module="refillreminder">
 		  	<title>Manage Refillreminder</title>
 		  	<sort_order>0</sort_order>
 		  	<action>refillreminder/adminhtml_refillreminder</action>
 		  </refillreminder> -->
 
-		    <medical module="medical">
+		   <!--  <medical module="medical">
 		    <title>Manage Medical History</title>
 			<sort_order>0</sort_order>
 			<action>medical/adminhtml_medical</action>
-		  </medical>
+		  </medical> -->
 
 		</children>
 	  </customerdelete>

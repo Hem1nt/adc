@@ -1071,6 +1071,45 @@
                   </best_seller_category>
                 </groups>
               </best_seller>
+              <order_reminder>
+                <label>Refill Reminder Template Id's</label>
+                <tab>systemconfig</tab>
+                <sort_order>1000</sort_order>
+                <frontend_type>text</frontend_type>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <groups>
+                  <order_reminder_templates translate="label">
+                    <label>Refill Reminder Template ID's</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <request_template translate="label">
+                        <label>Request Template id:</label>
+                         <comment>Mail will shoot when customer request for refill</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </request_template>
+                      <reminder_template translate="label">
+                        <label>Reminder template Id</label>
+                         <comment>Mail will shoot on remind me date</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </reminder_template>
+                    </fields>
+                  </order_reminder_templates>
+                </groups>
+              </order_reminder>
             </sections>
             
           </config>

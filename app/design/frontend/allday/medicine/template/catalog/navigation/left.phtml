@@ -36,7 +36,10 @@
     }
 </style>
 <?php if (!Mage::registry('current_category')) return ?>
-<?php $_categories = $this->getCurrentChildCategories() ?>
+<?php $_categories = $this->getCurrentChildCategories() 
+//print_r($_categories);exit;
+
+?>
 <?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
 <?php if($_count): ?>
 <div class="block block-layered-nav filter-block-wrap">
@@ -49,7 +52,8 @@
             <dt><?php echo $this->__('Category') ?></dt>
             <dd>
                 <ol>
-                <?php foreach ($_categories as $_category): ?>
+                <?php foreach ($_categories as $_category): 
+                ?>
                     <?php if($_category->getIsActive()): ?>
                     <li <?php if(Mage::registry('current_category')->getId() == $_category->getEntityId() ):?> class="current" <?php endif;?>>
                         <a href="<?php echo $this->getCategoryUrl($_category) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a> (<?php echo $_category->getProductCount() ?>)

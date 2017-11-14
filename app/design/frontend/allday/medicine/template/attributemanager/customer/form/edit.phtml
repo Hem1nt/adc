@@ -70,7 +70,7 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
         </ul>
     </div>
 
-    <div class="fieldset" id="more_info">
+    <div class="fieldset more_info_custom" id="more_info">
         	<h1><?php echo $this->__('More Information') ?></h1>
             <ul class="form-list">
             	<?php
@@ -106,7 +106,7 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
                         // echo $timeoptionval[0];
                         ?>
                             
-                      <div class="input-box">
+                      <div class="input-box time_to_call">
                           <select id="timeval1" style="width:80px;float:left;margin-right:10px;">
                           <?php $timecounter = 1;
                         for($time=1; $time <=24 ; $time++) { 
@@ -305,4 +305,8 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
 	setExtraValidation(true);
 //]]>
 //jQuery('#contact_number').prop('required',true);
+jQuery(document).ready(function() {
+    jQuery('#contact_number').select();
+    jQuery("#contact_number").css("background-color", "#FFFF99");
+});
 </script>

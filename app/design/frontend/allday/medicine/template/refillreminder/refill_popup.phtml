@@ -1,0 +1,167 @@
+<style type="text/css">
+body {
+	min-width: 0px
+}
+</style>
+<?php
+$customerSession = Mage::getSingleton('customer/session');
+if($customerSession->isLoggedIn()) {
+	$email = $customerSession->getCustomer()->getEmail();
+	$name = $customerSession->getCustomer()->getName();
+	$getCreatedAt = $customerSession->getCustomer()->getCreatedAt();
+}
+$customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
+$customerEmail = ""; $custPhone = "";
+if($customerLoggedIn)
+{
+	$customerData = Mage::getSingleton('customer/session')->getCustomer();
+	$customerEmail = $customerData->getEmail();
+	$custPhone = "";
+}
+?>
+
+<span class="popup_refill_close">
+    <img class="close-btn" src="<?php echo $this->getSkinUrl('images/notify-close.png');?>" alt=" <?php echo $this->__('close button') ?>" />
+</span>
+<div class="reminderdiv"><span>Order Reminder Form</span></div>
+<div class="reminder-container">
+	<div style="display:none; padding:10px" id="adc_msg">Congratulation! This product has been added in reminder</div>
+	<form id="form_refill_reminder" action="<?php echo $this->getUrl(); ?>refillreminder/index/save" name="form_refill_remind" method="post">
+		<ul>
+			<?php /*<li class="label">Name</li>
+			<li class="input_text_field">
+				<input class="input-text required-entry validate-name" id="customer_name" name="customer_name" value="<?php echo $name; ?>" disabled/>
+			</li>
+			<li class="label">Email</li>			
+			
+			<li class="input_text_field">
+			<input class="input-text required-entry validate-email" type="text" name="txtmail" id="txtmail" value="<?php echo $customerEmail; ?>" /> <input type="hidden" name="txtproduct_id" id="txtproduct_id" value="<?php echo $this->getRequest()->getParam("product_id"); ?>" /> </li>
+			
+			<li class="label">Telephone</li>
+			<li class="input_text_field">
+				<input class="input-text required-entry validate-phone" id="txtphone" name="txtphone" value="<?php echo $custPhone; ?>" />
+			</li>
+			<li class="label">Order Id</li>
+			<li class="input_text_field">
+				<input class="input-text" id="order_id" name="order_id" disabled> 
+			 </li> */ ?>
+				<!---oRDER__ID END-->
+			
+			<li class="label">Remind Me In</li>
+				<li class="input_text_field">
+				<select id="remind_count">
+					<?php for($i=1; $i<=30; $i++) {
+						echo '<option value="'.$i.'">'.$i.'</option>';
+					}?>s
+				</select>
+				<select id="remind_type">
+					<option value="d">Day(s)</option>
+					<option value="m">Month(s)</option>
+				</select>
+			</li>
+			    <input type="hidden" name="custom_order_id" id="order_id11" value="<?php echo $this->getOrderid();?>" />
+				<li class="label">Enter the code</li>
+				
+				<li class="label"></label>
+                <li class="input-box input_text_field">
+                    <img src="<?php echo Mage::getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' >
+                    <input id="3_letters_code" class="captcha_input" class="required-entry validate-captcha" name="3_letters_code" type="text"><br/>
+                    <small class="click_here">Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
+                </li>
+                <input type="hidden" id="check_me" />
+			<li class="label"></li>
+			<li class="input_text_field submit_btn_li">
+				<button type="submit" title="Submit" onclick="callController()" class="button"><span><span>Submit</span></span></button>
+			</li>
+		</ul>
+	</form>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    refreshCaptcha();
+});
+
+var valReminder = new Validation('form_refill_reminder');
+jQuery("#form_refill_reminder").submit(function(){
+	if(valReminder.validate())
+	{
+		var url = jQuery(this).attr('action'), days;
+		
+		var rType = jQuery("#remind_type").val();
+		if(rType=="d") {
+			days = jQuery("#remind_count").val();
+		}
+		else {
+			days = jQuery("#remind_count").val()*30;
+		}
+		 var values = jQuery("#order_id").val();
+		 var values1 = jQuery("#order_id11").val();	
+		 //alert(values1);	
+		var values = {'order_id':jQuery("#order_id11").val(),'customer_name':jQuery("#customer_name").val(),'txtmail':jQuery("#txtmail").val(), 'txtproduct_id': jQuery("#txtproduct_id").val(), 'txtphone': jQuery("#txtphone").val(), 'remind_days': days};
+		//alert(values);
+		jQuery.ajax({
+			url: url,
+			type: "post",
+			data: values,
+			success: function(data){
+				//alert(data);
+				//jQuery("#form_refill_reminder").hide();
+				jQuery("#adc_msg").html(data).show();
+				//setTimeout(function(){ parent.jQuery.fancybox.close(); },2000);
+				/*parent.jQuery.fancybox.close();*/
+			},
+			error:function(){
+				//alert("failure");
+			}
+		});
+		return false;
+	}
+});
+jQuery("#remind_count,#remind_type").click(function(){ CheckDays(); });
+
+function CheckDays() {
+	//alert(jQuery(this).val());
+	if(jQuery("#remind_count").val()>12) {
+		jQuery("#remind_type").val("d").attr('disabled', true).css('background','#eee');
+	} else {
+		jQuery("#remind_type").attr('disabled', false).css('background','#fff');
+	}
+}
+var form_refill_remind = new Validation('form_refill_remind');
+Validation.add('validate-captcha','Enter valid code',function(field_value){
+   if(jQuery("#check_me").val() != "")
+   {
+		var me = jQuery("#check_me").val().split("_");
+		if(me[1] == field_value)
+		{
+			return true;
+		}
+		return false;
+   }
+	return false;
+});
+function RefreshCapcha()
+{
+	 jQuery.post('<?php echo $this->getUrl()."captcha_code_file.php?code=".rand();?>', function(data){
+        if(data!="")
+		{
+			jQuery("#check_me").val(data);
+		}
+    });
+}
+function refreshCaptcha()
+{
+    var img = document.images['captchaimg'];
+    img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
+	setTimeout('RefreshCapcha()', 200);
+}
+</script>
+<!--controllers code-->
+<script type="text/javascript">
+ function callController()
+ {  var redirectview = '<?php echo Mage::getBaseUrl().'refillreminder/view/index';?>';
+    window.location.href=redirectview;
+
+ }
+</script>
