@@ -87,8 +87,8 @@ if ($zoomHeight) {
 <p class="product-image">
     <?php
         $_img = '<img src="'.$this->helper('catalog/image')->init($product, 'image')->resize(298).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
-        echo $outputHelper->productAttribute($product, $_img, 'image');
-        echo '<span class="discount_tag">40% off</span>';
+        echo $outputHelper->productAttribute($product, $_img, 'image');?>
+        <span class='discount_tag'><?php echo $product->getDiscountTag() ?></span>
     ?>
 </p>
 <?php endif; ?>
