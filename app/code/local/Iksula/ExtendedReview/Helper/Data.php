@@ -73,6 +73,7 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
       
     	//$this->sendTransactionalEmail($EmailOfCommentedUser,$NameOfCommentedUser,$msgForComment);      
     }
+    /*Removed email function*/
     public function sendTransactionalEmail($recepientEmail,$recepientName,$msg)
     {
       // Transactional Email Template's ID
