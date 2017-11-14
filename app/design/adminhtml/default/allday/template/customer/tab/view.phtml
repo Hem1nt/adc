@@ -35,6 +35,7 @@ $lastLoginDateStore = $this->getStoreLastLoginDate();
 
 $createDateAdmin    = $this->getCreateDate();
 $createDateStore    = $this->getStoreCreateDate();
+
 ?>
 <div class="entry-edit">
     <div class="entry-edit-head"><h4 class="icon-head head-customer-view"><?php echo Mage::helper('customer')->__('Personal Information') ?></h4></div>
@@ -76,9 +77,21 @@ $createDateStore    = $this->getStoreCreateDate();
                 <td><strong><?php echo $this->__('Customer Ip:') ?></strong></td>
                 <td><?php echo $this->getRegisterIp() ?></td>
             </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Contact Number:') ?></strong></td>
+                <td><?php echo $this->getContactNumber() ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Email Address:') ?></strong></td>
+                <td><?php echo $this->getEmail() ?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Customer Behavior:') ?></strong></td>
+                <td><?php echo $this->getCustomerBehavior() ?></td>
+            </tr>
         </table>
         <address class="box-right">
-            <strong><?php echo $this->__('Default Billing Address') ?></strong><br/>
+            <strong><?php echo $this->__('Default Billing Address:') ?></strong><br/>
             <?php echo $this->getBillingAddressHtml() ?>
         </address>
     </fieldset>
