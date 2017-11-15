@@ -25,10 +25,13 @@
 			if($reviews['companyReply']['text'] != ''):$class = 'review_wrap_highlight';endif;
 			echo '<div class="review_wrap '.$class.'">';
 			echo "<div class='review_title'>".$reviews['title']."</div>";
-			echo "<div class='review_txt'>".ucfirst(strtolower($reviews['text']))."</div>";
+			//$review_txt = preg_replace_callback('/[.!?].*?\w/', create_function('$matches', 'return strtoupper($matches[0]);'),ucfirst(strtolower($reviews['text'])));
+			echo "<div class='review_txt'>".$reviews['text']."</div>";
 			echo "</div>";
-			if($reviews['companyReply']['text'] != ''):echo "<div class='companyReply'><div style='color:red;font-weight: normal;
-			color: #333;font-weight: 600;'>AllDayChemist Reply: </div><br>".ucfirst(strtolower($reviews['companyReply']['text']))."</div>";endif;
+			if($reviews['companyReply']['text'] != ''):
+			//$companyReply = preg_replace_callback('/[.!?].*?\w/', create_function('$matches', 'return strtoupper($matches[0]);'),ucfirst(strtolower($reviews['companyReply'])));
+			echo "<div class='companyReply'><div style='color:red;font-weight: normal;
+			color: #333;font-weight: 600;'>AllDayChemist Reply: </div><br>".$reviews['companyReply']['text']."</div>";endif;
 			echo "</div>";
 		endforeach;
 ?>
