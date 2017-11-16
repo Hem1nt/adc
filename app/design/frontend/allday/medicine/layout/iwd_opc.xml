@@ -71,6 +71,10 @@
 
                     <block type="checkout/onepage_shipping" name="checkout.onepage.medicalhistory" as="medicalhistory" template="opc/onepage/medicalhistory.phtml"/>
                     
+                    <!-- Confirm Address Step -->
+                    <block type="checkout/onepage_shipping" name="checkout.onepage.confirmaddressstep" as="confirmaddressstep" template="opc/onepage/confirmaddressstep.phtml"/>
+                    <!-- Confirm Address Step -->
+
                     <!-- COUPON FORM -->
                     <!-- <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="opc/onepage/coupon.phtml"/> -->
                     <block type="rewardpoints/coupon" name="checkout_cart_coupon_normal" as="coupon_points" template="rewardpoints/reward_coupon.phtml">
