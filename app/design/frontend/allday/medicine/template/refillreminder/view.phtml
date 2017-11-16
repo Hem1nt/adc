@@ -1,18 +1,56 @@
+
 <div class="page-title">
     <h1><?php echo $this->__('Refill Reminder') ?></h1>
 </div>
-<?php //echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php
 $customerSession = Mage::getSingleton('customer/session');
+
+
+
 $productModel = Mage::getModel('catalog/product');
+$salesModel=Mage::getModel('sales/order')->getCollection();
+//print_r($salesModel);exit;
+
 $childProductModel = Mage::getModel('catalog/product');
+
+
 $productConfModel = Mage::getModel('catalog/product_type_configurable');
-$model = Mage::getModel('refillreminder/refillreminder'); //model to process reminder checking data
+$model = Mage::getModel('refillreminder/refillreminder');
+ $customerId=Mage::getSingleton('customer/session')->getId();
+//print_r($customerId);die;
+ $customerEmail=$customerSession->getCustomer()->getEmail();
+
+
+// print_r($model);die; //model to process reminder checking data
 if($customerSession->isLoggedIn()) {
 	$email = $customerSession->getCustomer()->getEmail();
+	$name = $customerSession->getCustomer()->getName();
+	$getCreatedAt = $customerSession->getCustomer()->getCreatedAt();
+	$customerId=$customerSession->getId();
 }
+//customer phone 
+$customer = Mage::getModel('customer/customer')
+    ->load($customerId);
+    foreach ($customer->getAddresses() as $address)
+{
+    $telephone = $address['telephone'];
+    //print_r($data);exit;
+}
+
+
+    
+
+
+//$customer->setWebsiteId(Mage::app()->getWebsite()->getId()); 
 $collection = $model->getCollection();
-$collection->addFieldToFilter('customer_email', array('eq'=>$email));
+$collection->addFieldToFilter('customer_id', array('eq'=>$customerId))
+->addFieldToSelect('*')
+->addFieldToFilter('customer_email', array('eq'=>$email));
+
+//echo "<pre>";print_r($collection->getData());
+//->addFieldToFilter('order_id',array('eq'=>$name));
 ?>
 <?php echo $this->getToolbarHtml(); ?>
 <?php if($collection->getSize()) { ?>
@@ -27,41 +65,75 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
     <col width="1" />
     <thead>
         <tr>
-            <th><?php echo $this->__('SKU') ?></th>
-            <th><?php echo $this->__('Product Name') ?></th>
-            <th><?php echo $this->__('Pack size') ?></th>
-            <th><?php echo $this->__('Product Image') ?></th>
+      
+             <th><?php echo $this->__('Customer Name') ?></th>
+             <th><?php echo $this->__('Customer Email') ?></th>
+             <th><?php echo $this->__('Order Id') ?></th>
+             <th><?php echo $this->__('Customer Phone') ?></th>
             <th><?php echo $this->__('Remind in') ?></th>
             <th><?php echo $this->__('Next reminder') ?></th>
-            <!-- <th><span class="nobr"><?php //echo $this->__('Options') ?></span></th> -->
         </tr>
     </thead>
+    
 	<?php
+
 		foreach($collection->getData() as $myAllReminders) {
+		
+
+			$currentDate = Mage::getModel('core/date')->date('d');
+		
+			$order_id=$myAllReminders['order_id'];
+			//print_r($order_id);exit;
+			
+			$createDate=$myAllReminders['created_date'];
+		
+			$reminderDate=$myAllReminders['reminder_days'];
+
+			//$nextReminder=$createDate+$reminderDate;
+			//print_r($nextReminder);exit;
+		
+			$order=Mage::getModel('sales/order')->loadByIncrementId($order_id);
+			$enityId=$order->getEntityId();
+
+
 			$child_id = $productModel->getIdBySku($myAllReminders['product_sku']);
 			$childProduct = $productModel->load($child_id);
 			$parent_ids = $productConfModel->getParentIdsByChild($child_id);
 			$product = $productModel->load($parent_ids[0]);
 			if($myAllReminders['reminder_days']>30) {
 				$remindIn = round($myAllReminders['reminder_days']/30)." Months";
+				
 				if(round($myAllReminders['reminder_days']/30) == "1") {
 					$remindIn = round($myAllReminders['reminder_days']/30)." Month";
+					
 				}
 			}
 			else {
+				
 				$remindIn = $myAllReminders['reminder_days']." Days";
+				
 				if($myAllReminders['reminder_days'] == "1") {
 					$remindIn = $myAllReminders['reminder_days']." Day";
 				}
 			}
+			//currentdays
+			$remindIn = $myAllReminders['reminder_days']." Day";
+			$system_date=Mage::getModel('core/date')->gmtDate('d');
+			
 			$lastRemindDate = date("Y-m-d", strtotime($myAllReminders['last_mail_sent']));
+			
 			$separateSkuPackSize = explode("-", $myAllReminders['product_sku']);
+			//var_dump($separateSkuPackSize);die;
 			$tblData = '<tr>';
-			$tblData.= '<td class="first_img_td"><a href="'.$product->getProductUrl().'"><img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
-			$tblData.= '<td class="sku first">'.$separateSkuPackSize[0]/*$product->getSku()*/;
+			// $tblData.= '<td class="first_img_td"><a href="'.$product->getProductUrl().'"><img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
+			/*$tblData.= '<td class="sku first">'.$separateSkuPackSize[0]/*$product->getSku()*/;
+
+			$tblData.= '<td class="sku first">'.$name/*$product->getSku()*/;
+
 			$tblData.= '<div class="refill-action"><div class="action_links">';
 			if($myAllReminders['remind_flag'] == 1) {
-				$tblData.= '<a id="edit_link'.$myAllReminders['reminder_id'].'" class="edit_link" href="'.$this->getUrl().'refillreminder/edit?remind_id='.$myAllReminders['reminder_id'].'">Edit</a> |';
+				// $tblData.= '<a id="edit_link '.$myAllReminders['reminder_id'].'" class="edit_link edit_link2" href="'.$this->getUrl().'refillreminder/edit?remind_id='.$myAllReminders['reminder_id'].'">Edit1</a> |';
+						$tblData.= '<a href="javascript:void(0)" data-refilid="'.$myAllReminders['reminder_id'].'"id="edit_link" class="edit_link edit_link2">Edit</a>';
 				$notice = "";
 			}
 			else {
@@ -69,10 +141,17 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			}
 			$tblData.= '<a class="remove_reminder" id="rdata_"'.$myAllReminders['reminder_id'].' href="'.$this->getUrl().'refillreminder/view/delete?remind_id='.$myAllReminders['reminder_id'].'">Remove</a></div>'.$notice.'</div>';
 			$tblData.= '</td>';
-			$tblData.= '<td class="product_name"><a href="'.$product->getProductUrl().'">'.$product->getName().'</a></td>';
-			$tblData.= '<td>'.$separateSkuPackSize[1].'</td>';
-			$tblData.= '<td class="mid_img_td"><a href="'.$product->getProductUrl().'"><img width="150px" src="'.$product->getImageUrl().'"/></a></td>';
-			$tblData.= '<td>'.$remindIn.'</td>';
+			$tblData.= '<td class="product_name"> '.$email .' </td>';
+
+			$tblData.= '<td class="product_name"><a href="'.$this->getUrl().'sales/order/view/order_id/'.$enityId.'"</a>'.$myAllReminders['order_Id'].'</td>';
+			$tblData.= '<td class="mid_img_td">
+
+			'.$telephone.'<img width="150px"/></a></td>';
+			// $tblData.= '<td class="mid_img_td" width="150px">'.$myAllReminders['customer_telephone'].'</td>';
+			/*$tblData.= '<td class="mid_img_td">'.$myAllReminders['customer_telephone'].'</td>';*/
+			$tblData.= '<td class="reminder_days">'.$remindIn .'</td>';
+			
+			/*$tblData.= '<td>'.date("Y-m-d", strtotime($lastRemindDate. ' + '.$myAllReminders['reminder_days'].' days'));*/
 			$tblData.= '<td>'.date("Y-m-d", strtotime($lastRemindDate. ' + '.$myAllReminders['reminder_days'].' days'));
 			
 			
@@ -81,6 +160,7 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 			echo $tblData;
 		}
 	?>
+	<div class="edit_refil"></div>
 </table>
 <?php echo $this->getToolbarHtml(); ?>
 <?php }else { ?>
@@ -92,7 +172,6 @@ $collection->addFieldToFilter('customer_email', array('eq'=>$email));
 jQuery(".remove_reminder").click(function(){
 	var r=confirm("Are you sure?");
 	if (r==true) {
-		//alert(jQuery(this).attr('href'));
 		jQuery.post(jQuery(this).attr('href'), function(data) {
 			jQuery('#reminder_table').replaceWith(data);
 		});
@@ -103,20 +182,29 @@ jQuery(".remove_reminder").click(function(){
 		return false;
 	}
 });
-/*jQuery(".open_edit").click(function(){
-	var str = this.id;
-	var splitdash = str.split("-");
-	jQuery.post(jQuery("#"+this.id).attr('href'), function(data) {
-		jQuery("#editbox-"+splitdash[1]).html(data);
-	});
-	return false;
-});*/
-jQuery(".edit_link").click(function(){
-	jQuery("#"+this.id).fancybox({
-			type: "iframe",
-			width: "300px",
-			height: "300px"
-		});
-});
+
 </script>
+<script type="text/javascript">
+jQuery(".edit_link2").on('click',function(){
+	var editId = jQuery(this).data("refilid");
+	//alert(editId);
+	jQuery.ajax({
+		url: "<?php echo $this->getUrl('refillreminder/edit/editpopup') ?>",
+		type: "POST",
+		data: 
+            {// format: 'json',
+               editId : editId
+            },
+            success: function(data){
+            jQuery(".edit_refil").html(data);
+            
+            }
+
+
+	})
+})
+
+</script>
+
+
 

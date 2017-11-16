@@ -1002,19 +1002,22 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
     			array_shift($data);
-    			$content = "Order id,Customer Name,Customer Email\n";
+    			$content = "Order id,Customer Name,Customer Email,Customer Behaviour\n";
     			foreach (array_chunk($data,100) as $order) {
 				$product = Mage::getModel('sales/order')->getCollection()
 							->addAttributeToFilter('increment_id', array('in' => $order))
 							->addFieldToSelect('increment_id')
 							->addFieldToSelect('customer_firstname')
 							->addFieldToSelect('customer_lastname')
-							->addFieldToSelect('customer_email');
+							->addFieldToSelect('customer_email')
+							->addFieldToSelect('customer_behavior');
 				foreach ($product as $products) {
 					$product_data = array();
 					$product_data['Order_id'] = $products->getData('increment_id');
 					$product_data['customer_Name'] = $products->getCustomerName();
 					$product_data['customer_email'] = $products->getData('customer_email');
+					$return_behavior = json_decode($products->getData('customer_behavior'),true);
+					$product_data['customer_behavior'] = $return_behavior['behavior_value'];
 					$csvdata[] = $product_data;
 					$content .= implode(',', $product_data)."\n";
 						}
@@ -1028,7 +1031,6 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     		Mage::getSingleton('adminhtml/session')->addError($this->__('An error occured : %s', $e->getMessage()));
             return false;
     	}
-
 	}
 
     public function importTrackinnumberAction()	{

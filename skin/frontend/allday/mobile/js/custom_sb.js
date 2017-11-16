@@ -42,4 +42,16 @@ equalheight = function(container){
       slidesToScroll: 1
   });
 
+
+  // refill remainder popup
+    $(".popup_refill, .popup_refill_overlay").hide();
+
+    $(".refilreminder-action").live('click', function(){ 
+      $(".popup_refill, .popup_refill_overlay").show();
+    });
+
+    $(".popup_refill_overlay, .popup_refill_close").live('click', function(){  
+      $(".popup_refill, .popup_refill_overlay").hide();
+    });
+
   });
