@@ -7,7 +7,7 @@ class Iksula_TrustPilotReviews_Helper_Data extends Mage_Core_Helper_Abstract
 		if($nextpage_apiurl){
 			$url = $nextpage_apiurl;
 		}else{
-			$url= 'https://'.Mage::getStoreConfig('trust_pilot_reviews/trust_pilot_reviews_config/review_api_request',Mage::app()->getStore()).'/'.$businessId.'/reviews';
+			$url= Mage::getStoreConfig('trust_pilot_reviews/trust_pilot_reviews_config/review_api_request',Mage::app()->getStore()).'/'.$businessId.'/reviews';
 		}
 		$headers = array(  
 		   "Content-Type: application/json",
@@ -33,7 +33,7 @@ class Iksula_TrustPilotReviews_Helper_Data extends Mage_Core_Helper_Abstract
 	{
 		$businessName = $this->getBusinessName();
 		if($businessName){
-			$url= 'https://'.Mage::getStoreConfig('trust_pilot_reviews/trust_pilot_reviews_config/business_id_api_request',Mage::app()->getStore()).'/?name='.$businessName;
+			$url= Mage::getStoreConfig('trust_pilot_reviews/trust_pilot_reviews_config/business_id_api_request',Mage::app()->getStore()).'/?name='.$businessName;
 			$headers = array(  
 			   "Content-Type: application/json",
 			   'apikey: ' . $apiKey
