@@ -36,6 +36,10 @@
 											<title>Order Reminder Template Section</title>
 											<sort_order>6</sort_order>
 										</order_reminder>
+										<auto_customer_discount>
+											<title>Promotion id for auto customer discount</title>
+											<sort_order>7</sort_order>
+										</auto_customer_discount>
 									</children>
 								</config>
 							</children>
