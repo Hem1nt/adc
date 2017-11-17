@@ -13,6 +13,16 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Edit_Tab_Form extends
 						"label" => Mage::helper("extendedreview")->__("Review Id"),
 						"name" => "review_id",
 						));
+
+						$fieldset->addField("reviewer_name", "text", array(
+						"label" => Mage::helper("extendedreview")->__("Review Name"),
+						"name" => "reviewer_name",
+						));
+
+						$fieldset->addField("product_name", "text", array(
+						"label" => Mage::helper("extendedreview")->__("Product Name"),
+						"name" => "product_name",
+						));
 					
 						$fieldset->addField("comment_id", "text", array(
 						"label" => Mage::helper("extendedreview")->__("Comment Id"),
@@ -31,7 +41,7 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Edit_Tab_Form extends
 					
 						$fieldset->addField("approved_by", "text", array(
 						"label" => Mage::helper("extendedreview")->__("Approved By"),
-						"name" => "approved_by",
+						"name" => "approved_by",//Mage::getSingleton('admin/session')->getUser()->getUserId(),
 						));
 									
 						//  $fieldset->addField('status', 'label', array(
@@ -39,6 +49,9 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Edit_Tab_Form extends
 						// 'values'   => Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getValueArray5(),
 						// 'name' => 'status',
 						// ));
+				if (Mage::registry('extendedreview_data')->getApprovedBy() == "") {
+				    Mage::registry('extendedreview_data')->setApprovedBy(Mage::getSingleton('admin/session')->getUser()->getUsername());
+				}
 
 				if (Mage::getSingleton("adminhtml/session")->getExtendedreviewData())
 				{
