@@ -3,7 +3,6 @@ class Iksula_Autodiscount_Model_Observer
 {
     public function autoCustomerDiscount($observer)
 	{   
-        $getCustomerAuto = Mage::getModel('core/cookie')->get('autoPromoApplied');
         $quote = $observer->getQuote();
         $quote = Mage::getSingleton('checkout/cart')->getQuote();
         if($quote->getAllVisibleItems())
@@ -16,7 +15,7 @@ class Iksula_Autodiscount_Model_Observer
                 if($getCustomerAuto && $autoCustomerActive == 1) {
                     Mage::getSingleton('checkout/session')->getMessages(true); // The true is for clearing them after loading them
                     Mage::getSingleton('checkout/cart')->getQuote()->setCouponCode($autoCustomerDiscount);
-                    Mage::getModel('core/cookie')->delete('autoPromoApplied');//once coupon is applied cookie is deleted
+                    //Mage::getModel('core/cookie')->delete('autoPromoApplied');//once coupon is applied cookie is deleted
                 }
         }
     }
