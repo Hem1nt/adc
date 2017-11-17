@@ -3,6 +3,7 @@ class Iksula_Autodiscount_Model_Observer
 {
     public function autoCustomerDiscount($observer)
 	{   
+        //$getCustomerAuto = Mage::getModel('core/cookie')->get('autoPromoApplied');
         $quote = $observer->getQuote();
         $quote = Mage::getSingleton('checkout/cart')->getQuote();
         if($quote->getAllVisibleItems())
