@@ -22,6 +22,18 @@ jQuery(document).ready(function($){
   //  $(" .cashbackCoupon_overlay").hide();
   // });
 
+    // if( $('.trustpilot_reviews_inner').hasClass('companyReply') ) {
+    // // alert(123);
+    //   $('.review_wrap').addClass('sonal');
+    //  }
+
+
+
+     if ($('.trustpilot_reviews_inner').find('companyReply')) { 
+        $('.review_wrap').addClass('123456777'); 
+        console.log("true");
+    }
+
 
     // refill remainder popup
     $(".popup_refill, .popup_refill_overlay").hide();

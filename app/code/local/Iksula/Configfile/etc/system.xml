@@ -1110,6 +1110,36 @@
                   </order_reminder_templates>
                 </groups>
               </order_reminder>
-            </sections>
-            
+              <auto_customer_discount>
+                <label>Promotion id for auto customer discount</label>
+                <tab>systemconfig</tab>
+                <sort_order>1000</sort_order>
+                <frontend_type>text</frontend_type>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <groups>
+                  <auto_customer_discount_label translate="label">
+                    <label>Promotion id's</label>
+                    <comment>Mention promotion id (Condition when user click on buy it should be applied automatically)</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <auto_customer_discount_id translate="label">
+                        <label>Request Template id:</label>
+                         <comment>Mail will shoot when customer request for refill</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </auto_customer_discount_id>
+                    </fields>
+                  </auto_customer_discount_label>
+                </groups>
+              </auto_customer_discount>
+            </sections>            
           </config>
