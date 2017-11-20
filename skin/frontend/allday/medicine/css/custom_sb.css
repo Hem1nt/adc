@@ -1685,7 +1685,7 @@ a.product_img[data-src~="http"] {
 .opc-index-index #confirm_address_step{
     display: block;
 }
-.icon-login.icon-home:before {
+.opc-index-index .icon-login.icon-home:before {
     content: "\f015";
     font-size: 58px;
     font-family: FontAwesome !important;
@@ -1697,6 +1697,14 @@ a.product_img[data-src~="http"] {
     height: 60px;
     line-height: 60px;
     text-align: center;
+}
+.opc-index-index #complete_address .shipping_address_title ,
+.opc-index-index #complete_address .billing_address_title{
+    color: #6b9a40;
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: inline-block;
+    width: 100%;
 }
 /*checkout steps end*/
 @media only screen and (max-width: 1110px){
@@ -1799,7 +1807,7 @@ a.product_img[data-src~="http"] {
 @media only screen and (max-width: 800px) {
 }
 @media only screen and (max-width: 840px){
-    .icon-login.icon-home:before {
+    .opc-index-index .icon-login.icon-home:before {
         width: 50px;
         height: 50px;
         line-height: 50px;
