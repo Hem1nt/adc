@@ -1,0 +1,100 @@
+<div id="review_loader"><img class="lazy" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'frontend/allday/medicine/images/loading_1.gif'; ?>" width="" height="" alt="Ropark - 0.25 mg" style="display: inline;"></div>
+<div class='trustpilot_reviews trustpilot_reviews_wrapper'>
+<?php
+	$reviewsCollection = $this->getReviews();
+	$class = '';
+	foreach ($reviewsCollection['links'] as $links) {
+
+		if($links['rel'] == 'next-page'){
+			$url = $links['href'];
+		}
+	}
+	if(array_key_exists('reviews',$reviewsCollection)){
+		foreach ($reviewsCollection['reviews'] as $reviews):
+			echo '<div class="trustpilot_reviews_inner">';
+		?>
+			<div class="review_background">
+			<div class="review_img"><image src="<?php echo "http://images-static.trustpilot.com/api/stars/".$reviews['stars']."/130x24.png" ?>"></div>
+			<?php
+			echo '<div class="consumer_name">'.$reviews['consumer']['displayName'].'</div>';
+			$timpestamp =  strtotime($reviews['createdAt']);
+			echo "<div class='review_date'>".date('M d, Y',$timpestamp)."</div>";
+			echo "</div>";
+?>
+<?php   	
+			if($reviews['companyReply']['text'] != ''):$class = 'review_wrap_highlight';endif;
+			echo '<div class="review_wrap '.$class.'">';
+			echo "<div class='review_title'>".$reviews['title']."</div>";
+			//$review_txt = preg_replace_callback('/[.!?].*?\w/', create_function('$matches', 'return strtoupper($matches[0]);'),ucfirst(strtolower($reviews['text'])));
+			echo "<div class='review_txt'>".$reviews['text']."</div>";
+			echo "</div>";
+			if($reviews['companyReply']['text'] != ''):
+			//$companyReply = preg_replace_callback('/[.!?].*?\w/', create_function('$matches', 'return strtoupper($matches[0]);'),ucfirst(strtolower($reviews['companyReply'])));
+			echo "<div class='companyReply'><div style='color:red;font-weight: normal;
+			color: #333;font-weight: 600;'>AllDayChemist Reply: </div><br>".$reviews['companyReply']['text']."</div>";endif;
+			echo "</div>";
+		endforeach;
+?>
+</div>
+<div class="review_error_message">
+	<span id='error_message'></span>
+</div>
+<?php 
+    }else{
+        	echo 'No Reviews';
+		}
+?>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('#review_loader').hide();
+		var apiurl = "<?php echo $url ?>";
+		var hit_ajax_after_scroll = 1500;
+		var updated_height = '';
+		var is_ajax_running = false;
+		var i = 1;
+		$(window).scroll(function () {
+			$('#review_loader').hide('slow');
+			
+			if(is_ajax_running){
+        			return;
+        		}
+
+			updated_height =  hit_ajax_after_scroll * i;
+
+        	if($(window).scrollTop() >= updated_height){
+        		is_ajax_running = true;
+        		$('#review_loader').show('slow');
+        		$('#error_message').hide();
+				$.ajax({
+			        url: "<?php echo $this->getUrl("trustpilot-reviews/index/ajaxReview")?>",
+			        type: "post",
+			        data:{apiurl:apiurl},
+			        success: function (response) {
+			        	var obj = JSON.parse(response);
+			        	if(obj.success == 'true'){
+			        		is_ajax_running = false;
+			        		apiurl = obj.apiurl;
+			        		$('.trustpilot_reviews').append(obj.data);
+			        		$('#review_loader').hide('slow');
+			        	}else{
+			        		$('#review_loader').hide('slow');
+			        		$('#error_message').show();
+			        		$('#error_message').html(obj.message);
+			        	}
+			        },
+			        timeout: 10000
+			    });
+
+				i++;
+        	}
+    	});
+	})
+	 
+
+	 
+</script>
+<style type="text/css">
+	.review_wrap_highlight{
+		background: #c5c1c1;
+	}
+</style>

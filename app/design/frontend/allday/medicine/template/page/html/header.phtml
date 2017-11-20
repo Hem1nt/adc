@@ -51,6 +51,19 @@ if($freshdeskStatus==1){
     $contatusUrl = Mage::getUrl('contacts');
 }
 ?>
+<?php
+/*Auto add the coupon in quote S*/
+    $getCurrentUrl = Mage::helper('core/url')->getCurrentUrl();
+    $parts = parse_url($getCurrentUrl);
+    parse_str($parts['query'], $query);
+    if ($query['utm_source'] == "customerGet10")
+        {
+            $name= 'autoPromoApplied';
+            $value= 'customerGet10';
+            Mage::getModel('core/cookie')->set($name, $value);    
+        }
+/*Auto add the coupon in quote E*/
+?>
 
 <!-- <div class="not_available">
     Please note that our website would be down between 3.00 am to 6.00 am EST due to maintenance work. We sincerely apologize for the inconvenience caused to you.
