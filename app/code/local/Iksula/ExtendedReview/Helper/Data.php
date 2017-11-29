@@ -53,7 +53,7 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
         $NameOfReviewUser = $cust1->getFirstname()." ".$cust1->getLastname();
         
         $msgForReview = $NameOfCommentedUser." has Commented on your review.";
-        $this->sendTransactionalEmail($EmailOfReviewUser,$NameOfReviewUser,$msgForReview);
+        //$this->sendTransactionalEmail($EmailOfReviewUser,$NameOfReviewUser,$msgForReview);
 
       }else{
 
@@ -65,21 +65,20 @@ class Iksula_ExtendedReview_Helper_Data extends Mage_Core_Helper_Abstract
         $NameOfReviewUser1 = $cust1->getFirstname()." ".$cust1->getLastname();
         
         $msgForReview1 = $NameOfCommentedUser." has Commented on your review.";
-        $this->sendTransactionalEmail($EmailOfReviewUser1,$NameOfReviewUser1,$msgForReview1);
+        //$this->sendTransactionalEmail($EmailOfReviewUser1,$NameOfReviewUser1,$msgForReview1);
       }
       
 
       $msgForComment = "Thanks for your suggession, Your Comment has been approved.";
       
-    	$this->sendTransactionalEmail($EmailOfCommentedUser,$NameOfCommentedUser,$msgForComment);      
+    	//$this->sendTransactionalEmail($EmailOfCommentedUser,$NameOfCommentedUser,$msgForComment);      
     }
+    /*Removed email function*/
     public function sendTransactionalEmail($recepientEmail,$recepientName,$msg)
     {
       // Transactional Email Template's ID
-      // echo $templateId = Mage::getModel('core/email_template')->loadBy('Wallet_reminder');
       $emailTemplate  = Mage::getModel('core/email_template')->loadByCode('extended_review_approval_mail');
       $templateId = $emailTemplate->getId();
-      // $templateId = 13;
      
       // Set sender information     
       $senderName = Mage::getStoreConfig('trans_email/ident_support/name');

@@ -33,7 +33,17 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 			    "type" => "number",
 				"index" => "id",
 				));
+
+				$this->addColumn("reviewer_name", array(
+				"header" => Mage::helper("extendedreview")->__("Reviewer Name"),
+				"index" => "reviewer_name",
+				));
                 
+                $this->addColumn("product_name", array(
+				"header" => Mage::helper("extendedreview")->__("Product Name"),
+				"index" => "product_name",
+				));
+
 				$this->addColumn("review_id", array(
 				"header" => Mage::helper("extendedreview")->__("Review Id"),
 				"index" => "review_id",
@@ -57,12 +67,13 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 				"header" => Mage::helper("extendedreview")->__("Approved By"),
 				"index" => "approved_by",
 				));
-						$this->addColumn('status', array(
-						'header' => Mage::helper('extendedreview')->__('Status'),
-						'index' => 'status',
-						'type' => 'options',
-						'options'=>Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getOptionArray5(),				
-						));
+				
+				$this->addColumn('status', array(
+				'header' => Mage::helper('extendedreview')->__('Status'),
+				'index' => 'status',
+				'type' => 'options',
+				'options'=>Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid::getOptionArray5(),				
+				));
 						
 				$this->addColumn("created_at", array(
 				"header" => Mage::helper("extendedreview")->__("Created At"),
