@@ -1729,6 +1729,9 @@ a.product_img[data-src~="http"] {
     display: inline-block;
     width: 100%;
 }
+.col-main .opc-wrapper-opc .btn#confirm_address_edit{
+    margin-right: 15px;
+}
 /*checkout steps end*/
 @media only screen and (max-width: 1110px){
     .checkout_steps div.tabs div.divider {

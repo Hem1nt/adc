@@ -1,6 +1,7 @@
 <div id="complete_address">
 	
 </div>
+<button class="btn btn-primary" id="confirm_address_edit"><span><span>Edit</span></span></button>
 <span id='check_error_message'></span>
 <input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">Confirm Address
 <script type="text/javascript">
@@ -31,6 +32,17 @@ jQuery(document).ready(function($){
 	    	$('#check_error_message').text('Please Confirm').show();
 	    	return;
 		}
+	});
+
+	$('#confirm_address_edit').click(function(e) {
+    	$('#tab-1').hide();
+		$('#tab-3').hide();
+		$('#tab-4').hide();
+		$('#tab-2').show();
+		$('.checkoutstep-2').removeClass('pass');
+		$('.checkoutstep-2').addClass('current');
+		$('.checkoutstep-3').removeClass('pass');
+		$('.checkoutstep-4').removeClass('current');
 	});
 	
 })

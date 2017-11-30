@@ -1,6 +1,9 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
+	.col-main .opc-wrapper-opc .btn#confirm_address_edit{
+	    margin-right: 15px;
+	}
 	.opc-index-index #complete_address .shipping_address_title ,
 	.opc-index-index #complete_address .billing_address_title{
 	    color: #6b9a40;
