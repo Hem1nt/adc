@@ -223,10 +223,34 @@
 	    text-align: left;
 	}
 
-	/*more info*/
-	.customer-account-edit .col-main .more_info_custom .form-list {
-	    display: flex;
-	    flex-direction: column;
+		/*more info*/
+		.customer-account-edit .col-main .more_info_custom .form-list {
+		    display: flex;
+		    flex-direction: column;
+		}
+		.customer-account-edit .col-main .more_info_custom .form-list li:nth-child(2){
+		   order: -1;
+		}
+		.customer-account-edit #more_info .form-list .input-box.time_to_call {
+		    float: none;
+		    margin-top: 10px;
+		}
+		.customer-account-edit #more_info .form-list select {
+		    width: 175px !important;
+		}
+		.customer-account-edit #more_info .form-list .input-box.time_to_call select{
+		    float: none;
+		    margin-top: 10px;
+		    width: 80px !important;
+		}
+		.customer-account-edit .col-main .more_info_custom .form-list {
+	   /* display: flex;
+	    flex-direction: column;*/
+	    display: inline-block;
+	    width: 100%;
+	}
+	.customer-account-edit .col-main .more_info_custom .form-list li{
+	    width: 33.33% !important;
 	}
 	.customer-account-edit .col-main .more_info_custom .form-list li:nth-child(2){
 	   order: -1;
@@ -235,13 +259,25 @@
 	    float: none;
 	    margin-top: 10px;
 	}
-	.customer-account-edit #more_info .form-list select {
-	    width: 175px !important;
-	}
+
 	.customer-account-edit #more_info .form-list .input-box.time_to_call select{
 	    float: none;
 	    margin-top: 10px;
 	    width: 80px !important;
+	}
+	.customer-account-edit #more_info .form-list .input-box {
+	    float: none;
+	    display: inline-block;
+	    width: 100%;
+	}
+	.customer-account-edit #more_info .form-list .input-box input,
+	.customer-account-edit #more_info .form-list .input-box select{
+	    display: inline-block;
+	    width: 80% !important;
+	    font-size: 13px;
+	}
+	.customer-account-edit #more_info .form-list select#find_us {
+	    width: 204px !important;
 	}
 	/*discount tag*/
 	.catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
@@ -1520,11 +1556,34 @@
 	}
 	.my-account .reminder-container .click_here {
 		margin: 10px 0;
-}
+	}
 	.review_left_block {
 	    width: 100%;
 	}
 	.review_right_block {
 	    width: 100%;
 	}
+	.customer-account-edit #more_info .form-list li {
+	    width: 100% !important;
+	}
+	.customer-account-edit #more_info .form-list .input-box input, 
+	.customer-account-edit #more_info .form-list .input-box select {
+	    display: inline-block;
+	    width: 100% !important;
+	    box-sizing: border-box;
+	}
 }
+@media only screen and (max-width: 420px){
+	.customer-account-edit #more_info .form-list li {
+	    width: 100% !important;
+	}
+	.customer-account-edit #more_info .form-list .input-box input, 
+	.customer-account-edit #more_info .form-list .input-box select {
+	    display: inline-block;
+	    width: 100% !important;
+	    box-sizing: border-box;
+	}
+	.customer-account-edit #more_info .form-list .input-box {
+	    width: 100% !important;
+	}
+}	
