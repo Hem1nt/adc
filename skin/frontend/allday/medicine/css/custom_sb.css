@@ -1446,8 +1446,13 @@ a.product_img[data-src~="http"] {
 }
 /*more info*/
 .customer-account-edit .col-main .more_info_custom .form-list {
-    display: flex;
-    flex-direction: column;
+   /* display: flex;
+    flex-direction: column;*/
+    display: inline-block;
+    width: 100%;
+}
+.customer-account-edit .col-main .more_info_custom .form-list li{
+    width: 33.33% !important;
 }
 .customer-account-edit .col-main .more_info_custom .form-list li:nth-child(2){
    order: -1;
@@ -1456,13 +1461,22 @@ a.product_img[data-src~="http"] {
     float: none;
     margin-top: 10px;
 }
-.customer-account-edit #more_info .form-list select {
-    width: 175px !important;
-}
+
 .customer-account-edit #more_info .form-list .input-box.time_to_call select{
     float: none;
     margin-top: 10px;
     width: 80px !important;
+}
+.customer-account-edit #more_info .form-list .input-box {
+    float: none;
+    display: inline-block;
+    width: 100%;
+}
+.customer-account-edit #more_info .form-list .input-box input,
+.customer-account-edit #more_info .form-list .input-box select{
+    display: inline-block;
+    width: 198px;
+    font-size: 13px;
 }
 /*trusted review*/
 .trustpilot_reviews_wrapper {
@@ -2123,6 +2137,17 @@ a.product_img[data-src~="http"] {
     }
     .checkout_steps div.tabs div.divider {
         width: 6% !important;
+    .customer-account-edit .col-main .more_info_custom .form-list li {
+        width: 100% !important;
+    }
+    .customer-account-edit #more_info .form-list .input-box input, 
+    .customer-account-edit #more_info .form-list .input-box select {
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .customer-account-edit #more_info .form-list .input-box {
+        display: block;
     }
 }
 
@@ -2154,7 +2179,10 @@ a.product_img[data-src~="http"] {
         .extendedreview-index-reviewpage #customer-reviews .add_review_form1 #register_captcha_code {
             width: 100px;
         }
-    
+        .customer-account-edit #more_info .form-list .input-box {
+            width: 100% !important;
+        }
+            
 }
 
 
