@@ -1698,6 +1698,10 @@ a.product_img[data-src~="http"] {
     line-height: 60px;
     text-align: center;
 }
+.opc-index-index div.current .icon-login.icon-home:before{
+    background: #f6770e;
+    color: #fff;
+}
 .opc-index-index #complete_address .shipping_address_title ,
 .opc-index-index #complete_address .billing_address_title{
     color: #6b9a40;
