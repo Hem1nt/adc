@@ -87,6 +87,7 @@ jQuery(document).ready(function(){
 			jQuery('#tab-2').hide();
 			jQuery('#tab-3').hide();
 			jQuery('#tab-5').hide();
+			jQuery('#check_error_message').text('Please Confirm').hide();
 			jQuery('#tab-4').show();
 			jQuery('.checkoutstep-4').removeClass('pass');
 			jQuery('.checkoutstep-4').addClass('current');

@@ -1,6 +1,9 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
+	.col-main .opc-wrapper-opc .btn#confirm_address_edit{
+	    margin-right: 15px;
+	}
 	.opc-index-index #complete_address .shipping_address_title ,
 	.opc-index-index #complete_address .billing_address_title{
 	    color: #6b9a40;
@@ -187,6 +190,64 @@
 	    left: 50%;
 	}
 	/*trusted review end*/
+	.icon-login.icon-home:before {
+	    content: "\f015";
+	    font-size: 58px;
+	    font-family: FontAwesome !important;
+	    padding: 7px;
+	    border-radius: 50%;
+	    color: #000;
+	    display: block;
+	    width: 60px;
+	    height: 60px;
+	    line-height: 60px;
+	    text-align: center;
+	}
+	.opc-index-index #complete_address{
+	    display: inline-block;
+	    width: 100%;
+	    margin-bottom: 10px;
+	}
+	.opc-index-index #complete_address ul.address1{
+	    float: left;
+	    width: 100%;
+	    margin-bottom: 10px;
+	    padding: 25px;
+	    box-sizing: border-box;
+	    border: 1px solid #d8d8d8;
+	    box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+	}
+	.opc-index-index #complete_address ul.address2 {
+	    float: right;
+	    width: 100%;
+	    padding: 25px;
+	    box-sizing: border-box;
+	    border: 1px solid #d8d8d8;
+	    box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+	}
+	.opc-index-index #complete_address ul.address1 label,.opc-index-index #complete_address ul.address2 label{
+	    float: left;
+	    width: 50%;
+	    padding-bottom: 7px;
+	    margin-bottom: 2px;
+	}
+	.opc-index-index #complete_address ul.address1 li,.opc-index-index #complete_address ul.address2 li{
+	     float: left;
+	    width: 50%;
+	    padding-bottom: 7px;
+	    margin-bottom: 2px;
+	}
+	.opc-index-index #confirm_address_step {
+	    display: block !important; 
+        margin-top: 10px;
+	}
+	.opc-index-index #check_error_message {
+	    color: red;
+	}
+	.checkout_steps div.tabs div.divider {
+        width: 11% !important;
+    }
+
 	/*refill remainder popup*/
 	.popup_refill_overlay{
 	    background: rgba(0, 0, 0, .5);
@@ -288,10 +349,34 @@
 	    text-align: left;
 	}
 
-	/*more info*/
-	.customer-account-edit .col-main .more_info_custom .form-list {
-	    display: flex;
-	    flex-direction: column;
+		/*more info*/
+		.customer-account-edit .col-main .more_info_custom .form-list {
+		    display: flex;
+		    flex-direction: column;
+		}
+		.customer-account-edit .col-main .more_info_custom .form-list li:nth-child(2){
+		   order: -1;
+		}
+		.customer-account-edit #more_info .form-list .input-box.time_to_call {
+		    float: none;
+		    margin-top: 10px;
+		}
+		.customer-account-edit #more_info .form-list select {
+		    width: 175px !important;
+		}
+		.customer-account-edit #more_info .form-list .input-box.time_to_call select{
+		    float: none;
+		    margin-top: 10px;
+		    width: 80px !important;
+		}
+		.customer-account-edit .col-main .more_info_custom .form-list {
+	   /* display: flex;
+	    flex-direction: column;*/
+	    display: inline-block;
+	    width: 100%;
+	}
+	.customer-account-edit .col-main .more_info_custom .form-list li{
+	    width: 33.33% !important;
 	}
 	.customer-account-edit .col-main .more_info_custom .form-list li:nth-child(2){
 	   order: -1;
@@ -300,13 +385,25 @@
 	    float: none;
 	    margin-top: 10px;
 	}
-	.customer-account-edit #more_info .form-list select {
-	    width: 175px !important;
-	}
+
 	.customer-account-edit #more_info .form-list .input-box.time_to_call select{
 	    float: none;
 	    margin-top: 10px;
 	    width: 80px !important;
+	}
+	.customer-account-edit #more_info .form-list .input-box {
+	    float: none;
+	    display: inline-block;
+	    width: 100%;
+	}
+	.customer-account-edit #more_info .form-list .input-box input,
+	.customer-account-edit #more_info .form-list .input-box select{
+	    display: inline-block;
+	    width: 80% !important;
+	    font-size: 13px;
+	}
+	.customer-account-edit #more_info .form-list select#find_us {
+	    width: 204px !important;
 	}
 	/*discount tag*/
 	.catalog-product-view .product-details-table table.new_product_list td.price_value span.discount_tag, 
@@ -326,8 +423,13 @@
 	.review-product-list .product-details-table table.new_product_list td.custom_price_center{
 	    text-align: center !important; 
 	}
-	 .cms-home span.discount_tag, .catalog-category-view span.discount_tag,
- 	.catalogsearch-result-index span.discount_tag {
+	.catalog-product-view .product-view .product-img-box .more-views li {
+		position: relative;
+	}
+	 .cms-home span.discount_tag, 
+	 .catalog-category-view span.discount_tag,
+ 	.catalogsearch-result-index span.discount_tag ,
+ 	.catalog-product-view .product-img-box span.discount_tag{
 	    position: absolute;
 	    top: 5px;
 	    left: 5px;
@@ -337,16 +439,17 @@
 	    color: #fff !important;
 	    border-radius: 0 0 20px 20px;
 	    padding-top: 10px;
+	    padding: 10px 6px;
 	    font-weight: bold;
 	    font-size: 15px;
 	    line-height: 14px;
-	    text-transform: uppercase;
+	    text-transform: capitalize;
 	    text-align: center;
 	    background: url(../images/Adc_Offer_Tag.png) 1px 1px no-repeat;
-	    width: 49px;
-	    height: 40px;
-	    background-size: 46px;
-		}
+	    width: 48px;
+        height: 52px;
+        background-size: 59px;
+	}
 /*discount tag end*/
 	/*payment-block */
 	.opc-index-index .payment-block .trust_banner{
@@ -1311,6 +1414,8 @@
 	}
 }
 @media only screen and (max-width: 736px){
+	
+	.icon-login.icon-home:before{
 	.opc-index-index .icon-login.icon-home:before{
 	    font-size: 25px;
 	    width: 30px;
@@ -1641,12 +1746,21 @@
 	}
 	.my-account .reminder-container .click_here {
 		margin: 10px 0;
-}
+	}
 	.review_left_block {
 	    width: 100%;
 	}
 	.review_right_block {
 	    width: 100%;
+	}
+	.customer-account-edit #more_info .form-list li {
+	    width: 100% !important;
+	}
+	.customer-account-edit #more_info .form-list .input-box input, 
+	.customer-account-edit #more_info .form-list .input-box select {
+	    display: inline-block;
+	    width: 100% !important;
+	    box-sizing: border-box;
 	}
 }
 @media only screen and (max-width: 540px){
@@ -1666,5 +1780,19 @@
 	    width: 16px;
 	    height: 16px;
 	    line-height: 16px;
+	}
+}
+@media only screen and (max-width: 420px){
+	.customer-account-edit #more_info .form-list li {
+	    width: 100% !important;
+	}
+	.customer-account-edit #more_info .form-list .input-box input, 
+	.customer-account-edit #more_info .form-list .input-box select {
+	    display: inline-block;
+	    width: 100% !important;
+	    box-sizing: border-box;
+	}
+	.customer-account-edit #more_info .form-list .input-box {
+	    width: 100% !important;
 	}
 }
