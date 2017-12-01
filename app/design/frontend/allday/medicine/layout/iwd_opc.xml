@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <layout>
-	
-	<default>
-		<reference name="top.links">
-			<remove name="checkout_cart_link"/>
-			<block type="checkout/links" name="checkout_cart_link_custom"><action method="addCartLink" ></action></block>
+    <default>
+        <reference name="top.links">
+            <remove name="checkout_cart_link"/>
+            <block type="checkout/links" name="checkout_cart_link_custom"><action method="addCartLink" ></action></block>
             <!-- <block type="opc/links" name="checkout_cart_link_custom"><action method="addCheckoutLink"></action></block> -->
         </reference>
 
         <remove name="footer_links"/>
-		<!--  LOGIN WITH PAYPAL -->
+        <!--  LOGIN WITH PAYPAL -->
         <reference name="head">
-        	<action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>            
+            <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>            
             <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_css</type><name>css/iwd/opc/paypal.css</name><params/></action>
         </reference>
     </default>
@@ -46,24 +45,24 @@
             <action method="addCss"><stylesheet>css/allday_checkout.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/custom_k.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/responsive_k.css</stylesheet></action>
-		</reference>
+        </reference>
         
-        <reference name="content">        	
-			<block type="opc/wrapper" name="es.checkout.container" template="opc/wrapper.phtml">
-			
-					 <block type="page/html_wrapper" name="paypal.button" translate="label">
-		                <label>PayPal Express Checkout Shortcut Wrapper</label>
-		                <block type="paypal/express_shortcut" name="product.info.addtocart.paypal" template="opc/paypal/express/shortcut.phtml">
-		                    <!-- action method="setIsInCatalogProduct"><value>1</value></action -->
-		                </block>
-		            </block>
-			
-			
-					<!--  LOGIN FORM  -->
-					<block type="opc/onepage_login" name="checkout.onepage.login" as="login" template="opc/onepage/login.phtml">
-						<block type="customer/account_forgotpassword" name="forgotPassword" template="opc/customer/form/forgotpassword.phtml"/>	
-					</block>
-				 	<!-- BILLING FORM -->
+        <reference name="content">          
+            <block type="opc/wrapper" name="es.checkout.container" template="opc/wrapper.phtml">
+            
+                     <block type="page/html_wrapper" name="paypal.button" translate="label">
+                        <label>PayPal Express Checkout Shortcut Wrapper</label>
+                        <block type="paypal/express_shortcut" name="product.info.addtocart.paypal" template="opc/paypal/express/shortcut.phtml">
+                            <!-- action method="setIsInCatalogProduct"><value>1</value></action -->
+                        </block>
+                    </block>
+            
+            
+                    <!--  LOGIN FORM  -->
+                    <block type="opc/onepage_login" name="checkout.onepage.login" as="login" template="opc/onepage/login.phtml">
+                        <block type="customer/account_forgotpassword" name="forgotPassword" template="opc/customer/form/forgotpassword.phtml"/> 
+                    </block>
+                    <!-- BILLING FORM -->
                     <block type="opc/onepage_billing" name="checkout.onepage.billing" as="billing" template="opc/onepage/billing.phtml"/>
 
                     <!-- SHIPPING FORM -->
@@ -71,6 +70,10 @@
 
                     <block type="checkout/onepage_shipping" name="checkout.onepage.medicalhistory" as="medicalhistory" template="opc/onepage/medicalhistory.phtml"/>
                     
+                    <!-- Confirm Address Step -->
+                    <block type="checkout/onepage_shipping" name="checkout.onepage.confirmaddressstep" as="confirmaddressstep" template="opc/onepage/confirmaddressstep.phtml"/>
+                    <!-- Confirm Address Step -->
+
                     <!-- COUPON FORM -->
                     <!-- <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="opc/onepage/coupon.phtml"/> -->
                     <block type="rewardpoints/coupon" name="checkout_cart_coupon_normal" as="coupon_points" template="rewardpoints/reward_coupon.phtml">
@@ -83,40 +86,40 @@
                     
                     <!-- SHIPPING METHODS FORM -->
                     <block type="checkout/onepage_shipping_method" name="checkout.onepage.shipping_method" as="shipping_method" template="opc/onepage/shipping_method.phtml">
-                    	<block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="checkout/onepage/shipping_method/available.phtml"/>
-                    	<block type="checkout/onepage_shipping_method_additional" name="checkout.onepage.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/>
-                	</block>
-                	
-                	<!-- PAYMENTS METHOD FORM -->
-                	<block type="checkout/onepage_payment" name="checkout.onepage.payment" as="payment" template="opc/onepage/payment.phtml">
-	                    <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="checkout/onepage/payment/methods.phtml">
-	                        <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
-	                    </block>
-                	</block>
-                	
-                	<block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="opc/onepage/agreements.phtml"/>
-					<block type="opc/onepage_subscribed" template="opc/onepage/review/subscribed.phtml" name="opc.newsletters" /> 
+                        <block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="checkout/onepage/shipping_method/available.phtml"/>
+                        <block type="checkout/onepage_shipping_method_additional" name="checkout.onepage.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/>
+                    </block>
                     
-			</block>
+                    <!-- PAYMENTS METHOD FORM -->
+                    <block type="checkout/onepage_payment" name="checkout.onepage.payment" as="payment" template="opc/onepage/payment.phtml">
+                        <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="checkout/onepage/payment/methods.phtml">
+                            <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+                        </block>
+                    </block>
+                    
+                    <block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="opc/onepage/agreements.phtml"/>
+                    <block type="opc/onepage_subscribed" template="opc/onepage/review/subscribed.phtml" name="opc.newsletters" /> 
+                    
+            </block>
         </reference>
    
         
         <!--  PAYPAL EXPRESS LIGHTBOX -->
         <reference name="before_body_end">
-			<block type="opc/lipp" name="opc.lipp.js" as="">
-				<action method="setTemplate" ifconfig="opc/paypal/status"><template>opc/lipp-js.phtml</template></action>
-			</block>
-			<block type="opc/braintree_datajs" name="braintree_payments_data_js">
-				<action method="setTemplate" ifconfig="payment/braintree/active"><template>braintree/data_js.phtml</template></action>
-			</block>
+            <block type="opc/lipp" name="opc.lipp.js" as="">
+                <action method="setTemplate" ifconfig="opc/paypal/status"><template>opc/lipp-js.phtml</template></action>
+            </block>
+            <block type="opc/braintree_datajs" name="braintree_payments_data_js">
+                <action method="setTemplate" ifconfig="payment/braintree/active"><template>braintree/data_js.phtml</template></action>
+            </block>
             <block type="opc/braintree_form" name="payment.form.braintree">
-            	<action method="setTemplate" ifconfig="payment/braintree/active"><template>braintree/review_js.phtml</template></action>
+                <action method="setTemplate" ifconfig="payment/braintree/active"><template>braintree/review_js.phtml</template></action>
                 <action method="setMethodInfo"></action>
             </block>
-		</reference>
-	</opc_index_index>		
-	
-	<checkout_onepage_review>
+        </reference>
+    </opc_index_index>      
+    
+    <checkout_onepage_review>
         <block type="checkout/onepage_review_info" name="root" output="toHtml" template="checkout/onepage/review/info.phtml">
             <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>opc/onepage/review/item.phtml</template></action>
             <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>opc/onepage/review/item.phtml</template></action>
@@ -131,16 +134,16 @@
             <block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="checkout/onepage/agreements.phtml"/>
             <block type="core/template" name="checkout.onepage.review.button" as="button" template="checkout/onepage/review/button.phtml"/>
         </block>
-		<reference name="checkout.onepage.review.button">
-			<action method="setTemplate" ifconfig="opc/global/status"><template>opc/onepage/review/button.phtml</template></action>
-		</reference>
-		<reference name="checkout.onepage.agreements">
-			<action method="setTemplate" ifconfig="opc/global/status"><template>opc/onepage/agreements.phtml</template></action>
-		</reference>		
-	</checkout_onepage_review>
-	
-	<!--  3D SECURE (CENTINEL) -->
-	<opc_json_savepayment>
+        <reference name="checkout.onepage.review.button">
+            <action method="setTemplate" ifconfig="opc/global/status"><template>opc/onepage/review/button.phtml</template></action>
+        </reference>
+        <reference name="checkout.onepage.agreements">
+            <action method="setTemplate" ifconfig="opc/global/status"><template>opc/onepage/agreements.phtml</template></action>
+        </reference>        
+    </checkout_onepage_review>
+    
+    <!--  3D SECURE (CENTINEL) -->
+    <opc_json_savepayment>
         <reference name="checkout.onepage.review.info.items.before">
             <block type="centinel/authentication" name="centinel.frame" template="centinel/authentication.phtml">
                 <action method="addRelatedBlock"><blockId>checkout-review-submit</blockId></action>
@@ -152,27 +155,27 @@
     
     <!--  3D SECURE (CENTINEL) - COMPLETE-->
     <centinel_index_authenticationcomplete>
-    	<reference name="root">
-    		<action method="setTemplate"><template>opc/centinel/authentication/complete.phtml</template></action>
-    	</reference>
+        <reference name="root">
+            <action method="setTemplate"><template>opc/centinel/authentication/complete.phtml</template></action>
+        </reference>
     </centinel_index_authenticationcomplete>
     
     
     <!--  PAYPAL EXPRESS LIGHTBOX -->
-	<checkout_cart_index>
-	 	<reference name="head">					
-			<action method="addItem" ifconfig="opc/paypal/status"><type>skin_js</type><name>js/iwd/opc/lipp.js</name></action>    		
-		</reference>
-		<reference name="before_body_end">
-			<block type="opc/lipp" name="opc.lipp.js" as="">
-				<action method="setTemplate" ifconfig="opc/paypal/status"><template>opc/lipp-js.phtml</template></action>
-			</block>
-		</reference>
-	</checkout_cart_index>
-	
-	
-	<!--  LOGIN WITH PAYPAL -->
-	<customer_logged_out>
+    <checkout_cart_index>
+        <reference name="head">                 
+            <action method="addItem" ifconfig="opc/paypal/status"><type>skin_js</type><name>js/iwd/opc/lipp.js</name></action>          
+        </reference>
+        <reference name="before_body_end">
+            <block type="opc/lipp" name="opc.lipp.js" as="">
+                <action method="setTemplate" ifconfig="opc/paypal/status"><template>opc/lipp-js.phtml</template></action>
+            </block>
+        </reference>
+    </checkout_cart_index>
+    
+    
+    <!--  LOGIN WITH PAYPAL -->
+    <customer_logged_out>
         <reference name="top.links">
             <action method="addLink" translate="label title" module="opc" ifconfig="opc/paypallogin/status"><label></label><url helper="opc/paypal/getLoginUrl"/><title>Log In With Paypal</title><prepare/><urlParams/><position>100</position><liParams/><aParams><id>topPayPalIn</id><class>paypal-auth</class></aParams></action>
         </reference>
@@ -185,8 +188,8 @@
     </customer_account_index>
 
     <customer_account_login>
-    	<reference name="head">           
-            <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>    	
+        <reference name="head">           
+            <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>        
         </reference>
         <reference name="customer_form_login">
             <action method="setTemplate"><template>opc/customer/form/login.phtml</template></action>
@@ -197,7 +200,7 @@
     </customer_account_login>
 
     <customer_account_create>
-    	<reference name="head">            
+        <reference name="head">            
             <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>
         </reference>
         <reference name="customer_form_register">
