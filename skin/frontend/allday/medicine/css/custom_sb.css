@@ -1739,6 +1739,10 @@ a.product_img[data-src~="http"] {
     background: #f6770e;
     color: #fff;
 }
+.opc-index-index .checkout_steps div.pass .icon-login.icon-home::before {
+    color: rgb(255, 255, 255);
+    background: rgb(124, 181, 25);
+}
 .opc-index-index #complete_address .shipping_address_title ,
 .opc-index-index #complete_address .billing_address_title{
     color: #6b9a40;
