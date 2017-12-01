@@ -17,7 +17,7 @@ $is_persistent = Mage::helper('opc')->isPersistentMember();
 <div <?php if($is_persistent):?>style="display:none !important;"<?php endif;?>>
 	<div class="checkout_steps">	
 		<div class="tabs">
-			<div class="tab-link checkoutstep-1 current" data-tab="tab-1"><span class="icon-login"></span><p>Login</p><em></em></div><div class="divider"></div><div class="tab-link checkoutstep-2" data-tab="tab-2" id="add-review"><span class="icon-shipping_info"></span><p>Shipping Information</p></div><div class="divider"></div><div class="tab-link checkoutstep-3" data-tab="tab-3"><span class="icon-medical_history"></span><p>Medical History</p></div><div class="divider"></div><!-- Confirm Address Step --><div class="tab-link checkoutstep-4" data-tab="tab-4"><span class="icon-login icon-home"></span><p>Confirm Address</p><em></em></div><div class="divider"></div><!-- Confirm Address Step --><div class="last tab-link checkoutstep-5" data-tab="tab-5"><span class="icon-payment"></span><p>Payment</p></div>
+			<div class="tab-link checkoutstep-1 current" data-tab="tab-1"><span class="icon-login"></span><p>Login</p><em></em></div><div class="divider"></div><div class="tab-link checkoutstep-2" data-tab="tab-2" id="add-review"><span class="icon-shipping_info"></span><p>Shipping Information</p></div><div class="divider"></div><div class="tab-link checkoutstep-3" data-tab="tab-3"><span class="icon-medical_history"></span><p>Medical History</p></div><div class="divider"></div><div class="last tab-link checkoutstep-4" data-tab="tab-4"><span class="icon-payment"></span><p>Payment</p></div>
 		</div>
 	</div>
 
@@ -71,15 +71,9 @@ $is_persistent = Mage::helper('opc')->isPersistentMember();
 		<div id="tab-3" class="tab-content">
 			<?php echo $this->getChildHtml('medicalhistory')?>
 			<!-- <div class="proceed-next">Continue</div> -->
-			<button id="medical_nextbtn" class="medical_nextbtn proceed-next btn btn-primary medicalhistorynext"><span><span>Continue</span></span></button>
+			<button class="medical_nextbtn proceed-next btn btn-primary medicalhistorynext"><span><span>Continue</span></span></button>
 		</div>
-		<!-- Confirm Address Step -->
 		<div id="tab-4" class="tab-content">
-			<?php echo $this->getChildHtml('confirmaddressstep')?>
-			<button id="confirm_address_step" class="confirm_address_step proceed-next btn btn-primary confirmaddressnext"><span><span>Continue</span></span></button>
-		</div>
-		<!-- Confirm Address Step -->
-		<div id="tab-5" class="tab-content">
 			<?php //if(Mage::helper('opc')->isShowComment()):?>
 				<?php //echo $this->getChildhtml('customer.comment');?>
 			<?php //endif;?>
