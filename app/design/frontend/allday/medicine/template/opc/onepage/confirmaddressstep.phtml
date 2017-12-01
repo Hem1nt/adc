@@ -1,0 +1,51 @@
+<div id="complete_address">
+	
+</div>
+<button class="btn btn-primary" id="confirm_address_edit"><span><span>Edit</span></span></button>
+<span id='check_error_message'></span>
+<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">Confirm Address
+<script type="text/javascript">
+
+jQuery(document).ready(function($){
+	$('#confirm_address_step').hide();
+	$('#confirm_address_check').hide();
+	$('#check_error_message').hide();
+	$('#medical_nextbtn').click(function(e){
+		IWD.OPC.Checkout.showLoader();
+		IWD.OPC.Checkout.lockPlaceOrder();
+		$.ajax({
+		        url: "<?php echo $this->getUrl("onepage/json/getcustomAddresstep")?>",
+		        type: "get",
+		        success: function (response) {
+		        	IWD.OPC.Checkout.hideLoader();
+					IWD.OPC.Checkout.unlockPlaceOrder();
+		        	$('#complete_address').html(response);
+		        	$('#confirm_address_step').show();
+		        	$('#confirm_address_check').show();
+		        }
+		    });
+	})
+
+	$('#confirm_address_step').click(function(e) {
+	    if(!$("#confirm_address_check").is(':checked')){
+	    	e.stopPropagation();
+	    	$('#check_error_message').text('Please Confirm').show();
+	    	return;
+		}
+	});
+
+	$('#confirm_address_edit').click(function(e) {
+    	$('#tab-1').hide();
+		$('#tab-3').hide();
+		$('#tab-4').hide();
+		$('#tab-2').show();
+		$('.checkoutstep-2').removeClass('pass');
+		$('.checkoutstep-2').addClass('current');
+		$('.checkoutstep-3').removeClass('pass');
+		$('.checkoutstep-4').removeClass('current');
+	});
+	
+})
+
+	
+</script>

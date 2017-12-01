@@ -56,6 +56,7 @@ jQuery(document).ready(function(){
 			jQuery('#tab-1').hide();
 			jQuery('#tab-3').hide();
 			jQuery('#tab-4').hide();
+			jQuery('#tab-5').hide();
 			jQuery('#tab-2').show();
 			jQuery('.checkoutstep-2').removeClass('pass');
 			jQuery('.checkoutstep-2').addClass('current');
@@ -70,9 +71,26 @@ jQuery(document).ready(function(){
 			jQuery('#tab-1').hide();
 			jQuery('#tab-2').hide();
 			jQuery('#tab-4').hide();
+			jQuery('#tab-5').hide();
 			jQuery('#tab-3').show();
 			jQuery('.checkoutstep-3').removeClass('pass');
 			jQuery('.checkoutstep-3').addClass('current');
+			jQuery(this).nextAll().removeClass('current');
+			jQuery(this).nextAll().removeClass('pass');
+		}
+	});
+
+	jQuery('.checkoutstep-4').live('click',function() {		//for top tracker 4
+		// alert(loginStatus);
+		if(jQuery('.checkoutstep-3').hasClass('pass')) {
+			jQuery('#tab-1').hide();
+			jQuery('#tab-2').hide();
+			jQuery('#tab-3').hide();
+			jQuery('#tab-5').hide();
+			jQuery('#check_error_message').text('Please Confirm').hide();
+			jQuery('#tab-4').show();
+			jQuery('.checkoutstep-4').removeClass('pass');
+			jQuery('.checkoutstep-4').addClass('current');
 			jQuery(this).nextAll().removeClass('current');
 			jQuery(this).nextAll().removeClass('pass');
 		}
@@ -200,6 +218,16 @@ jQuery(document).ready(function(){
     		return false;
     	}
 	});
+
+	//custom_address_step
+	jQuery('#tab-4 .proceed-next').live('click',function() {			//4th step of checkout
+        	jQuery('#tab-4').hide();
+			jQuery('#tab-5').show();
+			jQuery('.checkoutstep-4').addClass('pass');
+			jQuery('.checkoutstep-4').removeClass('current');
+			jQuery('.checkoutstep-5').addClass('current');
+	});
+	//custom_address_step
 
 	jQuery('#forgotpassword-button-set .back-to-login').click(function(e){
         e.preventDefault();

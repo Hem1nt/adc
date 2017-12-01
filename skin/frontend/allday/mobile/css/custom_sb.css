@@ -1,6 +1,74 @@
 /*mobile css by sb*/
 
 @media only screen and (max-width: 1024px){
+	.col-main .opc-wrapper-opc .btn#confirm_address_edit{
+	    margin-right: 15px;
+	}
+	.opc-index-index #complete_address .shipping_address_title ,
+	.opc-index-index #complete_address .billing_address_title{
+	    color: #6b9a40;
+	    font-size: 22px;
+	    margin-bottom: 15px;
+	    display: inline-block;
+	    width: 100%;
+	}
+	.opc-index-index .icon-login.icon-home:before {
+	    content: "\f015";
+	    font-size: 58px;
+	    font-family: FontAwesome !important;
+	    padding: 7px;
+	    border-radius: 50%;
+	    color: #000;
+	    display: block;
+	    width: 60px;
+	    height: 60px;
+	    line-height: 60px;
+	    text-align: center;
+	}
+	.opc-index-index #complete_address{
+	    display: inline-block;
+	    width: 100%;
+	    margin-bottom: 10px;
+	}
+	.opc-index-index #complete_address ul.address1{
+	    float: left;
+	    width: 100%;
+	    margin-bottom: 10px;
+	    padding: 25px;
+	    box-sizing: border-box;
+	    border: 1px solid #d8d8d8;
+	    box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+	}
+	.opc-index-index #complete_address ul.address2 {
+	    float: right;
+	    width: 100%;
+	    padding: 25px;
+	    box-sizing: border-box;
+	    border: 1px solid #d8d8d8;
+	    box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+	}
+	.opc-index-index #complete_address ul.address1 label,.opc-index-index #complete_address ul.address2 label{
+	    float: left;
+	    width: 50%;
+	    padding-bottom: 7px;
+	    margin-bottom: 2px;
+	}
+	.opc-index-index #complete_address ul.address1 li,.opc-index-index #complete_address ul.address2 li{
+	     float: left;
+	    width: 50%;
+	    padding-bottom: 7px;
+	    margin-bottom: 2px;
+	}
+	.opc-index-index #confirm_address_step {
+	    display: block !important; 
+        margin-top: 10px;
+	}
+	.opc-index-index #check_error_message {
+	    color: red;
+	}
+	.checkout_steps div.tabs div.divider {
+        width: 11% !important;
+    }
 	/*trusted review*/
 	.trustpilot_reviews_wrapper {
 	    display: inline-block;
@@ -122,6 +190,64 @@
 	    left: 50%;
 	}
 	/*trusted review end*/
+	.icon-login.icon-home:before {
+	    content: "\f015";
+	    font-size: 58px;
+	    font-family: FontAwesome !important;
+	    padding: 7px;
+	    border-radius: 50%;
+	    color: #000;
+	    display: block;
+	    width: 60px;
+	    height: 60px;
+	    line-height: 60px;
+	    text-align: center;
+	}
+	.opc-index-index #complete_address{
+	    display: inline-block;
+	    width: 100%;
+	    margin-bottom: 10px;
+	}
+	.opc-index-index #complete_address ul.address1{
+	    float: left;
+	    width: 100%;
+	    margin-bottom: 10px;
+	    padding: 25px;
+	    box-sizing: border-box;
+	    border: 1px solid #d8d8d8;
+	    box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+	}
+	.opc-index-index #complete_address ul.address2 {
+	    float: right;
+	    width: 100%;
+	    padding: 25px;
+	    box-sizing: border-box;
+	    border: 1px solid #d8d8d8;
+	    box-shadow: 0px 0px 6px 1px rgba(217,217,217,1);
+	}
+	.opc-index-index #complete_address ul.address1 label,.opc-index-index #complete_address ul.address2 label{
+	    float: left;
+	    width: 50%;
+	    padding-bottom: 7px;
+	    margin-bottom: 2px;
+	}
+	.opc-index-index #complete_address ul.address1 li,.opc-index-index #complete_address ul.address2 li{
+	     float: left;
+	    width: 50%;
+	    padding-bottom: 7px;
+	    margin-bottom: 2px;
+	}
+	.opc-index-index #confirm_address_step {
+	    display: block !important; 
+        margin-top: 10px;
+	}
+	.opc-index-index #check_error_message {
+	    color: red;
+	}
+	.checkout_steps div.tabs div.divider {
+        width: 11% !important;
+    }
+
 	/*refill remainder popup*/
 	.popup_refill_overlay{
 	    background: rgba(0, 0, 0, .5);
@@ -1249,7 +1375,16 @@
 	    color: #fff;
 	}
 }
-
+@media only screen and (max-width: 960px){
+    .checkout_steps div.tabs div.divider {
+        width: 10% !important;
+    }  
+}
+@media only screen and (max-width: 900px){
+    .checkout_steps div.tabs div.divider {
+        width: 9% !important;
+    }  
+}
 @media only screen and (max-width: 800px){
 	.review_right_block {
 	    width: 70%;
@@ -1280,6 +1415,20 @@
 }
 @media only screen and (max-width: 736px){
 	
+	.icon-login.icon-home:before{
+	.opc-index-index .icon-login.icon-home:before{
+	    font-size: 25px;
+	    width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	}
+	.checkout_steps div.tabs div.divider {
+        width: 10% !important;
+    }
+    .checkout_steps div.tab-link.checkoutstep-2 p, 
+    .checkout_steps div.tab-link.checkoutstep-3 p {
+        width: 125px !important;
+    }
 	.opc-index-index .payment-block .trust_banner span.banner-3_message {
         opacity: 1!important;
     }
@@ -1461,9 +1610,44 @@
 	    text-align: center !important; 
 	}
 }
+@media only screen and (max-width: 670px){
+	.opc-index-index .icon-login.icon-home:before{
+	   font-size: 20px;
+	    width: 25px;
+	    height: 25px;
+	    line-height: 25px;
+	}
+}
+@media only screen and (max-width: 640px){
+	.opc-index-index #complete_address ul.address1 ,
+	.opc-index-index #complete_address ul.address1 {
+		width: 100%;
+	}
+	.opc-index-index #complete_address ul.address1 {
+	    width: 100%;
+	    margin-bottom: 20px;
+	}
+}
+@media only screen and (max-width: 570px){
+	.checkout_steps div.tabs div.divider {
+        width: 9% !important;
+    }
+    .checkout_steps div.tab-link.checkoutstep-2 p, 
+    .checkout_steps div.tab-link.checkoutstep-3 p {
+        width: 120px !important;
+    }
+}
 @media only screen and (max-width: 568px){
 	.testimonial-form-index div#ratingBox{
 		margin-left: 6% !important;
+	}
+}
+@media only screen and (max-width: 540px){
+	.opc-index-index .icon-login.icon-home:before{
+       font-size: 18px;
+	    width: 20px;
+	    height: 20px;
+	    line-height: 20px;
 	}
 }
 @media only screen and (max-width: 480px){
@@ -1579,6 +1763,25 @@
 	    box-sizing: border-box;
 	}
 }
+@media only screen and (max-width: 540px){
+    .checkout_steps div.tab-link.checkoutstep-2 p, 
+    .checkout_steps div.tab-link.checkoutstep-3 p {
+        width: 77px !important;
+    }
+}
+@media only screen and (max-width: 480px){
+	 .checkout_steps div.tabs div.divider {
+        width: 6% !important;
+    }
+}
+@media only screen and (max-width: 375px){
+	.opc-index-index .icon-login.icon-home:before{
+      	font-size: 16px;
+	    width: 16px;
+	    height: 16px;
+	    line-height: 16px;
+	}
+}
 @media only screen and (max-width: 420px){
 	.customer-account-edit #more_info .form-list li {
 	    width: 100% !important;
@@ -1592,4 +1795,4 @@
 	.customer-account-edit #more_info .form-list .input-box {
 	    width: 100% !important;
 	}
-}	
+}

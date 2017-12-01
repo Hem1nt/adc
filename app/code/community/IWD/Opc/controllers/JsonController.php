@@ -1368,5 +1368,34 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 	    }
 	}
 
+	/* Confirm Address Step */
+	public function getCustomAddresStepAction(){
+		$billingAddress = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getData();
+		$shippingAddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getData();
+		
+		$html .= '<ul class="address1">';
+		$html .= '<div class="billing_address_title">Billing address: </div>';
+		$html .= '<label>Name</label>'.' <li>: '.$billingAddress['firstname'].' '.$billingAddress['lastname'].'</li>';
+		$html .= '<label>Street</label>'.' <li>: '.$billingAddress['street'].'</li>';
+		$html .= '<label>City</label>'.' <li>: '.$billingAddress['city'].'</li>';
+		$html .= '<label>Region</label>'.' <li>: '.$billingAddress['region'].'</li>';
+		$html .= '<label>Postcode</label>'.'<li>: '.$billingAddress['postcode'].'</li>';
+		$html .= '<label>Telephone</label>'.'<li>: '.$billingAddress['telephone'].'</li>';
+		$html .= '</ul>';
+
+		$html .= '<ul class="address2">';
+		$html .= '<div class="shipping_address_title">Shipping address: </div>';
+		$html .= '<label>Name</label>'.' <li>: '.$shippingAddress['firstname'].' '.$shippingAddress['lastname'].'</li>';
+		$html .= '<label>Street</label>'.' <li>: '.$shippingAddress['street'].'</li>';
+		$html .= '<label>City</label>'.'<li>: '.$shippingAddress['city'].'</li>';
+		$html .= '<label>Region</label>'.' <li>: '.$shippingAddress['region'].'</li>';
+		$html .= '<label>Postcode</label>'.' <li>: '.$shippingAddress['postcode'].'</li>';
+		$html .= '<label>Telephone</label>'.' <li>: '.$shippingAddress['telephone'].'</li>';
+		$html .= '</ul>';
+
+		if($billingAddress['address_type'] == 'billing' && $shippingAddress['address_type'] == 'shipping'){
+			echo $html;
+		}
+	}
 
 }
