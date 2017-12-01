@@ -124,7 +124,12 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 		$review_id = Mage::app()->getRequest()->getParam('hdnReviewId');
 		$comment = Mage::app()->getRequest()->getParam('txtReviewComment');
 		$comment_id = Mage::app()->getRequest()->getParam('hdnCommentId');
+		$comment_id = Mage::app()->getRequest()->getParam('hdnCommentId');
+		$comment_id = Mage::app()->getRequest()->getParam('hdnCommentId');
 		$error_url = Mage::app()->getRequest()->getParam('hdnErrorUrl');
+		
+		$getProdId = Mage::getModel('review/review')->load($review_id)->getData('entity_pk_value');
+		$getProdName = Mage::getModel('catalog/product')->load($getProdId)->getName();
 
 		$customer_id = null;
 		$result = array('success'=>false);
@@ -148,6 +153,8 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 			return;
 		}
 
+		$loadCustomer = Mage::getModel('customer/customer')->load($customer_id);
+		$getReviewerName = $loadCustomer->getData('firstname').' '.$loadCustomer->getData('lastname');
 		// SAVE COMMENT FOR REVIEW
 		if(!isset($result['err_code'])){
 			if(isset($comment_id)){
@@ -157,7 +164,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 						'customer_id'=>$customer_id,
 						'comment' => $comment,
 						'comment_id' => $comment_id,
-						'status' => 1 ));
+						'status' => 1,'reviewer_name' => $getReviewerName,'product_name' => $getProdName));
 
 			}else{
 				$model = Mage::getModel('extendedreview/extendedreview')
@@ -166,7 +173,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 						'customer_id'=>$customer_id,
 						'comment_id' => 0,
 						'comment' => $comment,
-						'status' => 1 ));
+						'status' => 1,'reviewer_name' => $getReviewerName,'product_name' => $getProdName));
 			}
 			try{
 				$model->save();

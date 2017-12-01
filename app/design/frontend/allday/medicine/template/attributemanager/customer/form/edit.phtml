@@ -93,7 +93,7 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
                     $store_labels = $attribute->getStoreLabels();
                     $label = $store_labels[$store_id] ? $store_labels[$store_id] : $attr['frontend_label'];
                     if(!in_array($attr['attribute_code'], $removeattributeArray)):
-					echo '<li>';
+					echo '<li class ="'. $attr['attribute_code'] .'">';
 					$func = 'get'.  str_replace(' ', '',  ucwords(str_replace('_', ' ', $attr['attribute_code'])) );
 
                     echo '<label for="'. $attr['attribute_code'] .'" '. ($attr['is_required']?'class="required"><em>*</em>':'>') . $this->__( $label ) . '</label>';
@@ -304,9 +304,29 @@ $removeattributeArray = explode(',',Mage::getStoreConfig('customer/snippet/skip_
 	}
 	setExtraValidation(true);
 //]]>
-//jQuery('#contact_number').prop('required',true);
+
 jQuery(document).ready(function() {
-    jQuery('#contact_number').select();
+    //jQuery('#contact_number').select();
+    jQuery("#find_us_other").attr("placeholder", "If Others...");
+    jQuery("li.find_us_other").css('display','none');
+    jQuery(".more_info_custom li:nth-child(3)").hide();
+    jQuery(".more_info_custom li:nth-child(7)").css("cssText", "width: 100% !important;");
     jQuery("#contact_number").css("background-color", "#FFFF99");
+    jQuery("#find_us_other").hide();
+    jQuery('#find_us').on('change', function () {
+    //alert(jQuery("#find_us option:selected").text().toLowerCase());
+    jQuery("li.find_us_other").css('display', (jQuery("#find_us option:selected").text().toLowerCase() == 'others') ? 'block' : 'none');
+});
+    if(jQuery("#find_us option:selected").text().toLowerCase() == 'others'){
+        jQuery("#find_us_other").show();
+    }
+
+    if($(window).width() <= 767)
+    {
+        jQuery(".more_info_custom li:nth-child(5)").css("cssText", "width: 100% !important;");
+       
+    } else {
+        jQuery(".more_info_custom li:nth-child(5)").css("cssText", "width: 33.33% !important;");
+    }
 });
 </script>
