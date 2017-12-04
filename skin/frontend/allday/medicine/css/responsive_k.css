@@ -89,7 +89,19 @@ li.error-msg span{
 	line-height: 31px;
 }
 
-
+.opc-index-index .icon-login.icon-home:before {
+    content: "\f015" !important;
+    font-size: 58px;
+    font-family: FontAwesome !important;
+    padding: 7px;
+    border-radius: 50%;
+    color: #000;
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
 @media only screen and (max-width: 1150px) {
 	.col1-layout .col-main {
 		padding: 0 10px;
