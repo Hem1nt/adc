@@ -86,6 +86,8 @@
 	}
 	.opc-index-index #check_error_message {
 	    color: red;
+	    display: block !important;
+	    padding: 0 15px;
 	}
 	.checkout_steps div.tabs div.divider {
         width: 11% !important;

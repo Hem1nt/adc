@@ -1741,6 +1741,8 @@ a.product_img[data-src~="http"] {
 }
 .opc-index-index #check_error_message{
     color: red;
+    display: block !important;
+    padding: 0 15px;
 }
 .opc-index-index #confirm_address_step{
     display: block;
