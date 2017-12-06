@@ -816,9 +816,9 @@ public function customerOrderGroupChange($observer){
     $customerId = $order->getCustomerId();
     $customerEmail = $order->getCustomerEmail();
     $orderCollection = Mage::getModel('sales/order')->getCollection()->addFieldToFilter('customer_email',$customerEmail);
-    //$orderHelper = Mage::helper('frontend/order');
-    //$customersOrdersCount = $orderHelper->getCustomersOrdersCount($customerEmail);
-    $customersOrdersCount = count($orderCollection->getData());
+    $orderHelper = Mage::helper('frontend/order');
+    $customersOrdersCount = $orderHelper->getCustomersOrdersCount($customerEmail);
+    //$customersOrdersCount = count($orderCollection->getData());
     if($customerId){
         if($customersOrdersCount >= 3){
             foreach ($orderCollection as $_order) {
