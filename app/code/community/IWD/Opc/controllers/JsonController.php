@@ -1133,7 +1133,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		$shippingAddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getData();
 		
 		$html .= '<ul class="address1">';
-		$html .= '<div class="billing_address_title">Billing address: </div>';
+		$html .= '<div class="billing_address_title">Billing Address: </div>';
 		$html .= '<label>Name</label>'.' <li>: '.$billingAddress['firstname'].' '.$billingAddress['lastname'].'</li>';
 		$html .= '<label>Street</label>'.' <li>: '.$billingAddress['street'].'</li>';
 		$html .= '<label>City</label>'.' <li>: '.$billingAddress['city'].'</li>';
@@ -1142,7 +1142,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		$html .= '<label>Telephone</label>'.'<li>: '.$billingAddress['telephone'].'</li>';
 		$html .= '</ul>';
 		$html .= '<ul class="address2">';
-		$html .= '<div class="shipping_address_title">Shipping address: </div>';
+		$html .= '<div class="shipping_address_title">Shipping Address: </div>';
 		$html .= '<label>Name</label>'.' <li>: '.$shippingAddress['firstname'].' '.$shippingAddress['lastname'].'</li>';
 		$html .= '<label>Street</label>'.' <li>: '.$shippingAddress['street'].'</li>';
 		$html .= '<label>City</label>'.'<li>: '.$shippingAddress['city'].'</li>';
