@@ -142,7 +142,7 @@ class Iksula_Birthday_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function reportSend()
     {
-        $to = "manoj.chowrasiya@iksula.com";
+        $to = "hemant.r@iksula.com";
         $subject = "Birthday Coupon Created";
         $txt = "Birthday Coupon Created";
         $headers = "From: noreply@alldaychemist.com" . "\r\n" .
