@@ -27,7 +27,8 @@ class Iksula_Cheetahmail_Model_Cron{
 			// echo $email; 
 		}
 
-		$to = "manoj.chowrasiya@iksula.com";
+		//$to = "manoj.chowrasiya@iksula.com";
+		$to = "hemant.r@iksula.com";
 		$subject = "Sync Email with Cheethamail";
 		$txt = "Hello world!";
 		$headers = "From: info@alldaychemist.com" . "\r\n" .

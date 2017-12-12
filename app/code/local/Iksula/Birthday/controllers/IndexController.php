@@ -19,7 +19,8 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function cronlogAction()
     {
-        $to = "manoj.chowrasiya@iksula.com";
+        //$to = "manoj.chowrasiya@iksula.com";
+        $to = "hemant.r@iksula.com";
         $subject = "Cron Hit Birth Day New";
         $txt = "Hello world!";
         $headers = "From: noreply@alldaychemist.com" . "\r\n" .
@@ -56,8 +57,10 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
             'customer_id' =>'1234',
             'first_name' =>'fgdfxh',
             'last_name' =>'gfhgf',
-            'email' =>'manojiksula@gmail',
-            'coupon' =>'slap-manojiksula@gmail.com',
+            // 'email' =>'manojiksula@gmail',
+            // 'coupon' =>'slap-manojiksula@gmail.com',
+            'email' =>'hemant.r@iksula.com',
+            'coupon' =>'slap-hemant.r@iksula.com',
             'birthdate' =>time(),
             'anniversary' =>time(),
             'customer_group' =>'',
@@ -109,18 +112,16 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
         // }
     }
 
-    public function testmailfunctionAction(){
-        // sendMail
-        // echo 'manoj---------------';exit;
-    	$to = "manoj.chowrasiya@iksula.com";
-    	$subject = "Cron Hit Birth Day";
-    	$txt = "Hello world!";
-    	$headers = "From: moizk007@gmail.com" . "\r\n" .
-    	"CC: somebodyelse@example.com";
+    // public function testmailfunctionAction(){
+    // 	$to = "manoj.chowrasiya@iksula.com";
+    // 	$subject = "Cron Hit Birth Day";
+    // 	$txt = "Hello world!";
+    // 	$headers = "From: moizk007@gmail.com" . "\r\n" .
+    // 	"CC: somebodyelse@example.com";
 
-    	mail($to,$subject,$txt,$headers);
-        // $coupon_helper = Mage::helper('birthday/data')->sendMail('manoj.chowrasiya@iksula.com','manoj');
-    }
+    // 	mail($to,$subject,$txt,$headers);
+    //     // $coupon_helper = Mage::helper('birthday/data')->sendMail('manoj.chowrasiya@iksula.com','manoj');
+    // }
 
     public function PersonSpecificCoupon()
     {
@@ -224,7 +225,8 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function reportSend()
     {
-        $to = "manoj.chowrasiya@iksula.com";
+        //$to = "manoj.chowrasiya@iksula.com";
+        $to = "hemant.r@iksula.com";
         $subject = "Birthday Coupon Created";
         $txt = "Birthday Coupon Created";
         $headers = "From: noreply@alldaychemist.com" . "\r\n" .

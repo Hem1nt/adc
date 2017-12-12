@@ -82,7 +82,8 @@ class Iksula_Birthday_Model_Observer
 
         $cron_notify_email = Mage::getStoreConfig('birthday_offer/birthday_group/cron_notify_email');
         
-        $to = "manoj.chowrasiya@iksula.com";
+        //$to = "manoj.chowrasiya@iksula.com";
+        $to = "hemant.r@iksula.com";
  
         $subject = 'Customers Birthday Coupon Cron';
 
