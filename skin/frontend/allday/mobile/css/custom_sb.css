@@ -1383,6 +1383,74 @@
 	.cms-content-114-echeck .col-main .std .howecheckworks a{
 	    color: #fff;
 	}
+	/*share wishlist*/
+	.wishlist-index-share .share_wishlist .field.wishlist_captcha {
+	    position: relative;
+	    width: 100%;
+	    padding-bottom: 24px;
+	    float: left;
+	    margin-top: 15px;
+	    padding-left: 105px;
+	    box-sizing: border-box;
+	}
+	.wishlist-index-share .share_wishlist .captcha_img_wrap {
+	    width: auto;
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    border: 0;
+	}
+	.wishlist-index-share .share_wishlist .captcha_img_wrap img#wishlist_captcha_img {
+	    width: auto;
+	    display: inline-block;
+	    background: #fff;
+	    margin-bottom: 0;
+	    text-align: center;
+	    border-bottom: 0;
+	    border: 1px solid #d6d6d6;
+	    padding: 1px;
+	    box-sizing: border-box;
+	    float: left;
+	    height: 39px;
+	    padding: 0;
+	    border-radius: 5px;
+	    border: 1px solid #aaaaaa!important;
+	}
+	.wishlist-index-share .share_wishlist input#wishlist_captcha_code{
+	    float: left;
+	    padding: 11px 12px;
+	    margin-right: 0;
+	    width: 150px;
+	    margin-top: 0;
+	    margin-bottom: 0;
+	    box-sizing: border-box;
+	}
+	.wishlist-index-share .share_wishlist small{
+	    position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    font-size: 13px;
+	    color: #333333;
+	    text-align: center;
+	    display: block;
+	    clear: both;
+	}
+	.wishlist-index-share .share_wishlist .form-list label {
+	    font-size: 14px;
+	}
+	.wishlist-index-share .col-main .fieldset.share_wishlist .legend {
+	    float: left;
+	    position: relative;
+	    width: 100%;
+	    font-size: 20px;
+	    border: 0;
+	    background: #FFFFFF;
+	    margin-bottom: 20px;
+	    padding: 0;
+	    color: #6d6d6d;
+	    font-weight: bold;
+	}
+	/*share wishlist end*/
 }
 
 @media only screen and (max-width: 800px){
@@ -1760,6 +1828,12 @@
 	    width: 100% !important;
 	    box-sizing: border-box;
 	}
+	.wishlist-index-share .share_wishlist input#wishlist_captcha_code {
+        width: 97%;
+    }
+    .wishlist-index-share .share_wishlist .field.wishlist_captcha {
+        padding-bottom: 30px;
+    }
 }
 @media only screen and (max-width: 540px){
     .checkout_steps div.tab-link.checkoutstep-2 p, 
@@ -1778,6 +1852,9 @@
 	    width: 16px;
 	    height: 16px;
 	    line-height: 16px;
+	}
+	.wishlist-index-share .share_wishlist .field.wishlist_captcha {
+	    padding-bottom: 50px;
 	}
 }
 @media only screen and (max-width: 420px){

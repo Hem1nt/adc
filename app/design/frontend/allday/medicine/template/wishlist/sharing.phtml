@@ -36,7 +36,7 @@
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <form action="<?php echo $this->getSendUrl() ?>" id="form-validate" method="post">
-    <div class="fieldset">
+    <div class="fieldset share_wishlist">
         <?php echo $this->getBlockHtml('formkey')?>
         <h2 class="legend"><?php echo $this->__('Sharing Information') ?></h2>
         <ul class="form-list">
@@ -55,14 +55,13 @@
             <!-- Captcha input -->
                 <li>
                     <div class="field wishlist_captcha">
-                        <label for="wishlist_captcha_code" class="required"><?php echo $this->__('Captcha') ?><em>*</em></label>
-                        <div class="input-box">
-                            <img src="<?php echo $url_of_website.'wishlist_captcha_file.php?rand='.rand();?>" id='wishlist_captcha_img'/>                            
-                            <br/><br/>
-                            <input id="wishlist_captcha_code" class="input-text required-entry validate_captcha" name="wishlist_captcha_code" type="text"></br></br>
-                            <small>Click <a href='javascript: wishlist_refresh_Captcha();' class="click-here">here</a> to refresh Image!</small>
-                            <input type="hidden" id="check-me" />
-                        </div>                        
+                        <!-- <label for="wishlist_captcha_code" class="required"><?php //echo $this->__('Captcha') ?><em>*</em></label> -->
+                        <div class="captcha_img_wrap">                        
+                            <img src="<?php echo $url_of_website.'wishlist_captcha_file.php?rand='.rand();?>" id='wishlist_captcha_img'/>                        
+                        </div>
+                        <input id="wishlist_captcha_code" class="input-text required-entry validate_captcha" name="wishlist_captcha_code" type="text" placeholder="enter code here">
+                        <small>Can't read the image? Click <a href='javascript: wishlist_refresh_Captcha();' class="click-here">here</a> to refresh Image!</small>
+                        <input type="hidden" id="check-me" />                     
                     </div>
                 </li>
             <!-- Captcha input ends -->

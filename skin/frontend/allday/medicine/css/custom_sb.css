@@ -1771,6 +1771,74 @@ a.product_img[data-src~="http"] {
     margin-right: 15px;
 }
 /*checkout steps end*/
+/*share wishlist*/
+.wishlist-index-share .share_wishlist .field.wishlist_captcha {
+    position: relative;
+    width: 100%;
+    padding-bottom: 24px;
+    float: left;
+    margin-top: 15px;
+    padding-left: 105px;
+    box-sizing: border-box;
+}
+.wishlist-index-share .share_wishlist .captcha_img_wrap {
+    width: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 0;
+}
+.wishlist-index-share .share_wishlist .captcha_img_wrap img#wishlist_captcha_img {
+    width: auto;
+    display: inline-block;
+    background: #fff;
+    margin-bottom: 0;
+    text-align: center;
+    border-bottom: 0;
+    border: 1px solid #d6d6d6;
+    padding: 1px;
+    box-sizing: border-box;
+    float: left;
+    height: 39px;
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa!important;
+}
+.wishlist-index-share .share_wishlist input#wishlist_captcha_code{
+    float: left;
+    padding: 11px 12px;
+    margin-right: 0;
+    width: 150px;
+    margin-top: 0;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+.wishlist-index-share .share_wishlist small{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 13px;
+    color: #333333;
+    text-align: center;
+    display: block;
+    clear: both;
+}
+.wishlist-index-share .share_wishlist .form-list label {
+    font-size: 14px;
+}
+.wishlist-index-share .col-main .fieldset.share_wishlist .legend {
+    float: left;
+    position: relative;
+    width: 100%;
+    font-size: 20px;
+    border: 0;
+    background: #FFFFFF;
+    margin-bottom: 20px;
+    padding: 0;
+    color: #6d6d6d;
+    font-weight: bold;
+}
+/*share wishlist end*/
 @media only screen and (max-width: 1110px){
     .checkout_steps div.tabs div.divider {
         width: 12% !important;
@@ -2098,15 +2166,6 @@ a.product_img[data-src~="http"] {
         margin: 0 11px 0 0;
         width: 40%;
     }   
-    /*.opc-messages {
-        font-size: 14px !important;
-        left: 5% !important ;
-        margin-left: 0 !important;
-        margin-top: 0 !important;
-        top: 20% !important;
-        width: 90% !important;
-    }*/
-
     .catalog-product-view .review-count-pr{
         width: 100%;
     }
@@ -2139,15 +2198,6 @@ a.product_img[data-src~="http"] {
         margin: 0 11px 0 0;
         width: 40%;
     }   
-    /*.opc-messages {
-        font-size: 14px !important;
-        left: 5% !important ;
-        margin-left: 0 !important;
-        margin-top: 0 !important;
-        top: 20% !important;
-        width: 90% !important;
-    }*/
-
     .catalog-product-view .review-count-pr{
         width: 100%;
     }
