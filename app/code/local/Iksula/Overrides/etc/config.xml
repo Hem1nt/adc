@@ -7,6 +7,13 @@
   </modules>
   <frontend>
     <routers>
+      <wishlist>
+          <args>
+              <modules>
+                  <iksula_overrides before="Mage_Wishlist">Iksula_Overrides_Wishlist</iksula_overrides>
+              </modules>
+          </args>
+      </wishlist>
       <customer>
           <args>
               <modules>
