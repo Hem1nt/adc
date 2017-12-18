@@ -102,8 +102,8 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function customerInfoAction(){
 
-        $this->cronlogAction();
-        exit;
+        // $this->cronlogAction();
+        // exit;
         
         // $terminal = Mage::app()->getRequest()->getParam('param');
         // Mage::log($terminal,null,'bithday_cron.log');
