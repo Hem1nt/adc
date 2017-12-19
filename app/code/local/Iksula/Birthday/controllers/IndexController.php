@@ -8,11 +8,11 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
       public function createCouponAction() {  
 
       // Mage::helper('birthday/data')->PersonSpecificCoupon('manojiksula@gmail.com');    
-        echo '<pre>';
+        //echo '<pre>';
       $collection = Mage::getResourceModel('customer/customer_collection')
             ->joinAttribute('dob','customer/dob', 'entity_id');
-        print_r($collection->getSize());
-        print_r($collection->getData());
+        // print_r($collection->getSize());
+        // print_r($collection->getData());
       $this->loadLayout();   
       $this->renderLayout();    
     }
@@ -20,34 +20,34 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
     public function cronlogAction()
     {
         //$to = "manoj.chowrasiya@iksula.com";
-        $to = "hemant.r@iksula.com";
-        $subject = "Cron Hit Birth Day New";
-        $txt = "Hello world!";
-        $headers = "From: noreply@alldaychemist.com" . "\r\n" .
-        "CC: manohar.p@iksula.com";
+        // $to = "hemant.r@iksula.com";
+        // $subject = "Cron Hit Birth Day New";
+        // $txt = "Hello world!";
+        // $headers = "From: noreply@alldaychemist.com" . "\r\n" .
+        // "CC: manohar.p@iksula.com";
 
-        mail($to,$subject,$txt,$headers);
+        // mail($to,$subject,$txt,$headers);
         Mage::log('cron running',null,'cron_testing.log');
     }
 
-    public function testAction(){
-        // birthday/index/test
-        Mage::getModel('birthday/observer')->sendbirthdayCoupon();
-        $email =  Mage::app()->getRequest()->getParam('email');
-        // echo $coupon_helper = Mage::helper('birthday/data')->PersonSpecificCoupon($email);
-        if($email){
-            $coupon_helper = Mage::helper('birthday/data')->sendMail($email,'manoj','happy-'.$email);
-        }
-    }
+    // public function testAction(){
+    //     // birthday/index/test
+    //     Mage::getModel('birthday/observer')->sendbirthdayCoupon();
+    //     $email =  Mage::app()->getRequest()->getParam('email');
+    //     // echo $coupon_helper = Mage::helper('birthday/data')->PersonSpecificCoupon($email);
+    //     if($email){
+    //         $coupon_helper = Mage::helper('birthday/data')->sendMail($email,'manoj','happy-'.$email);
+    //     }
+    // }
 
-    public function testhbAction(){
-        // birthday/index/test
-        $email =  Mage::app()->getRequest()->getParam('email');
-        // echo $coupon_helper = Mage::helper('birthday/data')->PersonSpecificCoupon($email);
-        if($email){
-            $coupon_helper = Mage::helper('birthday/data')->adhocBirthdayEmail($email);
-        }
-    }
+    // public function testhbAction(){
+    //     // birthday/index/test
+    //     $email =  Mage::app()->getRequest()->getParam('email');
+    //     // echo $coupon_helper = Mage::helper('birthday/data')->PersonSpecificCoupon($email);
+    //     if($email){
+    //         $coupon_helper = Mage::helper('birthday/data')->adhocBirthdayEmail($email);
+    //     }
+    // }
     
     public function savePersonSpecificCouponAction() {  
         $currentTimestamp = Mage::getModel('core/date')->timestamp(time());
@@ -160,10 +160,7 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
 
     public function customerInfoNew() 
     {
-        // echo "here";exit;
-        
         $this->reportSend();
-        // exit;
         $currentTimestamp = Mage::getModel('core/date')->timestamp(time());
         $currentDate = date('Y-m-d h:i:s', $currentTimestamp);
         $cronDate = date('m-d 00:00:00', $currentTimestamp);
@@ -329,8 +326,8 @@ class Iksula_Birthday_IndexController extends Mage_Core_Controller_Front_Action{
         //      echo '<pre>';
         //      print_r($rule1);
         // }
-            echo '<pre>';
-            print_r($couponData->getData());
-            exit;
+            // echo '<pre>';
+            // print_r($couponData->getData());
+            // exit;
     }
 }
