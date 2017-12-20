@@ -1839,6 +1839,66 @@ a.product_img[data-src~="http"] {
     font-weight: bold;
 }
 /*share wishlist end*/
+
+/*christmas theme*/
+.adc_christmas .header_wrap , .adc_christmas .header-top-block{
+    background: url(../images/adc_background_theme.gif) no-repeat;
+}
+.adc_christmas .header_wrap{
+    background-size: cover;
+}
+.adc_christmas .christmas_tree{
+    background: url(../images/tree.png) center bottom no-repeat;
+    width: 12%;
+    height: 74px;
+    position: absolute;
+    left: 0;
+    background-size: 100%;
+    display: inline-block;
+    bottom: 0;
+}
+.adc_christmas .christmas_bell{
+    background: url(../images/christmas_bell.gif) center center no-repeat;
+    width: 7%;
+    height: 74px;
+    position: absolute;
+    left: 20%;
+    background-size: 100%;
+    display: inline-block;
+    top: 0;
+}
+.adc_christmas .christmas_santa{
+    background: url(../images/christmas_santa.png) center center no-repeat;
+    width: 8%;
+    height: 74px;
+    position: absolute;
+    right: 1%;
+    background-size: 100%;
+    display: inline-block;
+    top: 13px;
+}
+.adc_christmas .header .quick-access {
+    width: 62% !important;
+    margin-right: 5%;
+}
+.adc_christmas .christmas_header_wrap{
+    position: relative;
+    background: url(../images/adc_background_theme.gif) no-repeat;
+    background-size: cover;
+}
+.adc_christmas .header .form-search {
+    background: transparent;
+}
+/*christmas theme end*/
+@media only screen and (max-width: 1125px){
+   .adc_christmas .header .quick-access {
+        width: 62% !important;
+        margin-right: 9%;
+    } 
+    .adc_christmas .christmas_tree{
+        width: 17%;
+    }
+}
 @media only screen and (max-width: 1110px){
     .checkout_steps div.tabs div.divider {
         width: 12% !important;
