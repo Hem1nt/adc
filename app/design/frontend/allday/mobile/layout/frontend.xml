@@ -44,6 +44,13 @@
     </reference>
   </frontend_index_allbrands>
 
+  <opc_index_index>
+    <reference name="head">
+      <action method="removeItem"><type>skin_js</type><name>js/jquery.snow.min.1.0.js</name>
+      </action>
+    </reference>
+  </opc_index_index>
+  
   <default>
     <reference name="head">
       <action method="addItem"><type>skin_js</type><name>js/custom_sb.js</name></action>
