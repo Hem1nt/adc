@@ -23,6 +23,60 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 @media only screen and (max-width: 1024px){
+
+	/*christmas theme*/
+	.adc_christmas .checkout-headerk .header {
+		display: inline-block;
+		width: 100%;
+		background: none;
+	}
+	.adc_christmas .header_wrap , .adc_christmas .header-top-block{
+	    background: url(../images/adc_background_theme.gif) no-repeat;
+	}
+	/*.adc_christmas .header_wrap{
+	    display: inline-block;
+    	width: 100%;
+
+	}*/
+	.adc_christmas .christmas_tree{
+	    background: url(../images/tree.png) center bottom no-repeat;
+	    width: 17%;
+	    height: 74px;
+	    position: absolute;
+	    left: 0;
+	    background-size: 100%;
+	    display: inline-block;
+	    bottom: 0;
+	}
+	.adc_christmas .christmas_bell{
+	    background: url(../images/christmas_bell.gif) center center no-repeat;
+	    width: 6%;
+	    height: 74px;
+	    position: absolute;
+	    left: 23%;
+	    background-size: 100%;
+	    display: inline-block;
+	    top: 0;
+	}
+	.adc_christmas .christmas_santa{
+	    background: url(../images/christmas_santa.png) center center no-repeat;
+	    width: 8%;
+	    height: 74px;
+	    position: absolute;
+	    right: 1%;
+	    background-size: 100%;
+	    display: inline-block;
+	    top: 38px;
+	}
+	.adc_christmas .header .quick-access {
+	    width: 60% !important;
+	    margin-right: 9%;
+	}
+	.adc_christmas .christmas_header_wrap{
+	    position: relative;
+	    background: url(../images/adc_background_theme.gif) no-repeat;
+	    background-size: cover;
+	}
 	.col-main .opc-wrapper-opc .btn#confirm_address_edit{
 	    margin-right: 15px;
 	}
@@ -1453,6 +1507,15 @@
 	/*share wishlist end*/
 }
 
+@media only screen and (max-width: 840px){
+	.adc_christmas .christmas_bell {
+		z-index: -1;
+	}
+	.adc_christmas .header .quick-access {
+	    width: 56% !important;
+	    margin-right: 9%;
+	}
+}
 @media only screen and (max-width: 800px){
 	.review_right_block {
 	    width: 70%;
@@ -1479,6 +1542,29 @@
 	    border-radius: 25px;
 	    height: 25px;
 	    color: #fff!important;
+	}
+	.adc_christmas .header-container {
+		background: transparent;
+	}
+	.adc_christmas .christmas_bell {
+	    background: url(../images/christmas_bell.gif) center center no-repeat;
+	    width: 8%;
+	    height: 81px;
+	    position: absolute;
+	    left: 24%;
+	    background-size: 100%;
+	    display: inline-block;
+	    top: -16px;
+	}
+	.adc_christmas .christmas_tree {
+	    background: url(../images/tree.png) center bottom no-repeat;
+	    width: 20%;
+	    height: 74px;
+	    position: absolute;
+	    left: 0;
+	    background-size: 100%;
+	    display: inline-block;
+	    bottom: 0;
 	}
 }
 @media only screen and (max-width: 736px){
@@ -1674,6 +1760,43 @@
 	.catalog-product-view .product-details-table table.new_product_list td.custom_price_center, 
 	.review-product-list .product-details-table table.new_product_list td.custom_price_center{
 	    text-align: center !important; 
+	}
+	.adc_christmas .christmas_tree {
+	    background: url(../images/tree.png) center bottom no-repeat;
+	    width: 23%;
+	    height: 71px;
+	    position: absolute;
+	    left: 0;
+	    background-size: 100%;
+	    display: inline-block;
+	    bottom: 0;
+	}
+	.adc_christmas .christmas_santa {
+		display: none;
+	}
+	.header-container .new-mobile-header {
+		background: url(../images/adc_background_theme.gif) center center no-repeat;
+	}
+	.adc_christmas .christmas_bell {
+	   display: none;
+	}
+	.adc_christmas .header_wrap{
+		width: 100%;
+		display: inline-block;
+	}
+}
+@media only screen and (max-width: 694px){
+	.adc_christmas .header .quick-access {
+	     width: 100% !important; 
+	     margin-right: 0; 
+	     background: transparent;
+	}
+	.adc_christmas .header{
+		background: url(../images/adc_background_theme.gif) no-repeat;
+		background-size: cover;
+	}
+	.adc_christmas .christmas_tree{
+	    display: none;
 	}
 }
 @media only screen and (max-width: 670px){

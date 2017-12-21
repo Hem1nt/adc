@@ -776,6 +776,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             width: 9%;
             top: 29%;
             width: 50px;
+            right: 18%;
         } 
         .new_arrival.new_arrival_img {
            width: 9%;
@@ -783,7 +784,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
            top: 29%;
            width: 50px;
         }
-
+        .header .logo img {
+            width: 100%;
+        }
 }
 
 @media only screen and (max-width: 900px){
@@ -860,7 +863,10 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         right: 235px;
     }
     .new_arrival.stock-desk {
-        right: 36%;
+        right: 22%;
+    }
+    .adc_christmas .new_arrival.stock-desk {
+        right: 27%;
     }
     .new_arrival.new_arrival_img {
         right: 22%;
@@ -974,6 +980,11 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         padding: 15px;
         box-sizing: border-box;
     }
+    .adc_christmas .header-container .new-mobile-header {
+        background: transparent;
+        margin-top: 6px;
+        padding-top: 0px;
+    }
     .header-container .new-mobile-header .mob-new-contact {
         display: inline-block;
         width: auto;
@@ -1017,6 +1028,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         padding: 10px 12px;
         box-sizing: border-box;
     }
+    .adc_christmas .header{
+        padding-bottom: 0;
+    }
     .header h1.logo{
         display: inline-block;
         margin: 0;
@@ -1056,6 +1070,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .main-container {
         margin-top: 15px !important;
+    }
+    .adc_christmas .main-container {
+        margin-top: 0px !important;
     }
     .checkout-cart-index .main-container, .catalog-product-view .main-container, .catalog-category-view .main-container{
         margin-top: 0 !important;
@@ -1242,6 +1259,11 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .header .form-search {
         right: 0px;
+    }
+}
+@media only screen and (max-width: 694px){
+    .adc_christmas .header{
+        padding-bottom: 10px;
     }
 }
 @media only screen and (max-width: 670px){
