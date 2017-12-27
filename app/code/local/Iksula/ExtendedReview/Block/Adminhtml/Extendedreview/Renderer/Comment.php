@@ -19,9 +19,14 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
                         echo "<p><i>".'Actual Review :'.'<br/>'.$Comment_detail."</i></p>";
                         
         foreach ($commentCollection as $value) {
-
-             echo "<br/>Comment ".$count++.":".'<b style="margin:0 6px 20px 27px; color:#000000 !important; ">'.$value->getComment().'</b>';
-
+        $customerFirstName = Mage::getModel('customer/customer')->load($value->getCustomerId())->getFirstname();
+        $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
+            echo "<br/>Comment ".$count++.":".'<b style="margin:0 6px 20px 27px; color:#000000 !important; ">'.$value->getComment().'</b>';
+            if ($customerFirstName){
+            echo  "-by ".$customerFirstName;            
+          }else{
+            echo  "-by ".$customerEmail;                        
+          }
         }
     }
     else{
@@ -34,18 +39,19 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
                       ->addFieldToFilter('comment_id',$commentId);
                         echo "<p><i>".'Actual Review :'.'<br/>'.$Comment_detail."</i></p>";
                         //echo $count++;
-        foreach ($commentCollection as $value) {
-            
-          
-               echo "<br/> Comment ".$count.":".'<strong style="margin:0 6px 16px 18px; color:#000000 !important;">'.$value->getComment().'</strong>';
+        foreach ($commentCollection as $value) { 
+        $customerFirstName = Mage::getModel('customer/customer')->load($value->getCustomerId())->getFirstname();
+        $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
+          echo "<br/> Comment ".$count.":".'<strong style="margin:0 6px 16px 18px; color:#000000 !important;">'.$value->getComment().'</strong>';
+          if ($customerFirstName){
+            echo  "-by ".$customerFirstName;            
+          }else{
+            echo  "-by ".$customerEmail;                        
+          }
         }
     }
-      $count++;
-     
-       
+      $count++;   
    }
-  
-
 }
 
 ?>

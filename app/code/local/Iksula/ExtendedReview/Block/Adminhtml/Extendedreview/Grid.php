@@ -65,7 +65,8 @@ class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Grid extends Mage_Adm
 				));
 				$this->addColumn("approved_by", array(
 				"header" => Mage::helper("extendedreview")->__("Approved By"),
-				"index" => "approved_by",
+				//"index" => "approved_by",
+				"index" => " ", // to hide the email id
 				));
 				
 				$this->addColumn('status', array(
