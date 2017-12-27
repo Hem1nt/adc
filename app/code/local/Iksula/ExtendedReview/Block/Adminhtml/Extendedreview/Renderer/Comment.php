@@ -17,13 +17,13 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
                       ->addFieldToFilter('review_id',$reviewId)
                       ->addFieldToFilter('customer_id',$customer_id);
                         echo "<p><i>".'Actual Review :'.'<br/>'.$Comment_detail."</i></p>";
-                        
+                        echo "-by <span style='color:#f6770e !important;'>".$review->getNickname()."</span><hr>";                       
         foreach ($commentCollection as $value) {
         $customerFirstName = Mage::getModel('customer/customer')->load($value->getCustomerId())->getFirstname();
         $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
             echo "<br/>Comment ".$count++.":".'<b style="margin:0 6px 20px 27px; color:#000000 !important; ">'.$value->getComment().'</b>';
             if ($customerFirstName){
-            echo  "-by ".$customerFirstName;            
+            echo  "-by ".$customerFirstName."</p>";            
           }else{
             echo  "-by ".$customerEmail;                        
           }
@@ -38,6 +38,7 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
                       ->addFieldToFilter('customer_id',$customer_id)
                       ->addFieldToFilter('comment_id',$commentId);
                         echo "<p><i>".'Actual Review :'.'<br/>'.$Comment_detail."</i></p>";
+                        echo "-by <span style='color:#f6770e !important;'>".$review->getNickname()."</span><hr>";                       
                         //echo $count++;
         foreach ($commentCollection as $value) { 
         $customerFirstName = Mage::getModel('customer/customer')->load($value->getCustomerId())->getFirstname();
