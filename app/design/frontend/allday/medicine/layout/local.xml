@@ -27,6 +27,8 @@
 			<action method="addItem"><type>skin_js</type><name>js/category.nav.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>js/slick.min.js</name></action>
 			<action method="addItem"><type>skin_js</type><name>js/jquery.snow.min.1.0.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/countdown.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/countdown.css</name></action>
 			<action method="addItem"><type>skin_css</type><name>css/jquery.bxslider.css</name></action>
 			<action method="addItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
 			<!-- <action method="addItem"><type>skin_css</type><name>css/ico-font.css</name></action> -->
@@ -46,6 +48,7 @@
 			<action method="addItem"><type>skin_css</type><name>css/custom_sb.css</name></action>
 			<action method="addItem"><type>skin_css</type><name>css/custom_ry.css</name></action>
 
+			<action method="addCss"><stylesheet>css/new_yr_2018.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/custom_sb.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/homepage_sb2.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/global_sb.css</stylesheet></action>

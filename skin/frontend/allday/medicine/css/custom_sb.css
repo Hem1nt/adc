@@ -1890,6 +1890,7 @@ a.product_img[data-src~="http"] {
     background: transparent;
 }
 /*christmas theme end*/
+
 @media only screen and (max-width: 1125px){
    .adc_christmas .header .quick-access {
         width: 62% !important;
