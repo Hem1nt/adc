@@ -1,0 +1,171 @@
+@media only screen and (max-width: 1024px){
+    /*countdown new yr*/
+    .countdown {
+      font-family: 'Roboto';
+      text-transform: uppercase;
+    }
+
+    .countdown > div { 
+        display: inline-block;
+        width: 20%;
+        box-sizing: border-box; 
+    }
+
+    .countdown > div > span {
+        display: block;
+        text-align: center;
+    }
+
+    .countdown-container { 
+        margin: 0 3px; 
+    }
+
+    .countdown-container .countdown-heading {
+        font-size: 8px;
+        margin: 3px;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .countdown-container .countdown-value {
+        font-size: 11px;
+        background: #000;
+        padding: 2px 0px;
+        color: #fff;
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+        border-radius: 0;
+    }
+    .countdown-container.seconds{
+        display: none;
+    }
+    /*countdown new yr end*/
+
+    .new_year .new_yr_header_wrap {
+        position: relative;
+        background: url(../images/ADC_Newyr_2018_background.jpg) no-repeat;
+        background-size: cover;
+    }
+    .new_year .header_wrap, .new_year .header-top-block{
+        background: url(../images/ADC_Newyr_2018_background.jpg) no-repeat;
+    }
+
+    .new_year .header-top-block {
+        background: url(../images/ADC_Newyr_2018_background1.jpg) no-repeat;
+    }
+    .new_year .lights_div {
+        background: url(../images/Light.gif) center bottom no-repeat;
+        width: 10%;
+        height: 97px;
+        position: absolute;
+        left: 0;
+        background-size: 100%;
+        display: inline-block;
+        bottom: 0;
+    }
+    .new_year .header .quick-access {
+        width: 50% !important;
+        margin-right: 155px;
+    }
+    .new_year .header .form-search input.input-text {
+        width: 46%;
+    }
+    .new_year .new_year_countdown {
+        display: inline-block;
+        width: 170px;
+        position: absolute;
+        right: 1%;
+        top: 30%;
+    }
+    .new_year .new_year_countdown h1 {
+        font-size: 16px;
+        color: #d5233b;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .new_year .header h1.logo {
+        margin: 0;
+        width: 19%;
+        margin-left: 70px;
+    }
+}
+@media only screen and (max-width: 900px){
+    .new_year .header h1.logo {
+        margin: 0;
+        width: 22%;
+        margin-left: 42px;
+    }
+    .new_year .lights_div {
+        width: 14%;
+    }
+}
+@media only screen and (max-width: 840px){
+    .new_year .header h1.logo {
+        margin: 0;
+        width: 23%;
+        margin-left: 20px;
+    }
+    .new_year .header .quick-access {
+        width: 48% !important;
+    }
+    .new_year .header-container {
+        background: transparent;
+    }
+}
+
+@media only screen and (max-width: 736px){
+
+   .new_year .header-container .new-mobile-header {
+        background: transparent;
+   }
+    .new_year .header_wrap, .new_year .header-top-block {
+        background: transparent;
+    }
+    .new_year .header_wrap {
+        width: 100%;
+        display: inline-block;
+    }
+    .new_year .header .quick-access {
+        width: 40% !important;
+        margin-right: 152px;
+    }
+    .new_year .header .form-search button.button {
+        margin-left: -8%;
+        width: 16%;
+        box-sizing: border-box;
+    }
+    .new_year .header h1.logo {
+        margin-left: 0;
+    }
+    .new_year .new_year_countdown {
+        display: none;
+    }
+   .new_year .new_year_countdown_mob{
+        display: inline-block;
+    }
+    .new_year .new_year_countdown_mob h1 {
+        font-size: 14px;
+        color: #d5233b;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0;
+    }
+    .countdown-container .countdown-heading {
+        font-size: 0;
+        margin: 3px;
+        color: #000;
+        font-weight: bold;
+    }
+}
+@media only screen and (max-width: 694px){
+
+    .new_year .header .quick-access {
+        width: 100% !important;
+        margin-right: 0;
+        background: transparent;
+    }
+}
+@media only screen and (max-width: 580px){
+    .new_year .new_year_countdown h1{
+        font-size: 13px;
+    }
+}
