@@ -32,7 +32,7 @@
                 html+="<span class='countdown-heading days-top'>Days</span>";
             html+="</div>";
         }
-        if(minutes <= 21){
+        if(days == 00 && hours <=00 && minutes <=00){
             $(".cube_right").addClass("newCub"); 
         }
 
