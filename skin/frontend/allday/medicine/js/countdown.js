@@ -28,24 +28,27 @@
 
         if(days!=0){
             html+="<div class='countdown-container days'>"
-                html+="<span class='countdown-heading days-top'>Days</span>";
                 html+="<span class='countdown-value days-bottom'>"+pad(days)+"</span>";
+                html+="<span class='countdown-heading days-top'>Days</span>";
             html+="</div>";
+        }
+        if(minutes <= 21){
+            $(".cube_right").addClass("newCub"); 
         }
 
         html+="<div class='countdown-container hours'>"
-            html+="<span class='countdown-heading hours-top'>Hours</span>";
             html+="<span class='countdown-value hours-bottom'>"+pad(hours)+"</span>";
+            html+="<span class='countdown-heading hours-top'>Hrs</span>";
         html+="</div>";
 
         html+="<div class='countdown-container minutes'>"
-            html+="<span class='countdown-heading minutes-top'>Minutes</span>";
             html+="<span class='countdown-value minutes-bottom'>"+pad(minutes)+"</span>";
+            html+="<span class='countdown-heading minutes-top'>Mins</span>";
         html+="</div>";
 
         html+="<div class='countdown-container seconds'>"
-            html+="<span class='countdown-heading seconds-top'>Seconds</span>";
             html+="<span class='countdown-value seconds-bottom'>"+pad(seconds)+"</span>";
+            html+="<span class='countdown-heading seconds-top'>Seconds</span>";
         html+="</div>";
 
         this.html(html);
