@@ -45,7 +45,7 @@ class Iksula_ExtendedReview_Adminhtml_ExtendedreviewController extends Mage_Admi
 				}
 		}
 
-		public function newAction()
+		/* public function newAction()
 		{
 
 		$this->_title($this->__("ExtendedReview"));
@@ -75,18 +75,13 @@ class Iksula_ExtendedReview_Adminhtml_ExtendedreviewController extends Mage_Admi
 
 		$this->renderLayout();
 
-		}
+		} */
 		public function saveAction()
 		{
-
 			$post_data=$this->getRequest()->getPost();
-
-
 				if ($post_data) {
 
-					try {
-
-						
+					try {			
 
 						$model = Mage::getModel("extendedreview/extendedreview")
 						->addData($post_data)

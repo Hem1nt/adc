@@ -67,10 +67,6 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 	    }
 
 		$html = "";
-
-		// echo $this->addCustomJs();
-		// exit;
-
 		if(strlen($comment_id)){
 			
 			// $html .= "<form id='frmReview".$comment_id."'>";
@@ -194,7 +190,7 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 	    }
 		$url = Mage::getUrl("frontend/index/captcha");
 		$nurl = $url_of_website."extended_review_captcha_code_file.php?code=".rand();
-		$aaa = "<script type='text/javascript'>
+		$Captcha = "<script type='text/javascript'>
     var new_form = new VarienForm('frmReview');
     jQuery('#frmReview').submit(function(){
         var review_commment_captcha_img =jQuery('#review_comment_captcha_code').val();
@@ -259,6 +255,6 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
                 });
     }
 </script>";
-	return $aaa;
+	return $Captcha;
 	}
 }
