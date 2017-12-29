@@ -6,10 +6,10 @@
     max-width: 100%;
     border: 1px solid #c9c9c9;
     margin: 22px 0;
-    background-color: #506f00;
+    background-color: #3d6958;
 }
 .new_year .new_year_countdown .container {
-    padding: 20px 42px;
+    padding: 20px 30px;
     box-sizing: border-box;
 }
 .container .countdown_right img{
@@ -20,16 +20,17 @@
     width: 50%;
     text-transform: uppercase;
     color: #fff;
-    line-height: 21px;
+    line-height: 28px;
     text-align: right;
+    font-weight: bold;
 }
 .countdown_left .txt1{
     display: block;
-    font-size: 20px;
+    font-size: 23px;
 }
 .countdown_left .txt2{
     display: block;
-    font-size: 14px;
+    font-size: 16px;
 }
 .countdown_right {
     float: left;
@@ -42,8 +43,9 @@
     padding-left: 15px;
 }
 .cube_left {
-    color: #c4e304;
+    color: #ffffff;
     font-size: 30px;
+    font-weight: bold;
 }
 .new_year_img {
     width: 17%;
@@ -69,7 +71,7 @@
     font-family: 'Roboto';
     text-transform: uppercase;
     display: inline-block;
-    background-color: #2f2f2f;
+    /*background-color: #2f2f2f;*/
     width: 100%;
     padding-top: 6px;
     border-radius: 5px;
@@ -97,12 +99,13 @@
 }
 
 .countdown-container .countdown-value {
-    font-size: 20px;
-    background: #444444;
+    font-size: 30px;
+    background: #000000;
     padding: 4px 0px;
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
     border: 2px solid #202020;
+    font-weight: bold;
 }
 .countdown-container.seconds{
     display: none;
