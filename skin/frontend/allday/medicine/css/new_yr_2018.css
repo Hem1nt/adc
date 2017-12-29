@@ -1,0 +1,165 @@
+/*countdown new yr*/
+.new_year .new_year_countdown {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    max-width: 100%;
+    border: 1px solid #c9c9c9;
+    margin: 22px 0;
+    background-color: #3d6958;
+}
+.new_year .new_year_countdown .container {
+    padding: 20px 30px;
+    box-sizing: border-box;
+}
+.container .countdown_right img{
+    width: 100%;
+}
+.countdown_left {
+    float: left;
+    width: 50%;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 28px;
+    text-align: right;
+    font-weight: bold;
+}
+.countdown_left .txt1{
+    display: block;
+    font-size: 23px;
+}
+.countdown_left .txt2{
+    display: block;
+    font-size: 16px;
+}
+.countdown_right {
+    float: left;
+    width: 50%;
+    position: relative;
+}
+.countdown_text{
+    display: inline-block;
+    width: 100%;
+    padding-left: 15px;
+}
+.cube_left {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+}
+.new_year_img {
+    width: 17%;
+    position: absolute;
+    right: 20%;
+    top: 4%;
+}
+.new_year_img_mob{
+    display: none;
+}
+.new_year_img img{
+    width: 100%;
+}
+.new_year .header .new_arrival.stock-desk {
+    position: absolute;
+    width: 6%;
+    display: inline-block;
+    float: right;
+    right: 2%;
+    top: 14px;
+}
+.countdown {
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    display: inline-block;
+    /*background-color: #2f2f2f;*/
+    width: 100%;
+    padding-top: 6px;
+    border-radius: 5px;
+}
+
+.countdown > div { 
+    display: inline-block;
+    width: 23%;
+    box-sizing: border-box; 
+}
+
+.countdown > div > span {
+    display: block;
+    text-align: center;
+}
+
+.countdown-container { 
+    margin: 0 3px; 
+}
+
+.countdown-container .countdown-heading {
+    font-size: 12px;
+    margin: 3px;
+    color: #fff;
+}
+
+.countdown-container .countdown-value {
+    font-size: 30px;
+    background: #000000;
+    padding: 4px 0px;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+    border: 2px solid #202020;
+    font-weight: bold;
+}
+.countdown-container.seconds{
+    display: none;
+}
+/*countdown new yr end*/
+.new_year .new_yr_header_wrap {
+    position: relative;
+    background: url(../images/ADC_Newyr_2018_background.jpg) no-repeat;
+    background-size: cover;
+}
+.new_year .header_wrap{
+    background: url(../images/ADC_Newyr_2018_background.jpg) no-repeat;
+    background-size: cover;
+}
+
+.new_year .header-top-block {
+    background: url(../images/ADC_Newyr_2018_background1.jpg) no-repeat;
+    background-size: cover;
+}
+.new_year .lights_div {
+    background: url(../images/Light.gif) center bottom no-repeat;
+    width: 10%;
+    height: 97px;
+    position: absolute;
+    left: 0;
+    background-size: 100%;
+    display: inline-block;
+    bottom: 0;
+}
+.new_year .header .quick-access {
+    width: 56% !important;
+    margin-right: 10%;
+}
+.new_year .header .form-search input.input-text {
+    width: 46%;
+}
+@media only screen and (max-width: 1125px){
+   .new_year .header .quick-access {
+        width: 50% !important;
+        margin-right: 156px;
+    }
+    .new_year .header h1.logo {
+        margin: 0;
+        width: 19%;
+        margin-left: 70px;
+    }
+    .new_year_img {
+        width: 22%;
+    }
+    .new_year .header .new_arrival.stock-desk {
+        right: 5%;
+    }
+    .countdown_left .txt1 {
+        display: block;
+        font-size: 18px;
+    }
+}

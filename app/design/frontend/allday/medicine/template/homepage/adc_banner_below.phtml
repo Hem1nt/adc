@@ -17,6 +17,25 @@
 			            '_secure' => Mage::app()->getFrontController()->getRequest()->isSecure()
 			        ));?>"></iframe>
 		</div>
+
+		<div class="new_year_countdown">
+			<div class="container">
+            <div class="countdown_text">
+            	<div class="countdown_left">
+            	<span class="txt1">new year</span><span class="txt2">countdown </span></div>	
+	            <div class="countdown_right">
+	                <div class="cube-wrap example1">
+	                    <div class="cube_left" style="float:left;">201</div>
+	                    <div class="cube_right">
+	                        <div class="cubBrd">7</div>
+	                        <div class="cubT">8</div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+	            <div class='countdown' data-date="2018-01-01"></div>
+	        </div>
+		</div>
 		<?php if($image_above_trusted):?>
 		<div class="home-banner-block">
 			<a class="comboclass" href="<?php echo $image_above_trusted;?>">
@@ -85,3 +104,54 @@ jQuery(document).ready(function(){
 
 
 </script>
+
+
+<style type="text/css">
+.cube-wrap {
+    transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -webkit-transform: scale(0.8); 
+    -moz-transform: scale(0.8); 
+    -o-transform: scale(0.8); 
+}
+.cube_right{
+	float: left;
+    position: absolute;
+    left: 55px;
+    top: -17px;
+}
+.cubT, .cubBrd{
+	display: block;
+	width: 100%;
+    font-size: 25px;
+    color: #fff;
+    font-weight: bold;
+}
+.cubBrd{
+	border-bottom: 3px solid #fff;
+	color: #fff;
+}
+.newCub{
+	top: 0;
+    left: 51px;
+    color: #fff;
+    font-weight: bold;
+}
+.newCub .cubBrd{
+	display: none;
+}
+.newCub .cubT{
+	font-size: 30px;
+}
+
+.example1 .cube-right {
+    transform: rotateY(90deg) translateZ(0);
+    -moz-transform: rotateY(90deg) translateZ(0);
+    -webkit-transform: rotateY(90deg) translateZ(0);
+    -o-transform: rotateY(90deg) translateZ(0);
+    -ms-transform: rotateY(90deg) translateZ(0);
+    background-color: blue;
+    right: 0;
+}
+
+</style>
