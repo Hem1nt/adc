@@ -16,12 +16,17 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
                       ->getCollection()->addFieldToSelect('*')
                       ->addFieldToFilter('review_id',$reviewId)
                       ->addFieldToFilter('customer_id',$customer_id);
-                        echo "<p><i>".'Actual Review :'.'<br/>'.$Comment_detail."</i></p>";
-                        
+                        echo "<p>".'<b>Actual Review : </b>'.$Comment_detail."</p>";
+                        echo "-by <span style='color:#ff3300;'>".$review->getNickname()."</span><hr>";                       
         foreach ($commentCollection as $value) {
-
-             echo "<br/>Comment ".$count++.":".'<b style="margin:0 6px 20px 27px; color:#000000 !important; ">'.$value->getComment().'</b>';
-
+        $customerFirstName = Mage::getModel('customer/customer')->load($value->getCustomerId())->getFirstname();
+        $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
+            echo "<br/>Comment ".$count++.":".'<b style="margin:0 6px 20px 27px; color:#000000; ">'.$value->getComment().'</b>';
+            if ($customerFirstName){
+            echo  "-by <b>".$customerFirstName."</b>";            
+          }else{
+            echo  "-by <b>".$customerEmail."</b>";                        
+          }
         }
     }
     else{
@@ -32,20 +37,22 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
                       ->addFieldToFilter('review_id',$reviewId)
                       ->addFieldToFilter('customer_id',$customer_id)
                       ->addFieldToFilter('comment_id',$commentId);
-                        echo "<p><i>".'Actual Review :'.'<br/>'.$Comment_detail."</i></p>";
+                        echo "<p>".'<b>Actual Review : </b>'.$Comment_detail."</p>";
+                        echo "-by <span style='color:#ff3300;'>".$review->getNickname()."</span><hr>";                       
                         //echo $count++;
-        foreach ($commentCollection as $value) {
-            
-          
-               echo "<br/> Comment ".$count.":".'<strong style="margin:0 6px 16px 18px; color:#000000 !important;">'.$value->getComment().'</strong>';
+        foreach ($commentCollection as $value) { 
+        $customerFirstName = Mage::getModel('customer/customer')->load($value->getCustomerId())->getFirstname();
+        $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
+          echo "<br/> Comment ".$count.":".'<strong style="margin:0 6px 16px 18px; color:#000000;">'.$value->getComment().'</strong>';
+          if ($customerFirstName){
+            echo  "-by <b>".$customerFirstName."</b>";            
+          }else{
+            echo  "-by <b>".$customerEmail."</b>";                        
+          }
         }
     }
-      $count++;
-     
-       
+      $count++;   
    }
-  
-
 }
 
 ?>
