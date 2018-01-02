@@ -135,6 +135,6 @@ jQuery(document).ready(function($){
   // }
    
    // $("body").addClass("adc_christmas");
-   $("body").addClass("new_year");
+   // $("body").addClass("new_year");
    
   });
