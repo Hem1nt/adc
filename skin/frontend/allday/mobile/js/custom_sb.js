@@ -61,14 +61,14 @@ equalheight = function(container){
 
     // }
      // $("body").addClass("adc_christmas");
-     $("body").addClass("new_year");
+     // $("body").addClass("new_year");
      
-    $(".container .new_year_img").css("display","none");
+    // $(".container .new_year_img").css("display","none");
    // new year fade out 
-   $(".new_year_countdown").click(function(){
-        $(".container .countdown").fadeOut();
-        // alert();
-        $(".container .new_year_img").css("display","inline-block");
-        $(".container .new_year_img").css("width","56%");
-    });
+   // $(".new_year_countdown").click(function(){
+   //      $(".container .countdown").fadeOut();
+   //      // alert();
+   //      $(".container .new_year_img").css("display","inline-block");
+   //      $(".container .new_year_img").css("width","56%");
+   //  });
   });
