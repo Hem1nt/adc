@@ -1,25 +1,15 @@
 <?php
-
 Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
 {
    public function render(Varien_Object $row){
-
     $id=$row->getId();
-// echo "<pre>";
-// print_r($row->getData());
     $reviewId =  $row->getReviewId();
     $review = Mage::getModel('review/review')->load($reviewId);
     $commentId= $row->getCommentId();
     $count=1;
     if($commentId != 0){
-      $Comment_detail = $review->getDetail();
-      $customer_id = $row->getCustomerId();
-      $customerData = Mage::getModel('customer/customer')->load($row->getCustomerId())->getData();
-      //echo "<pre>"; print_r($customerData); exit;
-
-      if ($customer_id) {
-        $customerText = Mage::helper('review')->__('<a href="%1$s" onclick="this.target=\'blank\'">Link</a>', $this->getUrl('adcixjspxkjdwodeffxnksh_auth/customer/edit', array('id' => $customer_id)));
-        } 
+      $Comment_detail=$review->getDetail();
+      $customer_id=$row->getCustomerId();
       $commentCollection=Mage::getModel("extendedreview/extendedreview")
                       ->getCollection()->addFieldToSelect('*')
                       ->addFieldToFilter('review_id',$reviewId)
@@ -31,7 +21,8 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
         $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
             echo "<br/>Comment ".$count++.":".'<b style="margin:0 6px 20px 27px; color:#000000; ">'.$value->getComment().'</b>';
             if ($customerFirstName){
-            echo  "-by <b>".$customerFirstName."</b>";            
+              echo "-by <b>".Mage::helper('review')->__('<a href="%1$s" onclick="this.target=\'blank\'">'.$customerFirstName.'</a>', $this->getUrl('adcixjspxkjdwodeffxnksh_auth/customer/edit', array('id' => $customer_id)))."</b>";
+            //echo  "-by <b>".$customerFirstName."</b>";            
           }else{
             echo  "-by <b>".$customerEmail."</b>";                        
           }
@@ -39,10 +30,7 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
     }
     else{
       $Comment_detail=$review->getDetail();
-      $customer_id = $row->getCustomerId();
-      if ($customer_id) {
-        echo $customerText = Mage::helper('review')->__('<a href="%1$s" onclick="this.target=\'blank\'">Link</a>', $this->getUrl('adcixjspxkjdwodeffxnksh_auth/customer/edit', array('id' => $customer_id)));
-        } 
+      $customer_id=$row->getCustomerId();
       $commentCollection=Mage::getModel("extendedreview/extendedreview")
                       ->getCollection()->addFieldToSelect('*')
                       ->addFieldToFilter('review_id',$reviewId)
@@ -56,7 +44,8 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
         $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
           echo "<br/> Comment ".$count.":".'<strong style="margin:0 6px 16px 18px; color:#000000;">'.$value->getComment().'</strong>';
           if ($customerFirstName){
-            echo  "-by <b>".$customerFirstName."</b>";            
+            //echo  "-by <b>".$customerFirstName."</b>";            
+            echo "-by <b>".Mage::helper('review')->__('<a href="%1$s" onclick="this.target=\'blank\'">'.$customerFirstName.'</a>', $this->getUrl('adcixjspxkjdwodeffxnksh_auth/customer/edit', array('id' => $customer_id)))."</b>";
           }else{
             echo  "-by <b>".$customerEmail."</b>";                        
           }
@@ -65,5 +54,4 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
       $count++;   
    }
 }
-
 ?>
