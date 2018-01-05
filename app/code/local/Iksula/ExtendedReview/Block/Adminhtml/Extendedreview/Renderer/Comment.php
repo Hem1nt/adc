@@ -1,9 +1,7 @@
 <?php
-
 Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
 {
    public function render(Varien_Object $row){
-
     $id=$row->getId();
     $reviewId =  $row->getReviewId();
     $review = Mage::getModel('review/review')->load($reviewId);
@@ -23,7 +21,8 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
         $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
             echo "<br/>Comment ".$count++.":".'<b style="margin:0 6px 20px 27px; color:#000000; ">'.$value->getComment().'</b>';
             if ($customerFirstName){
-            echo  "-by <b>".$customerFirstName."</b>";            
+              echo "-by <b>".Mage::helper('review')->__('<a href="%1$s" onclick="this.target=\'blank\'">'.$customerFirstName.'</a>', $this->getUrl('adcixjspxkjdwodeffxnksh_auth/customer/edit', array('id' => $customer_id)))."</b>";
+            //echo  "-by <b>".$customerFirstName."</b>";            
           }else{
             echo  "-by <b>".$customerEmail."</b>";                        
           }
@@ -45,7 +44,8 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
         $customerEmail = Mage::getModel('customer/customer')->load($value->getCustomerId())->getEmail();          
           echo "<br/> Comment ".$count.":".'<strong style="margin:0 6px 16px 18px; color:#000000;">'.$value->getComment().'</strong>';
           if ($customerFirstName){
-            echo  "-by <b>".$customerFirstName."</b>";            
+            //echo  "-by <b>".$customerFirstName."</b>";            
+            echo "-by <b>".Mage::helper('review')->__('<a href="%1$s" onclick="this.target=\'blank\'">'.$customerFirstName.'</a>', $this->getUrl('adcixjspxkjdwodeffxnksh_auth/customer/edit', array('id' => $customer_id)))."</b>";
           }else{
             echo  "-by <b>".$customerEmail."</b>";                        
           }
@@ -54,5 +54,4 @@ Class Iksula_ExtendedReview_Block_Adminhtml_Extendedreview_Renderer_Comment exte
       $count++;   
    }
 }
-
 ?>
