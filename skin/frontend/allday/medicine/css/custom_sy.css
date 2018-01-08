@@ -3,7 +3,13 @@
 /*---Sub category Design start here---*/
 .catalog-category-view .filter-block-wrap.block-layered-nav dl#narrow-by-list dd ol li a {
     font-weight: bold;
+    background: url(../images/single-arrow-right.png) left center no-repeat !important;
+    font-size: 15px;
 }
 .catalog-category-view .col-right.sidebar .block .block-content, .catalogsearch-result-index .col-right.sidebar .block .block-content{
-	background-color: #f7f9ea !important;
+	background-color: #edffd0 !important;
+}
+
+.catalog-category-view .col-right.sidebar .block .block-content.filter-block-tab .current a, .catalog-category-view .col-right.sidebar .block .block-content.filter-block-tab .current {
+	color: #f6770e !important;
 }

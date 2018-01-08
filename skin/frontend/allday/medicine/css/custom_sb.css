@@ -1400,7 +1400,7 @@ a.product_img[data-src~="http"] {
 }
 .catalog-category-view .filter-block-wrap .current,
 .catalog-category-view .filter-block-wrap .current a{
-    color: #5f7f0c !important;
+    
     font-weight: bold !important;
 }
 .catalog-category-view .col-right.sidebar .block .block-content.filter-block-tab .current a{
