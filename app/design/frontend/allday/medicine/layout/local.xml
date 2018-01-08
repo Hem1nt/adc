@@ -53,6 +53,7 @@
 			<action method="addCss"><stylesheet>css/homepage_sb2.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/global_sb.css</stylesheet></action>
 			<action method="addCss"><stylesheet>css/homepage_sb.css</stylesheet></action>
+			<action method="addItem"><type>skin_css</type><name>css/custom_sy.css</name></action>
 		</reference>
 		<reference name="left">
 			<block type="catalog/product_compare_sidebar" before="-" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>

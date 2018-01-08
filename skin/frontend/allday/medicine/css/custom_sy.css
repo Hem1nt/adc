@@ -1,0 +1,9 @@
+/* Css by snehal */
+
+/*---Sub category Design start here---*/
+.catalog-category-view .filter-block-wrap.block-layered-nav dl#narrow-by-list dd ol li a {
+    font-weight: bold;
+}
+.catalog-category-view .col-right.sidebar .block .block-content, .catalogsearch-result-index .col-right.sidebar .block .block-content{
+	background-color: #f7f9ea !important;
+}
