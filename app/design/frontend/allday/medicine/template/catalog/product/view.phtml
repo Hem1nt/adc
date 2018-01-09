@@ -437,9 +437,10 @@ productAddToCartForm.submitLight = function(button, url){
 <?php 
 $related_product_collection = $_product->getRelatedProductIds();
 $count = count($related_product_collection);
+
 if($count){
-    //echo $this->getChildHtml('custom_related');
-    //echo $this->getChildHtml('related_product_new'); 
+     //echo $this->getChildHtml('custom_related');
+   // echo $this->getChildHtml('related_product_new'); 
     $related_class = 'border-top: 1px solid #b5b5b5;';
 }else{
    $related_class = '';
@@ -450,10 +451,16 @@ if($count){
 $related_product_collection = $_product->getRelatedProductIds();
 $count = count($related_product_collection);
 $qty = $product->getStockItem()->getQty();
-if($count && $qty =='0'){
+//print_r($qty);exit;
+if($count){
+   // echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml(); 
+    echo $this->getChildHtml('related_product_new'); 
+}elseif($count && $qty =='0'){
     echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml(); 
+    
 }else{
     $related_class = ' ';
+
 }
 
 
