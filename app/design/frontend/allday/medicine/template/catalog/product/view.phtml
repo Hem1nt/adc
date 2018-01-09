@@ -37,6 +37,8 @@
 $product = Mage::registry('current_product');
 $id = $product->getId();//3607
 $qty = $product->getStockItem()->getQty();
+$OutOfStockCount=$product->getStockItem()->getIsInStock();
+
 // echo "<pre>";
 // print_r($qty);exit;
 
@@ -434,31 +436,17 @@ productAddToCartForm.submitLight = function(button, url){
 <?php //echo $this->getChildHtml('upsell_products') ?>
 
 <?php //echo $this->getChildHtml('bought.product.wrapper'); ?>
-<?php 
-$related_product_collection = $_product->getRelatedProductIds();
-$count = count($related_product_collection);
 
-if($count){
-     //echo $this->getChildHtml('custom_related');
-   // echo $this->getChildHtml('related_product_new'); 
-    $related_class = 'border-top: 1px solid #b5b5b5;';
-}else{
-   $related_class = '';
-}
-?>   
 <!--Related product for out of stock-->
 <?php 
 $related_product_collection = $_product->getRelatedProductIds();
 $count = count($related_product_collection);
 $qty = $product->getStockItem()->getQty();
-//print_r($qty);exit;
-if($count){
-   // echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml(); 
+if($count && $OutOfStockCount != '0'){
     echo $this->getChildHtml('related_product_new'); 
-}elseif($count && $qty =='0'){
-    echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml(); 
     
-}else{
+ }else{
+   echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml();
     $related_class = ' ';
 
 }
