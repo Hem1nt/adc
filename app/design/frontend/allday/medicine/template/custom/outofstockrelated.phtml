@@ -7,9 +7,9 @@ $related_product_collection = $_product->getRelatedProductIds();
 <?php 
 if(!empty($related_product_collection)){
   ?>
-  <div class="frequently_bought_wrap">
+  <div class="frequently_bought_wrap outOfStock">
     <h2 class="page_head">Related Products</h2>
-    <div class="slider_wraper">
+    <div class="slider_wraper related_outofstock">
       <?php
       foreach($related_product_collection as $_item): ?>
       <?php
@@ -70,13 +70,13 @@ if(!empty($related_product_collection)){
          <?php } ?>
 
        </div>
-       <div class="actions">
+       <!-- <div class="actions">
         <ul class="add-to-links">
          <li><a href="<?php echo $wishlistUrl;?>" class="link-wishlist" title="wishlist">Add to Wishlist</a></li>
          <li class="link-compare-li"><span class="separator">|</span> <a href="<?php echo $compareUrl;?>" class="link-compare">Compare</a></li>
        </ul>
        <button type="button" title="View Details" class="button btn-cart" onclick="setLocation('<?php echo $path;?>')"><span><span>View Details</span></span></button>
-     </div>
+     </div> -->
    </div>
  </div>
 <?php endforeach ?>
@@ -92,5 +92,38 @@ jQuery(document).ready(function($) {
     jQuery("img.lazy").lazy();
 });
 
-
 </script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+        jQuery('.slider_wraper.related_outofstock').slick({
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+		  dots: true,
+		  arrows: false,
+          responsive: [
+            {
+              breakpoint: 981,
+              settings: {
+                slidesToShow: 1
+              }
+            },
+            {
+              breakpoint: 737,
+              settings: {
+                slidesToShow: 1
+              }
+            },
+            {
+              breakpoint: 421,
+              settings: {
+                slidesToShow: 1
+              }
+            }
+          ]
+      });
+
+});
+</script>
+

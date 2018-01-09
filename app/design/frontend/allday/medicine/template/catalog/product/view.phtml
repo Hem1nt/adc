@@ -324,6 +324,10 @@ if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'): ?>
     </form>
 </div>
 <div class="notify-overlay"></div>
+<?php if($OutOfStockCount <= 0){
+echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml();
+    $related_class = ' ';
+} ?>
 <?php endif; ?>
 
 <!-- limited Supply form -->
@@ -446,11 +450,12 @@ $qty = $product->getStockItem()->getQty();
 if($count && $OutOfStockCount != '0'){
     echo $this->getChildHtml('related_product_new'); 
     
- }else{
+ }
+ /*else{
    echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml();
     $related_class = ' ';
 
-}
+}*/
 ?>
 
 <!--end for related product out of stock-->    
@@ -478,6 +483,7 @@ if($count && $OutOfStockCount != '0'){
 
 <!-- End Trustedcompany Widget Integration -->
 </div>
+
 <script type="text/javascript">
      //< ![CDATA[
      var customForm = new VarienForm('notify_me_form',true);
@@ -512,7 +518,7 @@ if($count && $OutOfStockCount != '0'){
           ]
       });
 
-        
+       
 
         jQuery('.read_more').click(function() {
             var divPosition = jQuery('.easytabs li').offset();
