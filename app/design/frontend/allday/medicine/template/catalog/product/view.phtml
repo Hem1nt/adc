@@ -37,6 +37,7 @@
 $product = Mage::registry('current_product');
 $id = $product->getId();//3607
 $qty = $product->getStockItem()->getQty();
+//out of stock product count
 $OutOfStockCount=$product->getStockItem()->getIsInStock();
 
 // echo "<pre>";
@@ -450,9 +451,6 @@ if($count && $OutOfStockCount != '0'){
     $related_class = ' ';
 
 }
-
-
-
 ?>
 
 <!--end for related product out of stock-->    
