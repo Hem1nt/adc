@@ -62,3 +62,15 @@
 	margin: 0 5px 5px;
 }
 /*---Outofstock related product Design end here---*/
+
+@media only screen and (max-width: 1300px){
+.frequently_bought_wrap.outOfStock{
+	right: 1%;
+}
+}
+
+@media only screen and (max-width: 1200px){
+.frequently_bought_wrap.outOfStock{
+	width: 30%;
+}
+}
