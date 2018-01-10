@@ -85,7 +85,11 @@ if($_product->isConfigurable()) {
 		$recommended = $recommendeclass = '';
 		$lowestPrice = round($perUnit,2);
 		$bestValueImage = Mage::getStoreConfig('custom_snippet/best_value_sku/sku_product');
-		if($bestValueImage){
+		$freeShippingImage = Mage::getStoreConfig('custom_snippet/free_shipping_sku/sku_product');
+		$freeShipArr = explode(',', $freeShippingImage);
+		$freeShipArr = array_map('trim',$freeShipArr);
+		$currSku = $child->getSku();
+		if($bestValueImage && !in_array($currSku, $freeShipArr)){
 			$bestValueArr = explode(',', $bestValueImage);
 			$bestValueArr=array_map('trim',$bestValueArr);
 			$currSku = $child->getSku();
@@ -100,6 +104,9 @@ if($_product->isConfigurable()) {
 				$recommendeclass = 'packsize_recommended';
 			}
 			}
+		}
+		if (in_array($currSku, $freeShipArr)){
+			$freeShippingProduct = ' <span class="product_free_shipping" title="Free shipping">Free Shipping</span>';
 		}
 
 		//discount tag
@@ -133,7 +140,11 @@ if($_product->isConfigurable()) {
 				$giftSpan = ' <span class="product_free_gift" title="Get a free gift">Will free gift</span>';
 			}
 		}
-		echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$giftSpan."</td>";
+		if($freeShippingProduct){
+			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$freeShippingProduct.$giftSpan."</td>";			
+		}else{
+			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$giftSpan."</td>";			
+		}
 		echo "<td class='qty_value'><span class='select_wrap'><select id='p-".$child->getId()."'>";
 		for($i=1; $i<=5; $i++) {
 			echo "<option value='$i'>$i</option>";
