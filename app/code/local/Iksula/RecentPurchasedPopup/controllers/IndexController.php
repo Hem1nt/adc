@@ -34,13 +34,15 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
             $html .= "<div class='recent'>";
             if(isset($parentIds[0])){
               $parentProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
-              $html  .= "<img src=".Mage::helper('catalog/image')->init($parentProduct, 'image')->resize(81,176).">";
+              $html  .= "<div class='showProducts_img'><img src=".Mage::helper('catalog/image')->init($parentProduct, 'image')->resize(80,80)."></div>";
             }
             /*if($_product->getThumbnail() != 'no_selection'){
               
             }*/
+            $html .= "<div class='showProducts_desp'>";
             $html .= "<b>Someone in ".$address->getData('region')." , ".$address->getData('city')."</b>";
-            $html .= "<span> recently purchased</span> ".$item->getData('name');
+            $html .= "<span> recently purchased</span> "."<span class='showProducts_name'>".$item->getData('name')."</span>";
+            $html .= "</div>";
             $html .= "</div>";
           }
 
