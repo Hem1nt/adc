@@ -1,0 +1,21 @@
+<div id="show_products"></div>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$.ajax({
+		        url: "<?php echo $this->getUrl("recentpurchasedpopup/index/getRecentlySoldItems")?>",
+		        type: "get",
+		        success: function (response) {
+		        	$('#show_products').html(response);
+		        }
+		    });
+		setInterval(function(){
+		 	$.ajax({
+		        url: "<?php echo $this->getUrl("recentpurchasedpopup/index/getRecentlySoldItems")?>",
+		        type: "get",
+		        success: function (response) {
+		        	$('#show_products').html(response);
+		        }
+		    });
+	 	},60 * 1000);	
+	})
+</script>
