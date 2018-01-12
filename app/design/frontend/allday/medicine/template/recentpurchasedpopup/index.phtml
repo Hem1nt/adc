@@ -1,7 +1,6 @@
 <div id="show_products" class="showProducts"></div>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
-		alert('dd');
 		$('#show_products').hide();
 		$.ajax({
 		        url: "<?php echo $this->getUrl("recentpurchasedpopup/index/getRecentlySoldItems")?>",
