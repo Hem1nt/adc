@@ -6,6 +6,35 @@
 <label for="confirm_address_check">
 	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">Confirm Address
 </label>
+<!--customer attributes starts-->
+<?php
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$customerId = Mage::getSingleton('customer/session')->getId();
+$customerModel  = Mage::getModel('customer/customer')->load($customerId);
+$AtributeValue=Mage::getResourceModel('customer/customer')
+        ->getAttribute('find_us')
+        ->getSource()
+        ->getAllOptions();
+ 
+
+?>
+<label for="confirm_address_check">
+	<?php echo $AtributeValue['label'] ?>
+</label>
+
+<select>
+        <?php
+        foreach($AtributeValue as $each){
+        ?>
+        <option value="<?php echo $each[value]?>"><?php echo $each["label"]?></option>
+        <?php
+        }
+        ?>
+</select>
+
+
+
+<!--customer attributes ends-->
 <span id='check_error_message'></span>
 <script type="text/javascript">
 jQuery(document).ready(function($){
