@@ -3,38 +3,10 @@
 </div>
 <button class="btn btn-primary" id="confirm_address_edit"><span><span>Edit</span></span></button>
 <br><br>
-<label for="confirm_address_check">
-	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">Confirm Address
-</label>
-<!--customer attributes starts-->
-<?php
-$customer = Mage::getSingleton('customer/session')->getCustomer();
-$customerId = Mage::getSingleton('customer/session')->getId();
-$customerModel  = Mage::getModel('customer/customer')->load($customerId);
-$AtributeValue=Mage::getResourceModel('customer/customer')
-        ->getAttribute('find_us')
-        ->getSource()
-        ->getAllOptions();
- 
+<!-- <label for="confirm_address_check">
+	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">I confirm that the address given above is correct
+</label> -->
 
-?>
-<label for="confirm_address_check">
-	<?php echo $AtributeValue['label'] ?>
-</label>
-
-<select>
-        <?php
-        foreach($AtributeValue as $each){
-        ?>
-        <option value="<?php echo $each[value]?>"><?php echo $each["label"]?></option>
-        <?php
-        }
-        ?>
-</select>
-
-
-
-<!--customer attributes ends-->
 <span id='check_error_message'></span>
 <script type="text/javascript">
 jQuery(document).ready(function($){
@@ -78,3 +50,59 @@ jQuery(document).ready(function($){
 })
 	
 </script>
+
+<?php
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$customerId = Mage::getSingleton('customer/session')->getId();
+$customerModel  = Mage::getModel('customer/customer')->load($customerId);
+$AtributeValue=Mage::getResourceModel('customer/customer')
+        ->getAttribute('find_us')
+        ->getSource()
+        ->getAllOptions();
+ 
+ // print_r($AtributeValue);
+$labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreLabel();
+
+
+
+?>
+<label><?php echo $labelValues; ?></label>
+
+<select class="myselect" id="dropdown">
+        <?php
+        foreach($AtributeValue as $each){
+        ?>
+        <option value="<?php echo $each['value']?>"><?php echo $each["label"]?></option>
+        <?php
+        }
+        ?>
+</select>
+<br><br>
+
+<label for="confirm_address_check">
+	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">I confirm that the address given above is correct
+</label>
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+<script type="text/javascript">
+var jQuery=jQuery.noConflict();
+jQuery(document).ready(function(){
+
+	jQuery('#dropdown').change(function(){
+		//alert("hello");
+		var valueselect=jQuery( "#dropdown option:selected" ).text();
+		//alert(valueselect);
+		jQuery.ajax({
+		    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
+		    type: "POST",
+		    data: {attribute: valueselect},
+		    success: function(data){
+		   // echo "hello"
+		    }
+});
+
+	})
+	
+});
+
+</script>
+<br/>
