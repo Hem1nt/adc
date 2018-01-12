@@ -46,7 +46,9 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
             $html .= "</div>";
           }
 
-          echo $html;
+          echo json_encode(array('success'=>'true','data'=>$html));
+      }else{
+        echo json_encode(array('success'=>'false'));
       }
       
     }
