@@ -568,7 +568,7 @@ span.product_free_gift {
 span.product_free_shipping {
   font-size: 0;
   display: inline-block;
-  background: url(../images/free_ship.jpg) no-repeat;
+  background: url(../images/free_ship.png) no-repeat;
   width: 43px;
   height: 43px;
   background-size: 43px 41px;

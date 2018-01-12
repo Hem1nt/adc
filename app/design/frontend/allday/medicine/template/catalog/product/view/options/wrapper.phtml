@@ -86,6 +86,7 @@ if($_product->isConfigurable()) {
 		$lowestPrice = round($perUnit,2);
 		$bestValueImage = Mage::getStoreConfig('custom_snippet/best_value_sku/sku_product');
 		$freeShippingImage = Mage::getStoreConfig('custom_snippet/free_shipping_sku/sku_product');
+		$freeShip = '';
 		$freeShipArr = explode(',', $freeShippingImage);
 		$freeShipArr = array_map('trim',$freeShipArr);
 		$currSku = $child->getSku();
@@ -140,7 +141,7 @@ if($_product->isConfigurable()) {
 				$giftSpan = ' <span class="product_free_gift" title="Get a free gift">Will free gift</span>';
 			}
 		}
-		if($freeShippingProduct){
+		if($freeShippingProduct && in_array($currSku, $freeShipArr)){
 			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$freeShippingProduct.$giftSpan."</td>";			
 		}else{
 			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$giftSpan."</td>";			
