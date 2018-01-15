@@ -9,9 +9,10 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
       $itemsCollection = Mage::getResourceModel('sales/order_item_collection')
       ->join('order', 'order_id=entity_id')
       ->addFieldToFilter('main_table.store_id', array('eq'=>$storeID))
-      ->addFieldToFilter('`main_table`.created_at', array('from' => $dateStart, 'to' => $dateEnd))
+      ->addFieldToFilter('main_table.created_at', array('from' => $dateStart, 'to' => $dateEnd))
       ->setOrder('main_table.created_at','desc')
       ->setPageSize(1);
+      
       $html = "";
       $itemsCollection->getSelect()->group(`main_table`.'product_id');
         if(sizeof($itemsCollection)>0)
