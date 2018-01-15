@@ -162,6 +162,25 @@
             </limitedsupply_email>
           </fields>
         </limitedsupply_tabs>
+        <free_shipping_sku translate="label">
+          <label>Free Shipping Image by SKU</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <sku_product translate="label">
+              <label>Free Shipping Image</label>
+              <comment>Mention SKU comma seperated to display Free Shipping Image</comment>
+              <frontend_type>textarea</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </sku_product>
+          </fields>
+        </free_shipping_sku>
         <best_value_sku translate="label">
           <label>Best Value Image by SKU</label>
           <frontend_type>text</frontend_type>
