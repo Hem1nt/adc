@@ -47,6 +47,10 @@ jQuery(document).ready(function($){
 	
 </script>
 
+<!--textbox area-->
+<textarea id="textbox_values" rows="4" cols="50" style="display:none">
+</textarea>
+
 <?php
 $customer = Mage::getSingleton('customer/session')->getCustomer();
 $customerId = Mage::getSingleton('customer/session')->getId();
@@ -71,46 +75,60 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
         ?>
 </select>
 <br><br>
-<!--textarea-->
-<textarea rows="4" cols="50" id="customtextarea" class="hidetextarea" style="display: none";>
-</textarea>
 
 <label for="confirm_address_check">
 	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">I confirm that the address given above is correct
 </label>
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+
 <script type="text/javascript">
 var jQuery=jQuery.noConflict();
 jQuery(document).ready(function(){
-	//dropdown show hide 
-
-
-	// jQuery('#dropdown').change(function(){
-		jQuery('#confirm_address_step').click(function(){
-		jQuery('#dropdown').change(function(){		
-		//e.stopPropagation();
-		var valueselect=jQuery("#dropdown option:selected" ).text();
-		//show hide dropdown select
-		if (valueselect == "Others") {
-                jQuery("#customtextarea").show();
-            } else {
-                jQuery("#customtextarea").hide();
-            }
-
-
-
-		var textareavalue=jQuery("#customtextarea").val();
-		//alert(textarea);
+	jQuery('#dropdown').change(function(){
+		var valueselect=jQuery( "#dropdown option:selected" ).text();
 		jQuery.ajax({
 		    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
 		    type: "POST",
-		    data: {attribute: valueselect, otherstext: textareavalue},
+		    data: {attribute: valueselect},
 		    success: function(data){
 		   // echo "hello"
 		    }
 });
-	})
+	});
 	
 });
+
 </script>
-<!-- <br/> -->
+
+<!--others functionality-->
+<script type="text/javascript">
+var jQuery=jQuery.noConflict();
+jQuery('#dropdown').change(function(){
+		var others=jQuery( "#dropdown option:selected" ).text();
+		//alert(others);
+		
+		if(others == "Others"){
+            jQuery("#textbox_values").show();
+        }
+        else{
+            jQuery("#textbox_values").hide();
+        }
+	});
+
+jQuery('#confirm_address_step').click(function(){
+	//e.stopPropagation();
+	var message = jQuery('#textbox_values').text();
+    // alert(message);die;
+	//alert(message);die;
+	jQuery.ajax({
+		    url: "<?php echo $this->getUrl('overrides/account/others') ?>",
+		    type: "POST",
+		    data: {others: message},
+		    success: function(data){
+		   // echo "hello"
+		    }
+});
+});
+
+
+</script>
+<br/>
