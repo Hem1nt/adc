@@ -1,4 +1,5 @@
 <div id="show_products" class="showProducts"></div>
+<?php //echo Mage::registry($orderId).'ddd';exit; ?>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
 		$('#show_products').hide();
@@ -17,7 +18,7 @@
 		    });
 		setInterval(function(){
 		 	$('#show_products').hide();
-	 	},60000);
+	 	},30000);
 		setInterval(function(){
 		 	$.ajax({
 		        url: "<?php echo $this->getUrl("recentpurchasedpopup/index/getRecentlySoldItems")?>",
