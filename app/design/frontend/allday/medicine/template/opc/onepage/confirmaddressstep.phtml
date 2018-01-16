@@ -3,10 +3,6 @@
 </div>
 <button class="btn btn-primary" id="confirm_address_edit"><span><span>Edit</span></span></button>
 <br><br>
-<!-- <label for="confirm_address_check">
-	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">I confirm that the address given above is correct
-</label> -->
-
 <span id='check_error_message'></span>
 <script type="text/javascript">
 jQuery(document).ready(function($){
@@ -62,9 +58,6 @@ $AtributeValue=Mage::getResourceModel('customer/customer')
  
  // print_r($AtributeValue);
 $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreLabel();
-
-
-
 ?>
 <label><?php echo $labelValues; ?></label>
 
@@ -78,6 +71,9 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
         ?>
 </select>
 <br><br>
+<!--textarea-->
+<textarea rows="4" cols="50" id="customtextarea" class="hidetextarea" style="display: none";>
+</textarea>
 
 <label for="confirm_address_check">
 	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">I confirm that the address given above is correct
@@ -86,23 +82,35 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
 <script type="text/javascript">
 var jQuery=jQuery.noConflict();
 jQuery(document).ready(function(){
+	//dropdown show hide 
 
-	jQuery('#dropdown').change(function(){
-		//alert("hello");
-		var valueselect=jQuery( "#dropdown option:selected" ).text();
-		//alert(valueselect);
+
+	// jQuery('#dropdown').change(function(){
+		jQuery('#confirm_address_step').click(function(){
+		jQuery('#dropdown').change(function(){		
+		//e.stopPropagation();
+		var valueselect=jQuery("#dropdown option:selected" ).text();
+		//show hide dropdown select
+		if (valueselect == "Others") {
+                jQuery("#customtextarea").show();
+            } else {
+                jQuery("#customtextarea").hide();
+            }
+
+
+
+		var textareavalue=jQuery("#customtextarea").val();
+		//alert(textarea);
 		jQuery.ajax({
 		    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
 		    type: "POST",
-		    data: {attribute: valueselect},
+		    data: {attribute: valueselect, otherstext: textareavalue},
 		    success: function(data){
 		   // echo "hello"
 		    }
 });
-
 	})
 	
 });
-
 </script>
-<br/>
+<!-- <br/> -->

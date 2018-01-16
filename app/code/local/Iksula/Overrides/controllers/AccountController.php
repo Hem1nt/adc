@@ -316,15 +316,16 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
     public function hearfromusAction()
     {
       $values = $this->getRequest()->getPost('attribute');
+      $otherstext=$this->getRequest()->getPost('otherstext');
       $customer = Mage::getSingleton('customer/session')->getCustomer();
       $customerId = Mage::getSingleton('customer/session')->getId();
       if($customerId)
         try {
             $customerModel  = Mage::getModel('customer/customer')->load($customerId); 
             $customerModel->setFindUs($values);
+            $customerModel->setOthers($otherstext);
              $customerModel->save();
-             //print_r($customerModel->getData());
-             //echo "Data saved sucessfully";
+           
         } catch (Exception $e) {
             echo "Data not saved";
             
