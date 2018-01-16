@@ -57,7 +57,7 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
               }
 
               $html .= "<div class='showProducts_desp'>";
-              $html .= "<b>Someone in ".$address->getData('region')." , ".$address->getData('city')."</b>";
+              $html .= "<b>Someone in ".$address->getData('city')." , ".$address->getData('region')."</b>";
               $html .= "<span> recently purchased</span> "."<span class='showProducts_name'>".$item->getData('name')."</span>";
               $html .= "</div>";
               $html .= "</div>";
