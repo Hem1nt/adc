@@ -32,7 +32,7 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
             $order = Mage::getModel('sales/order')->load($orderId);
 
             //hide popup if order placed from active customer
-            if($order->getData('customer_id') == $customerId && $customerLoggedIn == true){
+            if($customerLoggedIn && $order->getData('customer_id') == $customerId){
               echo json_encode(array('success'=>'false','customer'=>'active'));exit;
             }
 
@@ -53,12 +53,12 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
               $html .= "<div class='recent'>";
               if(isset($parentIds[0])){
                 $parentProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
-                $html  .= "<div class='showProducts_img'><img src=".Mage::helper('catalog/image')->init($parentProduct, 'image')->resize(80,80)."></div>";
+                $html  .= "<div class='showProducts_img'><a href='".Mage::getBaseurl().$parentProduct->getData('url_path')."'><img src=".Mage::helper('catalog/image')->init($parentProduct, 'image')->resize(80,80)."></a></div>";
               }
 
               $html .= "<div class='showProducts_desp'>";
               $html .= "<b>Someone in ".$address->getData('city')." , ".$address->getData('region')."</b>";
-              $html .= "<span> recently purchased</span> "."<span class='showProducts_name'>".$item->getData('name')."</span>";
+              $html .= "<span> recently purchased</span> "."<span class='showProducts_name'>"."<a href='".Mage::getBaseurl().$parentProduct->getData('url_path')."'>".$item->getData('name')."</a></span>";
               $html .= "</div>";
               $html .= "</div>";
               Mage::getSingleton('core/session')->setData('orderid',$orderId);
