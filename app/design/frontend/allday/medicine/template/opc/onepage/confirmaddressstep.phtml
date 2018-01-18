@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 		        url: "<?php echo $this->getUrl("onepage/json/getcustomAddresstep")?>",
 		        type: "get",
 		        success: function (response) {
-		        	//IWD.OPC.Checkout.hideLoader();
+		        	IWD.OPC.Checkout.hideLoader();
 					IWD.OPC.Checkout.unlockPlaceOrder();
 		        	$('#complete_address').html(response);
 		        	$('#confirm_address_step').show();
@@ -28,15 +28,17 @@ jQuery(document).ready(function($){
 
 		var message = jQuery('#textbox_values').val();
 			if(message == ""){
-				// e.stopPropagation();
-		  //   	$('#check_error_message').text('Please Confirm').show();
-		  //   	return;
+				e.stopPropagation();
+		    	$('#check_error_message').text('Please Confirm').show();
+		    	return;
 			}else{
 				$.ajax({
 				    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
 				    type: "POST",
 				    data: {attribute: message},
 				    success: function(data){
+				    	IWD.OPC.Checkout.hideLoader();
+				    	IWD.OPC.Checkout.unlockPlaceOrder();
 					   // echo "hello"
 					}
 				});
