@@ -33,4 +33,5 @@ class Iksula_Customerinfo_IndexController extends Mage_Core_Controller_Front_Act
       echo '<h1>Thank you for providing information</h1>';
     }
     
+    
 }

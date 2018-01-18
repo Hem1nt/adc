@@ -8,7 +8,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
      */
     public function addCommentAction()
     {
-    	// echo 'ihihih';
+    	
     	if ($order = $this->_initOrder()) {
             try {
                 $response = false;
@@ -1023,6 +1023,9 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 							$attr = $customerData->getData('find_us_other');
 							$find_us_label = "Others: ".$attr; 
 						}
+					}
+					if (!$find_us_label){
+						$find_us_label = $customerData->getFindUs();
 					}				
 					/*If some one selected others as heard from options E*/
 				/*For Attribute find us E*/

@@ -313,4 +313,24 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
             return;
         }
     }
+    public function hearfromusAction()
+    {
+      $values = $this->getRequest()->getPost('attribute');
+      $customer = Mage::getSingleton('customer/session')->getCustomer();
+      $customerId = Mage::getSingleton('customer/session')->getId();
+      if($customerId)
+        try {
+            $customerModel  = Mage::getModel('customer/customer')->load($customerId); 
+            $customerModel->setFindUs($values);
+             $customerModel->save();
+           
+        } catch (Exception $e) {
+            echo "Data not saved";
+            
+        }
+      
+      
+    }
+  
+    
 }

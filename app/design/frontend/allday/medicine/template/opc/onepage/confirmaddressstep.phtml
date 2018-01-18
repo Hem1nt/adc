@@ -3,9 +3,6 @@
 </div>
 <button class="btn btn-primary" id="confirm_address_edit"><span><span>Edit</span></span></button>
 <br><br>
-<label for="confirm_address_check">
-	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">Confirm Address
-</label>
 <span id='check_error_message'></span>
 <script type="text/javascript">
 jQuery(document).ready(function($){
@@ -19,7 +16,7 @@ jQuery(document).ready(function($){
 		        url: "<?php echo $this->getUrl("onepage/json/getcustomAddresstep")?>",
 		        type: "get",
 		        success: function (response) {
-		        	IWD.OPC.Checkout.hideLoader();
+		        	//IWD.OPC.Checkout.hideLoader();
 					IWD.OPC.Checkout.unlockPlaceOrder();
 		        	$('#complete_address').html(response);
 		        	$('#confirm_address_step').show();
@@ -28,6 +25,23 @@ jQuery(document).ready(function($){
 		    });
 	})
 	$('#confirm_address_step').click(function(e) {
+
+		var message = jQuery('#textbox_values').val();
+			if(message == ""){
+				// e.stopPropagation();
+		  //   	$('#check_error_message').text('Please Confirm').show();
+		  //   	return;
+			}else{
+				$.ajax({
+				    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
+				    type: "POST",
+				    data: {attribute: message},
+				    success: function(data){
+					   // echo "hello"
+					}
+				});
+			}
+
 		$('#check_error_message').hide();
 	    if(!$("#confirm_address_check").is(':checked')){
 	    	e.stopPropagation();
@@ -49,3 +63,61 @@ jQuery(document).ready(function($){
 })
 	
 </script>
+
+<!--textbox area-->
+<textarea id="textbox_values" rows="4" cols="50" style="display:none">
+</textarea>
+
+<?php
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$customerId = Mage::getSingleton('customer/session')->getId();
+$customerModel  = Mage::getModel('customer/customer')->load($customerId);
+$AtributeValue=Mage::getResourceModel('customer/customer')
+        ->getAttribute('find_us')
+        ->getSource()
+        ->getAllOptions();
+ 
+ // print_r($AtributeValue);
+$labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreLabel();
+?>
+<label><?php echo $labelValues; ?></label>
+
+<select class="myselect" id="dropdown">
+        <?php
+        foreach($AtributeValue as $each){
+        ?>
+        <option value="<?php echo $each['value']?>"><?php echo $each["label"]?></option>
+        <?php
+        }
+        ?>
+</select>
+<br><br>
+
+<label for="confirm_address_check">
+	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">I confirm that the address given above is correct
+</label>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	$('#dropdown').change(function(){
+		var valueselect=$( "#dropdown option:selected" ).text();
+
+		if(valueselect == "Others"){
+            $("#textbox_values").show();
+        }else{
+        	$("#textbox_values").hide();
+			$.ajax({
+			    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
+			    type: "POST",
+			    data: {attribute: valueselect},
+			    success: function(data){
+				   // echo "hello"
+				}
+			});		
+        }
+	});
+});
+
+
+</script>
+
