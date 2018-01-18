@@ -316,14 +316,12 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
     public function hearfromusAction()
     {
       $values = $this->getRequest()->getPost('attribute');
-      $otherstext=$this->getRequest()->getPost('otherstext');
       $customer = Mage::getSingleton('customer/session')->getCustomer();
       $customerId = Mage::getSingleton('customer/session')->getId();
       if($customerId)
         try {
             $customerModel  = Mage::getModel('customer/customer')->load($customerId); 
             $customerModel->setFindUs($values);
-            $customerModel->setOthers($otherstext);
              $customerModel->save();
            
         } catch (Exception $e) {
@@ -333,25 +331,6 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
       
       
     }
-    //others
-    public function othersAction()
-    {
-      $values = $this->getRequest()->getPost('others');
-      //$otherstext=$this->getRequest()->getPost('otherstext');
-      $customer = Mage::getSingleton('customer/session')->getCustomer();
-      $customerId = Mage::getSingleton('customer/session')->getId();
-      if($customerId)
-        try {
-            $customerModel  = Mage::getModel('customer/customer')->load($customerId); 
-            //$customerModel->setFindUs($values);
-            $customerModel->setOthers($values);
-             $customerModel->save();
-           
-        } catch (Exception $e) {
-            echo "Data not saved";
-            
-        }
-      
-      
-    }
+  
+    
 }

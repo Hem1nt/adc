@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 		        url: "<?php echo $this->getUrl("onepage/json/getcustomAddresstep")?>",
 		        type: "get",
 		        success: function (response) {
-		        	IWD.OPC.Checkout.hideLoader();
+		        	//IWD.OPC.Checkout.hideLoader();
 					IWD.OPC.Checkout.unlockPlaceOrder();
 		        	$('#complete_address').html(response);
 		        	$('#confirm_address_step').show();
@@ -25,6 +25,23 @@ jQuery(document).ready(function($){
 		    });
 	})
 	$('#confirm_address_step').click(function(e) {
+
+		var message = jQuery('#textbox_values').val();
+			if(message == ""){
+				// e.stopPropagation();
+		  //   	$('#check_error_message').text('Please Confirm').show();
+		  //   	return;
+			}else{
+				$.ajax({
+				    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
+				    type: "POST",
+				    data: {attribute: message},
+				    success: function(data){
+					   // echo "hello"
+					}
+				});
+			}
+
 		$('#check_error_message').hide();
 	    if(!$("#confirm_address_check").is(':checked')){
 	    	e.stopPropagation();
@@ -81,54 +98,26 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
 </label>
 
 <script type="text/javascript">
-var jQuery=jQuery.noConflict();
-jQuery(document).ready(function(){
-	jQuery('#dropdown').change(function(){
-		var valueselect=jQuery( "#dropdown option:selected" ).text();
-		jQuery.ajax({
-		    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
-		    type: "POST",
-		    data: {attribute: valueselect},
-		    success: function(data){
-		   // echo "hello"
-		    }
-});
-	});
-	
-});
+jQuery(document).ready(function($){
+	$('#dropdown').change(function(){
+		var valueselect=$( "#dropdown option:selected" ).text();
 
-</script>
-
-<!--others functionality-->
-<script type="text/javascript">
-var jQuery=jQuery.noConflict();
-jQuery('#dropdown').change(function(){
-		var others=jQuery( "#dropdown option:selected" ).text();
-		//alert(others);
-		
-		if(others == "Others"){
-            jQuery("#textbox_values").show();
-        }
-        else{
-            jQuery("#textbox_values").hide();
+		if(valueselect == "Others"){
+            $("#textbox_values").show();
+        }else{
+        	$("#textbox_values").hide();
+			$.ajax({
+			    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
+			    type: "POST",
+			    data: {attribute: valueselect},
+			    success: function(data){
+				   // echo "hello"
+				}
+			});		
         }
 	});
-
-jQuery('#confirm_address_step').click(function(){
-	//e.stopPropagation();
-	var message = jQuery('#textbox_values').text();
-    // alert(message);die;
-	//alert(message);die;
-	jQuery.ajax({
-		    url: "<?php echo $this->getUrl('overrides/account/others') ?>",
-		    type: "POST",
-		    data: {others: message},
-		    success: function(data){
-		   // echo "hello"
-		    }
-});
 });
 
 
 </script>
-<br/>
+
