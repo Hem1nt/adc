@@ -313,14 +313,5 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
             return;
         }
     }
-    public function hearfromusAction()
-    {
-        $valueId = $this->getRequest()->getPost('attribute');
-        $cart = Mage::getSingleton('checkout/session')->getQuote();
-        $quote = Mage::getModel('sales/quote')->load($cart->getData('entity_id'));
-        $quote->setFindUs($valueId);
-        $quote->save();
-    }
-  
-    
+
 }

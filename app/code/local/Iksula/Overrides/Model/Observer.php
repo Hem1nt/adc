@@ -902,16 +902,23 @@ public function reviewStatusChange($observer){
 
     public function saveHearUsValue($observer)  {
         $quoteData = $observer->getEvent()->getQuote();
-        $val = $quoteData->getFindUs();
+        $valId = $quoteData->getFindUs();
+        $valOtherComment = $quoteData->getFindUsOther();
         $orderData = $observer->getEvent()->getOrder();
         //$order = Mage::getModel('sales/quote')->load($orderData->getId());
-        $orderData->setFindUs($val);
+        $orderData->setFindUs($valId);
+        if($quoteData->getFindUsOther() != ''){
+            $orderData->setFindUsOther($valOtherComment);
+        }
         $orderData->save();
         $customerId = $orderData->getCustomerId();
         if($customerId){
             try {
                 $customerModel  = Mage::getModel('customer/customer')->load($customerId); 
-                $customerModel->setFindUs($val);
+                $customerModel->setFindUs($valId);
+                if($quoteData->getFindUsOther() != ''){
+                    $customerModel->setFindUsOther($valOtherComment);
+                }
                 $customerModel->save();
                
             } catch (Exception $e) {

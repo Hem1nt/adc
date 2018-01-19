@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Iksula_Overrides>
-      <version>0.1.0</version>
+      <version>0.1.1</version>
     </Iksula_Overrides>
   </modules>
   <frontend>
@@ -239,6 +239,26 @@
             </rewrite>
           </catalog>  
         </models>
+      <resources>
+        <overrides_setup>
+        <setup>
+          <module>Iksula_Overrides</module>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+        </overrides_setup>
+        <overrides_write>
+        <connection>
+          <use>core_write</use>
+        </connection>
+        </overrides_write>
+        <overrides_read>
+        <connection>
+          <use>core_read</use>
+        </connection>
+        </overrides_read>
+      </resources>
       <blocks>
         <overrides>
           <class>Iksula_Overrides_Block</class>
