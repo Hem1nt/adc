@@ -1011,7 +1011,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 							->addFieldToSelect('customer_lastname')
 							->addFieldToSelect('customer_email')
 							->addFieldToSelect('customer_behavior')
-							->addFieldToSelect('find_us');
+							->addFieldToSelect('find_us')
 							->addFieldToSelect('find_us_other');
 				foreach ($product as $products) {
 				/*For Attribute find us S*/
