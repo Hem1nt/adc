@@ -53,6 +53,7 @@
 }
 .catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock .slick-dots{
 	top: 7px;
+	bottom: inherit;
 }
 
 .catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock .slick-dots li button:before{
