@@ -1021,7 +1021,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 					/*If some one selected others as heard from options S*/
 					if(strtolower($find_us_label) == "others")
 						{
-							$attr = $customerData->getData('find_us_other');
+							$attr = $products->getData('find_us_other');
 							$find_us_label = "Others: ".$attr; 
 						}
 					}
