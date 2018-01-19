@@ -1010,13 +1010,14 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 							->addFieldToSelect('customer_firstname')
 							->addFieldToSelect('customer_lastname')
 							->addFieldToSelect('customer_email')
-							->addFieldToSelect('customer_behavior');
+							->addFieldToSelect('customer_behavior')
+							->addFieldToSelect('find_us');
 				foreach ($product as $products) {
 				/*For Attribute find us S*/
 				$customerData = Mage::getModel('customer/customer')->loadByEmail($products->getData('customer_email'));
 				$attr = $customerData->getResource()->getAttribute('find_us');
 				if ($attr->usesSource()) {
-					$find_us_label = $attr->getSource()->getOptionText($customerData->getData('find_us'));
+					$find_us_label = $attr->getSource()->getOptionText($products->getData('find_us'));
 					/*If some one selected others as heard from options S*/
 					if(strtolower($find_us_label) == "others")
 						{
@@ -1025,7 +1026,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 						}
 					}
 					if (!$find_us_label){
-						$find_us_label = $customerData->getFindUs();
+						$find_us_label = $products->getFindUs();
 					}				
 					/*If some one selected others as heard from options E*/
 				/*For Attribute find us E*/

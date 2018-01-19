@@ -27,27 +27,27 @@ jQuery(document).ready(function($){
 	$('#confirm_address_step').click(function(e) {
 
 		var valueText = $( "#dropdown option:selected" ).text();
-		var valueId = $( "#dropdown option:selected" ).val();
+		var valueId = 	$( "#dropdown option:selected" ).val();
 
 		if(valueText == "Others"){
+		var message = $("#others_textbox").val();
 			if(message == ""){
 				e.stopPropagation();
 	    		$('#check_textbox').text('Cannot be empty').show();
 	    		return;
+			}else{
+				$('#check_textbox').hide();
+				$.ajax({
+				    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
+				    type: "POST",
+				    data: {attribute: valueId,message:message},
+				    success: function(data){
+				    	/*IWD.OPC.Checkout.hideLoader();
+				    	IWD.OPC.Checkout.unlockPlaceOrder();*/
+					}
+				});
 			}
-		}else{
-			$('#check_textbox').hide();
-			$.ajax({
-			    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
-			    type: "POST",
-			    data: {attribute: valueId},
-			    success: function(data){
-			    	/*IWD.OPC.Checkout.hideLoader();
-			    	IWD.OPC.Checkout.unlockPlaceOrder();*/
-				}
-			});
 		}
-
 		$('#check_error_message').hide();
 	    if(!$("#confirm_address_check").is(':checked')){
 	    	e.stopPropagation();
