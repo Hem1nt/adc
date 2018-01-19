@@ -26,23 +26,27 @@ jQuery(document).ready(function($){
 	})
 	$('#confirm_address_step').click(function(e) {
 
-		var message = jQuery('#textbox_values').val();
+		var valueText = $( "#dropdown option:selected" ).text();
+		var valueId = $( "#dropdown option:selected" ).val();
+
+		if(valueText == "Others"){
 			if(message == ""){
 				e.stopPropagation();
-		    	$('#check_error_message').text('Please Confirm').show();
-		    	return;
-			}else{
-				$.ajax({
-				    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
-				    type: "POST",
-				    data: {attribute: message},
-				    success: function(data){
-				    	IWD.OPC.Checkout.hideLoader();
-				    	IWD.OPC.Checkout.unlockPlaceOrder();
-					   // echo "hello"
-					}
-				});
+	    		$('#check_textbox').text('Cannot be empty').show();
+	    		return;
 			}
+		}else{
+			$('#check_textbox').hide();
+			$.ajax({
+			    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
+			    type: "POST",
+			    data: {attribute: valueId},
+			    success: function(data){
+			    	/*IWD.OPC.Checkout.hideLoader();
+			    	IWD.OPC.Checkout.unlockPlaceOrder();*/
+				}
+			});
+		}
 
 		$('#check_error_message').hide();
 	    if(!$("#confirm_address_check").is(':checked')){
@@ -67,8 +71,11 @@ jQuery(document).ready(function($){
 </script>
 
 <!--textbox area-->
-<textarea id="textbox_values" rows="4" cols="50" style="display:none">
+<div id="textbox_values">
+<textarea id="others_textbox" rows="4" cols="50">
 </textarea>
+<span id='check_textbox'></span>
+</div>
 
 <?php
 $customer = Mage::getSingleton('customer/session')->getCustomer();
@@ -101,17 +108,19 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
 
 <script type="text/javascript">
 jQuery(document).ready(function($){
+	$("#textbox_values").hide();
 	$('#dropdown').change(function(){
-		var valueselect=$( "#dropdown option:selected" ).text();
+		var valueText = $("#dropdown option:selected").text();
+		var valueId = $("#dropdown option:selected").val();
 
-		if(valueselect == "Others"){
+		if(valueText == "Others"){
             $("#textbox_values").show();
         }else{
         	$("#textbox_values").hide();
 			$.ajax({
 			    url: "<?php echo $this->getUrl('overrides/account/hearfromus') ?>",
 			    type: "POST",
-			    data: {attribute: valueselect},
+			    data: {attribute: valueId},
 			    success: function(data){
 				   // echo "hello"
 				}

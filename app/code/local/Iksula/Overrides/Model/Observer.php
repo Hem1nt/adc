@@ -890,14 +890,35 @@ public function reviewStatusChange($observer){
     }
 }
 
-public function getParentId($item)  {
-    if($item->getProductType() != 'bundle'){
-        $parentId = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($item->getProductId());
-        return $parentId[0];
-    }else{
-        $product = Mage::getModel('catalog/product')->load($item->getProductId());
-        return $product->getId();
+    public function getParentId($item)  {
+        if($item->getProductType() != 'bundle'){
+            $parentId = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($item->getProductId());
+            return $parentId[0];
+        }else{
+            $product = Mage::getModel('catalog/product')->load($item->getProductId());
+            return $product->getId();
+        }
     }
-}
+
+    public function saveHearUsValue($observer)  {
+        $quoteData = $observer->getEvent()->getQuote();
+        $val = $quoteData->getFindUs();
+        $orderData = $observer->getEvent()->getOrder();
+        //$order = Mage::getModel('sales/quote')->load($orderData->getId());
+        $orderData->setFindUs($val);
+        $orderData->save();
+        $customerId = $orderData->getCustomerId();
+        if($customerId){
+            try {
+                $customerModel  = Mage::getModel('customer/customer')->load($customerId); 
+                $customerModel->setFindUs($val);
+                $customerModel->save();
+               
+            } catch (Exception $e) {
+                Mage::getSingleton('core/session')->addError($e->getMessage());
+                
+            }
+        }
+    }
 
 }
