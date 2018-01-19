@@ -3,7 +3,7 @@
 </div>
 <button class="btn btn-primary" id="confirm_address_edit"><span><span>Edit</span></span></button>
 <br><br>
-<span id='check_error_message'></span>
+
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	$('#confirm_address_step').hide();
@@ -70,12 +70,7 @@ jQuery(document).ready(function($){
 	
 </script>
 
-<!--textbox area-->
-<div id="textbox_values">
-<textarea id="others_textbox" rows="4" cols="50">
-</textarea>
-<span id='check_textbox'></span>
-</div>
+
 
 <?php
 $customer = Mage::getSingleton('customer/session')->getCustomer();
@@ -89,6 +84,8 @@ $AtributeValue=Mage::getResourceModel('customer/customer')
  // print_r($AtributeValue);
 $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreLabel();
 ?>
+<div class="howdid_find_container">
+<div class="howdid_find">
 <label><?php echo $labelValues; ?></label>
 
 <select class="myselect" id="dropdown">
@@ -100,12 +97,21 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
         }
         ?>
 </select>
-<br><br>
+</div>
+<!--textbox area-->
+<div id="textbox_values">
+<textarea id="others_textbox" rows="4" cols="50">
+</textarea>
+<span id='check_textbox'></span>
+</div>
+</div>
 
-<label for="confirm_address_check">
+
+<label for="confirm_address_check" class="confirmAddress">
 	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">I confirm that the address given above is correct
 </label>
 
+<span id='check_error_message'></span>
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	$("#textbox_values").hide();
