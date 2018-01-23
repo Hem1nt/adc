@@ -94,14 +94,11 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
 <label><?php echo $labelValues; ?><span class="mandate">*</span></label>
 
 <select class="myselect" id="dropdown">
-        <option value="">SELECT</option>
         <?php
         foreach($AtributeValue as $each){
         ?>
-        <?php if($each['value'] != ''){?>
-        	<option value="<?php echo $each['value']?>"><?php echo $each["label"]?></option>
+        <option value="<?php echo $each['value']?>"><?php echo $each["label"]?></option>
         <?php
-    		}
         }
         ?>
 </select>
