@@ -46,7 +46,7 @@
 	width: 100%;
 	float: left;
 }
-.opc-wrapper-opc .howdid_find_container #textbox_values span#check_textbox {
+.opc-wrapper-opc .howdid_find_container #textbox_values span#check_textbox, .opc-wrapper-opc .howdid_find_container .howdid_find span#check_findus_dropdown {
     width: 100%;
     float: left;
     font-size: 13px;
@@ -56,6 +56,12 @@
 .opc-index-index #check_error_message{
 	padding: 0;
 	font-size: 13px;
+}
+span.mandate {
+    color: red;
+    padding: 0 2px;
+    font-size: 14px;
+    font-weight: 500;
 }
 /*---How Did you find us Design Checkout end here ---*/
 

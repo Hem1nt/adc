@@ -25,9 +25,14 @@ jQuery(document).ready(function($){
 		    });
 	})
 	$('#confirm_address_step').click(function(e) {
-
+		$('#check_findus_dropdown').hide();
 		var valueText = $( "#dropdown option:selected" ).text();
 		var valueId = 	$( "#dropdown option:selected" ).val();
+		if(valueId == ''){
+			e.stopPropagation();
+    		$('#check_findus_dropdown').text('This is a required field.').show();
+    		return;
+		}
 
 		if(valueText == "Others"){
 		var message = $("#others_textbox").val();
@@ -86,17 +91,21 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
 ?>
 <div class="howdid_find_container">
 <div class="howdid_find">
-<label><?php echo $labelValues; ?></label>
+<label><?php echo $labelValues; ?><span class="mandate">*</span></label>
 
 <select class="myselect" id="dropdown">
+        <option value="">SELECT</option>
         <?php
         foreach($AtributeValue as $each){
         ?>
-        <option value="<?php echo $each['value']?>"><?php echo $each["label"]?></option>
+        <?php if($each['value'] != ''){?>
+        	<option value="<?php echo $each['value']?>"><?php echo $each["label"]?></option>
         <?php
+    		}
         }
         ?>
 </select>
+<span id='check_findus_dropdown'></span>
 </div>
 <!--textbox area-->
 <div id="textbox_values">
@@ -116,6 +125,7 @@ $labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreL
 jQuery(document).ready(function($){
 	$("#textbox_values").hide();
 	$('#dropdown').change(function(){
+		$('#check_findus_dropdown').hide();
 		var valueText = $("#dropdown option:selected").text();
 		var valueId = $("#dropdown option:selected").val();
 
