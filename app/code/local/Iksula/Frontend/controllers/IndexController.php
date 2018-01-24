@@ -337,5 +337,21 @@ class Iksula_Frontend_IndexController extends Mage_Core_Controller_Front_Action{
         $captchsSessionValue=Mage::getSingleton('core/session')->setCaptchaValue($captchaSession);
     }
 
+    public function hearfromusAction()
+    {
+        $data = $this->getRequest()->getParams();
+        $valueId = $data['attribute'];
+        $cart = Mage::getSingleton('checkout/session')->getQuote();
+        $quote = Mage::getModel('sales/quote')->load($cart->getData('entity_id'));
+        if(array_key_exists('message',$data)){
+            $message = $data['message'];
+            $quote->setFindUs($valueId);
+            $quote->setFindUsOther($message);
+            $quote->save();
+        }else{
+            $quote->setFindUs($valueId);
+            $quote->save();
+        }
+    }
 
 }
