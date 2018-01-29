@@ -17,18 +17,9 @@ $paymentTitle = Mage::getStoreConfig('payment/pay/title');
     <li>
         <p>
             Dear <?php echo ucfirst($CustomerName); ?>,<br/><br/>
-            Thank you for visiting our site <a href="<?php echo $this->getUrl(); ?>" style="text-decoration:none">www.alldaychemist.com.</a><br/></p>
-            <p>Please press <strong style="font-size:18px">continue</strong> button (given on the bottom of the page) to generate your order number. We will send you an invoice within a minute and you can make the payment using that invoice.</p>
-
-            <p>Your card would be charged within 1 working day and you will get a confirmation email from our billing department accordingly.</p>
-
-            <p>You can also place the order over the phone. Please give us a call between 6.00 am to 6.00 pm as per PST (Pacific Standard Time) at +1(855) 840-0584 to confirm your purchase.</p><br/>
-
-            <p><b>With warm regards,</b><br/>
-                <b>Alldaychemist Billing Department</b><br/>
-                <b>Tel: + 1(855) 840-0584</b><br/>
-            </p>
-        </li>
+        </p>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pay_now_msg')->toHtml(); ?> 
+    </li>
         <button type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Continue') ?></span></span></button>
     </ul>
 
