@@ -411,7 +411,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     				if($key != 0){
     					//$orderModel = Mage::getModel('sales/order')->loadByIncrementId($value[0]);
     					$order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$value[0]);
-    					$orderModel->setDispatcherMessage($value[1])->save();
+    					$order->setDispatcherMessage($value[1])->save();
     				}
     			}
     			$message = 'File successfully imported';
