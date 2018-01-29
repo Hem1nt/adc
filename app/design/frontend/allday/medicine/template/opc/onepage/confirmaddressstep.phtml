@@ -3,10 +3,7 @@
 </div>
 <button class="btn btn-primary" id="confirm_address_edit"><span><span>Edit</span></span></button>
 <br><br>
-<label for="confirm_address_check">
-	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">Confirm Address
-</label>
-<span id='check_error_message'></span>
+
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	$('#confirm_address_step').hide();
@@ -28,6 +25,34 @@ jQuery(document).ready(function($){
 		    });
 	})
 	$('#confirm_address_step').click(function(e) {
+		$('#check_findus_dropdown').hide();
+		var valueText = $( "#dropdown option:selected" ).text();
+		var valueId = 	$( "#dropdown option:selected" ).val();
+		if(valueId == ''){
+			e.stopPropagation();
+    		$('#check_findus_dropdown').text('This is a required field.').show();
+    		return;
+		}
+
+		if(valueText == "Others"){
+		var message = $("#others_textbox").val();
+			if(message == ""){
+				e.stopPropagation();
+	    		$('#check_textbox').text('Cannot be empty').show();
+	    		return;
+			}else{
+				$('#check_textbox').hide();
+				$.ajax({
+				    url: "<?php echo $this->getUrl('frontend/index/hearfromus') ?>",
+				    type: "POST",
+				    data: {attribute: valueId,message:message},
+				    success: function(data){
+				    	/*IWD.OPC.Checkout.hideLoader();
+				    	IWD.OPC.Checkout.unlockPlaceOrder();*/
+					}
+				});
+			}
+		}
 		$('#check_error_message').hide();
 	    if(!$("#confirm_address_check").is(':checked')){
 	    	e.stopPropagation();
@@ -49,3 +74,74 @@ jQuery(document).ready(function($){
 })
 	
 </script>
+
+
+
+<?php
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$customerId = Mage::getSingleton('customer/session')->getId();
+$customerModel  = Mage::getModel('customer/customer')->load($customerId);
+$AtributeValue=Mage::getResourceModel('customer/customer')
+        ->getAttribute('find_us')
+        ->getSource()
+        ->getAllOptions();
+ 
+ // print_r($AtributeValue);
+$labelValues = $customerModel->getResource()->getAttribute('find_us')->getStoreLabel();
+?>
+<div class="howdid_find_container">
+<div class="howdid_find">
+<label><?php echo $labelValues; ?><span class="mandate">*</span></label>
+
+<select class="myselect" id="dropdown">
+        <?php
+        foreach($AtributeValue as $each){
+        ?>
+        <option value="<?php echo $each['value']?>"><?php echo $each["label"]?></option>
+        <?php
+        }
+        ?>
+</select>
+<span id='check_findus_dropdown'></span>
+</div>
+<!--textbox area-->
+<div id="textbox_values">
+<textarea id="others_textbox" rows="4" cols="50">
+</textarea>
+<span id='check_textbox'></span>
+</div>
+</div>
+
+
+<label for="confirm_address_check" class="confirmAddress">
+	<input type="checkbox" name="confirm_address_check" id="confirm_address_check" value="1">I confirm that the address given above is correct
+</label>
+
+<span id='check_error_message'></span>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	$("#textbox_values").hide();
+	$('#dropdown').change(function(){
+		$('#check_findus_dropdown').hide();
+		var valueText = $("#dropdown option:selected").text();
+		var valueId = $("#dropdown option:selected").val();
+
+		if(valueText == "Others"){
+            $("#textbox_values").show();
+        }else{
+        	$("#textbox_values").hide();
+			$.ajax({
+			    url: "<?php echo $this->getUrl('frontend/index/hearfromus') ?>",
+			    type: "POST",
+			    data: {attribute: valueId},
+			    success: function(data){
+				   // echo "hello"
+				}
+			});		
+        }
+	});
+});
+
+
+</script>
+

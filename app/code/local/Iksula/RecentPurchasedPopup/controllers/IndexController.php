@@ -5,12 +5,12 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
       //get recent purchased order with size one
       $storeID = Mage::app()->getStore()->getId();
       $now = Mage::getModel('core/date')->timestamp(time());
-      $dateStart = date('Y-m-d' . ' 00:00:00', $now);
-      $dateEnd = date('Y-m-d' . ' 23:59:59', $now);
+      //$dateStart = date('Y-m-d' . ' 00:00:00', $now);
+      //$dateEnd = date('Y-m-d' . ' 23:59:59', $now);
       $itemsCollection = Mage::getResourceModel('sales/order_item_collection')
       ->join('order', 'order_id=entity_id')
       ->addFieldToFilter('main_table.store_id', array('eq'=>$storeID))
-      ->addFieldToFilter('main_table.created_at', array('from' => $dateStart, 'to' => $dateEnd))
+      //->addFieldToFilter('main_table.created_at', array('from' => $dateStart, 'to' => $dateEnd))
       ->setOrder('main_table.created_at','desc')
       ->setPageSize(1);
 

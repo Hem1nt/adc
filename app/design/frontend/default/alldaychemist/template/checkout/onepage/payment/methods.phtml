@@ -132,21 +132,6 @@ if($paymentMethodToHide=="gspay_acc") { $focusPayment = "echeckapi"; }
             }
             
     ?>
-        <dd>
-            <ul class="form-list" id="payment_form_pay" style="<?php if($this->getSelectedMethodCode()!=$_code){ echo "display:none"; } ?>">
-                <li>
-                    <p style="font-size: 16px;font-family:arial">
-                    Dear <?php echo $CustomerName; ?>,<br/><br/>
-                    Thank you for visiting our site <a href="<?php echo $this->getUrl(); ?>">www.reliablerxpharmacy.com/</a><br/>
-                    Please note that the payment processing bank is currently down due to some technical issues. Please however note that we can charge your card manually over the phone. If you wish to utilize this option, please press <strong style="font-size:18px">continue</strong> button (given on the bottom of the page) to generate your order number. You will get a phone call within one working day. You can also give us a call between 9.00 am to 5.00 pm as per PST (Pacific Standard Time) to confirm your purchase.<br/><br/>
-                    With warm regards,<br/>
-                    ReliableRxPharmacy Billing Department<br/>
-                    Tel: + 1(855) 840-0584<br/>
-                    <span style="visibility:hidden">Tel:</span> + 1(213) 291-2588</p>
-                </li>
-            </ul>
-
-        </dd>
     <?php
         }
     //VISA temp end?>

@@ -70,10 +70,68 @@
 	color: #5f7f0c;
 	
 }
-/*---recent purchased popup Design start here---*/
+/*---recent purchased popup Design end here---*/
+/*---How Did you find us Design Checkout start here ---*/
+.howdid_find_container{
+    width: 100%;
+    float: left;
+}
+.opc-wrapper-opc .howdid_find_container .howdid_find {
+    width: 100%;
+    float: left;
+    margin-bottom: 5px;
+}
+.opc-wrapper-opc .howdid_find_container .howdid_find label{
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    line-height: normal;
+    margin-right: 10px;
+    line-height: 35px;
+    float: left;    
+}
+.opc-wrapper-opc .howdid_find_container .howdid_find select{
+    margin: 0;
+}
+.opc-wrapper-opc label.confirmAddress input{
+    margin-right: 5px !important;
+}
+.opc-wrapper-opc .howdid_find_container #textbox_values{
+    margin: 10px 0;
+    resize: none;
+    width: 100%;
+    float: left;
+}
+.opc-wrapper-opc .howdid_find_container #textbox_values span#check_textbox, .opc-wrapper-opc .howdid_find_container .howdid_find span#check_findus_dropdown {
+    width: 100%;
+    float: left;
+    font-size: 13px;
+    color: red;
+    padding: 5px 0;
+}
+.opc-index-index #check_error_message{
+    padding: 0;
+    font-size: 13px;
+}
+span.mandate {
+    color: red;
+    padding: 0 2px;
+    font-size: 14px;
+    font-weight: 500;
+}
+/*---How Did you find us Design Checkout end here ---*/
 
 @media only screen and (max-width: 1200px){
 	.showProducts{
 		width: 30%;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+	.opc-wrapper-opc .howdid_find_container #textbox_values textarea{
+		width: 100%;
+	}
+	.opc-wrapper-opc .howdid_find_container .howdid_find label{
+		margin-right: 5px;
 	}
 }
