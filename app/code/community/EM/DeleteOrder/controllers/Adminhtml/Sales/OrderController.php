@@ -409,10 +409,11 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$lines = file($filePath);
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
+    			$attribute = $this->getAttributeToLoad($data);
     			foreach ($data as $key => $value) {
     				if($key != 0){
     					//$orderModel = Mage::getModel('sales/order')->loadByIncrementId($value[0]);
-    					$order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$value[0]);
+    					$order = Mage::getModel('sales/order')->loadByAttribute($attribute,$value[0]);
     					$order->setDispatcherMessage($value[1])->save();
     				}
     			}
@@ -520,7 +521,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     public function getOrderDataBycustomOrderIdAction($data,$attribute)
     {
     	//$order = Mage::getModel('sales/order')->loadByIncrementId($data);
-    	$order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$data);  
+    	$order = Mage::getModel('sales/order')->loadByAttribute($attribute,$data);  
    		return $order;
     }
 
@@ -1002,7 +1003,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     {
     	foreach ($data as $key => $ordersvalue) {
     		//$order = Mage::getModel('sales/order')->loadByIncrementId($ordersvalue[0]);
-    		$order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$ordersvalue[0]);
+    		$order = Mage::getModel('sales/order')->loadByAttribute($attribute,$ordersvalue[0]);
     	  	if($order->getId()) {  		
     			$orderIds[] = $order->getId();	
     		}	
@@ -1052,12 +1053,13 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$lines = file($filePath);
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
+    			$attribute = $this->getAttributeToLoad($data);
     			array_shift($data);
     			$content = "Order id,Customer Name,Customer Email,Customer Behaviour,How did you find us?\n";
     			foreach (array_chunk($data,100) as $order) {
 				$product = Mage::getModel('sales/order')->getCollection()
 							//->addAttributeToFilter('increment_id', array('in' => $order))
-							->addAttributeToFilter('customer_order_increment_id', array('in' => $order))
+							->addAttributeToFilter($attribute, array('in' => $order))
 							->addFieldToSelect('increment_id')
 							->addFieldToSelect('customer_firstname')
 							->addFieldToSelect('customer_lastname')
@@ -1153,6 +1155,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
         $errorCounter = 0;
         //parse lines
         try {
+        	$attribute = $this->getAttributeToLoad($data);
             foreach ($data as $index => $values) {
                 if($index == 0)continue;
                 //$orderid = trim($data[$index][0]);
@@ -1164,7 +1167,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
                 	continue;
                 }
                 //$order = Mage::getModel('sales/order')->loadByIncrementId($orderid);
-                $order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$customorderid);
+                $order = Mage::getModel('sales/order')->loadByAttribute($attribute,$customorderid);
 				$order_exist_status = $order->getStatus();
 				// if($orderstatus == "Awaiting Check/MoneyOrder/Wire Transfer")
 				// {
@@ -1189,7 +1192,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
                     //Add Products for the current stock transfer
                     $order->setStatus($orderstatus)->save();
 					    
-					$order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$customorderid);	
+					$order = Mage::getModel('sales/order')->loadByAttribute($attribute,$customorderid);	
 					//$order = Mage::getModel('sales/order')->loadByIncrementId($orderid);
 					    $order_Id = array();
 						$order_Id[0] = $order->getEntityId();
@@ -1297,6 +1300,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 	    // print_r($data);exit;
 		
 		try {
+			$attribute = $this->getAttributeToLoad($data);
             foreach ($data as $index => $values) {
 
                 //explode fields
@@ -1321,7 +1325,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 			
                 //process
                 //$order = Mage::getModel('sales/order')->loadByIncrementId($orderid);
-				$order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$customorderid);
+				$order = Mage::getModel('sales/order')->loadByAttribute($attribute,$customorderid);
 
                 if($data[$index][1]){
                 	/* start of admin order tracking update log management*/
