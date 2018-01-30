@@ -376,6 +376,8 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$lines = file($filePath);
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
+
+    			$attribute = $this->getAttributeToLoad($data);
     			array_shift($data);
     			// echo '<pre>';print_r($data);exit;
                 //upload products data
@@ -383,7 +385,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$errorids = array();
     			// Mage::getSingleton('core/session')->setBulkUploadUpload('bulkupload');
     			//$exportEmailIds = $this->getEmailIdByIncrementIdAction($data);
-    			$exportEmailIds = $this->getEmailIdByCustomOrderIdAction($data);
+    			$exportEmailIds = $this->getEmailIdByCustomOrderIdAction($data,$attribute);
     			// print_r($exportEmailIds);exit;
     			$orders = $exportEmailIds;//$this->getRequest()->getPost('order_ids', array());
     			$file = Mage::getModel('em_deleteorder/export_descripterexportcsv')->exportOrders($orders);
@@ -441,13 +443,14 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$lines = file($filePath);
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
+    			$attribute = $this->getAttributeToLoad($data);
     			array_shift($data);
                 //upload products data
     			$orderIds = array();
     			$errorids = array();
     			// Mage::getSingleton('core/session')->setBulkUploadUpload('bulkupload');
     			//$exportorderIds = $this->getOrderIdByIncrementIdAction($data);
-    			$exportorderIds = $this->getOrderIdBycustomOrderIdAction($data);
+    			$exportorderIds = $this->getOrderIdBycustomOrderIdAction($data,$attribute);
     			// print_r($exportorderIds);exit;
     			$orders = $exportorderIds;//$this->getRequest()->getPost('order_ids', array());
     			$file = Mage::getModel('em_deleteorder/export_prescriptioncsv')->exportOrders($orders);
@@ -488,10 +491,11 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 				$lines = file($filePath);
 				$csv = new Varien_File_Csv();
 				$data = $csv->getData($filePath);
+				$attribute = $this->getAttributeToLoad($data);
 				array_shift($data);
 				foreach ($data as $order){
 					//$orderData = $this->getOrderDataByIncrementIdAction($order[0]);
-					$orderData = $this->getOrderDataBycustomOrderIdAction($order[0]);
+					$orderData = $this->getOrderDataBycustomOrderIdAction($order[0],$attribute);
 					if ($orderData) {
 						Mage::helper('trustedcompany/data')->sendEmail($orderData);
 					}
@@ -513,7 +517,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
    		return $order;
     }*/
 
-    public function getOrderDataBycustomOrderIdAction($data)
+    public function getOrderDataBycustomOrderIdAction($data,$attribute)
     {
     	//$order = Mage::getModel('sales/order')->loadByIncrementId($data);
     	$order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$data);  
@@ -537,13 +541,14 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 				$lines = file($filePath);
 				$csv = new Varien_File_Csv();
 				$data = $csv->getData($filePath);
+				$attribute = $this->getAttributeToLoad($data);
 				array_shift($data);
 	            //upload products data
 				$orderIds = array();
 				$errorids = array();
 				// Mage::getSingleton('core/session')->setBulkUploadUpload('bulkupload');
 				//$exportorderIds = $this->getOrderIdByIncrementIdAction($data);
-				$exportorderIds = $this->getOrderIdBycustomOrderIdAction($data);
+				$exportorderIds = $this->getOrderIdBycustomOrderIdAction($data,$attribute);
 				// print_r($exportorderIds);exit;
 				$orders = $exportorderIds;//$this->getRequest()->getPost('order_ids', array());
 				$file = Mage::getModel('em_deleteorder/export_csv')->exportOrders($orders);
@@ -573,13 +578,14 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$lines = file($filePath);
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
+    			$attribute = $this->getAttributeToLoad($data);
     			array_shift($data);
                 //upload products data
     			$orderIds = array();
     			$errorids = array();
     			// Mage::getSingleton('core/session')->setBulkUploadUpload('bulkupload');
     			//$exportorderIds = $this->getOrderIdByIncrementIdAction($data);
-    			$exportorderIds = $this->getOrderIdBycustomOrderIdAction($data);;
+    			$exportorderIds = $this->getOrderIdBycustomOrderIdAction($data,$attribute);;
     			// print_r($exportorderIds);exit;
     			$orders = $exportorderIds;//$this->getRequest()->getPost('order_ids', array());
     			$file = Mage::getModel('em_deleteorder/export_itemcsv')->exportOrders($orders);
@@ -649,13 +655,14 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$lines = file($filePath);
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
+    			$attribute = $this->getAttributeToLoad($data);
     			array_shift($data);
                 //upload products data
     			$orderIds = array();
     			$errorids = array();
     			Mage::getSingleton('core/session')->setBulkUploadUpload('bulkupload');
     			//$invoiceorderIds = $this->getOrderIdByIncrementIdAction($data);
-    			$invoiceorderIds = $this->getOrderIdBycustomOrderIdAction($data);
+    			$invoiceorderIds = $this->getOrderIdBycustomOrderIdAction($data,$attribute);
     			foreach($invoiceorderIds as $key => $orderInvoice) {   
     				$order = Mage::getModel('sales/order')->load($orderInvoice);             	
     				if(!$order->canInvoice()){
@@ -831,13 +838,14 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$lines = file($filePath);
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
+    			$attribute = $this->getAttributeToLoad($data);
     			array_shift($data);
                 //upload products data
     			$orderIds = array();
     			$errorids = array();
     			Mage::getSingleton('core/session')->setBulkUploadUpload('bulkupload');
     			//$invoiceorderIds = $this->getOrderIdByIncrementIdAction($data);
-    			$invoiceorderIds = $this->getOrderIdBycustomOrderIdAction($data);
+    			$invoiceorderIds = $this->getOrderIdBycustomOrderIdAction($data,$attribute);
                 // print_r($orderIds);exit();
     			foreach($invoiceorderIds as $key => $orderInvoice) {   
     				$order = Mage::getModel('sales/order')->load($orderInvoice);             	
@@ -912,13 +920,14 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$lines = file($filePath);
     			$csv = new Varien_File_Csv();
     			$data = $csv->getData($filePath);
+    			$attribute = $this->getAttributeToLoad($data);
     			array_shift($data);
                 //upload products data
     			$orderIds = array();
     			$errorids = array();
     			Mage::getSingleton('core/session')->setBulkUploadUpload('bulkupload');
     			//$shipmentorderIds = $this->getOrderIdByIncrementIdAction($data);
-    			$shipmentorderIds = $this->getOrderIdBycustomOrderIdAction($data);
+    			$shipmentorderIds = $this->getOrderIdBycustomOrderIdAction($data,$attribute);
                 // print_r($orderIds);exit();
     			foreach($shipmentorderIds as $key => $orderInvoice) {   
     				$order = Mage::getModel('sales/order')->load($orderInvoice);             	
@@ -989,7 +998,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     	return $orderIds;
     }*/
 
-    public function getOrderIdBycustomOrderIdAction($data)
+    public function getOrderIdBycustomOrderIdAction($data,$attribute)
     {
     	foreach ($data as $key => $ordersvalue) {
     		//$order = Mage::getModel('sales/order')->loadByIncrementId($ordersvalue[0]);
@@ -1014,12 +1023,11 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     	$emailIdsData = array_unique($emailIds);
     	return $emailIdsData;
     }*/
-    public function getEmailIdByCustomOrderIdAction($data)
+    public function getEmailIdByCustomOrderIdAction($data,$attribute)
     {
-
     	foreach ($data as $key => $ordersvalue) {
     		//$order = Mage::getModel('sales/order')->loadByIncrementId($ordersvalue[0]);
-    		$order = Mage::getModel('sales/order')->loadByAttribute('customer_order_increment_id',$ordersvalue[0]);  
+    		$order = Mage::getModel('sales/order')->loadByAttribute($attribute,$ordersvalue[0]);  
     	  	if($order->getId()) {  		
     			$emailIds[] = $order->getCustomerEmail();	
     		}
@@ -1142,7 +1150,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 	public function uploadStatus($data) {
         $debug = '';
         $error = '';
-        $errorCounter = 0;echo '<pre>';
+        $errorCounter = 0;
         //parse lines
         try {
             foreach ($data as $index => $values) {
@@ -1586,4 +1594,15 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 				->save();
 	}
 	
+	protected function getAttributeToLoad($data){
+		foreach ($data as $key => $value) {
+			if(in_array('increment_id',$value)){
+				return 'increment_id';
+			}
+
+			if(in_array('customer_order_increment_id',$value)){
+				return 'customer_order_increment_id';
+			}
+    	}
+	}
 }
