@@ -64,7 +64,38 @@ span.mandate {
     font-weight: 500;
 }
 /*---How Did you find us Design Checkout end here ---*/
-
+/*-- Bookmark This Page Design Start here --*/
+.page-bookmrk{
+    position: fixed;
+    right: 0px;
+    top: 30px;
+    z-index: 100;
+}
+.header .quick-access {
+    width: 70%;
+    float: left;
+    margin-left: 5%;
+}
+/*-- Bookmark This Page Design end here --*/
+@media only screen and (max-width: 1120px) {
+    .header .quick-access {
+        width: 60% !important;
+        float: left;
+        margin-left: 10%;
+    }
+}   
+@media only screen and (max-width: 920px) {
+    .header .quick-access {
+        width: 60% !important;
+        float: left;
+        margin-left: 5%;
+    }
+}   
+@media only screen and (max-width: 736px) {
+    .page-bookmrk{
+        display: none;
+    }
+}
 @media only screen and (max-width: 380px) {
 	.opc-wrapper-opc .howdid_find_container #textbox_values textarea{
 		width: 100%;
