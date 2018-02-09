@@ -86,14 +86,17 @@ span.mandate {
 }   
 @media only screen and (max-width: 920px) {
     .header .quick-access {
-        width: 60% !important;
-        float: left;
         margin-left: 5%;
+        width: 66% !important;
     }
 }   
 @media only screen and (max-width: 736px) {
     .page-bookmrk{
         display: none;
+    }
+    .header .quick-access {
+        width: 100% !important;
+        margin-left: 0;
     }
 }
 @media only screen and (max-width: 380px) {
