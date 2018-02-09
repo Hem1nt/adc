@@ -176,6 +176,8 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                         </td>
                         <?php }?>
                     </tr>
+
+
                     <tr id="customer_behavior_property">
                         <td class="value"><label><?php echo Mage::helper('sales')->__('Customer Behavior') ?></label></td>
                         <td>
@@ -204,6 +206,45 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                             </span>
                         </td>
                     </tr>
+
+
+                               <!-- kyc custom code start -->
+
+                    <tr id="kyc_property">
+                        <td class="value"><label><?php echo Mage::helper('sales')->__('KYC') ?></label></td>
+                        <td>
+                            <?php 
+                                $kyc_data = json_decode($_order->getData('kyc'),true);
+                                if($kyc_data['kyc_id'] != ''){
+                                    $set_kyc_id = $kyc_data['kyc_id'];
+                                }
+                            ?>
+                            <?php $customer_behavior_url = $this->getUrl('customerdelete/adminhtml_customerdeletebackend/savekyc');?>
+                            <form action="#" onsubmit="return false;" method="post" class="kyc_form_class">
+                                <input type="hidden" name="orderid" value="<?php echo $_order->getId() ?>" class="orderid"/>
+                                <label><input type="radio" name="kyc" class='kyc' value="1">Yes</label>
+                                <label><input type="radio" name="kyc" class='kyc' value="0">No</label>
+                               
+                                <button id="kyc_id" title="Edit" type="button" class="scalable" onclick="savekyc('<?php echo $customer_behavior_url;?>','<?php echo $_order->getData('customer_id');?>')" style="">
+                                    <span>
+                                        <span><span>Save KYC</span></span>
+                                    </span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span>
+                                <span><span id='kyc_message'></span></span>
+                            </span>
+                        </td>
+                    </tr>
+
+                    <!-- kyc custom code end -->
+
+
+                     
                     <?php
                         if($customercomment != ""){ ?>
                         <tr>
@@ -514,3 +555,32 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
         font-weight: 600;
     }
 </style>
+
+
+<!-- kyc custom code start -->
+  <script type="text/javascript">
+   jQuery(function() {
+        var radios = jQuery('input:radio[name=kyc]');
+        var set_kyc_id = '<?php echo $set_kyc_id ?>';
+        if(radios.is(':checked') === false) {
+            radios.filter('[value='+set_kyc_id+']').prop('checked', true);
+        }
+    });
+
+   </script>
+
+   <style type="text/css">
+    #kyc_message{
+        color:#ff0000;
+        margin-left: 40px;
+    }
+
+    #kyc_property .kyc_form_class label{
+        font-size: 14px;
+        padding: 2px;
+        color:#ff0000;
+        font-weight: 600;
+    }
+</style>
+
+<!-- kyc custom code end -->

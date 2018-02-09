@@ -150,4 +150,29 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
 		    }
  		endif;
 	}
+
+	/************ kyc custom code start ***********/
+
+    public function savekycAction()
+    {
+
+    	//print_r($this->getRequest()->getParams()); exit();
+    	$order_id = $this->getRequest()->getParam('orderid');
+		$kyc_id = $this->getRequest()->getParam('kyc_id');
+		$kyc_value = $this->getRequest()->getParam('kyc_value');
+		$customerId = $this->getRequest()->getParam('customerId');
+		$customer_email = $this->getRequest()->getParam('email');//Mage::getModel('customer/customer')->load($customerId)->getData('email');
+		if($kyc_id != '' && $order_id != ''):
+			$data = json_encode(array('kyc_id'=>$kyc_id,'kyc_value'=>$kyc_value));
+			//order table
+			$orders = Mage::getModel('sales/order')->getCollection()
+    		->addAttributeToFilter('customer_email',$customer_email);
+			foreach($orders as $order)
+			{ 
+		       $order->setKyc($data)->save();
+		    }
+ 		endif;
+    }
+
+    /************ kyc custom code end ***********/
 }

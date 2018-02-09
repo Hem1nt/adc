@@ -1055,7 +1055,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
     			$data = $csv->getData($filePath);
     			$attribute = $this->getAttributeToLoad($data);
     			array_shift($data);
-    			$content = "Order id,Customer Name,Customer Email,Customer Behaviour,How did you find us?\n";
+    			$content = "Order id,Customer Name,Customer Email,Customer Behaviour,KYC,How did you find us?\n";
     			foreach (array_chunk($data,100) as $order) {
 				$product = Mage::getModel('sales/order')->getCollection()
 							//->addAttributeToFilter('increment_id', array('in' => $order))
@@ -1065,6 +1065,7 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 							->addFieldToSelect('customer_lastname')
 							->addFieldToSelect('customer_email')
 							->addFieldToSelect('customer_behavior')
+							->addFieldToSelect('kyc')
 							->addFieldToSelect('find_us')
 							->addFieldToSelect('find_us_other');
 				foreach ($product as $products) {
@@ -1091,11 +1092,15 @@ class EM_DeleteOrder_Adminhtml_Sales_OrderController extends Mage_Adminhtml_Sale
 					$product_data['customer_email'] = $products->getData('customer_email');
 					$return_behavior = json_decode($products->getData('customer_behavior'),true);
 					$product_data['customer_behavior'] = $return_behavior['behavior_value'];
+
+					$return_kyc = json_decode($products->getData('kyc'),true);
+					$product_data['kyc'] = $return_kyc['kyc_value'];
 					$product_data['find_us'] = $find_us_label;
 					$csvdata[] = $product_data;
 					$content .= implode(',', $product_data)."\n";
 						}
 					}
+
 				$fileName       = 'customer_data_'.time().'.csv';
 				$this->_prepareDownloadResponse($fileName, $content);
     		}
