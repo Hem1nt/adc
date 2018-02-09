@@ -235,3 +235,19 @@ jQuery(function($) {
 });
 // Book mark javascript E
 </script>
+
+<script>
+jQuery(document).ready(function($) {
+    jQuery(window).scroll(function(e){ 
+          var $el = $('.page-bookmrk'); 
+          var isPositionFixed = ($el.css('position') == 'fixed');
+          if ($(this).scrollTop() > 200 && !isPositionFixed){ 
+            $('.page-bookmrk').css({'position': 'fixed', 'top': '0px'}); 
+          }
+          if ($(this).scrollTop() < 200 && isPositionFixed)
+          {
+            $('.page-bookmrk').css({'position': 'fixed', 'top': '30px'}); 
+          } 
+    });
+});
+</script>
