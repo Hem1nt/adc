@@ -44,3 +44,25 @@
     float: left;
     width: 25%;
 }
+/*customer behaviour*/
+#behavior_message, #kyc_message{
+    color:#f77c16;
+    font-weight: bold;
+}
+
+#customer_behavior_property .customer_behavior_form_class .Radiobox label, #kyc_property .kyc_form_class .Radiobox label{
+    font-size: 12px;
+    padding: 2px;
+    color: #2f2f2f;
+    font-weight: bold;
+}
+
+#customer_behavior_property .customer_behavior_form_class .Radiobox,  #kyc_property .kyc_form_class .Radiobox{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #aaa #c8c8c8 #c8c8c8 #aaa;
+    background: #fff;
+    font: 12px arial, helvetica, sans-serif;
+    padding: 5px;
+    margin-bottom: 5px;
+}
