@@ -76,7 +76,8 @@ span.mandate {
 }
 .page-bookmrk img{
     width: 100%;
-}
+    display: block;
+} 
 .header .quick-access {
     width: 70%;
     float: left;
