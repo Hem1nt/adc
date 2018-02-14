@@ -13,12 +13,68 @@
 .catalog-category-view .col-right.sidebar .block .block-content.filter-block-tab .current a, .catalog-category-view .col-right.sidebar .block .block-content.filter-block-tab .current {
 	color: #f6770e !important;
 }
-/*---Sub category Design End here---*/
-
+/*---Sub category Design end here---*/
+/*---recent purchased popup Design start here---*/
+.showProducts{
+    border: 1px solid #cdcdcd;
+    float: left;
+    background-color: #ffff;
+    width: 25%;
+    position: fixed;
+    bottom: 1px;
+    z-index: 999999;
+    box-shadow: 0 0 5px #aaa;
+    -webkit-box-shadow: 0 0 5px #aaa;
+    -moz-box-shadow: 0 0 5px #aaa;
+    -ms-box-shadow: 0 0 5px #aaa;
+    -o-box-shadow: 0 0 5px #aaa;
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    left: 0.3%;
+}
+.showProducts .recent {
+    width: 100%;
+}
+.showProducts .recent .showProducts_img{
+	width: 27%;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 3%;
+}
+.showProducts .recent .showProducts_img img{
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+.showProducts .recent .showProducts_desp{
+	width: 70%;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: left;
+    font-size: 14px;
+}
+.showProducts .recent .showProducts_desp b{
+	width: 100%;
+    float: left;
+    text-align: left;
+    font-size: 14px;
+}
+.showProducts .recent .showProducts_desp span{
+	text-align: left;
+	font-size: 13px;
+	font-weight: 500;
+}
+.showProducts .recent .showProducts_desp span.showProducts_name{
+	color: #5f7f0c;
+	
+}
+/*---recent purchased popup Design end here---*/
 /*---How Did you find us Design Checkout start here ---*/
 .howdid_find_container{
-	width: 100%;
-	float: left;
+    width: 100%;
+    float: left;
 }
 .opc-wrapper-opc .howdid_find_container .howdid_find {
     width: 100%;
@@ -26,25 +82,25 @@
     margin-bottom: 5px;
 }
 .opc-wrapper-opc .howdid_find_container .howdid_find label{
-	padding: 0;
+    padding: 0;
     margin: 0;
     vertical-align: middle;
     line-height: normal;
     margin-right: 10px;
     line-height: 35px;
-    float: left;	
+    float: left;    
 }
 .opc-wrapper-opc .howdid_find_container .howdid_find select{
-	margin: 0;
+    margin: 0;
 }
 .opc-wrapper-opc label.confirmAddress input{
-	margin-right: 5px !important;
+    margin-right: 5px !important;
 }
 .opc-wrapper-opc .howdid_find_container #textbox_values{
-	margin: 10px 0;
-	resize: none;
-	width: 100%;
-	float: left;
+    margin: 10px 0;
+    resize: none;
+    width: 100%;
+    float: left;
 }
 .opc-wrapper-opc .howdid_find_container #textbox_values span#check_textbox, .opc-wrapper-opc .howdid_find_container .howdid_find span#check_findus_dropdown {
     width: 100%;
@@ -54,8 +110,8 @@
     padding: 5px 0;
 }
 .opc-index-index #check_error_message{
-	padding: 0;
-	font-size: 13px;
+    padding: 0;
+    font-size: 13px;
 }
 span.mandate {
     color: red;
@@ -64,6 +120,12 @@ span.mandate {
     font-weight: 500;
 }
 /*---How Did you find us Design Checkout end here ---*/
+
+@media only screen and (max-width: 1200px){
+	.showProducts{
+		width: 30%;
+    }
+}
 
 @media only screen and (max-width: 380px) {
 	.opc-wrapper-opc .howdid_find_container #textbox_values textarea{
