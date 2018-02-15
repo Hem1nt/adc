@@ -1,0 +1,38 @@
+<div id="show_products" class="showProducts"></div>
+<?php //echo Mage::registry($orderId).'ddd';exit; ?>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('#show_products').hide();
+		$.ajax({
+		        url: "<?php echo $this->getUrl("recentpurchasedpopup/index/getRecentlySoldItems")?>",
+		        type: "get",
+		        success: function (response) {
+		        	var obj = JSON.parse(response);
+		        	if(obj.success == 'true'){
+		        		$('#show_products').show();
+		        		$('#show_products').html(obj.data);
+		        	}else{
+		        		$('#show_products').hide();
+		        	}
+		        }
+		    });
+		setInterval(function(){
+		 	$('#show_products').hide();
+	 	},30000);
+		setInterval(function(){
+		 	$.ajax({
+		        url: "<?php echo $this->getUrl("recentpurchasedpopup/index/getRecentlySoldItems")?>",
+		        type: "get",
+		        success: function (response) {
+		        	var obj = JSON.parse(response);
+		        	if(obj.success == 'true'){
+		        		$('#show_products').show();
+		        		$('#show_products').html(obj.data);
+		        	}else{
+		        		$('#show_products').hide();
+		        	}
+		        }
+		    });
+	 	},60000 * 5);	
+	})
+</script>
