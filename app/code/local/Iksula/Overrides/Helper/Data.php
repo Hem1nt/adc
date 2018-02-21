@@ -138,8 +138,25 @@ class Iksula_Overrides_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     public function getBestSellingProducts(){
-         return $collection = Mage::getResourceModel('sales/report_bestsellers_collection')->setPageSize(10);
+          return $collection = Mage::getResourceModel('sales/report_bestsellers_collection')->setPageSize(10);
+
     }
+
+/*************custom code for popular product start**************/
+    public function getPopularProducts(){
+               $collection=Mage::getModel('catalog/product')->getCollection()
+            ->addAttributeToSelect('*') 
+            ->addAttributeToSelect('inchoo_popular_product')
+            ->addAttributeToFilter('inchoo_popular_product', array('eq' => 1))
+            ->setPageSize(10)
+            ->getData();
+
+            return $collection;
+
+    }
+
+/*************custom code for popular product end**************/
+
 
     public function getProductDetails($id){
         return Mage::getModel('catalog/product')->load($id);
