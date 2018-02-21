@@ -32,7 +32,11 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
             $order = Mage::getModel('sales/order')->load($orderId);
 
             //hide popup if order placed from active customer
-            if($customerLoggedIn && $order->getData('customer_id') == $customerId){
+            if($order->getData('customer_id')){
+              $customerID = $order->getData('customer_id');
+            }
+             
+            if($customerLoggedIn == true && $customerID == $customerId){
               echo json_encode(array('success'=>'false','customer'=>'active'));exit;
             }
 
