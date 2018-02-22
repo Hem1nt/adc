@@ -115,7 +115,8 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                             $session->getBeforeAuthUrl(),
                             Mage::app()->getStore()->getId()
                         );
-                        $session->addSuccess($this->__('Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="%s">click here</a>.', Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail())));
+                        $session->addSuccess($this->__('Verification link has been sent to your email address. Please verify your email to access your account.'));
+                        /*$session->addSuccess($this->__('Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="%s">click here</a>.', Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail())));*/
                         $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
                         return;
                     } else {
@@ -313,4 +314,5 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
             return;
         }
     }
+
 }

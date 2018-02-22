@@ -24,6 +24,10 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<!-- recent purchased popup -->
+        <?php 
+            echo $this->getLayout()->createBlock("core/template")->setTemplate("recentpurchasedpopup/index.phtml")->toHtml();
+        ?>
 <?php
     $_helper    = $this->helper('catalog/output');
     $category = Mage::registry('current_category');

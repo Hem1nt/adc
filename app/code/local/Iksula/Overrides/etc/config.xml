@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Iksula_Overrides>
-      <version>0.1.0</version>
+      <version>0.1.1</version>
     </Iksula_Overrides>
   </modules>
   <frontend>
@@ -76,7 +76,7 @@
           </overrides_redirects_model_redirector>
         </observers>
       </controller_action_predispatch>
-      <checkout_onepage_controller_success_action>
+      <!-- <checkout_onepage_controller_success_action>
         <observers>
           <customer_group_changes>
             <type>model</type>
@@ -84,7 +84,15 @@
             <method>changegroup</method>
           </customer_group_changes>
         </observers>
-      </checkout_onepage_controller_success_action>
+      </checkout_onepage_controller_success_action> -->
+      <sales_model_service_quote_submit_before>
+          <observers>
+              <how_did_you_hear_us>
+                  <class>overrides/observer</class>
+                  <method>saveHearUsValue</method>
+              </how_did_you_hear_us>
+          </observers>
+      </sales_model_service_quote_submit_before>
       <controller_action_predispatch_opc_index_index>
         <observers>
           <overrides_country_session>
@@ -231,6 +239,26 @@
             </rewrite>
           </catalog>  
         </models>
+      <resources>
+        <overrides_setup>
+        <setup>
+          <module>Iksula_Overrides</module>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+        </overrides_setup>
+        <overrides_write>
+        <connection>
+          <use>core_write</use>
+        </connection>
+        </overrides_write>
+        <overrides_read>
+        <connection>
+          <use>core_read</use>
+        </connection>
+        </overrides_read>
+      </resources>
       <blocks>
         <overrides>
           <class>Iksula_Overrides_Block</class>

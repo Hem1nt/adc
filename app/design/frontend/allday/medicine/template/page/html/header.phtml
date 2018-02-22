@@ -105,7 +105,15 @@ Auto add the coupon in quote E*/
         </div>
     </div>
 <div class="overlay-header"></div>
-    <div class="header_wrap">     
+    <div class="header_wrap">
+    <!-- Bookmark tag S -->
+    <div class="page-bookmrk">
+    	<a id="bookmark-this" href="#" title="Bookmark This Page">
+            <img class="beforeScroll" width="160" src="<?php echo $this->getSkinUrl('images/Bookmark_Us_Tag.png')?>">
+        <!-- Bookmark This Page -->
+        </a>     
+    </div>
+    <!-- Bookmark tag E -->
         <div class="lights_div"></div>
         <div class="new-mobile-header">
         <!-- <div class="mobile-pr-category-icon"></div> -->
@@ -193,5 +201,53 @@ jQuery(document).ready(function($) {
         $(".offer_popup").hide();
     });
             
+});
+// Book mark javascript S
+jQuery(function($) {  
+  $('#bookmark-this').click(function(e) {
+    var bookmarkURL = window.location.href;
+    var bookmarkTitle = document.title;
+
+    if ('addToHomescreen' in window && addToHomescreen.isCompatible) {
+      // Mobile browsers
+      addToHomescreen({ autostart: false, startDelay: 0 }).show(true);
+    } else if (window.sidebar && window.sidebar.addPanel) {
+      // Firefox <=22
+      window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
+    } else if ((window.sidebar && /Firefox/i.test(navigator.userAgent)) || (window.opera && window.print)) {
+      // Firefox 23+ and Opera <=14
+      $(this).attr({
+        href: bookmarkURL,
+        title: bookmarkTitle,
+        rel: 'sidebar'
+      }).off(e);
+      return true;
+    } else if (window.external && ('AddFavorite' in window.external)) {
+      // IE Favorites
+      window.external.AddFavorite(bookmarkURL, bookmarkTitle);
+    } else {
+      // Other browsers (mainly WebKit & Blink - Safari, Chrome, Opera 15+)
+      alert('Press ' + (/Mac/i.test(navigator.userAgent) ? 'Cmd' : 'Ctrl') + '+D to bookmark this page.');
+    }
+
+    return false;
+  });  
+});
+// Book mark javascript E
+</script>
+
+<script>
+jQuery(document).ready(function($) {
+    jQuery(window).scroll(function(e){ 
+          var $el = $('.page-bookmrk'); 
+          var isPositionFixed = ($el.css('position') == 'fixed');
+          if ($(this).scrollTop() > 200 && !isPositionFixed){ 
+            $('.page-bookmrk').css({'position': 'fixed', 'top': '0px'}); 
+          }
+          if ($(this).scrollTop() < 200 && isPositionFixed)
+          {
+            $('.page-bookmrk').css({'position': 'fixed', 'top': '30px'}); 
+          } 
+    });
 });
 </script>

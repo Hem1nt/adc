@@ -172,6 +172,35 @@ jQuery(document).ready(function(){
 	}
 
  }
+
+
+
+/************ kyc custom code start ***********/
+
+  function savekyc(url,customerId){
+    var orderid = jQuery('.orderid').val();
+    var emailaddrsss = jQuery('.custome_emailid').text();
+    var kyc_id = jQuery('input[name=kyc]:checked').val();
+
+    var kyc_value = jQuery('input[name=kyc]:checked').parent('label').text();
+
+	if(kyc_id && orderid && customerId){
+		new Ajax.Request(url, {
+			method: 'Post',
+			parameters: {isAjax: 1, method: 'POST',kyc_id:kyc_id,kyc_value:kyc_value,orderid:orderid,customerId:customerId,email:emailaddrsss},
+			onComplete: function(transport) {
+				jQuery('#kyc_message').html('KYC Saved');
+			}
+		});
+	}else{
+		alert('Please Select KYC');
+	}
+
+ }
+
+
+/************ kyc custom code end ***********/
+
 // jQuery(document).ready(function(){
 // 	var img_url = <?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'images/plus-sign1.png' ?>
 // 	more_discount = jQuery(".data_2").prepend('<span class="more_offers"><img src="'+img_url+'" style="height:100%"/></span>');
