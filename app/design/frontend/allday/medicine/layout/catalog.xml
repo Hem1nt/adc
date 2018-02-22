@@ -296,6 +296,7 @@ Product view
                     </block>
                 </block>
                  <block type="catalog/product_view" name="custom_related" as="custom_related" template="catalog/product/related.phtml"/>
+                 <block type="core/template"  name="related_product_ofs" as="related_product_ofs" template="custom/outofstockrelated.phtml" /> 
                  <block type="core/template"  name="related_product_new" as="related_product_new" template="custom/related_product.phtml" />
                  <block type="core/template"  name="frequently_slider" as="frequently_slider" template="custom/frequently_bought.phtml" />
                  <block type="overrides/catalog_product_view"  name="pdp_review" as="pdp_review" template="review/helper/summary.phtml" />

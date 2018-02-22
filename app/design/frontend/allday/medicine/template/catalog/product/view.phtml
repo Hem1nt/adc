@@ -36,8 +36,12 @@
 <?php
 $product = Mage::registry('current_product');
 $id = $product->getId();//3607
+$qty = $product->getStockItem()->getQty();
+//out of stock product count
+$OutOfStockCount=$product->getStockItem()->getIsInStock();
+
 // echo "<pre>";
-// print_r($id);exit;
+// print_r($qty);exit;
 
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
@@ -197,7 +201,9 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
             <?php } ?>
             <?php } ?>
         </div>
-                    <?php $custom_stock_status = $_frontendHelper->getCustomStockStatus($_product);?>
+                    <?php $custom_stock_status = $_frontendHelper->getCustomStockStatus($_product);
+
+                    ?>
                 <!-- <div class="pr-availibility"> 
                     <?php
                        // if($custom_stock_status!='No' && $custom_stock_status!=''){
@@ -318,6 +324,11 @@ if(!$_product->isSaleable() && $custom_stock_status!='Limited Supply'): ?>
     </form>
 </div>
 <div class="notify-overlay"></div>
+<?php if($OutOfStockCount <= 0){
+     echo $this->getChildHtml('related_product_ofs'); 
+//echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml();
+    $related_class = ' ';
+} ?>
 <?php endif; ?>
 
 <!-- limited Supply form -->
@@ -431,17 +442,24 @@ productAddToCartForm.submitLight = function(button, url){
 <?php //echo $this->getChildHtml('upsell_products') ?>
 
 <?php //echo $this->getChildHtml('bought.product.wrapper'); ?>
+
+<!--Related product for out of stock-->
 <?php 
 $related_product_collection = $_product->getRelatedProductIds();
 $count = count($related_product_collection);
-if($count){
-    //echo $this->getChildHtml('custom_related');
+$qty = $product->getStockItem()->getQty();
+if($count && $OutOfStockCount != '0'){
     echo $this->getChildHtml('related_product_new'); 
-    $related_class = 'border-top: 1px solid #b5b5b5;';
-}else{
-   $related_class = '';
-}
-?>       
+    
+ }/*
+ else{
+   echo $this->getLayout()->createBlock('core/template')->setTemplate('custom/outofstockrelated.phtml')->toHtml();
+    $related_class = ' ';
+
+}*/
+?>
+
+<!--end for related product out of stock-->    
 <div class="trustedcompany-widget">            
     <h2>TrustPilot Reviews</h2>
     <!-- <div id="TRUSTEDCOMPANY_widget_86430">
@@ -466,6 +484,7 @@ if($count){
 
 <!-- End Trustedcompany Widget Integration -->
 </div>
+
 <script type="text/javascript">
      //< ![CDATA[
      var customForm = new VarienForm('notify_me_form',true);
@@ -474,7 +493,7 @@ if($count){
     //]]>
 
     jQuery(document).ready(function($) {
-        jQuery('.slider_wraper').slick({
+        jQuery('.relatedProducts, .frequentlyAdded').slick({
           infinite: true,
           slidesToShow: 4,
           slidesToScroll: 1,
@@ -500,7 +519,7 @@ if($count){
           ]
       });
 
-        
+       
 
         jQuery('.read_more').click(function() {
             var divPosition = jQuery('.easytabs li').offset();
