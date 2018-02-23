@@ -252,7 +252,7 @@
 		margin-left: 25%;
 	}
 	.catalog-product-view .bx-wrapper, .review-product-list .bx-wrapper {
-	  max-width: 59%!important;
+	  max-width: 90%!important;
 	}
 	.header li.first.last a {
 		background: url(../images/sprite.png) -281px -6px no-repeat;
@@ -904,7 +904,7 @@
 	}
 
 	.catalog-product-view .bx-wrapper, .review-product-list .bx-wrapper {
-	  max-width: 39%!important;
+	  max-width: 90%!important;
 	}
 
 	.catalog-product-view .product-details-table table.new_product_list, .review-product-list .product-details-table table.new_product_list {
@@ -1140,7 +1140,7 @@
 	.header .form-search .search-autocomplete {
 		left: 38.4% !important;
 	}
-	.catalog-product-view .bx-wrapper, .review-product-list .bx-wrapper {
+	.review-product-list .bx-wrapper {
 	  max-width: 40%!important;
 	}
 	.subscribe-innerdiv span.xtra-txt {
