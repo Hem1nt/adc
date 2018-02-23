@@ -1,0 +1,97 @@
+<?php
+$rules = $this->getActivePromotions();
+$url = Mage::getBaseUrl();
+foreach ($rules as $key => $rule):
+	$conditions = unserialize($rule['actions_serialized']);
+	if(array_key_exists('conditions',$conditions)){
+		foreach ($conditions['conditions'] as $key => $value) {
+			if($value['attribute'] == 'sku'){
+				if($value['value'] != ''){
+					$firstSku = explode(',',$value['value']);
+					$_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$firstSku[0]);
+					//$url = Mage::getBaseUrl().$_product->getData('url_path');
+				}
+			}
+			if($value['attribute'] == 'category_ids'){
+				if($value['value'] != ''){
+					$firstCatId = explode(',',$value['value']);
+					$_cat = Mage::getModel('catalog/category')->load($firstCatId[0]);
+					$url = $_cat->getUrl();
+				}
+			}
+		}
+	}
+?>
+<?php
+$pos = strpos($rule['code'],'CB-'); 
+if($pos === false && $rule['end_date'] == '' && $rule['coupon_type'] != 1):
+?>
+<div class='loop promo-container'>
+		<?php if($rule['simple_free_shipping'] == 1): ?>
+			<div class="promo-title">
+				<span class="promo-small-font">SHIPPING</span>
+				<span class="promo-small-font">OFFER</span>
+			</div>
+			<?php else: ?>
+			<div class="promo-title">
+		 		<span class="promo-big-font"><?php echo round($rule['discount_amount'])?>%</span>
+				<span class="promo-small-font">OFF</span>
+				
+			</div>
+		<?php endif; ?>
+		<div class="promo-content">
+				<div class="promo-content-top">
+					<div class="promo-name">
+						<a href="#"><?php echo $rule['name'] ?></a>
+						<?php if($rule['to_date'] != ''): ?>
+							<span>Offer will end on "<?php echo $rule['to_date'] ?>"</span>
+							<!-- <span>></span> -->
+						<?php endif; ?>
+					</div>
+					
+					<div class="promo-deal-btn">
+						<a href="<?php echo $url ?>" class="promo-btn">Get Deal</a>
+						<div class="promo-offer">
+							<div class="ribbon-2"><span>Show Coupon Code</span></div>
+							
+							<?php if($rule['code'] != ''): ?>
+								<p class="offer-text"><?php echo $rule['code']?></p>
+								<!-- <div class="offer-text"><?php echo $rule['code']?></div> -->
+							<?php endif; ?>
+						
+						</div>
+						<span class ="code_copied">Your Coupon Code Is Copied</span>
+					</div>
+				</div>
+				<div class="promo-content-bottom">
+					<ul class="promo-desp">
+						<li><?php echo $rule['description']?></li>
+						<!-- <li>Promotion Desp</li> -->
+					</ul>
+				</div>
+		</div>
+</div>
+<?php endif; ?>
+<?php
+	endforeach;
+?>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+    	$('.code_copied').hide();
+       	$(".ribbon-2").click(function(){
+       		$(this).closest('.promo-deal-btn').find(".ribbon-2").hide("slide", {direction: "left" }, "slow");
+       		$(this).closest('.promo-deal-btn').find(".offer-text").show(1250);
+       		var $temp = $("<input>");
+			$("body").append($temp);
+			$temp.val($(this).closest('.promo-deal-btn').find(".offer-text").text()).select();
+			document.execCommand("copy");
+			$temp.remove();
+			$(this).closest('.promo-content').find('.code_copied').show('slow');
+			var self =  this;
+			setTimeout(function(){
+				$(self).closest('.promo-content').find('.code_copied').hide('slow');
+			},5000);
+      	})
+     });
+</script>
