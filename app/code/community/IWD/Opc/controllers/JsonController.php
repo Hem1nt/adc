@@ -1130,32 +1130,29 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 	/* Confirm Address Step */
 	public function getCustomAddresStepAction(){
 		$billingAddress = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getData();
-
-		 $billing_country_name=Mage::app()->getLocale()->getCountryTranslation($billingAddress['country_id']); 
-
+			$billing_country_name=Mage::app()->getLocale()->getCountryTranslation($billingAddress['country_id']); 
 		$shippingAddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getData();
-
-		$shipping_country_name=Mage::app()->getLocale()->getCountryTranslation($shippingAddress['country_id']); 
+			$shipping_country_name=Mage::app()->getLocale()->getCountryTranslation($shippingAddress['country_id']); 
 		
 	    $html .= '<ul class="address1">';
-		$html .= '<div class="billing_address_title">Billing Address: </div>';
-		$html .= '<label>Name</label>'.' <li>: '.$billingAddress['firstname'].' '.$billingAddress['lastname'].'</li>';
-		$html .= '<label>Country</label>'.' <li>: '.$billing_country_name.'</li>';
-		$html .= '<label>City</label>'.' <li>: '.$billingAddress['city'].'</li>';
-		$html .= '<label>Region</label>'.' <li>: '.$billingAddress['region'].'</li>';
-		$html .= '<label>Street</label>'.' <li>: '.$billingAddress['street'].'</li>';
-		$html .= '<label>Postcode</label>'.'<li>: '.$billingAddress['postcode'].'</li>';
-		$html .= '<label>Telephone</label>'.'<li>: '.$billingAddress['telephone'].'</li>';
+			$html .= '<div class="billing_address_title">Billing Address: </div>';
+			$html .= '<label>Name</label>'.' <li>: '.$billingAddress['firstname'].' '.$billingAddress['lastname'].'</li>';
+			$html .= '<label>Street</label>'.' <li>: '.$billingAddress['street'].'</li>';
+			$html .= '<label>City</label>'.' <li>: '.$billingAddress['city'].'</li>';
+			$html .= '<label>Region</label>'.' <li>: '.$billingAddress['region'].'</li>';
+			$html .= '<label>Postcode</label>'.'<li>: '.$billingAddress['postcode'].'</li>';
+			$html .= '<label>Country</label>'.' <li>: '.$billing_country_name.'</li>';
+			$html .= '<label>Telephone</label>'.'<li>: '.$billingAddress['telephone'].'</li>';
 		$html .= '</ul>';
 		$html .= '<ul class="address2">';
-		$html .= '<div class="shipping_address_title">Shipping Address: </div>';
-		$html .= '<label>Name</label>'.' <li>: '.$shippingAddress['firstname'].' '.$shippingAddress['lastname'].'</li>';
-		$html .= '<label>Country</label>'.' <li>: '.$shipping_country_name.'</li>';
-		$html .= '<label>City</label>'.'<li>: '.$shippingAddress['city'].'</li>';
-		$html .= '<label>Region</label>'.' <li>: '.$shippingAddress['region'].'</li>';
-		$html .= '<label>Street</label>'.' <li>: '.$shippingAddress['street'].'</li>';
-		$html .= '<label>Postcode</label>'.' <li>: '.$shippingAddress['postcode'].'</li>';
-		$html .= '<label>Telephone</label>'.' <li>: '.$shippingAddress['telephone'].'</li>';
+			$html .= '<div class="shipping_address_title">Shipping Address: </div>';
+			$html .= '<label>Name</label>'.' <li>: '.$shippingAddress['firstname'].' '.$shippingAddress['lastname'].'</li>';
+			$html .= '<label>Street</label>'.' <li>: '.$shippingAddress['street'].'</li>';
+			$html .= '<label>City</label>'.'<li>: '.$shippingAddress['city'].'</li>';
+			$html .= '<label>Region</label>'.' <li>: '.$shippingAddress['region'].'</li>';
+			$html .= '<label>Postcode</label>'.' <li>: '.$shippingAddress['postcode'].'</li>';
+			$html .= '<label>Country</label>'.' <li>: '.$shipping_country_name.'</li>';
+			$html .= '<label>Telephone</label>'.' <li>: '.$shippingAddress['telephone'].'</li>';
 		$html .= '</ul>';
 		if($billingAddress['address_type'] == 'billing' && $shippingAddress['address_type'] == 'shipping'){
 			echo $html;
