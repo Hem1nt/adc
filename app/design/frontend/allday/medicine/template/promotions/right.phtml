@@ -80,8 +80,8 @@ if($pos === false && $rule['end_date'] == '' && $rule['coupon_type'] != 1):
     jQuery(document).ready(function($){
     	$('.code_copied').hide();
        	$(".ribbon-2").click(function(){
-       		$(this).closest('.promo-deal-btn').find(".ribbon-2").hide("slide", {direction: "left" }, "slow");
-       		$(this).closest('.promo-deal-btn').find(".offer-text").show(1250);
+       		$(this).closest('.promo-deal-btn').find(".ribbon-2").hide("slide", {direction: "left" }, "3000");
+       		$(this).closest('.promo-deal-btn').find(".offer-text").show(2000);
        		var $temp = $("<input>");
 			$("body").append($temp);
 			$temp.val($(this).closest('.promo-deal-btn').find(".offer-text").text()).select();
