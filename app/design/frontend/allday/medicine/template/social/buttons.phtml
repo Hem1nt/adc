@@ -1,0 +1,8 @@
+<?php 
+$url = Mage::getBaseUrl().'referral';
+?>
+<a href="javascript:popWin('https://plus.google.com/share?url=<?php echo urlencode($url); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Google Plus') ?>">Google Plus</a>
+<a href="javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($url); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Facebook') ?>">Facebook</a>
+<a href="javascript:popWin('http://twitter.com/home/?status=<?php echo urlencode($url); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Tweet') ?>">Twitter</a>
+
+<a href="javascript:popWin('https://pinterest.com/pin/create/button/?url=<?php echo urlencode($url); ?>', 'pinterest', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Pin it') ?>">Pinterest</a>
