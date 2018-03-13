@@ -1,0 +1,70 @@
+@import 'partials/var';
+@import 'partials/mixin';
+
+body{
+	color: #333;
+	font-family: $default_font;
+}
+button.button:hover > span{
+	border:0!important; 
+}
+.cms-referral{
+	.main-container {
+	    padding-top: 18px;
+	    background: #f4f4f4;
+	    margin-top: 0;
+
+	    .main{
+	    	background: transparent;
+	    	max-width: 1200px;
+
+	    	.referral-wrap{
+
+	    		.share-to-earn{
+
+	    		}
+	    		.content_wrap{
+
+	    			.how-it-works, .this-doesnt-end-here{
+
+	    				.outer_area{
+
+	    					.img_area{
+
+	    					}
+	    					.desc_area{
+
+	    					}
+	    				}
+	    			}
+	    		}
+	    	}
+	    }	 
+	}
+}
+
+@media only screen and (max-width: 1225px){
+	.cms-referral{
+	.main-container {
+
+		.main{
+	 		padding: 0 15px;
+    		box-sizing: border-box;
+			}	 
+		}
+	}
+}
+@media only screen and (max-width: 736px){
+	.cms-referral{
+	.main-container {
+
+		.main{
+	 		padding: 0;
+	 		margin: 0 auto;
+    		box-sizing: border-box;
+			}	 
+		}
+	}
+}
+
+

@@ -1,0 +1,67 @@
+/* Global and reqiured variables defined in _var.scss partial file */
+/* default value for box-shadow mixin. refer _mixin fie */
+/* default value for text-shadow mixin. refer _mixin fie */
+/* default value for transform mixin. refer _mixin fie */
+/* default value for transform mixin refer _mixin fie */
+/* default value for element in fontimport mixin. refer _mixin fie */
+.button_style {
+  border-radius: 4px;
+  line-height: 2.5rem;
+  padding: 0 1rem;
+  text-transform: uppercase;
+  min-width: 135px;
+}
+
+.box_sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*mixin for transition, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for border-radius, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for box-shadow, variables inside paranthesis are defined. variable is defined in _var.scss */
+/*mixin for text-shadow, variables inside paranthesis are defined. variable is defined in _var.scss */
+/*mixin for transform, variables inside paranthesis are defined as null. specific properties can be changed and used. variable is defined in _var.scss */
+/*mixin for button-skewed, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for button_skewed_oneside, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for triangle, variables inside paranthesis are not defined. so they are mandatory*/
+/*mixin for gradient, variables inside paranthesis are defined. variables are defined in _var.scss*/
+/*mixin for media query, variables inside paranthesis are not defined.  so they are mandatory*/
+/*mixin for trapezoid, variables inside paranthesis are not defined.  so they are mandatory*/
+body {
+  color: #333;
+  font-family: Open Sans, sans-serif;
+}
+
+button.button:hover > span {
+  border: 0 !important;
+}
+
+.cms-referral .main-container {
+  padding-top: 18px;
+  background: #f4f4f4;
+  margin-top: 0;
+}
+.cms-referral .main-container .main {
+  background: transparent;
+  max-width: 1200px;
+}
+
+@media only screen and (max-width: 1225px) {
+  .cms-referral .main-container .main {
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+}
+@media only screen and (max-width: 736px) {
+  .cms-referral .main-container .main {
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+}
+
+/*# sourceMappingURL=global_page.css.map */
