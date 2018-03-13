@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Iksula_RecentPurchasedPopup>
-      <version>0.1.0</version>
+      <version>0.1.2</version>
     </Iksula_RecentPurchasedPopup>
   </modules>
   <frontend>
@@ -24,15 +24,60 @@
 		</layout>
   </frontend>
   <global>
+  	<blocks>
+	  <recentpurchasedpopup>
+		<class>Iksula_RecentPurchasedPopup_Block</class>
+	  </recentpurchasedpopup>
+	</blocks>
     <helpers>
       <recentpurchasedpopup>
         <class>Iksula_RecentPurchasedPopup_Helper</class>
       </recentpurchasedpopup>
     </helpers>
-	<blocks>
+	<models>
 	  <recentpurchasedpopup>
-		<class>Iksula_RecentPurchasedPopup_Block</class>
+		<class>Iksula_RecentPurchasedPopup_Model</class>
+		<resourceModel>recentpurchasedpopup_mysql4</resourceModel>
 	  </recentpurchasedpopup>
-	</blocks>
+	  <recentpurchasedpopup_mysql4>
+		<class>Iksula_RecentPurchasedPopup_Model_Mysql4</class>
+		<entities>		  
+			  <recentpurchasedpopup>
+				<table>recentpurchasedpopup</table>
+			  </recentpurchasedpopup>
+        </entities>
+	  </recentpurchasedpopup_mysql4>
+	</models>
+	<resources>
+	  <recentpurchasedpopup_setup>
+		<setup>
+		  <module>Iksula_RecentPurchasedPopup</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </recentpurchasedpopup_setup>
+	  <recentpurchasedpopup_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </recentpurchasedpopup_write>
+	  <recentpurchasedpopup_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </recentpurchasedpopup_read>
+	</resources>
+	<events>
+    <sales_order_place_after>
+      <observers>
+        <recentpurchasedpopup_observer>
+          <type>singleton</type>
+          <class>recentpurchasedpopup/observer</class>
+          <method>getProductDetails</method>
+        </recentpurchasedpopup_observer>
+      </observers>
+    </sales_order_place_after>
+  </events>
   </global>
 </config> 
