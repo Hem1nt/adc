@@ -553,31 +553,6 @@ span.recomend-text {
   vertical-align: middle;
 }
 
-span.product_free_gift {
-  font-size: 0;
-  display: inline-block;
-  background: url(../images/free_gift.jpg) no-repeat;
-  width: 43px;
-  height: 43px;
-  background-size: 43px 41px;
-  position: relative;
-  top: 0;
-  left: 5px;
-  vertical-align: middle;
-}
-span.product_free_shipping {
-  font-size: 0;
-  display: inline-block;
-  background: url(../images/free_ship.png) no-repeat;
-  width: 43px;
-  height: 43px;
-  background-size: 43px 41px;
-  position: relative;
-  top: 0;
-  left: 5px;
-  vertical-align: middle;
-}
-
 .catalog-product-view table.new_product_list a.related-buy-now, .review-product-list table.new_product_list a.related-buy-now {
   background: url(../images/custom/cart_prod.png) center no-repeat #fff;
   border: 0;

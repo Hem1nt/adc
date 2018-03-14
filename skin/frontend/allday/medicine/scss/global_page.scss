@@ -1,43 +1,143 @@
 @import 'partials/var';
 @import 'partials/mixin';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
 
 body{
 	color: #333;
-	font-family: $default_font;
+	font-family: $open_sans_semibold !important;
 }
 button.button:hover > span{
 	border:0!important; 
 }
-.cms-referral{
+.cms-page-view.cms-referral{
+	font-family: $open_sans_semibold !important;
+	
+	.categories-right-hom {
+	    padding: 4px 0;
+	    padding-bottom: 0;
+	}
+
 	.main-container {
 	    padding-top: 18px;
-	    background: #f4f4f4;
+	    background: #fff;
 	    margin-top: 0;
+	    padding: 0 !important;
 
 	    .main{
 	    	background: transparent;
 	    	max-width: 1200px;
 
-	    	.referral-wrap{
+	    	.col-main{
+	    		.std  *{
+	    				text-align: center !important;
+	    				padding: 0 !important;
+					}
+		    	.referral-wrap{
+		    		display: inline-block;
+		    		width: 100%;
+		    		text-align: center !important;
 
-	    		.share-to-earn{
+		    		.title{
+		    			font-size: 25px;
+		    			line-height: 25px;
+		    			color: #1f1f1f;
+		    			font-family: $open_sans_bold !important;
+		    			text-transform: uppercase;
+	    			    padding: 25px 0 !important;
+		    		}
+		    		img{
+		    			width: 100%;
+		    			height: auto;
+		    			margin: 0 !important;
+		    		}
+		    		.share-to-earn{
 
-	    		}
-	    		.content_wrap{
+		    		}
+		    		.content_wrap{
 
-	    			.how-it-works, .this-doesnt-end-here{
+		    			.how-it-works, .this-doesnt-end-here{
+		    				text-align: center !important; 
+		    				display: inline-block;
+    						width: 100%;
 
-	    				.outer_area{
+		    				.outer_area{
+		    					float: left;
+							    width: 33.33%;
+							    padding: 0 4% 35px 4% !important;
+							    box-sizing: border-box;
 
-	    					.img_area{
+		    					.img_area{
 
-	    					}
-	    					.desc_area{
+		    						img{
+		    							width: auto;
+		    							margin: 0 !important;
+		    							display: inline-block;
+		    						}
+		    					}
+		    					.desc_area{
+		    						font-size: 16px;
+								    line-height: 22px;
+								    color: #1f1f1f;
+								    font-family: $open_sans_semibold !important;
+		    					}
+		    				}
+		    			}
+		    			.this-doesnt-end-here{
+		    				.title{
+		    					color: #72ae12;
+		    				}
+		    			}
+		    		}
+		    		.invalide-invities{
+		    			background: #e8e8e8;
 
-	    					}
-	    				}
-	    			}
-	    		}
+		    			.inner{
+	    				    margin: 0;
+    						padding: 0 20% 20px 20% !important;
+    						font-size: 18px;
+						    line-height: 26px;
+						    color: #1f1f1f;
+						    font-family: $open_sans_bold !important;
+		    			}
+		    			ul{
+		    				padding: 0 20% 35px 20% !important;
+    						margin: 0;
+						    list-style: disc inside;
+
+						    li{
+						    	font-size: 15px;
+							    line-height: 26px;
+							    color: #f6770e;
+							    font-family: $open_sans_semibold !important;
+						    }
+		    			}
+		    			.refer-queries{
+		    				font-size: 16px;
+						    line-height: 40px;
+						    color: #fff;
+						    font-family: $open_sans_semibold !important;
+						    background: #1f1f1f;
+
+						    .faq{
+						    	color: #72ae12;
+						    	text-decoration: underline;
+						    }
+		    			}
+		    		}
+		    		.start-referring{
+	    			    padding: 35px 0 !important;
+
+		    			button.button{
+		    				padding: 8px 16px 8px 16px !important;
+		    				background: #72ae12;
+		    				font-size: 21px;
+    						text-transform: uppercase;
+						    border-radius: 13px;
+		    				font-family: $open_sans_bold !important;
+		    				margin: 0;
+		    			}
+		    		}
+    			}
 	    	}
 	    }	 
 	}
@@ -54,6 +154,13 @@ button.button:hover > span{
 		}
 	}
 }
+@media only screen and (max-width: 900px){
+	.cms-page-view.cms-referral{
+		.categories-right-hom {
+		    padding: 0;
+		}
+	}
+}
 @media only screen and (max-width: 736px){
 	.cms-referral{
 	.main-container {
@@ -66,5 +173,4 @@ button.button:hover > span{
 		}
 	}
 }
-
 

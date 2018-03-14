@@ -4,6 +4,7 @@
 /* default value for transform mixin. refer _mixin fie */
 /* default value for transform mixin refer _mixin fie */
 /* default value for element in fontimport mixin. refer _mixin fie */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
 .button_style {
   border-radius: 4px;
   line-height: 2.5rem;
@@ -33,27 +34,132 @@
 /*mixin for trapezoid, variables inside paranthesis are not defined.  so they are mandatory*/
 body {
   color: #333;
-  font-family: Open Sans, sans-serif;
+  font-family: "OpenSans-Semibold" !important;
 }
 
 button.button:hover > span {
   border: 0 !important;
 }
 
-.cms-referral .main-container {
-  padding-top: 18px;
-  background: #f4f4f4;
-  margin-top: 0;
+.cms-page-view.cms-referral {
+  font-family: "OpenSans-Semibold" !important;
 }
-.cms-referral .main-container .main {
+.cms-page-view.cms-referral .categories-right-hom {
+  padding: 4px 0;
+  padding-bottom: 0;
+}
+.cms-page-view.cms-referral .main-container {
+  padding-top: 18px;
+  background: #fff;
+  margin-top: 0;
+  padding: 0 !important;
+}
+.cms-page-view.cms-referral .main-container .main {
   background: transparent;
   max-width: 1200px;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .std * {
+  text-align: center !important;
+  padding: 0 !important;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap {
+  display: inline-block;
+  width: 100%;
+  text-align: center !important;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .title {
+  font-size: 25px;
+  line-height: 25px;
+  color: #1f1f1f;
+  font-family: "OpenSans-Bold" !important;
+  text-transform: uppercase;
+  padding: 25px 0 !important;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap img {
+  width: 100%;
+  height: auto;
+  margin: 0 !important;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here {
+  text-align: center !important;
+  display: inline-block;
+  width: 100%;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area {
+  float: left;
+  width: 33.33%;
+  padding: 0 4% 35px 4% !important;
+  box-sizing: border-box;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area .img_area img, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area .img_area img {
+  width: auto;
+  margin: 0 !important;
+  display: inline-block;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area .desc_area, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area .desc_area {
+  font-size: 16px;
+  line-height: 22px;
+  color: #1f1f1f;
+  font-family: "OpenSans-Semibold" !important;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .title {
+  color: #72ae12;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities {
+  background: #e8e8e8;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .inner {
+  margin: 0;
+  padding: 0 20% 20px 20% !important;
+  font-size: 18px;
+  line-height: 26px;
+  color: #1f1f1f;
+  font-family: "OpenSans-Bold" !important;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities ul {
+  padding: 0 20% 35px 20% !important;
+  margin: 0;
+  list-style: disc inside;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities ul li {
+  font-size: 15px;
+  line-height: 26px;
+  color: #f6770e;
+  font-family: "OpenSans-Semibold" !important;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .refer-queries {
+  font-size: 16px;
+  line-height: 40px;
+  color: #fff;
+  font-family: "OpenSans-Semibold" !important;
+  background: #1f1f1f;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .refer-queries .faq {
+  color: #72ae12;
+  text-decoration: underline;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .start-referring {
+  padding: 35px 0 !important;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .start-referring button.button {
+  padding: 8px 16px 8px 16px !important;
+  background: #72ae12;
+  font-size: 21px;
+  text-transform: uppercase;
+  border-radius: 13px;
+  font-family: "OpenSans-Bold" !important;
+  margin: 0;
 }
 
 @media only screen and (max-width: 1225px) {
   .cms-referral .main-container .main {
     padding: 0 15px;
     box-sizing: border-box;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .cms-page-view.cms-referral .categories-right-hom {
+    padding: 0;
   }
 }
 @media only screen and (max-width: 736px) {
