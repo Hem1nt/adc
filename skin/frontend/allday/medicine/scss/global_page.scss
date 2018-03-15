@@ -121,20 +121,22 @@ button.button:hover > span{
 						    .faq{
 						    	color: #72ae12;
 						    	text-decoration: underline;
+						    	cursor: pointer;
 						    }
 		    			}
 		    		}
-		    		.start-referring{
-	    			    padding: 35px 0 !important;
+		    		.social_btns{
+		    		    padding-top: 30px !important;		    			
+		    			a{	
+		    				margin: 0 4px;
+							display: inline-block;
+							cursor: pointer;
 
-		    			button.button{
-		    				padding: 8px 16px 8px 16px !important;
-		    				background: #72ae12;
-		    				font-size: 21px;
-    						text-transform: uppercase;
-						    border-radius: 13px;
-		    				font-family: $open_sans_bold !important;
-		    				margin: 0;
+		    			    img{
+		    			    	width: auto;
+		    			    	height: auto;
+		    			    	display: inline-block;
+		    			    }
 		    			}
 		    		}
     			}
@@ -159,16 +161,144 @@ button.button:hover > span{
 		.categories-right-hom {
 		    padding: 0;
 		}
+		.main-container {
+		    .main{
+		    	.col-main{
+			    	.referral-wrap{
+			    		.title{
+			    			font-size: 22px;
+			    		}
+			    		.content_wrap{
+
+			    			.how-it-works, .this-doesnt-end-here{
+			    				.outer_area{
+			    					.desc_area{
+			    						font-size: 15px;
+									    line-height: 22px;
+			    					}
+			    				}
+			    			}
+			    		}
+			    		.invalide-invities{
+			    			.inner{
+	    						font-size: 16px;
+							    line-height: 22px;
+			    			}
+			    			ul{
+							    li{
+							    	font-size: 14px;
+								    line-height: 22px;
+							    }
+			    			}
+			    			.refer-queries{
+			    				font-size: 14px;
+							    line-height: 40px;
+			    			}
+			    		}
+	    			}
+		    	}
+		    }	 
+		}
 	}
 }
 @media only screen and (max-width: 736px){
-	.cms-referral{
+	.cms-page-view.cms-referral{
 	.main-container {
+		margin-top: 0 !important;
 
 		.main{
 	 		padding: 0;
 	 		margin: 0 auto;
     		box-sizing: border-box;
+
+		    	.col-main{
+			    	.referral-wrap{
+			    		.title{
+			    			font-size: 20px;
+			    			padding: 15px 0 !important;
+			    		}
+			    		.content_wrap{
+
+			    			.how-it-works, .this-doesnt-end-here{
+			    				.outer_area{
+		    					    padding: 0 2% 20px 2% !important;
+		    					    .img_area{
+		    					    	img{
+	    					    		    width: 110px;
+		    					    	}
+		    					    }
+			    					.desc_area{
+			    						font-size: 13px;
+    									line-height: 21px;
+			    					}
+			    				}
+			    			}
+			    		}
+			    		.invalide-invities{
+			    			.inner{
+	    						font-size: 15px;
+							    line-height: 20px;
+						        padding: 0 5% 15px 5% !important;
+			    			}
+			    			ul{
+		    					padding: 0 5% 15px 5% !important;
+
+							    li{
+							    	font-size: 14px;
+								    line-height: 20px;
+							    }
+			    			}
+			    			.refer-queries{
+			    				font-size: 14px;
+							    line-height: 40px;
+			    			}
+			    		}
+			    		.social_btns{
+			    		    padding-top: 22px !important;		    			
+			    		}
+	    			}
+		    	}
+			}	 
+		}
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.cms-page-view.cms-referral{
+		.main-container {
+			.main{
+		    	.col-main{
+			    	.referral-wrap{
+			    		.content_wrap{
+			    			.how-it-works, .this-doesnt-end-here{
+			    				.outer_area{
+		    					    padding: 0 10% 15px 10% !important;
+		    					    width: 100%;
+
+		    					    .img_area{
+		    					    	img{
+	    					    		    /*width: auto;*/
+		    					    	}
+		    					    }
+			    					.desc_area{
+			    						font-size: 15px;
+    									line-height: 19px;
+			    					}
+			    				}
+			    			}
+			    		}
+			    		.invalide-invities{
+			    			.refer-queries{
+							    line-height: 22px;
+							    padding: 7px 0 !important;
+							    .faq {
+								    width: 100%;
+								    display: inline-block;
+								}
+			    			}
+			    		}
+	    			}
+		    	}
 			}	 
 		}
 	}

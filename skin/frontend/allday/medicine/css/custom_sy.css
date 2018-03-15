@@ -209,6 +209,16 @@ span.mandate {
         margin-left: 10%;
     }
 }   
+@media only screen and (max-width: 1200px){
+	.showProducts{
+		width: 30%;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .page-bookmrk{
+       display: none;
+    }
+}
 @media only screen and (max-width: 920px) {
     .header .quick-access {
         margin-left: 5%;
@@ -222,11 +232,6 @@ span.mandate {
     .header .quick-access {
         width: 100% !important;
         margin-left: 0;
-    }
-}
-@media only screen and (max-width: 1200px){
-	.showProducts{
-		width: 30%;
     }
 }
 @media only screen and (max-width: 380px) {

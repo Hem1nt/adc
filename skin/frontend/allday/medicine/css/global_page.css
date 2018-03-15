@@ -137,18 +137,20 @@ button.button:hover > span {
 .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .refer-queries .faq {
   color: #72ae12;
   text-decoration: underline;
+  cursor: pointer;
 }
-.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .start-referring {
-  padding: 35px 0 !important;
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .social_btns {
+  padding-top: 30px !important;
 }
-.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .start-referring button.button {
-  padding: 8px 16px 8px 16px !important;
-  background: #72ae12;
-  font-size: 21px;
-  text-transform: uppercase;
-  border-radius: 13px;
-  font-family: "OpenSans-Bold" !important;
-  margin: 0;
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .social_btns a {
+  margin: 0 4px;
+  display: inline-block;
+  cursor: pointer;
+}
+.cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .social_btns a img {
+  width: auto;
+  height: auto;
+  display: inline-block;
 }
 
 @media only screen and (max-width: 1225px) {
@@ -161,12 +163,88 @@ button.button:hover > span {
   .cms-page-view.cms-referral .categories-right-hom {
     padding: 0;
   }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .title {
+    font-size: 22px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area .desc_area, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area .desc_area {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .inner {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities ul li {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .refer-queries {
+    font-size: 14px;
+    line-height: 40px;
+  }
 }
 @media only screen and (max-width: 736px) {
-  .cms-referral .main-container .main {
+  .cms-page-view.cms-referral .main-container {
+    margin-top: 0 !important;
+  }
+  .cms-page-view.cms-referral .main-container .main {
     padding: 0;
     margin: 0 auto;
     box-sizing: border-box;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .title {
+    font-size: 20px;
+    padding: 15px 0 !important;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area {
+    padding: 0 2% 20px 2% !important;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area .img_area img, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area .img_area img {
+    width: 110px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area .desc_area, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area .desc_area {
+    font-size: 13px;
+    line-height: 21px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .inner {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 0 5% 15px 5% !important;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities ul {
+    padding: 0 5% 15px 5% !important;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities ul li {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .refer-queries {
+    font-size: 14px;
+    line-height: 40px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .social_btns {
+    padding-top: 22px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area {
+    padding: 0 10% 15px 10% !important;
+    width: 100%;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area .img_area img, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area .img_area img {
+    /*width: auto;*/
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .how-it-works .outer_area .desc_area, .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .content_wrap .this-doesnt-end-here .outer_area .desc_area {
+    font-size: 15px;
+    line-height: 19px;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .refer-queries {
+    line-height: 22px;
+    padding: 7px 0 !important;
+  }
+  .cms-page-view.cms-referral .main-container .main .col-main .referral-wrap .invalide-invities .refer-queries .faq {
+    width: 100%;
+    display: inline-block;
   }
 }
 
