@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Optimiseweb Redirects Block System Config Backend Download
+ * Optimiseweb Redirects Block System Config Backend Downloadquerystringfile
  *
  * @package     Optimiseweb_Redirects
  * @author      Kathir Vel (sid@optimiseweb.co.uk)
  * @copyright   Copyright (c) 2015 Kathir Vel
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Optimiseweb_Redirects_Block_System_Config_Backend_Download extends Mage_Adminhtml_Block_System_Config_Form_Field
+class Optimiseweb_Redirects_Block_System_Config_Backend_Downloadquerystringfile extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
 
     /**
@@ -24,13 +24,13 @@ class Optimiseweb_Redirects_Block_System_Config_Backend_Download extends Mage_Ad
         if ($store) {
             $storeData = Mage::getModel('core/store')->getCollection()->addFieldToFilter('code', $store)->getFirstItem();
             $storeId = $storeData->getStoreId();
-            $fileName = Mage::getStoreConfig('optimisewebredirects/general/upload', $storeId);
+            $fileName = Mage::getStoreConfig('optimisewebredirects/querystring/upload', $storeId);
         } elseif ($website) {
             $websiteData = Mage::getModel('core/website')->getCollection()->addFieldToFilter('code', $website)->getFirstItem();
             $websiteId = $websiteData->getWebsiteId();
-            $fileName = Mage::app()->getWebsite($websiteId)->getConfig('optimisewebredirects/general/upload');
+            $fileName = Mage::app()->getWebsite($websiteId)->getConfig('optimisewebredirects/querystring/upload');
         } else {
-            $fileName = Mage::getStoreConfig('optimisewebredirects/general/upload');
+            $fileName = Mage::getStoreConfig('optimisewebredirects/querystring/upload');
         }
 
         $this->setElement($element);
