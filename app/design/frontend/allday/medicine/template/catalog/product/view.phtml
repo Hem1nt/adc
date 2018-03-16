@@ -52,6 +52,11 @@ $schemaUnitPrice = min(array_column($_frontendHelper->getUnitPrice($_product), '
 $getSimpleProductPrice = $_frontendHelper->allSimplePrice();
 
 ?>
+<!-- share button -->
+<?php $productName = $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+<?php $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 'product_url'); ?>
+<?php $productImage = $_product->getImageUrl() ?>
+<!-- share button -->
 <script type="text/javascript">
 var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
@@ -158,19 +163,25 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
 </div>
 <?php echo $flag ? '<span class="read_more" id="read_more"><b>Read more</b></span> ': '' ; ?>
 <?php endif;?>
-<div class="share bordercolor"><!-- AddThis Button BEGIN -->
+<div class="share bordercolor social_btns"><!-- AddThis Button BEGIN -->
     <div class="addthis_toolbox addthis_default_style ">
-        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-        <a class="addthis_button_tweet"></a>
-        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-        <a class="addthis_counter addthis_pill_style"></a>
+        <a href="javascript:popWin('https://plus.google.com/share?url=<?php echo urlencode($productUrl); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Google Plus') ?>"><img src="<?php echo $this->getSkinUrl('images/g_plus.png');?>"></a>
+    <a href="javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($productUrl); ?>&t=<?php echo urlencode($productName); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Facebook') ?>"><img src="<?php echo $this->getSkinUrl('images/fb.png');?>"></a>
+    <a href="javascript:popWin('http://twitter.com/home/?status=<?php echo urlencode($productName . ' (' . $productUrl . ')'); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Tweet') ?>"><img src="<?php echo $this->getSkinUrl('images/twitter.png');?>"></a>
+
+    <a href="javascript:popWin('https://pinterest.com/pin/create/button/?url=<?php echo urlencode($productUrl); ?>&media=<?php echo urlencode($productImage); ?>&description=<?php echo urlencode($productName); ?>', 'pinterest', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Pin it') ?>"><img src="<?php echo $this->getSkinUrl('images/pinterest.png');?>"></a>
     </div>
     <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f419f410efe76d3"></script>
 </div>
 </div>  
 </div>
+<!-- <div class="social_icons">    -->
+    <!-- <a href="javascript:popWin('https://plus.google.com/share?url=<?php //echo urlencode($productUrl); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php //echo $this->__('Share on Google Plus') ?>"><img src="<?php //echo $this->getSkinUrl('images/g_plus.png');?>"></a>
+    <a href="javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php //echo urlencode($productUrl); ?>&t=<?php //echo urlencode($productName); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php //echo $this->__('Share on Facebook') ?>"><img src="<?php //echo $this->getSkinUrl('images/fb.png');?>"></a>
+    <a href="javascript:popWin('http://twitter.com/home/?status=<?php //echo urlencode($productName . ' (' . $productUrl . ')'); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php //echo $this->__('Tweet') ?>"><img src="<?php //echo $this->getSkinUrl('images/twitter.png');?>"></a>
 
-
+    <a href="javascript:popWin('https://pinterest.com/pin/create/button/?url=<?php //echo urlencode($productUrl); ?>&media=<?php //echo urlencode($productImage); ?>&description=<?php// echo urlencode($productName); ?>', 'pinterest', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php //echo $this->__('Pin it') ?>"><img src="<?php //echo $this->getSkinUrl('images/pinterest.png');?>"></a> -->
+<!-- </div> -->
 <div class="review-count-pr">
     <?php //echo $this->getLayout()->createBlock('overrides/catalog_product_view')->setProduct($_product)->setTemplate('review/helper/summary.phtml')->toHtml();
     ?>
