@@ -364,7 +364,9 @@
                         <valid_statuses translate="label">
                             <label>Valid statuses</label>
                             <frontend_type>multiselect</frontend_type>
-                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <!-- <source_model>adminhtml/system_config_source_order_status</source_model> -->
+                            <source_model>configfile/system_config_source_status_list</source_model>
+                            <!-- To get all order status -->
                             <sort_order>90</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
