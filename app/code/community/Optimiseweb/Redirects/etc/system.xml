@@ -10,14 +10,14 @@
 <config>
 
     <tabs>
-        <optimisewebconfig translate="label comment" module="ow_redirects">
+        <optimisewebconfig translate="label comment" module="redirects">
             <label>Optimise Web</label>
             <sort_order>400</sort_order>
         </optimisewebconfig>
     </tabs>
 
     <sections>
-        <optimisewebredirects translate="label comment" module="ow_redirects">
+        <optimisewebredirects translate="label comment" module="redirects">
             <label>Mass 301 Redirects</label>
             <tab>optimisewebconfig</tab>
             <class>ow-system-section ow-mass-301-redirects-section</class>
@@ -29,15 +29,15 @@
             <show_in_store>1</show_in_store>
             <groups>
 
-                <hint translate="label comment" module="ow_redirects">
-                    <frontend_model>ow_redirects/adminhtml_system_config_fieldset_hint</frontend_model>
+                <hint translate="label comment" module="redirects">
+                    <frontend_model>redirects/adminhtml_system_config_fieldset_hint</frontend_model>
                     <sort_order>0</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                 </hint>
 
-                <disabled_products translate="label comment" module="ow_redirects">
+                <disabled_products translate="label comment" module="redirects">
                     <label>Disabled Products Check</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>1</sort_order>
@@ -45,7 +45,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <enabled translate="label tooltip comment" module="ow_redirects">
+                        <enabled translate="label tooltip comment" module="redirects">
                             <label>Redirect disabled products?</label>
                             <tooltip>
                                 <![CDATA[
@@ -62,7 +62,7 @@
                     </fields>
                 </disabled_products>
 
-                <notvisible_products translate="label comment" module="ow_redirects">
+                <notvisible_products translate="label comment" module="redirects">
                     <label>Not Visible Products Check</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>2</sort_order>
@@ -70,7 +70,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <enabled translate="label tooltip comment" module="ow_redirects">
+                        <enabled translate="label tooltip comment" module="redirects">
                             <label>Redirect Not Visible products?</label>
                             <tooltip>
                                 <![CDATA[
@@ -87,7 +87,7 @@
                     </fields>
                 </notvisible_products>
 
-                <disabled_categories translate="label comment" module="ow_redirects">
+                <disabled_categories translate="label comment" module="redirects">
                     <label>Disabled Categories Check</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>3</sort_order>
@@ -95,7 +95,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <enabled translate="label tooltip comment" module="ow_redirects">
+                        <enabled translate="label tooltip comment" module="redirects">
                             <label>Redirect disabled categories?</label>
                             <tooltip>
                                 <![CDATA[
@@ -112,7 +112,7 @@
                     </fields>
                 </disabled_categories>
 
-                <redirects1 translate="label comment" module="ow_redirects">
+                <redirects1 translate="label comment" module="redirects">
                     <label>Redirects System v1.0</label>
                     <comment>
                         <![CDATA[
@@ -132,7 +132,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <upload translate="label tooltip comment" module="ow_redirects">
+                        <upload translate="label tooltip comment" module="redirects">
                             <label>Upload Redirects File</label>
                             <comment>If you have already uploaded a CSV file and wish to add or edit the URLs, please download the current CSV file and reupload that file after making the changes.</comment>
                             <frontend_type>file</frontend_type>
@@ -144,16 +144,16 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </upload>
-                        <download translate="label tooltip comment" module="ow_redirects">
+                        <download translate="label tooltip comment" module="redirects">
                             <label>Download Redirects File</label>
                             <comment>Right click on this link and click on 'Save Link As...'</comment>
-                            <frontend_model>ow_redirects/system_config_backend_download1</frontend_model>
+                            <frontend_model>redirects/system_config_backend_download1</frontend_model>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </download>
-                        <delimiter translate="label tooltip comment" module="ow_redirects">
+                        <delimiter translate="label tooltip comment" module="redirects">
                             <label>Delimiter</label>
                             <comment>Defaults to comma (,). Depends on how you save your CSV file.</comment>
                             <frontend_type>text</frontend_type>
@@ -162,7 +162,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </delimiter>
-                        <wildcardcharacter translate="label tooltip comment" module="ow_redirects">
+                        <wildcardcharacter translate="label tooltip comment" module="redirects">
                             <label>Wildcard Character</label>
                             <comment>Defaults to asterisk (*).</comment>
                             <frontend_type>text</frontend_type>
@@ -174,7 +174,7 @@
                     </fields>
                 </redirects1>
 
-                <querystring translate="label comment" module="ow_redirects">
+                <querystring translate="label comment" module="redirects">
                     <label>Query String Based Redirects</label>
                     <comment>
                         <![CDATA[
@@ -194,7 +194,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <upload translate="label tooltip comment" module="ow_redirects">
+                        <upload translate="label tooltip comment" module="redirects">
                             <label>Upload Redirects File</label>
                             <comment>If you have already uploaded a CSV file and wish to add or edit the URLs, please download the current CSV file and reupload that file after making the changes.</comment>
                             <frontend_type>file</frontend_type>
@@ -206,16 +206,16 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </upload>
-                        <download translate="label tooltip comment" module="ow_redirects">
+                        <download translate="label tooltip comment" module="redirects">
                             <label>Download Redirects File</label>
                             <comment>Right click on this link and click on 'Save Link As...'</comment>
-                            <frontend_model>ow_redirects/system_config_backend_downloadquerystringfile</frontend_model>
+                            <frontend_model>redirects/system_config_backend_downloadquerystringfile</frontend_model>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </download>
-                        <delimiter translate="label tooltip comment" module="ow_redirects">
+                        <delimiter translate="label tooltip comment" module="redirects">
                             <label>Delimiter</label>
                             <comment>Defaults to comma (,). Depends on how you save your CSV file.</comment>
                             <frontend_type>text</frontend_type>
@@ -224,7 +224,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </delimiter>
-                        <wildcardcharacter translate="label tooltip comment" module="ow_redirects">
+                        <wildcardcharacter translate="label tooltip comment" module="redirects">
                             <label>Wildcard Character</label>
                             <comment>Defaults to asterisk (*).</comment>
                             <frontend_type>text</frontend_type>
@@ -236,7 +236,7 @@
                     </fields>
                 </querystring>
 
-                <menu translate="label comment" module="ow_redirects">
+                <menu translate="label comment" module="redirects">
                     <label>Admin Menu Control</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>999</sort_order>
@@ -244,7 +244,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <optimiseweball_enabled translate="label tooltip comment" module="ow_redirects">
+                        <optimiseweball_enabled translate="label tooltip comment" module="redirects">
                             <label>Enable the 'Optimise Web' Admin menu group?</label>
                             <tooltip>
                                 <![CDATA[
@@ -259,7 +259,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </optimiseweball_enabled>
-                        <ow_redirects_enabled translate="label tooltip comment" module="ow_redirects">
+                        <redirects_enabled translate="label tooltip comment" module="redirects">
                             <label>Enable the 'Mass 301 Redirects' link from the Admin menu?</label>
                             <tooltip>
                                 <![CDATA[
@@ -273,11 +273,11 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </ow_redirects_enabled>
+                        </redirects_enabled>
                     </fields>
                 </menu>
 
-                <general translate="label comment" module="ow_redirects">
+                <general translate="label comment" module="redirects">
                     <label>Legacy - Deprecated - DO NOT USE THIS - Use Redirects System v1.0</label>
                     <comment>
                         <![CDATA[
@@ -295,7 +295,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <upload translate="label tooltip comment" module="ow_redirects">
+                        <upload translate="label tooltip comment" module="redirects">
                             <label>Upload Redirects File</label>
                             <comment>If you have already uploaded a CSV file and wish to add or edit the URLs, please download the current CSV file and reupload that file after making the changes.</comment>
                             <frontend_type>file</frontend_type>
@@ -307,10 +307,10 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </upload>
-                        <download translate="label tooltip comment" module="ow_redirects">
+                        <download translate="label tooltip comment" module="redirects">
                             <label>Download Redirects File</label>
                             <comment>Right click on this link and click on 'Save Link As...'</comment>
-                            <frontend_model>ow_redirects/system_config_backend_download</frontend_model>
+                            <frontend_model>redirects/system_config_backend_download</frontend_model>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -319,7 +319,7 @@
                     </fields>
                 </general>
 
-                <cataloguesearch translate="label comment" module="ow_redirects">
+                <cataloguesearch translate="label comment" module="redirects">
                     <label>Redirect to Catalogue Search - DEPRECATED - DO NOT USE THIS OPTION</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>9998</sort_order>
@@ -327,7 +327,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <enabled translate="label tooltip comment" module="ow_redirects">
+                        <enabled translate="label tooltip comment" module="redirects">
                             <label>Enable?</label>
                             <tooltip>
                                 <![CDATA[
