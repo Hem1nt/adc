@@ -25,6 +25,9 @@ class CommerceLab_News_Adminhtml_CommentController extends Mage_Adminhtml_Contro
      * Init actions
      *
      */
+    protected function _isAllowed(){
+        return true;
+    }
     protected function _initAction() {
         // load layout, set active menu
         $this->loadLayout()
