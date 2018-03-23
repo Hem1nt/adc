@@ -151,6 +151,61 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
  		endif;
 	}
 
+	public function saveSuspiciousAction(){
+		$blacklistemails = Mage::getStoreConfig('blacklist_section/blacklist/blacklist_email');
+ 		$emaildata = unserialize($blacklistemails);
+
+ 		$id = '_'.time().'_'.rand(10,100);
+		$order_id = $this->getRequest()->getParam('orderid');
+		$suspicious_id = $this->getRequest()->getParam('suspicious_id');
+		$suspicious_value = $this->getRequest()->getParam('suspicious_value');
+		$customerId = $this->getRequest()->getParam('customerId');
+		$customer_email = $this->getRequest()->getParam('email');//Mage::getModel('customer/customer')->load($customerId)->getData('email');
+		//if($behavior_id!='' && $order_id!='' && $customerId != ''):
+		if($suspicious_id == 1 && $order_id != ''){
+			$data = json_encode(array('suspicious_id'=>$suspicious_id,'suspicious_value'=>$suspicious_value));
+			//order table
+			$orders = Mage::getModel('sales/order')->getCollection()
+    		->addAttributeToFilter('customer_email',$customer_email);
+			foreach($orders as $order)
+			{ 
+		       	$order->setSuspicious($data)->save();
+		       	
+		    }
+		    foreach ($emaildata as $key => $value) {
+		    	$existingemail[] = $value['email'];
+ 				
+ 			}
+ 			if(!in_array($customer_email,$existingemail)){
+		    		$newemail = array('email'=>$customer_email);
+ 					$emaildata[$id] = $newemail;
+ 					Mage::getModel('core/config')->saveConfig('blacklist_section/blacklist/blacklist_email', serialize($emaildata));
+ 				}
+ 		}elseif($suspicious_id == 2 && $order_id != ''){
+ 			$data = json_encode(array('suspicious_id'=>$suspicious_id,'suspicious_value'=>''));
+ 			print_r($data);exit;
+			//order table
+			$orders = Mage::getModel('sales/order')->getCollection()
+    		->addAttributeToFilter('customer_email',$customer_email);
+			foreach($orders as $order)
+			{ 
+		       	$order->setSuspicious($data)->save();
+		       	
+		    }
+		    foreach ($emaildata as $key => $value) {
+		    	$existingemail[$key] = $value['email'];
+ 				
+ 			}
+ 			if(in_array($customer_email,$existingemail)){
+ 					$unsetKey = array_search($customer_email,$existingemail);
+ 					unset($emaildata[$unsetKey]);
+ 					Mage::getModel('core/config')->saveConfig('blacklist_section/blacklist/blacklist_email', serialize($emaildata));
+ 				}
+
+ 		}
+ 		
+	}
+
 	/************ kyc custom code start ***********/
 
     public function savekycAction()

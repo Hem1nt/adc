@@ -62,6 +62,15 @@ class EM_DeleteOrder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
             'index' => 'voucher_transaction_id',
             'filter_index' => 'voucher_transaction_id',
         ));
+        $this->addColumn('suspicious',array(
+            'header'    => Mage::helper('sales')->__('Suspicious'),
+            'width'     => '50px',
+            'type'      => 'action',
+            'filter'    => false,
+            'sortable'  => false,
+            'index'     => 'stores',
+            'renderer' => 'EM_DeleteOrder_Block_Adminhtml_Sales_Order_Renderer_Suspicious',
+        ));
         if (!Mage::app()->isSingleStoreMode()) {
         $this->addColumn('store_id', array(
             'header'    => Mage::helper('sales')->__('Purchased From (Store)'),

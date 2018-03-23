@@ -1132,8 +1132,28 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		$billingAddress = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getData();
 			$billing_country_name=Mage::app()->getLocale()->getCountryTranslation($billingAddress['country_id']); 
 		$shippingAddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getData();
-			$shipping_country_name=Mage::app()->getLocale()->getCountryTranslation($shippingAddress['country_id']); 
-		
+			$shipping_country_name=Mage::app()->getLocale()->getCountryTranslation($shippingAddress['country_id']);
+		$blackListAddressses = unserialize(Mage::getStoreConfig('blacklist_section/blacklist/blacklist_address'));
+		$blackListPhoneNumber = unserialize(Mage::getStoreConfig('blacklist_section/blacklist/blacklist_phonenumber'));
+		foreach ($blackListAddressses as $key => $value) {
+			$address_string = $value['address1'].' '.$value['address1'].' '.$value['city'].' '.$value['country'].' '.$value['zipcode'];
+			//billing address check
+			if(preg_match("/\b(".$billingAddress['street'].'|'.$billingAddress['city'].'|'.$billingAddress['region'].'|'.$billingAddress['postcode'].")\b/", $address_string)){
+			    Mage::getSingleton('core/session')->setBillingAddressSuspicious(true);
+			}
+
+			//shipping address check
+			if(preg_match("/\b(".$billingAddress['street'].'|'.$billingAddress['city'].'|'.$billingAddress['region'].'|'.$billingAddress['postcode'].")\b/", $address_string)){
+			    Mage::getSingleton('core/session')->setShippingAddressSuspicious(true);
+			}
+		}
+
+		foreach ($blackListPhoneNumber as $key => $value) {
+			if($value['phonenumber'] == $billingAddress['telephone']){
+				Mage::getSingleton('core/session')->setPhoneSuspicious(true);
+			}
+		}
+
 	    $html .= '<ul class="address1">';
 			$html .= '<div class="billing_address_title">Billing Address: </div>';
 			$html .= '<label>Name</label>'.' <li>: '.$billingAddress['firstname'].' '.$billingAddress['lastname'].'</li>';

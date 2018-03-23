@@ -188,7 +188,7 @@ jQuery(document).ready(function(){
 		if(medicalobservationformForm.validator &&  medicalobservationformForm.validator.validate()) {
 
 			// start of ajax call for black list customers
-			jQuery.ajax({
+			/*jQuery.ajax({
 				url: IWD.OPC.Checkout.config.baseUrl+"onepage/json/blackListUser",
 				success : function (response)
 				{
@@ -201,7 +201,7 @@ jQuery(document).ready(function(){
 					}
 				}
 			// other properties
-			});
+			});*/
 		    // end of ajax call for black list customers
 
 			savemedicalhistory();

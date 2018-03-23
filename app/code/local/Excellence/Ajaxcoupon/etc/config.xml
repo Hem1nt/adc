@@ -26,12 +26,12 @@
     
      
     <global>
-    	<rewrite>
-	        <ajax_coupon> 
-	            <from><![CDATA[#^/checkout/cart/#]]></from>  <!-- the URL which u want to override-->
-	            <to>/ajaxcoupon/index/</to>  <!-- destination url -->
-	        </ajax_coupon>
-	    </rewrite>
+        <rewrite>
+            <ajax_coupon> 
+                <from><![CDATA[#^/checkout/cart/#]]></from>  <!-- the URL which u want to override-->
+                <to>/ajaxcoupon/index/</to>  <!-- destination url -->
+            </ajax_coupon>
+        </rewrite>
         <models>
             <ajaxcoupon>
                 <class>Excellence_Ajaxcoupon_Model</class>
@@ -70,5 +70,25 @@
                 <class>Excellence_Ajaxcoupon_Helper</class>
             </ajaxcoupon>
         </helpers>
+        <events>
+            <payment_method_is_active>
+                <observers>
+                <disable_paymentgroup_payment_method_is_active>
+                    <type>singleton</type>
+                    <class>ajaxcoupon/observer</class>
+                    <method>disableactivepaymentMethod</method>
+                </disable_paymentgroup_payment_method_is_active>
+                </observers>
+            </payment_method_is_active>
+            <sales_order_place_after>
+            <observers>
+                <check_user_is_suspicious>
+                    <type>singleton</type>
+                    <class>ajaxcoupon/observer</class>
+                    <method>checkSuspicious</method>
+                </check_user_is_suspicious>
+            </observers>
+        </sales_order_place_after>
+        </events>
     </global>
 </config>
