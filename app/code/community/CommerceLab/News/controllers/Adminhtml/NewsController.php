@@ -25,6 +25,9 @@ class CommerceLab_News_Adminhtml_NewsController extends Mage_Adminhtml_Controlle
      * Init actions
      *
      */
+    protected function _isAllowed(){
+        return true;
+    }
     protected function _initAction()
     {
         // load layout, set active menu
