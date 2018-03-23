@@ -10,18 +10,18 @@
 <config>
     
     <menu>
-        <optimiseweball translate="title" module="ow_redirects">
+        <optimiseweball translate="title" module="redirects">
             <title>Optimise Web</title>
             <sort_order>71</sort_order>
             <children>
-                <ow_redirects translate="title" module="ow_redirects">
+                <redirects translate="title" module="redirects">
                     <title>Mass 301 Redirects</title>
                     <sort_order>5</sort_order>
                     <action>adminhtml/system_config/edit/section/optimisewebredirects</action>
                     <depends>
-                        <config>optimisewebredirects/menu/ow_redirects_enabled</config>
+                        <config>optimisewebredirects/menu/redirects_enabled</config>
                     </depends>
-                </ow_redirects>
+                </redirects>
             </children>
             <depends>
                 <config>optimisewebredirects/menu/optimiseweball_enabled</config>
@@ -36,24 +36,24 @@
             </all>
             <admin>
                 <children>
-                    <optimiseweball translate="title" module="ow_redirects">
+                    <optimiseweball translate="title" module="redirects">
                         <title>Optimise Web - Menu Group</title>
                         <sort_order>10</sort_order>
                         <children>
-                            <ow_redirects translate="title" module="ow_redirects">
+                            <redirects translate="title" module="redirects">
                                 <title>Optimise Web - Mass 301 Redirects</title>
                                 <sort_order>10</sort_order>
-                            </ow_redirects>
+                            </redirects>
                         </children>
                     </optimiseweball>
                     <system>
                         <children>
                             <config>
                                 <children>
-                                    <optimisewebconfig translate="title" module="ow_redirects">
+                                    <optimisewebconfig translate="title" module="redirects">
                                         <title>Optimise Web - System Configuration Group</title>
                                     </optimisewebconfig>
-                                    <optimisewebredirects translate="title" module="ow_redirects">
+                                    <optimisewebredirects translate="title" module="redirects">
                                         <title>Optimise Web - Mass 301 Redirects</title>
                                     </optimisewebredirects>
                                 </children>
