@@ -16,8 +16,7 @@ class Excellence_Ajaxcoupon_Model_Observer
             $result = $event->getResult();
             //if (!empty($methods)) {
                 //foreach ($methods as $key => $value) {
-                   
-                     if($method->getCode() != 'checkmo'){
+                     if($method->getCode() != 'dummypayment'){
                          $result->isAvailable = false;                          
                      }else{
                    
