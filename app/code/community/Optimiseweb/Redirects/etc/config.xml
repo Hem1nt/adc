@@ -46,21 +46,21 @@
     <global>
 
         <blocks>
-            <ow_redirects>
+            <redirects>
                 <class>Optimiseweb_Redirects_Block</class>
-            </ow_redirects>
+            </redirects>
         </blocks>
 
         <helpers>
-            <ow_redirects>
+            <redirects>
                 <class>Optimiseweb_Redirects_Helper</class>
-            </ow_redirects>
+            </redirects>
         </helpers>
 
         <models>
-            <ow_redirects>
+            <redirects>
                 <class>Optimiseweb_Redirects_Model</class>
-            </ow_redirects>
+            </redirects>
         </models>
         
         <events>
@@ -68,7 +68,7 @@
                 <observers>
                     <optimiseweb_redirects_model_redirector>
                         <type>singleton</type>
-                        <class>ow_redirects/redirector</class>
+                        <class>redirects/redirector</class>
                         <method>doRedirects</method>
                     </optimiseweb_redirects_model_redirector>
                 </observers>
@@ -102,7 +102,7 @@
             </cataloguesearch>
             <menu>
                 <optimiseweball_enabled>1</optimiseweball_enabled>
-                <ow_redirects_enabled>1</ow_redirects_enabled>
+                <redirects_enabled>1</redirects_enabled>
             </menu>
         </optimisewebredirects>
 
