@@ -153,9 +153,14 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
 
 	public function saveSuspiciousAction(){
 		$blacklistemails = Mage::getStoreConfig('blacklist_section/blacklist/blacklist_email');
+		$blacklistaddress = Mage::getStoreConfig('blacklist_section/blacklist/blacklist_address');
+		$blacklistphonenumber = Mage::getStoreConfig('blacklist_section/blacklist/blacklist_phonenumber');
  		$emaildata = unserialize($blacklistemails);
-
- 		$id = '_'.time().'_'.rand(10,100);
+ 		$addressdata = unserialize($blacklistaddress);
+ 		$phonenumberdata = unserialize($blacklistphonenumber);
+ 		$email_id = '_'.time().'_'.rand(10,100);
+ 		$address_id = '_'.time().'_'.rand(10,100);
+ 		$phonenumber_id = '_'.time().'_'.rand(10,100);
 		$order_id = $this->getRequest()->getParam('orderid');
 		$suspicious_id = $this->getRequest()->getParam('suspicious_id');
 		$suspicious_value = $this->getRequest()->getParam('suspicious_value');
@@ -177,13 +182,26 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
  				
  			}
  			if(!in_array($customer_email,$existingemail)){
-		    		$newemail = array('email'=>$customer_email);
- 					$emaildata[$id] = $newemail;
- 					Mage::getModel('core/config')->saveConfig('blacklist_section/blacklist/blacklist_email', serialize($emaildata));
+				$order = Mage::getModel('sales/order')->load($order_id);
+				$billingAddress = $order->getBillingAddress();
+    			$neweblacklistmail = array('email'=>$customer_email);
+    			$neweblacklistaddress = array(
+									            'address1' => $billingAddress->getData('street'),
+									            'address2' => $billingAddress->getData('region'),
+									            'city' => $billingAddress->getData('city'),
+									            'country' => $billingAddress->getData('country_id'),
+									            'zipcode' => $billingAddress->getData('postcode')
+									        );
+    			$neweblacklistnumber = array('phonenumber'=>$billingAddress->getData('telephone'));
+				$emaildata[$email_id] = $neweblacklistmail;
+				$addressdata[$address_id] = $neweblacklistaddress;
+				$phonenumberdata[$phonenumber_id] = $neweblacklistnumber;
+				Mage::getModel('core/config')->saveConfig('blacklist_section/blacklist/blacklist_email', serialize($emaildata));
+				Mage::getModel('core/config')->saveConfig('blacklist_section/blacklist/blacklist_address', serialize($addressdata));
+				Mage::getModel('core/config')->saveConfig('blacklist_section/blacklist/blacklist_phonenumber', serialize($phonenumberdata));
  				}
  		}elseif($suspicious_id == 2 && $order_id != ''){
  			$data = json_encode(array('suspicious_id'=>$suspicious_id,'suspicious_value'=>''));
- 			print_r($data);exit;
 			//order table
 			$orders = Mage::getModel('sales/order')->getCollection()
     		->addAttributeToFilter('customer_email',$customer_email);
