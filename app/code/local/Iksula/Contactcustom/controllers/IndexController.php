@@ -340,6 +340,7 @@ class Iksula_Contactcustom_IndexController extends Mage_Core_Controller_Front_Ac
 						<td colspan="3">'.'&#x24;'.sprintf ("%.2f", $grandtotal).'</td>
 					</tr>
 				</table>';
+		$HTML .='<br><p>'.$productObjectNew->getExpiry().'</p>';
 		$HTML.='<p align="justify" style="font-size:9px;font-weight:bold;text-align:left;" >I certify that I am '."'over 18 years'".' and that I am under the supervision of a doctor.
 				The ordered medication is for my own personal use and is strictly not meant for a re-sale.
 				I also accept that I am taking the medicine /s at my own risk and that I am duly aware of
