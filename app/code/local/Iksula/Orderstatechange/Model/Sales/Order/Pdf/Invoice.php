@@ -408,7 +408,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 									<td colspan="1" style="text-align:left;width: 20%;">$'.$grand_total.'</td>
 								</tr>
 								</table></td></tr>';
-
+							$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
 							//Medical History Detail---------------------------
 								$physicianname = $order->getData('physicianname');
 								$physiciantelephone = $order->getData('physiciantelephone');
@@ -836,7 +836,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 									<td colspan="1" style="text-align:left;width: 20%;">$'.$grand_total.'</td>
 								</tr>
 								</table></td></tr>';
-
+							$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
 							//Medical History Detail---------------------------
 								$physicianname = $order->getData('physicianname');
 								$physiciantelephone = $order->getData('physiciantelephone');
@@ -1281,7 +1281,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 								</table>
 								</td>
 								</tr>';
-
+							$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
 							//Medical History Detail---------------------------
 								$physicianname = $order->getData('physicianname');
 								$physiciantelephone = $order->getData('physiciantelephone');
