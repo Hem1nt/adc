@@ -57,7 +57,13 @@ class Excellence_Ajaxcoupon_Model_Observer
 
     protected function blackListEmail($cart){
         foreach (unserialize(Mage::getStoreConfig("blacklist_section/blacklist/blacklist_email")) as $mapping) {
-          $cusemail = Mage::getSingleton('customer/session')->getCustomer()->getEmail();
+
+            if(Mage::getSingleton('customer/session')->isLoggedIn()){
+                $cusemail = Mage::getSingleton('customer/session')->getCustomer()->getEmail();
+            }else{
+                $cusemail = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getEmail();
+            }
+
           if($mapping['email'] == $cusemail){
             return 1;
           }

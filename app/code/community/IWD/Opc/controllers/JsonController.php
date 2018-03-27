@@ -1058,7 +1058,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
         $this->getResponse()->setBody(json_encode($responce));
 	}
 	public function blackListUserAction(){
-		$quoteData = Mage::getSingleton('checkout/session')->getQuote();
+		/*$quoteData = Mage::getSingleton('checkout/session')->getQuote();
 		$data = $quoteData->getBillingAddress()->getData();
 		$blacklistPhoneno = $this->blackListPhoneNumber($data);
 		$blacklistAddress =  $this->blackListAddress($data);
@@ -1069,7 +1069,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		} else {
 			$result['status'] = "NO";
 		}
-		return print_r(json_encode($result));
+		return print_r(json_encode($result));*/
 	}
 	/* check phone number of the black list user */
 	protected function blackListPhoneNumber($data){
@@ -1136,21 +1136,28 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		$blackListAddressses = unserialize(Mage::getStoreConfig('blacklist_section/blacklist/blacklist_address'));
 		$blackListPhoneNumber = unserialize(Mage::getStoreConfig('blacklist_section/blacklist/blacklist_phonenumber'));
 		foreach ($blackListAddressses as $key => $value) {
-			$address_string = $value['address1'].' '.$value['address1'].' '.$value['city'].' '.$value['country'].' '.$value['zipcode'];
+			$address_string = $value['address1'].' '.$value['address1'].' '.$value['city'].' '.$value['zipcode'];
 			//billing address check
 			if(preg_match("/\b(".$billingAddress['street'].'|'.$billingAddress['city'].'|'.$billingAddress['region'].'|'.$billingAddress['postcode'].")\b/", $address_string)){
 			    Mage::getSingleton('core/session')->setBillingAddressSuspicious(true);
+			}else{
+				Mage::getSingleton('core/session')->unsBillingAddressSuspicious();
 			}
 
 			//shipping address check
-			if(preg_match("/\b(".$billingAddress['street'].'|'.$billingAddress['city'].'|'.$billingAddress['region'].'|'.$billingAddress['postcode'].")\b/", $address_string)){
+			if(preg_match("/\b(".$shippingAddress['street'].'|'.$shippingAddress['city'].'|'.$shippingAddress['region'].'|'.$shippingAddress['postcode'].")\b/", $address_string)){
 			    Mage::getSingleton('core/session')->setShippingAddressSuspicious(true);
+			}else{
+				Mage::getSingleton('core/session')->unsShippingAddressSuspicious();
 			}
 		}
 
 		foreach ($blackListPhoneNumber as $key => $value) {
-			if($value['phonenumber'] == $billingAddress['telephone']){
+			if($value['phonenumber'] == $billingAddress['telephone'] || $value['phonenumber'] == $shippingAddress['telephone']){
 				Mage::getSingleton('core/session')->setPhoneSuspicious(true);
+				break;
+			}else{
+				Mage::getSingleton('core/session')->unsPhoneSuspicious();
 			}
 		}
 
