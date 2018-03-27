@@ -42,6 +42,8 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
 
        $last =date('Y-m-d H:i:s', strtotime('-1 day'));
        $first =date('Y-m-d H:i:s', strtotime('-2 day'));
+
+
       
        $collection = Mage::getResourceModel('reports/quote_collection');
        $collection->addFieldToFilter('items_count', array('neq' => '0'))
@@ -56,7 +58,7 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
        $quote_collectionArray = array();
        $quote_ItemArray = array();
        foreach ($collection->getData() as $quote) {
-        // print_r($quote);
+        // echo "<pre>"; print_r($quote); exit();
         $abandonedcartCollection = Mage::getSingleton('abandoned/abandoned')->getCollection();
 
         $abandonedcartCollection->addFieldToFilter('email_id',$quote['customer_email']);
@@ -113,6 +115,7 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
      $loadData = $abandonedcart->load($abundantcart_id);
      $quote_collectionArray['email_id'] = $quote['customer_email'];
      $quote_collectionArray['quote_id'] = $quote['entity_id'];
+     $quote_collectionArray['abandoned_page_capture'] = $quote['abandoned_page_capture'];
      $quote_collectionArray['created_time'] = $quote['created_at'];
      $quote_collectionArray['update_time'] = $quote['updated_at'];
      $quote_collectionArray['product_ids'] =implode(',', $quote_ItemArray); 
@@ -148,6 +151,7 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
      $loadData = $abandonedcart->load($abundantcart_id);
      $quote_collectionArray['email_id'] = $quote['customer_email'];
      $quote_collectionArray['quote_id'] = $quote['entity_id'];
+     $quote_collectionArray['abandoned_page_capture'] = $quote['abandoned_page_capture'];
      $quote_collectionArray['is_email_send'] = 0;
      $quote_collectionArray['is_purchase'] = 0;
      $quote_collectionArray['created_time'] = $quote['created_at'];
@@ -182,6 +186,7 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
           $quote_collectionArray['subtotal'] = $subtotal;
           $quote_collectionArray['email_id'] = $quote['customer_email'];
           $quote_collectionArray['quote_id'] = $quote['entity_id'];
+          $quote_collectionArray['abandoned_page_capture'] = $quote['abandoned_page_capture'];
           $quote_collectionArray['is_email_send'] = 0;
           $quote_collectionArray['is_purchase'] = 0;
           $quote_collectionArray['created_time'] = $quote['created_at'];
