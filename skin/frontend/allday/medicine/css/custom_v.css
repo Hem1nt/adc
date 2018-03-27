@@ -600,15 +600,25 @@
 .slider_heading{
 	padding-top: 20px;
 	clear: both;
-	padding-bottom: 8px;
-	margin-bottom: 15px;
-	border-bottom: 1px solid #ccc;
+	padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
 }
 
 .slider_heading h2{
-    margin: 0;
-    font: normal 1.6em 'Open Sans', sans-serif;
-    color: #5c6165;
+		margin: 0;
+		font-size: 16px;;
+		line-height: 16px;
+		color: #fff;
+		border-bottom: 0;
+		padding: 9px 14px;
+		margin: 0;
+		text-transform: uppercase;
+		font-weight: 600;
+		background: #506f00 !important;
+		text-align: center;
+		width: 100%;
+		box-sizing: border-box;
 }
 
 .related_slider .product-images{

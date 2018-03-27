@@ -54,7 +54,8 @@
   <default>
     <reference name="head">
       <action method="addItem"><type>skin_js</type><name>js/custom_sb.js</name></action>
-      <action method="addItem"><type>skin_js</type><name>js/jquery.snow.min.1.0.js</name></action>
+	  <!-- <action method="addCss"><stylesheet>css/custom_sy.css</stylesheet></action> -->
+      <!--<action method="addItem"><type>skin_js</type><name>js/jquery.snow.min.1.0.js</name></action>-->
     </reference>
   </default>
 </layout>

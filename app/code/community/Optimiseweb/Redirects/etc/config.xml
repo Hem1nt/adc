@@ -1,62 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* @package    Optimiseweb_Redirects
+* @author     Kathir Vel (vkathirvel@gmail.com)
+* @copyright  Copyright (c) 2015 Kathir Vel
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
 <config>
 
-  <modules>
-    <Optimiseweb_Redirects>
-      <version>0.1.3</version>
-    </Optimiseweb_Redirects>
-  </modules>
+    <modules>
+        <Optimiseweb_Redirects>
+            <version>0.3.5</version>
+        </Optimiseweb_Redirects>
+    </modules>
 
-  <frontend>
-    <events>
-      <controller_action_predispatch>
-        <observers>
-          <optimiseweb_redirects_model_redirector>
-            <type>singleton</type>
-            <class>optimiseweb_redirects_model_redirector</class>
-            <method>doRedirects</method>
-          </optimiseweb_redirects_model_redirector>
-        </observers>
-      </controller_action_predispatch>
-    </events>
-  </frontend>
+    <frontend>
+        
+        <translate>
+            <modules>
+                <Optimiseweb_Redirects>
+                    <files>
+                        <default>Optimiseweb_Redirects.csv</default>
+                    </files>
+                </Optimiseweb_Redirects>
+            </modules>
+        </translate>
+        
+    </frontend>
 
-  <adminhtml>
-    <!-- <menu>
-      <optimiseweball translate="title" module="redirects">
-        <title>Optimise Web</title>
-        <sort_order>71</sort_order>
-        <children>
-          <redirects translate="title" module="redirects">
-            <title>Mass 301 Redirects</title>
-            <sort_order>5</sort_order>
-            <action>adminhtml/system_config/edit/section/optimisewebredirects</action>
-          </redirects>
-        </children>
-      </optimiseweball>
-    </menu> -->
-  </adminhtml>
+    <adminhtml>
 
-  <global>
+        <translate>
+            <modules>
+                <Optimiseweb_Redirects>
+                    <files>
+                        <default>Optimiseweb_Redirects.csv</default>
+                    </files>
+                </Optimiseweb_Redirects>
+            </modules>
+        </translate>
+        
+    </adminhtml>
 
-    <blocks>
-      <redirects>
-        <class>Optimiseweb_Redirects_Block</class>
-      </redirects>
-    </blocks>
+    <global>
 
-    <helpers>
-      <redirects>
-        <class>Optimiseweb_Redirects_Helper</class>
-      </redirects>
-    </helpers>
+        <blocks>
+            <redirects>
+                <class>Optimiseweb_Redirects_Block</class>
+            </redirects>
+        </blocks>
 
-    <models>
-      <redirects>
-        <class>Optimiseweb_Redirects_Model</class>
-      </redirects>
-    </models>
+        <helpers>
+            <redirects>
+                <class>Optimiseweb_Redirects_Helper</class>
+            </redirects>
+        </helpers>
 
-  </global>
+        <models>
+            <redirects>
+                <class>Optimiseweb_Redirects_Model</class>
+            </redirects>
+        </models>
+        
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <optimiseweb_redirects_model_redirector>
+                        <type>singleton</type>
+                        <class>redirects/redirector</class>
+                        <method>doRedirects</method>
+                    </optimiseweb_redirects_model_redirector>
+                </observers>
+            </controller_action_predispatch>
+        </events>
 
+    </global>
+
+    <default>
+
+        <optimisewebredirects>
+            <disabled_products>
+                <enabled>0</enabled>
+            </disabled_products>
+            <notvisible_products>
+                <enabled>0</enabled>
+            </notvisible_products>
+            <disabled_categories>
+                <enabled>0</enabled>
+            </disabled_categories>
+            <redirects1>
+                <delimiter>,</delimiter>
+                <wildcardcharacter>*</wildcardcharacter>
+            </redirects1>
+            <querystring>
+                <delimiter>,</delimiter>
+                <wildcardcharacter>*</wildcardcharacter>
+            </querystring>
+            <cataloguesearch>
+                <enabled>0</enabled>
+            </cataloguesearch>
+            <menu>
+                <optimiseweball_enabled>1</optimiseweball_enabled>
+                <redirects_enabled>1</redirects_enabled>
+            </menu>
+        </optimisewebredirects>
+
+    </default>
+    
 </config>

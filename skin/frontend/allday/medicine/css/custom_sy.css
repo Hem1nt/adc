@@ -13,6 +13,68 @@
 .catalog-category-view .col-right.sidebar .block .block-content.filter-block-tab .current a, .catalog-category-view .col-right.sidebar .block .block-content.filter-block-tab .current {
 	color: #f6770e !important;
 }
+
+/*---Sub category Design end here---*/
+
+/*---Outofstock related product Design start here---*/
+.catalog-product-view div.notify-me-boxwrapper{
+	width: 30% !important;
+	float: left !important;
+	margin-left: 60px;
+}
+.frequently_bought_wrap.outOfStock {
+    width: 26%;
+    clear: none !important;
+    float: right;
+	background-color: #fff;
+	z-index: 999999;
+	position: fixed;
+	right: 5%;
+	margin-bottom: 0 !important;
+	bottom: 40px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
+}
+.catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock.slick-initialized.slick-slider{
+	padding: 30px 0 0 !important;
+	margin-bottom: 0 !important;
+}
+.catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock .pr-details-height{
+	min-height: auto !important;
+}
+.catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock .item .product-image{
+	width: 40%;
+	float: left;
+}
+.catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock .item .pr-details-height{
+	width: 58%;
+    float: left;
+    margin-left: 2%;
+    padding: 5px 0;
+}
+.catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock .slick-dots{
+	top: 7px;
+	bottom: inherit;
+}
+
+.catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock .slick-dots li button:before{
+	font-size: 10px;
+}
+.catalog-product-view .frequently_bought_wrap.outOfStock .slider_wraper.related_outofstock .item{
+	margin: 0 5px 5px;
+}
+/*---Outofstock related product Design end here---*/
+
+@media only screen and (max-width: 1300px){
+.frequently_bought_wrap.outOfStock{
+	right: 1%;
+}
+}
+
+@media only screen and (max-width: 1200px){
+.frequently_bought_wrap.outOfStock{
+	width: 30%;
+}
+}
 /*---Sub category Design end here---*/
 /*---recent purchased popup Design start here---*/
 .showProducts{
@@ -147,6 +209,16 @@ span.mandate {
         margin-left: 10%;
     }
 }   
+@media only screen and (max-width: 1200px){
+	.showProducts{
+		width: 30%;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .page-bookmrk{
+       display: none;
+    }
+}
 @media only screen and (max-width: 920px) {
     .header .quick-access {
         margin-left: 5%;
@@ -160,11 +232,6 @@ span.mandate {
     .header .quick-access {
         width: 100% !important;
         margin-left: 0;
-    }
-}
-@media only screen and (max-width: 1200px){
-	.showProducts{
-		width: 30%;
     }
 }
 @media only screen and (max-width: 380px) {
