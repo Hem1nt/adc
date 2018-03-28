@@ -73,6 +73,9 @@ class Amasty_Promocopy_Block_Adminhtml_Promo_Quote_Grid extends Mage_Adminhtml_B
             ->addAction('Top Priority', 'moveUp')
             ->addAction('Lowest Priority',  'moveDown')
             ->addAction('--- --- --- ---', 'index/2', true)
+            ->addAction('In Promotion Page', 'massEnablePromotion')
+            ->addAction('Not In Promotion Page', 'massDisablePromotion')
+            ->addAction('--- --- --- ---', 'index/3', true)
             ->addAction('Delete', 'massDelete', true)
         ;
             

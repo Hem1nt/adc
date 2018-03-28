@@ -34,5 +34,25 @@
 		<class>Iksula_Promotions_Block</class>
 	  </promotions>
 	</blocks>
+   <resources>
+    <promotions_setup>
+    <setup>
+      <module>Iksula_Promotions</module>
+    </setup>
+    <connection>
+      <use>core_setup</use>
+    </connection>
+    </promotions_setup>
+    <promotions_write>
+    <connection>
+      <use>core_write</use>
+    </connection>
+    </promotions_write>
+    <promotions_read>
+    <connection>
+      <use>core_read</use>
+    </connection>
+    </promotions_read>
+  </resources>
   </global>
 </config> 
