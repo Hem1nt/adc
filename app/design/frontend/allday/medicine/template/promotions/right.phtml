@@ -9,6 +9,8 @@ if(array_key_exists('conditions',$conditions)){
 			if($value['value'] != ''){
 				$firstSku = explode(',',$value['value']);
 				$_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$firstSku[0]);
+				echo $_product->getSku();exit;
+
 					//$url = Mage::getBaseUrl().$_product->getData('url_path');
 			}
 		}
