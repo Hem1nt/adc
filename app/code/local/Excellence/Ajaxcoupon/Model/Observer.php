@@ -5,30 +5,22 @@ class Excellence_Ajaxcoupon_Model_Observer
     public function disableactivepaymentMethod(Varien_Event_Observer $observer) {
 
         $cartemail = $this->blackListEmail($cart);
+        $event = $observer->getEvent();
+        $method = $event->getMethodInstance();
+        $result = $event->getResult();
         if($cartemail == 1 || Mage::getSingleton('core/session')->getBillingAddressSuspicious() == true || Mage::getSingleton('core/session')->getShippingAddressSuspicious() == true || Mage::getSingleton('core/session')->getPhoneSuspicious() == true){
-            /*$payments = Mage::getSingleton('payment/config')->getActiveMethods();
-            foreach ($payments as $paymentCode=>$paymentModel) {
-                $paymentTitle = Mage::getStoreConfig('payment/'.$paymentCode.'/title');
-                $methods[] = $paymentCode;
-            }*/
-            $event = $observer->getEvent();
-            $method = $event->getMethodInstance();
-            $result = $event->getResult();
-            //if (!empty($methods)) {
-                //foreach ($methods as $key => $value) {
-                     if($method->getCode() != 'dummypayment'){
-                         $result->isAvailable = false;                          
-                     }else{
-                   
-                        $result->isAvailable = true;                          
-                 
-                    }
+                if($method->getCode() != 'dummypayment'){
+                     $result->isAvailable = false;                          
+                 }else{
                
-                //}
-            //}
-
+                    $result->isAvailable = true;                          
+             
+                }       
             Mage::getSingleton('core/session')->setSuspicious(true);
         }else{
+            if($method->getCode() == 'dummypayment'){
+                $result->isAvailable = false;
+            }
             Mage::getSingleton('core/session')->unsSuspicious();
             Mage::getSingleton('core/session')->unsBillingAddressSuspicious();
             Mage::getSingleton('core/session')->unsShippingAddressSuspicious();
