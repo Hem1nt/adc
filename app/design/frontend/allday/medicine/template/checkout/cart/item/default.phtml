@@ -217,7 +217,13 @@
     <td class="a-center">
         <!-- <input name="cart[<?php //echo $_item->getId() ?>][qty]" value="<?php //echo $this->getQty() ?>" size="4" title="<?php //echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" /> -->
         <?php
-        if($this->getProduct()->getTypeId()!='bundle'){?>
+            // QTY 1 for Value pack S
+            $_product = $this->getProduct();
+            $inCartSKU = $_product->getSku(); 
+            $valuePackSku = Mage::getStoreConfig('value_pack_sku/value_pack_sku_label/value_pack_sku_no');
+            $valuePackData = explode(",",$valuePackSku);
+            // QTY 1 for Value pack E
+        if($this->getProduct()->getTypeId()!='bundle' && !in_array($inCartSKU, $valuePackData)){?>
         <select class="input-text qty qty_of_product" id="product_update_qty_customer_<?php echo $_item->getId() ?>" title="<?php //echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]">
             <?php
                 // $pos = strrpos($childname, '-');
