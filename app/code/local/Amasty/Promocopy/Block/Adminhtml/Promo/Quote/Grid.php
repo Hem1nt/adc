@@ -39,6 +39,18 @@ class Amasty_Promocopy_Block_Adminhtml_Promo_Quote_Grid extends Mage_Adminhtml_B
             ),
         ), 'to_date');  
         
+
+          $this->addColumnAfter('in_promo_page', array(
+            'header'    => $this->__('In Promotion'),
+            'index'     => 'in_promo_page',
+            'align'     => 'right',
+            'type'      => 'options',
+            'options'   => array(
+                1 => Mage::helper('salesrule')->__('Yes'),
+                0 => Mage::helper('salesrule')->__('No'),
+            ),
+        ), 'discount_amount');  
+          
         $this->addColumn('action',array(
             'header'    => Mage::helper('catalog')->__('Action'), //its correct
             'width'     => '50px',
