@@ -147,9 +147,17 @@ if($_product->isConfigurable()) {
 			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$giftSpan."</td>";			
 		}
 		echo "<td class='qty_value'><span class='select_wrap'><select id='p-".$child->getId()."'>";
-		for($i=1; $i<=5; $i++) {
-			echo "<option value='$i'>$i</option>";
-		}
+		// QTY 1 for Value pack S
+            $inCartSKU = $child->getSku(); 
+            $valuePackSku = Mage::getStoreConfig('value_pack_sku/value_pack_sku_label/value_pack_sku_no');
+            $valuePackData = explode(",",$valuePackSku);
+        // QTY 1 for Value pack E
+            if(!in_array($inCartSKU, $valuePackData)):
+				for($i=1; $i<=5; $i++) {
+					echo "<option value='$i'>$i</option>";
+				}else:
+					echo "<option value='$i'>1</option>";
+			endif;
 		echo "</select></span></td>";
 		echo "<td class='price_value'>".$perUnitCost."</td>";
 		echo "<td class='price_value custom_price_center'>".$discountTag.$priceLabel."</td>";
