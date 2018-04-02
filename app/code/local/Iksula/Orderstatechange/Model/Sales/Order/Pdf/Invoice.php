@@ -264,7 +264,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 										    	  $itemName=$config_product->getName();
 										    }
 
-
+										   //$itemName = $itemName.' '.$config_product->getExpiry();
 										   $p_us_brand = $product->getUsBrandName();
 										   $p_genericname = $product->getGenericName();
 										   $p_strength = $product->getConfigurableAttribute();
@@ -340,7 +340,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 
 										   $HTML .='
 										   <tr style="text-align:left;">
-										   		<td style="width:100px;vertical-align:bottom;"> '.$itemName.' - '.$strength.'</td>
+										   		<td style="width:100px;vertical-align:bottom;"> '.$itemName.' - '.$strength.' '.$config_product->getExpiry()'</td>
 												<td style="vertical-align:bottom;">'.$p_us_brand.'</td>
 												<td style="vertical-align:bottom;">'.$p_genericname.'</td>
 												<td style="vertical-align:bottom;">'.$strength.'</td>
@@ -408,7 +408,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 									<td colspan="1" style="text-align:left;width: 20%;">$'.$grand_total.'</td>
 								</tr>
 								</table></td></tr>';
-							$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
+							//$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
 							//Medical History Detail---------------------------
 								$physicianname = $order->getData('physicianname');
 								$physiciantelephone = $order->getData('physiciantelephone');
@@ -692,7 +692,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 										    	  $itemName=$config_product->getName();
 										    }
 
-
+										   //$itemName = $itemName.' '.$config_product->getExpiry();
 										   $p_us_brand = $product->getUsBrandName();
 										   $p_genericname = $product->getGenericName();
 										   $p_strength = $product->getConfigurableAttribute();
@@ -768,7 +768,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 
 										   $HTML .='
 										   <tr style="text-align:left;">
-										   		<td style="width:100px;vertical-align:bottom;"> '.$itemName.' - '.$strength.'</td>
+										   		<td style="width:100px;vertical-align:bottom;"> '.$itemName.' - '.$strength.' '.$config_product->getExpiry().'</td>
 												<td style="vertical-align:bottom;">'.$p_us_brand.'</td>
 												<td style="vertical-align:bottom;">'.$p_genericname.'</td>
 												<td style="vertical-align:bottom;">'.$strength.'</td>
@@ -836,7 +836,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 									<td colspan="1" style="text-align:left;width: 20%;">$'.$grand_total.'</td>
 								</tr>
 								</table></td></tr>';
-							$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
+							//$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
 							//Medical History Detail---------------------------
 								$physicianname = $order->getData('physicianname');
 								$physiciantelephone = $order->getData('physiciantelephone');
@@ -1154,7 +1154,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 										    	  $itemName=$config_product->getName();
 										    }
 
-
+										   //$itemName = $itemName.' '.$config_product->getExpiry();
 										   $p_us_brand = $product->getUsBrandName();
 										   $p_genericname = $product->getGenericName();
 										   $p_strength = $product->getConfigurableAttribute();
@@ -1230,7 +1230,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 
 										   $HTML .='
 										   <tr style="text-align:left;">
-										   		<td style="width:100px;vertical-align:bottom;"> '.$itemName.' - '.$strength.'</td>
+										   		<td style="width:100px;vertical-align:bottom;"> '.$itemName.' - '.$strength.' '.$config_product->getExpiry().'</td>
 												<td style="vertical-align:bottom;">'.$p_us_brand.'</td>
 												<td style="vertical-align:bottom;">'.$p_genericname.'</td>
 												<td style="vertical-align:bottom;">'.$strength.'</td>
@@ -1281,7 +1281,7 @@ class Iksula_Orderstatechange_Model_Sales_Order_Pdf_Invoice extends Mage_Sales_M
 								</table>
 								</td>
 								</tr>';
-							$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
+							//$HTML .='<br><p>'.$config_product->getExpiry().'</p>';
 							//Medical History Detail---------------------------
 								$physicianname = $order->getData('physicianname');
 								$physiciantelephone = $order->getData('physiciantelephone');
