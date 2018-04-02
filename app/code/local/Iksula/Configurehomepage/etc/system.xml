@@ -185,8 +185,8 @@
 					  <show_in_website>1</show_in_website>
 					  <show_in_store>1</show_in_store>
 				       <fields>
-			            <sidebar_image_1 translate="label">
-			              <label>Sidebar Image 1</label>
+				       	<sidebar_image_0 translate="label">
+			              <label>Sidebar Image 0</label>
 			              <frontend_type>image</frontend_type>
 			              <backend_model>adminhtml/system_config_backend_image</backend_model>
 			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
@@ -195,11 +195,30 @@
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
+			            </sidebar_image_0>
+                          <sidebar_image_0_url translate="label">
+                            <label>Sidebar Image 0 Url</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </sidebar_image_0_url>
+			            <sidebar_image_1 translate="label">
+			              <label>Sidebar Image 1</label>
+			              <frontend_type>image</frontend_type>
+			              <backend_model>adminhtml/system_config_backend_image</backend_model>
+			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
+			              <base_url type="media" scope_info="1">sidebanner</base_url>
+			              <sort_order>2</sort_order>
+			              <show_in_default>1</show_in_default>
+			              <show_in_website>1</show_in_website>
+			              <show_in_store>1</show_in_store>
 			            </sidebar_image_1>
                           <sidebar_image_1_url translate="label">
                             <label>Sidebar Image 1 Url</label>
 							<frontend_type>text</frontend_type>
-                            <sort_order>1</sort_order>
+                            <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -210,7 +229,7 @@
 			              <backend_model>adminhtml/system_config_backend_image</backend_model>
 			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
 			              <base_url type="media" scope_info="1">sidebanner</base_url>
-			              <sort_order>2</sort_order>
+			              <sort_order>4</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -218,7 +237,7 @@
                          <sidebar_image_2_url translate="label" module="configurehomepage">
 			              <label>Sidebar Image 2 Url</label>
 			              <frontend_type>text</frontend_type>
-			              <sort_order>3</sort_order>
+			              <sort_order>5</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -229,7 +248,7 @@
 			              <backend_model>adminhtml/system_config_backend_image</backend_model>
 			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
 			              <base_url type="media" scope_info="1">sidebanner</base_url>
-			              <sort_order>4</sort_order>
+			              <sort_order>6</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -237,7 +256,7 @@
 			            <sidebar_image_3_url translate="label" module="configurehomepage">
 			              <label>Sidebar Image 3 Url</label>
 			              <frontend_type>text</frontend_type>
-			              <sort_order>5</sort_order>
+			              <sort_order>7</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -248,7 +267,7 @@
 			              <backend_model>adminhtml/system_config_backend_image</backend_model>
 			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
 			              <base_url type="media" scope_info="1">sidebanner</base_url>
-			              <sort_order>6</sort_order>
+			              <sort_order>8</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -256,7 +275,7 @@
 			            <sidebar_image_4_url translate="label" module="configurehomepage">
 			              <label>Sidebar Image 4 Url</label>
 			              <frontend_type>text</frontend_type>
-			              <sort_order>7</sort_order>
+			              <sort_order>9</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -268,7 +287,7 @@
 			              <backend_model>adminhtml/system_config_backend_image</backend_model>
 			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
 			              <base_url type="media" scope_info="1">sidebanner</base_url>
-			              <sort_order>8</sort_order>
+			              <sort_order>10</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -276,7 +295,7 @@
 			            <image_above_trusted_url translate="label" module="configurehomepage">
 			              <label>For Image above trusted Company</label>
 			              <frontend_type>text</frontend_type>
-			              <sort_order>9</sort_order>
+			              <sort_order>11</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -287,7 +306,7 @@
 			              <backend_model>adminhtml/system_config_backend_image</backend_model>
 			              <upload_dir config="system/filesystem/media" scope_info="1">sidebanner</upload_dir>
 			              <base_url type="media" scope_info="1">sidebanner</base_url>
-			              <sort_order>8</sort_order>
+			              <sort_order>12</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -295,7 +314,7 @@
 			            <cart_sidebar_image_url translate="label" module="configurehomepage">
 			              <label>Offer Banner For Cart Page Url</label>
 			              <frontend_type>text</frontend_type>
-			              <sort_order>9</sort_order>
+			              <sort_order>13</sort_order>
 			              <show_in_default>1</show_in_default>
 			              <show_in_website>1</show_in_website>
 			              <show_in_store>1</show_in_store>
@@ -303,7 +322,7 @@
 			            <mobile_number translate="label">
                             <label>Contact Number for mobile theme header:</label>
 							<frontend_type>text</frontend_type>
-                            <sort_order>10</sort_order>
+                            <sort_order>14</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>

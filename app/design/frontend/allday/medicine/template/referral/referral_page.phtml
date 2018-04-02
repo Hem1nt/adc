@@ -1,0 +1,99 @@
+<!-- <div class="page-title">
+	<h1>Referral System</h1>
+</div> -->
+<div class="referral-wrap">
+	<div class="share-to-earn">
+		<img src="<?php echo $this-> getSkinUrl('images/Infographic_Banner_01.jpg');?>">
+	</div>
+	<div class="content_wrap">
+		<div class="how-it-works">
+			<div class="title">How It Works</div>
+			<div class="outer_area">
+				<div class="img_area">
+					<img src="<?php echo $this-> getSkinUrl('images/ref_1.jpg');?>">
+				</div>
+				<div class="desc_area">
+					Introduce your friends to us & share your referral code.
+				</div>
+			</div>
+			<div class="outer_area">
+				<div class="img_area">
+					<img src="<?php echo $this-> getSkinUrl('images/ref_2.jpg');?>">
+				</div>
+				<div class="desc_area">
+					Your friend accepts it and signs up on AllDayChemist & places an order,
+						which is delivered successfully.
+				</div>
+			</div>
+			<div class="outer_area">
+				<div class="img_area">
+					<img src="<?php echo $this-> getSkinUrl('images/ref_3.jpg');?>">
+				</div>
+				<div class="desc_area">
+					You get a 5% commission on every order placed byyour friend.
+				</div>
+			</div>
+		</div>
+		<div class="this-doesnt-end-here">
+			<div class="title">This doesn’t end here</div>
+			<div class="outer_area">
+				<div class="img_area">
+					<img src="<?php echo $this-> getSkinUrl('images/ref_4.jpg');?>">
+				</div>
+				<div class="desc_area">
+					Your friend goes ahead and introduces us to another friend.
+				</div>
+			</div>
+			<div class="outer_area">
+				<div class="img_area">
+					<img src="<?php echo $this-> getSkinUrl('images/ref_5.jpg');?>">
+				</div>
+				<div class="desc_area">
+					That friend too accepts it and signs up on AllDayChemist & places an order,which is delivered successfully.
+				</div>
+			</div>
+			<div class="outer_area">
+				<div class="img_area">
+					<img src="<?php echo $this-> getSkinUrl('images/ref_6.jpg');?>">
+				</div>
+				<div class="desc_area">
+					Your friend gets the 5% commission plus you get a 2% on every order placed by that another friend.
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="whom-to-invite">
+		<img src="<?php echo $this-> getSkinUrl('images/Infographic_Banner_02.jpg');?>">
+	</div>
+	<div class="rewards">
+		<img src="<?php echo $this-> getSkinUrl('images/Infographic_Banner_03.jpg');?>">
+	</div>
+	<div class="invalide-invities">
+		<div class="title">Invalid Invites</div>
+	<div class="inner">
+		If you don’t receive a notification about your referral bonus,
+			it’s probably because one or more of the below listed conditions were met:
+	</div>
+	<ul>
+		<li>The person didn’t use your referral code on signup.</li>
+		<li>The person who clicked the link or used the code was already an All Day Chemist member.</li>
+		<li>The person did not complete his/her first purchase.</li>
+		<li>The referred person placed an eligible order, but the order got cancelled. </li>
+		<li>Our fraud detection system rejected the candidate you referred.</li>
+	</ul> 
+		<div class="refer-queries">Have more queries? Refer to our <span class="faq"> Referral Rewards Program FAQ.</span>
+		</div>   
+	</div>
+	<div class="start-referring">
+		<button class="button" onclick="setLocation('<?php //echo $this->getUrl(''); ?>')">
+			<span>
+				<span>
+					<?php echo $this->__('Start Referring');?>					
+				</span>
+			</span>
+		</button>
+	</div>		
+<div class="social_btns">	
+	<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('social/buttons.phtml')->toHtml(); ?>
+</div>	
+</div>

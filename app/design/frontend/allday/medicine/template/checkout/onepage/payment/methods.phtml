@@ -96,9 +96,11 @@
 
         
 <?php if(!in_array('pay',$paymentMethods)):?>
-
 <?php endif;?>
-
+<?php
+    $disabledPAY = false; 
+    $customermerGroupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
+?>
 <?php if (empty($methods)): ?>
     <dt class="no-payment-available">
        <h1> <?php echo $this->__('No Payment Methods Available !!!') ?></h1>
@@ -113,6 +115,20 @@
         $var = "pay_method_".$_code.".jpg";
         $baseOriginalMethod = $this->getSelectedMethodCode();
          // $baseOriginalMethod = '';
+        /*SHOW HIDE PAY S*/
+            if($customermerGroupId == 2 || $billingCountry == 'GB'){
+                if (in_array($_method->getCode(), $paymentMethods)) {
+                    $disabledPAY = true;
+                }
+            }
+            if($_code == 'pay' && $disabledPAY == false){
+                continue;
+            }
+
+        /*SHOW HIDE PAY E*/
+
+
+
         if($billingCountry!='US'){
             $baseOriginalMethod = 'pay';
             

@@ -430,10 +430,15 @@ button.button:hover > span{
     padding: 0;
 }
 
-.share.bordercolor {
+.catalog-product-view .share.bordercolor {
     vertical-align: top;
     margin-top: 7px;
     float: right;
+}
+.catalog-product-view .share.bordercolor a{
+    display: inline-block;
+    margin: 0 1px;
+    cursor: pointer;
 }
 
 .catalog-product-view .product_extra_links , .review-product-list .product_extra_links {
