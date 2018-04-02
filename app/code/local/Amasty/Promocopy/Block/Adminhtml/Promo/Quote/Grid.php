@@ -39,6 +39,18 @@ class Amasty_Promocopy_Block_Adminhtml_Promo_Quote_Grid extends Mage_Adminhtml_B
             ),
         ), 'to_date');  
         
+
+          $this->addColumnAfter('in_promo_page', array(
+            'header'    => $this->__('In Promotion'),
+            'index'     => 'in_promo_page',
+            'align'     => 'right',
+            'type'      => 'options',
+            'options'   => array(
+                1 => Mage::helper('salesrule')->__('Yes'),
+                0 => Mage::helper('salesrule')->__('No'),
+            ),
+        ), 'discount_amount');  
+          
         $this->addColumn('action',array(
             'header'    => Mage::helper('catalog')->__('Action'), //its correct
             'width'     => '50px',
@@ -73,6 +85,9 @@ class Amasty_Promocopy_Block_Adminhtml_Promo_Quote_Grid extends Mage_Adminhtml_B
             ->addAction('Top Priority', 'moveUp')
             ->addAction('Lowest Priority',  'moveDown')
             ->addAction('--- --- --- ---', 'index/2', true)
+            ->addAction('In Promotion Page', 'massEnablePromotion')
+            ->addAction('Not In Promotion Page', 'massDisablePromotion')
+            ->addAction('--- --- --- ---', 'index/3', true)
             ->addAction('Delete', 'massDelete', true)
         ;
             
