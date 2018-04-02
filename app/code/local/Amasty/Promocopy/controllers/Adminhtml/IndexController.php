@@ -7,9 +7,9 @@
 class Amasty_Promocopy_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
 {
     protected $gridUrl = 'adminhtml/promo_quote/index';
-   
+
     public function indexAction()
-    {
+    {   
         return $this->_fault($this->__('Please select some action.'));        
     }
     
@@ -47,7 +47,7 @@ class Amasty_Promocopy_Adminhtml_IndexController extends Mage_Adminhtml_Controll
             
             $this->_getSession()->addSuccess(
                 $this->__('The rule has been duplicated. Set a new coupon and activate it if needed.')
-            );
+                );
             return $this->_redirect('adminhtml/promo_quote/edit', array('id' => $rule->getId()));            
         } 
         catch (Exception $e) {
@@ -65,7 +65,7 @@ class Amasty_Promocopy_Adminhtml_IndexController extends Mage_Adminhtml_Controll
     
     public function moveDownAction()
     {
-        return $this->_move('doen');
+        return $this->_move('down');
     }
     
     protected function _move($direction)
@@ -86,16 +86,16 @@ class Amasty_Promocopy_Adminhtml_IndexController extends Mage_Adminhtml_Controll
                     $this->_fault($this->__('Can not find rule with id=%s.', $id));
                     continue;
                 }
-                   
+
                 if ('up' == $direction){ // move up
                     $select = $db->select()
-                        ->from($table, array(new Zend_Db_Expr('MIN(sort_order)')))
-                        ->where('sort_order <= ? ', $row['sort_order'])
-                        ->where('rule_id != ?', $row['rule_id']);
+                    ->from($table, array(new Zend_Db_Expr('MIN(sort_order)')))
+                    ->where('sort_order <= ? ', $row['sort_order'])
+                    ->where('rule_id != ?', $row['rule_id']);
                     $minPos = $db->fetchOne($select); 
                     
                     if (is_null($minPos)) // it is already the first item
-                        continue;
+                    continue;
                     
                     if ($minPos == 0){
                         $db->update($table, array('sort_order' => new Zend_Db_Expr('sort_order+1')));
@@ -104,108 +104,148 @@ class Amasty_Promocopy_Adminhtml_IndexController extends Mage_Adminhtml_Controll
                     if ($row['sort_order'] >= $minPos){
                         $db->update($table, array('sort_order'=>$minPos-1), 
                             'rule_id =' . intval($row['rule_id']));  
-                         ++$num;   
+                        ++$num;   
                     }                    
                 } 
                 else { // move down
                     $select = $db->select()
-                        ->from($table, array(new Zend_Db_Expr('MAX(sort_order)')))
-                        ->where('rule_id != ?', $row['rule_id']);
+                    ->from($table, array(new Zend_Db_Expr('MAX(sort_order)')))
+                    ->where('rule_id != ?', $row['rule_id']);
                     $maxPos = $db->fetchOne($select);  
                     
                     if (is_null($maxPos)) // it is already the last item
-                        continue;                    
+                    continue;                    
                     
                     if ($maxPos >= 4294967295)  { // I'm paranoic :)
-                        $this->_fault($this->__('Can not move rule with id=%s.', $id));
-                        continue;
-                    }  
-                    if ($row['sort_order'] <= $maxPos){  
-                        $db->update($table, array('sort_order'=>$maxPos+1), 
-                            'rule_id =' . intval($row['rule_id']));
-                        ++$num;    
-                    }             
-                }
-                
-            } 
-            catch (Exception $e) {
-                $this->_fault($e->getMessage(), false);
-            }   
-        }
-        return $this->_success($this->__('Total of %d rule(s) have been moved.', $num));
-    }    
-    
-    public function massDeleteAction()
-    {
-        $ids = $this->getRequest()->getParam('rules');
-        if (!is_array($ids)) {
-            return $this->_fault($this->__('Please select rule(s).'));
-        }
-        
-        $num = 0;
-        foreach ($ids as $id) {
-            try {
-                $rule = Mage::getSingleton('salesrule/rule')->load($id);
-                $rule->getPrimaryCoupon()->delete();
-                $rule->delete();
-                ++$num;
-            } 
-            catch (Exception $e) {
-                $this->_fault($e->getMessage(), false);
-            }   
-        }
-        return $this->_success($this->__('Total of %d record(s) have been deleted.', $num));
+                    $this->_fault($this->__('Can not move rule with id=%s.', $id));
+                    continue;
+                }  
+                if ($row['sort_order'] <= $maxPos){  
+                    $db->update($table, array('sort_order'=>$maxPos+1), 
+                        'rule_id =' . intval($row['rule_id']));
+                    ++$num;    
+                }             
+            }
+
+        } 
+        catch (Exception $e) {
+            $this->_fault($e->getMessage(), false);
+        }   
+    }
+    return $this->_success($this->__('Total of %d rule(s) have been moved.', $num));
+}    
+
+public function massDeleteAction()
+{
+    $ids = $this->getRequest()->getParam('rules');
+    if (!is_array($ids)) {
+        return $this->_fault($this->__('Please select rule(s).'));
     }
 
-    public function massEnableAction()
-    {
-        return $this->_modifyStatus(1);
+    $num = 0;
+    foreach ($ids as $id) {
+        try {
+            $rule = Mage::getSingleton('salesrule/rule')->load($id);
+            $rule->getPrimaryCoupon()->delete();
+            $rule->delete();
+            ++$num;
+        } 
+        catch (Exception $e) {
+            $this->_fault($e->getMessage(), false);
+        }   
+    }
+    return $this->_success($this->__('Total of %d record(s) have been deleted.', $num));
+}
+
+public function massEnableAction()
+{
+    return $this->_modifyStatus(1);
+}
+
+public function massDisableAction()
+{
+    return $this->_modifyStatus(0);
+}         
+
+protected function _modifyStatus($status)
+{
+    $ids = $this->getRequest()->getParam('rules');
+    if (!is_array($ids)) {
+        return $this->_fault($this->__('Please select rule(s).'));
+    }
+
+    $num = 0;
+    foreach ($ids as $id) {
+        try {
+            $rule = Mage::getModel('salesrule/rule')->load($id);
+            if ($rule->getIsActive() != $status){
+                $rule->setIsActive($status);
+                $rule->save();
+                ++$num;
+            }
+        } 
+        catch (Exception $e) {
+            $this->_fault($e->getMessage(), false);
+        }   
+    }
+    return $this->_success($this->__('Total of %d record(s) have been updated.', $num));
+}    
+
+
+/*Mass Disable Custom promotion code*/
+
+public function massEnablePromotionAction()
+{
+    return $this->_modifyPromotionStatus(1);
+}
+public function massDisablePromotionAction()
+{
+    return $this->_modifyPromotionStatus(0);
+} 
+
+protected function _modifyPromotionStatus($status)
+{
+
+    $ids = $this->getRequest()->getParam('rules');
+    
+    if (!is_array($ids)) {
+        return $this->_fault($this->__('Please select rule(s).'));
     }
     
-    public function massDisableAction()
-    {
-        return $this->_modifyStatus(0);
-    }         
-      
-    protected function _modifyStatus($status)
-    {
-        $ids = $this->getRequest()->getParam('rules');
-        if (!is_array($ids)) {
-            return $this->_fault($this->__('Please select rule(s).'));
-        }
-        
-        $num = 0;
-        foreach ($ids as $id) {
-            try {
-                $rule = Mage::getModel('salesrule/rule')->load($id);
-                if ($rule->getIsActive() != $status){
-                    $rule->setIsActive($status);
-                    $rule->save();
-                    ++$num;
-                }
-            } 
-            catch (Exception $e) {
-                $this->_fault($e->getMessage(), false);
-            }   
-        }
-        return $this->_success($this->__('Total of %d record(s) have been updated.', $num));
-    }    
-      
-    protected function _fault($message, $redirect=true)
-    {
-        $this->_getSession()->addError($message);
-        if ($redirect)
-            $this->_redirect($this->gridUrl);
-            
-        return $this;
+    $num = 0;
+    foreach ($ids as $id) {
+        try {
+            $rule = Mage::getModel('salesrule/rule')->load($id);
+            if ($rule->getInPromoPage() != $status){
+                $rule->setInPromoPage($status);
+                $rule->save();
+                ++$num;
+            }
+        } 
+        catch (Exception $e) {
+            $this->_fault($e->getMessage(), false);
+        }   
     }
-    
-    protected function _success($message, $redirect=true)
-    {
-        $this->_getSession()->addSuccess($message);
-        if ($redirect)
-            $this->_redirect($this->gridUrl);
-            
-        return $this;
-    }    
+    return $this->_success($this->__('Total of %d record(s) have been updated.', $num));
+} 
+
+/*Mass Disable Custom promotion code*/  
+
+protected function _fault($message, $redirect=true)
+{
+    $this->_getSession()->addError($message);
+    if ($redirect)
+        $this->_redirect($this->gridUrl);
+
+    return $this;
+}
+
+protected function _success($message, $redirect=true)
+{
+    $this->_getSession()->addSuccess($message);
+    if ($redirect)
+        $this->_redirect($this->gridUrl);
+
+    return $this;
+}    
 }
