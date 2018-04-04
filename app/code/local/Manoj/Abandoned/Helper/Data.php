@@ -221,7 +221,8 @@ public function sendemailAbandonedCart($cust_email_id){
 
          $subtotal = $prodcuthtml['subtotal'];
          $includingsubtotal = 0;
-         $shippingcost = 25;
+         //$shippingcost = 25;
+         $shippingcost = Mage::getStoreConfig('carriers/abandoned/abandoned_price');
          $subtotalwithshipping = $subtotal + $shippingcost;
          $ids = explode(',', $prodcuthtml['product_ids']);
          $baseUrl = Mage::getBaseUrl().'abandoned/index/cartreturn?key='.base64_encode($to).'?utm_source=email-cart&utm_medium=email-cart&utm_campaign=email';
