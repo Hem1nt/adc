@@ -29,10 +29,10 @@
     
   </reference> -->
   </importorder_index_index>
-<customer_account>
+<!-- <customer_account>
 	<reference name="customer_account_navigation" after="_">
 		  <action method="addLink" translate="label" module="customer"><name>oldorders</name><path>importorder/index</path><label>Old Orders</label></action>
 	</reference>
-</customer_account>  
+</customer_account>   -->
 </layout>   
 	
