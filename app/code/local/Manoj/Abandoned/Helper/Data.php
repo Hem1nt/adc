@@ -41,7 +41,7 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
       public function synchCart(){
         //echo date('Y-m-d H:i:s')."=========";
        $last =date('Y-m-d H:i:s');
-       $first =date('Y-m-d H:i:s', strtotime('-2 hour'));
+       $first =date('Y-m-d H:i:s', strtotime('-1 hour'));
 
 
 
@@ -476,7 +476,7 @@ public function mailsend2(){
        $datetime_from = date("Y-m-d H:i:s",strtotime("-$abondent_minutes hours",$storetime));
      }*/
      $last =date('Y-m-d H:i:s');
-     $first =date('Y-m-d H:i:s', strtotime('-2 hour'));
+     $first =date('Y-m-d H:i:s', strtotime('-1 hour'));
 
 
 
