@@ -1,0 +1,120 @@
+<?php
+$rules = $this->getActivePromotions();
+$url = Mage::getBaseUrl();
+foreach ($rules as $key => $rule):
+	if($rule['in_promo_page']){
+		$conditions = unserialize($rule['actions_serialized']);
+	if(array_key_exists('conditions',$conditions)){
+		foreach ($conditions['conditions'] as $key => $value) {
+			if($value['attribute'] == 'sku'){
+				if($value['value'] != ''){
+					$firstSku = explode(',',$value['value']);
+					$_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$firstSku[0]);
+						if(!empty($_product)){
+						if(array_key_exists('url_path',$_product->getData())){
+						//$parent_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$_product->getSku());
+							$parentIdArray = Mage::getModel('catalog/product_type_configurable')
+							->getParentIdsByChild($_product->getId());
+							$parent_product = Mage::getModel('catalog/product')->load($parentIdArray[0]);
+							$url = Mage::getBaseUrl().$parent_product->getData('url_path');
+						}
+
+					}
+				}
+			}
+			if($value['attribute'] == 'category_ids'){
+				if($value['value'] != ''){
+					$firstCatId = explode(',',$value['value']);
+					$_cat = Mage::getModel('catalog/category')->load($firstCatId[0]);
+					$url = $_cat->getUrl();
+				}
+			}
+		}
+	}
+	else{
+		 		$url = Mage::getBaseUrl();
+	}
+}
+?>
+<?php
+$pos = strpos($rule['code'],'CB-'); 
+$inPromoPage = $rule['in_promo_page'];
+if($pos === false && $inPromoPage == 1):
+	?>
+<div class='loop promo-container'>
+	<?php if($rule['simple_free_shipping'] == 1): ?>
+		<div class="promo-title">
+			<span class="promo-small-font">SHIPPING</span>
+			<span class="promo-small-font">OFFER</span>
+		</div>
+	<?php elseif($rule['simple_action'] == 'ampromo_items' && !empty($rule['promo_sku'])): ?>
+		<div class="promo-title">
+			<span class="promo-big-font">FREE</span>
+		</div>
+	<?php else: ?>
+		<div class="promo-title">
+			<span class="promo-big-font"><?php echo round($rule['discount_amount'])?>%</span>
+			<span class="promo-small-font">OFF</span>
+
+		</div>
+	<?php endif; ?>
+	<div class="promo-content">
+		<div class="promo-content-top">
+			<div class="promo-name">
+				<a href="javascript:void(0);"><?php echo $rule['name'] ?></a>
+				<?php if($rule['to_date'] != ''): ?>
+					<span>Offer will end on "<?php echo $rule['to_date'] ?>"</span>
+					<!-- <span>></span> -->
+				<?php endif; ?>
+			</div>
+
+			<div class="promo-deal-btn">
+				<a href="<?php echo $url ?>" class="promo-btn">Get Deal</a>
+				<?php if($rule['coupon_type'] != 1): ?>
+					<div class="promo-offer">
+						<div class="ribbon-2"><span>Show Coupon Code</span></div>
+
+						<?php if($rule['code'] != ''): ?>
+							<p class="offer-text"><?php echo $rule['code']?></p>
+							<!-- <div class="offer-text"><?php echo $rule['code']?></div> -->
+						<?php endif; ?>
+
+					</div>
+				<?php endif; ?>
+				<span class ="code_copied">Your Coupon Code Is Copied</span>
+			</div>
+		</div>
+		<div class="promo-content-bottom">
+			<?php if($rule['description']):?>
+				<ul class="promo-desp">
+					<li><?php echo $rule['description']?></li>
+					<!-- <li>Promotion Desp</li> -->
+				</ul>
+			<?php endif; ?>		
+		</div>
+	</div>
+</div>
+<?php endif; ?>
+<?php
+endforeach;
+?>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$('.code_copied').hide();
+		$(".ribbon-2").click(function(){
+			$(this).closest('.promo-deal-btn').find(".ribbon-2").hide("slide", {direction: "left" }, "3000");
+			$(this).closest('.promo-deal-btn').find(".offer-text").show(2000);
+			var $temp = $("<input>");
+			$("body").append($temp);
+			$temp.val($(this).closest('.promo-deal-btn').find(".offer-text").text()).select();
+			document.execCommand("copy");
+			$temp.remove();
+			$(this).closest('.promo-content').find('.code_copied').show('slow');
+			var self =  this;
+			setTimeout(function(){
+				$(self).closest('.promo-content').find('.code_copied').hide('slow');
+			},5000);
+		})
+	});
+</script>

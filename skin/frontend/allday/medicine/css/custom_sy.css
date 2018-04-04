@@ -202,6 +202,262 @@ span.mandate {
     margin-left: 5%;
 }
 /*-- Bookmark This Page Design end here --*/
+/*---Promotion design start here----*/
+.loop.promo-container{
+    border: 1px solid #D8E0E2;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 20px;
+    display: inline-block;
+}
+.loop.promo-container:hover{
+    box-shadow: 0 0 40px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 0 40px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 40px rgba(0,0,0,0.1);
+    -ms-box-shadow: 0 0 40px rgba(0,0,0,0.1);
+    -o-box-shadow: 0 0 40px rgba(0,0,0,0.1);
+}
+
+
+.loop.promo-container .promo-title{
+    color: #322f2e;
+    border: 1px dashed rgba(91,87,86,0.6);
+    width: 15%;
+    position: relative;
+    text-align: center;
+    float: left;
+    border-radius: 10px;
+    padding: 10px 5px;
+    line-height: 30px;
+    box-sizing: border-box;
+
+}
+
+.loop.promo-container .promo-title .promo-big-font{
+    font-size: 26px;
+    font-weight: bold;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+.loop.promo-container .promo-title .promo-small-font{
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
+.promo-content{
+    margin-left: 3%;
+    width: 82%;
+    float: left;
+}
+ .promo-content-top{
+    
+    padding-bottom: 14px;
+    width: 100%;
+    border-bottom: 1px solid #d9e0e2;
+    float: left;
+ }
+
+ .promo-content-top .promo-name{
+    width: 65%;
+    float: left;
+ }
+ .promo-content-top .promo-name a{
+    font-size: 22px;
+    color: #555;
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+    display: block;
+    padding-bottom: 10px;
+  }
+  .promo-content-top .promo-name span{
+    color: #3a3a3a;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 7px;
+    display: block;
+    text-transform: uppercase;
+}
+ .promo-content-top .promo-deal-btn{
+    width: 30%;
+    float: right;
+ }
+.promo-content-top .promo-deal-btn .promo-btn{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #72ae12;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 0 none;
+    text-decoration: none;
+    box-sizing: border-box;
+    float: right;
+    margin-bottom: 10px;
+   }
+.promo-content-top .promo-deal-btn .promo-offer{
+    float: right;
+    width: 100%;
+    position: relative;
+  background: #fff;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border: 1px dashed rgb(58, 58, 58);
+  height: 52px;
+  cursor: pointer;
+}
+
+.promo-content-top .promo-deal-btn .promo-offer .offer-text{
+    color: #3a3a3a;
+    width: 100%;
+    text-align: center;
+    float: left;
+    line-height: 50px;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 13px;
+    display: none;
+    height: 52px;
+    background: #e5f5d1;
+}
+
+[class^="ribbon-"] {
+  position: relative;
+}
+[class^="ribbon-"]:before, [class^="ribbon-"]:after {
+  content: "";
+  position: absolute;
+}
+.promo-content-top .promo-deal-btn .promo-offer .ribbon-2 {
+  width: 90%;
+  height: 50px;
+  background-color: #3a3a3a;
+  left: 0;
+  line-height: 50px;
+  border: 1px dashed rgb(56, 69, 152);
+/*  -webkit-transition: width 2s ease;  
+  -moz-transition: width 2s ease;  
+  -o-transition: width 2s ease;  
+  -ms-transition: width 2s ease;
+  transition: width 2s ease;*/
+}
+
+.promo-content-top .promo-deal-btn .promo-offer .ribbon-2 span{
+    text-align: center;
+    width: 100%;
+    float: left;
+    color: #fff;
+    font-size: 16px;
+}
+.promo-content-top .promo-deal-btn .promo-offer .ribbon-2:before {
+  height: 0;
+  width: 0;
+  border-bottom: 8px solid #3a3a3a;
+  border-left: 8px solid transparent;
+  top: -8px;
+}
+.promo-content-top .promo-deal-btn .promo-offer .ribbon-2:after {
+  height: 0;
+  width: 0;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 15px solid #3a3a3a;
+  right: -15px;
+ /*  -webkit-transition: width 2s ease;  
+  -moz-transition: width 2s ease;  
+  -o-transition: width 2s ease;  
+  -ms-transition: width 2s ease;
+  transition: width 2s ease;*/
+}
+
+ .promo-content-bottom{
+    
+    float: left;
+    width: 100%;
+    padding-top: 15px;
+ }
+ .promo-content-bottom .promo-desp {
+    list-style-type: disc;
+    padding-left: 4%;
+    width: 60%;
+    float: left;
+    box-sizing: border-box;
+}
+.promo-content-bottom span{
+    width: 20%;
+    float: right;
+    color: #9f1d56;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+.promo-content-bottom .promo-desp li{
+    line-height: 1.43;
+    color: #797373;
+    font-weight: normal;
+}
+
+.code_copied{
+    color:#3e9838;
+    font-size: 12px;
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin: 10px 0 0;
+}
+/*---Promotion design end here----*/
+@media (min-width: 992px) and (max-width: 1200px){
+    .showProducts{
+        width: 30%;
+    }
+    /* Promotion with coupon Design Start here */
+    .promoContiner .promotions .promotions_discount_amt {
+        text-align: center;
+    }
+    .promoContiner .promotions .input_wrap.email_input {
+        width: 100%;
+        padding-left: 32%;
+    }
+    .promoContiner .promotions .countdown_timer .email_add {
+        float: left;
+        width: 100%;
+        text-align: left;
+        font-size: 12px;
+    }
+    .promoContiner .countdown_timer input[type="submit"]{
+        width: 100%;
+    }
+    .cms-index-index .promoWrpper {
+        width: 30%;
+    }
+    .cms-index-index .trustpilot-widget-container {
+        width: 69%;
+    }
+    /* Promotion with coupon Design end here */
+}
+@media screen and (max-width: 1199px){
+    .loop.promo-container .promo-title{
+        width: 20%;
+    }
+    .promo-content{
+        width: 75%;
+    }
+}
 @media only screen and (max-width: 1120px) {
     .header .quick-access {
         width: 60% !important;
@@ -219,12 +475,90 @@ span.mandate {
        display: none;
     }
 }
+@media screen and (max-width: 991px){
+    .promo-content-top .promo-name, .promo-content-top .promo-deal-btn{
+        width: 100%;
+    }
+    .loop.promo-container .promo-title {
+        width: 30%;
+    }
+    .promo-content {
+        width: 67%;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    /* Promotion with coupon Design Start here */
+    .promoContiner .promotions .promotions_discount_amt {
+        text-align: center;
+    }
+    .promoContiner .promotions .input_wrap.email_input {
+        width: 100%;
+        padding-left: 0;
+    }
+    .promoContiner .promotions .countdown_timer .email_label {
+        display: none;
+    }
+    .promoContiner .promotions .countdown_timer .email_add {
+        float: left;
+        width: 100%;
+        text-align: left;
+        font-size: 12px;
+    }
+    .promoContiner .countdown_timer input[type="submit"]{
+        width: 100%;
+    }
+    .cms-index-index .promoWrpper {
+        width: 30%;
+    }
+    .cms-index-index .trustpilot-widget-container {
+        width: 69%;
+    }
+    /* Promotion with coupon Design end here */
+}
 @media only screen and (max-width: 920px) {
     .header .quick-access {
         margin-left: 5%;
         width: 66% !important;
     }
-}   
+}
+@media only screen and (max-width: 768px){
+    /* Promotion with coupon Design Start here */
+    .cms-index-index .promoWrpper{
+        width: 100%;        
+    }
+    .cms-index-index .trustpilot-widget-container{
+        width: 100%;    
+    }
+    .promoWrpper {
+        text-align: center;
+    }
+    .promoContiner {
+        width: 290px;
+        display: inline-block !important;
+    }
+    .promoContiner .promotions {
+        width: 100%;
+    }
+    .promoContiner {
+        width: 100%;
+        display: inline-block !important;
+    }
+    /* Promotion with coupon Design end here */
+}
+@media screen and (max-width: 767px){
+    .loop.promo-container .promo-title {
+        width: 20%;
+    }
+    .promo-content {
+        width: 77%;
+    }
+    .promo-content-top .promo-deal-btn {
+        width: 45%;
+    }
+    .promo-content-top .promo-name {
+        width: 53%;
+    }
+}
 @media only screen and (max-width: 736px) {
     .page-bookmrk{
         display: none;
@@ -232,6 +566,21 @@ span.mandate {
     .header .quick-access {
         width: 100% !important;
         margin-left: 0;
+    }
+}
+@media screen and (max-width: 540px){
+    .promo-content {
+        width: 100%;
+        margin: 0;
+    }
+    .promo-content-top .promo-name, .promo-content-top .promo-deal-btn{
+        width: 100%;
+    }
+    .loop.promo-container .promo-title {
+        width: 40%;
+        margin: 0 auto 10px;
+        text-align: center;
+        float: none;
     }
 }
 @media only screen and (max-width: 380px) {

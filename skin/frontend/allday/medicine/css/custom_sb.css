@@ -1934,6 +1934,12 @@ a.product_img[data-src~="http"] {
                               padding: 0;
                               min-width: auto;
                             }
+
+.promotions-index-index .col-left.sidebar .block {
+    border: 0;
+}
+
+
 @media only screen and (max-width: 1125px){
    .adc_christmas .header .quick-access {
         width: 62% !important;
@@ -2065,6 +2071,9 @@ a.product_img[data-src~="http"] {
         left: 10%;
         width: 80%;
     }
+    .promotions-index-index .col-left.sidebar .block-title {
+        display: block;
+    }
 }
 @media only screen and (max-width: 800px) {
     .catalog-product-view #customer-reviews .add_comment ,
@@ -2077,7 +2086,11 @@ a.product_img[data-src~="http"] {
     }
 }
 @media only screen and (max-width: 736px){
-
+    .promotions-index-index .main .col-main {
+        width: 92% !important;
+        text-align: center;
+        margin: 0 4%;
+    }
     .footer-payment-types span span#siteseal img {
         display: none;
     }
