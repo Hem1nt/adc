@@ -255,13 +255,49 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
          $productpricehtml = sprintf("%.2f",$pro_price);
          $totalprice = sprintf("%.2f",$pro_price*$orderedaty);
          $includingsubtotal += $totalprice;
-         $html = "<tr style='border:1px solid black;color:#000;'>
-         <td  style='font-size:1em;width:47%;border:1px solid #ccc;padding:3px 7px 2px 7px;font-size:1.1em;text-align:center;padding-top:5px;padding-bottom:4px;'><table><tr><td>".$productimagehtml."</td><td style='text-align: left;'> ".$productnamehtml."</td></tr></table></td> 
-         <td  style='font-size:1em;border:1px solid #ccc;padding:3px 7px 2px 7px;font-size:1.1em;text-align:center;padding-top:5px;padding-bottom:4px;'>".$simple_pack_size."</td> 
-         <td  style='font-size:1em;border:1px solid #ccc;padding:3px 7px 2px 7px;font-size:1.1em;text-align:center;padding-top:5px;padding-bottom:4px;'>US $".$productpricehtml."</td> 
-         <td  style='font-size:1em;border:1px solid #ccc;padding:3px 7px 2px 7px;font-size:1.1em;text-align:center;padding-top:5px;padding-bottom:4px;'>".$orderedaty."</td> 
-         <td  style='font-size:1em;border:1px solid #ccc;padding:3px 7px 2px 7px;font-size:1.1em;text-align:center;padding-top:5px;padding-bottom:4px;'>US $".$totalprice."</td>
-         </tr>";
+         $html ='<tr>
+                  <td align="center" valign="top" style="padding:14px 18px 16px 18px; background-color:#fff;">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="113" style=" border-right:2px solid #cccccc; border-left:2px solid #cccccc; ">
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td>
+                                  <img src="<?php echo $productimagehtml; ?>" width="129" alt="<?php echo $productnamehtml?>" style="display:inline-block; border:none;" >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px;">
+                                <?php echo $productnamehtml; ?>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                          <?php echo $simple_pack_size; ?>
+                        </td>
+                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                          <?php echo "US$ ". $productpricehtml;?>
+                        </td>
+                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                          <?php echo $orderedaty;?>
+                        </td>
+                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                           <?php echo "US$ ". $totalprice;?>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" width="1" height="1" style="padding:0px 0px 0px 0px;">
+                        <table width="565" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                              <td style="border-bottom:1px solid #666666; " ></td>
+                          </tr>
+                        </table>
+                    </td>
+                </tr>';
          $htmlnew.= $html;
        }
      }
@@ -344,13 +380,13 @@ public function checkcartinfo($customer_email){
 
 
 
-public function sendMail ($email,$status,$eid ,$fname,$message,$custname,$grandtotal,$linktocart,$nextdate) 
+public function sendMail ($email,$status,$eid ,$fname,$message,$custname,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate) 
 {
-  $this->curlRequest ($email,$status,$eid,$fname,$message,$custname,$grandtotal,$linktocart,$nextdate);
+  $this->curlRequest ($email,$status,$eid,$fname,$message,$custname,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate);
 }
 
 
- public function curlRequest($email,$status,$eid,$fname,$message,$customername,$grandtotal,$linktocart,$nextdate){
+ public function curlRequest($email,$status,$eid,$fname,$message,$customername,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate){
       //echo "<textarea>".$message."</textarea>"; //exit; 
     Mage::log($email.'------------mail send',null,'abandonedmail.log');
     $login_cheetahmail_curi = Mage::getStoreConfig('general/cheetahmail/login');
@@ -403,8 +439,10 @@ public function sendMail ($email,$status,$eid ,$fname,$message,$custname,$grandt
        "req=1",
        "FNAME=".$customername,
        "RETURNTOCART=".$linktocart,
-       "CARTAMOUNT=US $ ".$grandtotal,
+       "SUBTOTAL=US$ ".$subtotal,
+       "CARTAMOUNT=US$ ".$subtotalwithshipping,
        "VALIDDATE=".$nextdate,
+       "SHIPPINGCHARGE=US$ ".$shippingcost,
        "CARTDETAIL=".urlencode($message)
        );
       $param_string = implode('&', $embtrigger_params);
@@ -464,10 +502,10 @@ public function mailsend2(){
    // exit;
 }
 
-public function testmailsend(){
+/*public function testmailsend(){
     // echo 'maklklnoj';exit;
  // $this->Synchronize();  
-  echo $email = 'manojiksula@gmail.com';   
+  //echo $email = 'manojiksula@gmail.com';   
   $this->abandonedcartemail($email);
   $abandonedtime = Mage::getStoreConfig('general/setting/abandonedtime');
   $timeduration = Mage::getStoreConfig('general/setting/time');
@@ -496,5 +534,5 @@ foreach ($abandonedcollection as $emailsend) {
     //call function which send email through chetaha mail
  //$this->abandonedcartemail($emailsend['email_id']);
 }
-}
+}*/
 }
