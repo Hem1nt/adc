@@ -62,7 +62,7 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
 
               $html .= "<div class='showProducts_desp'>";
               $html .= "<b>Someone in ".$address->getData('city')." , ".$address->getData('region')."</b>";
-              $html .= "<span> recently purchased</span> "."<span class='showProducts_name'>"."<a href='".Mage::getBaseurl().$parentProduct->getData('url_path')."'>".$_product->getData('name')."</a></span>";
+              $html .= "<span> recently purchased</span> "."<span class='showProducts_name'>"."<a href='".Mage::getBaseurl().$parentProduct->getData('url_path')."?utm_source=recently-viewed-product"."'>".$_product->getData('name')."</a></span>";
               $html .= "</div>";
               $html .= "</div>";
               Mage::getSingleton('core/session')->setData('orderid',$orderId);
