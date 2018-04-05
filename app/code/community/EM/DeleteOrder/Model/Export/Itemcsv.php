@@ -327,9 +327,18 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
             }
           $item_exportcount[] = $csvvalue['export_count'];
           // $item_brand = $csvvalue['item_brand'];
-
-          $record = array_merge($csvvalue['item_common'],$itemsSku,$itemname,$itemname,$itemsTotalQty,$itemsPrice,$itemsStatus,$clientComment,$itemsTrackId,$itemsShippedQty,$itemsAssignDate,$emptyStatus,$westmead,$item_shipform,$itemsBrand,$item_exportcount);
-          
+          //$record = array_merge($csvvalue['item_common'],$itemsSku,$itemname,$itemname,$itemsTotalQty,$itemsPrice,$itemsStatus,$clientComment,$itemsTrackId,$itemsShippedQty,$itemsAssignDate,$emptyStatus,$westmead,$item_shipform,$itemsBrand,$item_exportcount);
+          $record = array_merge($csvvalue['item_common'],$itemsSku,$itemname,$itemname,$itemsTotalQty,$itemsPrice,$itemsStatus,$clientComment,$itemsTrackId,$item_shipform,$itemsBrand,$item_exportcount);
+          foreach ($record as $key => $value) {
+              if ($value == '') {
+                   $record[$key] = "--";
+              }
+              if(is_array($value)){
+                if(empty($rows)){
+                  $record[$key] = "--";   
+                }
+              }
+          }
           fputcsv($fp,$record, self::DELIMITER, self::ENCLOSURE);
         }
 
@@ -399,11 +408,11 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
           'Patient Price for All Packs of this Item*',
           'Status',
           'Clients Comments',
-          'Tracking Id',
+          'Tracking Id',/*
           'Quantity',
           'Ship Date',
           'Status',
-          'Westmead Comments',
+          'Westmead Comments',*/
           'Shipped From',
           'Brand Code',
           'Export Count',
