@@ -64,9 +64,14 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
         $status = $order->getStatus();
         $_productModel = Mage::getModel('catalog/product');
         $ship_date = array();
-        foreach($order->getShipmentsCollection() as $shipment){
-		    $ship_date[] = $shipment->getCreatedAt();
-		}
+        if(empty($order->getShipmentsCollection()->getData())){
+            $ship_date[] = ' ';
+        }else{
+          foreach($order->getShipmentsCollection() as $shipment){
+            $ship_date[] = $shipment->getCreatedAt();
+              
+          }
+        }
         foreach ($orderItems as $item)
         {
             
