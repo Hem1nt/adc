@@ -23,7 +23,7 @@ class Iksula_Homepagebanner_Block_Index extends Mage_Core_Block_Template{
 
 	public function getBannerHtml()
 	{
-		$currentdate = date("Y-m-d");
+		$currentdate = Mage::getModel('core/date')->date('Y-m-d');
 		$model = Mage::getSingleton('homepagebanner/homeslider')->getCollection()
 		->addFieldToFilter('status', '1')
 		->setOrder('sortorder', 'asc');
