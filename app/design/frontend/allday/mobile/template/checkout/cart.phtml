@@ -59,9 +59,11 @@ $shippingPrice = Mage::getSingleton('checkout/session')->getQuote()->getShipping
                 <?php  echo $this->getLayout()->createBlock('cms/block')->setBlockId('shipping_discount')->toHtml(); ?>
             </div>
         <?php else: ?>
-            <div class="custom_offer_text">   
-                <span>Eligible for <?php echo Mage::helper('core')->currency($shippingDiscount);?> shipping charge.</span>
-            </div>
+            <?php if($shippingDiscount):?>
+                <div class="custom_offer_text">   
+                    <span>Eligible for <?php echo Mage::helper('core')->currency($shippingDiscount);?> shipping charge.</span>
+                </div>
+            <?php endif;?>
         <?php endif;?>
     </div>
     
