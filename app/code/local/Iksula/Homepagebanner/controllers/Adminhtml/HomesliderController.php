@@ -141,7 +141,7 @@ class Iksula_Homepagebanner_Adminhtml_HomesliderController extends Mage_Adminhtm
 						->setId($this->getRequest()->getParam("id"))
 						->save();
 
-						Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Homeslider was successfully saved"));
+						Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Homeslider was successfully saved with Deactive Date"));
 						Mage::getSingleton("adminhtml/session")->setHomesliderData(false);
 
 						if ($this->getRequest()->getParam("back")) {
@@ -165,7 +165,7 @@ class Iksula_Homepagebanner_Adminhtml_HomesliderController extends Mage_Adminhtm
 						->setId($this->getRequest()->getParam("id"))
 						->save();
 
-						Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Homeslider was successfully saved"));
+						Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Homeslider was successfully saved without Deactive Date"));
 						Mage::getSingleton("adminhtml/session")->setHomesliderData(false);
 
 						if ($this->getRequest()->getParam("back")) {
