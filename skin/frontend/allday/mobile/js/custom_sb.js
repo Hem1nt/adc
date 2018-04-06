@@ -37,10 +37,10 @@ equalheight = function(container){
    equalheight('ul.products-grid li.item');
  });
 
- $('.bxslider-pr-view').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1
-  });
+ // $('.bxslider-pr-view').slick({
+ //      slidesToShow: 1,
+ //      slidesToScroll: 1
+ //  });
 
 
   // refill remainder popup

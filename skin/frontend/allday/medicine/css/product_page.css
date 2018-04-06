@@ -410,7 +410,12 @@ button.button:hover > span {
   padding-left: 20px;
 }
 
-.catalog-product-view .pr-add-to-compare a.link-compare, .review-product-list .pr-add-to-compare a.link-compare, .catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend {
+.catalog-product-view .pr-add-to-compare a.link-compare,
+.review-product-list .pr-add-to-compare a.link-compare,
+.catalog-product-view .pr-email-friend a.link-email-friend,
+.review-product-list .pr-email-friend a.link-email-friend,
+.catalog-product-view .pr-write-review a.link-review,
+.review-product-list .pr-write-review a.link-review {
   background: url(../images/sprite.png) -233px -90px no-repeat #9fb701;
   color: #fff;
   font-size: 14px;
@@ -1432,6 +1437,7 @@ span.recomend-text {
     padding: 20px 0 0;
     border-top: 1px solid #c9c9c9;
     margin-top: 17px;
+    text-align: center;
   }
 
   .catalog-product-view .main-container, .review-product-list .main-container {
@@ -1612,6 +1618,7 @@ span.recomend-text {
 
   .catalog-product-view .col-main .pr-add-to-compare, .review-product-list .col-main .pr-add-to-compare {
     display: inline-block !important;
+    float: left;
   }
 
   .catalog-product-view .pr-links-right div, .review-product-list .pr-links-right div {
@@ -1740,6 +1747,26 @@ span.recomend-text {
   .catalog-product-view .customer_rating.review_graph .rating_box, .review-product-list .customer_rating.review_graph .rating_box {
     max-width: 425px;
     width: 425px;
+  }
+
+  .catalog-product-view .col-main .pr-add-to-compare,
+  .review-product-list .col-main .pr-email-friend,
+  .catalog-product-view .pr-links-right div {
+    display: block !important;
+    float: none !important;
+    margin: 6px 0;
+  }
+  .catalog-product-view .col-main .pr-add-to-compare a.link-compare, .catalog-product-view .col-main .pr-add-to-compare a.link-review,
+  .review-product-list .col-main .pr-email-friend a.link-compare,
+  .review-product-list .col-main .pr-email-friend a.link-review,
+  .catalog-product-view .pr-links-right div a.link-compare,
+  .catalog-product-view .pr-links-right div a.link-review {
+    display: inline-block;
+  }
+  .catalog-product-view .col-main .pr-add-to-compare .email-friend,
+  .review-product-list .col-main .pr-email-friend .email-friend,
+  .catalog-product-view .pr-links-right div .email-friend {
+    display: inline-block;
   }
 }
 @media only screen and (max-width: 480px) {
