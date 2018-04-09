@@ -160,6 +160,10 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
         echo $string;
     ?>
 </div>
+<?php if($_product->getExpiry() != ''){ 
+        echo $_product->getExpiry();
+    }
+?>    
 </div>
 <?php echo $flag ? '<span class="read_more" id="read_more"><b>Read more</b></span> ': '' ; ?>
 <?php endif;?>
