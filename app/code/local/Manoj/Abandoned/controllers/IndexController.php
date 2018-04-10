@@ -21,15 +21,15 @@ class Manoj_Abandoned_IndexController extends Mage_Core_Controller_Front_Action{
  }
  public function testAction(){
   // echo "TEST";exit;
-  // $abandonedcart = Mage::helper('abandoned');
+   //$abandonedcart = Mage::helper('abandoned');
   // $abandonedcart->Synchronize();
   // $abandonedcart = Mage::helper('abandoned');
     // $cust_email_id = 'manoj.chowrasiya@iksula.com'; 
     // $abandonedcart->Synchronize();  
   // Mage::log(date(),null,'abondent_call_function.log');   
   // exit;
-  // $abandonedcart->synchCart();   
-  // $abandonedcart->mailsend();
+   //$abandonedcart->synchCart();   
+   //$abandonedcart->mailsend2();
     // $abandonedcart->testmailsend();
 }
 

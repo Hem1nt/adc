@@ -307,6 +307,15 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 			}
 			$this->getResponse()->setHeader('Content-type','application/json', true);
 			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+
+			/*****************custom code for page capture abandant start********************/
+
+          $quote_id = $this->_getQuote()->getId(); 
+          $quote_model = Mage::getModel('sales/quote')->load($quote_id);
+          $quote_model->setData('abandoned_page_capture','billing_medicalpage')->save();
+          
+
+/*****************custom code for page capture abandant end********************/
 		}
 	}
 	/**
@@ -1157,5 +1166,15 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		if($billingAddress['address_type'] == 'billing' && $shippingAddress['address_type'] == 'shipping'){
 			echo $html;
 		}
+
+		/*****************custom code for page capture abandant start********************/
+
+          $quote_id = $this->_getQuote()->getId(); 
+          $quote_model = Mage::getModel('sales/quote')->load($quote_id);
+          $quote_model->setData('abandoned_page_capture','confirmaddress_paymentpage')->save();
+          
+
+		/*****************custom code for page capture abandant end********************/
+
 	}
 }
