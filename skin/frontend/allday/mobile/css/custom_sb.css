@@ -44,6 +44,9 @@
 @media only screen and (max-width: 1024px){
 
 	/*christmas theme*/
+	.disable_scroll {
+	  overflow: hidden;
+	}
 	.adc_christmas .checkout-headerk .header {
 		display: inline-block;
 		width: 100%;
@@ -1807,6 +1810,10 @@
 	    max-width: 1100px;
 	    width: 100%;
 	}
+	.catalog-product-view .review-count-pr .rating-links {
+	    display: block;
+	    text-align: left;
+	}
 }
 @media only screen and (max-width: 694px){
 	.adc_christmas .header .quick-access {
@@ -1979,6 +1986,9 @@
     }
     .wishlist-index-share .share_wishlist .field.wishlist_captcha {
         padding-bottom: 30px;
+    }
+    .catalog-product-view .review-count-pr .rating-links{
+    	text-align: left;
     }
 }
 @media only screen and (max-width: 540px){
