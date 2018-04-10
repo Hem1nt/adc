@@ -173,7 +173,7 @@ public function sendemailAbandonedCart($cust_email_id){
         $customername = ucfirst(strtolower($customer->getData('firstname')));
         $adclogourl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'adclogomailer.jpg';
         $welcomemsg = "Dear ".$customername.','.'<br/><br/>
-        Thank you for your recent visit to AllDayChemissssst!<br/><br/>
+        Thank you for your recent visit to AllDayChemist!<br/><br/>
         <b>We have noticed that you have an unfinished purchase and we have saved it for you !</b><br/><br<br/><br/>Here is the order currently saved in your cart<br/><br/>';
         $htmlnew = '';
         foreach ($dataCollection as $prodcuthtml) {
