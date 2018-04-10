@@ -272,22 +272,22 @@ public function sendemailAbandonedCart($cust_email_id){
                               </td>
                             </tr>
                             <tr>
-                              <td align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px;">
+                              <td align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px;">
                                 <?php echo $productnamehtml; ?>
                               </td>
                             </tr>
                           </table>
                         </td>
-                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
                           <?php echo $simple_pack_size; ?>
                         </td>
-                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
                           <?php echo "US$ ". $productpricehtml;?>
                         </td>
-                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
                           <?php echo $orderedaty;?>
                         </td>
-                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
                            <?php echo "US$ ". $totalprice;?>
                         </td>
                       </tr>
