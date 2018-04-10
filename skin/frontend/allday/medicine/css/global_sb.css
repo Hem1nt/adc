@@ -268,6 +268,7 @@ a.home_icon img {
 }
 .adc-footer-links ul.last {
     margin-right: 0 !important;
+    width: 20% !important;
 }
 /*subscription css*/
 
@@ -285,7 +286,7 @@ a.home_icon img {
 }
 
 .adc-footer-links ul {
-    width: 20% !important;
+    width: 18% !important;
     margin-right: 0% !important;
 }
 
@@ -769,7 +770,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         .nav-left-category {
             margin-left: 170px;
         }
-        .adc-footer-links ul {
+        .adc-footer-links ul, .adc-footer-links ul.last {
             margin-right: 2% !important;
             width: auto !important;
         }
