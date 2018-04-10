@@ -59,6 +59,16 @@
         </div>
         <div class="review-count-pr"><?php echo $this->getReviewsSummaryHtml($_product, false, true)?></div>
         <div class="pr-mob-wishlist"><a id="s-<?php echo $_product->getId(); ?>" class="refill_reminder_open" href="<?php echo $this->getBaseUrl();?>wishlist/index/add/product/<?php echo $_product->getData('entity_id'); ?>"></a></div>
+            <div class="share bordercolor social_btns"><!-- AddThis Button BEGIN -->
+                   <div class="addthis_toolbox addthis_default_style ">
+                    <a href="javascript:popWin('https://plus.google.com/share?url=<?php echo urlencode($productUrl); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Google Plus') ?>"><img src="<?php echo $this->getSkinUrl('images/g_plus.png');?>"></a>
+                <a href="javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($productUrl); ?>&t=<?php echo urlencode($productName); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Facebook') ?>"><img src="<?php echo $this->getSkinUrl('images/fb.png');?>"></a>
+                <a href="javascript:popWin('http://twitter.com/home/?status=<?php echo urlencode($productName . ' (' . $productUrl . ')'); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Tweet') ?>"><img src="<?php echo $this->getSkinUrl('images/twitter.png');?>"></a>
+
+                <a href="javascript:popWin('https://pinterest.com/pin/create/button/?url=<?php echo urlencode($productUrl); ?>&media=<?php echo urlencode($productImage); ?>&description=<?php echo urlencode($productName); ?>', 'pinterest', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Pin it') ?>"><img src="<?php echo $this->getSkinUrl('images/pinterest.png');?>"></a>
+                 </div>
+                    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f419f410efe76d3"></script>
+            </div> 
         <div class="product-shop">
             <div class="pr-name-social-icons">
                 
@@ -70,16 +80,6 @@
             <?php echo $this->getTierPriceHtml() ?>
             <?php echo $this->getChildHtml('extrahint') ?>
 
-                        <div class="share bordercolor social_btns"><!-- AddThis Button BEGIN -->
-                   <div class="addthis_toolbox addthis_default_style ">
-                    <a href="javascript:popWin('https://plus.google.com/share?url=<?php echo urlencode($productUrl); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Google Plus') ?>"><img src="<?php echo $this->getSkinUrl('images/g_plus.png');?>"></a>
-                <a href="javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($productUrl); ?>&t=<?php echo urlencode($productName); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Facebook') ?>"><img src="<?php echo $this->getSkinUrl('images/fb.png');?>"></a>
-                <a href="javascript:popWin('http://twitter.com/home/?status=<?php echo urlencode($productName . ' (' . $productUrl . ')'); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Tweet') ?>"><img src="<?php echo $this->getSkinUrl('images/twitter.png');?>"></a>
-
-                <a href="javascript:popWin('https://pinterest.com/pin/create/button/?url=<?php echo urlencode($productUrl); ?>&media=<?php echo urlencode($productImage); ?>&description=<?php echo urlencode($productName); ?>', 'pinterest', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Pin it') ?>"><img src="<?php echo $this->getSkinUrl('images/pinterest.png');?>"></a>
-                 </div>
-                    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f419f410efe76d3"></script>
-                </div>
             <?php if ($_product->getShortDescription()):?>
                 <div class="short-description">
                     <h2><?php //echo $this->__('Quick Overview') ?></h2>

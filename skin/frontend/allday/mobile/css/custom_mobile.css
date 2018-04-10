@@ -230,6 +230,10 @@
 	.pr-mob-wishlist {
 	  display: inline-block;
 	  float: right;
+	  margin-right: 10px;
+	}
+	.catalog-product-view .pr-mob-wishlist {
+	  display: none;
 	}
 
 	.product-view .product-img-box .more-views li {
@@ -269,6 +273,7 @@
 
 	.share.bordercolor {
 		margin-top: 0!important;
+		margin-right: 10px;
 	}
 
 	.bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {
