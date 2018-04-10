@@ -272,22 +272,22 @@ public function sendemailAbandonedCart($cust_email_id){
                               </td>
                             </tr>
                             <tr>
-                              <td align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px;">
+                              <td align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px;">
                                 <?php echo $productnamehtml; ?>
                               </td>
                             </tr>
                           </table>
                         </td>
-                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
                           <?php echo $simple_pack_size; ?>
                         </td>
-                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
                           <?php echo "US$ ". $productpricehtml;?>
                         </td>
-                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
                           <?php echo $orderedaty;?>
                         </td>
-                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
+                        <td width="113" align="center" style="font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
                            <?php echo "US$ ". $totalprice;?>
                         </td>
                       </tr>
@@ -418,15 +418,18 @@ public function sendMail ($email,$status,$eid ,$fname,$message,$custname,$subtot
 {
   $this->curlRequest ($email,$status,$eid,$fname,$message,$custname,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate);
 }
-public function curlRequest($email,$status,$eid,$fname,$message,$customername,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate){
-      //echo "<textarea>".$message."</textarea>"; //exit; 
+
+
+
+public function curlRequest($email,$status,$eid,$fname,$message,$customername,$subtotalwithshipping,$shippingcost,$grandtotal,$linktocart,$nextdate){
+  //echo "<textarea>".$message."</textarea>"; //exit; 
   Mage::log($email.'------------mail send',null,'abandonedmail.log');
   $login_cheetahmail_curi = Mage::getStoreConfig('general/cheetahmail/login');
   $login_param_name = Mage::getStoreConfig('general/cheetahmail/apiname');
   $login_param_cleartext = Mage::getStoreConfig('general/cheetahmail/apipassword');
   $login_ebmtrigger_uri = Mage::getStoreConfig('general/cheetahmail/api');
   $login_aid = Mage::getStoreConfig('general/cheetahmail/aid');
-    $login_eid = Mage::getStoreConfig('general/cheetahmail/eid');//exit;
+  $login_eid = Mage::getStoreConfig('general/cheetahmail/eid');//exit;
 
     echo "crulReuest Function: OK<br>";
 
