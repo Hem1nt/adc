@@ -413,9 +413,7 @@ button.button:hover > span {
 .catalog-product-view .pr-add-to-compare a.link-compare,
 .review-product-list .pr-add-to-compare a.link-compare,
 .catalog-product-view .pr-email-friend a.link-email-friend,
-.review-product-list .pr-email-friend a.link-email-friend,
-.catalog-product-view .pr-write-review a.link-review,
-.review-product-list .pr-write-review a.link-review {
+.review-product-list .pr-email-friend a.link-email-friend {
   background: url(../images/sprite.png) -233px -90px no-repeat #9fb701;
   color: #fff;
   font-size: 14px;
@@ -427,6 +425,21 @@ button.button:hover > span {
   height: auto;
   font-weight: normal;
   background-size: 600px;
+}
+
+.catalog-product-view .pr-write-review a.link-review,
+.review-product-list .pr-write-review a.link-review {
+  background: url(../images/write_review.png) 20px 4px no-repeat #9fb701;
+  color: #fff;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 8px 24px 8px 51px;
+  border-radius: 30px;
+  display: block;
+  font-family: Open Sans, sans-serif;
+  height: auto;
+  font-weight: normal;
+  background-size: 21px;
 }
 
 .catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend {
@@ -1602,7 +1615,8 @@ span.recomend-text {
   }
 
   .catalog-product-view .main-container .product-shop .short-description {
-    padding: 10px 0 0 10px;
+    padding: 10px;
+    box-sizing: border-box;
   }
 
   .product-view .product-shop .s_desc_share_wrap {
@@ -1796,6 +1810,7 @@ span.recomend-text {
   .catalog-product-view .share.bordercolor {
     margin-top: 30px !important;
     width: 100%;
+    margin-right: 0;
   }
 
   /* .product-view .product-shop .short-description .read_more{
