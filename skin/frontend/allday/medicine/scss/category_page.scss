@@ -2135,11 +2135,11 @@ dl#narrow-by-list dd ol li a {
 
     				.item{
     					margin: 0 5px;
-					min-height: 270px;
-					box-sizing: border-box;
-					border: 1px solid #d3d3d3;
-					padding: 0;
-
+						min-height: 328px;
+						box-sizing: border-box;
+						border: 1px solid #d3d3d3;
+						padding: 0;
+						background-color: $bright;
 
 	    				.product-image{
 	    					width: 100%;
@@ -2673,10 +2673,10 @@ dl#narrow-by-list dd ol li a {
 									p.custom_price{
 										margin: 10px 0;
 									}
-								        .notify-main .notify-me-boxwrapper{
-									margin-left: 0;
-									width: 80%;
-									left: 7%;
+								   	.notify-main .notify-me-boxwrapper{
+										margin-left: 0;
+										width: 80%;
+										left: 7%;
 								}
 							}
 						}
@@ -2895,6 +2895,15 @@ dl#narrow-by-list dd ol li a {
 				}
 			}
 		}
+	}
+	.featured_products{
+		.featured-block-tab{
+			.products-grid{
+				.item{
+					min-height: 290px;
+				}
+			}
+		}	
 	}
 }
 @media only screen and (max-width: 375px){

@@ -44,6 +44,12 @@
 @media only screen and (max-width: 1024px){
 
 	/*christmas theme*/
+	.opc-wrapper-opc .validation-advice{
+		min-height: 26px;
+	}
+	#toTop_mobile {
+        display: none;
+    }
 	.disable_scroll {
 	  overflow: hidden;
 	}
@@ -1529,6 +1535,11 @@
 	/*share wishlist end*/
 }
 
+@media only screen and (max-width: 920px){
+	.checkout_steps div.tabs div.divider {
+	    width: 9% !important;
+	}
+}
 @media only screen and (max-width: 840px){
 	.adc_christmas .christmas_bell {
 		z-index: -1;
@@ -2025,5 +2036,8 @@
 	}
 	.customer-account-edit #more_info .form-list .input-box {
 	    width: 100% !important;
+	}
+	.opc-wrapper-opc .validation-advice {
+	    min-height: 13px;
 	}
 }	
