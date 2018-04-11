@@ -249,7 +249,7 @@ public function sendemailAbandonedCart($cust_email_id){
      $baseUrl = Mage::getBaseUrl().'abandoned/index/cartreturn?key='.base64_encode($to).'?utm_source=email-cart&utm_medium=email-cart&utm_campaign=email';
      $message = $htmlnew;
      $status = '';
-     $this->sendMail($cust_email_id,$status, $eid,$customername,$message,$customername,$subtotalwithshipping,$shippingcost,$baseUrl,$nextdate);
+     $this->sendMail($cust_email_id,$status, $eid,$customername,$message,$subtotalwithshipping,$shippingcost,$baseUrl,$nextdate);
    }   
 
    public function cartreturn()
@@ -386,6 +386,8 @@ public function curlRequest($email,$status,$eid,$fname,$message,$customername,$g
        "RETURNTOCART=".$linktocart,
        "CARTAMOUNT=US $ ".$grandtotal,
        "VALIDDATE=".$nextdate,
+       "SUBTOTAL=US $".$subtotalwithshipping,
+       "SHIPPINGCHARGE=US $".$shippingcost,
        "CARTDETAIL=".urlencode($message)
        );
       $param_string = implode('&', $embtrigger_params);
