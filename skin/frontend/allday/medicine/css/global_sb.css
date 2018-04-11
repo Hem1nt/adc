@@ -1093,9 +1093,6 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         width: 10%;
         box-sizing: border-box;
     }
-    #toTop_mobile {
-        display: none;
-    }
     .adc-footer-links ul li a{
         color: #242424;
         line-height: 25px;
@@ -1261,6 +1258,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .header .form-search {
         right: 0px;
+    }
+    .adc-footer-links ul, .adc-footer-links ul.last {
+        width: 100% !important;
     }
 }
 @media only screen and (max-width: 694px){
