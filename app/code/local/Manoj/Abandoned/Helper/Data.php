@@ -50,7 +50,6 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function updateMultipleAbandonedCart($quote,$abundantcart_id){
         //UPDATE 
-      Mage::log($quote['customer_email'].'---------------upadte multiple',null,'multipleupdate.log');
       $abandonedcart = Mage::getModel('abandoned/abandoned');
       $quote_collectionArray = array();
       $quote_ItemArray = array();
@@ -182,7 +181,7 @@ public function sendemailAbandonedCart($cust_email_id){
          $includingsubtotal = 0;
          //$shippingcost = 25;
          $shippingcost = Mage::getStoreConfig('carriers/abandoned/abandoned_price');
-         $subtotalwithshipping = $subtotal + $shippingcost;
+         $grandtotal = $subtotal + $shippingcost;
          $ids = explode(',', $prodcuthtml['product_ids']);
          $baseUrl = Mage::getBaseUrl().'abandoned/index/cartreturn?key='.base64_encode($to).'?utm_source=email-cart&utm_medium=email-cart&utm_campaign=email';
          $adcimageurl=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'abandoned.jpg';
@@ -220,36 +219,36 @@ public function sendemailAbandonedCart($cust_email_id){
          $totalprice = sprintf("%.2f",$pro_price*$orderedaty);
          $includingsubtotal += $totalprice;
          $html ="<tr>
-                <td align='center' valign='top' style='padding:14px 18px 16px 18px; background-color:#fff;'>
-                  <table width='100%' border='0' cellspacing='0' cellpadding='0'>
-                    <tr>
-                      <td width='113' style=' border-right:2px solid #cccccc; border-left:2px solid #cccccc; '>
-                        <table width='100%' border='0' cellspacing='0' cellpadding='0'>
-                          <tr>
-                            <td>".$productimagehtml."</td>
-                          </tr>
-                          <tr>
-                            <td align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px;'>".$productnamehtml."
+                   <td align='center' valign='top' style='padding:14px 18px 16px 18px; background-color:#fff;'>
+                      <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+                         <tr>
+                            <td width='113' style=' border-right:2px solid #cccccc; border-left:2px solid #cccccc; '>
+                               <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+                                  <tr>
+                                     <td>".$productimagehtml."</td>
+                                  </tr>
+                                  <tr>
+                                     <td align='center' style='font-size:15px; color:#666666; padding:0 0px;'>".$productnamehtml."
+                                     </td>
+                                  </tr>
+                               </table>
                             </td>
-                          </tr>
-                        </table>
-                      </td>
-                      <td width='113' align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$simple_pack_size."</td>
-                      <td width='113' align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$productpricehtml."</td>
-                      <td width='113' align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$orderedaty."</td>
-                      <td width='113' align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>US $".$totalprice."</td>
-                    </tr>
-                  </table>
-                </td>
-            </tr>";
+                            <td width='113' align='center' style='font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$simple_pack_size."</td>
+                            <td width='113' align='center' style='font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$productpricehtml."</td>
+                            <td width='113' align='center' style='font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$orderedaty."</td>
+                            <td width='113' align='center' style='font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>US $".$totalprice."</td>
+                         </tr>
+                      </table>
+                   </td>
+                </tr>";
         $htmlnew.= $html;
        }
      }
-     $subtotalwithshipping = $includingsubtotal +$shippingcost;
+     //$grandtotal = $includingsubtotal +$shippingcost;
      $baseUrl = Mage::getBaseUrl().'abandoned/index/cartreturn?key='.base64_encode($to).'?utm_source=email-cart&utm_medium=email-cart&utm_campaign=email';
      $message = $htmlnew;
      $status = '';
-     $this->sendMail($cust_email_id,$status, $eid,$customername,$message,$subtotalwithshipping,$shippingcost,$baseUrl,$nextdate);
+     $this->sendMail($cust_email_id,$status, $eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$baseUrl,$nextdate);
    }   
 
    public function cartreturn()
@@ -325,14 +324,12 @@ public function checkcartinfo($customer_email){
   }
 
 }
-public function sendMail ($email,$status,$eid ,$fname,$message,$custname,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate) 
+public function sendMail ($email,$status,$eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$linktocart,$nextdate) 
 {
-  $this->curlRequest ($email,$status,$eid,$fname,$message,$custname,$grandtotal,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate);
+  $this->curlRequest ($email,$status,$eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$linktocart,$nextdate);
 }
-
-
-public function curlRequest($email,$status,$eid,$fname,$message,$customername,$grandtotal,$linktocart,$nextdate){
-      //echo "<textarea>".$message."</textarea>"; //exit; 
+public function curlRequest($email,$status,$eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$linktocart,$nextdate){
+  //echo "<textarea>".$message."</textarea>"; //exit; 
   Mage::log($email.'------------mail send',null,'abandonedmail.log');
   $login_cheetahmail_curi = Mage::getStoreConfig('general/cheetahmail/login');
   $login_param_name = Mage::getStoreConfig('general/cheetahmail/apiname');
@@ -379,16 +376,16 @@ public function curlRequest($email,$status,$eid,$fname,$message,$customername,$g
       $ebmtrigger_uri = $login_ebmtrigger_uri;
       $embtrigger_params = array(
        "aid=".$login_aid,
-       "email=".$email,
        "eid=".$login_eid,
        "req=1",
+       "email=".$email,
        "FNAME=".$customername,
        "RETURNTOCART=".$linktocart,
-       "CARTAMOUNT=US $ ".$grandtotal,
-       "VALIDDATE=".$nextdate,
-       "SUBTOTAL=US $".$subtotalwithshipping,
        "SHIPPINGCHARGE=US $".$shippingcost,
-       "CARTDETAIL=".urlencode($message)
+       "SUBTOTAL=US $".$subtotal,
+       "CARTAMOUNT=US $ ".$grandtotal,
+       //"VALIDDATE=".$nextdate,
+       "CARTDETAIL=".rawurlencode($message)
        );
       $param_string = implode('&', $embtrigger_params);
       $curl = curl_init($ebmtrigger_uri);
