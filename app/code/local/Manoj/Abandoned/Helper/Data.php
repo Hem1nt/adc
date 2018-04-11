@@ -1,50 +1,9 @@
 <?php
 class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
 {
-
-  /*public function Synchronizeffff(){
-
-    $collection = Mage::getResourceModel('reports/quote_collection');
-    $collection->prepareForAbandonedReport(array(1));
-    $collection->load();
-    $collection->addOrder('updated_at','asc');
-    // echo '<pre>';
-    // print_r($collection->getSelect());
-    // exit;
-    $items = Mage::getModel('checkout/cart');
-    $salesQuoteItemObj = Mage::getModel('sales/quote_item');
-    $abandonedcart = Mage::getModel('abandoned/abandoned');
-    $quote_collectionArray = array();
-    $quote_ItemArray = array();
-
-    foreach ($collection as $quote) {
-      $abandonedcartCollection = Mage::getSingleton('abandoned/abandoned')->getCollection();
-      $quote['email'] = $quote->getData('customer_email');
-      $quote['updated_at'] = $quote->getData('updated_at');
-      $abandonedcartCollection->addFieldToFilter('email_id',$quote['email']);
-      $quotedetails = $abandonedcartCollection->getData();
-      if(count($quotedetails)>0){
-        foreach ($quotedetails as $quotevalue) {
-          if($quotevalue['update_time']!=$quote['updated_at']){
-           $abundantcart_id = $quotevalue['abandoned_cart_id']; 
-           $this->updateAbandonedCart($quote,$abundantcart_id);
-                }//end of inner if
-            }//end of inner foreach            
-          }//end of if
-          else{
-            $this->saveAbandonedCart($quote);
-          }
-        }
-
-      }*/
-
       public function synchCart(){
-        //echo date('Y-m-d H:i:s')."=========";
        $last =date('Y-m-d H:i:s');
        $first =date('Y-m-d H:i:s', strtotime('-1 hour'));
-
-
-
        $collection = Mage::getResourceModel('reports/quote_collection');
        $collection->addFieldToFilter('items_count', array('neq' => '0'))
        ->addFieldToFilter('main_table.is_active', '1')
@@ -260,61 +219,38 @@ public function sendemailAbandonedCart($cust_email_id){
          $productpricehtml = sprintf("%.2f",$pro_price);
          $totalprice = sprintf("%.2f",$pro_price*$orderedaty);
          $includingsubtotal += $totalprice;
-         $html ='<tr>
-                  <td align="center" valign="top" style="padding:14px 18px 16px 18px; background-color:#fff;">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="113" style=" border-right:2px solid #cccccc; border-left:2px solid #cccccc; ">
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td>
-                                  <img src="<?php echo $productimagehtml; ?>" width="129" alt="<?php echo $productnamehtml?>" style="display:inline-block; border:none;" >
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px;">
-                                <?php echo $productnamehtml; ?>
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
-                          <?php echo $simple_pack_size; ?>
-                        </td>
-                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
-                          <?php echo "US$ ". $productpricehtml;?>
-                        </td>
-                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
-                          <?php echo $orderedaty;?>
-                        </td>
-                        <td width="113" align="center" style="font-family:"Trebuchet MS"; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;">
-                           <?php echo "US$ ". $totalprice;?>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                    <td align="center" valign="top" width="1" height="1" style="padding:0px 0px 0px 0px;">
-                        <table width="565" border="0" cellspacing="0" cellpadding="0">
+         $html ="<tr>
+                <td align='center' valign='top' style='padding:14px 18px 16px 18px; background-color:#fff;'>
+                  <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+                    <tr>
+                      <td width='113' style=' border-right:2px solid #cccccc; border-left:2px solid #cccccc; '>
+                        <table width='100%' border='0' cellspacing='0' cellpadding='0'>
                           <tr>
-                              <td style="border-bottom:1px solid #666666; " ></td>
+                            <td>".$productimagehtml."</td>
+                          </tr>
+                          <tr>
+                            <td align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px;'>".$productnamehtml."
+                            </td>
                           </tr>
                         </table>
-                    </td>
-                </tr>';
-         $htmlnew.= $html;
+                      </td>
+                      <td width='113' align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$simple_pack_size."</td>
+                      <td width='113' align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$productpricehtml."</td>
+                      <td width='113' align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>".$orderedaty."</td>
+                      <td width='113' align='center' style='font-family:'Trebuchet MS'; font-size:15px; color:#666666; padding:0 0px; border-right:2px solid #cccccc;'>US $".$totalprice."</td>
+                    </tr>
+                  </table>
+                </td>
+            </tr>";
+        $htmlnew.= $html;
        }
      }
      $subtotalwithshipping = $includingsubtotal +$shippingcost;
      $baseUrl = Mage::getBaseUrl().'abandoned/index/cartreturn?key='.base64_encode($to).'?utm_source=email-cart&utm_medium=email-cart&utm_campaign=email';
      $message = $htmlnew;
      $status = '';
-     $this->sendMail($cust_email_id,$status,'233703',$customername,$message,$customername,$subtotalwithshipping,$baseUrl,$nextdate);
-     // $this->sendMail('manoj.chowrasiya@iksula.com',$status,'233703',$customername.$cust_email_id,$message,$customername,$subtotalwithshipping,$baseUrl,$nextdate);
-   }
-
-   
+     $this->sendMail($cust_email_id,$status, $eid,$customername,$message,$customername,$subtotalwithshipping,$shippingcost,$baseUrl,$nextdate);
+   }   
 
    public function cartreturn()
    {
@@ -327,63 +263,41 @@ public function sendemailAbandonedCart($cust_email_id){
   }
 
   public function abandonedcartemail($customer_email){
-      // echo $customer_email;exit;
    $abandonedcollection = Mage::getModel('abandoned/abandoned');
    $abandonedcartCollection = Mage::getSingleton('abandoned/abandoned')->getCollection();
    $abandonedcartCollection->addFieldToFilter('email_id',$customer_email);
    $dataCollection = $abandonedcartCollection->addFieldToFilter('is_email_send','0')->getData();
-
-  // echo "<pre>"; print_r($dataCollection); exit();
-
-   foreach ($dataCollection as $value) {
+  foreach ($dataCollection as $value) {
     $cartid = $value['abandoned_cart_id'];
      $updated_time = $value['update_time'];
      $page_capture = $value['abandoned_page_capture'];
-   }
-   //exit();
-   if(count($dataCollection)>0){   
-
+  }
+  if(count($dataCollection)>0){   
     $cart_responce = $this->checkcartinfo($customer_email); 
-     // exit;
-    if($cart_responce){
- 
-      if($page_capture == 'cartpage'){
-      
+    if($cart_responce){ 
+      if($page_capture == 'cartpage'){      
           $abandonedcollection->load($cartid);
         $abandonedcollection->setData('is_email_send','1')->save();
         $this->sendemailAbandonedCart($customer_email);
-
       }
-
       if($page_capture == 'billing_medicalpage'){
           $abandonedcollection->load($cartid);
        $abandonedcollection->setData('is_email_send','1')->save();
-       $this->sendemailAbandonedCart($customer_email);
-
-
-              
+       $this->sendemailAbandonedCart($customer_email);              
      }
-
      if($page_capture == 'confirmaddress_paymentpage'){
              $abandonedcollection->load($cartid);
        $abandonedcollection->setData('is_email_send','1')->save();
-       $this->sendemailAbandonedCart($customer_email);
-     
-
+       $this->sendemailAbandonedCart($customer_email);  
        }
-
-   }
-       // print_r($abandonedcollection->getData());
- }else{
-  echo 'mail not send';
-} 
+    }
+  }else{
+    echo 'mail not send';
+  } 
 
 }
 
 public function checkcartinfo($customer_email){
-     //echo $customer_email;
-    // exit;
-
   $abandonedcollection = Mage::getModel('abandoned/abandoned');
   $collection = Mage::getResourceModel('reports/quote_collection');
   $collection->prepareForAbandonedReport(array(1));
@@ -411,25 +325,21 @@ public function checkcartinfo($customer_email){
   }
 
 }
-
-
-
 public function sendMail ($email,$status,$eid ,$fname,$message,$custname,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate) 
 {
-  $this->curlRequest ($email,$status,$eid,$fname,$message,$custname,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate);
+  $this->curlRequest ($email,$status,$eid,$fname,$message,$custname,$grandtotal,$subtotalwithshipping,$shippingcost,$linktocart,$nextdate);
 }
 
 
-
-public function curlRequest($email,$status,$eid,$fname,$message,$customername,$subtotalwithshipping,$shippingcost,$grandtotal,$linktocart,$nextdate){
-  //echo "<textarea>".$message."</textarea>"; //exit; 
+public function curlRequest($email,$status,$eid,$fname,$message,$customername,$grandtotal,$linktocart,$nextdate){
+      //echo "<textarea>".$message."</textarea>"; //exit; 
   Mage::log($email.'------------mail send',null,'abandonedmail.log');
   $login_cheetahmail_curi = Mage::getStoreConfig('general/cheetahmail/login');
   $login_param_name = Mage::getStoreConfig('general/cheetahmail/apiname');
   $login_param_cleartext = Mage::getStoreConfig('general/cheetahmail/apipassword');
   $login_ebmtrigger_uri = Mage::getStoreConfig('general/cheetahmail/api');
   $login_aid = Mage::getStoreConfig('general/cheetahmail/aid');
-  $login_eid = Mage::getStoreConfig('general/cheetahmail/eid');//exit;
+    $login_eid = Mage::getStoreConfig('general/cheetahmail/eid');//exit;
 
     echo "crulReuest Function: OK<br>";
 
@@ -474,10 +384,8 @@ public function curlRequest($email,$status,$eid,$fname,$message,$customername,$s
        "req=1",
        "FNAME=".$customername,
        "RETURNTOCART=".$linktocart,
-       "SUBTOTAL=US$ ".$subtotal,
-       "CARTAMOUNT=US$ ".$subtotalwithshipping,
+       "CARTAMOUNT=US $ ".$grandtotal,
        "VALIDDATE=".$nextdate,
-       "SHIPPINGCHARGE=US$ ".$shippingcost,
        "CARTDETAIL=".urlencode($message)
        );
       $param_string = implode('&', $embtrigger_params);
@@ -502,36 +410,16 @@ public function curlRequest($email,$status,$eid,$fname,$message,$customername,$s
 }
 
 public function mailsend2(){
-  // echo 'manoj';
   Mage::log(date(),null,'abondent_mailsend2_function.log');  
-    /*$abandonedtime = Mage::getStoreConfig('general/setting/abandonedtime');
-    $timeduration = Mage::getStoreConfig('general/setting/time');
-    $abondent_minutes = $abandonedtime;
-    $storetime = Mage::getModel('core/date')->timestamp(time());
-    $currentdate = date('Y-m-d H:i:s',$storetime);
-    if($timeduration==0){
-       $datetime_from = date("Y-m-d H:i:s",strtotime("-$abondent_minutes days",$storetime));
-    }
-    else{
-       $datetime_from = date("Y-m-d H:i:s",strtotime("-$abondent_minutes hours",$storetime));
-     }*/
      $last =date('Y-m-d H:i:s');
      $first =date('Y-m-d H:i:s', strtotime('-1 hour'));
-
-
-
      $abandonedcollection = Mage::getModel('abandoned/abandoned')->getCollection()->distinct(true)->addFieldToFilter('is_email_send',0);
-    // echo '<pre>';
      $abandonedcollection->addFieldToFilter('update_time', array('gteq' =>$first));
      $abandonedcollection->addFieldToFilter('update_time', array('lteq' => $last));
-    //print_r($abandonedcollection->getData());exit;
-
      $aband_mail_array =array();
-     Mage::log($abandonedcollection->getData(),null,'mailsendlog_verify_1.log'); 
-
+     Mage::log($abandonedcollection->getData(),null,'mailsendlog_verify_1.log');
      foreach ($abandonedcollection as $emailsend) {  
-      Mage::log($emailsend->getData(),null,'mailsendlog_verify_2.log');  
-
+      Mage::log($emailsend->getData(),null,'mailsendlog_verify_2.log'); 
       if(!in_array($emailsend['email_id'],$aband_mail_array)){
        $aband_mail_array[]=$emailsend['email_id']; 
        $this->abandonedcartemail($emailsend['email_id']);
@@ -539,40 +427,5 @@ public function mailsend2(){
        Mage::log($emailsend['email_id'].'------------ mail not send',null,'dupliacteemailid.log'); 
      }
    }
-   // exit;
  }
-
-/*public function testmailsend(){
-    // echo 'maklklnoj';exit;
- // $this->Synchronize();  
-  //echo $email = 'manojiksula@gmail.com';   
-  $this->abandonedcartemail($email);
-  $abandonedtime = Mage::getStoreConfig('general/setting/abandonedtime');
-  $timeduration = Mage::getStoreConfig('general/setting/time');
-  $abondent_minutes = $abandonedtime;
-  $storetime = Mage::getModel('core/date')->timestamp(time());
-  $currentdate = date('Y-m-d H:i:s',$storetime);
-  $first =date('Y-m-d H:i:s', strtotime('-2 day'));
-  $last =date('Y-m-d H:i:s', strtotime('-1 day'));
-    //Mage::helper('core')->formatTime($time=null, $format='short', $showDate=true);
-  if($timeduration==0){
-   $datetime_from = date("Y-m-d H:i:s",strtotime("-$abondent_minutes days",$storetime));
- }
- else{
-  $datetime_from = date("Y-m-d H:i:s",strtotime("-$abondent_minutes hours",$storetime));
-}
-
-$abandonedcollection = Mage::getModel('abandoned/abandoned')->getCollection()->addFieldToFilter('is_email_send',0);
-    //->addFieldToFilter('is_purchase',0)
-    // ->addFieldToFilter('update_time', array('lteq' => $datetime_from))->getData();
-$abandonedcollection->addFieldToFilter('updated_at', array('gteq' =>$first));
-$abandonedcollection->addFieldToFilter('updated_at', array('lteq' => $last));
-print_r($abandonedcartemail->getData());
-exit;
-   // $this->abandonedcartemail($email);
-foreach ($abandonedcollection as $emailsend) {    
-    //call function which send email through chetaha mail
- //$this->abandonedcartemail($emailsend['email_id']);
-}
-}*/
 }
