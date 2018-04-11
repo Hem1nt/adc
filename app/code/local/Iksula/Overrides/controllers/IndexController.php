@@ -609,8 +609,4 @@ class Iksula_Overrides_IndexController extends Mage_Core_Controller_Front_Action
               ->save();
       }
     }
-    public function captchaAction(){        
-        $captchaSession=$this->getRequest()->getPost('captcha');
-        $captchsSessionValue=Mage::getSingleton('core/session')->setCaptchaValue($captchaSession);
-    }
 }

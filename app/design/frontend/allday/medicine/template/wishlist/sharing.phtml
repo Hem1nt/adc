@@ -160,7 +160,7 @@ var dataForm = new VarienForm('form-validate', true);
     function checkCaptcha(capValue){
         jQuery.ajax({
                     type : "POST",
-                    url : "<?php echo $this->getUrl('overrides/index/captcha') ?>", //action in overrides IndexController Change
+                    url : "<?php echo $this->getUrl('frontend/index/captcha') ?>", //action in frontend IndexController Change
                     data : "captcha="+capValue,
                     success:function(result){
                     return result;
