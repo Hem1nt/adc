@@ -23,25 +23,39 @@ class Iksula_Homepagebanner_Block_Index extends Mage_Core_Block_Template{
 
 	public function getBannerHtml()
 	{
-		
+		$currentdate = Mage::getModel('core/date')->date('Y-m-d');
 		$model = Mage::getSingleton('homepagebanner/homeslider')->getCollection()
 		->addFieldToFilter('status', '1')
-		->addFieldToFilter('website', '0')
 		->setOrder('sortorder', 'asc');
 		$mediaurl=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
 		$html ='<ul id="slides1">';
 		foreach ($model->getData() as $banner) {
 			$url = $banner['url'];
+		/*	echo "<pre>";
+			print_r($banner);*/
 			if (!parse_url($url, PHP_URL_SCHEME)) {
 				$url = 'http://' . $url;
 			}
+			/*Filter based on active date deactive date*/
 			$imagesrc = $mediaurl.''.$banner['image'];
-			$html.='<li>	<div class="adc_banner_area"> ';
-			$html.='<a href="'.$url.'">';
-			$html.='<img src="'.$imagesrc.'" alt="'.$banner['name'].'" />';
-			$html.='</a>';
-			$html.='</div><div class="clear"></div></li>';
+			if($banner['deactive_date']){
+				if(($currentdate >= $banner['active_date']) && ($currentdate < $banner['deactive_date'] )){
+					$html.='<li>	<div class="adc_banner_area"> ';
+					$html.='<a href="'.$url.'">';
+					$html.='<img src="'.$imagesrc.'" alt="'.$banner['name'].'" />';
+					$html.='</a>';
+					$html.='</div><div class="clear"></div></li>';
+				}//end of if
+			}
+			elseif($currentdate >= $banner['active_date']){
+				$html.='<li><div class="adc_banner_area"> ';
+				$html.='<a href="'.$url.'">';
+				$html.='<img src="'.$imagesrc.'" alt="'.$banner['name'].'" />';
+				$html.='</a>';
+				$html.='</div><div class="clear"></div></li>';
+			}
 		}
+		/*Filter based on active date deactive date*/
 		return $html;	
 
 	}
