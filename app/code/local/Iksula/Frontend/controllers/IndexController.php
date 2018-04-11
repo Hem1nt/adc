@@ -332,7 +332,7 @@ class Iksula_Frontend_IndexController extends Mage_Core_Controller_Front_Action{
     }
     /*Captcha validation*/
     public function captchaAction(){
-        
+
         $captchaSession=$this->getRequest()->getPost('captcha');
         $captchsSessionValue=Mage::getSingleton('core/session')->setCaptchaValue($captchaSession);
     }

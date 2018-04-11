@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Manoj_Abandoned>
-      <version>0.1.0</version>
+      <version>0.1.1</version>
     </Manoj_Abandoned>
   </modules>
   <frontend>
@@ -138,7 +138,7 @@
     <crontab>
         <jobs>            
 			<abandoned_abandonedemail>
-                <schedule><cron_expr>0 3 * * *</cron_expr></schedule>
+                <schedule><cron_expr>0 */1 * * *</cron_expr></schedule>
                 <run><model>abandoned/cron::Abandonedemail</model></run>
             </abandoned_abandonedemail>
         </jobs>

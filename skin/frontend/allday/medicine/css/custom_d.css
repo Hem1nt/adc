@@ -7279,9 +7279,9 @@ input#subscribebtn {
   cursor: pointer;
 }
 
-input[type="checkbox"] {
+/*input[type="checkbox"] {
     display: none;
-}
+}*/
 
 input.checkbox + label:before {
     content: "";

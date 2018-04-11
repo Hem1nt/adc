@@ -17,7 +17,9 @@ class Manoj_Abandoned_Model_Observer
 		}
 		if(count($dataCollection)>0){        
 			$abandonedcollection->load($cartid);
-			$abandonedcollection->setData('is_purchase',1)->save();
+			//$abandonedcollection->setData('is_purchase',1)->save();
+			$abandonedcollection->delete();
+
 		}
 	}
 		
