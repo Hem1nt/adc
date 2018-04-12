@@ -39,11 +39,6 @@ class Amasty_Oaction_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
 	
         $collection = Mage::getResourceModel($this->_getCollectionClass());
         $this->setCollection($collection);
-		
-		echo '<pre>';
-		print_r($collection->getData());
-		exit;
-		
         return parent::_prepareCollection();
     }
 	
