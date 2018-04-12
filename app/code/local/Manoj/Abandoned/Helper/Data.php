@@ -11,11 +11,11 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
        ->addFieldToFilter('main_table.updated_at', array('to' => $last,'from' => $first))
        ->addOrder('updated_at','desc');
 
-       $items = Mage::getModel('checkout/cart');
-       $salesQuoteItemObj = Mage::getModel('sales/quote_item');
-       $abandonedcart = Mage::getModel('abandoned/abandoned');
-       $quote_collectionArray = array();
-       $quote_ItemArray = array();
+       //$items = Mage::getModel('checkout/cart');
+       //$salesQuoteItemObj = Mage::getModel('sales/quote_item');
+       //$abandonedcart = Mage::getModel('abandoned/abandoned');
+       //$quote_collectionArray = array();
+       //$quote_ItemArray = array();
        foreach ($collection->getData() as $quote) {
         // echo "<pre>"; print_r($quote); exit();
         $abandonedcartCollection = Mage::getSingleton('abandoned/abandoned')->getCollection();
@@ -56,16 +56,16 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
       $salesQuoteItemObj = Mage::getSingleton('sales/quote_item');
       $price = 0;
       $discount_amount = 0;
-      $totalsingleprice = 0;
+     // $totalsingleprice = 0;
       $salesQuoteItem = $salesQuoteItemObj->getCollection()->addFieldToFilter('quote_id', $quote['entity_id'])->getData();
       foreach ($salesQuoteItem as $items) {
         $price += $items['price'];
         $discount_amount += $items['discount_amount'];
         $qty = (int)$items['qty'];
         $quote_ItemArray[]=$items['product_id'].'_'.$qty;
-        $totalsingleprice += $items['price']*$items['qty'];
+        //$totalsingleprice += $items['price']*$items['qty'];
       }
-      $prod_price = sprintf("%.2f",$price);
+      //$prod_price = sprintf("%.2f",$price);
       $discount_amount = sprintf("%.2f",$discount_amount);
       if(!empty($quote_ItemArray)){
         // $subtotal = round(($totalsingleprice - $discount_amount),2);
@@ -92,16 +92,16 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
     $salesQuoteItemObj = Mage::getSingleton('sales/quote_item');
     $price = 0;
     $discount_amount = 0;
-    $totalsingleprice = 0;
+   // $totalsingleprice = 0;
     $salesQuoteItem = $salesQuoteItemObj->getCollection()->addFieldToFilter('quote_id', $quote['entity_id'])->getData();
     foreach ($salesQuoteItem as $items) {
       $price += $items['price'];
       $discount_amount += $items['discount_amount'];
       $qty = (int)$items['qty'];
       $quote_ItemArray[]=$items['product_id'].'_'.$qty;
-      $totalsingleprice += $items['price']*$items['qty'];
+     // $totalsingleprice += $items['price']*$items['qty'];
     }
-    $prod_price = sprintf("%.2f",$price);
+    //$prod_price = sprintf("%.2f",$price);
     $discount_amount = sprintf("%.2f",$discount_amount);
     if(!empty($quote_ItemArray)){
         // $subtotal = round(($totalsingleprice - $discount_amount),2);
@@ -130,13 +130,13 @@ class Manoj_Abandoned_Helper_Data extends Mage_Core_Helper_Abstract
   $salesQuoteItem = $salesQuoteItemObj->getCollection()->addFieldToFilter('quote_id', $quote['entity_id'])->getData();
   $price = 0;
   $discount_amount = 0;
-  $totalsingleprice = '';
+  //$totalsingleprice = '';
   foreach ($salesQuoteItem as $items) {
     $qty = (int)$items['qty'];
     $price += $items['price'];
     $discount_amount += $items['discount_amount'];
     $quote_ItemArray[]=$items['product_id'].'_'.$qty;
-    $totalsingleprice += $items['price']*$items['qty'];
+   // $totalsingleprice += $items['price']*$items['qty'];
   }     
 
   if(!empty($quote_ItemArray)){
@@ -161,7 +161,7 @@ public function sendemailAbandonedCart($cust_email_id){
 
   $productmodelobj = Mage::getModel('catalog/product');
 
-  $nextdate =date('l, jS F Y', strtotime('+1 week'));
+  //$nextdate =date('l, jS F Y', strtotime('+1 week'));
   $to = $cust_email_id;
   $abandonedcartCollection = Mage::getSingleton('abandoned/abandoned')->getCollection();
   $dataCollection = $abandonedcartCollection->addFieldToFilter('email_id',$cust_email_id)->getData();
@@ -248,7 +248,8 @@ public function sendemailAbandonedCart($cust_email_id){
      $baseUrl = Mage::getBaseUrl().'abandoned/index/cartreturn?key='.base64_encode($to).'?utm_source=email-cart&utm_medium=email-cart&utm_campaign=email';
      $message = $htmlnew;
      $status = '';
-     $this->sendMail($cust_email_id,$status, $eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$baseUrl,$nextdate);
+    /* $this->sendMail($cust_email_id,$status, $eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$baseUrl,$nextdate);*/
+     $this->curlRequest($cust_email_id,$status, $eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$baseUrl,$nextdate);
    }   
 
    public function cartreturn()
@@ -279,12 +280,12 @@ public function sendemailAbandonedCart($cust_email_id){
         $abandonedcollection->setData('is_email_send','1')->save();
         $this->sendemailAbandonedCart($customer_email);
       }
-      if($page_capture == 'billing_medicalpage'){
+      else if($page_capture == 'billing_medicalpage'){
           $abandonedcollection->load($cartid);
        $abandonedcollection->setData('is_email_send','1')->save();
        $this->sendemailAbandonedCart($customer_email);              
      }
-     if($page_capture == 'confirmaddress_paymentpage'){
+     else if($page_capture == 'confirmaddress_paymentpage'){
              $abandonedcollection->load($cartid);
        $abandonedcollection->setData('is_email_send','1')->save();
        $this->sendemailAbandonedCart($customer_email);  
@@ -303,7 +304,6 @@ public function checkcartinfo($customer_email){
 
   $salesQuoteItem = $collection->addFieldToFilter('customer_email',$customer_email)->getData();
 
-  //echo "<pre>"; print_r($salesQuoteItem); exit();
 
   if(count($salesQuoteItem)==0){
     $abandonedcartCollection = Mage::getSingleton('abandoned/abandoned')->getCollection();
@@ -313,8 +313,6 @@ public function checkcartinfo($customer_email){
       $cartid = $value['abandoned_cart_id'];
     }
     if(count($dataCollection)>0){   
-     // echo $customer_email;
-    // exit;     
       $abandonedcollection->load($cartid);
       $abandonedcollection->delete();
     }
@@ -324,10 +322,10 @@ public function checkcartinfo($customer_email){
   }
 
 }
-public function sendMail ($email,$status,$eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$linktocart,$nextdate) 
+/*public function sendMail ($email,$status,$eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$linktocart,$nextdate) 
 {
   $this->curlRequest ($email,$status,$eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$linktocart,$nextdate);
-}
+}*/
 public function curlRequest($email,$status,$eid,$customername,$message,$grandtotal,$subtotal,$shippingcost,$linktocart,$nextdate){
   //echo "<textarea>".$message."</textarea>"; //exit; 
   Mage::log($email.'------------mail send',null,'abandonedmail.log');
