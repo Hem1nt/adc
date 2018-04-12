@@ -311,7 +311,7 @@ class Iksula_Contactcustom_IndexController extends Mage_Core_Controller_Front_Ac
 		// 		exit;
 
 				$HTML.='<tr style="font-size:9px;text-align:center;">
-							<td><p style="margin:0;">'.$productname .'</p><p style="margin:0;">'. $activeIngridient.' '.$productObjectNew->getExpiry()'</p></td>
+							<td><p style="margin:0;">'.$productname .'</p><p style="margin:0;">'. $activeIngridient.' '.$item->getData('expiry')/*$productObjectNew->getExpiry()*/.'</p></td>
 							<td>'.$pack_size_label.'</td>
 							<td>'.$bonus.'</td>
 							<td>'.number_format($orderedQty).'</td>

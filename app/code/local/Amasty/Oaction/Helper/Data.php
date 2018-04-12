@@ -36,13 +36,14 @@ class Amasty_Oaction_Helper_Data extends Mage_Core_Helper_Abstract
 				$totalQty = ($packSize+$bonus)*$qty;
 				}
 				$genericName = $item->getProduct()->getData('generic_name'); 
+				echo $item->getData('expiry').'-----';
 				$html.='<tr>
           	<td align="center" valign="middle" style="border-left:1px solid #aeaeae; border-bottom:1px solid #aeaeae; font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:20px 0;">
             	<table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td align="left" valign="middle" style="padding:0 0 0 10px;"><img src="'.$imgPath.'" width="42" alt="img1" style="border:none; font-size:14px;" /></td>
                     <td align="left" valign="middle">'.$parentAttributs["name"].'<br />
-                      ('.$genericName.')'.$parentAttributs['expiry'].'</td>
+                      ('.$genericName.')'.$item->getData('expiry')./*$parentAttributs['expiry']*/'</td>
                   </tr>
                 </table>
             </td>
@@ -90,7 +91,8 @@ class Amasty_Oaction_Helper_Data extends Mage_Core_Helper_Abstract
 					            <td align="center" valign="middle" style="border-left:1px solid #aeaeae; border-bottom:1px solid #aeaeae; font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:20px 10px; border-right:1px solid #aeaeae;">'.$formattedPrice.'</td>
 					          </tr>';
 			}
-		}	
+		}
+		exit;	
 		return $html;
 	}
 	public function getShippingHtml($order)
