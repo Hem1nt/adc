@@ -2586,11 +2586,11 @@ table#product-review-table {
 }
 
 .catalog-product-view .bx-wrapper .bx-prev, .review-product-list .bx-wrapper .bx-prev {
-  left: -20px;
+  left: -33px;
 }
 
 .catalog-product-view .bx-wrapper .bx-next, .review-product-list .bx-wrapper .bx-next {
-  right: -20px;
+  right: -33px;
 }
 
 .catalog-product-view .product-essential, .review-product-list .product-essential {
@@ -7279,9 +7279,9 @@ input#subscribebtn {
   cursor: pointer;
 }
 
-input[type="checkbox"] {
+/*input[type="checkbox"] {
     display: none;
-}
+}*/
 
 input.checkbox + label:before {
     content: "";

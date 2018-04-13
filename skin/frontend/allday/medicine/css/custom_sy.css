@@ -485,6 +485,11 @@ span.mandate {
     .promo-content {
         width: 67%;
     }
+    .showProducts{
+        width: 35%;
+        left: 1%;
+        bottom: 10px;
+    }
 }
 @media (min-width: 768px) and (max-width: 991px){
     /* Promotion with coupon Design Start here */
@@ -543,6 +548,11 @@ span.mandate {
         width: 100%;
         display: inline-block !important;
     }
+    .showProducts{
+        width: 40%;
+        left: 1%;
+        bottom: 5px;
+    }
     /* Promotion with coupon Design end here */
 }
 @media screen and (max-width: 767px){
@@ -568,6 +578,11 @@ span.mandate {
         margin-left: 0;
     }
 }
+@media screen and (max-width: 620px){
+    .showProducts{
+        width: 45%;
+    }
+}
 @media screen and (max-width: 540px){
     .promo-content {
         width: 100%;
@@ -581,6 +596,16 @@ span.mandate {
         margin: 0 auto 10px;
         text-align: center;
         float: none;
+    }
+}
+@media screen and (max-width: 520px){
+    .showProducts{
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 420px) {
+    .showProducts{
+        display: none;
     }
 }
 @media only screen and (max-width: 380px) {
