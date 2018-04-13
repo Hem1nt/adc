@@ -198,7 +198,7 @@ if($_order->getStatus()=='Order Shipped'){
     	<div>
     		<div>
     			<p><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></p>
-          <p><?php echo $_product->getExpiry()?></p>
+          <p><?php echo $_order->getData('expiry')?></p>
     			<p>Qty: <?php echo $this->htmlEscape($qty) ?></p>
           <?php if(!empty($p_packagesize)):?>
           <p>Pack Size: <?php echo $this->htmlEscape($p_packagesize) ?></p>
