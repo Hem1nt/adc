@@ -258,7 +258,7 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
 
         /* end set logic in country is 'US' and $shipped_from = 'Mauritius'*/
         $csvdata = $this->mergeArray($data, 'parent_id');
-      
+        $finalarray = array();
         foreach ($csvdata as $csvkey => $csvvalue) {
           $itemsStatus = $itemsPrice = $itemsTotalQtyBonus = $itemname = $itemsSku = $itemsTotalQty = $itemsBrand = $item_exportcount = array();
 
@@ -343,7 +343,6 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
           }else{
           	$shippingAmount[] = '';
           }
-
           //echo $csvvalue['item_common'][13].$itemsStatus;exit;
           $record = array_merge($csvvalue['item_common'],$itemsSku,$itemname,$itemsTotalQty,$itemsPrice,$shippingAmount,$itemsStatus,$clientComment,$itemsTrackId,$ship_date,$item_shipform,$itemsBrand,$item_exportcount);
           unset($record[13]);
@@ -357,12 +356,16 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
                 }
               }
           }
-          fputcsv($fp,$record, self::DELIMITER, self::ENCLOSURE);
+          foreach ($record as $key => $value) {
+            $newarray[$key][] =   $value;
+          }
+          
+        }
+        foreach ($newarray as $key => $value) {
+          $finalarray[] = implode("  ",array_unique($value));
         }
 
-        // echo '<pre>';
-        // print_r($itemsTotalQty);
-        // exit;
+        fputcsv($fp,$finalarray, self::DELIMITER, self::ENCLOSURE);
     }
 
     public function getItemShipFrom($item)
