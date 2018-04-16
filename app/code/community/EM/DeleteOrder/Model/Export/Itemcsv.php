@@ -346,7 +346,7 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
           //echo $csvvalue['item_common'][13].$itemsStatus;exit;
           $record = array_merge($csvvalue['item_common'],$itemsSku,$itemname,$itemsTotalQty,$itemsPrice,$shippingAmount,$itemsStatus,$clientComment,$itemsTrackId,$ship_date,$item_shipform,$itemsBrand,$item_exportcount);
           unset($record[13]);
-          foreach ($record as $key => $value) {
+          /*foreach ($record as $key => $value) {
               if ($value == '') {
                    $record[$key] = "  ";
               }
@@ -355,17 +355,17 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
                   $record[$key] = "  ";   
                 }
               }
-          }
-          foreach ($record as $key => $value) {
+          }*/
+          /*foreach ($record as $key => $value) {
             $newarray[$key][] =   $value;
-          }
+          }*/
+          fputcsv($fp,$record, self::DELIMITER, self::ENCLOSURE);
           
         }
-        foreach ($newarray as $key => $value) {
+        /*foreach ($newarray as $key => $value) {
           $finalarray[] = implode("  ",array_unique($value));
-        }
+        }*/
 
-        fputcsv($fp,$finalarray, self::DELIMITER, self::ENCLOSURE);
     }
 
     public function getItemShipFrom($item)
