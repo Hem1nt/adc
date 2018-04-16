@@ -1255,10 +1255,10 @@ body *, input, select, textarea, button{
             line-height: 35px;
         }
         .cms-home .main_config_page .best_seller .best_seller_title span, .cms-home .main_config_page .popular_categories .popular_categories_title span, .cms-home .main_config_page .leading_online .leading_online_title span {
-            padding: 9px 25%;
+            padding: 9px 22%;
         }
         .cms-home .main_config_page .mobile_best_seller_title span {
-            padding: 9px 25%;
+            padding: 9px 22%;
         }
         .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_title span::before {
             left: 45%;
