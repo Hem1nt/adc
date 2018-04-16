@@ -7,7 +7,7 @@ body *{
 	font-family: 'Open Sans', sans-serif !important;
 }
 
-.catalog-category-view, .catalogsearch-result-index, .promotions-index-index{
+.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index{
  	.breadcrumbs{
  		li{
  			strong{
@@ -1193,7 +1193,7 @@ body *{
 	}
 }
 
-.catalog-category-view, .catalogsearch-result-index, .promotions-index-index{
+.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index{
 	.col-right.sidebar, .col-left.sidebar{
 		.block-compare{
 			.actions{
@@ -1214,7 +1214,7 @@ body *{
 		.products-grid{
 			width: 100%;
 			padding: 18px 15px;
-			background-color: $grey_background;
+			background: $grey_background !important;
 
 			.slick-prev{
 				left: 5px !important;
@@ -1308,7 +1308,7 @@ body *{
     margin-bottom: 10px;
     border: 0;
 }
- .catalog-category-view, .catalogsearch-result-index, .promotions-index-index{
+ .catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index{
 	.col-right.sidebar, .col-left.sidebar{
 		.block{
 			.block-content{
@@ -1359,7 +1359,7 @@ body *{
     font-size: 14px;
 }
 
-.catalog-category-view, .catalogsearch-result-index, .elastic-search-result, .promotions-index-index {
+.catalog-category-view, .catalogsearch-result-index, .elastic-search-result, .promotions-index-index,  .tag-list-index {
 	.block-layered-nav{
 		dt{
 			background: transparent;
@@ -1440,7 +1440,7 @@ dl#narrow-by-list dd ol li a {
 }
 
 @media only screen and (max-width: 1129px){
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 		.col-main{
 			.banner_image{
 				width: 60%;
@@ -1548,7 +1548,7 @@ dl#narrow-by-list dd ol li a {
 			}
 		}
 	}
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 		.col-main{
 			.category_banner{
 				.banner_desc{
@@ -1802,7 +1802,7 @@ dl#narrow-by-list dd ol li a {
 		}
 	} 
 
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index{
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index{
 		.col-right.sidebar, .col-left.sidebar{
 			.block-compare{
 				.actions{
@@ -1901,7 +1901,7 @@ dl#narrow-by-list dd ol li a {
 			}
 		}
 	}
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
  
 		.col-main{
 			width: 100%;
@@ -2167,7 +2167,7 @@ dl#narrow-by-list dd ol li a {
 }
 
 @media only screen and (max-width: 840px){
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 		.col-right.sidebar, .col-left.sidebar{
 			.block-compare, .block-compared{
 				display: block;
@@ -2183,7 +2183,7 @@ dl#narrow-by-list dd ol li a {
 		width: 100%;
 		box-sizing: border-box;
 	}
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 
 
 
@@ -2504,7 +2504,7 @@ dl#narrow-by-list dd ol li a {
 	}
 }
 @media only screen and (max-width: 630px){
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index{
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index{
 		.col-right.sidebar, .col-left.sidebar{
 			.block-content.sb_content{
 				.sbox_form{
@@ -2517,7 +2517,7 @@ dl#narrow-by-list dd ol li a {
 	}
 }
 @media only screen and (max-width: 580px){
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 		.col-main{
 			.category_banner{
 				.banner_desc{
@@ -2579,7 +2579,7 @@ dl#narrow-by-list dd ol li a {
 	}
 }
 @media only screen and (max-width: 570px){
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 		.col-main{
 			.category-products{
 				.products-list{
@@ -2598,7 +2598,7 @@ dl#narrow-by-list dd ol li a {
 	}
 }
 @media only screen and (max-width: 547px){
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 		.col-main{
 			.category-products{
 
@@ -2652,7 +2652,7 @@ dl#narrow-by-list dd ol li a {
 
 @media only screen and (max-width: 480px){
 
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 		.col-main{
 			.category-products{
 				.products-grid{
@@ -2802,7 +2802,7 @@ dl#narrow-by-list dd ol li a {
 }
 
 @media only screen and (max-width: 420px){
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index {
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index {
 		.col-main{
 			.category-products{
 				.toolbar{
@@ -2907,7 +2907,7 @@ dl#narrow-by-list dd ol li a {
 	}
 }
 @media only screen and (max-width: 375px){
-	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index{
+	.catalog-category-view, .catalogsearch-result-index, .promotions-index-index,  .tag-list-index{
 		.col-main{
 			.category-products{
 				.toolbar{
@@ -2941,7 +2941,7 @@ dl#narrow-by-list dd ol li a {
 	.catalogsearch-result-index .col-main .category-products .products-grid li.item .pr-details-height */
 }
 @media only screen and (max-width: 375px){
-	.catalog-category-view,.catalogsearch-result-index, .promotions-index-index{
+	.catalog-category-view,.catalogsearch-result-index, .promotions-index-index,  .tag-list-index{
 		.col-main{
 			.category-products{
 				.products-grid{
@@ -2964,7 +2964,7 @@ dl#narrow-by-list dd ol li a {
     	box-sizing: border-box;
     }
 
-	.catalog-category-view,.catalogsearch-result-index, .promotions-index-index{
+	.catalog-category-view,.catalogsearch-result-index, .promotions-index-index,  .tag-list-index{
 		.col-main{
 			.category-products{
 				.products-grid{
