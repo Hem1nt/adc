@@ -945,9 +945,9 @@
 	.col2-left-layout .col-main, .col-left {
 	  width: 100%;
 	}
-	.col-left.sidebar .block-title {
+	/*.col-left.sidebar .block-title {
 		display: none;
-	}
+	}*/
 	.block.block-list.block-compared {
 		display: none;
 	}
@@ -2213,7 +2213,7 @@
 		box-sizing: border-box;
 	}
 	.customer-account-forgotpassword .pr-forgot-pswd .buttons-set p.back-link a {
-		padding: 3px 12px;
+		padding: 0px 12px !important;
   		font-size: 13px;
 	}
 	.customer-account-forgotpassword .pr-forgot-pswd .buttons-set button.button span {

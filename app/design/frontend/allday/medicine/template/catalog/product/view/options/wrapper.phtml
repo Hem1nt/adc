@@ -161,8 +161,10 @@ if($_product->isConfigurable()) {
 		echo "</select></span></td>";
 		echo "<td class='price_value'>".$perUnitCost."</td>";
 		echo "<td class='price_value custom_price_center'>".$discountTag.$priceLabel."</td>";
+		//echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" 
+		//title="Add to Wishlist" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';
 		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" 
-		title="Add to Wishlist" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';
+		title="Add to Wishlist" href="'.$this->helper('wishlist')->getAddUrl($_product).'"></a></td>';
 		if($attributeLabel == 'Coming Soon'){
 			echo '<td class="pr-link-notify"><span class="coming_soon_btn">Coming Soon<span></td>';
 		}else{

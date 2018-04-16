@@ -1938,8 +1938,26 @@ a.product_img[data-src~="http"] {
 .promotions-index-index .col-left.sidebar .block {
     border: 0;
 }
-
-
+.promotions-index-index .trustpilot-widget {
+    margin-top: 35px;
+}
+.tag-list-index .tags-list li {
+    display: block !important;
+    font-size: 17px;
+    text-transform: capitalize;
+    border-bottom: 1px solid #ccc;
+    line-height: 20px;
+    padding: 5px 0px;
+}
+.tag-list-index .tags-list li a {
+    color: #333;
+}
+.tag-list-index .tags-list li:last-child {
+    border-bottom: 0;
+}
+.tag-list-index .col-left.sidebar .block-tags .block-content .tags-list li a:after{
+    display: none;
+}
 @media only screen and (max-width: 1125px){
    .adc_christmas .header .quick-access {
         width: 62% !important;
