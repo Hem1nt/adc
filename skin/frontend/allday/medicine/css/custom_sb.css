@@ -1938,7 +1938,9 @@ a.product_img[data-src~="http"] {
 .promotions-index-index .col-left.sidebar .block {
     border: 0;
 }
-
+.promotions-index-index .trustpilot-widget {
+    margin-top: 35px;
+}
 
 @media only screen and (max-width: 1125px){
    .adc_christmas .header .quick-access {

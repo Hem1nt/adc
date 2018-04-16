@@ -180,6 +180,14 @@
 .customer-account-edit .fieldset li.control label.change-pswd {
 	margin: 0px;
 }
+.customer-account-edit .fieldset li.control #change_password{
+	display: none;
+}
+.customer-address-form .fieldset li.control #primary_billing,
+.customer-address-form .fieldset li.control #primary_shipping,
+.newsletter-manage-index .fieldset li.control #subscription{
+	display: none;
+}
 
 .my-account  input.checkbox + label:before {
 	margin-top: 9px;
@@ -603,6 +611,14 @@ a.home_icon.in_nav {
 	.cms-page-view .main-container .col-main p, .cms-page-view .main-container .col-main li {
 		font-size: 1em;
 		line-height: 1.7em;
+	}
+	.customer-account-edit .fieldset li.control #change_password{
+		display: none;
+	}
+	.customer-address-form .fieldset li.control #primary_billing,
+	.customer-address-form .fieldset li.control #primary_shipping,
+	.newsletter-manage-index .fieldset li.control #subscription{
+		display: none;
 	}
 }
 

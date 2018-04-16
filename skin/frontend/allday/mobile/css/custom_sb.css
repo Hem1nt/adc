@@ -42,7 +42,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 @media only screen and (max-width: 1024px){
-
+	.promotions-index-index .trustpilot-widget {
+	    margin-top: 35px;
+	}
 	/*christmas theme*/
 	.opc-wrapper-opc .validation-advice{
 		min-height: 26px;
@@ -1400,6 +1402,9 @@
 		display: inline-block;
 		margin: 0 auto;
 		text-align: center;
+	}
+	.catalog-product-view .review-count-pr .no-rating.review-scroll {
+	    text-align: left;
 	}
 	.catalog-product-view .review-count-pr .rating-box{
 	    display: inline-block;
