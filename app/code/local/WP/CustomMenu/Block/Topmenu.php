@@ -104,11 +104,11 @@ if (!Mage::getStoreConfig('custom_menu/general/enabled'))
             $html .= '</li>';
             $var = fmod($counter,14);
             if($var==0){
-            	$html .='</ul></li>';
+            	$html .='</li>';
             	$counter=0;
             }
             if($childrenCount == $catCounter){
-                $html .='</ul></li>';
+                $html .='</li>';
             }
             $counter++;
             $catCounter++;
@@ -191,7 +191,7 @@ if (!Mage::getStoreConfig('custom_menu/general/enabled'))
     return;
 }
 
-class WP_CustomMenu_Block_Topmenu extends WP_CustomMenu_Block_Navigation
-{
+// class WP_CustomMenu_Block_Topmenu extends WP_CustomMenu_Block_Navigation
+// {
 
-}
+// }

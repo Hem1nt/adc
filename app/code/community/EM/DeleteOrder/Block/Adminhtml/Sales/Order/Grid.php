@@ -169,7 +169,7 @@ class EM_DeleteOrder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
         ->load()
         ->toOptionHash();
         
-        $groups[0] = "Guest";
+        //$groups[0] = "Guest";
 
         $this->addColumn('customer_group_id', array(
             'header' => Mage::helper('sales')->__('Customer Group'),
