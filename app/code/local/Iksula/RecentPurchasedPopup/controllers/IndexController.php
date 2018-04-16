@@ -31,6 +31,7 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
         if($flag)
         {
           $orderId = $itemsCollection->getData('order_id');
+
           //hide popup if order placed from active customer
           if($itemsCollection->getData('customer_id')){
             $customerID = $itemsCollection->getData('customer_id');
@@ -53,16 +54,17 @@ class Iksula_RecentPurchasedPopup_IndexController extends Mage_Core_Controller_F
           $productId = $_catalog->getIdBySku($_sku);
           $_product = Mage::getModel('catalog/product')->load($productId);
           $parentIds = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($_product->getId());
+          
 
           //prepare html
           if(Mage::getSingleton('core/session')->getData('orderid') != $orderId){
               $html .= "<div class='recent'>";
               $parentProduct = Mage::getModel('catalog/product')->load($parentIds[0]);
-              $html  .= "<div class='showProducts_img'><a href='".Mage::getBaseurl().$parentProduct->getData('url_path')."?utm_source=recently-viewed-product"."'><img src=".Mage::helper('catalog/image')->init($parentProduct, 'image')->resize(80,80)."></a></div>";
+              $html  .= "<div class='showProducts_img'><a href='".Mage::getBaseurl().$parentProduct->getData('url_path')."'><img src=".Mage::helper('catalog/image')->init($parentProduct, 'image')->resize(80,80)."></a></div>";
 
               $html .= "<div class='showProducts_desp'>";
               $html .= "<b>Someone in ".$address->getData('city')." , ".$address->getData('region')."</b>";
-              $html .= "<span> recently purchased</span> "."<span class='showProducts_name'>"."<a href='".Mage::getBaseurl().$parentProduct->getData('url_path')."?utm_source=recently-viewed-product"."'>".$_product->getData('name')."</a></span>";
+              $html .= "<span> recently purchased</span> "."<span class='showProducts_name'>"."<a href='".Mage::getBaseurl().$parentProduct->getData('url_path')."'>".$_product->getData('name')."</a></span>";
               $html .= "</div>";
               $html .= "</div>";
               Mage::getSingleton('core/session')->setData('orderid',$orderId);
