@@ -958,7 +958,7 @@ body * {
 .featured_products .featured-block-tab .products-grid {
   width: 100%;
   padding: 18px 15px;
-  background-color: #f4f4f4;
+  background: #f4f4f4 !important;
 }
 .featured_products .featured-block-tab .products-grid .slick-prev {
   left: 5px !important;

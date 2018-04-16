@@ -1214,7 +1214,7 @@ body *{
 		.products-grid{
 			width: 100%;
 			padding: 18px 15px;
-			background-color: $grey_background;
+			background: $grey_background !important;
 
 			.slick-prev{
 				left: 5px !important;
