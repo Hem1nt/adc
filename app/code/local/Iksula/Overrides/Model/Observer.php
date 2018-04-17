@@ -933,7 +933,7 @@ public function reviewStatusChange($observer){
         $quoteItem = $observer->getQuoteItem();
         $product = $observer->getProduct();
         $parentData = $this->getExpiryParentId($product);
-        $quoteItem->setExpiry($parentData['expiry'])->save();
+        $quoteItem->setExpiry($parentData['expiry']);
     }
 
     public function getExpiryParentId($item){
