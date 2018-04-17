@@ -42,8 +42,37 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 @media only screen and (max-width: 1024px){
-
+	.tag-list-index .tags-list{
+		background: none !important;
+		border: 0 !important;
+	}
+	.tag-list-index .tags-list li a {
+	    color: #333;
+	}
+	.tag-list-index .tags-list li {
+	    display: block !important;
+	    font-size: 17px;
+	    text-transform: capitalize;
+	    border-bottom: 1px solid #ccc;
+	    line-height: 20px;
+	    padding: 10px 0px;
+	}
+	.tag-list-index .col-left.sidebar .block-tags .block-content .tags-list li a:after{
+	    display: none;
+	}
+	.promotions-index-index .trustpilot-widget {
+	    margin-top: 35px;
+	}
 	/*christmas theme*/
+	.opc-wrapper-opc .validation-advice{
+		min-height: 26px;
+	}
+	#toTop_mobile {
+        display: none;
+    }
+	.disable_scroll {
+	  overflow: hidden;
+	}
 	.adc_christmas .checkout-headerk .header {
 		display: inline-block;
 		width: 100%;
@@ -1392,6 +1421,9 @@
 		margin: 0 auto;
 		text-align: center;
 	}
+	.catalog-product-view .review-count-pr .no-rating.review-scroll {
+	    text-align: left;
+	}
 	.catalog-product-view .review-count-pr .rating-box{
 	    display: inline-block;
 	    text-align: center;
@@ -1526,6 +1558,11 @@
 	/*share wishlist end*/
 }
 
+@media only screen and (max-width: 920px){
+	.checkout_steps div.tabs div.divider {
+	    width: 9% !important;
+	}
+}
 @media only screen and (max-width: 840px){
 	.adc_christmas .christmas_bell {
 		z-index: -1;
@@ -1807,6 +1844,10 @@
 	    max-width: 1100px;
 	    width: 100%;
 	}
+	.catalog-product-view .review-count-pr .rating-links {
+	    display: block;
+	    text-align: left;
+	}
 }
 @media only screen and (max-width: 694px){
 	.adc_christmas .header .quick-access {
@@ -1980,6 +2021,9 @@
     .wishlist-index-share .share_wishlist .field.wishlist_captcha {
         padding-bottom: 30px;
     }
+    .catalog-product-view .review-count-pr .rating-links{
+    	text-align: left;
+    }
 }
 @media only screen and (max-width: 540px){
     .checkout_steps div.tab-link.checkoutstep-2 p, 
@@ -2015,5 +2059,8 @@
 	}
 	.customer-account-edit #more_info .form-list .input-box {
 	    width: 100% !important;
+	}
+	.opc-wrapper-opc .validation-advice {
+	    min-height: 13px;
 	}
 }	

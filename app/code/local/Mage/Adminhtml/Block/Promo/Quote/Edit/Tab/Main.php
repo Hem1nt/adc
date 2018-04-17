@@ -236,6 +236,12 @@ class Mage_Adminhtml_Block_Promo_Quote_Edit_Tab_Main
             ),
         ));
 
+         $fieldset->addField('sortorder', 'text', array(
+             'name' => 'sortorder',
+             'label' => Mage::helper('salesrule')->__('Sort Order'),
+             'title' => Mage::helper('salesrule')->__('Sort Order'),
+         ));
+
          $fieldset->addField('in_promo_page', 'select', array(
             'label'     => Mage::helper('salesrule')->__('In Promotion Page?'),
             'title'     => Mage::helper('salesrule')->__('In Promotion Page?'),

@@ -36,6 +36,10 @@ class Manoj_Abandoned_Block_Adminhtml_Abandoned_Grid extends Mage_Adminhtml_Bloc
 				"header" => Mage::helper("abandoned")->__("quote_id"),
 				"index" => "quote_id",
 				));
+				$this->addColumn("capture_page", array(
+				"header" => Mage::helper("abandoned")->__("abandoned_page_capture"),
+				"index" => "abandoned_page_capture",
+				));
 						$this->addColumn('is_email_send', array(
 						'header' => Mage::helper('abandoned')->__('is_email_send'),
 						'index' => 'is_email_send',

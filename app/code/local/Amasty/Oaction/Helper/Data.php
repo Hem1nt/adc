@@ -42,7 +42,7 @@ class Amasty_Oaction_Helper_Data extends Mage_Core_Helper_Abstract
                   <tr>
                     <td align="left" valign="middle" style="padding:0 0 0 10px;"><img src="'.$imgPath.'" width="42" alt="img1" style="border:none; font-size:14px;" /></td>
                     <td align="left" valign="middle">'.$parentAttributs["name"].'<br />
-                      ('.$genericName.')'.$parentAttributs['expiry'].'</td>
+                      ('.$genericName.')'.$item->getData('expiry').'</td>
                   </tr>
                 </table>
             </td>
@@ -79,7 +79,7 @@ class Amasty_Oaction_Helper_Data extends Mage_Core_Helper_Abstract
 					                  <tr>
 					                    <td align="left" valign="middle" style="padding:0 0 0 10px;"><img src="'.$imgPath.'" width="42" alt="img1" style="border:none; font-size:14px;" /></td>
 					                    <td align="left" valign="middle">'.$bundleProductName.'<br />
-					                      '.$bundleItemNames.'</td>
+					                      '.$bundleItemNames.'<br />'.$item->getData('expiry').'</td>
 					                  </tr>
 					                </table>
 					            </td>

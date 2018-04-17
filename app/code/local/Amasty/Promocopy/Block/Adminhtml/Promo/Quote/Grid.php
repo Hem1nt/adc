@@ -51,6 +51,14 @@ class Amasty_Promocopy_Block_Adminhtml_Promo_Quote_Grid extends Mage_Adminhtml_B
             ),
         ), 'discount_amount');  
           
+
+           $this->addColumnAfter('sortorder', array(
+             'header'    => Mage::helper('salesrule')->__('Sort Order'),
+             'width'     => '30px',
+             'align'     => 'right',
+             'index'     => 'sortorder',
+         ), 'discount_amount');
+
         $this->addColumn('action',array(
             'header'    => Mage::helper('catalog')->__('Action'), //its correct
             'width'     => '50px',

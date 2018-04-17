@@ -10,7 +10,9 @@
     <reference name="content">   
       <block type="promotions/index" name="promotions_index" template="promotions/right.phtml"/>   
     </reference>
-    <reference name="left">   
+    <reference name="left">
+      <action method="unsetChild"><name>catalog.compare.sidebar</name></action>
+      <action method="unsetChild"><name>tags_popular</name></action>       
       <block type="promotions/index" name="promotions_index_left" template="promotions/left.phtml"/>
       <block type="core/template" name="trustedcompany" template="trustpilot/trustpilot.phtml" />   
     </reference>

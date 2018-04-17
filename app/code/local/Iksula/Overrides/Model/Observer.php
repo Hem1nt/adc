@@ -928,4 +928,44 @@ public function reviewStatusChange($observer){
         }
     }
 
+    public function salesQuoteItemSetExpiry($observer)
+    {
+        $quoteItem = $observer->getQuoteItem();
+        $product = $observer->getProduct();
+        $parentData = $this->getExpiryParentId($product);
+        $quoteItem->setExpiry($parentData['expiry']);
+    }
+
+    public function getExpiryParentId($item){
+            if($item->getTypeId() != 'bundle'){
+                $parentId = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($item->getId());
+                if(!empty($parentId)){
+                    $product = Mage::getModel('catalog/product')->load($parentId[0]);
+                    if($product->getTypeId() != 'bundle'){
+                        $parentAttr = array(
+                            'name'=>$product->getName(),
+                            'bonus'=>$product->getBonus(),
+                            'productType'=>$product->getTypeId(),
+                            'product'=>$product,
+                            'expiry'=>$product->getExpiry(),
+                        );
+                        return $parentAttr;
+                    }else{
+                        $parentAttr = array();  
+                        return $parentAttr;
+                    }
+                }
+            }else{
+                $product = Mage::getModel('catalog/product')->load($item->getId());
+                $parentAttr = array(
+                        'name'=>$product->getName(),
+                        'bonus'=>$product->getBonus(),
+                        'productType'=>$product->getTypeId(),
+                        'product'=>$product,
+                        'expiry'=>$product->getExpiry(),
+                    );
+                return $parentAttr;
+            }
+    }
+
 }
