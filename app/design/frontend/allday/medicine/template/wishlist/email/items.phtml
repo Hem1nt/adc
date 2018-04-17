@@ -32,14 +32,52 @@
     <?php $i = 0; foreach ($this->getWishlistItems() as $item): $i++ ?>
         <?php /* @var $item Mage_Wishlist_Model_Item */ ?>
         <?php /* @var $_product Mage_Catalog_Model_Product */ ?>
-        <?php $_product = $item->getProduct(); ?>
+        <?php $_product = $item->getProduct();
+            
+            $reviews = Mage::getModel('review/review')
+                ->getResourceCollection()
+                ->addStoreFilter(Mage::app()->getStore()->getId())
+                ->addEntityFilter('product', $_product->getData('entity_id'))
+                ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
+                ->setDateOrder()
+                ->addRateVotes();
+            /**
+             * Getting average of ratings/reviews
+             */
+            $avg = 0;
+            $ratings = array();
+            if (count($reviews) > 0) {
+                foreach ($reviews->getItems() as $review) {
+                    foreach( $review->getRatingVotes() as $vote ) {
+                        $ratings[] = $vote->getPercent();
+                    }
+                }
+                $avg = array_sum($ratings)/count($ratings);
+            }
+           
+         ?>
+
+        <?php
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $customer = Mage::getSingleton('customer/session')->getCustomer();
+        ?>
+        <p><?php
+            echo $customer->getEmail().''.$customer->getName();?></p>
+        <?php } ?>
         <td width="32%">
             <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" style="border:1px solid #ccc;" width="135" height="135" alt="" /></a></p>
             <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#203548;"><strong><?php echo $this->escapeHtml($_product->getName()) ?></strong></a></p>
             <?php if($this->hasDescription($item)): ?><p align="center" style="font-size:12px;"><?php echo $this->__('Comment') ?>:<br /><?php echo $this->getEscapedDescription($item) ?></p><?php endif; ?>
             <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#1E7EC8;"><?php echo $this->__('View Product') ?></a> <small>
             <?php if ($_product->getIsSalable()): ?>|</small> <a href="<?php echo $this->getAddToCartUrl($_product) ?>" style="color:#1E7EC8;"><strong><?php echo $this->__('Add to Cart') ?></strong></a><?php endif;?>
-            </p></td>
+            </p>
+            <p><?php echo $_product->getData('active_ingridients')?></p>
+            <p><?php echo $_product->getData('us_brand_name')?></p>
+            <p><?php echo $_product->getData('price')?></p>
+            <div class="rating-box" style="float:left;">
+                <div class="rating" style="width: <?php echo ceil($avg) ; ?>%;"></div>
+            </div>
+            </td>
         <?php if ($i%3!=0): ?>
             <td width="2%"></td>
         <?php else: ?>
@@ -52,5 +90,6 @@
             <?php endif ?>
         <?php endif ?>
     <?php endforeach ?>
+        <a href="<?php echo Mage::getBaseUrl()?>referral" >Click Here</a>
 </table>
 </div>
