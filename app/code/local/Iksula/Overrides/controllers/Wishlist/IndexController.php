@@ -12,7 +12,19 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
             return $this->norouteAction();
         }
 
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $customer = Mage::getSingleton('customer/session')->getCustomer();
+        }
+        $sharedBy = $customer->getName();
         $emails  = explode(',', $this->getRequest()->getPost('emails'));
+        $customerCollection = Mage::getModel('customer/customer')
+                    ->getCollection()
+                    ->addAttributeToSelect('*')
+                    ->addAttributeToFilter('email', array('in' => $emails))
+                    ->load();
+                    foreach ($customerCollection as $customerCollections) {
+                        $sharedTo = $customerCollections->getData('firstname');
+                }
         /*CAPTCHA VALIDATION starts*/
         $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
         $captchaInput=$this->getRequest()->getPost('wishlist_captcha_code');
@@ -79,7 +91,9 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
                         'items'          => $wishlistBlock,
                         'addAllLink'     => Mage::getUrl('*/shared/allcart', array('code' => $sharingCode)),
                         'viewOnSiteLink' => Mage::getUrl('*/shared/index', array('code' => $sharingCode)),
-                        'message'        => $message
+                        'message'        => $message,
+                        'shareto'        => $sharedTo,
+                        'sharedby'       => $sharedBy
                     )
                 );
             }
