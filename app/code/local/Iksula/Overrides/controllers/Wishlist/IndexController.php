@@ -22,9 +22,14 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
                     ->addAttributeToSelect('*')
                     ->addAttributeToFilter('email', array('in' => $emails))
                     ->load();
-                    foreach ($customerCollection as $customerCollections) {
-                        $sharedTo = $customerCollections->getData('firstname');
+        foreach ($customerCollection as $customerCollections) {
+            if($customerCollections->getData('firstname')){
+                $sharedTo[] = $customerCollections->getData('firstname'); 
+            }else{
+                $sharedTo[] = "Customer";
                 }
+            }
+        $sharedToCombine = array_combine($emails, $sharedTo);     
         /*CAPTCHA VALIDATION starts*/
         $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
         $captchaInput=$this->getRequest()->getPost('wishlist_captcha_code');
@@ -79,11 +84,11 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
             $emailModel = Mage::getModel('core/email_template');
 
             $sharingCode = $wishlist->getSharingCode();
-            foreach ($emails as $email) {
+            foreach ($sharedToCombine as $k => $v) {
                 $emailModel->sendTransactional(
                     Mage::getStoreConfig('wishlist/email/email_template'),
                     Mage::getStoreConfig('wishlist/email/email_identity'),
-                    $email,
+                    $k,
                     null,
                     array(
                         'customer'       => $customer,
@@ -92,7 +97,7 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
                         'addAllLink'     => Mage::getUrl('*/shared/allcart', array('code' => $sharingCode)),
                         'viewOnSiteLink' => Mage::getUrl('*/shared/index', array('code' => $sharingCode)),
                         'message'        => $message,
-                        'shareto'        => $sharedTo,
+                        'shareto'        => $v,
                         'sharedby'       => $sharedBy
                     )
                 );
@@ -100,9 +105,7 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
 
             $wishlist->setShared(1);
             $wishlist->save();
-
             $translate->setTranslateInline(true);
-
             Mage::dispatchEvent('wishlist_share', array('wishlist' => $wishlist));
             Mage::getSingleton('customer/session')->addSuccess(
                 $this->__('Your Wishlist has been shared.')
