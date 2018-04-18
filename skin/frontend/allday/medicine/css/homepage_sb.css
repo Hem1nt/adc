@@ -1276,6 +1276,7 @@ body *, input, select, textarea, button{
             display: inline-block;
             box-sizing: border-box;
             font-size: 11px;
+            padding: 9px 22%;
         }
         .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_title span::before {
             left: 50%;
@@ -1293,7 +1294,7 @@ body *, input, select, textarea, button{
              margin: 0; 
         } 
         .iframe_wrap{
-        background: #000;
+            background: #000;
         }
         .cms-home .recently_view_category_content .register_user_category_name{
             display: inline-block;

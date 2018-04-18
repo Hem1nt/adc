@@ -1609,7 +1609,7 @@
 		float: left;
 	}
 	.pr-details-height {
-		min-height: 0;
+		min-height: 230px;
   		display: inline-block;
   		text-align: left;
   		margin-left: 20px;

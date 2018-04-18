@@ -42,6 +42,24 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 @media only screen and (max-width: 1024px){
+	.tag-list-index .tags-list{
+		background: none !important;
+		border: 0 !important;
+	}
+	.tag-list-index .tags-list li a {
+	    color: #333;
+	}
+	.tag-list-index .tags-list li {
+	    display: block !important;
+	    font-size: 17px;
+	    text-transform: capitalize;
+	    border-bottom: 1px solid #ccc;
+	    line-height: 20px;
+	    padding: 10px 0px;
+	}
+	.tag-list-index .col-left.sidebar .block-tags .block-content .tags-list li a:after{
+	    display: none;
+	}
 	.promotions-index-index .trustpilot-widget {
 	    margin-top: 35px;
 	}
