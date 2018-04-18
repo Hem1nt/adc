@@ -31,7 +31,7 @@ if($_product->isConfigurable()) {
 
 	ksort($newChildProducts);
 	echo "<table class=\"new_product_list\" valign=\"center\">
-			<tr>
+			<tr class=\"option_heading\">
 				<th class=\"pack_size\"><strong>Pack Size</strong></th>
 				<th class='qty'><strong>Qty</strong></th>
 				<th class=\"price_per_pill\"><strong>Price Per Pill or Unit</strong></th>
@@ -71,9 +71,9 @@ if($_product->isConfigurable()) {
 			$priceLabel = '<span class="price">'.$childPrice.'</span>';
 		}
 		if($i==count($newChildProducts)) {
-			echo "<tr class=\"last\">";
+			echo "<tr class=\"last pack_size_option\">";
 		} else {
-			echo "<tr>";
+			echo "<tr class=\"pack_size_option \">>";
 		}
 		if($child->getSpecialPrice()){
 			$perUnit = $child->getSpecialPrice()/$packUnitsize;
