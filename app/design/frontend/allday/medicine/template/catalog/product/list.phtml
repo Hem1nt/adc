@@ -32,6 +32,9 @@
  */
 ?>
 <?php
+$category = Mage::registry('current_category');
+?>
+<?php
     // check for http or https
     if (Mage::app()->getStore()->isCurrentlySecure()) { //secure mode your current URL is HTTPS
         $url = Mage::getUrl('outofstocksubscription/index/index',array('_secure'=>true));
@@ -533,4 +536,9 @@ jQuery(document).ready(function($){
    });
 
 });
+</script>
+<script type="text/javascript">
+    var mpulse = '<?php if($category->getData('mpulse')){
+        echo $category->getData('mpulse');
+    } ?>';
 </script>

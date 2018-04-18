@@ -35,6 +35,7 @@
 ?>
 <?php
 $product = Mage::registry('current_product');
+echo '<pre>';
 $id = $product->getId();//3607
 $qty = $product->getStockItem()->getQty();
 //out of stock product count
@@ -724,4 +725,9 @@ function suggestion_refresh_Captcha(){
 }
 
 
+</script>
+<script type="text/javascript">
+    var mpulse = '<?php if($_product->getMpulse()){
+        echo $_product->getMpulse();
+    } ?>';
 </script>
