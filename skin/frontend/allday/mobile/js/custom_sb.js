@@ -49,7 +49,12 @@ equalheight = function(container){
       $(".popup_refill, .popup_refill_overlay").hide();
     });
 
-    
+    $(".mobile-pr-category-icon").click(function(){
+        $("body").addClass("disable_scroll");
+    });
+    $(".overlay-header").click(function(){
+      $("body").removeClass("disable_scroll");
+    });
       // if (!$("body").hasClass("opc-index-index") == true) {
             // jQuery.fn.snow({minSize: 15, maxSize: 25, newOn: 500, flakeColor: '#bbb' });/*minSize: 5, maxSize: 25, newOn: 1000, */
             // jQuery.fn.snow1({minSize: 10, maxSize: 20, newOn: 400, flakeColor: '#bbb' });/*minSize: 5, maxSize: 25, newOn: 1000, */
