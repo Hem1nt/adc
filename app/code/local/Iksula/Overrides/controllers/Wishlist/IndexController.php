@@ -23,13 +23,16 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
                     ->addAttributeToFilter('email', array('in' => $emails))
                     ->load();
         foreach ($customerCollection as $customerCollections) {
-            if($customerCollections->getData('firstname')){
-                $sharedTo[] = $customerCollections->getData('firstname'); 
-            }else{
-                $sharedTo[] = "Customer";
-                }
+                $sharedTo[$customerCollections->getData('email')] = $customerCollections->getData('firstname');
             }
-        $sharedToCombine = array_combine($emails, $sharedTo);     
+        //print_r($sharedTo);
+        foreach ($emails as $ke => $va) {
+            if(!array_key_exists($va, $sharedTo)){
+                $sharedTo[$va] = 'Customer';
+            }
+        }
+
+        //$sharedToCombine = array_combine($emails, $sharedTo);     
         /*CAPTCHA VALIDATION starts*/
         $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
         $captchaInput=$this->getRequest()->getPost('wishlist_captcha_code');
@@ -84,7 +87,7 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
             $emailModel = Mage::getModel('core/email_template');
 
             $sharingCode = $wishlist->getSharingCode();
-            foreach ($sharedToCombine as $k => $v) {
+            foreach ($sharedTo as $k => $v) {
                 $emailModel->sendTransactional(
                     Mage::getStoreConfig('wishlist/email/email_template'),
                     Mage::getStoreConfig('wishlist/email/email_identity'),
@@ -106,6 +109,7 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
             $wishlist->setShared(1);
             $wishlist->save();
             $translate->setTranslateInline(true);
+
             Mage::dispatchEvent('wishlist_share', array('wishlist' => $wishlist));
             Mage::getSingleton('customer/session')->addSuccess(
                 $this->__('Your Wishlist has been shared.')
