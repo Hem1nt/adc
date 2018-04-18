@@ -1238,6 +1238,12 @@ body *, input, select, textarea, button{
 @media all and (max-width: 420px){
         .cms-home .main_config_page .mobile_best_seller {
             width: 100%;
+            text-align: center;
+        }
+        .cms-home .main_config_page .mobile_best_seller_title {
+            text-align: center;
+            width: 260px;
+            display: inline-block;
         }
         .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev, .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next {
             top: 45%;
@@ -1255,13 +1261,25 @@ body *, input, select, textarea, button{
             line-height: 35px;
         }
         .cms-home .main_config_page .best_seller .best_seller_title span, .cms-home .main_config_page .popular_categories .popular_categories_title span, .cms-home .main_config_page .leading_online .leading_online_title span {
-            padding: 9px 22%;
+            padding: 9px 20%;
+            box-sizing: border-box;
+            width: 100%;
+            display: inline-block;
+            font-size: 11px;
+        }
+        .cms-home .recently_view_category_content .register_user_category_name span{
+            font-size: 11px;   
         }
         .cms-home .main_config_page .mobile_best_seller_title span {
+            padding: 9px 20%;
+            width: 100%;
+            display: inline-block;
+            box-sizing: border-box;
+            font-size: 11px;
             padding: 9px 22%;
         }
         .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_title span::before {
-            left: 45%;
+            left: 50%;
         }
         .cms-home .main_config_page .best_seller .best_seller_title span::before, .cms-home .main_config_page .popular_categories .popular_categories_title span::before, .cms-home .main_config_page .leading_online .leading_online_title span::before {
             left: 45%;
@@ -1274,13 +1292,28 @@ body *, input, select, textarea, button{
         .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1 {
             width: 85%;
              margin: 0; 
-        }
-
-       
-        
-         .iframe_wrap{
+        } 
+        .iframe_wrap{
             background: #000;
-         }
+        }
+        .cms-home .recently_view_category_content .register_user_category_name{
+            display: inline-block;
+            width: 260px;
+            text-align: center;
+        }
+        .cms-home .main_config_page .best_seller .best_seller_title, 
+        .cms-home .main_config_page .popular_categories .popular_categories_title, 
+        .cms-home .main_config_page .leading_online .leading_online_title{
+            text-align: center;
+            width: 260px;
+            display: inline-block;
+        }
+        .cms-home .main_config_page .popular_categories{
+            text-align: center;
+        }
+        .cms-home .main_config_page .leading_online {
+            text-align: center;
+        }
 }
 
 @media all and (min-width: 1025px) and (max-width:10000px){
