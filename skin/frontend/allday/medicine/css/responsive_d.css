@@ -2396,7 +2396,9 @@
 	.compare_box_main {
 		display: none;
 	}
-
+	.catalog-product-view .compare_box_main {
+	    display: inline-block;
+	}
 	.below_banner_area iframe{
 		display: block;
 	}
@@ -2415,6 +2417,12 @@
     	float: right;
     	text-decoration: none;
     	margin-top: 8px;
+	}
+	.catalog-product-view .compare_box_main .compare_btn_box {
+	    display: block;
+	    width: 120px;
+	    text-align: center;
+	    clear: both;
 	}
 }
 
@@ -2988,6 +2996,15 @@
 	.customer-name-middlename .name-middlename {
 	    width: 100%;
 	    margin: 0;
+	}
+	.catalog-product-view .compare_box_main{
+		text-align: center;
+	}
+	.catalog-product-view .compare_box_main li.product_box {
+	    border-color: #c9c9c9;
+	    float: left;
+	    margin-bottom: 10px;
+	    width: 35%;
 	}
 }
 
