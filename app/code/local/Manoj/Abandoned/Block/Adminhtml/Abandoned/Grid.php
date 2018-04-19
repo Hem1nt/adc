@@ -8,7 +8,7 @@ class Manoj_Abandoned_Block_Adminhtml_Abandoned_Grid extends Mage_Adminhtml_Bloc
 				parent::__construct();
 				$this->setId("abandonedGrid");
 				$this->setDefaultSort("abandoned_cart_id");
-				$this->setDefaultDir("ASC");
+				$this->setDefaultDir("DESC");
 				$this->setSaveParametersInSession(true);
 		}
 

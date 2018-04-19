@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Manoj_Abandoned>
-      <version>0.1.1</version>
+      <version>0.1.2</version>
     </Manoj_Abandoned>
   </modules>
   <frontend>
@@ -45,6 +45,9 @@
 			  <abandoned>
 				<table>abandoned_cart</table>
 			  </abandoned>
+			  <abandonedorder>
+				<table>abandoned_cart_order</table>
+			  </abandonedorder>
         </entities>
 	  </abandoned_mysql4>
 	</models>
@@ -103,6 +106,12 @@
 					<sort_order>0</sort_order>
 					<action>abandoned/adminhtml_abandoned</action>
 				</abandoned>
+
+				 <abandonedorder module="abandoned">
+		    <title>Manage Abandonedorder</title>
+			<sort_order>10</sort_order>
+			<action>abandoned/adminhtml_abandonedorder</action>
+		  </abandonedorder>
 			</children>
 		</abandoned>
 	</menu>
@@ -121,6 +130,11 @@
 			<title>Manage Abandoned Cart</title>
 			<sort_order>0</sort_order>
 		  </abandoned>
+
+		   <abandonedorder translate="title">
+			<title>Manage Abandonedorder</title>
+			<sort_order>10</sort_order>
+		  </abandonedorder>
 			  </children>
 			</abandoned>
 		  </children>

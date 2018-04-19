@@ -5,4 +5,10 @@
 	  <block type="abandoned/adminhtml_abandoned" name="abandoned" />
 	</reference>
   </abandoned_adminhtml_abandoned_index>
+  
+   <abandoned_adminhtml_abandonedorder_index>
+	<reference name="content">
+	  <block type="abandoned/adminhtml_abandonedorder" name="abandonedorder" />
+	</reference>
+  </abandoned_adminhtml_abandonedorder_index>
 </layout>
