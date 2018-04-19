@@ -39,7 +39,7 @@ class Manoj_Abandoned_Block_Adminhtml_Abandonedorder_Grid extends Mage_Adminhtml
 				));
 				
 				$this->addColumn('created_time', array(
-						'header'    => Mage::helper('abandoned')->__('created_time'),
+						'header'    => Mage::helper('abandoned')->__('puchased_time'),
 						'index'     => 'created_time',
 						'type'      => 'datetime',
 					));

@@ -23,7 +23,7 @@ class Manoj_Abandoned_Block_Adminhtml_Abandonedorder_Edit_Tab_Form extends Mage_
 						);
 
 						$fieldset->addField('created_time', 'date', array(
-						'label'        => Mage::helper('abandoned')->__('created_time'),
+						'label'        => Mage::helper('abandoned')->__('purchased_time'),
 						'name'         => 'created_time',
 						'time' => true,
 						'image'        => $this->getSkinUrl('images/grid-cal.gif'),
