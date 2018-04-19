@@ -393,7 +393,8 @@
 		width: 80%;
 	}
 	.checkout-cart-index table#shopping-cart-table td.cart-qty{
-		width: 12%;	
+		width: 12%;
+		margin-right: 5px;	
 	}
 	.checkout-cart-index table#shopping-cart-table td.a-right.cart-price-exc-tax .price {
 	    font-size: 13px !important;
@@ -418,5 +419,10 @@
 	}
 	.checkout-cart-index table#shopping-cart-table td:nth-child(4) {
 	  width: 15%;
+	}
+}
+@media only screen and (max-width: 320px) {
+	.checkout-cart-index table#shopping-cart-table td.a-right.cart-price-exc-tax {
+        padding: 7px 5px;
 	}
 }

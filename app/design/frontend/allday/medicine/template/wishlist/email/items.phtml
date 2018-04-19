@@ -32,14 +32,60 @@
     <?php $i = 0; foreach ($this->getWishlistItems() as $item): $i++ ?>
         <?php /* @var $item Mage_Wishlist_Model_Item */ ?>
         <?php /* @var $_product Mage_Catalog_Model_Product */ ?>
-        <?php $_product = $item->getProduct(); ?>
-        <td width="32%">
-            <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" style="border:1px solid #ccc;" width="135" height="135" alt="" /></a></p>
-            <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#203548;"><strong><?php echo $this->escapeHtml($_product->getName()) ?></strong></a></p>
-            <?php if($this->hasDescription($item)): ?><p align="center" style="font-size:12px;"><?php echo $this->__('Comment') ?>:<br /><?php echo $this->getEscapedDescription($item) ?></p><?php endif; ?>
-            <p align="center" style="font-size:12px;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#1E7EC8;"><?php echo $this->__('View Product') ?></a> <small>
-            <?php if ($_product->getIsSalable()): ?>|</small> <a href="<?php echo $this->getAddToCartUrl($_product) ?>" style="color:#1E7EC8;"><strong><?php echo $this->__('Add to Cart') ?></strong></a><?php endif;?>
-            </p></td>
+        <?php   $_product = $item->getProduct();
+                $pId = $_product->getEntityId();
+                $storeId = Mage::app()->getStore()->getId();
+                $summaryData = Mage::getModel('review/review_summary')
+                            ->setStoreId($storeId)
+                            ->load($_product->getId());                       
+         ?>
+        <div class="ratings" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        <?php
+        if ($summaryData->getData('rating_summary')):?>
+            <!-- <span class="no-display" itemprop="worstRating">0</span>
+            <span class="no-display" itemprop="bestRating">100</span>
+            <span class="no-display" itemprop="ratingValue"><?php //echo $summaryData->getData('rating_summary') ?></span> -->
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo $summaryData->getData('rating_summary') ?>%"></div>
+            </div>
+        <?php endif;?>
+        <td align="left" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="center" valign="top"><a href="'.$pUrl.'"><a href="<?php echo $this->getProductUrl($_product) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" style="border:1px solid #ccc;" width="135" height="135" alt="" /></a></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="middle" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:10px 0;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#203548;"><strong><?php echo $this->escapeHtml($_product->getName()) ?></strong></a></td>
+                </tr>
+                <tr>
+                    <td align="center" valign="middle" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:10px 0;"><a href="<?php echo $this->getProductUrl($_product) ?>" style="color:#1E7EC8;"><?php echo $this->__('View Product') ?></a> </td>
+                </tr>
+                <?php if($_product->getAttributeText('active_ingridients')):?>
+                    <tr>
+                        <td align="center" valign="middle" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:10px 0;"><?php echo "<b>Active Ingridents: </b>".$_product->getAttributeText('active_ingridients');?></td>
+                    </tr>
+                 <?php endif;?>
+                <?php if($_product->getData('us_brand_name')):?>
+                <tr>
+                    <td align="center" valign="middle" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:10px 0;"><?php echo "<b>US brand name:</b> ".$_product->getData('us_brand_name');?></td>
+                </tr>
+                <?php endif;?>
+                <?php if($_product->getData('price')):?>
+                <tr>
+                    <td align="center" valign="middle" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:10px 0;"><?php echo "<b>Price</b> ".Mage::helper('core')->currency($_product->getData('price'));?></td>
+                </tr>
+                <?php endif;?>
+                <tr>
+                    <td align="center" valign="middle" style="font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:12px; color:#333333; padding:10px 0;"><a href="<?php echo Mage::getBaseUrl().'extendedreview/index/reviewpage'."?product_id=".$pId ?>" class="rating_review_count" target="_blank"><?php echo "<b>Review: </b>".$this->__('%d Review(s)', $summaryData->getData('reviews_count')) ?></a></td>
+                </tr>
+                <?php if ($_product->getIsSalable()): ?>
+                <tr>
+                    <td align="center" valign="top" style="padding:10px 0;"><a style="padding:8px 25px; font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:13px; color:#ffffff; font-weight:normal; background-color:#4f6b05; text-decoration:none;" href="<?php echo $this->getAddToCartUrl($_product) ?>">Buy Now</a></td>
+                </tr>
+            <?php endif;?>
+            </table>
+        </td>
+
         <?php if ($i%3!=0): ?>
             <td width="2%"></td>
         <?php else: ?>
@@ -53,4 +99,7 @@
         <?php endif ?>
     <?php endforeach ?>
 </table>
+<p  align="center" style="font-size:20px;">
+    <a style="padding:8px 25px; font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size:13px; color:#ffffff; font-weight:normal; background-color:#4f6b05; text-decoration:none;" href="<?php echo Mage::getBaseUrl()?>referral ?>">Referral program</a>
+</p>
 </div>

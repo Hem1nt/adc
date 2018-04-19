@@ -71,7 +71,7 @@
         display: none;
     }
 	.disable_scroll {
-	  overflow: hidden;
+	  overflow: hidden !important;
 	}
 	.adc_christmas .checkout-headerk .header {
 		display: inline-block;
