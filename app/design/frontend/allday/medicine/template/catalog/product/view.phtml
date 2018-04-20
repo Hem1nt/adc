@@ -85,10 +85,12 @@ var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>
                             <!-- schema.org tag for Product Availability -->
                             <?php if($_product->isAvailable()): ?>
                             <div class="no-display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <meta itemprop="priceCurrency" content="USD" />
                              <span itemprop="price">
                                 <?php
 
-                                echo Mage::helper('core')->currency($getSimpleProductPrice); 
+                                //echo Mage::helper('core')->currency($getSimpleProductPrice); 
+                                echo $getSimpleProductPrice; 
                                 ?>
                             </span>
                             <link itemprop="availability" href="http://schema.org/InStock" />

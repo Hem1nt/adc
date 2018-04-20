@@ -40,7 +40,8 @@ $pId = $this->getProduct()->getId();
 ?>
 <?php if ($this->getReviewsCount()): ?>
     <div class="ratings" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-        <span class="no-display" itemprop="reviewCount"><?php echo $this->getReviewsCount() ?> reviews</span>
+        <!-- <span class="no-display" itemprop="reviewCount"><?php //echo $this->getReviewsCount() ?> reviews</span> -->
+        <span class="no-display" itemprop="reviewCount"><?php echo $this->getReviewsCount() ?></span>
         <?php if ($this->getRatingSummary()):?>
             <span class="no-display" itemprop="worstRating">0</span>
             <span class="no-display" itemprop="bestRating">100</span>
