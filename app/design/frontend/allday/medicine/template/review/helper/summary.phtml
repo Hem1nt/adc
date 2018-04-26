@@ -44,8 +44,8 @@ $pId = $this->getProduct()->getId();
         <span class="no-display" itemprop="reviewCount"><?php echo $this->getReviewsCount() ?></span>
         <?php if ($this->getRatingSummary()):?>
             <span class="no-display" itemprop="worstRating">0</span>
-            <span class="no-display" itemprop="bestRating">100</span>
-            <span class="no-display" itemprop="ratingValue"><?php echo $this->getRatingSummary() ?></span>
+            <span class="no-display" itemprop="bestRating">5</span>
+            <span class="no-display" itemprop="ratingValue"><?php echo round($this->getRatingSummary()/20,2); ?></span>
             <div class="rating-box">
                 <div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
             </div>
