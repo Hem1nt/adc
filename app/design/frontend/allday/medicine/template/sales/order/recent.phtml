@@ -68,10 +68,10 @@
                         <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
                             <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
                         <?php endif ?>
-                        <span class="separator">|</span>
-                        <a href="javascript:void(0)" data-orderid="<?php echo $_order->getCustomerOrderIncrementId(); ?>" class="link-refill refilreminder-action">                        
-                            <?php echo $this->__('Refill Reminder') ?>
-                        </a>
+                        <!-- <span class="separator">|</span>
+                        <a href="javascript:void(0)" data-orderid="<?php //echo $_order->getCustomerOrderIncrementId(); ?>" class="link-refill refilreminder-action">                        
+                            <?php //echo $this->__('Refill Reminder') ?>
+                        </a> -->
                         <!-- Echeck Pay Now FOR US-->
                         <?php
                             $customerLoggedIn = Mage::getSingleton('customer/session')->isLoggedIn();
