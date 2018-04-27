@@ -188,6 +188,7 @@ body *, input, select, textarea, button{
     border-radius: 35px;
     font-weight: 700;
     position: relative;
+    display: inline-block; 
 }
 .cms-home .main_config_page .best_seller .best_seller_title span::before, 
 .cms-home .main_config_page .popular_categories .popular_categories_title span::before, 
@@ -199,7 +200,7 @@ body *, input, select, textarea, button{
     border-right: 15px solid transparent;
     border-bottom: 11px solid #506f00;
     position: absolute;
-    top: 30px;
+    bottom: -11px;
     transform: rotate(180deg);
     left: 41%;
 }
@@ -361,7 +362,7 @@ body *, input, select, textarea, button{
     border-right: 15px solid transparent;
     border-top: 11px solid #506f00;
     position: absolute;
-    top: 32px;
+    bottom: -11px;
     /*transform: rotate(180deg);*/
     left: 45%;
 }
@@ -1042,7 +1043,7 @@ body *, input, select, textarea, button{
         border-right: 15px solid transparent;
         border-bottom: 11px solid #506f00;
         position: absolute;
-        top: 30px;
+        bottom: -11px;
         transform: rotate(180deg);
         left: 50%;
         margin-left: -15px;
