@@ -158,6 +158,17 @@
         </modules>
       </args>
     </adminhtml>
+
+      <!-- review controller extended start -->
+      <review>
+          <args>
+            <modules>
+              <Iksula_Overrides before="Mage_Adminhtml_Catalog_Product_ReviewController">Iksula_Overrides_Catalog</Iksula_Overrides>
+            </modules>
+          </args>
+        </review>
+      <!-- review controller extended end -->
+      
   </routers>
 </admin>
 <adminhtml>
