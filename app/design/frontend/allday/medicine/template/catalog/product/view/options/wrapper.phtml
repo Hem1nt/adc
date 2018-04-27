@@ -73,7 +73,7 @@ if($_product->isConfigurable()) {
 		if($i==count($newChildProducts)) {
 			echo "<tr class=\"last pack_size_option\">";
 		} else {
-			echo "<tr class=\"pack_size_option \">>";
+			echo "<tr class=\"pack_size_option \">";
 		}
 		if($child->getSpecialPrice()){
 			$perUnit = $child->getSpecialPrice()/$packUnitsize;
