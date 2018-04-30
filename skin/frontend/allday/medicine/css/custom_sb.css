@@ -1944,7 +1944,7 @@ span.product_free_shipping {
 }
 .disable_scroll {
     overflow: hidden !important; 
-    position: fixed ; 
+    position: fixed; 
 }
 .tag-list-index .tags-list li {
     display: block !important;
