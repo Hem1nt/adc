@@ -58,6 +58,17 @@
        </updates>
      </layout>
      <events>
+
+    <customer_login>
+        <observers>
+            <overrides_remove_cookies_Observer1>
+               <type>singleton</type>
+                <class>overrides/observer</class>
+                <method>replaceFormKeyForWishlistAdd</method> 
+                  </overrides_remove_cookies_Observer1>   
+        </observers>
+    </customer_login>
+
       <customer_logout>
         <observers>
             <overrides_remove_cookies_Observer>
