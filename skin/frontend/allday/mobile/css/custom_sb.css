@@ -1558,6 +1558,31 @@
 	}
 	/*share wishlist end*/
 }
+.product_free_gift{             
+    font-size: 0;
+    border: 0;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/adc_gift.png) no-repeat;
+    width: 60px;
+    height: 60px;
+    background-size: 60px;
+    padding: 0;
+    margin-bottom: 5px;
+}       
+
+span.product_free_shipping {
+    font-size: 0;
+    display: inline-block;
+    background: url(../images/adc_shipping.png) no-repeat;
+    width: 60px;
+    height: 60px;
+    vertical-align: middle;
+    border: 0 none;
+    padding: 0;
+    min-width: auto;
+    margin-bottom: 5px;
+    }
 
 @media only screen and (max-width: 920px){
 	.checkout_steps div.tabs div.divider {
