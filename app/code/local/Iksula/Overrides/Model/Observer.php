@@ -980,9 +980,18 @@ public function reviewStatusChange($observer){
     $beforeWishlistRequest['form_key'] = $formKey;
     $session->setBeforeWishlistRequest($beforeWishlistRequest);
 
-    $newBeforeAuthUrl = Mage::getUrl('wishlist/index/add',
+    if($beforeWishlistRequest['product'] != '')
+    {
+       $newBeforeAuthUrl = Mage::getUrl('wishlist/index/add',
         array('product' => $beforeWishlistRequest['product'], 'form_key' => $formKey)
-    );
+        );
+
+    }
+   else
+    {
+    $newBeforeAuthUrl = Mage::getUrl('customer/account');
+    }
+   
     $session->setBeforeAuthUrl($newBeforeAuthUrl);
     return $this;
 }
