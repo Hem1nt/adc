@@ -2113,6 +2113,91 @@ span.recomend-text {
 	    padding: 0 10px;
 	    box-sizing: border-box;
 	}
+	.catalog-product-view, .review-product-list {
+		.product-details-table {
+			margin: 15px 0;
+		    padding-bottom: 15px;
+
+			table.new_product_list {
+				padding: 0 20px;
+				box-sizing: border-box;
+			    border: 1px solid #cccaca;
+
+				th{
+					&.pack_size, &.price_per_pill, &.qty{
+						width: 100% !important;
+					}
+				}
+				td{
+					&.pack_size_value, &.price_value, &.qty_value, &.simple_wishlist, &.add_to_cart_button{
+						width: 100% !important;
+						display: inline-block;
+						box-sizing: border-box;
+						padding: 12px 1% !important;
+						padding-bottom: 0 !important;
+						text-align: center;
+						position: relative;
+					    min-height: 48px;
+					}
+					&.pack_size_value:before {
+						content: "Pack Size : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}
+					&.qty_value:before {
+						content: "Qty : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}
+					&.price_value.unit_cost:before {
+						content: "Price Per Pill or Unit : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}
+					&.price_value.custom_price_center:before {
+						content: "Price : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}
+					&.simple_wishlist:before {
+						content: "Wishlist : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}
+					&.add_to_cart_button:before {
+						content: "Cart : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}
+				}
+				tr.option_heading{
+					display: none;
+				}
+				a.refill_reminder_open {
+				    float: none;
+				    display: inline-block;
+				}
+			}
+		}
+	}
 }
 
 @media only screen and (max-width: 479px){
@@ -2120,7 +2205,7 @@ span.recomend-text {
 	    margin-top: 0;
 	    clear: both;
 	    width: 100%;
-	    overflow-x: scroll;
+	    /*overflow-x: scroll;*/
 	}
 	.catalog-product-view .product-details-table table.new_product_list th strong, .review-product-list .product-details-table table.new_product_list th strong{
 		white-space: nowrap;
@@ -2226,5 +2311,8 @@ span.recomend-text {
 @media only screen and (max-width: 320px){
 	.catalog-product-view .easytabs-content{
 		padding: 10px;
+	}
+	.catalog-product-view .product-details-table{
+		overflow-x: inherit;
 	}
 }
