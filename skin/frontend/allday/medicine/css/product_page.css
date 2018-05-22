@@ -1905,12 +1905,38 @@ span.recomend-text {
     padding-bottom: 15px;
   }
   .catalog-product-view .product-details-table table.new_product_list, .review-product-list .product-details-table table.new_product_list {
-    padding: 0 20px;
+    /*padding: 0 20px;*/
     box-sizing: border-box;
     border: 1px solid #cccaca;
   }
   .catalog-product-view .product-details-table table.new_product_list th.pack_size, .catalog-product-view .product-details-table table.new_product_list th.price_per_pill, .catalog-product-view .product-details-table table.new_product_list th.qty, .review-product-list .product-details-table table.new_product_list th.pack_size, .review-product-list .product-details-table table.new_product_list th.price_per_pill, .review-product-list .product-details-table table.new_product_list th.qty {
     width: 100% !important;
+  }
+  .catalog-product-view .product-details-table table.new_product_list td, .review-product-list .product-details-table table.new_product_list td {
+    					/*&.price_value.unit_cost:before {
+    						content: "Price Per Pill or Unit : ";
+    						position: absolute;
+    						left: 0;
+    						font-weight: bold;
+    					    width: 32%;
+        					text-align: left;		
+    					}*/
+    					/*&.simple_wishlist:before {
+    						content: "Wishlist : ";
+    						position: absolute;
+    						left: 0;
+    						font-weight: bold;
+    					    width: 32%;
+        					text-align: left;		
+    					}*/
+    					/*&.add_to_cart_button:before {
+    						content: "Cart : ";
+    						position: absolute;
+    						left: 0;
+    						font-weight: bold;
+    					    width: 32%;
+        					text-align: left;		
+    					}*/
   }
   .catalog-product-view .product-details-table table.new_product_list td.pack_size_value, .catalog-product-view .product-details-table table.new_product_list td.price_value, .catalog-product-view .product-details-table table.new_product_list td.qty_value, .catalog-product-view .product-details-table table.new_product_list td.simple_wishlist, .catalog-product-view .product-details-table table.new_product_list td.add_to_cart_button, .review-product-list .product-details-table table.new_product_list td.pack_size_value, .review-product-list .product-details-table table.new_product_list td.price_value, .review-product-list .product-details-table table.new_product_list td.qty_value, .review-product-list .product-details-table table.new_product_list td.simple_wishlist, .review-product-list .product-details-table table.new_product_list td.add_to_cart_button {
     width: 100% !important;
@@ -1921,6 +1947,9 @@ span.recomend-text {
     text-align: center;
     position: relative;
     min-height: 48px;
+  }
+  .catalog-product-view .product-details-table table.new_product_list td.add_to_cart_button a, .review-product-list .product-details-table table.new_product_list td.add_to_cart_button a {
+    background: url(../images/custom/cart_prod_mobile.png) center no-repeat #fff;
   }
   .catalog-product-view .product-details-table table.new_product_list td.pack_size_value:before, .review-product-list .product-details-table table.new_product_list td.pack_size_value:before {
     content: "Pack Size : ";
@@ -1938,13 +1967,8 @@ span.recomend-text {
     width: 32%;
     text-align: left;
   }
-  .catalog-product-view .product-details-table table.new_product_list td.price_value.unit_cost:before, .review-product-list .product-details-table table.new_product_list td.price_value.unit_cost:before {
-    content: "Price Per Pill or Unit : ";
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-    width: 32%;
-    text-align: left;
+  .catalog-product-view .product-details-table table.new_product_list td.price_value.unit_cost, .review-product-list .product-details-table table.new_product_list td.price_value.unit_cost {
+    display: none;
   }
   .catalog-product-view .product-details-table table.new_product_list td.price_value.custom_price_center:before, .review-product-list .product-details-table table.new_product_list td.price_value.custom_price_center:before {
     content: "Price : ";
@@ -1954,24 +1978,17 @@ span.recomend-text {
     width: 32%;
     text-align: left;
   }
-  .catalog-product-view .product-details-table table.new_product_list td.simple_wishlist:before, .review-product-list .product-details-table table.new_product_list td.simple_wishlist:before {
-    content: "Wishlist : ";
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-    width: 32%;
-    text-align: left;
-  }
-  .catalog-product-view .product-details-table table.new_product_list td.add_to_cart_button:before, .review-product-list .product-details-table table.new_product_list td.add_to_cart_button:before {
-    content: "Cart : ";
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-    width: 32%;
-    text-align: left;
+  .catalog-product-view .product-details-table table.new_product_list td.simple_wishlist, .review-product-list .product-details-table table.new_product_list td.simple_wishlist {
+    display: none;
   }
   .catalog-product-view .product-details-table table.new_product_list tr.option_heading, .review-product-list .product-details-table table.new_product_list tr.option_heading {
     display: none;
+  }
+  .catalog-product-view .product-details-table table.new_product_list tr, .review-product-list .product-details-table table.new_product_list tr {
+    border-bottom: 1px solid #cccaca;
+    padding: 0 20px;
+    width: 100%;
+    display: inline-block;
   }
   .catalog-product-view .product-details-table table.new_product_list a.refill_reminder_open, .review-product-list .product-details-table table.new_product_list a.refill_reminder_open {
     float: none;

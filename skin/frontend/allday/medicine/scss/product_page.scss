@@ -2119,7 +2119,7 @@ span.recomend-text {
 		    padding-bottom: 15px;
 
 			table.new_product_list {
-				padding: 0 20px;
+				/*padding: 0 20px;*/
 				box-sizing: border-box;
 			    border: 1px solid #cccaca;
 
@@ -2139,6 +2139,9 @@ span.recomend-text {
 						position: relative;
 					    min-height: 48px;
 					}
+					&.add_to_cart_button a{
+					    background: url(../images/custom/cart_prod_mobile.png) center no-repeat #fff;
+					}
 					&.pack_size_value:before {
 						content: "Pack Size : ";
 						position: absolute;
@@ -2155,13 +2158,16 @@ span.recomend-text {
 					    width: 32%;
     					text-align: left;		
 					}
-					&.price_value.unit_cost:before {
+					/*&.price_value.unit_cost:before {
 						content: "Price Per Pill or Unit : ";
 						position: absolute;
 						left: 0;
 						font-weight: bold;
 					    width: 32%;
     					text-align: left;		
+					}*/
+					&.price_value.unit_cost{
+						display: none;
 					}
 					&.price_value.custom_price_center:before {
 						content: "Price : ";
@@ -2171,31 +2177,40 @@ span.recomend-text {
 					    width: 32%;
     					text-align: left;		
 					}
-					&.simple_wishlist:before {
+					/*&.simple_wishlist:before {
 						content: "Wishlist : ";
 						position: absolute;
 						left: 0;
 						font-weight: bold;
 					    width: 32%;
     					text-align: left;		
+					}*/
+					&.simple_wishlist{
+						display: none;
 					}
-					&.add_to_cart_button:before {
+					/*&.add_to_cart_button:before {
 						content: "Cart : ";
 						position: absolute;
 						left: 0;
 						font-weight: bold;
 					    width: 32%;
     					text-align: left;		
-					}
+					}*/
 				}
 				tr.option_heading{
 					display: none;
+				}
+				tr{
+					border-bottom: 1px solid #cccaca;
+					padding: 0 20px;
+					width: 100%;
+					display: inline-block;
 				}
 				a.refill_reminder_open {
 				    float: none;
 				    display: inline-block;
 				}
-			}
+			} 
 		}
 	}
 }
