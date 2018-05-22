@@ -9375,6 +9375,10 @@ ol.result-filter-pr .clear_all:before {
 		width: 48%;
 		margin-right: 2%;
 	}
+	.catalog-product-compare-index .compare-table tbody tr.add-to-row.last .custom_price_wishlist p.custom_price ,
+	.catalog-product-compare-index .compare-table tbody tr.add-to-row.last .custom_price_wishlist .add-to-links {
+	    display: none;
+	}
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {

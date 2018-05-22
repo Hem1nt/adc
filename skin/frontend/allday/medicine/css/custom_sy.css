@@ -549,9 +549,10 @@ span.mandate {
         display: inline-block !important;
     }
     .showProducts{
-        width: 40%;
+        /*width: 40%;
         left: 1%;
-        bottom: 5px;
+        bottom: 5px;*/
+        display: none;
     }
     /* Promotion with coupon Design end here */
 }
@@ -579,9 +580,9 @@ span.mandate {
     }
 }
 @media screen and (max-width: 620px){
-    .showProducts{
+    /*.showProducts{
         width: 45%;
-    }
+    }*/
 }
 @media screen and (max-width: 540px){
     .promo-content {
@@ -599,14 +600,14 @@ span.mandate {
     }
 }
 @media screen and (max-width: 520px){
-    .showProducts{
+   /* .showProducts{
         width: 50%;
-    }
+    }*/
 }
 @media only screen and (max-width: 420px) {
-    .showProducts{
+    /*.showProducts{
         display: none;
-    }
+    }*/
 }
 @media only screen and (max-width: 380px) {
 	.opc-wrapper-opc .howdid_find_container #textbox_values textarea{
