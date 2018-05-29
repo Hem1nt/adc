@@ -35,6 +35,8 @@
 $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
 $subtotal = round($totals['subtotal']->getValue()); //Subtotal value
 $grandtotal = $totals['grand_total']->getValue();
+$checkout = Mage::getSingleton('checkout/session')->getQuote();
+$billAddress = $checkout->getBillingAddress();
 ?>
 <fieldset class="form-list">
     <?php $_code=$this->getMethodCode() ?>
