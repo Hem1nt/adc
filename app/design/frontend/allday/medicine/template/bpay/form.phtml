@@ -44,16 +44,16 @@ $billAddress = $checkout->getBillingAddress();
         <h5>Pay by Bpay (For AU clients only) </h5>
         <li>
             <div class="input-box">
-                <label for="<?php echo $_code ?>_firstname"><?php echo $this->__('First Name') ?> <span class="required">*</span></label><br />
+                <label for="<?php echo $_code ?>_firstname"><?php echo $this->__('Name') ?> <span class="required">*</span></label><br />
                 <input  id="<?php echo $_code ?>_firstname" value="<?php echo $billAddress->getData('firstname').' '.$billAddress->getData('lastname'); ?>" class="required-entry">
             </div>
         </li>
-        <li>
+        <!-- <li>
             <div class="input-box">
-                <label for="<?php echo $_code ?>_acc_no"><?php echo $this->__('Account Number :') ?></label><br />
-                <input  id="<?php echo $_code ?>_acc_no">
+                <label for="<?php //echo $_code ?>_acc_no"><?php echo $this->__('Account Number :') ?></label><br />
+                <input  id="<?php //echo $_code ?>_acc_no">
             </div>
-        </li>
+        </li> -->
         <li>
             <div class="input-box">
                 <label for="<?php echo $_code ?>_amount"><?php echo $this->__('Amount :') ?> <span class="required">*</span></label><br />
@@ -66,24 +66,24 @@ $billAddress = $checkout->getBillingAddress();
                 <input  id="<?php echo $_code ?>_phone" value="<?php echo $billAddress->getData('telephone') ?>" class="required-entry">
             </div>
         </li>
-        <li>
+        <!-- <li>
             <div class="input-box">
-                <label for="<?php echo $_code ?>_address"><?php echo $this->__('Street Address :') ?></label><br />
-                <input  id="<?php echo $_code ?>_address">
+                <label for="<?php //echo $_code ?>_address"><?php //echo $this->__('Street Address :') ?></label><br />
+                <input  id="<?php //echo $_code ?>_address">
             </div>
-        </li>
+        </li> -->
         <li>
             <div class="input-box">
                 <label for="<?php echo $_code ?>_email"><?php echo $this->__('Customers Email :') ?> <span class="required">*</span></label><br />
                 <input  id="<?php echo $_code ?>_email" value="<?php echo $billAddress->getData('email') ?>" class="required-entry validate-email">
             </div>
         </li>
-        <li>
+        <!-- <li>
             <div class="input-box">
                 <label for="name"> Any other information you would like given to the Customer along with your payment advice?:</label>
-                <textarea class="form-control" name="other" id="<?php echo $_code ?>_message" rows="7" style="height: 157px;"></textarea>
+                <textarea class="form-control" name="other" id="<?php //echo $_code ?>_message" rows="7" style="height: 157px;"></textarea>
             </div>
-        </li>
+        </li> -->
         <button id="bypay_submit" type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Make Payment') ?></span></span></button>
         <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Form was submitted successfully</h3> </div>
         <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your request.Please try again </div>
