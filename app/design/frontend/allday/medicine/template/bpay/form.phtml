@@ -43,7 +43,7 @@ $grandtotal = $totals['grand_total']->getValue();
         <li>
             <div class="input-box">
                 <label for="<?php echo $_code ?>_firstname"><?php echo $this->__('First Name') ?> <span class="required">*</span></label><br />
-                <input  id="<?php echo $_code ?>_firstname" class="required-entry">
+                <input  id="<?php echo $_code ?>_firstname" value="<?php echo $billAddress->getData('firstname').' '.$billAddress->getData('lastname'); ?>" class="required-entry">
             </div>
         </li>
         <li>
@@ -61,7 +61,7 @@ $grandtotal = $totals['grand_total']->getValue();
         <li>
             <div class="input-box">
                 <label for="<?php echo $_code ?>_phone"><?php echo $this->__('Customers Phone No :') ?> <span class="required">*</span></label><br />
-                <input  id="<?php echo $_code ?>_phone" class="required-entry">
+                <input  id="<?php echo $_code ?>_phone" value="<?php echo $billAddress->getData('telephone') ?>" class="required-entry">
             </div>
         </li>
         <li>
@@ -73,7 +73,7 @@ $grandtotal = $totals['grand_total']->getValue();
         <li>
             <div class="input-box">
                 <label for="<?php echo $_code ?>_email"><?php echo $this->__('Customers Email :') ?> <span class="required">*</span></label><br />
-                <input  id="<?php echo $_code ?>_email" class="required-entry validate-email">
+                <input  id="<?php echo $_code ?>_email" value="<?php echo $billAddress->getData('email') ?>" class="required-entry validate-email">
             </div>
         </li>
         <li>
