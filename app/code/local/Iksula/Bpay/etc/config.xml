@@ -79,6 +79,7 @@
                 <active>0</active>
                 <model>bpay/bpay</model>
                 <sort_order>1</sort_order>
+                <allowspecific>0</allowspecific>
             </bpay>
          </payment>
     </default>
