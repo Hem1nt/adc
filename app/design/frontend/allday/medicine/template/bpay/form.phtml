@@ -47,7 +47,7 @@ $grandtotal = $totals['grand_total']->getValue();
 $fromCur = 'USD'; // currency code to convert from - usually your base currency
 $toCur = 'AUD'; // currency to convert to
 $price = Mage::helper('directory')->currencyConvert($grandtotal, $fromCur, $toCur);
-$converted_final_price = Mage::app()->getStore()->roundPrice($price,2);
+$converted_final_price = number_format($price, 2, '.', '');//Mage::app()->getStore()->roundPrice($price,2);
 $checkout = Mage::getSingleton('checkout/session')->getQuote();
 $billAddress = $checkout->getBillingAddress();
 ?>
