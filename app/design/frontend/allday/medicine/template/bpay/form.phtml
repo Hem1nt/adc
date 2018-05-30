@@ -44,6 +44,10 @@
 $totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
 $subtotal = round($totals['subtotal']->getValue()); //Subtotal value
 $grandtotal = $totals['grand_total']->getValue();
+$fromCur = 'USD'; // currency code to convert from - usually your base currency
+$toCur = 'AUD'; // currency to convert to
+$price = Mage::helper('directory')->currencyConvert(49.35, $fromCur, $toCur);
+$converted_final_price = Mage::app()->getStore()->roundPrice($price);
 $checkout = Mage::getSingleton('checkout/session')->getQuote();
 $billAddress = $checkout->getBillingAddress();
 ?>
@@ -66,7 +70,7 @@ $billAddress = $checkout->getBillingAddress();
         <li>
             <div class="input-box">
                 <label for="<?php echo $_code ?>_amount"><?php echo $this->__('Amount :') ?> <span class="required">*</span></label><br />
-                <input  id="<?php echo $_code ?>_amount" class="required-entry" value="<?php echo $grandtotal ?>" readonly>
+                <input  id="<?php echo $_code ?>_amount" class="required-entry" value="<?php echo $converted_final_price ?>" readonly>
             </div>
         </li>
         <li>
