@@ -28,6 +28,15 @@
 {
   padding: 0;
 }
+/*.opc-wrapper-opc .btn-checkout{
+    margin-top: 80px !important;
+}*/
+#bpay_message{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: red;
+}
+
 </style>
 
 </head>
@@ -41,8 +50,8 @@ $billAddress = $checkout->getBillingAddress();
 <fieldset class="form-list">
     <?php $_code=$this->getMethodCode() ?>
     <ul id="payment_form_<?php echo $_code ?>" style="display:none">
-        <h5>Pay by Bpay (For AU clients only) </h5>
-        <li>
+        <h5>Pay by BPAY (For AUSTRALIA clients only) </h5>
+            <li>
             <div class="input-box">
                 <label for="<?php echo $_code ?>_firstname"><?php echo $this->__('Name') ?> <span class="required">*</span></label><br />
                 <input  id="<?php echo $_code ?>_firstname" value="<?php echo $billAddress->getData('firstname').' '.$billAddress->getData('lastname'); ?>" class="required-entry">
@@ -84,6 +93,7 @@ $billAddress = $checkout->getBillingAddress();
                 <textarea class="form-control" name="other" id="<?php //echo $_code ?>_message" rows="7" style="height: 157px;"></textarea>
             </div>
         </li> -->
+        <p id="bpay_message">You will receive your BPAY Payment details on an email in few minutes. Please click on Make Payment Button and check your email and if it’s not seen within a few minutes check your spam/ junk folder.</p>
         <button id="bypay_submit" type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Make Payment') ?></span></span></button>
         <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Form was submitted successfully</h3> </div>
         <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your request.Please try again </div>
@@ -104,6 +114,7 @@ $billAddress = $checkout->getBillingAddress();
                         return true;
                     }else{
                         e.preventDefault();
+                        jQuery('#error_message').show();
                         return false;
                     }
                 }
