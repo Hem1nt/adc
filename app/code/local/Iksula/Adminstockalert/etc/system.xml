@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<notifyadmin translate="label" module="adminstockalert">
+            <label>Admin Out Of Stock Notification</label>
+            <sort_order>0</sort_order>
+        </notifyadmin>
+	  </tabs>
+	  <sections>
+		<notifyadmin_sec  translate="label" module="adminstockalert">                    
+		<label>Admin Out Of Stock Notification</label>
+		<tab>notifyadmin</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <notifyadmin_group translate="label"> 
+					  <label>Configuration</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+                          <is_running translate="label">
+                            <label>Is Active</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </is_running>
+                          <recipient_email translate="label">
+                            <label>Recipient Email</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </recipient_email>
+                          <mail_body translate="label">
+                            <label>Mail Body</label>
+							<frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </mail_body>
+					   </fields>
+					   </notifyadmin_group>
+					</groups>
+		</notifyadmin_sec>
+	  </sections>
+</config>
