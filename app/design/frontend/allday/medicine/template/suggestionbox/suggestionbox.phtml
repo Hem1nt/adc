@@ -30,21 +30,33 @@
 		            <label for="review_field" ><?php echo $this->__('Enter the code') ?>
 		            	<!-- <em class="sb_em">*</em> -->
 		            </label>
-		            <div class="input-box sinput input_suggestion_captcha">
+		            <!-- <div class="input-box sinput input_suggestion_captcha">
 		                <div class="captcha_img_wrap">
-		                	<img src="<?php echo $this->getUrl().'suggestion_captcha_file.php?rand='.rand(); ?>" id='suggestion_captcha_img'  >
+		                	<img src="<?php //echo $this->getUrl().'suggestion_captcha_file.php?rand='.rand(); ?>" id='suggestion_captcha_img'  >
 		                </div>
 		                <input id="suggestion_captcha_code" class="required-entry validate_captcha sb_input_field" name="suggestion_captcha_code" type="text" placeholder="Enter code here">
 		                <small class="click_here">Can't read the image? click <a href='javascript: suggestion_refresh_Captcha();'>here</a> to refresh</small>
 		                <input type="hidden" id="check-me" />
-		            </div>
+		            </div> -->
+		            <?php if($this->helper('recaptcha')->showOnSuggestionBox()){?>                          
+                 <div id="rcode">	
+         				<div class="captcha">
+   			  					<div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+    					</div>
+						<span id="suggestioncaptcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                </div> 
+                 <?php } ?>
+		        <div id="suggestion_msg"></div>
 		        </p>
 				<div class="suggestion_button">
-	                <button type="submit" title="<?php echo $this->__('Submit') ?>" class="button btn-cart">
+	                <button type="submit" id="suggestion_box_form" title="<?php echo $this->__('Submit') ?>" class="button btn-cart">
 	                	<span>
 	                		<span><?php echo $this->__('Submit') ?></span>
 	                	</span>
 	                </button>
+	                <div id='sugesstionbox_loading' style='display: none'>
+						<img src="<?php echo $this->getSkinUrl().'images/bx_loader.gif'?>" title="Loading" />
+					</div>
 	            </div>
 			</form>
 		</div>
@@ -53,21 +65,41 @@
 
 <script type="text/javascript">
 	var new_form = new VarienForm("new_suggestion");
-	jQuery('#new_suggestion').submit(function(){
-		var suggestion_captcha_img =jQuery('#suggestion_captcha_code').val();
+	jQuery('#suggestion_box_form').click(function(){
+
+		//var suggestion_captcha_img =jQuery('#suggestion_captcha_code').val();
 		if(new_form.validator.validate()){
+
+			/* google recaptcha */
+			<?php if($this->helper('recaptcha')->showOnSuggestionBox()){ ?>
+				if (grecaptcha.getResponse() != ""){
+					document.getElementById("suggestioncaptcha-required").style.display = "none";
+					 //return true;
+				} else {
+					//jQuery('#sugesstionbox_loading').hide();
+					document.getElementById("suggestioncaptcha-required").style.display = "block";
+					return false;
+				}
+				<?php } else { ?>
+					return true;
+			<?php } ?>
+			/* google recaptcha */
+
+			jQuery('#sugesstionbox_loading').show();
 			jQuery.ajax({
 				url  : "<?php echo $this->getUrl('suggestionbox/index/newsuggestion');?>",
 				type : "POST",
 				data : {email:jQuery('#email').val(),suggestion:jQuery('#suggestion').val(),name:jQuery('#name').val()},
 				dataType: "html",
 				success:function(content){
+					jQuery('#sugesstionbox_loading').hide();
 					jQuery('#suggestion_msg').html('<h2 style="text-align:center;">Thanks for the Suggestion!!</h2>');
 					jQuery('#email').val("");
 					jQuery('#name').val("");
 					jQuery('#suggestion').val("");
-					jQuery('#suggestion_captcha_code').val("")
-					suggestion_refresh_Captcha();
+					location.reload();
+					//jQuery('#suggestion_captcha_code').val("")
+					//suggestion_refresh_Captcha();
 				}
 			});	
 		}
@@ -76,15 +108,15 @@
 </script>
 
 <script language='JavaScript' type='text/javascript'>
-	function suggestion_refresh_Captcha(){
+	/*function suggestion_refresh_Captcha(){
 	    var img = document.images['suggestion_captcha_img'];
 	    img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
 		setTimeout('SuggestionRefreshCaptcha()', 500);
-	}
+	}*/
 </script>
 
 <script type="text/javascript">
-	Validation.add('validate_captcha','Enter valid code',function(field_val){
+	/*Validation.add('validate_captcha','Enter valid code',function(field_val){
 	   if(jQuery("#check-me").val() != "")   {
 	    	var me = jQuery("#check-me").val().split("_");
 	    	if(me[1] == field_val) {
@@ -100,10 +132,11 @@
 	});
 
 	function SuggestionRefreshCaptcha(){
-	   	jQuery.post("<?php echo $this->getUrl().'suggestion_captcha_file.php?code='.rand();?>", function(captcha){
+	   	jQuery.post("<?php //echo $this->getUrl().'suggestion_captcha_file.php?code='.rand();?>", function(captcha){
 	        if(captcha!=""){
 	      		jQuery("#check-me").val(captcha);
 	    	}
 	    });
-	}
+	}*/
 </script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
