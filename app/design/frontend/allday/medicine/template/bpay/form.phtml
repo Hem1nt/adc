@@ -1,0 +1,132 @@
+<head>
+<style>
+#sigpaddiv
+{
+    float: left;
+    height: 135px;
+    margin-top: 5px;
+}
+.sigPad
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0px;
+    top:0px
+}
+.sigPad .clearSig
+{
+   left: 0px;
+    margin: 0px;
+    padding: 0.6em;
+    position: absolute;
+    text-align: left;
+    top: 91px;
+}
+.form-list label
+{
+  padding: 0;
+}
+/*.opc-wrapper-opc .btn-checkout{
+    margin-top: 80px !important;
+}*/
+#bpay_message{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: red;
+}
+
+</style>
+
+</head>
+<?php
+$totals = Mage::getSingleton('checkout/session')->getQuote()->getTotals();
+$subtotal = round($totals['subtotal']->getValue()); //Subtotal value
+$grandtotal = $totals['grand_total']->getValue();
+$fromCur = 'USD'; // currency code to convert from - usually your base currency
+$toCur = 'AUD'; // currency to convert to
+$price = Mage::helper('directory')->currencyConvert($grandtotal, $fromCur, $toCur);
+$converted_final_price = number_format($price, 2, '.', '');//Mage::app()->getStore()->roundPrice($price,2);
+$checkout = Mage::getSingleton('checkout/session')->getQuote();
+$billAddress = $checkout->getBillingAddress();
+?>
+<fieldset class="form-list">
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+        <h5>Pay by BPAY (For AUSTRALIA clients only) </h5>
+            <li>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_firstname"><?php echo $this->__('Name') ?> <span class="required">*</span></label><br />
+                <input  id="<?php echo $_code ?>_firstname" value="<?php echo $billAddress->getData('firstname').' '.$billAddress->getData('lastname'); ?>" class="required-entry">
+            </div>
+        </li>
+        <!-- <li>
+            <div class="input-box">
+                <label for="<?php //echo $_code ?>_acc_no"><?php echo $this->__('Account Number :') ?></label><br />
+                <input  id="<?php //echo $_code ?>_acc_no">
+            </div>
+        </li> -->
+        <li>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_amount"><?php echo $this->__('Amount in (AUD):') ?> <span class="required">*</span></label><br />
+                <input  id="<?php echo $_code ?>_amount" class="required-entry" value="<?php echo $converted_final_price ?>" readonly>
+            </div>
+        </li>
+        <li>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_phone"><?php echo $this->__('Customers Phone No :') ?> <span class="required">*</span></label><br />
+                <input  id="<?php echo $_code ?>_phone" value="<?php echo $billAddress->getData('telephone') ?>" class="required-entry">
+            </div>
+        </li>
+        <!-- <li>
+            <div class="input-box">
+                <label for="<?php //echo $_code ?>_address"><?php //echo $this->__('Street Address :') ?></label><br />
+                <input  id="<?php //echo $_code ?>_address">
+            </div>
+        </li> -->
+        <li>
+            <div class="input-box">
+                <label for="<?php echo $_code ?>_email"><?php echo $this->__('Customers Email :') ?> <span class="required">*</span></label><br />
+                <input  id="<?php echo $_code ?>_email" value="<?php echo $billAddress->getData('email') ?>" class="required-entry validate-email">
+            </div>
+        </li>
+        <!-- <li>
+            <div class="input-box">
+                <label for="name"> Any other information you would like given to the Customer along with your payment advice?:</label>
+                <textarea class="form-control" name="other" id="<?php //echo $_code ?>_message" rows="7" style="height: 157px;"></textarea>
+            </div>
+        </li> -->
+        <p id="bpay_message">You will receive your BPAY Payment details on an email in few minutes. Please click on Make Payment Button and check your email and if it’s not seen within a few minutes check your spam/ junk folder.</p>
+        <button id="bypay_submit" type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Make Payment') ?></span></span></button>
+        <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Form was submitted successfully</h3> </div>
+        <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your request.Please try again </div>
+    </ul>
+</fieldset>
+<script type="text/javascript">
+    var bpay_form = new VarienForm("co-payment-form", true);
+    jQuery('#bypay_submit').click(function(e){
+        //var suggestion_captcha_img =jQuery('#suggestion_captcha_code').val();
+        if(bpay_form.validator.validate()){
+           jQuery.ajax({
+                url  : "<?php echo $this->getUrl('bpay/index/submitDetails');?>",
+                type : "POST",
+                data : {firstname:jQuery('#bpay_firstname').val(),acc_no:jQuery('#bpay_acc_no').val(),amount:jQuery('#bpay_amount').val(),phone:jQuery('#bpay_phone').val(),address:jQuery('#bpay_address').val(),email:jQuery('#bpay_email').val(),message:jQuery('#bpay_message').val()},
+                success:function(response){
+                    var result = JSON.parse(response);
+                    if(result.result == 'success'){
+                        return true;
+                    }else{
+                        e.preventDefault();
+                        jQuery('#error_message').show();
+                        return false;
+                    }
+                }
+            });
+        }else{
+            e.preventDefault();
+            return false;
+        }
+
+    });
+</script>
