@@ -45,8 +45,29 @@
                     <?php endif ?>
                     <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
                     <?php if ($_gender->isEnabled()): ?>
-                        <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+                        <li class="gender_field"><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
                     <?php endif ?>
+                <!-- google reCaptcha start -->
+                       <?php if($this->helper('recaptcha')->showOnRegister()){?>                          
+                         <li id="rcode" class="fields">  
+                            <label for="captcha" class="required"><?php echo $this->__('Captcha') ?><em>*</em></label>
+                            <div class="input-box">  
+                                <div class="captcha">
+                                    <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                </div>
+                            </div>
+                            <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                        </li> 
+                         <?php } ?>
+                    <!-- google reCaptcha end -->
+                    <?php if ($this->isNewsletterEnabled()): ?>
+                <li class="control">
+                    <div class="is_subscribed_wrap">
+                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                        <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
+                    </div>
+
+                </li>
                 </ul>
             </div>
 
@@ -90,26 +111,9 @@
                         </div>                        
                     </div> -->
                     <!-- Captcha input ends -->
-                     <!-- google reCaptcha start -->
-                       <?php if($this->helper('recaptcha')->showOnRegister()){?>                          
-                         <li id="rcode">    
-                                <div class="captcha">
-                                        <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
-                                </div>
-                                <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                        </li> 
-                         <?php } ?>
-                    <!-- google reCaptcha end -->
                 </li>
-                <br/>
-                <?php if ($this->isNewsletterEnabled()): ?>
-                <li class="control">
-                    <div class="input-box">
-                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-                        <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
-                    </div>
-
-                </li>
+                <!-- <br/> -->
+                
             <?php endif ?>
                 <?php echo $this->getChildHtml('persistent.remember.me'); ?>
                 </ul>
