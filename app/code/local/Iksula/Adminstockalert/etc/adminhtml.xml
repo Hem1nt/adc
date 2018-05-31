@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+	<config>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<notifyadmin_sec translate="title" module="adminstockalert">
+											<title>Admin Out Of Stock Notification Section</title>
+											<sort_order>0</sort_order>
+										</notifyadmin_sec>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</config>
