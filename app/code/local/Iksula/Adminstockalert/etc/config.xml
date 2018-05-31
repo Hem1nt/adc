@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Adminstockalert>
+      <version>0.1.0</version>
+    </Iksula_Adminstockalert>
+  </modules>
+  <global>
+    <helpers>
+      <adminstockalert>
+        <class>Iksula_Adminstockalert_Helper</class>
+      </adminstockalert>
+    </helpers>
+	<models>
+	  <adminstockalert>
+		<class>Iksula_Adminstockalert_Model</class>
+		<resourceModel>adminstockalert_mysql4</resourceModel>
+	  </adminstockalert>
+	</models>
+  </global>    
+    <crontab>
+        <jobs>            
+			<adminstockalert_notifyadmin>
+                <schedule><cron_expr>* 4 * * *</cron_expr></schedule>
+                <run><model>adminstockalert/cron::notifyAdmin</model></run>
+            </adminstockalert_notifyadmin>
+        </jobs>
+    </crontab>
+</config> 
