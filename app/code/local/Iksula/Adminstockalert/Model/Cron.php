@@ -14,39 +14,42 @@ class Iksula_Adminstockalert_Model_Cron{
 			    }    
 			}
 
-			$filename = Mage::getBaseDir()."/media/notify_stock_qty.csv";
-			$f = fopen($filename, 'w+');
-			fwrite($f, 'SKU');
-			foreach ($data as $line) {
-			    fwrite($f, PHP_EOL);
-			    fwrite($f, $line); 
+			if(!empty($data)){
+				$filename = Mage::getBaseDir()."/media/notify_stock_qty.csv";
+				$f = fopen($filename, 'w+');
+				fwrite($f, 'SKU');
+				foreach ($data as $line) {
+				    fwrite($f, PHP_EOL);
+				    fwrite($f, $line); 
+				}
+				fclose($f, 0);
+
+				$mail = new Zend_Mail('utf-8');
+
+				$recipients = array('Kundan - Derric Wood' => Mage::getStoreConfig('notifyadmin_sec/notifyadmin_group/recipient_email',$store));
+				$mailBody   = Mage::getStoreConfig('notifyadmin_sec/notifyadmin_group/mail_body',$store);
+				$mail->setBodyHtml($mailBody)
+				    ->setSubject('Minimum Stock Quantity CSV')
+				    ->addTo($recipients)
+				    ->setFrom(Mage::getStoreConfig('trans_email/ident_support/email'), Mage::getStoreConfig('trans_email/ident_support/name'));
+
+				$file  = Mage::getBaseDir()."/media/notify_stock_qty.csv";
+				$attachment = file_get_contents($file);
+				$mail->createAttachment(
+				    $attachment,
+				    Zend_Mime::TYPE_OCTETSTREAM,
+				    Zend_Mime::DISPOSITION_ATTACHMENT,
+				    Zend_Mime::ENCODING_BASE64,
+				    'notify_stock_qty.csv'
+				);
+
+				try {
+				    $mail->send();
+				} catch (Exception $e) {
+				    Mage::logException($e);
+				}	
 			}
-			fclose($f, 0);
-
-			$mail = new Zend_Mail('utf-8');
-
-			$recipients = array('Kundan - Derric Wood' => Mage::getStoreConfig('notifyadmin_sec/notifyadmin_group/recipient_email',$store));
-			$mailBody   = Mage::getStoreConfig('notifyadmin_sec/notifyadmin_group/mail_body',$store);
-			$mail->setBodyHtml($mailBody)
-			    ->setSubject('Minimum Stock Quantity CSV')
-			    ->addTo($recipients)
-			    ->setFrom(Mage::getStoreConfig('trans_email/ident_support/email'), Mage::getStoreConfig('trans_email/ident_support/name'));
-
-			$file  = Mage::getBaseDir()."/media/notify_stock_qty.csv";
-			$attachment = file_get_contents($file);
-			$mail->createAttachment(
-			    $attachment,
-			    Zend_Mime::TYPE_OCTETSTREAM,
-			    Zend_Mime::DISPOSITION_ATTACHMENT,
-			    Zend_Mime::ENCODING_BASE64,
-			    'notify_stock_qty.csv'
-			);
-
-			try {
-			    $mail->send();
-			} catch (Exception $e) {
-			    Mage::logException($e);
-			}
+			
 		}
 	} 
 }
