@@ -1909,179 +1909,6 @@ a.product_img[data-src~="http"] {
     background: transparent;
 }
 /*christmas theme end*/
-/*otp verification*/
-.otp_overlay{
-    background-color: rgba(0, 0, 0, 0.6);
-    display: block;
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10001;
-}
-#otp_verification {
-    display: inline-block;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    padding: 0 10px;
-    margin: 0 10px;
-    width: 280px;
-    position: relative;
-    text-align: center;
-}
-.opc-index-index #otp_verification {
-    margin: 10px 0;
-    width: 80%;
-}
-.otp_wrap1, .otp_wrap2 {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-}
-#otp_verification .heading {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #678c05;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 22px;
-    text-transform: capitalize;
-    float: left;
-    width: 100%;
-}
-#otp_verification .input-box {
-    float: left;
-    width: 100%;
-}
-#otp_verification .input-box #otp_code {
-    border-radius: 5px;
-    background: #fff;
-    padding: 6px 8px;
-    font-size: 14px;
-    font-weight: normal;
-    border: 1px solid #aaaaaa!important;
-    width: 100%;
-    box-sizing: border-box;
-}
-#otp_verification .buttons-set {
-    padding: 0;
-    padding-top: 0;
-    margin: 0;
-    float: none;
-    display: inline-block;
-}
-#otp_verification .otp_wrap2 .buttons-set{
-    padding: 0;
-}
-#otp_verification .buttons-set  button.button{
-   margin: 5px;
-}
-#otp_verification_msg , #otp_expiry{
-    color: #678c05;
-    font-size: 13px;
-    display: block;
-    /*text-transform: capitalize;*/
-}
-#otp_verification .otp_verification_close {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-}
-#otp_verification .otp_wrap1 #submit_otp_msg{
-    color: red;
-    line-height: 18px;
-    font-size: 13px;
-}
-.customer-account-edit .form-list .fields_wrap2 .buttons-set {
-    margin: 0;
-    float: left;
-    padding-top: 10px;
-}
-.customer-account-edit .form-list .fields_wrap1 .field {
-    width: 35%;
-}
-.customer-account-edit .form-list .fields_wrap1 .field.field-middle {
-    width: 28%;
-}
-.customer-account-edit .form-list .fields_wrap2 .buttons-set #verify_number{
-    float: left;
-    margin: 0;
-}
-.customer-account-edit #number_error_message {
-    display: inline-block;
-    width: 100%;
-    color: #f00;
-    font-size: 13px;
-}
-.customer-account-edit .note{
-    font-size: 13px;
-}
-.customer-account-edit .note_mob_no{
-    color: #9fb701;   
-}
-#number_verified{
-    font-size: 13px;
-    color: #9fb701;
-}
-#ajax_loader_otp {
-    position: fixed;
-    z-index: 99;
-    left: 50%;
-    top: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
-}
-/*checkout otp verification*/
-.opc-wrapper-opc .allday_checkout_left .buttons-set{
-    margin-top: 0;
-    padding-top: 0;
-}
-.opc-wrapper-opc .allday_checkout_left .buttons-set #verify_number{
-    background: #f6770e !important;
-    padding: 8px 16px 8px 16px;
-    border: 0 !important;
-    float: left;
-    margin: 0 0 10px 5px;
-}
-.opc-wrapper-opc .allday_checkout_left .buttons-set button{
-    background: #f6770e !important;
-    padding: 8px 16px 8px 16px;
-    border: 0 !important;
-}
-.opc-wrapper-opc .allday_checkout_left span#verifynumbererror,
-.opc-wrapper-opc .allday_checkout_left #number_error_message {
-    display: inline-block;
-    color: #f00;
-    font-size: 13px;
-    margin: 0 0 8px 0;
-}
-.opc-wrapper-opc .allday_checkout_left .md-content ul.form-list {
-    margin-left: 0;
-}
-.opc-wrapper-opc .allday_checkout_left .md-content .form-list .field {
-    width: auto;
-}
-.opc-wrapper-opc .allday_checkout_left .md-content .form-list .field .note{
-    margin: 0 65px 10px 0;
-    font-size: 13px;
-}
-.opc-wrapper-opc .allday_checkout_left .md-content h1 {
-    color: #f6770e;
-    text-decoration: underline;
-    font-size: 18px;
-    font-weight: 600;
-    display: inline-block;
-    text-transform: capitalize;
-    width: 100%;
-    margin-bottom: 14px;
-    padding-left: 32px;
-    background: url(../images/otp.png) 4px 0px no-repeat;
-    background-size: 22px;
-    display: inline-block;
-}
-/*checkout otp verification end*/
 
 .product_free_gift{             
     font-size: 0;
@@ -2136,39 +1963,6 @@ span.product_free_shipping {
 .tag-list-index .col-left.sidebar .block-tags .block-content .tags-list li a:after{
     display: none;
 }
-/*recaptcha*/
-.catalog-category-view .col-right.sidebar #rcode{
-    display: inline-block;
-    width: 100%;
-    border-right: 1px solid #d3d3d3;
-}
-.catalog-category-view .col-right.sidebar #rcode iframe{
-    display: inline-block;
-    width: 100%;
-}
-#rcode .rc-anchor-normal .rc-anchor-pt{
-    width: auto !important;
-    padding-right: 0 !important;
-}
-.rc-anchor-normal .rc-anchor-checkbox-label{
-    width: 100px !important;
-}
-.catalog-category-view .col-right.sidebar #rcode .g-recaptcha > div{
-    width: 100%!important;
-}
-.catalog-category-view .col-right.sidebar #rcode .rc-anchor-normal .rc-anchor-content{
-    width: auto !important;
-}
-.rc-anchor-logo-portrait{
-    margin: 10px 0 0 0;
-}
-.customer-account-create .account-create .form-list .gender_field {
-    margin-bottom: 25px;
-}
-.customer-account-create .account-create .form-list .is_subscribed_wrap #is_subscribed {
-    display: none;
-}
-/*recaptcha end*/
 @media only screen and (max-width: 1125px){
    .adc_christmas .header .quick-access {
         width: 62% !important;
@@ -2186,9 +1980,6 @@ span.product_free_shipping {
 @media only screen and (max-width: 1024px){
     .checkout_steps div.tabs div.divider {
         width: 11% !important;
-    }
-    .opc-index-index #otp_verification {
-        width: 90%;
     }
 }
 @media only screen and (max-width: 1023px){
@@ -2277,17 +2068,6 @@ span.product_free_shipping {
     .checkout_steps div.tabs div.divider {
         width: 9% !important;
     } 
-    .opc-wrapper-opc .allday_checkout_left .md-content h1 {
-        font-size: 17px;
-    }
-    /*recaptcha*/
-    .catalog-category-view .col-right.sidebar #rcode {
-        display: inline-block;
-        width: auto;
-        float: left;
-        margin-left: 2%;
-        border-right: 1px solid #d3d3d3;
-    }
 }
 @media only screen and (max-width: 800px) {
 }
@@ -2619,5 +2399,4 @@ span.product_free_shipping {
         }
             
 }
-
 
