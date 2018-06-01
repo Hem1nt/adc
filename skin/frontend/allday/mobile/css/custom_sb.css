@@ -1561,7 +1561,7 @@
 	.catalog-category-view .col-right.sidebar #rcode{
 	    display: inline-block;
 	    width: auto;
-	    border-right: 1px solid #d3d3d3;
+	    /*border-right: 1px solid #d3d3d3;*/
 	    margin-left: 2%;
 	}
 
@@ -1947,7 +1947,7 @@ span.product_free_shipping {
 	.catalog-category-view .col-right.sidebar #rcode {
 	    display: inline-block;
 	    width: 49%;
-	    border-right: 1px solid #d3d3d3;
+	    /*border-right: 1px solid #d3d3d3;*/
 	    margin-left: 2%;
 	}
 }
