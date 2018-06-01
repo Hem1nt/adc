@@ -106,29 +106,8 @@
                     </div> -->
                     <!-- Captcha input ends -->
                 </li>
-                <!-- google reCaptcha start -->
-                       <?php if($this->helper('recaptcha')->showOnRegister()){?>                          
-                         <li id="rcode" class="fields">  
-                            <label for="captcha" class="required"><?php echo $this->__('Captcha') ?><em>*</em></label>
-                            <div class="input-box">  
-                                <div class="captcha">
-                                    <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
-                                </div>
-                            </div>
-                            <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                        </li> 
-                         <?php } ?>
-                    <!-- google reCaptcha end -->
-                    <?php if ($this->isNewsletterEnabled()): ?>
-                <li class="control">
-                    <div class="is_subscribed_wrap">
-                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-                        <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
-                    </div>
-
-                </li>
-            <?php endif ?>
                 <br/>
+                
                 <?php echo $this->getChildHtml('persistent.remember.me'); ?>
                 </ul>
                 <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
@@ -159,6 +138,12 @@
                         <label for="company"><?php echo $this->__('Company') ?></label>
                         <div class="input-box">
                             <input type="text" name="company" id="company" value="<?php echo $this->htmlEscape($this->getFormData()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="input-text" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="telephone" id="telephone" value="<?php echo $this->htmlEscape($this->getFormData()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text required-entry" />
                         </div>
                     </div>
                 </li>
@@ -291,17 +276,12 @@
             return false;
         }
         return false;
-    });*/
-    /*jQuery(window).load(function(){
-        //RegisterRefreshCaptcha();
-    });*/
-    /*function RegisterRefreshCaptcha(){
-=======
+    });
+
     jQuery(window).load(function(){
         RegisterRefreshCaptcha();
     });
     function RegisterRefreshCaptcha(){
->>>>>>> c924239f36533a110265f1a5a7b36cecdb0d4d95
         jQuery.post("<?php //echo $url_of_website.'register_captcha_file.php?code='.rand();?>", function(captcha){
             if(captcha!=""){
                 jQuery("#check-me").val(captcha);
@@ -310,15 +290,9 @@
                 checkCaptcha(capValue);              
             }
         });
-<<<<<<< HEAD
-    }*/
-    /*Captcha validation*/
-    /*function checkCaptcha(capValue){
-=======
     }
     /*Captcha validation
     function checkCaptcha(capValue){
->>>>>>> c924239f36533a110265f1a5a7b36cecdb0d4d95
         jQuery.ajax({
                     type : "POST",
                     url : "<?php //echo $this->getUrl('frontend/index/captcha') ?>",

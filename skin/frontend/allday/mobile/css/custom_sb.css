@@ -1722,7 +1722,6 @@
 	.catalog-category-view .col-right.sidebar #rcode{
 	    display: inline-block;
 	    width: auto;
-	    /*border-right: 1px solid #d3d3d3;*/
 	    border-right: 1px solid #d3d3d3;
 	    margin-left: 2%;
 	}
@@ -2112,7 +2111,6 @@ span.product_free_shipping {
 	.catalog-category-view .col-right.sidebar #rcode {
 	    display: inline-block;
 	    width: 49%;
-	    /*border-right: 1px solid #d3d3d3;*/
 	    border-right: 1px solid #d3d3d3;
 	    margin-left: 2%;
 	}
@@ -2285,10 +2283,6 @@ span.product_free_shipping {
     .catalog-product-view .review-count-pr .rating-links{
     	text-align: left;
     }
-    .catalog-category-view .col-right.sidebar #rcode{
-		width: 100%;
-		margin-left: 0;
-	}
 }
 @media only screen and (max-width: 540px){
     .checkout_steps div.tab-link.checkoutstep-2 p, 
@@ -2323,7 +2317,7 @@ span.product_free_shipping {
 	.customer-account-create #rcode .captcha{
         border-right: 1px solid #d3d3d3;
 	}
-}
+}	
 @media only screen and (max-width: 375px){
 	.icon-home:before{
       	font-size: 16px;
