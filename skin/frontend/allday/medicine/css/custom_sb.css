@@ -1971,7 +1971,7 @@ span.product_free_shipping {
 }
 .catalog-category-view .col-right.sidebar #rcode iframe{
     display: inline-block;
-    width: 100%;
+    /*width: 100%;*/
 }
 #rcode .rc-anchor-normal .rc-anchor-pt{
     width: auto !important;
@@ -2107,7 +2107,7 @@ span.product_free_shipping {
         width: auto;
         float: left;
         margin-left: 2%;
-        border-right: 1px solid #d3d3d3;
+        /*border-right: 1px solid #d3d3d3;*/
     }
 }
 @media only screen and (max-width: 800px) {
