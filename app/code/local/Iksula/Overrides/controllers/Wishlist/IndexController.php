@@ -43,9 +43,6 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
         //         return;
         //     }
         /*CAPTCHA VALIDATION ends*/
-
-        Mage::dispatchEvent('google_recatptcha_check_wishlist_share_before');
-
         $message = nl2br(htmlspecialchars((string) $this->getRequest()->getPost('message')));
         $error   = false;
         if (empty($emails)) {
