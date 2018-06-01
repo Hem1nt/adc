@@ -22,7 +22,7 @@
     <?php echo $this->getChildHtml('form_fields_before')?>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('paypalauth.register'); ?>
-    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate" onSubmit="return validateRecaptcha()">
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
         <div class="fieldset">
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
             <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
@@ -45,30 +45,8 @@
                     <?php endif ?>
                     <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
                     <?php if ($_gender->isEnabled()): ?>
-                        <li class="gender_field"><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+                        <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
                     <?php endif ?>
-                    <!-- google reCaptcha start -->
-                       <?php if($this->helper('recaptcha')->showOnRegister()){?>                          
-                         <li id="rcode" class="fields">  
-                            <label for="captcha" class="required"><?php echo $this->__('Captcha') ?><em>*</em></label>
-                            <div class="input-box">  
-                                <div class="captcha">
-                                    <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
-                                </div>
-                            </div>
-                            <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                        </li> 
-                         <?php } ?>
-                    <!-- google reCaptcha end -->
-                    <?php if ($this->isNewsletterEnabled()): ?>
-                <li class="control">
-                    <div class="is_subscribed_wrap">
-                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-                        <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
-                    </div>
-
-                </li>
-            <?php endif ?>
                 </ul>
             </div>
 
@@ -94,20 +72,28 @@
                         </div>
                     </div>
                     <!-- Captcha input -->
-                    <!-- <div class="field">
-                        <label for="register_captcha_code" class="required"><?php //echo $this->__('Captcha') ?><em>*</em></label>                        
+                    <div class="field">
+                        <label for="register_captcha_code" class="required"><?php echo $this->__('Captcha') ?><em>*</em></label>                        
                         <div class="input-box sinput">
-                            <img src="<?php //echo $url_of_website.'register_captcha_file.php?rand='.rand();?>" id='register_captcha_img'/>                            
+                            <img src="<?php echo $url_of_website.'register_captcha_file.php?rand='.rand();?>" id='register_captcha_img'/>                            
                             <br/><br/>
                             <input id="register_captcha_code" class="input-text required-entry validate_captcha sb_input_field" name="register_captcha_code" type="text">
                             <small>Click <a href='javascript: register_refresh_Captcha();'>here</a> to refresh Image !</small>
                             <input type="hidden" id="check-me" />
                         </div>                        
-                    </div> -->
+                    </div>
                     <!-- Captcha input ends -->
                 </li>
                 <br/>
-                
+                <?php if ($this->isNewsletterEnabled()): ?>
+                <li class="control">
+                    <div class="input-box">
+                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                        <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
+                    </div>
+
+                </li>
+            <?php endif ?>
                 <?php echo $this->getChildHtml('persistent.remember.me'); ?>
                 </ul>
                 <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
@@ -242,32 +228,32 @@
     </script>
     <!-- Captcha Validation on Form Submit-->
     <script type="text/javascript">
-    /*var new_form = new VarienForm("form-validate");
+    var new_form = new VarienForm("form-validate");
     jQuery('#form-validate').submit(function(){
-        //var register_captcha_img =jQuery('#register_captcha_code').val();
+        var register_captcha_img =jQuery('#register_captcha_code').val();
         if(new_form.validator.validate()){
             jQuery.ajax({
                 type : "POST",
                 success:function(content){
-                    //jQuery('#register_captcha_code').val("")
-                    //register_refresh_Captcha();
+                    jQuery('#register_captcha_code').val("")
+                    register_refresh_Captcha();
                 }
             }); 
         }
             
-    }); */
+    }); 
 </script>
 <!-- Captcha Validation referesh -->
 <script language='JavaScript' type='text/javascript'>
-    /*function register_refresh_Captcha(){
+    function register_refresh_Captcha(){
         var img = document.images['register_captcha_img'];
         img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
         setTimeout('RegisterRefreshCaptcha()', 500);
-    }*/
+    }
 </script>
 <!-- Captcha Validation to match the input with image -->
 <script type="text/javascript">
-    /*Validation.add('validate_captcha','Enter valid code',function(field_val){
+    Validation.add('validate_captcha','Enter valid code',function(field_val){
        if(jQuery("#check-me").val() != "")   {
             var me = jQuery("#check-me").val().split("_");
             if(me[1] == field_val) {
@@ -282,7 +268,7 @@
         RegisterRefreshCaptcha();
     });
     function RegisterRefreshCaptcha(){
-        jQuery.post("<?php //echo $url_of_website.'register_captcha_file.php?code='.rand();?>", function(captcha){
+        jQuery.post("<?php echo $url_of_website.'register_captcha_file.php?code='.rand();?>", function(captcha){
             if(captcha!=""){
                 jQuery("#check-me").val(captcha);
                 var split = captcha.split("_");
@@ -291,36 +277,16 @@
             }
         });
     }
-    /*Captcha validation
+    /*Captcha validation*/
     function checkCaptcha(capValue){
         jQuery.ajax({
                     type : "POST",
-                    url : "<?php //echo $this->getUrl('frontend/index/captcha') ?>",
+                    url : "<?php echo $this->getUrl('frontend/index/captcha') ?>",
                     data : "captcha="+capValue,
                     success:function(result){
                     return result;
                     }
                 });
-    }*/
+    }
 </script>
 </div>
- <!-- google reCaptcha start -->
-<script type="text/javascript">
-    function validateRecaptcha()
-    {
-        <?php if($this->helper('recaptcha')->showOnRegister()){ ?>
-            if (grecaptcha.getResponse() != ""){
-                document.getElementById("captcha-required").style.display = "none";
-                 return true;
-            } else {
-                document.getElementById("captcha-required").style.display = "block";
-                return false;
-            }
-        <?php } else { ?>
-            return true;
-        <?php } ?>
-    } 
-
-</script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
- <!-- google reCaptcha end -->

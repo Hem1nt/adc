@@ -239,7 +239,7 @@ $newArray = array_count_values($ratingValue);
     $productName = $_product->getName();
     ?>
     <div id="review-form-div">
-    <form action="<?php echo $this->getAction() ?>" method="post" id="review-form" onSubmit="return validateRecaptcha()">
+    <form action="<?php echo $this->getAction() ?>" method="post" id="review-form">
                 <ul class="form-list">
                     <li class="">
                        <!--  <label for="name_field" class="required"><?php //echo $this->__('Product Name') ?><em>*</em></label> -->
@@ -293,25 +293,15 @@ $newArray = array_count_values($ratingValue);
                             <textarea name="detail" placeholder="Your message*" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
                         </div>
                     </li>
-                     <!-- <li class="captcha_li"><?php // @ nilesh ?>
-                        <label for="message" class="required"><?php //echo $this->__('Enter the code') ?><em>*</em></label> 
+                     <li class="captcha_li"><?php // @ nilesh ?>
+                        <!-- <label for="message" class="required"><?php //echo $this->__('Enter the code') ?><em>*</em></label> -->
                         <div class="input-box">
-                            <img src="<?php //echo $this->getUrl(); ?>captcha_code_file.php?rand=<?php //echo rand(); ?>" id='captchaimg' >
+                            <img src="<?php echo $this->getUrl(); ?>captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' >
                             
                             <div id="cap_box"><input id="3_letters_code" placeholder="Enter the code*" class="required-entry input-text validate-captcha" name="3_letters_code" type="text"></div>
                         </div>
                         <p class="captcha_small">Can't read the image? Click <a href='javascript: refreshCaptcha();'>here</a> to refresh</p>
-                    </li> -->
-                    <!-- google recaptcha -->
-                        <?php if($this->helper('recaptcha')->showOnReview()){?>
-                           <li id="rcode">  
-                                    <div class="captcha">
-                                            <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
-                                    </div>
-                                    <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                            </li> 
-                        <?php } ?>
-                    <!-- google recpatcha -->
+                    </li>
                 </ul>
                 <div class="buttons-set">
 
@@ -327,7 +317,7 @@ $newArray = array_count_values($ratingValue);
     //<![CDATA[
         var dataForm = new VarienForm('review-form');
         <?php //@ nilesh ?>
-        /*Validation.add('validate-captcha','Enter valid code',function(field_value){
+        Validation.add('validate-captcha','Enter valid code',function(field_value){
            if(jQuery("#check_me").val() != "")
            {
                 var me = jQuery("#check_me").val().split("_");
@@ -345,7 +335,7 @@ $newArray = array_count_values($ratingValue);
         });
         function RefreshCapcha()
         {
-             jQuery.post('<?php //echo $this->getUrl()."captcha_code_file.php?code=".rand();?>', function(data){
+             jQuery.post('<?php echo $this->getUrl()."captcha_code_file.php?code=".rand();?>', function(data){
                 if(data!="")
                 {
                     jQuery("#check_me").val(data);
@@ -357,7 +347,7 @@ $newArray = array_count_values($ratingValue);
             var img = document.images['captchaimg'];
             img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
             setTimeout('RefreshCapcha()', 200);
-        }*/
+        }
         <?php // @ ?>
         Validation.addAllThese(
         [
@@ -437,21 +427,3 @@ label.css-label {
   background-image: url(../images/blank_star.jpg);
 }
 </style>
-<!-- google Recaptcha -->
-<script type="text/javascript">
-    function validateRecaptcha(){
-                <?php if($this->helper('recaptcha')->showOnReview()){ ?>
-                    if (grecaptcha.getResponse() != ""){
-                        document.getElementById("captcha-required").style.display = "none";
-                         return true;
-                    } else {
-                        document.getElementById("captcha-required").style.display = "block";
-                        return false;
-                    }
-                <?php } else { ?>
-                    return true;
-                <?php } ?>
-            }
-</script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<!-- google Recaptcha -->
