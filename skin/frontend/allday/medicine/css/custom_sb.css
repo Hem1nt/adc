@@ -2140,6 +2140,11 @@ span.product_free_shipping {
 .catalog-category-view .col-right.sidebar #rcode{
     display: inline-block;
     width: 100%;
+    /*border-right: 1px solid #d3d3d3;*/
+}
+.catalog-category-view .col-right.sidebar #rcode iframe{
+    display: inline-block;
+    /*width: 100%;*/
     border-right: 1px solid #d3d3d3;
 }
 .catalog-category-view .col-right.sidebar #rcode iframe{
