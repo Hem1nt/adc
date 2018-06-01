@@ -8,13 +8,13 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
     public function createPostAction()
     {   
         /*CAPTCHA VALIDATION starts*/
-        /*$capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
+        $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
         $captchaInput=$this->getRequest()->getPost('register_captcha_code');
         if($capValue!=$captchaInput)
             {
                 $this->_redirect('customer/account/create/');
                 return;
-            }*/
+            }
         /*CAPTCHA VALIDATION ends*/
         
        //secure url
@@ -38,16 +38,6 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
         $session->setEscapeMessages(true); // prevent XSS injection in user input
         if ($this->getRequest()->isPost()) {
             $errors = array();
-
-            $customerCollection = Mage::getModel('customer/customer')
-                              ->getCollection()
-                              ->addAttributeToFilter('telephone',$this->getRequest()->getParam('telephone'));
-
-            if($customerCollection->getSize() > 0){
-                Mage::getSingleton('core/session')->addError('Mobile number is already linked with another account');
-                $this->_redirect('customer/account/create/');
-                return;
-            }
 
             if (!$customer = Mage::registry('current_customer')) {
                 $customer = Mage::getModel('customer/customer')->setId(null);
@@ -181,13 +171,6 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
         if ($this->getRequest()->isPost()) {
             /** @var $customer Mage_Customer_Model_Customer */
             $customer = $this->_getSession()->getCustomer();
-
-            if($customer->getOtpVerified() == 1 && $customer->getData('telephone') != $this->getRequest()->getPost('telephone')){
-                $customer->setData('otp_verified',0)->save();
-                //$this->_redirect('customer/account/edit');
-                //return;
-            }
-
             $customer->setOldEmail($customer->getEmail());
             /** @var $customerForm Mage_Customer_Model_Form */
             $customerForm = $this->_getModel('customer/form');
@@ -248,8 +231,6 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                 return $this;
             }
 
-            
-
             try {
                 $customer->cleanPasswordsValidationData();
 
@@ -258,15 +239,8 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                     $customer->setRpToken(null);
                     $customer->setRpTokenCreatedAt(null);
                 }
-                
-                $customer->save();
 
-                if(Mage::getStoreConfig('sms_order_status/sms_group/sms_restriction', Mage::app()->getStore()->getId()) == 1 && !$customer->getOtpVerified()){
-                    Mage::getSingleton('customer/session')->addError('Please verify your mobile number');
-                    $this->_redirect('customer/account/edit');
-                    return;
-                }
-                
+                $customer->save();
                 $this->_getSession()->setCustomer($customer)
                     ->addSuccess($this->__('The account information has been saved.'));
 
