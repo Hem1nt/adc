@@ -50,8 +50,8 @@
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('paypalauth.login'); ?>
-    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
-    	<?php echo $this->getBlockHtml('formkey'); ?>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form" onSubmit="return validateRecaptcha()">
+        <?php echo $this->getBlockHtml('formkey'); ?>
         <div class="col2-set">
             <div class="col-1 new-users">
                 <div class="content">
@@ -88,6 +88,17 @@
                                 <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
                             </div>
                         </li>
+                        
+                    <!-- google recaptcha -->
+                        <?php if($this->helper('recaptcha')->showOnLogin()){?>
+                           <li id="rcode">  
+                                    <div class="captcha">
+                                            <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                    </div>
+                                    <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                            </li> 
+                        <?php } ?>
+                    <!-- google recpatcha -->
                         <?php echo $this->getChildHtml('persistent.remember.me'); ?>
                     </ul>
                     <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
@@ -115,3 +126,20 @@
     //]]>
     </script>
 </div>
+<!-- google Recaptcha -->
+<script type="text/javascript">
+    function validateRecaptcha(){
+                <?php if($this->helper('recaptcha')->showOnLogin()){ ?>
+                    if (grecaptcha.getResponse() != ""){
+                        document.getElementById("captcha-required").style.display = "none";
+                         return true;
+                    } else {
+                        document.getElementById("captcha-required").style.display = "block";
+                        return false;
+                    }
+                <?php } else { ?>
+                    return true;
+                <?php } ?>
+            }
+</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
