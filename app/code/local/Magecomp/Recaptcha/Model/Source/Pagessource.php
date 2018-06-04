@@ -9,7 +9,8 @@ class Magecomp_Recaptcha_Model_Source_Pagessource{
 			array('value'=>'4','label'=>'Suggestion Box'),
 			array('value'=>'5','label'=>'Product Request Form'),
 			array('value'=>'6','label'=>'Share Wishlist'),
-			array('value'=>'7','label'=>'Affliate MyInvitation')
+			array('value'=>'7','label'=>'Affliate MyInvitation'),
+			array('value'=>'8','label'=>'Login Form')
 		);	
 	}
 }
