@@ -2149,7 +2149,7 @@ span.product_free_shipping {
 }
 .catalog-category-view .col-right.sidebar #rcode iframe{
     display: inline-block;
-    width: 100%;
+    /*width: 100%;*/
 }
 #rcode .rc-anchor-normal .rc-anchor-pt{
     width: auto !important;
@@ -2158,8 +2158,9 @@ span.product_free_shipping {
 .rc-anchor-normal .rc-anchor-checkbox-label{
     width: 100px !important;
 }
+
 .catalog-category-view .col-right.sidebar #rcode .g-recaptcha > div{
-    width: 100%!important;
+    /*width: 100%!important;*/
 }
 .catalog-category-view .col-right.sidebar #rcode .rc-anchor-normal .rc-anchor-content{
     width: auto !important;
