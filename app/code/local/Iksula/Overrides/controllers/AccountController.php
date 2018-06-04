@@ -54,6 +54,32 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                 $customer->setIsSubscribed(1);
             }
 
+            /****************special character validation start***********************/
+
+            if(!preg_match('/^[a-zA-Z]+[a-zA-Z0-9._]+$/', $customerData['firstname']))
+
+            {
+                $session->addError($this->__('No special characters allowed in First Name.'));
+                $this->_redirect('customer/account/create/');
+                return;
+            }
+
+            else if(!preg_match('/^[a-zA-Z]+[a-zA-Z0-9._]+$/', $customerData['middlename']))
+
+                {   $session->addError($this->__('No special characters allowed in Middle Name.'));
+            $this->_redirect('customer/account/create/');
+            return;
+        }
+
+        else if(!preg_match('/^[a-zA-Z]+[a-zA-Z0-9._]+$/', $customerData['lastname']))
+
+            {   $session->addError($this->__('No special characters allowed in Last Name.'));
+        $this->_redirect('customer/account/create/');
+        return;
+    }
+
+    /****************special character validation end***********************/
+
             /**
              * Initialize customer group id
              */
