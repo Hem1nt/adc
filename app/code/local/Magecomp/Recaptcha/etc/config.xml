@@ -64,14 +64,14 @@
 				</observers>
 			</controller_action_predispatch_checkout_onepage_saveBilling>
 			
-			<google_recatptcha_check_wishlist_share_before>
+			<!-- <google_recatptcha_check_wishlist_share_before>
 				<observers>
 					<magecomp_recaptcha_wishlist>
 						<class>Magecomp_Recaptcha_Model_Observer</class>
 						<method>Savewishlist</method>
 					</magecomp_recaptcha_wishlist>
 				</observers>
-			</google_recatptcha_check_wishlist_share_before>
+			</google_recatptcha_check_wishlist_share_before> -->
 			<controller_action_predispatch_customer_account_loginPost>
 				<observers>
 					<magecomp_recaptcha_login>

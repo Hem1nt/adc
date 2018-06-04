@@ -60,7 +60,7 @@ class Magecomp_Recaptcha_Model_Observer
         endif;
     }
 
-    public function Savewishlist(){
+    /*public function Savewishlist(){
         $g_response=Mage::app()->getRequest()->getParam('g-recaptcha-response');
         if(isset($g_response) && !empty($g_response)):
             if (!(Mage::helper('recaptcha')->Validate_captcha($g_response))):
@@ -77,7 +77,7 @@ class Magecomp_Recaptcha_Model_Observer
             Mage::app()->getResponse()->sendResponse();
             exit;
         endif;
-    }
+    }*/
 
     public function customerLogin(){
         $g_response=Mage::app()->getRequest()->getParam('g-recaptcha-response');

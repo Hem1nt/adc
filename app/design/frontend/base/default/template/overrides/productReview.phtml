@@ -27,7 +27,7 @@ $m = 1;
 <h2 class="review_rating_heading">your reviews and ratings</h2>	
 <?php
 ?>
-<form action="<?php echo $obj->getAction()."id/".$currentItemDetails->getId()?>" method="post" class="review_frm" id="review-form-<?php echo $i ?>">
+<form action="<?php echo $obj->getAction()."id/".$currentItemDetails->getId()?>" method="post" class="review_frm" id="review-form-<?php echo $i ?>" onSubmit="return validateRecaptcha()">
 	<input type="hidden" name="nickname" id="nickname_field" class="input-text" value="<?php echo $name;?>"/>
 	<div class="review_img">
 		<a class="review_img_click" href="<?php echo $currentItemDetails->getProductUrl();?>"><img src="<?php echo $currentItemDetails->getImageUrl();?>" style="display: inline;"></a>
@@ -58,7 +58,17 @@ $m = 1;
 					<div class="input-box review_field_input">
 						<textarea name="detail" value="Review" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
 					</div>
-				</li>                  
+				</li>
+				<!-- google recaptcha -->
+                        <?php if($this->helper('recaptcha')->showOnReview()){?>
+                           <li id="rcode">  
+                                    <div class="captcha">
+                                            <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                    </div>
+                                    <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                            </li> 
+                        <?php } ?>
+                    <!-- google recpatcha -->                
 				<div class="buttons-set summary_field_button_div_<?php echo $m;?>" id="summary_field_button_div">
 					<button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button disableButton"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 				</div>
@@ -111,7 +121,17 @@ if($orderItemDetails->getSize()){
 							<div class="input-box review_field_input">
 								<textarea name="detail" value="Review" id="review_field" cols="5" rows="3" class="required-entry"></textarea>
 							</div>
-						</li>                   
+						</li>
+						<!-- google recaptcha -->
+                        <?php if($this->helper('recaptcha')->showOnReview()){?>
+                           <li id="rcode">  
+                                    <div class="captcha">
+                                            <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                    </div>
+                                    <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                            </li> 
+                        <?php } ?>
+                    <!-- google recpatcha -->                   
 						<div class="buttons-set summary_field_button_div_<?php echo $m;?>" id="summary_field_button_div">
 							<button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button disableButton"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 						</div>
@@ -212,3 +232,21 @@ jQuery('.review_lable').mouseleave(function(){
 })
 });
 </script>
+<!-- google Recaptcha -->
+<script type="text/javascript">
+    function validateRecaptcha(){
+                <?php if($this->helper('recaptcha')->showOnReview()){ ?>
+                    if (grecaptcha.getResponse() != ""){
+                        document.getElementById("captcha-required").style.display = "none";
+                         return true;
+                    } else {
+                        document.getElementById("captcha-required").style.display = "block";
+                        return false;
+                    }
+                <?php } else { ?>
+                    return true;
+                <?php } ?>
+            }
+</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<!-- google Recaptcha -->
