@@ -87,6 +87,14 @@
 					</magecomp_recaptcha_login>
 				</observers>
 			</controller_action_predispatch_customer_account_loginPost>
+			<controller_action_predispatch_trackorder_index_track>
+				<observers>
+					<magecomp_recaptcha_login>
+						<class>Magecomp_Recaptcha_Model_Observer</class>
+						<method>trackOrder</method>
+					</magecomp_recaptcha_login>
+				</observers>
+			</controller_action_predispatch_trackorder_index_track>
 		</events>
 		<resources>
             <recaptcha_setup>
