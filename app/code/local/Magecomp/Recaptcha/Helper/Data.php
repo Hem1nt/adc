@@ -114,6 +114,14 @@ class Magecomp_Recaptcha_Helper_Data extends Mage_Core_Helper_Abstract
 		}
 	}
 
+	public function showOnTrackOrder()
+	{
+		if($this->isEnabled())
+		{
+  			return self::getEnabledPage(8);
+		}
+	}
+
 	public function getTheme()
 	{
 		if($this->isEnabled())
