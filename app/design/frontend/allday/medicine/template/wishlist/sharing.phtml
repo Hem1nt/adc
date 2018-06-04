@@ -65,7 +65,7 @@
                     </div>
                 </li> -->
             <!-- Captcha input ends -->
-            <?php if(Mage::helper('recaptcha')->showOnReview()){?>                          
+            <?php if(Mage::helper('recaptcha')->showOnShareWishlist()){?>                          
                  <div id="rcode" class="wishlist_captcha_wrap">   
                         <div class="captcha">
                                 <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
@@ -177,7 +177,7 @@ var dataForm = new VarienForm('form-validate', true);
     }*/
     function validateRecaptcha()
     {
-        <?php if($this->helper('recaptcha')->showOnReview()){ ?>
+        <?php if($this->helper('recaptcha')->showOnShareWishlist()){ ?>
             if (grecaptcha.getResponse() != ""){
                 document.getElementById("captcha-required").style.display = "none";
                  return true;

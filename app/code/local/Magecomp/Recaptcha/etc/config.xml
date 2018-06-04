@@ -63,7 +63,14 @@
 					</magecomp_recaptcha_billing>
 				</observers>
 			</controller_action_predispatch_checkout_onepage_saveBilling>
-			
+			<controller_action_predispatch_wishlist_index_send>
+				<observers>
+					<magecomp_recaptcha_billing>
+						<class>Magecomp_Recaptcha_Model_Observer</class>
+						<method>Savewishlist</method>
+					</magecomp_recaptcha_billing>
+				</observers>
+			</controller_action_predispatch_wishlist_index_send>
 			<!-- <google_recatptcha_check_wishlist_share_before>
 				<observers>
 					<magecomp_recaptcha_wishlist>

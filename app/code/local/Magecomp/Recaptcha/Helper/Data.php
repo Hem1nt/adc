@@ -81,6 +81,7 @@ class Magecomp_Recaptcha_Helper_Data extends Mage_Core_Helper_Abstract
 		}
 	}
 
+	
 	/*public function showOnProductRequestForm()
 	{
 		if($this->isEnabled())
@@ -89,13 +90,6 @@ class Magecomp_Recaptcha_Helper_Data extends Mage_Core_Helper_Abstract
 		}
 	}*/
 
-	/*public function showOnShareWishlist()
-	{
-		if($this->isEnabled())
-		{
-  			return self::getEnabledPage(6);
-		}
-	}*/
 
 	public function showOnAffliateMyInvitation()
 	{
@@ -112,7 +106,14 @@ class Magecomp_Recaptcha_Helper_Data extends Mage_Core_Helper_Abstract
   			return self::getEnabledPage(6);
 		}
 	}
-	
+	public function showOnShareWishlist()
+	{
+		if($this->isEnabled())
+		{
+  			return self::getEnabledPage(7);
+		}
+	}
+
 	public function getTheme()
 	{
 		if($this->isEnabled())
