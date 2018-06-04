@@ -129,7 +129,13 @@
 
         /*SHOW HIDE PAY E*/
 
-
+        /*SHOW Hide BPAY*/
+        if($customermerGroupId == 2 || $billingCountry == 'AU'){
+                if (in_array('bpay', $paymentMethods)) {
+                    $disabledPAY = true;
+                }
+            }
+        /**/
 
         if($billingCountry!='US'){
             $baseOriginalMethod = 'pay';

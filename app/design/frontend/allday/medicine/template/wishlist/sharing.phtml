@@ -35,7 +35,7 @@
     <h1><?php echo $this->__('Share Your Wishlist') ?></h1>
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<form action="<?php echo $this->getSendUrl() ?>" id="form-validate" method="post">
+<form action="<?php echo $this->getSendUrl() ?>" id="form-validate" method="post" onSubmit="return validateRecaptcha()">
     <div class="fieldset share_wishlist">
         <?php echo $this->getBlockHtml('formkey')?>
         <h2 class="legend"><?php echo $this->__('Sharing Information') ?></h2>
@@ -53,18 +53,26 @@
                 </div>
             </li>
             <!-- Captcha input -->
-                <li>
+                <!-- <li>
                     <div class="field wishlist_captcha">
-                        <!-- <label for="wishlist_captcha_code" class="required"><?php //echo $this->__('Captcha') ?><em>*</em></label> -->
-                        <div class="captcha_img_wrap">                        
-                            <img src="<?php echo $url_of_website.'wishlist_captcha_file.php?rand='.rand();?>" id='wishlist_captcha_img'/>                        
+                         <label for="wishlist_captcha_code" class="required"><?php //echo $this->__('Captcha') ?><em>*</em></label> -->
+                        <!--<div class="captcha_img_wrap">                        
+                            <img src="<?php //echo $url_of_website.'wishlist_captcha_file.php?rand='.rand();?>" id='wishlist_captcha_img'/>                        
                         </div>
                         <input id="wishlist_captcha_code" class="input-text required-entry validate_captcha" name="wishlist_captcha_code" type="text" placeholder="enter code here">
                         <small>Can't read the image? Click <a href='javascript: wishlist_refresh_Captcha();' class="click-here">here</a> to refresh Image!</small>
                         <input type="hidden" id="check-me" />                     
                     </div>
-                </li>
+                </li> -->
             <!-- Captcha input ends -->
+            <?php if(Mage::helper('recaptcha')->showOnShareWishlist()){?>                          
+                 <div id="rcode" class="wishlist_captcha_wrap">   
+                        <div class="captcha">
+                                <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                        </div>
+                        <div id="captcha-required" style='display:none; color:#ff0000' class="validation-advice"><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></div>
+                </div> 
+             <?php } ?>
             <?php if($this->helper('wishlist')->isRssAllow()): ?>
             <li class="control">
                 <div class="input-box">
@@ -108,13 +116,13 @@ var dataForm = new VarienForm('form-validate', true);
 <script type="text/javascript">
     var new_form = new VarienForm("form-validate");
     jQuery('#form-validate').submit(function(){
-        var wishlistist_captcha_img =jQuery('#wishlist_captcha_code').val();
+        //var wishlistist_captcha_img =jQuery('#wishlist_captcha_code').val();
         if(new_form.validator.validate()){
             jQuery.ajax({
                 type : "POST",
                 success:function(content){
-                    jQuery('#wishlist_captcha_code').val("")
-                    wishlist_refresh_Captcha();
+                    //jQuery('#wishlist_captcha_code').val("")
+                    //wishlist_refresh_Captcha();
                 }
             }); 
         }
@@ -123,15 +131,15 @@ var dataForm = new VarienForm('form-validate', true);
 </script>
 <!-- Captcha Validation referesh -->
 <script language='JavaScript' type='text/javascript'>
-    function wishlist_refresh_Captcha(){
+    /*function wishlist_refresh_Captcha(){
         var img = document.images['wishlist_captcha_img'];
         img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
         setTimeout('wishlistRefreshCaptcha()', 500);
-    }
+    }*/
 </script>
 <!-- Captcha Validation to match the input with image -->
 <script type="text/javascript">
-    Validation.add('validate_captcha','Enter valid code',function(field_val){
+    /*Validation.add('validate_captcha','Enter valid code',function(field_val){
        if(jQuery("#check-me").val() != "")   {
             var me = jQuery("#check-me").val().split("_");
            // alert(jQuery("#check-me").val());
@@ -147,7 +155,7 @@ var dataForm = new VarienForm('form-validate', true);
         wishlistRefreshCaptcha();
     });
     function wishlistRefreshCaptcha(){
-        jQuery.post("<?php echo $url_of_website.'wishlist_captcha_file.php?code='.rand();?>", function(captcha){
+        jQuery.post("<?php //echo $url_of_website.'wishlist_captcha_file.php?code='.rand();?>", function(captcha){
             if(captcha!=""){
                 jQuery("#check-me").val(captcha);
                 var split = captcha.split("_");
@@ -157,14 +165,29 @@ var dataForm = new VarienForm('form-validate', true);
         });
     }
     /*Captcha validation*/
-    function checkCaptcha(capValue){
+    /*function checkCaptcha(capValue){
         jQuery.ajax({
                     type : "POST",
-                    url : "<?php echo $this->getUrl('frontend/index/captcha') ?>", //action in frontend IndexController Change
+                    url : "<?php //echo $this->getUrl('frontend/index/captcha') ?>", //action in frontend IndexController Change
                     data : "captcha="+capValue,
                     success:function(result){
                     return result;
                     }
                 });
+    }*/
+    function validateRecaptcha()
+    {
+        <?php if($this->helper('recaptcha')->showOnShareWishlist()){ ?>
+            if (grecaptcha.getResponse() != ""){
+                document.getElementById("captcha-required").style.display = "none";
+                 return true;
+            } else {
+                document.getElementById("captcha-required").style.display = "block";
+                return false;
+            }
+        <?php } else { ?>
+            return true;
+        <?php } ?>
     }
 </script>   
+<script src='https://www.google.com/recaptcha/api.js'></script>
