@@ -537,8 +537,10 @@ jQuery(document).ready(function($){
 
 });
 </script>
+<?php if(!in_array('catalogsearch_result_index', Mage::app()->getLayout()->getUpdate()->getHandles())){ ?>
 <script type="text/javascript">
     var mpulse = '<?php if($category->getData('mpulse')){
         echo $category->getData('mpulse');
     } ?>';
 </script>
+<?php } ?>
