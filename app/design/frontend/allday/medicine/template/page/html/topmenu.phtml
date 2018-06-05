@@ -38,31 +38,7 @@
 	<div class="block-title">
 		<div class="nav-content-header">
 			<a href="<?php echo $this->getBaseUrl(); ?>" class="home_icon"><img src="<?php echo $this->getSkinUrl();?>images/home_ico.png" alt= "home" /></a>
-			<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('nav_left_categories')->toHtml(); ?>
-			<div class="nav-left-category">
-				<ul class="topmenu"><!--li class="nav-categoty-links"><a href="{{config path="web/unsecure/base_url"}}asthma.html">Asthma</a></li-->
-					<li class="nav-categoty-links"><a href="<?php echo Mage::getBaseUrl() ?>eye-care.html">Eye Care</a>
-					</li>
-					<li class="nav-categoty-links"><a href="<?php echo Mage::getBaseUrl() ?>men-s-health.html">Men's Health</a>
-						<?php $_helper = Mage::helper('catalog/category') ?>
-						<?php $_category = Mage::getModel('catalog/category')->load(7) ?>
-						<?php $_subcategories = $_category->getChildrenCategories() ?>
-						<?php if (count($_subcategories) > 0): ?>
-							<ul class="men-s-health-subcat">
-								<?php foreach($_subcategories as $_subcategory): ?>
-									<li class="nav-categoty-links custom_nav">
-										<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
-											<?php echo $_subcategory->getName() ?>
-										</a>
-									</li>
-								<?php endforeach; ?>
-							</ul>
-						<?php endif; ?>
-					</li>
-					<li><a href="<?php echo Mage::getBaseUrl() ?>blog">Blog</a></li>
-					<li><a href="<?php echo Mage::getBaseUrl() ?>testimonial">Testimonial</a></li>
-				</ul>
-			</div>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('nav_left_categories')->toHtml(); ?>
 			<div class="categories-right-hom">
 		        <strong class="all-categories"><span><?php echo $this->__('All Categories') ?></span></strong>
 		        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('nav_right_categories')->toHtml(); ?>
