@@ -49,12 +49,25 @@
 						<?php $_subcategories = $_category->getChildrenCategories() ?>
 						<?php if (count($_subcategories) > 0): ?>
 							<ul class="men-s-health-subcat">
+								<?php 
+									$c = count($_subcategories);
+									//$i = 1;
+								?>
+								<li><ul>
 								<?php foreach($_subcategories as $_subcategory): ?>
-									<li class="nav-categoty-links custom_nav">
-										<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
-											<?php echo $_subcategory->getName() ?>
-										</a>
-									</li>
+									<?php if($c%3 == 0){ 
+											$c--;
+										?>
+											</ul></li><li><ul><li>test</li>
+									<?php }else{ 
+											
+										?>
+											<?php if($c == 1){ ?>
+												</ul></li><li><ul><li>test</li>
+											<?php }else{ ?>
+												<li>test</li>
+											<?php $c--;	} ?>
+									<?php } ?>
 								<?php endforeach; ?>
 							</ul>
 						<?php endif; ?>
