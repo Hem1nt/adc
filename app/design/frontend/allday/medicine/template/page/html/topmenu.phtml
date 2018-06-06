@@ -58,14 +58,26 @@
 									<?php if($c%3 == 0){ 
 											$c--;
 										?>
-											</ul></li><li><ul><li>test</li>
+											</ul></li><li><ul><li class="nav-categoty-links custom_nav">
+											<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+											<?php echo $_subcategory->getName() ?>
+										</a>
+									</li>
 									<?php }else{ 
 											
 										?>
 											<?php if($c == 1){ ?>
-												</ul></li><li><ul><li>test</li>
+												</ul></li><li><ul><li class="nav-categoty-links custom_nav">
+											<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+											<?php echo $_subcategory->getName() ?>
+										</a>
+									</li>
 											<?php }else{ ?>
-												<li>test</li>
+												<li class="nav-categoty-links custom_nav">
+											<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
+											<?php echo $_subcategory->getName() ?>
+										</a>
+									</li>
 											<?php $c--;	} ?>
 									<?php } ?>
 								<?php endforeach; ?>
