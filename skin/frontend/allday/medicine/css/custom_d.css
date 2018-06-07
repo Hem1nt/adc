@@ -9248,9 +9248,6 @@ body.catalog-product-view .nav-right-category ul li.coupon-and-offer a , body.ca
         padding: 6px 5px;
         font-size: 14px;
     }
-    body.catalog-product-view .product-details-table table.new_product_list td, body.catalog-product-view .review-product-list .product-details-table table.new_product_list{
-        padding: 7px 7px;
-    }
 }
 
 /*.dynamicsitemap-index-index .siteul li{
