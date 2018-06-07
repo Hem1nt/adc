@@ -4,7 +4,7 @@
     ?>
     <div class="page-title"><h1><?php echo $this->__('Track Your Order ') ?></h1></div>
     <div class="form-list">
-        <form name="track_order" id="track_order" action="" method="post" onsubmit="sendAjax('track_order','<?php  echo Mage::getUrl('*/*/track');?>'); return false;">
+        <form name="track_order" id="track_order" action="" method="post" onsubmit="sendAjax('track_order','<?php  echo Mage::getUrl('*/*/track');?>'); return">
         <!--<form name="track_order" method="post" id="track_order" action="<?php echo Mage::getUrl('*/*/view');?>">-->
             <ul class="form-list">
                 <li>
@@ -19,6 +19,16 @@
                         <input type="text" name="email" id="email_address" value="" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
                     </div>    
                 </li>
+                <!-- google recaptcha -->
+                        <?php if($this->helper('recaptcha')->showOnTrackOrder()){?>
+                           <li id="rcode">  
+                                    <div class="captcha">
+                                            <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                    </div>
+                                    <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                            </li> 
+                        <?php } ?>
+                    <!-- google recpatcha -->
             </ul>
             <div class="buttons-set">
                <button type="submit" class="button" title="<?php echo $this->__('Track Order') ?>" name="track" id="track">
@@ -49,6 +59,9 @@
             if (!validateForm.validator.validate()) {
                 return;
             }
+
+            validateRecaptcha();
+
             var data = $(frmId).serialize(this);
             $("loading-details").show();
             
@@ -82,3 +95,21 @@
     <?php endif; ?>
  
 </div>
+<!-- google Recaptcha -->
+<script type="text/javascript">
+    function validateRecaptcha(){
+                <?php if($this->helper('recaptcha')->showOnTrackOrder()){ ?>
+                    if (grecaptcha.getResponse() != ""){
+                        document.getElementById("captcha-required").style.display = "none";
+                         return true;
+                    } else {
+                        document.getElementById("captcha-required").style.display = "block";
+                        return false;
+                    }
+                <?php } else { ?>
+                    return true;
+                <?php } ?>
+            }
+</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<!-- google Recaptcha -->

@@ -34,15 +34,18 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
 
         //$sharedToCombine = array_combine($emails, $sharedTo);     
         /*CAPTCHA VALIDATION starts*/
-        $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
-        $captchaInput=$this->getRequest()->getPost('wishlist_captcha_code');
-        if($capValue!=$captchaInput)
-            {   
-                Mage::getSingleton('core/session')->addError('Please enter valid data.'); 
-                $this->_redirect('*/*/share');
-                return;
-            }
+        // $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
+        // $captchaInput=$this->getRequest()->getPost('wishlist_captcha_code');
+        // if($capValue!=$captchaInput)
+        //     {   
+        //         Mage::getSingleton('core/session')->addError('Please enter valid data.'); 
+        //         $this->_redirect('*/*/share');
+        //         return;
+        //     }
         /*CAPTCHA VALIDATION ends*/
+
+        Mage::dispatchEvent('google_recatptcha_check_wishlist_share_before');
+
         $message = nl2br(htmlspecialchars((string) $this->getRequest()->getPost('message')));
         $error   = false;
         if (empty($emails)) {
@@ -126,4 +129,4 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
     }
 
 }
-				
+                
