@@ -13,7 +13,9 @@ class Iksula_Bpay_IndexController extends Mage_Core_Controller_Front_Action{
   public function submitDetailsAction(){
   	$_form_data = array();
   	$store = Mage::app()->getStore();
-    $_form_data['api_key'] = Mage::getStoreConfig('payment/groupName/bpay', $store);
+
+    $_form_data['api_version'] = Mage::getStoreConfig('payment/bpay/apiversion', $store);
+    $_form_data['api_key'] = Mage::getStoreConfig('payment/bpay/apikey', $store);
         
     $_form_data['name'] = $this->getRequest()->getParam('firstname');
     $_form_data['acc_no'] = $this->getRequest()->getParam('acc_no');
@@ -22,7 +24,7 @@ class Iksula_Bpay_IndexController extends Mage_Core_Controller_Front_Action{
     $_form_data['email1'] = $this->getRequest()->getParam('email');
     $_form_data['other'] = $this->getRequest()->getParam('message');
     $_form_data['amount'] = $this->getRequest()->getParam('amount');
-
+    $_form_data['yrn'] = '';//$this->getRequest()->getParam('yrn');
     $pstring = $this->paramString($_form_data);
 
     $remote_url = 'https://www.howtopay.com/Member/api_processPayment';

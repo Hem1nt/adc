@@ -58,7 +58,7 @@ if($_product->isConfigurable()) {
 		if($child->getData('bonus')) {
 			//$packSizeLabel = $child->getData('bonus')." + ".$packSizeLabel." Extra";
 			$bonusImage = $this->getSkinUrl().'images/double_pill.jpg';
-			$packSizeLabel = '<span class="size_label">'.$packSizeLabel.'</span><img class="double_pill_img" src='.$bonusImage.'>';
+			$packSizeLabel = '<span class="size_label">'.$packSizeLabel.'</span><div class="double_pill_img" src='.$bonusImage.'>double pills offer</div>';
 			//$packUnitsize = $packUnitsize + $child->getData('bonus');
 		}
 		$childPrice = Mage::helper('core')->currency($child->getPrice(),true,false);
@@ -97,11 +97,11 @@ if($_product->isConfigurable()) {
 
 			if(in_array($currSku, $bestValueArr)){
 				$backendSku = 1;
-				$recommended = '<span class="recomend-text">( Recommended )</span>';
+				$recommended = '<span class="recomend-text">best value</span>';
 				$recommendeclass = 'packsize_recommended';
 			}else{
 				if($getSimpleProductPrice == $lowestPrice && $backendSku == 0 && $productCounter > 1){
-				$recommended = '<span class="recomend-text">( Recommended )</span>';
+				$recommended = '<span class="recomend-text">best value</span>';
 				$recommendeclass = 'packsize_recommended';
 			}
 			}
@@ -168,7 +168,7 @@ if($_product->isConfigurable()) {
 		if($attributeLabel == 'Coming Soon'){
 			echo '<td class="pr-link-notify"><span class="coming_soon_btn">Coming Soon<span></td>';
 		}else{
-		echo '<td class="add_to_cart_button"><a id="s-'.$child->getId().'" class="related-buy-now" title="Add to cart" href="'.$url.'checkout/cart/add/product/'.$child->getId().'/?super_attribute[140]='.$child->getPackSize().'&mainid='.$conProduct->getId().'"> </a></td>';
+		echo '<td class="add_to_cart_button"><a id="s-'.$child->getId().'" class="related-buy-now" title="Add to cart" href="'.$url.'checkout/cart/add/product/'.$child->getId().'/?super_attribute[140]='.$child->getPackSize().'&mainid='.$conProduct->getId().'">Add to cart</a></td>';
 		}
 		//echo '<td class="simple_wishlist"><a class="refill_reminder_open" href="refillreminder?product_id='.$child->getId().'">Wishlist</a></td>';
 		
