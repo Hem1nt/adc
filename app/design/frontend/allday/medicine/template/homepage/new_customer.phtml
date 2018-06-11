@@ -26,8 +26,10 @@
 					foreach($bestSellingProducts as $bestProducts){
 						$i++;
 						$productName = $bestProducts->getName();
+						$productGenericName = $bestProducts->getGenericName();
+						$productUsBrandName = $bestProducts->getUsBrandName();
 						$productUrl = $bestProducts->getProductUrl();
-						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(81,176);
+						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(150,200);
 						if($i%2 != 0):?>
 						<li>
 							
@@ -37,13 +39,11 @@
 			                    <span class="discount_tag"><?php echo $bestProducts->getDiscountTag() ?></span>
 			                    <?php endif; ?>
 			                    <!-- discount tag-->
-								<img class="lazy" data-src="<?php echo $productImage; ?>"
-								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
-								 alt="<?php echo $productName;?>" />
+								<img class="lazy" data-src="<?php echo $productImage; ?>" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>" alt="<?php echo $productName;?>" />
 								<span><?php echo $productName;?></span>
+								<span><?php if($productUsBrandName): echo '<br>US BRAND NAME :'. $productUsBrandName; else: echo '<br>GENERIC FOR :'. $productGenericName;endif;?></span>
 							</a>
-						<?php else:?>
-												
+						<?php else:?>												
 							<a href="<?php echo $productUrl;?>">
 								<!-- discount tag-->
 			                    <?php if ($bestProducts->getSpecialPrice() != '' && $bestProducts->getDiscountTag() != '' && ($bestProducts->isSaleable() || $bestProducts->getIsInStock()!=0)) :?>
@@ -54,6 +54,7 @@
 								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
 								 alt="<?php echo $productName;?>" />
 								<span><?php echo $productName;?></span>
+								<span><?php if($productUsBrandName): echo '<br>US BRAND NAME :'. $productUsBrandName; else: echo '<br>GENERIC FOR :'. $productGenericName;endif;?></span>
 							</a>
 						</li>
 						<?php endif ?>
@@ -73,6 +74,8 @@
 				<?php
 					foreach($bestSellingProducts as $bestProducts){
 						$productName = $bestProducts->getName();
+						$productGenericName = $bestProducts->getGenericName();
+						$productUsBrandName = $bestProducts->getUsBrandName();
 						$productUrl = $bestProducts->getProductUrl();
 						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(81,176);?>
 						<li>
@@ -82,10 +85,9 @@
 			                    <span class="discount_tag"><?php echo $bestProducts->getDiscountTag() ?></span>
 			                    <?php endif; ?>
 			                    <!-- discount tag-->
-								<img class="lazy" data-src="<?php echo $productImage; ?>"
-								src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>"
-								 alt="<?php echo $productName;?>" />
+								<img class="lazy" data-src="<?php echo $productImage; ?>" src="<?php echo $this->getSkinUrl('images/loading_1.gif') ?>" alt="<?php echo $productName;?>" />
 								<span><?php echo $productName;?></span>
+								<span><?php if($productUsBrandName): echo '<br>US BRAND NAME :'. $productUsBrandName; else: echo '<br>GENERIC FOR :'. $productGenericName;endif;?></span>
 							</a>
 						</li>
 					<?php }
