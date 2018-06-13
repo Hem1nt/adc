@@ -5,7 +5,7 @@
 <div class="md-content">
 	<div class="md-content-wrapper">
 		<div class="opc-title"><h2 class="login-g"><?php echo $this->__('Login') ?></h2></div>
-		<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+		<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form" onSubmit="return validateRecaptcha()">
       		<?php echo $this->getBlockHtml('formkey'); ?>
 	        <div>
 				<ul class="form-list">
@@ -39,6 +39,16 @@
 							<input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
 						</div>
 						<div class="liforget"><a href="<?php echo $this->getForgotPasswordUrl() ?>" class="restore-account"><?php echo $this->__('Forgot Your Password?') ?></a></div>
+						<!-- google recaptcha -->
+                        <?php if($this->helper('recaptcha')->showOnLogin()){?>
+                           <div id="rcode">  
+                                    <div class="captcha">
+                                            <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                    </div>
+                                    <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                            </div> 
+                        <?php } ?>
+                    <!-- google recpatcha -->
 					</li>
 
 				</ul>
@@ -87,3 +97,20 @@
         // var dataForm1 = new VarienForm('login-form', true);
     //]]>
 </script>
+<!-- google Recaptcha -->
+<script type="text/javascript">
+    function validateRecaptcha(){
+                <?php if($this->helper('recaptcha')->showOnLogin()){ ?>
+                    if (grecaptcha.getResponse() != ""){
+                        document.getElementById("captcha-required").style.display = "none";
+                         return true;
+                    } else {
+                        document.getElementById("captcha-required").style.display = "block";
+                        return false;
+                    }
+                <?php } else { ?>
+                    return true;
+                <?php } ?>
+            }
+</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
