@@ -650,6 +650,14 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 			}
 			///
 			$this->getOnepage()->saveOrder();
+
+			/* Bpay code */
+				if($data["method"] == 'bpay'){
+					$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+					Mage::helper('bpay')->submitDetails($data,$orderId);
+				}
+			/* Bpay code */
+
 			// if($customer_id == '' && $checkout_method == 'guest') {
 			// 	$this->assignOrders($customer_email);
 			// }

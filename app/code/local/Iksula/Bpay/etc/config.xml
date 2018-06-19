@@ -15,17 +15,6 @@
                 </args>
             </bpay>
         </routers>
-        <events>
-            <sales_order_place_after>
-              <observers>
-                <sales_order_place_after_bpay>
-                  <type>singleton</type>
-                  <class>Iksula_Bpay_Model_Observer</class>
-                  <method>sendEmailbpay</method>
-                </sales_order_place_after_bpay>
-              </observers>
-            </sales_order_place_after>
-        </events>
     </frontend> 
     <global>
         <models>
@@ -33,14 +22,6 @@
                 <class>Iksula_Bpay_Model</class>
                 <resourceModel>bpay_mysql4</resourceModel>
             </bpay>
-            <!-- <bpay_mysql4>
-                <class>Iksula_Bpay_Model_Mysql4</class>
-                <entities>
-                    <bpay>
-                        <table>bpay</table>
-                    </bpay>
-                </entities>
-            </bpay_mysql4> -->
         </models>
         <resources>
             <bpay_setup>
