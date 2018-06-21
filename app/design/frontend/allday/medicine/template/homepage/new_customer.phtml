@@ -32,6 +32,21 @@
 						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(150,200);
 						if($i%2 != 0):?>
 						<li>
+							 <!-- freegifttext start -->
+                            <?php
+                            $giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
+                            $giftSpan = '';
+                            if($giftProds){
+                             $giftProdsArr = explode(',', $giftProds);
+                             $giftProdsArr=array_map('trim',$giftProdsArr);
+
+                             if(in_array($bestProducts->getSku(), $giftProdsArr)){
+                               echo $giftSpan = '<span class="" title="Get a free gift"> Free Gift</span>';
+                           }
+                       }
+                       
+                       ?>
+                       <!-- freegifttext end -->
 							
 							<a href="<?php echo $productUrl;?>">
 								<!-- discount tag-->
@@ -79,6 +94,23 @@
 						$productUrl = $bestProducts->getProductUrl();
 						$productImage = $this->helper('catalog/image')->init($bestProducts, 'image')->resize(81,176);?>
 						<li>
+
+							 <!-- freegifttext start -->
+                            <?php
+                            $giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
+                            $giftSpan = '';
+                            if($giftProds){
+                             $giftProdsArr = explode(',', $giftProds);
+                             $giftProdsArr=array_map('trim',$giftProdsArr);
+                             
+                        // $currSku = $child->getSku();
+                             if(in_array($bestProducts->getSku(), $giftProdsArr)){
+                               echo $giftSpan = '<span class="" title="Get a free gift"> Free Gift</span>';
+                           }
+                       }
+                       
+                       ?>
+                       <!-- freegifttext end -->
 							<a href="<?php echo $productUrl;?>">
 								<!-- discount tag-->
 			                    <?php if ($bestProducts->getSpecialPrice() != '' && $bestProducts->getDiscountTag() != '' && ($bestProducts->isSaleable() || $bestProducts->getIsInStock()!=0)) :?>

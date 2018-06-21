@@ -80,6 +80,22 @@ $category = Mage::registry('current_category');
                                 <span class="discount_tag"><?php echo $_product->getData('discount_tag') ?></span>
                             <?php endif; ?>
                             <!-- discount tag list view-->
+
+                            <!-- freegifttext start -->
+                            <?php
+                            $giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
+                            $giftSpan = '';
+                            if($giftProds){
+                             $giftProdsArr = explode(',', $giftProds);
+                             $giftProdsArr=array_map('trim',$giftProdsArr);
+                             
+                             if(in_array($_product->getSku(), $giftProdsArr)){
+                               echo $giftSpan = '<span class="" title="Get a free gift"> Free Gift</span>';
+                           }
+                       }
+                       
+                       ?>
+                       <!-- freegifttext end -->
                             <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
                             <ul class="add-to-links">
                                 <?php if ($this->helper('wishlist')->isAllow()) : ?>
@@ -258,6 +274,22 @@ $category = Mage::registry('current_category');
     <span class="discount_tag"><?php echo $_product->getData('discount_tag') ?></span>
 <?php endif; ?>
 <!-- discount tag gridd view-->
+
+<!-- freegifttext start -->
+             <?php
+             $giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
+             $giftSpan = '';
+             if($giftProds){
+               $giftProdsArr = explode(',', $giftProds);
+               $giftProdsArr=array_map('trim',$giftProdsArr);
+ 
+               if(in_array($_product->getSku(), $giftProdsArr)){
+                 echo $giftSpan = '<span class="" title="Get a free gift"> Free Gift</span>';
+             }
+         }
+ 
+         ?>
+       <!-- freegifttext end -->
 
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
     <a href="<?php echo $_product->getProductUrl(); ?>" title="Add to Wishlist" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>

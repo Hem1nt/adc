@@ -23,6 +23,21 @@
                 ?>
             <div class="register_user_category_content">
                 <li class="slick_list">
+                    <!-- freegifttext start -->
+                            <?php
+                            $giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
+                            $giftSpan = '';
+                            if($giftProds){
+                             $giftProdsArr = explode(',', $giftProds);
+                             $giftProdsArr=array_map('trim',$giftProdsArr);
+                             
+                             if(in_array($productsCollection->getSku(), $giftProdsArr)){
+                               echo $giftSpan = '<span class="" title="Get a free gift"> Free Gift</span>';
+                           }
+                       }
+                       
+                       ?>
+                       <!-- freegifttext end -->
                     <!--lazy loading starts-->
             		<a href="<?php echo $productsCollection->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($productsCollection, 'small_image'), null, true) ?>" class="product_img">
                     <img class="lazy" src="<?php echo $this->getSkinUrl('images/loading_1.gif'); ?>" data-src="<?php echo $productsCollection->getImageUrl(); ?>" alt="<?php echo $productsCollection->getName();?>">
