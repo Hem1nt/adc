@@ -283,23 +283,28 @@ $category = Mage::registry('current_category');
 <!-- discount tag gridd view-->
 
 <!-- freegifttext start -->
-             <?php
-             $giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
-             $giftSpan = '';
-             if($giftProds){
-               $giftProdsArr = explode(',', $giftProds);
-               $giftProdsArr=array_map('trim',$giftProdsArr);
+<?php
+$giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
+$giftSpan = '';
+if($giftProds){
+ $giftProdsArr = explode(',', $giftProds);
+ $giftProdsArr=array_map('trim',$giftProdsArr);
  
-               if(in_array($_product->getSku(), $giftProdsArr)){
-                 echo $giftSpan = '<span class="free_gift_text" title="Get a free gift"> Free Gift Inside</span>';
-             }
-         }
- 
-         ?>
-       <!-- freegifttext end -->
-       <div class="double_pill_offer">
-        <?php if($_product->getBonus() != ""): echo $this->__('Double Pills Offer ');endif;?>
-    </div>
+ if(in_array($_product->getSku(), $giftProdsArr)){
+   echo $giftSpan = '<span class="free_gift_text" title="Get a free gift"> Free Gift Inside</span>';
+}
+}
+
+?>
+<!-- freegifttext end -->
+
+
+<?php if($_product->getBonus() != ""): ?>
+    <div class="double_pill_offer">
+        <?php echo $this->__('Double Pills Offer');?>
+ </div>
+<?php endif;?>
+    
 
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
     <a href="<?php echo $_product->getProductUrl(); ?>" title="Add to Wishlist" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
