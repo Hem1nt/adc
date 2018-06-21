@@ -428,6 +428,21 @@ body *, input, select, textarea, button{
     padding: 10px;
     position: relative;
 }
+.free_gift_text, .double_pill_offer{
+    background-color: #506f00;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    font-size: 13px;
+    padding: 3px 8px;
+    padding-right: 9px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 10;
+    font-weight: normal;
+    color: #fff!important;
+}
 .slick-initialized .slick-slide {
     display: block;
     padding: 10px 0;
