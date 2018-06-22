@@ -80,9 +80,11 @@ $category = Mage::registry('current_category');
                        ?>
                        <!-- freegifttext end -->
 
+                        <?php if($_product->getBonus() != ""): ?>
                         <div class="double_pill_offer">
-                            <?php if($_product->getBonus() != ""): echo $this->__('Double Pills Offer ');endif;?>
+                             <?php echo $this->__('Double Pills Offer ');?>
                         </div>
+                            <?php endif;?>
                 </a>
                 <?php // Product description ?>
                 <div class="product-shop">
@@ -107,9 +109,9 @@ $category = Mage::registry('current_category');
                         
                             <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
                             <ul class="add-to-links">
-                                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <?php /*if ($this->helper('wishlist')->isAllow()) : ?>
                                 <li><a href="<?php echo $_product->getProductUrl(); ?>" title="Add to Wishlist" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                            <?php endif; ?>
+                            <?php endif; */?>
                             <?php if($_compareUrl=$this->getAddToCompareUrl($_product)):?>
                             <li class="link-compare-li"> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Compare') ?></a></li>
                         <?php endif; ?>
@@ -283,32 +285,29 @@ $category = Mage::registry('current_category');
 <!-- discount tag gridd view-->
 
 <!-- freegifttext start -->
-<?php
-$giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
-$giftSpan = '';
-if($giftProds){
- $giftProdsArr = explode(',', $giftProds);
- $giftProdsArr=array_map('trim',$giftProdsArr);
+             <?php
+             $giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
+             $giftSpan = '';
+             if($giftProds){
+               $giftProdsArr = explode(',', $giftProds);
+               $giftProdsArr=array_map('trim',$giftProdsArr);
  
- if(in_array($_product->getSku(), $giftProdsArr)){
-   echo $giftSpan = '<span class="free_gift_text" title="Get a free gift"> Free Gift Inside</span>';
-}
-}
+               if(in_array($_product->getSku(), $giftProdsArr)){
+                 echo $giftSpan = '<span class="free_gift_text" title="Get a free gift"> Free Gift Inside</span>';
+             }
+         }
+ 
+         ?>
+       <!-- freegifttext end -->
+       <?php if($_product->getBonus() != ""): ?>
+        <div class="double_pill_offer">
+             <?php echo $this->__('Double Pills Offer ');?>
+        </div>
+            <?php endif;?>
 
-?>
-<!-- freegifttext end -->
-
-
-<?php if($_product->getBonus() != ""): ?>
-    <div class="double_pill_offer">
-        <?php echo $this->__('Double Pills Offer');?>
- </div>
-<?php endif;?>
-    
-
-<?php if ($this->helper('wishlist')->isAllow()) : ?>
+<?php /*if ($this->helper('wishlist')->isAllow()) : ?>
     <a href="<?php echo $_product->getProductUrl(); ?>" title="Add to Wishlist" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
-<?php endif; ?>
+<?php endif; */?>
 
 <div class="pr-details-height">
     <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>

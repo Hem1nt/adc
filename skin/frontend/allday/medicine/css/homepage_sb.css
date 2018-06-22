@@ -430,15 +430,14 @@ body *, input, select, textarea, button{
 }
 .free_gift_text, .double_pill_offer{
     background-color: #506f00;
-    color: #fff;
     position: absolute;
-    left: 0;
+    right: 0;
     top: 5px;
-    font-size: 13px;
+    font-size: 13px !important;
     padding: 3px 8px;
-    padding-right: 9px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    padding-right: 6px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     z-index: 10;
     font-weight: normal;
     color: #fff!important;
@@ -1328,6 +1327,12 @@ body *, input, select, textarea, button{
         }
         .cms-home .main_config_page .leading_online {
             text-align: center;
+        }
+        .free_gift_text, .double_pill_offer {
+            font-size: 10px !important;
+            padding: 3px 3px;
+            padding-right: 2px;
+            color: #fff!important;
         }
 }
 
