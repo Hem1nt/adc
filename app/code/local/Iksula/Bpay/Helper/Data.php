@@ -5,12 +5,13 @@ class Iksula_Bpay_Helper_Data extends Mage_Core_Helper_Abstract
     $orderIncrementId = $orderId;
   	$_form_data = array();
   	$store = Mage::app()->getStore();
+	$_order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
 
     $_form_data['api_version'] = Mage::getStoreConfig('payment/bpay/apiversion', $store);
     $_form_data['api_key'] = Mage::getStoreConfig('payment/bpay/apikey', $store);
         
     $_form_data['name'] = $data['bpay_firstname'];
-    $_form_data['acc_no'] = $data['bpay_acc_no'];
+    $_form_data['acc_no'] = $_order->getData('customer_order_increment_id');
     $_form_data['phone'] = $data['bpay_phone'];
     $_form_data['address'] = '';//$data['bpay_firstname'];
     $_form_data['email1'] = $data['bpay_email'];
@@ -22,13 +23,14 @@ class Iksula_Bpay_Helper_Data extends Mage_Core_Helper_Abstract
 
     $remote_url = 'https://www.howtopay.com/Member/api_processPayment';
     $result = $this->send_curl_request($remote_url, $pstring, true);
+    Mage::log($_form_data,true,'bpay_user_data.log');
+    Mage::log($result,true,'bpay_user_data.log');
     $timeStamp = $request['timestamp'];
 		$nofifydate = date('d-m-Y H:i:s',$timeStamp);
 		
 		if(empty($timestamp)){
 			$nofifydate =  date('d-m-Y H:i:s');
 		}
-	$_order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
 		
 	$status = 0;
 	$statusName = $this->bpayStatusByCode($status);
