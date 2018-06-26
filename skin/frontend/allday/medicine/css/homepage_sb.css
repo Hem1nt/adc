@@ -429,7 +429,7 @@ body *, input, select, textarea, button{
     position: relative;
 }
 .free_gift_text, .double_pill_offer{
-    background-color: #506f00;
+    background-color: #f6770e;
     position: absolute;
     right: 0;
     top: 5px;
