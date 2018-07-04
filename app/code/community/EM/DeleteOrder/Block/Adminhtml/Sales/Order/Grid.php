@@ -53,7 +53,7 @@ class EM_DeleteOrder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
         ));
 
         $this->addColumn('echeck_transactionid', array(
-            'header' => Mage::helper('sales')->__('Echeck Transactionid'),
+            'header' => Mage::helper('sales')->__('ECheck ID'),
             'index' => 'echeck_transactionid',
             'filter_index' => 'echeck_transactionid',
         ));
