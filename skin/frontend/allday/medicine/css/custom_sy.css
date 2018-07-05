@@ -552,7 +552,7 @@ span.mandate {
         /*width: 40%;
         left: 1%;
         bottom: 5px;*/
-        display: none;
+        display: none !important;
     }
     /* Promotion with coupon Design end here */
 }
