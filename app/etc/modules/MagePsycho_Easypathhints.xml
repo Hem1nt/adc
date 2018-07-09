@@ -11,7 +11,7 @@
 <config>
     <modules>
         <MagePsycho_Easypathhints>
-            <active>false</active>
+            <active>true</active>
             <codePool>local</codePool>
         </MagePsycho_Easypathhints>
     </modules>
