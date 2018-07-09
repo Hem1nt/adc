@@ -61,12 +61,12 @@ $billAddress = $checkout->getBillingAddress();
                 <input  id="<?php echo $_code ?>_firstname" name="payment[bpay_firstname]" value="<?php echo $billAddress->getData('firstname').' '.$billAddress->getData('lastname'); ?>" class="required-entry">
             </div>
         </li>
-        <li>
+        <!-- <li>
             <div class="input-box">
-                <label for="<?php echo $_code ?>_acc_no"><?php echo $this->__('Account Number :') ?><span class="required">*</span></label><br />
-                <input  id="<?php echo $_code ?>_acc_no" name="payment[bpay_acc_no]" class="required-entry">
+                <label for="<?php //echo $_code ?>_acc_no"><?php //echo $this->__('Account Number :') ?><span class="required">*</span></label><br />
+                <input  id="<?php //echo $_code ?>_acc_no" name="payment[bpay_acc_no]" class="required-entry">
             </div>
-        </li>
+        </li> -->
         <li>
             <div class="input-box">
                 <label for="<?php echo $_code ?>_amount"><?php echo $this->__('Amount in (AUD) :') ?> <span class="required">*</span></label><br />

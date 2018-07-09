@@ -460,6 +460,7 @@ body * {
 .catalog-category-view .col-main .category-products .products-list li.item .product-image, .catalogsearch-result-index .col-main .category-products .products-list li.item .product-image, .promotions-index-index .col-main .category-products .products-list li.item .product-image, .tag-list-index .col-main .category-products .products-list li.item .product-image {
   height: auto;
   margin: 0;
+  position: relative;
 }
 .catalog-category-view .col-main .category-products .products-list li.item .product-image img.lazy, .catalogsearch-result-index .col-main .category-products .products-list li.item .product-image img.lazy, .promotions-index-index .col-main .category-products .products-list li.item .product-image img.lazy, .tag-list-index .col-main .category-products .products-list li.item .product-image img.lazy {
   width: 100%;

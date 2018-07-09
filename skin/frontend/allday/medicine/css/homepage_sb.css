@@ -428,6 +428,20 @@ body *, input, select, textarea, button{
     padding: 10px;
     position: relative;
 }
+.free_gift_text, .double_pill_offer{
+    background-color: #f6770e;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 13px !important;
+    padding: 3px 8px;
+    padding-right: 6px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    z-index: 10;
+    font-weight: normal;
+    color: #fff!important;
+}
 .slick-initialized .slick-slide {
     display: block;
     padding: 10px 0;
@@ -1313,6 +1327,12 @@ body *, input, select, textarea, button{
         }
         .cms-home .main_config_page .leading_online {
             text-align: center;
+        }
+        .free_gift_text, .double_pill_offer {
+            font-size: 10px !important;
+            padding: 3px 3px;
+            padding-right: 2px;
+            color: #fff!important;
         }
 }
 
