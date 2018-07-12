@@ -2082,6 +2082,12 @@ span.product_free_shipping {
 	.catalog-product-view #review-form-div {
 	    padding: 0 8px !important;
 	}
+	.cms-identifying-fraudulent-phishing-email .hometextcontent .link1,
+	.cms-identifying-fraudulent-phishing-email .hometextcontent .link2{
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+	}
 }
 @media only screen and (max-width: 694px){
 	.adc_christmas .header .quick-access {

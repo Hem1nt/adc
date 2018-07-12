@@ -1986,14 +1986,6 @@ button.button:hover > span {
     					    width: 32%;
         					text-align: left;		
     					}*/
-    					/*&.simple_wishlist:before {
-    						content: "Wishlist : ";
-    						position: absolute;
-    						left: 0;
-    						font-weight: bold;
-    					    width: 32%;
-        					text-align: left;		
-    					}*/
     					/*&.add_to_cart_button:before {
     						content: "Cart : ";
     						position: absolute;
@@ -2040,6 +2032,9 @@ button.button:hover > span {
     width: 32%;
     text-align: left;
   }
+  .catalog-product-view .product-details-table table.new_product_list td.price_value.custom_price_center span.discount_tag, .catalog-product-view .product-details-table table.new_product_list td.price_value.custom_price_center .old-price, .catalog-product-view .product-details-table table.new_product_list td.price_value.custom_price_center .special-price, .review-product-list .product-details-table table.new_product_list td.price_value.custom_price_center span.discount_tag, .review-product-list .product-details-table table.new_product_list td.price_value.custom_price_center .old-price, .review-product-list .product-details-table table.new_product_list td.price_value.custom_price_center .special-price {
+    margin-left: 32%;
+  }
   .catalog-product-view .product-details-table table.new_product_list td.simple_wishlist, .review-product-list .product-details-table table.new_product_list td.simple_wishlist {
     display: none;
   }
@@ -2051,6 +2046,7 @@ button.button:hover > span {
     padding: 0 20px;
     width: 100%;
     display: inline-block;
+    box-sizing: border-box;
   }
   .catalog-product-view .product-details-table table.new_product_list a.refill_reminder_open, .review-product-list .product-details-table table.new_product_list a.refill_reminder_open {
     float: none;
