@@ -2254,14 +2254,12 @@ button.button:hover > span{
 					    width: 32%;
     					text-align: left;		
 					}
-					/*&.simple_wishlist:before {
-						content: "Wishlist : ";
-						position: absolute;
-						left: 0;
-						font-weight: bold;
-					    width: 32%;
-    					text-align: left;		
-					}*/
+					&.price_value.custom_price_center{
+						span.discount_tag, .old-price, .special-price{
+							margin-left: 32%;
+						}
+					}
+
 					&.simple_wishlist{
 						display: none;
 					}
@@ -2282,6 +2280,7 @@ button.button:hover > span{
 					padding: 0 20px;
 					width: 100%;
 					display: inline-block;
+					box-sizing: border-box;
 				}
 				a.refill_reminder_open {
 				    float: none;
