@@ -2088,7 +2088,8 @@ a.product_img[data-src~="http"] {
     border: 0;
     display: inline-block;
     vertical-align: middle;
-    background: url(../images/adc_gift.png) no-repeat;
+    /*background: url(../images/adc_gift.png) no-repeat;*/
+    background: url(../images/adc_combo_offer.png) no-repeat;
     width: 60px;
     height: 60px;
     background-size: 60px;

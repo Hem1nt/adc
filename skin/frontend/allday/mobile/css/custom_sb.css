@@ -1768,7 +1768,8 @@
     border: 0;
     display: inline-block;
     vertical-align: middle;
-    background: url(../images/adc_gift.png) no-repeat;
+    /*background: url(../images/adc_gift.png) no-repeat;*/
+    background: url(../images/adc_combo_offer.png) no-repeat;
     width: 60px;
     height: 60px;
     background-size: 60px;
@@ -2294,6 +2295,9 @@ span.product_free_shipping {
     .catalog-category-view .col-right.sidebar #rcode{
 		width: 100%;
 		margin-left: 0;
+	}
+	.product_free_gift{
+		vertical-align: top;
 	}
 }
 @media only screen and (max-width: 540px){
