@@ -265,13 +265,36 @@ a.home_icon img {
     margin-right: 0;
     width: 20%;
     border-radius: 5px;
+    cursor: pointer;
 }
 .adc-footer-links ul.last {
     margin-right: 0 !important;
     width: 20% !important;
 }
 /*subscription css*/
+/*social_links*/
+.footer-container #toTop .subscribe-innerdiv .social_links{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin: 20px 0 0;
+}
+.links_wrap a{
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    margin: 0 5px;
+}
 
+a.facebook_link{
+    background: url(../images/facebook_img.png) center center no-repeat;
+}
+a.twitter_link{
+    background: url(../images/twitter_img.png) center center no-repeat;
+}
+a.pinit_link{
+    background: url(../images/pin_img.png) center center no-repeat;
+}
 
 #toTop {
     position: static !important;
@@ -358,7 +381,7 @@ p.footer_content {
 /* umesh css */
 
 .footer-container #toTop .subscribe-innerdiv{
-    padding: 10px 0;
+    padding: 10px 0 0;
 }
 
 .fa-remove:before, .fa-close:before, .fa-times:before{
