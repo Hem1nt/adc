@@ -129,6 +129,22 @@ if($_product->isConfigurable()) {
 			// 	$recommendeclass = 'packsize_recommended';
 			// }
 		//}
+
+		/*custom code for combo pack start*/
+		$comboProds = Mage::getStoreConfig('ampromo/gift_product/combo_product_item');
+
+		$comboSpan = '';
+		if($comboProds){
+			$comboProdsArr = explode(',', $comboProds);
+			$comboProdsArr=array_map('trim',$comboProdsArr);
+			
+			$currSku = $child->getSku();
+			if(in_array($currSku, $comboProdsArr)){
+				$comboSpan = ' <span class="product_combo_offer" title="Get a combo pack">Combo Pack</span>';
+			}
+		}
+		/*custom code for combo pack end*/
+
 		$giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
 
 		$giftSpan = '';
@@ -143,7 +159,11 @@ if($_product->isConfigurable()) {
 		}
 		if($freeShippingProduct && in_array($currSku, $freeShipArr)){
 			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$freeShippingProduct.$giftSpan."</td>";			
-		}else{
+		}
+		elseif($comboSpan && in_array($currSku, $comboProdsArr)){
+			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$comboSpan."</td>";
+		}
+		else{
 			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$giftSpan."</td>";			
 		}
 		echo "<td class='qty_value'><span class='select_wrap'><select id='p-".$child->getId()."'>";
