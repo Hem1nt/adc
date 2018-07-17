@@ -273,27 +273,27 @@ a.home_icon img {
 }
 /*subscription css*/
 /*social_links*/
-.footer-container #toTop .subscribe-innerdiv .social_links{
+.footer-container .social_links{
     display: inline-block;
     text-align: center;
     width: 100%;
-    margin: 20px 0 0;
+    margin: 30px 0 0;
 }
-.links_wrap a{
+.footer-container .social_links .links_wrap a{
     width: 36px;
     height: 36px;
     display: inline-block;
     margin: 0 5px;
 }
 
-a.facebook_link{
-    background: url(../images/facebook_img.png) center center no-repeat;
+.footer-container .social_links a.facebook_link{
+    background: url(../images/fb.png) center center no-repeat;
 }
-a.twitter_link{
-    background: url(../images/twitter_img.png) center center no-repeat;
+.footer-container .social_links a.twitter_link{
+    background: url(../images/twitter.png) center center no-repeat;
 }
-a.pinit_link{
-    background: url(../images/pin_img.png) center center no-repeat;
+.footer-container .social_links a.pinit_link{
+    background: url(../images/pinterest.png) center center no-repeat;
 }
 
 #toTop {
@@ -336,6 +336,10 @@ a.pinit_link{
 .footer address {
     text-transform: capitalize;
 }
+.adc-footer-row1-wrap {
+    background: #e7e8dd;
+    width: 100%;
+}
 .adc-footer-row1 {
     max-width: 1110px;
     padding: 10px;
@@ -343,6 +347,7 @@ a.pinit_link{
     box-sizing: border-box;
     text-align: center;
     display: inline-block;
+    padding: 16px 15px !important;
 }
 .footer-container .footer-our-partners {
     text-align: center;
@@ -1284,6 +1289,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .adc-footer-links ul, .adc-footer-links ul.last {
         width: 100% !important;
+    }
+    .footer-container .social_links{
+        margin: 20px 0 0;
     }
 }
 @media only screen and (max-width: 694px){
