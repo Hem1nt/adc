@@ -189,7 +189,8 @@ class Iksula_ExtendedReview_IndexController extends Mage_Core_Controller_Front_A
 	        $url_of_website = Mage::getUrl();
 	    }
 		$url = Mage::getUrl("frontend/index/captcha");
-		$nurl = $url_of_website."extended_review_captcha_code_file.php?code=".rand();
+		//$nurl = $url_of_website."extended_review_captcha_code_file.php?code=".rand();
+		$nurl = $url_of_website."extendedreview/index/index?code=".rand();
 		$Captcha = "<script type='text/javascript'>
     var new_form = new VarienForm('frmReview');
     jQuery('#frmReview').submit(function(){
