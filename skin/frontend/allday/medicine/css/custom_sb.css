@@ -1488,11 +1488,12 @@ a.product_img[data-src~="http"] {
 }
 .extendedreview-index-reviewpage #customer-reviews .review_left_block .verified_user{
     font-size: 14px;
-    color: #333333;
+    color: #f6770e;
     box-sizing: border-box;
     padding-left: 20px;
     background: url(../images/i_msg-success.gif) 0px 3px no-repeat;
     margin: 2px 0;
+    font-weight: bold
 }
 /*more info*/
 .customer-account-edit .col-main .more_info_custom .form-list {
