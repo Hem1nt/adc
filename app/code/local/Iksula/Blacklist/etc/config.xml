@@ -22,6 +22,26 @@
                 <class>Iksula_Blacklist_Model</class>
             </blacklist>
         </models>
+        <resources>
+        <blacklist_setup>
+        <setup>
+          <module>Iksula_Blacklist</module>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+        </blacklist_setup>
+        <blacklist_write>
+        <connection>
+          <use>core_write</use>
+        </connection>
+        </blacklist_write>
+        <blacklist_read>
+        <connection>
+          <use>core_read</use>
+        </connection>
+        </blacklist_read>
+      </resources>
     </global> 
     <adminhtml>
         <acl>
