@@ -1479,20 +1479,12 @@ a.product_img[data-src~="http"] {
 }
 .catalog-product-view #customer-reviews .review_left_block, 
 .review-product-list #customer-reviews .review_left_block ,
-.extendedreview-index-reviewpage #customer-reviews .review_left_block, 
+    .extendedreview-index-reviewpage #customer-reviews .review_left_block, 
 .review-product-list #customer-reviews .review_left_block {
     font-size: 14px;
     color: #333333;
     padding-right: 21px;
     box-sizing: border-box;
-}
-.extendedreview-index-reviewpage #customer-reviews .review_left_block .verified_user{
-    font-size: 14px;
-    color: #333333;
-    box-sizing: border-box;
-    padding-left: 20px;
-    background: url(../images/i_msg-success.gif) 0px 3px no-repeat;
-    margin: 2px 0;
 }
 /*more info*/
 .customer-account-edit .col-main .more_info_custom .form-list {
