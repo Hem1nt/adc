@@ -40,6 +40,10 @@
 											<title>Promotion id for auto customer discount</title>
 											<sort_order>7</sort_order>
 										</auto_customer_discount>
+										<value_pack_sku>
+											<title>Value pack SKU for 1 qty in cart</title>
+											<sort_order>8</sort_order>
+										</value_pack_sku>
 									</children>
 								</config>
 							</children>

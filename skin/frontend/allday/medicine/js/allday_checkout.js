@@ -42,6 +42,7 @@ jQuery(document).ready(function(){
 			jQuery('#tab-2').hide();
 			jQuery('#tab-3').hide();
 			jQuery('#tab-4').hide();
+			jQuery('#tab-5').hide();
 			jQuery('#tab-1').show();
 			jQuery('.checkoutstep-1').removeClass('pass');
 			jQuery('.checkoutstep-1').addClass('current');
@@ -56,6 +57,7 @@ jQuery(document).ready(function(){
 			jQuery('#tab-1').hide();
 			jQuery('#tab-3').hide();
 			jQuery('#tab-4').hide();
+			jQuery('#tab-5').hide();
 			jQuery('#tab-2').show();
 			jQuery('.checkoutstep-2').removeClass('pass');
 			jQuery('.checkoutstep-2').addClass('current');
@@ -70,6 +72,7 @@ jQuery(document).ready(function(){
 			jQuery('#tab-1').hide();
 			jQuery('#tab-2').hide();
 			jQuery('#tab-4').hide();
+			jQuery('#tab-5').hide();
 			jQuery('#tab-3').show();
 			jQuery('.checkoutstep-3').removeClass('pass');
 			jQuery('.checkoutstep-3').addClass('current');

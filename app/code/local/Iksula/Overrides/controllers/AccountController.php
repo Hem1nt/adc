@@ -11,10 +11,10 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
         $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
         $captchaInput=$this->getRequest()->getPost('register_captcha_code');
         if($capValue!=$captchaInput)
-            {
-                $this->_redirect('customer/account/create/');
-                return;
-            }
+        {
+            $this->_redirect('customer/account/create/');
+            return;
+        }
         /*CAPTCHA VALIDATION ends*/
         
        //secure url
@@ -30,7 +30,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
             $this->_redirect('*/*/');
             return;
         }
-         if (!$this->getRequest()->isPost()) {
+        if (!$this->getRequest()->isPost()) {
             $this->_redirectError($errUrl);
             return;
         }
@@ -46,13 +46,43 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
             /* @var $customerForm Mage_Customer_Model_Form */
             $customerForm = Mage::getModel('customer/form');
             $customerForm->setFormCode('customer_account_create')
-                ->setEntity($customer);
+            ->setEntity($customer);
 
             $customerData = $customerForm->extractData($this->getRequest());
 
             if ($this->getRequest()->getParam('is_subscribed', false)) {
                 $customer->setIsSubscribed(1);
             }
+
+            /****************special character validation start***********************/
+            if(!empty($customerData['firstname'])){
+                if(!preg_match('/^([a-z]|[A-Z]|[0-9])+$/', $customerData['firstname']))
+
+                {
+                    $session->addError($this->__('No special characters allowed in First Name.'));
+                    $this->_redirect('customer/account/create/');
+                    return;
+                }
+            }
+
+            if(!empty($customerData['middlename'])){
+                if(!preg_match('/^([a-z]|[A-Z]|[0-9])+$/', $customerData['middlename']))
+
+                    {   $session->addError($this->__('No special characters allowed in Middle Name.'));
+                $this->_redirect('customer/account/create/');
+                return;
+            }
+        }
+        if(!empty($customerData['lastname'])){
+            if(!preg_match('/^([a-z]|[A-Z]|[0-9])+$/', $customerData['lastname']))
+
+                {   $session->addError($this->__('No special characters allowed in Last Name.'));
+            $this->_redirect('customer/account/create/');
+            return;
+        }
+    }
+
+    /****************special character validation end***********************/
 
             /**
              * Initialize customer group id
@@ -65,14 +95,14 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                 /* @var $addressForm Mage_Customer_Model_Form */
                 $addressForm = Mage::getModel('customer/form');
                 $addressForm->setFormCode('customer_register_address')
-                    ->setEntity($address);
+                ->setEntity($address);
 
                 $addressData    = $addressForm->extractData($this->getRequest(), 'address', false);
                 $addressErrors  = $addressForm->validateData($addressData);
                 if ($addressErrors === true) {
                     $address->setId(null)
-                        ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
-                        ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
+                    ->setIsDefaultBilling($this->getRequest()->getParam('default_billing', false))
+                    ->setIsDefaultShipping($this->getRequest()->getParam('default_shipping', false));
                     $addressForm->compactData($addressData);
                     $customer->addAddress($address);
 
@@ -107,14 +137,14 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
 
                     Mage::dispatchEvent('customer_register_success',
                         array('account_controller' => $this, 'customer' => $customer)
-                    );
+                        );
 
                     if ($customer->isConfirmationRequired()) {
                         $customer->sendNewAccountEmail(
                             'confirmation',
                             $session->getBeforeAuthUrl(),
                             Mage::app()->getStore()->getId()
-                        );
+                            );
                         $session->addSuccess($this->__('Verification link has been sent to your email address. Please verify your email to access your account.'));
                         /*$session->addSuccess($this->__('Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="%s">click here</a>.', Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail())));*/
                         $this->_redirectSuccess(Mage::getUrl('*/*/index', array('_secure'=>true)));
@@ -154,7 +184,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                 $session->addError($message);
             } catch (Exception $e) {
                 $session->setCustomerFormData($this->getRequest()->getPost())
-                    ->addException($e, $this->__('Cannot save the customer.'));
+                ->addException($e, $this->__('Cannot save the customer.'));
             }
         }
 
@@ -175,7 +205,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
             /** @var $customerForm Mage_Customer_Model_Form */
             $customerForm = $this->_getModel('customer/form');
             $customerForm->setFormCode('customer_account_edit')
-                ->setEntity($customer);
+            ->setEntity($customer);
 
             $customerData = $customerForm->extractData($this->getRequest());
 
@@ -242,7 +272,7 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
 
                 $customer->save();
                 $this->_getSession()->setCustomer($customer)
-                    ->addSuccess($this->__('The account information has been saved.'));
+                ->addSuccess($this->__('The account information has been saved.'));
 
                 if ($customer->getIsChangeEmail() || $customer->getIsChangePassword()) {
                     $customer->sendChangedPasswordOrEmail();
@@ -252,10 +282,10 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                 return;
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->setCustomerFormData($this->getRequest()->getPost())
-                    ->addError($e->getMessage());
+                ->addError($e->getMessage());
             } catch (Exception $e) {
                 $this->_getSession()->setCustomerFormData($this->getRequest()->getPost())
-                    ->addException($e, $this->__('Cannot save the customer.'));
+                ->addException($e, $this->__('Cannot save the customer.'));
             }
         }
 
@@ -287,14 +317,14 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
                 } catch (Mage_Core_Exception $e) {
                     switch ($e->getCode()) {
                         case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
-                            $value = $this->_getHelper('customer')->getEmailConfirmationUrl($login['username']);
-                            $message = $this->_getHelper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
-                            break;
+                        $value = $this->_getHelper('customer')->getEmailConfirmationUrl($login['username']);
+                        $message = $this->_getHelper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
+                        break;
                         case Mage_Customer_Model_Customer::EXCEPTION_INVALID_EMAIL_OR_PASSWORD:
-                            $message = $e->getMessage();
-                            break;
+                        $message = $e->getMessage();
+                        break;
                         default:
-                            $message = $e->getMessage();
+                        $message = $e->getMessage();
                     }
                     $session->addError($message);
                     $session->setUsername($login['username']);

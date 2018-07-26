@@ -188,6 +188,7 @@ body *, input, select, textarea, button{
     border-radius: 35px;
     font-weight: 700;
     position: relative;
+    display: inline-block; 
 }
 .cms-home .main_config_page .best_seller .best_seller_title span::before, 
 .cms-home .main_config_page .popular_categories .popular_categories_title span::before, 
@@ -199,7 +200,7 @@ body *, input, select, textarea, button{
     border-right: 15px solid transparent;
     border-bottom: 11px solid #506f00;
     position: absolute;
-    top: 30px;
+    bottom: -11px;
     transform: rotate(180deg);
     left: 41%;
 }
@@ -361,7 +362,7 @@ body *, input, select, textarea, button{
     border-right: 15px solid transparent;
     border-top: 11px solid #506f00;
     position: absolute;
-    top: 32px;
+    bottom: -11px;
     /*transform: rotate(180deg);*/
     left: 45%;
 }
@@ -426,6 +427,20 @@ body *, input, select, textarea, button{
     margin: 0 15px;
     padding: 10px;
     position: relative;
+}
+.free_gift_text, .double_pill_offer{
+    background-color: #f6770e;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 13px !important;
+    padding: 3px 8px;
+    padding-right: 6px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    z-index: 10;
+    font-weight: normal;
+    color: #fff!important;
 }
 .slick-initialized .slick-slide {
     display: block;
@@ -1042,7 +1057,7 @@ body *, input, select, textarea, button{
         border-right: 15px solid transparent;
         border-bottom: 11px solid #506f00;
         position: absolute;
-        top: 30px;
+        bottom: -11px;
         transform: rotate(180deg);
         left: 50%;
         margin-left: -15px;
@@ -1238,6 +1253,12 @@ body *, input, select, textarea, button{
 @media all and (max-width: 420px){
         .cms-home .main_config_page .mobile_best_seller {
             width: 100%;
+            text-align: center;
+        }
+        .cms-home .main_config_page .mobile_best_seller_title {
+            text-align: center;
+            width: 260px;
+            display: inline-block;
         }
         .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-prev, .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_data .slick-next {
             top: 45%;
@@ -1255,13 +1276,24 @@ body *, input, select, textarea, button{
             line-height: 35px;
         }
         .cms-home .main_config_page .best_seller .best_seller_title span, .cms-home .main_config_page .popular_categories .popular_categories_title span, .cms-home .main_config_page .leading_online .leading_online_title span {
-            padding: 9px 25%;
+            padding: 9px 0;
+            box-sizing: border-box;
+            width: 100%;
+            display: inline-block;
+            font-size: 11px;
+        }
+        .cms-home .recently_view_category_content .register_user_category_name span{
+            font-size: 11px;   
         }
         .cms-home .main_config_page .mobile_best_seller_title span {
-            padding: 9px 25%;
+            padding: 9px 0;
+            width: 100%;
+            display: inline-block;
+            box-sizing: border-box;
+            font-size: 11px;
         }
         .cms-home .main_config_page .mobile_best_seller .mobile_best_seller_title span::before {
-            left: 45%;
+            left: 50%;
         }
         .cms-home .main_config_page .best_seller .best_seller_title span::before, .cms-home .main_config_page .popular_categories .popular_categories_title span::before, .cms-home .main_config_page .leading_online .leading_online_title span::before {
             left: 45%;
@@ -1274,13 +1306,34 @@ body *, input, select, textarea, button{
         .frontend-index-allbrands #search_sidebar_form .drugSearch li #dropdown1 {
             width: 85%;
              margin: 0; 
-        }
-
-       
-        
-         .iframe_wrap{
+        } 
+        .iframe_wrap{
             background: #000;
-         }
+        }
+        .cms-home .recently_view_category_content .register_user_category_name{
+            display: inline-block;
+            width: 260px;
+            text-align: center;
+        }
+        .cms-home .main_config_page .best_seller .best_seller_title, 
+        .cms-home .main_config_page .popular_categories .popular_categories_title, 
+        .cms-home .main_config_page .leading_online .leading_online_title{
+            text-align: center;
+            width: 260px;
+            display: inline-block;
+        }
+        .cms-home .main_config_page .popular_categories{
+            text-align: center;
+        }
+        .cms-home .main_config_page .leading_online {
+            text-align: center;
+        }
+        .free_gift_text, .double_pill_offer {
+            font-size: 10px !important;
+            padding: 3px 3px;
+            padding-right: 2px;
+            color: #fff!important;
+        }
 }
 
 @media all and (min-width: 1025px) and (max-width:10000px){

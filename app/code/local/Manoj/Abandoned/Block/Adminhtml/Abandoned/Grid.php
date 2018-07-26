@@ -8,7 +8,7 @@ class Manoj_Abandoned_Block_Adminhtml_Abandoned_Grid extends Mage_Adminhtml_Bloc
 				parent::__construct();
 				$this->setId("abandonedGrid");
 				$this->setDefaultSort("abandoned_cart_id");
-				$this->setDefaultDir("ASC");
+				$this->setDefaultDir("DESC");
 				$this->setSaveParametersInSession(true);
 		}
 
@@ -35,6 +35,10 @@ class Manoj_Abandoned_Block_Adminhtml_Abandoned_Grid extends Mage_Adminhtml_Bloc
 				$this->addColumn("quote_id", array(
 				"header" => Mage::helper("abandoned")->__("quote_id"),
 				"index" => "quote_id",
+				));
+				$this->addColumn("capture_page", array(
+				"header" => Mage::helper("abandoned")->__("abandoned_page_capture"),
+				"index" => "abandoned_page_capture",
 				));
 						$this->addColumn('is_email_send', array(
 						'header' => Mage::helper('abandoned')->__('is_email_send'),

@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Iksula_Overrides>
-      <version>0.1.1</version>
+      <version>0.1.3</version>
     </Iksula_Overrides>
   </modules>
   <frontend>
@@ -58,6 +58,17 @@
        </updates>
      </layout>
      <events>
+
+    <customer_login>
+        <observers>
+            <overrides_remove_cookies_Observer1>
+               <type>singleton</type>
+                <class>overrides/observer</class>
+                <method>replaceFormKeyForWishlistAdd</method> 
+                  </overrides_remove_cookies_Observer1>   
+        </observers>
+    </customer_login>
+
       <customer_logout>
         <observers>
             <overrides_remove_cookies_Observer>
@@ -158,6 +169,17 @@
         </modules>
       </args>
     </adminhtml>
+
+      <!-- review controller extended start -->
+      <review>
+          <args>
+            <modules>
+              <Iksula_Overrides before="Mage_Adminhtml_Catalog_Product_ReviewController">Iksula_Overrides_Catalog</Iksula_Overrides>
+            </modules>
+          </args>
+        </review>
+      <!-- review controller extended end -->
+      
   </routers>
 </admin>
 <adminhtml>
@@ -183,6 +205,33 @@
  </events>
 </adminhtml>
 <global>
+  <sales>
+    <quote>
+        <item>
+            <product_attributes>
+                <expiry />
+            </product_attributes>
+        </item>
+    </quote>
+  </sales>
+  <fieldsets>
+    <sales_convert_quote_item>
+        <expiry>
+            <to_order_item>*</to_order_item>
+        </expiry>
+    </sales_convert_quote_item>
+    <sales_convert_order_item>
+        <expiry>
+            <to_quote_item>*</to_quote_item>
+            <to_invoice_item>*</to_invoice_item>
+        </expiry>
+    </sales_convert_order_item>
+    <!-- <sales_convert_invoice_item>
+        <expiry>
+            <to_order_item>*</to_order_item>
+        </expiry>
+    </sales_convert_invoice_item> -->
+  </fieldsets>
   <helpers>
     <overrides>
       <class>Iksula_Overrides_Helper</class>
@@ -338,6 +387,14 @@
           </catalog>
         </blocks>
         <events>
+          <sales_quote_item_set_product>
+            <observers>
+                <overrides_expiry>
+                    <class>overrides/observer</class>
+                    <method>salesQuoteItemSetExpiry</method>
+                </overrides_expiry>
+            </observers>
+          </sales_quote_item_set_product>
           <core_block_abstract_prepare_layout_before>
             <observers>
               <overrides_core_block_abstract_prepare_layout_before>

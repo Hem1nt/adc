@@ -456,7 +456,10 @@ button.button:hover > span{
 	padding-left: 20px;
 }
 
-.catalog-product-view .pr-add-to-compare a.link-compare, .review-product-list .pr-add-to-compare a.link-compare, .catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend {
+.catalog-product-view .pr-add-to-compare a.link-compare, 
+.review-product-list .pr-add-to-compare a.link-compare, 
+.catalog-product-view .pr-email-friend a.link-email-friend, 
+.review-product-list .pr-email-friend a.link-email-friend{
     background: url(../images/sprite.png) -233px -90px no-repeat #9fb701;
     color: #fff;
     font-size: 14px;
@@ -468,6 +471,20 @@ button.button:hover > span{
     height: auto;
     font-weight: normal;
     background-size: 600px;
+}
+.catalog-product-view .pr-write-review a.link-review, 
+.review-product-list .pr-write-review a.link-review {
+    background: url(../images/write_review.png) 20px 4px no-repeat #9fb701;
+    color: #fff;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 8px 24px 8px 51px;
+    border-radius: 30px;
+    display: block;
+    font-family: Open Sans, sans-serif;
+    height: auto;
+    font-weight: normal;
+    background-size: 21px;
 }
 
   .catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend {
@@ -524,12 +541,56 @@ button.button:hover > span{
     padding-left: 5px;
 }
 
-.catalog-product-view .product-details-table table.new_product_list td, .review-product-list .product-details-table table.new_product_list td {
-    padding: 15px 5px 15px 12px;
-    font-size: 14px;
-    text-align: left;
-    vertical-align: middle;
+.catalog-product-view ,.review-product-list{
+	.product-details-table{
+		table.new_product_list{
+			td{
+			    padding: 15px 5px 15px 0px;
+			    font-size: 14px;
+			    text-align: left;
+			    vertical-align: middle;	
+
+			    .double_pill_img{
+			    	width: 43px;
+				    height: auto;
+				    display: inline-block;
+				    font-size: 10px;
+				    text-align: center;
+				    text-transform: uppercase;
+				    background: #ff5a00;
+				    color: #fff;
+				    line-height: 11px;
+				    padding: 5px 0;
+				    box-sizing: border-box;
+				    border-top-left-radius: 8px;
+				    border-bottom-right-radius: 8px;
+			    }
+			    span.recomend-text {
+				    font-size: 10px;
+				    text-align: center;
+				    padding: 8px 2px;
+				    box-sizing: border-box;
+				    color: #fff;
+				    font-weight: bold;
+				    text-transform: uppercase;
+				    display: inline-block;
+				    background: #d9010b;
+				    width: 43px;
+				    border-radius: 50%;
+				    height: 43px;
+				    background-size: 43px 41px;
+				    position: relative;
+				    top: 0;
+				    left: 5px;
+				    vertical-align: top;
+				    line-height: 12px;
+				}		
+			}
+
+		}
+	}
 }
+
 .catalog-product-view .product-details-table table.new_product_list td.price_value span, .review-product-list .product-details-table table.new_product_list td.price_value span{
 	display: inline-block;
 }
@@ -540,7 +601,7 @@ button.button:hover > span{
     padding: 7px 9px 7px 10px;
     box-sizing: border-box;
     border-radius: 30px;
-    width: 70px;
+    width: 50px;
     color: #000;
 }
 
@@ -591,7 +652,7 @@ button.button:hover > span{
     transition: none;
     padding: 3px 5px 5px 5px;
     width: 20px;
-    display: block;
+    display: inline-block;
     height: 22px;
 }
 
@@ -600,7 +661,7 @@ button.button:hover > span{
 
 }
 
-span.recomend-text {
+/*span.recomend-text {
 	font-size: 0;
 	display: inline-block;
 	background: url(../images/highly-recom.png) no-repeat;
@@ -611,16 +672,17 @@ span.recomend-text {
 	top: 0;
 	left: 5px;
 	vertical-align: middle;
-}
+}*/
 
 .catalog-product-view table.new_product_list a.related-buy-now, .review-product-list table.new_product_list a.related-buy-now {
 	background: url(../images/custom/cart_prod.png) center no-repeat #fff;
-	border: 0
+	border: 0;
+	font-size: 0;
 }
 
 .catalog-product-view table.new_product_list a.related-buy-now:hover, .review-product-list table.new_product_list a.related-buy-now:hover {
 	background: url(../images/custom/cart_prod.png) center no-repeat #fff;
-	border: 0
+	border: 0;
 }
 
 .catalog-product-view .product-details-table table.new_product_list, .review-product-list .product-details-table table.new_product_list {
@@ -1446,6 +1508,18 @@ span.recomend-text {
 	.product-view .product-shop .ratings .rating-box{
 		margin-top: 5px;
 	}
+	.catalog-product-view ,.review-product-list{
+		.product-details-table{
+			table.new_product_list{
+				td{
+				    padding: 15px 5px 15px 27px;
+				    font-size: 14px;
+				    text-align: left;
+				    vertical-align: middle;	
+				}				
+			}
+		}
+	}
 }
 
 @media only screen and (max-width: 980px){
@@ -1483,11 +1557,23 @@ span.recomend-text {
 					}
 				}
 				td{
+				    padding: 7px 0;
+					padding-left: 2px;
+
 					&.pack_size_value, &.price_value, &.qty_value{
-						width: 90px !important;
+						width: auto !important;
 					}
 				}
-
+				td .double_pill_img{
+				    width: 40px;
+				}
+				td span.recomend-text{
+					font-size: 10px;
+				    padding: 6px 2px;
+				    width: 38px;
+				    height: 40px;
+				    line-height: 12px;
+				}
 				a.related-buy-now{
 					padding: 0 17px;
 					width: auto;
@@ -1630,6 +1716,7 @@ span.recomend-text {
 	    padding: 20px 0 0;
 	    border-top: 1px solid #c9c9c9;
 	    margin-top: 17px;
+	    text-align: center;
 	}
 
 	.catalog-product-view .main-container, .review-product-list .main-container{
@@ -1703,6 +1790,7 @@ span.recomend-text {
 	}
 	.product-view .product-name{
 		text-align: left;
+	    padding: 0 10px;
 	}
 
 	.catalog-product-view .product_star_value span, .review-product-list .product_star_value span{
@@ -1796,7 +1884,10 @@ span.recomend-text {
 	.product-view .product-shop .short-description, .catalog-product-view .product_extra_links, .catalog-product-view .pr-availibility, .catalog-product-view .pr-links-right{
 		display: block;
 	}
-
+	.catalog-product-view .main-container .product-shop .short-description{
+		padding: 10px;
+		box-sizing: border-box;
+	}
 	.product-view .product-shop .s_desc_share_wrap{
 		padding-top: 0;
 	}
@@ -1815,6 +1906,7 @@ span.recomend-text {
 
 	.catalog-product-view .col-main .pr-add-to-compare, .review-product-list .col-main .pr-add-to-compare{
 		display: inline-block!important;
+		float: left;
 	}
 
 	.catalog-product-view .pr-links-right div, .review-product-list .pr-links-right div{
@@ -1874,12 +1966,20 @@ span.recomend-text {
 					&.pack_size_value, &.price_value, &.qty_value{
 						width: auto !important;
 					}
+					.size_label{
+						display: block;
+					}
 				}
 
-				/* a.related-buy-now{
-					padding: 0 17px;
-					width: auto;
-				} */
+				a.related-buy-now{
+				 	background: none;
+					padding: 0;
+				    width: auto;
+				    font-size: 14px !important;
+				    color: #506f00;
+				    font-weight: bold;	
+				    cursor: pointer;	
+				} 
 			}
 		}
 	}
@@ -1958,8 +2058,26 @@ span.recomend-text {
 	    max-width: 425px;
 	    width: 425px;
 	}
-}
+	.catalog-product-view .col-main .pr-add-to-compare, 
+	.review-product-list .col-main .pr-email-friend ,
+	.catalog-product-view .pr-links-right div {
+	 /*   display: block !important;
+	    float: none !important;
+	    margin: 6px 0;*/
 
+	    a.link-compare, a.link-review{
+	    	display: inline-block;
+    	    background: #9fb701; 
+    	    padding: 8px 15px 8px 15px;
+	    }
+
+	    .email-friend a{
+	    	display: inline-block;
+	    	background: #9fb701 !important;
+	    	padding: 8px 15px 8px 15px;
+	    }
+	}
+}
 
 @media only screen and (max-width: 480px){
 	.review_right_block{
@@ -1969,6 +2087,7 @@ span.recomend-text {
 	.catalog-product-view .review-count-pr, .review-product-list .review-count-pr{
 	    margin-top: 0;
     	border-top: 0;
+    	width: 100% !important;
 	}
 
 	.product-view .product-shop .read_more{
@@ -1978,6 +2097,7 @@ span.recomend-text {
 	.catalog-product-view .share.bordercolor{
 		margin-top: 30px!important;
 		width: 100%;
+		margin-right: 0;
 	}
 	/* .product-view .product-shop .short-description .read_more{
 		bottom: -22px;
@@ -2070,6 +2190,105 @@ span.recomend-text {
 	    padding: 0 10px;
 	    box-sizing: border-box;
 	}
+	.catalog-product-view, .review-product-list {
+		.product-details-table {
+			margin: 15px 0;
+		    padding-bottom: 15px;
+
+			table.new_product_list {
+				/*padding: 0 20px;*/
+				box-sizing: border-box;
+			    border: 1px solid #cccaca;
+
+				th{
+					&.pack_size, &.price_per_pill, &.qty{
+						width: 100% !important;
+					}
+				}
+				td{
+					&.pack_size_value, &.price_value, &.qty_value, &.simple_wishlist, &.add_to_cart_button{
+						width: 100% !important;
+						display: inline-block;
+						box-sizing: border-box;
+						padding: 12px 1% !important;
+						padding-bottom: 0 !important;
+						text-align: center;
+						position: relative;
+					    min-height: 48px;
+					}
+					/*&.add_to_cart_button a{
+					    background: url(../images/custom/cart_prod_mobile.png) center no-repeat #fff;
+					}*/
+					&.pack_size_value:before {
+						content: "Pack Size : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 20%;
+    					text-align: left;		
+					}
+					&.qty_value:before {
+						content: "Qty : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}
+					/*&.price_value.unit_cost:before {
+						content: "Price Per Pill or Unit : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}*/
+					&.price_value.unit_cost{
+						display: none;
+					}
+					&.price_value.custom_price_center:before {
+						content: "Price : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}
+					&.price_value.custom_price_center{
+						span.discount_tag, .old-price, .special-price{
+							margin-left: 32%;
+						}
+					}
+
+					&.simple_wishlist{
+						display: none;
+					}
+					/*&.add_to_cart_button:before {
+						content: "Cart : ";
+						position: absolute;
+						left: 0;
+						font-weight: bold;
+					    width: 32%;
+    					text-align: left;		
+					}*/
+				}
+				tr.option_heading{
+					display: none;
+				}
+				tr{
+					border-bottom: 1px solid #cccaca;
+					padding: 0 20px;
+					width: 100%;
+					display: inline-block;
+					box-sizing: border-box;
+				}
+				a.refill_reminder_open {
+				    float: none;
+				    display: inline-block;
+				}
+			} 
+		}
+	}
 }
 
 @media only screen and (max-width: 479px){
@@ -2077,7 +2296,7 @@ span.recomend-text {
 	    margin-top: 0;
 	    clear: both;
 	    width: 100%;
-	    overflow-x: scroll;
+	    /*overflow-x: scroll;*/
 	}
 	.catalog-product-view .product-details-table table.new_product_list th strong, .review-product-list .product-details-table table.new_product_list th strong{
 		white-space: nowrap;
@@ -2102,9 +2321,26 @@ span.recomend-text {
 		text-align: center;
 	}
 
-
 }
 
+@media only screen and (max-width: 440px){
+	.catalog-product-view .col-main .pr-add-to-compare, 
+	.review-product-list .col-main .pr-email-friend ,
+	.catalog-product-view .pr-links-right div {
+	    display: block !important;
+	    float: none !important;
+	    margin: 6px 0;
+
+	    a.link-compare, a.link-review{
+	    	display: block;
+	    }
+
+	    .email-friend a{
+	    	display: block;
+	    }
+	}
+
+}
 @media only screen and (max-width: 360px){
 	.catalog-product-view .pr-add-to-compare a.link-compare, .review-product-list .pr-add-to-compare a.link-compare, 
 	.catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend, .catalog-product-view .pr-email-friend a.link-email-friend, .review-product-list .pr-email-friend a.link-email-friend{
@@ -2166,5 +2402,8 @@ span.recomend-text {
 @media only screen and (max-width: 320px){
 	.catalog-product-view .easytabs-content{
 		padding: 10px;
+	}
+	.catalog-product-view .product-details-table{
+		overflow-x: inherit;
 	}
 }

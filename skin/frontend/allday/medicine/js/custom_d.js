@@ -44,6 +44,7 @@ jQuery(document).ready(function($){
 
     $(".mobile-pr-category-icon").click(function(){
         $(".all_categories_list").stop( true, true ).toggle();
+        $("body").addClass("disable_scroll");
         var search_status = $(".all_categories_list").css("display");
         if (search_status == "none")
         {
@@ -407,6 +408,7 @@ jQuery(document).ready(function($){
     });
 
     $(".overlay-header").click(function(){
+      $("body").removeClass("disable_scroll");
       $(".quick-access, .all_categories_list, .overlay-header").hide();
       $(".block-account .block-content").removeClass("show_acc_menu");
       $(".logged-in-user, .logged-in-user .dropdown_links").removeClass("visible");

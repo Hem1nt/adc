@@ -1160,5 +1160,58 @@
                   </auto_customer_discount_label>
                 </groups>
               </auto_customer_discount>
+              <value_pack_sku>
+                <label>Value pack SKU for 1 qty in cart</label>
+                <tab>systemconfig</tab>
+                <sort_order>1000</sort_order>
+                <frontend_type>text</frontend_type>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <groups>
+                  <value_pack_sku_label translate="label">
+                    <label>Value pack SKU</label>
+                    <!-- <comment>Value pack SKU so that customer can add only 1 qty</comment> -->
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <value_pack_sku_no translate="label">
+                        <label>Value pack SKU so that customer can add only 1 qty</label>
+                        <comment>Value pack SKU so that customer can add only 1 qty</comment>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                      </value_pack_sku_no>
+                    </fields>
+                  </value_pack_sku_label>
+                </groups>
+              </value_pack_sku>
+              <carriers translate="label" module="shipping">
+                  <groups>
+                    <abandoned translate="label">
+                      <label>Abandoned Shipping Price</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>2</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <fields>
+                          <abandoned_price translate="label">
+                              <label>Abandoned Shipping Price</label>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>1</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </abandoned_price>
+                      </fields>
+                    </abandoned>
+                  </groups>
+                </carriers>
             </sections>            
           </config>

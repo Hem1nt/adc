@@ -103,7 +103,9 @@
 ?>
 <?php if (empty($methods)): ?>
     <dt class="no-payment-available">
-       <h1> <?php echo $this->__('No Payment Methods Available !!!') ?></h1>
+       <!-- <h1> <?php //echo $this->__('No Payment Methods Available !!!') ?></h1> -->
+       <p style="font-size:20px;">Your current session is expired. Please refresh the page and try again. In case you still face any issue, please share the screenshot of the error message at  <a href="mailto:info@alldaychemist.com">info@alldaychemist.com</a> </p>.
+       </p>
     </dt>
 <?php else: ?>
     <div class="select_method">
@@ -127,7 +129,13 @@
 
         /*SHOW HIDE PAY E*/
 
-
+        /*SHOW Hide BPAY*/
+        if($customermerGroupId == 2 || $billingCountry == 'AU'){
+                if (in_array('bpay', $paymentMethods)) {
+                    $disabledPAY = true;
+                }
+            }
+        /**/
 
         if($billingCountry!='US'){
             $baseOriginalMethod = 'pay';

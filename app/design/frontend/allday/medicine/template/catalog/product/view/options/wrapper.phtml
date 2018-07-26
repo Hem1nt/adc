@@ -31,7 +31,7 @@ if($_product->isConfigurable()) {
 
 	ksort($newChildProducts);
 	echo "<table class=\"new_product_list\" valign=\"center\">
-			<tr>
+			<tr class=\"option_heading\">
 				<th class=\"pack_size\"><strong>Pack Size</strong></th>
 				<th class='qty'><strong>Qty</strong></th>
 				<th class=\"price_per_pill\"><strong>Price Per Pill or Unit</strong></th>
@@ -58,7 +58,7 @@ if($_product->isConfigurable()) {
 		if($child->getData('bonus')) {
 			//$packSizeLabel = $child->getData('bonus')." + ".$packSizeLabel." Extra";
 			$bonusImage = $this->getSkinUrl().'images/double_pill.jpg';
-			$packSizeLabel = '<span class="size_label">'.$packSizeLabel.'</span><img class="double_pill_img" src='.$bonusImage.'>';
+			$packSizeLabel = '<span class="size_label">'.$packSizeLabel.'</span><div class="double_pill_img" src='.$bonusImage.'>double pills offer</div>';
 			//$packUnitsize = $packUnitsize + $child->getData('bonus');
 		}
 		$childPrice = Mage::helper('core')->currency($child->getPrice(),true,false);
@@ -71,9 +71,9 @@ if($_product->isConfigurable()) {
 			$priceLabel = '<span class="price">'.$childPrice.'</span>';
 		}
 		if($i==count($newChildProducts)) {
-			echo "<tr class=\"last\">";
+			echo "<tr class=\"last pack_size_option\">";
 		} else {
-			echo "<tr>";
+			echo "<tr class=\"pack_size_option \">";
 		}
 		if($child->getSpecialPrice()){
 			$perUnit = $child->getSpecialPrice()/$packUnitsize;
@@ -97,11 +97,11 @@ if($_product->isConfigurable()) {
 
 			if(in_array($currSku, $bestValueArr)){
 				$backendSku = 1;
-				$recommended = '<span class="recomend-text">( Recommended )</span>';
+				$recommended = '<span class="recomend-text">best value</span>';
 				$recommendeclass = 'packsize_recommended';
 			}else{
 				if($getSimpleProductPrice == $lowestPrice && $backendSku == 0 && $productCounter > 1){
-				$recommended = '<span class="recomend-text">( Recommended )</span>';
+				$recommended = '<span class="recomend-text">best value</span>';
 				$recommendeclass = 'packsize_recommended';
 			}
 			}
@@ -129,6 +129,22 @@ if($_product->isConfigurable()) {
 			// 	$recommendeclass = 'packsize_recommended';
 			// }
 		//}
+
+		/*custom code for combo pack start*/
+		$comboProds = Mage::getStoreConfig('ampromo/gift_product/combo_product_item');
+
+		$comboSpan = '';
+		if($comboProds){
+			$comboProdsArr = explode(',', $comboProds);
+			$comboProdsArr=array_map('trim',$comboProdsArr);
+			
+			$currSku = $child->getSku();
+			if(in_array($currSku, $comboProdsArr)){
+				$comboSpan = ' <span class="product_combo_offer" title="Get a combo pack">Combo Pack</span>';
+			}
+		}
+		/*custom code for combo pack end*/
+
 		$giftProds = Mage::getStoreConfig('ampromo/gift_product/gift_product_item');
 
 		$giftSpan = '';
@@ -143,22 +159,36 @@ if($_product->isConfigurable()) {
 		}
 		if($freeShippingProduct && in_array($currSku, $freeShipArr)){
 			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$freeShippingProduct.$giftSpan."</td>";			
-		}else{
+		}
+		elseif($comboSpan && in_array($currSku, $comboProdsArr)){
+			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$comboSpan."</td>";
+		}
+		else{
 			echo "<td class='pack_size_value ".$recommendeclass."'>".$packSizeLabel.$recommended.$giftSpan."</td>";			
 		}
 		echo "<td class='qty_value'><span class='select_wrap'><select id='p-".$child->getId()."'>";
-		for($i=1; $i<=5; $i++) {
-			echo "<option value='$i'>$i</option>";
-		}
+		// QTY 1 for Value pack S
+            $inCartSKU = $child->getSku(); 
+            $valuePackSku = Mage::getStoreConfig('value_pack_sku/value_pack_sku_label/value_pack_sku_no');
+            $valuePackData = explode(",",$valuePackSku);
+        // QTY 1 for Value pack E
+            if(!in_array($inCartSKU, $valuePackData)):
+				for($i=1; $i<=5; $i++) {
+					echo "<option value='$i'>$i</option>";
+				}else:
+					echo "<option value='$i'>1</option>";
+			endif;
 		echo "</select></span></td>";
-		echo "<td class='price_value'>".$perUnitCost."</td>";
+		echo "<td class='price_value unit_cost'>".$perUnitCost."</td>";
 		echo "<td class='price_value custom_price_center'>".$discountTag.$priceLabel."</td>";
+		//echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" 
+		//title="Add to Wishlist" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';
 		echo '<td class="simple_wishlist"><a id="s-'.$child->getId().'" class="refill_reminder_open" 
-		title="Add to Wishlist" href="'.$url.'wishlist/index/add/product/'.$child->getData('entity_id').'"></a></td>';
+		title="Add to Wishlist" href="'.$this->helper('wishlist')->getAddUrl($_product).'"></a></td>';
 		if($attributeLabel == 'Coming Soon'){
 			echo '<td class="pr-link-notify"><span class="coming_soon_btn">Coming Soon<span></td>';
 		}else{
-		echo '<td class="add_to_cart_button"><a id="s-'.$child->getId().'" class="related-buy-now" title="Add to cart" href="'.$url.'checkout/cart/add/product/'.$child->getId().'/?super_attribute[140]='.$child->getPackSize().'&mainid='.$conProduct->getId().'"> </a></td>';
+		echo '<td class="add_to_cart_button"><a id="s-'.$child->getId().'" class="related-buy-now" title="Add to cart" href="'.$url.'checkout/cart/add/product/'.$child->getId().'/?super_attribute[140]='.$child->getPackSize().'&mainid='.$conProduct->getId().'">Add to cart</a></td>';
 		}
 		//echo '<td class="simple_wishlist"><a class="refill_reminder_open" href="refillreminder?product_id='.$child->getId().'">Wishlist</a></td>';
 		

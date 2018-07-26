@@ -280,6 +280,16 @@ class Excellence_Ajaxcoupon_IndexController extends Mage_Checkout_CartController
            // ->getLayout()->getBlock('head')->setTitle($this->__('Shopping Cart'));
         $this->renderLayout();
         Varien_Profiler::stop(__METHOD__ . 'cart_display');
+
+        /*****************custom code for page capture abandant start********************/
+
+        if (Mage::app()->getFrontController()->getAction()->getFullActionName() == 'checkout_cart_index') {
+          $quote_id = $this->_getQuote()->getId(); 
+          $quote_model = Mage::getModel('sales/quote')->load($quote_id);
+          $quote_model->setData('abandoned_page_capture','cartpage')->save();
+          }
+
+        /*****************custom code for page capture abandant end********************/  
       }
 
       public function addAction(){
@@ -318,6 +328,16 @@ class Excellence_Ajaxcoupon_IndexController extends Mage_Checkout_CartController
             }
 
             $cart->save();
+
+/*****************custom code for page capture abandant start********************/
+
+         /* $quote_id = $this->_getQuote()->getId(); 
+          $quote_model = Mage::getModel('sales/quote')->load($quote_id);
+          $quote_model->setData('abandoned_page_capture','cartpage')->save();*/
+          
+
+/*****************custom code for page capture abandant end********************/
+
 
             $this->_getSession()->setCartWasUpdated(true);
 
@@ -378,4 +398,5 @@ class Excellence_Ajaxcoupon_IndexController extends Mage_Checkout_CartController
             $this->_goBack();
           }
         }
+
       }

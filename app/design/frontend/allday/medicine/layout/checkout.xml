@@ -423,7 +423,7 @@ One page checkout order review block
             <block type="checkout/onepage_success" name="checkout.success" template="checkout/success.phtml">
                 <block type='checkout/onepage_success' name="checkout.success.otherpayment" as="checkout.success.otherpayment" template="checkout/otherpayment.phtml"></block>
                 <block type='checkout/onepage_success' name="checkout.success.restpayment" as="checkout.success.restpayment" template="checkout/restpayment.phtml">
-                    <block type="checkout/onepage_success" name="checkout.onepage.heared4us" as="checkout.onepage.heared4us" template="checkout/onepage/heared4us.phtml"/>
+                    <!-- <block type="checkout/onepage_success" name="checkout.onepage.heared4us" as="checkout.onepage.heared4us" template="checkout/onepage/heared4us.phtml"/> -->
                 </block>
 
             </block>

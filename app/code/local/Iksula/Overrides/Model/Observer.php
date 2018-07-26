@@ -928,4 +928,73 @@ public function reviewStatusChange($observer){
         }
     }
 
+    public function salesQuoteItemSetExpiry($observer)
+    {
+        $quoteItem = $observer->getQuoteItem();
+        $product = $observer->getProduct();
+        $parentData = $this->getExpiryParentId($product);
+        $quoteItem->setExpiry($parentData['expiry']);
+    }
+
+    public function getExpiryParentId($item){
+            if($item->getTypeId() != 'bundle'){
+                $parentId = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($item->getId());
+                if(!empty($parentId)){
+                    $product = Mage::getModel('catalog/product')->load($parentId[0]);
+                    if($product->getTypeId() != 'bundle'){
+                        $parentAttr = array(
+                            'name'=>$product->getName(),
+                            'bonus'=>$product->getBonus(),
+                            'productType'=>$product->getTypeId(),
+                            'product'=>$product,
+                            'expiry'=>$product->getExpiry(),
+                        );
+                        return $parentAttr;
+                    }else{
+                        $parentAttr = array();  
+                        return $parentAttr;
+                    }
+                }
+            }else{
+                $product = Mage::getModel('catalog/product')->load($item->getId());
+                $parentAttr = array(
+                        'name'=>$product->getName(),
+                        'bonus'=>$product->getBonus(),
+                        'productType'=>$product->getTypeId(),
+                        'product'=>$product,
+                        'expiry'=>$product->getExpiry(),
+                    );
+                return $parentAttr;
+            }
+    }
+
+/*added code for guest wishlist for product not adding start*/
+    public function replaceFormKeyForWishlistAdd(Varien_Event_Observer $observer)
+{
+
+    $formKey = Mage::getSingleton('core/session')->getFormKey();
+
+    $session = Mage::getSingleton('customer/session');
+    $beforeWishlistRequest = $session->getBeforeWishlistRequest();
+
+    $beforeWishlistRequest['form_key'] = $formKey;
+    $session->setBeforeWishlistRequest($beforeWishlistRequest);
+
+    if($beforeWishlistRequest['product'] != '')
+    {
+       $newBeforeAuthUrl = Mage::getUrl('wishlist/index/add',
+        array('product' => $beforeWishlistRequest['product'], 'form_key' => $formKey)
+        );
+
+    }
+   else
+    {
+    $newBeforeAuthUrl = Mage::getUrl('customer/account');
+    }
+   
+    $session->setBeforeAuthUrl($newBeforeAuthUrl);
+    return $this;
+}
+/*added code for guest wishlist for product not adding end*/
+
 }

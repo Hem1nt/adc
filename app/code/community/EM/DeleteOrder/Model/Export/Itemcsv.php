@@ -63,6 +63,15 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
         $clientComment = $westmead = $emptyStatus = $itemsShippedQty = $itemsAssignDate = $itemsTrackId = array('');
         $status = $order->getStatus();
         $_productModel = Mage::getModel('catalog/product');
+        $ship_date = array();
+        if(empty($order->getShipmentsCollection()->getData())){
+            $ship_date[] = ' ';
+        }else{
+          foreach($order->getShipmentsCollection() as $shipment){
+            $ship_date[] = $shipment->getCreatedAt();
+              
+          }
+        }
         foreach ($orderItems as $item)
         {
             
@@ -249,7 +258,7 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
 
         /* end set logic in country is 'US' and $shipped_from = 'Mauritius'*/
         $csvdata = $this->mergeArray($data, 'parent_id');
-      
+        $finalarray = array();
         foreach ($csvdata as $csvkey => $csvvalue) {
           $itemsStatus = $itemsPrice = $itemsTotalQtyBonus = $itemname = $itemsSku = $itemsTotalQty = $itemsBrand = $item_exportcount = array();
 
@@ -327,15 +336,35 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
             }
           $item_exportcount[] = $csvvalue['export_count'];
           // $item_brand = $csvvalue['item_brand'];
-
-          $record = array_merge($csvvalue['item_common'],$itemsSku,$itemname,$itemname,$itemsTotalQty,$itemsPrice,$itemsStatus,$clientComment,$itemsTrackId,$itemsShippedQty,$itemsAssignDate,$emptyStatus,$westmead,$item_shipform,$itemsBrand,$item_exportcount);
-          
+          //$record = array_merge($csvvalue['item_common'],$itemsSku,$itemname,$itemname,$itemsTotalQty,$itemsPrice,$itemsStatus,$clientComment,$itemsTrackId,$itemsShippedQty,$itemsAssignDate,$emptyStatus,$westmead,$item_shipform,$itemsBrand,$item_exportcount);
+          $shippingAmount = array();
+          if($csvvalue['item_common'][13] != ''){
+          	$shippingAmount[] = $csvvalue['item_common'][13];
+          }else{
+          	$shippingAmount[] = '';
+          }
+          //echo $csvvalue['item_common'][13].$itemsStatus;exit;
+          $record = array_merge($csvvalue['item_common'],$itemsSku,$itemname,$itemsTotalQty,$itemsPrice,$shippingAmount,$itemsStatus,$clientComment,$itemsTrackId,$ship_date,$item_shipform,$itemsBrand,$item_exportcount);
+          unset($record[13]);
+          /*foreach ($record as $key => $value) {
+              if ($value == '') {
+                   $record[$key] = "  ";
+              }
+              if(is_array($value)){
+                if(empty($rows)){
+                  $record[$key] = "  ";   
+                }
+              }
+          }*/
+          /*foreach ($record as $key => $value) {
+            $newarray[$key][] =   $value;
+          }*/
           fputcsv($fp,$record, self::DELIMITER, self::ENCLOSURE);
+          
         }
-
-        // echo '<pre>';
-        // print_r($itemsTotalQty);
-        // exit;
+        /*foreach ($newarray as $key => $value) {
+          $finalarray[] = implode("  ",array_unique($value));
+        }*/
 
     }
 
@@ -391,19 +420,20 @@ class EM_DeleteOrder_Model_Export_Itemcsv extends EM_DeleteOrder_Model_Export_Ab
           'State/Province*',
           'Postal Code*',
           'Country*',
-          'Shipping Amount',
           'SKU Code',
-          'Supplier Product Name|(Product Variation Details)*',
+          //'Supplier Product Name|(Product Variation Details)*',
           'Site Product Name*',
           'Qty (From Supplier)',
           'Patient Price for All Packs of this Item*',
+          'Shipping Amount',
           'Status',
           'Clients Comments',
           'Tracking Id',
+          'ship_date',/*
           'Quantity',
           'Ship Date',
           'Status',
-          'Westmead Comments',
+          'Westmead Comments',*/
           'Shipped From',
           'Brand Code',
           'Export Count',

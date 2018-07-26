@@ -12,17 +12,40 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
             return $this->norouteAction();
         }
 
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $customer = Mage::getSingleton('customer/session')->getCustomer();
+        }
+        $sharedBy = $customer->getName();
         $emails  = explode(',', $this->getRequest()->getPost('emails'));
-        /*CAPTCHA VALIDATION starts*/
-        $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
-        $captchaInput=$this->getRequest()->getPost('wishlist_captcha_code');
-        if($capValue!=$captchaInput)
-            {   
-                Mage::getSingleton('core/session')->addError('Please enter valid data.'); 
-                $this->_redirect('*/*/share');
-                return;
+        $customerCollection = Mage::getModel('customer/customer')
+                    ->getCollection()
+                    ->addAttributeToSelect('*')
+                    ->addAttributeToFilter('email', array('in' => $emails))
+                    ->load();
+        foreach ($customerCollection as $customerCollections) {
+                $sharedTo[$customerCollections->getData('email')] = $customerCollections->getData('firstname');
             }
+        //print_r($sharedTo);
+        foreach ($emails as $ke => $va) {
+            if(!array_key_exists($va, $sharedTo)){
+                $sharedTo[$va] = 'Customer';
+            }
+        }
+
+        //$sharedToCombine = array_combine($emails, $sharedTo);     
+        /*CAPTCHA VALIDATION starts*/
+        // $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
+        // $captchaInput=$this->getRequest()->getPost('wishlist_captcha_code');
+        // if($capValue!=$captchaInput)
+        //     {   
+        //         Mage::getSingleton('core/session')->addError('Please enter valid data.'); 
+        //         $this->_redirect('*/*/share');
+        //         return;
+        //     }
         /*CAPTCHA VALIDATION ends*/
+
+        Mage::dispatchEvent('google_recatptcha_check_wishlist_share_before');
+
         $message = nl2br(htmlspecialchars((string) $this->getRequest()->getPost('message')));
         $error   = false;
         if (empty($emails)) {
@@ -67,11 +90,11 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
             $emailModel = Mage::getModel('core/email_template');
 
             $sharingCode = $wishlist->getSharingCode();
-            foreach ($emails as $email) {
+            foreach ($sharedTo as $k => $v) {
                 $emailModel->sendTransactional(
                     Mage::getStoreConfig('wishlist/email/email_template'),
                     Mage::getStoreConfig('wishlist/email/email_identity'),
-                    $email,
+                    $k,
                     null,
                     array(
                         'customer'       => $customer,
@@ -79,14 +102,15 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
                         'items'          => $wishlistBlock,
                         'addAllLink'     => Mage::getUrl('*/shared/allcart', array('code' => $sharingCode)),
                         'viewOnSiteLink' => Mage::getUrl('*/shared/index', array('code' => $sharingCode)),
-                        'message'        => $message
+                        'message'        => $message,
+                        'shareto'        => $v,
+                        'sharedby'       => $sharedBy
                     )
                 );
             }
 
             $wishlist->setShared(1);
             $wishlist->save();
-
             $translate->setTranslateInline(true);
 
             Mage::dispatchEvent('wishlist_share', array('wishlist' => $wishlist));
@@ -105,4 +129,4 @@ class Iksula_Overrides_Wishlist_IndexController extends Mage_Wishlist_IndexContr
     }
 
 }
-				
+                

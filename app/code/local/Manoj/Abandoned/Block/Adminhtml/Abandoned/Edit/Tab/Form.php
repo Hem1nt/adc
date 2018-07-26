@@ -18,6 +18,12 @@ class Manoj_Abandoned_Block_Adminhtml_Abandoned_Edit_Tab_Form extends Mage_Admin
 						"label" => Mage::helper("abandoned")->__("quote_id"),
 						"name" => "quote_id",
 						));
+
+						$fieldset->addField("abandoned_page_capture", "text", array(
+						"label" => Mage::helper("abandoned")->__("abandoned_page_capture"),
+						"name" => "capture_page",
+						));
+
 									
 						 $fieldset->addField('is_email_send', 'select', array(
 						'label'     => Mage::helper('abandoned')->__('is_email_send'),

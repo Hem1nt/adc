@@ -57,6 +57,7 @@ class EM_DeleteOrder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
             'index' => 'echeck_transactionid',
             'filter_index' => 'echeck_transactionid',
         ));
+
         $this->addColumn('voucher_transaction_id', array(
             'header' => Mage::helper('sales')->__('Voucher Transactionid'),
             'index' => 'voucher_transaction_id',
@@ -71,6 +72,12 @@ class EM_DeleteOrder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
             'index'     => 'stores',
             'renderer' => 'EM_DeleteOrder_Block_Adminhtml_Sales_Order_Renderer_Suspicious',
         ));
+
+        // $this->addColumn('voucher_transaction_id', array(
+        //     'header' => Mage::helper('sales')->__('Voucher Transactionid'),
+        //     'index' => 'voucher_transaction_id',
+        //     'filter_index' => 'voucher_transaction_id',
+        // ));
         if (!Mage::app()->isSingleStoreMode()) {
         $this->addColumn('store_id', array(
             'header'    => Mage::helper('sales')->__('Purchased From (Store)'),
@@ -178,7 +185,7 @@ class EM_DeleteOrder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Blo
         ->load()
         ->toOptionHash();
         
-        $groups[0] = "Guest";
+        //$groups[0] = "Guest";
 
         $this->addColumn('customer_group_id', array(
             'header' => Mage::helper('sales')->__('Customer Group'),
