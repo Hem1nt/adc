@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Clicktoform>
+      <version>0.1.0</version>
+    </Iksula_Clicktoform>
+  </modules>
+  <frontend>
+  	<routers>
+      <clicktoform>
+        <use>standard</use>
+        <args>
+          <module>Iksula_Clicktoform</module>
+          <frontName>clicktoform</frontName>
+        </args>
+      </clicktoform>
+    </routers>
+  </frontend>
+  <global>
+   <models>
+    <clicktoform>
+      <class>Iksula_Clicktoform_Model</class>
+      <resourceModel>clicktoform_mysql4</resourceModel>
+    </clicktoform>
+    <clicktoform_mysql4>
+      <class>Iksula_Clicktoform_Model_Mysql4</class>
+      <entities>      
+        <clicktoform>
+          <table>customerclickinfo</table>
+        </clicktoform>      
+      </entities>
+    </clicktoform_mysql4>
+  </models>
+  <resources>
+    <clicktoform_setup>
+      <setup>
+        <module>Iksula_Clicktoform</module>
+      </setup>
+      <connection>
+        <use>core_setup</use>
+      </connection>
+    </clicktoform_setup>
+    <clicktoform_setup> <!-- Replace with your module name -->
+      <setup>
+        <module>Iksula_Clicktoform</module> <!-- Replace with your module name -->
+        <class>Mage_Customer_Model_Entity_Setup</class>
+      </setup>
+    </clicktoform_setup>
+    <clicktoform_write>
+      <connection>
+        <use>core_write</use>
+      </connection>
+    </clicktoform_write>
+    <clicktoform_read>
+      <connection>
+        <use>core_read</use>
+      </connection>
+    </clicktoform_read>
+  </resources>
+</global>
+</config> 
