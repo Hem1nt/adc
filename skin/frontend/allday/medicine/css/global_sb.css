@@ -39,20 +39,136 @@ body, html{
     height: 31px;
     line-height: 31px;
 }
-  .header-top-block .h-left ul li a, .header-top-block .h-right ul li a {
+.header-top-block .h-left ul li a, .header-top-block .h-right ul li a {
     color: #506f00;
     font-weight: 600;
 }
-  .header .quick-access {
+#customBtn {
+    float: left;
+    color: #f6770e;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.close_btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+#customBtn_mbl{
+    display: none;
+}
+.click_tocall_wrapper button.button:hover > span {
+    font: normal 14px 'Open Sans', sans-serif;
+    background: #849b02;
+    padding: 5px 12px;
+    border: 0;
+    height: auto;
+}
+.click_tocall_overlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.7);
+}
+.click_tocall_wrapper {
+    position: fixed;
+    z-index: 10000;
+    background: #f5f8fa;
+    width: 450px;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    left: 50%;
+    margin-left: -225px;
+    top: 50%;
+    margin-top: -243px;
+}
+.click_tocall_wrapper .form-list input.input-text {
+    width: 254px;
+    box-shadow: inset 4px 6px 21px -5px rgba(229,229,229,1);
+    border-radius: 5px;
+    height: 25px;
+}
+.click_tocall_wrapper .form-list label {
+    display: inline-block;
+    width: 33%;
+    float: left;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.click_tocall_wrapper .form-list .input-box {
+    display: inline-block;
+    width: 65%;
+    float: right;
+    text-align: left;
+    margin-bottom: 10px;
+    clear: inherit;
+}
+.click_tocall_wrapper .clickform_button {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+.click_tocall_wrapper .time-from, .click_tocall_wrapper .time-to, .click_tocall_wrapper .time-zone{
+    width: 26%;
+    float: left;
+    margin-right: 2%;
+}
+.click_tocall_wrapper .time-from select, .click_tocall_wrapper .time-zone select,
+.click_tocall_wrapper .time-to select{
+    width: 100%;
+}
+.click_tocall_wrapper span.from_to {
+    float: left;
+    display: inline-block;
+    vertical-align: bottom;
+    padding: 10px;
+    text-transform: lowercase;
+}
+.click_tocall_wrapper h1.popup_title {
+    color: #678c05;
+    font-size: 16px;
+    font-family: arial;
+    padding-bottom: 10px;
+    width: 99%;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.click_tocall_wrapper .time_to_call {
+    width: 100%;
+    display: inline-block;
+}
+.click_tocall_wrapper .time_to_call label {
+    width: 100%;
+    display: inline-block;
+}
+.click_tocall_wrapper .time_to_call .input-box {
+    width: 100%;
+    display: inline-block;
+}
+.header .quick-access {
     width: 70%;
 }
-  .header .form-search input.input-text {
+.header .form-search input.input-text {
     width: 55%;
 }
 #search_autocomplete {
     width: 40% !important;
 }
-  a.home_icon {
+a.home_icon {
     line-height: 28px;
     padding: 4px 14px 5px;
     border-radius: 25px;
@@ -817,6 +933,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         .header .logo img {
             width: 100%;
         }
+        .click_tocall_wrapper{
+            top: 27%;
+        }
 }
 
 @media only screen and (max-width: 900px){
@@ -1293,6 +1412,20 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .footer-container .social_links{
         margin: 20px 0 0;
     }
+    #customBtn{
+        display: none;
+    }
+    #customBtn_mbl{
+        display: inline-block;
+        color: #f6770e;
+        font-weight: bold;
+        font-size: 13px;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+    .click_tocall_wrapper{
+        top: 45%;
+    }
 }
 @media only screen and (max-width: 694px){
     .adc_christmas .header{
@@ -1320,6 +1453,45 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .new_arrival.new_arrival_img {
         right: 10%;
+    }
+}
+@media only screen and (max-width: 480px){
+    .click_tocall_wrapper {
+        top: 0;
+        position: fixed;
+        background: #f5f8fa;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 0;
+        margin: 0 auto;
+        margin-left: 0;
+        margin-top: 0;
+        left: 0;
+    }
+    .click_tocall_wrapper .clickform_button{
+        margin: 10px 0;
+    }
+    .click_tocall_wrapper h1.popup_title{
+        padding-bottom: 0;
+    }
+    .click_tocall_wrapper .form-list label {
+        display: inline-block;
+        width: 100%;
+        float: none;
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+    .click_tocall_wrapper .form-list .input-box {
+        width: 100%;
+        float: none;
+        margin-bottom: 0;
+        clear: inherit;
+    }
+    .click_tocall_wrapper .form-list input.input-text{
+        width: 98%;
+        height: 20px;
     }
 }
 @media only screen and (max-width: 420px){

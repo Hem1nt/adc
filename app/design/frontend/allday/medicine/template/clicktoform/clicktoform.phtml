@@ -1,138 +1,139 @@
-
-<div id="abc">
-	<!-- Popup Div Starts Here -->
+<!-- Popup Div Starts Here -->
 	<div id="popupContact">
-	<div class="block block-list">
-	<div class="block-title">
-		<strong>
-			<span><?php echo $this->__("Click To Call Form"); ?></span>
-		</strong>
-	</div>
-	<div class="block-content sb_content">
+			<h1 class="popup_title"><?php echo $this->__("Click To Call Form"); ?></h1>
+             <span class="close close_btn">
+                <img src="<?php echo $this-> getSkinUrl('images/notify-close.png');?>" alt="">
+            </span>
 		<div id="call_msg"></div>
 		<div id="call_error_msg"></div>
 		<div class="click_form">
-			<form onsubmit="return false;" method="POST" id="user-custom-form">
-				<label for="user-name" class="required"><em>*</em><?php echo $this->__('User Name') ?></label>
-				<div class="input-box">
-					<input type="text" name="username" id="username" class="input-text required-entry" title="<?php echo $this->__('User Name') ?>" />
-				</div>
-				<label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
-				<div class="input-box">
-					<input type="text" name="email" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
-				</div>
-				<label for="mobileNumber" class="required"><em>*</em><?php echo $this->__('Mobile number with country code') ?></label>
-				<div class="input-box">
-					<input type="text" name="mobileNumber" id="mobileNumber" class="input-text required-entry validate-digits" title="<?php echo $this->__('Mobile Number') ?>" />
-				</div>
-				<div class="time_to_call">
-                <label for="billing:timetocall">
-                <?php echo $this->__('Preferable Time to Call') ?><em>*</em></label>
-                <div class="input-box" >
-                   <div class="time-from">
-                        <select class="required-entry validate-select" id="timeval1">
-                            <?php $timecounter = 1;
-                                echo   '<option value=""></option>';
-                                for($time=1; $time <=24 ; $time++) { 
-                                    // $timelap ='AM'
-                                    if($timecounter <=12) {
-                                        $newtime =$time;
-                                        $timelap ='AM';
-                                    }
-                                    else {
-                                        $newtime =$time-12;
-                                        $timelap ='PM';
-                                    }
-                                    
-                                    $selectedval='';
-                                    $timeoptionval = $newtime.' '.$timelap;
-                                    
-                                    if($timetocallArray[0]==$timeoptionval) {
-                                        $selectedval ='selected=selected';
-                                    }
-                                    else {
-                                        $selectedval='';
-                                    }
-
-                                    echo '<option value="'.$timeoptionval.'" '.$selectedval.'>'.$timeoptionval.'</option>';
-                                    $timecounter++;
+		<form onsubmit="return false;" method="POST" id="user-custom-form">
+        <ul class="form-list">
+        <li>  
+            <label for="user-name" class="required"><?php echo $this->__('User Name') ?><em>*</em></label>
+            <div class="input-box">
+                <input type="text" name="username" id="username" class="input-text required-entry" title="<?php echo $this->__('User Name') ?>" />
+            </div>
+        </li>
+        <li>
+			<label for="email" class="required"><?php echo $this->__('Email Address') ?><em>*</em></label>
+			<div class="input-box">
+				<input type="text" name="email" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+			</div>
+        </li>
+        <li>
+			<label for="mobileNumber" class="required"><?php echo $this->__('Mobile number with country code') ?><em>*</em></label>
+			<div class="input-box">
+				<input type="text" name="mobileNumber" id="mobileNumber" class="input-text required-entry validate-digits" title="<?php echo $this->__('Mobile Number') ?>" />
+			</div>
+        </li>
+			<div class="time_to_call">
+            <label for="billing:timetocall" class="required">
+            <?php echo $this->__('Preferable Time to Call') ?><em>*</em></label>
+            <div class="input-box" >
+               <div class="time-from">
+                    <select class="required-entry validate-select" id="timeval1">
+                        <?php $timecounter = 1;
+                            echo   '<option value=""></option>';
+                            for($time=1; $time <=24 ; $time++) { 
+                                // $timelap ='AM'
+                                if($timecounter <=12) {
+                                    $newtime =$time;
+                                    $timelap ='AM';
                                 }
-                            ?>
-                        </select>
-                    </div>
-                    
-                    <span class="from_to"><?php echo $this->__('To') ?></span>
-                    
-                    <div class="time-to">
-                        <select class="required-entry validate-select" id="timeval2">
-                            <?php $timecounter = 1;
-                                echo   '<option value=""></option>';
-                                for($time=1; $time <=24 ; $time++) { 
-                                    // $timelap ='AM'
-                                    if($timecounter <=12){
-                                        $newtime =$time;
-                                        $timelap ='AM';
-                                    }
-                                    else{
-                                        $newtime =$time-12;
-                                        $timelap ='PM';
-                                    }
-
-                                    $timeoptionval = $newtime.' '.$timelap;
-                                    $selectedval='';
-                                    
-                                    if(isset($timetocallArray[1])==$timeoptionval) {
-                                        $selectedval ='selected=selected';
-                                    }
-                                    else {
-                                        $selectedval='';
-                                    }
-
-                                    echo '<option value="'.$timeoptionval.'" '.$selectedval.'>'.$timeoptionval.'</option>';
-                                    $timecounter++;
+                                else {
+                                    $newtime =$time-12;
+                                    $timelap ='PM';
                                 }
-                            ?>
-                        </select> 
-                    </div>
-                    <div class="time-zone">
-                        <select class="required-entry validate-select" id="timezone">
-                            <option value=""></option>
-                            <option value="CST" <?php if(isset($timetocallArray[2])=='(CST)'){echo $selectedval ='selected=selected';} ?>>CST</option>
-                            <option value="EST" <?php if(isset($timetocallArray[2])=='(EST)'){echo $selectedval ='selected=selected';} ?>>EST</option>
-                            <option value="MST" <?php if(isset($timetocallArray[2])=='(MST)'){echo $selectedval ='selected=selected';} ?>>MST</option>
-                            <option value="PST" <?php if(isset($timetocallArray[2])=='(PST)'){echo $selectedval ='selected=selected';} ?>>PST</option>
-                            <option value="GMT" <?php if(isset($timetocallArray[2])=='(GMT)'){echo $selectedval ='selected=selected';} ?>>GMT</option>
-                            <option value="AEST" <?php if(isset($timetocallArray[2])=='(AEST)'){echo $selectedval ='selected=selected';} ?>>AEST</option>
-                            <option value="ACST" <?php if(isset($timetocallArray[2])=='(ACST)'){echo $selectedval ='selected=selected';} ?>>ACST</option>
-                            <option value="ASWT" <?php if(isset($timetocallArray[2])=='(ASWT)'){echo $selectedval ='selected=selected';} ?>>ASWT</option>
-                            <option value="AEDT" <?php if(isset($timetocallArray[2])=='(AEDT)'){echo $selectedval ='selected=selected';} ?>>AEDT</option>
-                        </select> 
-                    </div>
-                    <input type="hidden" id="prefer_timetocall" name="billing[timetocall]" value="<?php //echo $this->escapeHtml($customer_data->getData('timetocall')) ?>" title="<?php echo $this->__('Preferable Time to Call') ?>" class="input-text" id="timetocall" />
-                </div>             
-            </div>       
-        
-				<label for="Comment" class="required"><em>*</em><?php echo $this->__('Comment') ?></label>
-				<div class="input-box">
-					<textarea type="text" name="comment" class="input-text required-entry" id="comment" title="<?php echo $this->__('Comment') ?>" ></textarea> 
+                                
+                                $selectedval='';
+                                $timeoptionval = $newtime.' '.$timelap;
+                                
+                                if($timetocallArray[0]==$timeoptionval) {
+                                    $selectedval ='selected=selected';
+                                }
+                                else {
+                                    $selectedval='';
+                                }
+
+                                echo '<option value="'.$timeoptionval.'" '.$selectedval.'>'.$timeoptionval.'</option>';
+                                $timecounter++;
+                            }
+                        ?>
+                    </select>
+                </div>
+                
+                <span class="from_to"><?php echo $this->__('To') ?></span>
+                
+                <div class="time-to">
+                    <select class="required-entry validate-select" id="timeval2">
+                        <?php $timecounter = 1;
+                            echo   '<option value=""></option>';
+                            for($time=1; $time <=24 ; $time++) { 
+                                // $timelap ='AM'
+                                if($timecounter <=12){
+                                    $newtime =$time;
+                                    $timelap ='AM';
+                                }
+                                else{
+                                    $newtime =$time-12;
+                                    $timelap ='PM';
+                                }
+
+                                $timeoptionval = $newtime.' '.$timelap;
+                                $selectedval='';
+                                
+                                if(isset($timetocallArray[1])==$timeoptionval) {
+                                    $selectedval ='selected=selected';
+                                }
+                                else {
+                                    $selectedval='';
+                                }
+
+                                echo '<option value="'.$timeoptionval.'" '.$selectedval.'>'.$timeoptionval.'</option>';
+                                $timecounter++;
+                            }
+                        ?>
+                    </select> 
+                </div>
+                <div class="time-zone">
+                    <select class="required-entry validate-select" id="timezone">
+                        <option value=""></option>
+                        <option value="CST" <?php if(isset($timetocallArray[2])=='(CST)'){echo $selectedval ='selected=selected';} ?>>CST</option>
+                        <option value="EST" <?php if(isset($timetocallArray[2])=='(EST)'){echo $selectedval ='selected=selected';} ?>>EST</option>
+                        <option value="MST" <?php if(isset($timetocallArray[2])=='(MST)'){echo $selectedval ='selected=selected';} ?>>MST</option>
+                        <option value="PST" <?php if(isset($timetocallArray[2])=='(PST)'){echo $selectedval ='selected=selected';} ?>>PST</option>
+                        <option value="GMT" <?php if(isset($timetocallArray[2])=='(GMT)'){echo $selectedval ='selected=selected';} ?>>GMT</option>
+                        <option value="AEST" <?php if(isset($timetocallArray[2])=='(AEST)'){echo $selectedval ='selected=selected';} ?>>AEST</option>
+                        <option value="ACST" <?php if(isset($timetocallArray[2])=='(ACST)'){echo $selectedval ='selected=selected';} ?>>ACST</option>
+                        <option value="ASWT" <?php if(isset($timetocallArray[2])=='(ASWT)'){echo $selectedval ='selected=selected';} ?>>ASWT</option>
+                        <option value="AEDT" <?php if(isset($timetocallArray[2])=='(AEDT)'){echo $selectedval ='selected=selected';} ?>>AEDT</option>
+                    </select> 
+                </div>
+                <input type="hidden" id="prefer_timetocall" name="billing[timetocall]" value="<?php //echo $this->escapeHtml($customer_data->getData('timetocall')) ?>" title="<?php echo $this->__('Preferable Time to Call') ?>" class="input-text" id="timetocall" />
+            </div>             
+        </div>       
+    
+			<label for="Comment" class="required"><?php echo $this->__('Comment') ?><em>*</em></label>
+			<div class="input-box">
+				<textarea type="text" name="comment" class="input-text required-entry" id="comment" title="<?php echo $this->__('Comment') ?>" ></textarea> 
+			</div>
+			
+			
+			<div id="call_msg"></div>
+			<div class="clickform_button">
+				<button type="submit" id="click_form" class="button" title="<?php echo $this->__('Submit') ?>" >
+					<span>
+						<span><?php echo $this->__('Submit') ?></span>
+					</span>
+				</button>
+				<div id='clickform_loading' style='display: none'>
+					<img src="<?php echo $this->getSkinUrl().'images/bx_loader.gif'?>" title="Loading" />
 				</div>
-				
-				
-				<div id="call_msg"></div>
-				<div class="clickform_button">
-					<button type="submit" id="click_form" title="<?php echo $this->__('Submit') ?>" >
-						<span>
-							<span><?php echo $this->__('Submit') ?></span>
-						</span>
-					</button>
-					<div id='clickform_loading' style='display: none'>
-						<img src="<?php echo $this->getSkinUrl().'images/bx_loader.gif'?>" title="Loading" />
-					</div>
-				</div>
-			</form>
-		</div>
+			</div>
+            </ul>
+		</form>
 	</div>
-</div>
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery("#timezone,#timeval1,#timeval2").change(function(){
@@ -154,6 +155,8 @@
             jQuery("#prefer_timetocall").val(timetocall);
         } 
         })
+
+    
     });
 
 </script>
@@ -210,4 +213,3 @@
 
 	</div>
 	<!-- Popup Div Ends Here -->
-</div>

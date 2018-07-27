@@ -16,6 +16,17 @@ jQuery(document).ready(function($){
     $(".cashbackCoupon_overlay").trigger('click');
   });
 
+  //click to call popup
+  $(".modal-content, .click_tocall_overlay").hide();
+
+  $("#customBtn").live('click', function(){
+    $(".modal-content, .click_tocall_overlay").show();
+  });
+
+  $(".click_tocall_overlay, .close_btn").live('click', function(){  
+    $(".modal-content, .click_tocall_overlay").hide();
+  });
+
   //opc msg
   // $(".opc-messages-action").live('click', function(){  
   //  // alert("hi");
