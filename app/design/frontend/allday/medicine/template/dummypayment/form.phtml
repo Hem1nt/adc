@@ -1,0 +1,30 @@
+<head>
+<style>
+.form-list1 li span
+{
+    float:left;
+    font-weight: bold;
+    margin-right:5px;
+}
+.form-list1 li
+{
+    list-style: disc outside none;
+    margin: 0 0 7px 20px;
+}
+</style>
+</head>
+
+<fieldset class="form-list1" >
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" style="display:none">
+        <h5>Pay By Visa</h5>
+        <p><span>Thank you for showing your interest on Voucher Payment System.</span></p>
+        <p style="margin-bottom: 30px;"><span>Please press continue button so that your order number can be generated. You will get a secure payment link through separate email. Please use your Debit/ Credit Card to make your purchase.</span></p>
+        <!-- <p style="margin-bottom: 25px;"><span>We will create an account on virtual voucher solution to confirm your purchase. You will get a separate email once your voucher account is created and the funds are loaded and redeemed. You will get also get a new order # and payment confirmation email from our billing department.</span></p> -->
+        <p style="margin-bottom: 25px;"><span>In case of you have any query, please feel free to contact us.</span></p>
+        <p><span>Warm Regards,</span></p>
+        <p><span>Team AllDayChemist</span></p>
+        <p><span>Toll Free # +1(855) 840-0584</span></p>
+        <button type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+    </ul>
+</fieldset>

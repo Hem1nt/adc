@@ -237,12 +237,12 @@ class Excellence_Ajaxcoupon_IndexController extends Mage_Checkout_CartController
   public function indexAction(){
     $cart = $this->_getCart();
     if ($cart->getQuote()->getItemsCount()) {
-      $cartemail = $this->blackListEmail($cart);
+      /*$cartemail = $this->blackListEmail($cart);
       if($cartemail == 1){
         $this->_getSession()->addError($this->__('You are not allowed to purchase any Product.'));
       }
       $cart->init();
-      $cart->save();
+      $cart->save();*/
 
       if (!$this->_getQuote()->validateMinimumAmount()) {
         $minimumAmount = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())
@@ -347,9 +347,16 @@ class Excellence_Ajaxcoupon_IndexController extends Mage_Checkout_CartController
             Mage::dispatchEvent('checkout_cart_add_product_complete',
               array('product' => $product, 'request' => $this->getRequest(), 'response' => $this->getResponse())
               );
-            $cartemail = $this->blackListEmail($cart);
+            //$cartemail = $this->blackListEmail($cart);
             if (!$this->_getSession()->getNoCartRedirect(true)) {
-              if (!$cart->getQuote()->getHasError() && $cartemail != 1){
+              /*if (!$cart->getQuote()->getHasError() && $cartemail != 1){
+                $message = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
+                $this->_getSession()->addSuccess($message);
+                if(isset($params['item'])) {
+                  Mage::getModel('wishlist/item')->load($params['item'])->delete();
+                }
+              }*/
+              if (!$cart->getQuote()->getHasError()){
                 $message = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
                 $this->_getSession()->addSuccess($message);
                 if(isset($params['item'])) {

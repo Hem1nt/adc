@@ -29,4 +29,22 @@ Class Iksula_Overrides_Block_Adminhtml_Customer_Edit_Tab_View extends Mage_Admin
             }
         }
     }
+
+    public function getSuspicious()
+    {
+        $customer_id = $this->getCustomer()->getId();
+        $_orders = Mage::getModel('sales/order')->getCollection()
+                    ->addFieldToSelect('suspicious')
+                    ->addFieldToFilter('customer_id',$customer_id);
+        foreach ($_orders->getData() as $key) {
+            foreach ($key as $k => $value) {
+               if($value){
+                /*Encode in saveCustomerBehaviorAction*/
+                $return_behavior = json_decode($value,true);
+                return $return_behavior['suspicious_value'];
+               }
+            }
+        }
+    }
+
 }
