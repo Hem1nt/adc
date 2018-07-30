@@ -1479,7 +1479,7 @@ a.product_img[data-src~="http"] {
 }
 .catalog-product-view #customer-reviews .review_left_block, 
 .review-product-list #customer-reviews .review_left_block ,
-.extendedreview-index-reviewpage #customer-reviews .review_left_block, 
+    .extendedreview-index-reviewpage #customer-reviews .review_left_block, 
 .review-product-list #customer-reviews .review_left_block {
     font-size: 14px;
     color: #333333;
