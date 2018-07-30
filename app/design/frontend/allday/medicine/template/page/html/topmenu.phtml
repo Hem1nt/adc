@@ -49,37 +49,12 @@
 						<?php $_subcategories = $_category->getChildrenCategories() ?>
 						<?php if (count($_subcategories) > 0): ?>
 							<ul class="men-s-health-subcat">
-								<?php 
-									$c = count($_subcategories);
-									//$i = 1;
-								?>
-								<li class="subcat_li"><ul>
 								<?php foreach($_subcategories as $_subcategory): ?>
-									<?php if($c%3 == 0){ 
-											$c--;
-										?>
-											</ul></li><li><ul><li class="nav-categoty-links custom_nav">
+										<li class="nav-categoty-links custom_nav">
 											<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
 											<span><?php echo $_subcategory->getName() ?></span>
 										</a>
 									</li>
-									<?php }else{ 
-											
-										?>
-											<?php if($c == 1){ ?>
-												</ul></li><li><ul><li class="nav-categoty-links custom_nav">
-											<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
-											<span><?php echo $_subcategory->getName() ?></span>
-										</a>
-									</li>
-											<?php }else{ ?>
-												<li class="nav-categoty-links custom_nav">
-											<a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>">
-											<span><?php echo $_subcategory->getName() ?></span>
-										</a>
-									</li>
-											<?php $c--;	} ?>
-									<?php } ?>
 								<?php endforeach; ?>
 							</ul>
 						<?php endif; ?>
@@ -132,64 +107,3 @@ jQuery(document).ready(function ($) {
     });
 });
 </script>
-<style type="text/css">
-	/*ul.men-s-health-subcat {
-	    display: none;
-	    position: absolute;
-	    background-color: #fff;
-	    min-width: 160px;
-	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	    z-index: 99999;
-	    margin-top: 5px;
-	}
-	ul.men-s-health-subcat .subcat_li{
-	   width: 25%;
-	   padding-top: 15px;
-	}
-	ul.men-s-health-subcat li>a {
-	    color: black;
-	    padding: 12px 16px;
-	    text-decoration: none;
-	    display: block;
-	}
-	ul.men-s-health-subcat li.custom_nav{
-		width: 100%;
-	    padding-left: 10px;
-	    box-sizing: border-box;
-	}
-	ul.men-s-health-subcat li.custom_nav a span {
-	    padding: 7px 15px 7px 15px;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	    white-space: nowrap;
-	    font-size: 14px;
-	}
-	ul.men-s-health-subcat li.custom_nav >a{
-    	transition: none;
-    	background: url(http://192.168.4.82/adcupdate.com/skin/frontend/allday/medicine/images/cat_nav_icon.png) 0 19px no-repeat;
-    	background-size: 6px!important;
-    	padding: 0;
-    	text-align: left;
-	}
-	ul.men-s-health-subcat li.custom_nav >a:hover{
-		background: url(http://192.168.4.82/adcupdate.com/skin/frontend/allday/medicine/images/cat_nav_icon.png) 0 -33px no-repeat;
-	}
-	.nav-left-category ul li.custom_nav a:hover{
-		color: #000;
-	}
-	.nav-categoty-links.down_arrow:after{
-		content: "";
-	    border-top: 7px solid #fff;
-	    border-left: 7px solid transparent;
-	    border-right: 7px solid transparent;
-	    position: absolute;
-	    bottom: 16px;
-	    height: 0;
-	    width: 0;
-	    right: -2px;
-	    margin-left: -6px;
-	}
-	.nav-left-category{
-		position: relative;
-	}*/
-</style>

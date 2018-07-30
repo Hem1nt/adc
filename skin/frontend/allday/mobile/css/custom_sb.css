@@ -1768,7 +1768,8 @@
     border: 0;
     display: inline-block;
     vertical-align: middle;
-    background: url(../images/adc_gift.png) no-repeat;
+    /*background: url(../images/adc_gift.png) no-repeat;*/
+    background: url(../images/adc_combo_offer.png) no-repeat;
     width: 60px;
     height: 60px;
     background-size: 60px;
@@ -2082,6 +2083,12 @@ span.product_free_shipping {
 	.catalog-product-view #review-form-div {
 	    padding: 0 8px !important;
 	}
+	.cms-identifying-fraudulent-phishing-email .hometextcontent .link1,
+	.cms-identifying-fraudulent-phishing-email .hometextcontent .link2{
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+	}
 }
 @media only screen and (max-width: 694px){
 	.adc_christmas .header .quick-access {
@@ -2288,6 +2295,9 @@ span.product_free_shipping {
     .catalog-category-view .col-right.sidebar #rcode{
 		width: 100%;
 		margin-left: 0;
+	}
+	.product_free_gift{
+		vertical-align: top;
 	}
 }
 @media only screen and (max-width: 540px){

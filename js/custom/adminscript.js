@@ -173,6 +173,31 @@ jQuery(document).ready(function(){
 
  }
 
+ function markAsSuspicious(url,customerId){
+    var orderid = jQuery('.orderid').val();
+    var emailaddrsss = jQuery('.custome_emailid').text();
+    var suspicious_id = jQuery('input[name=suspicious]:checked').val();
+    var suspicious_value = jQuery('input[name=suspicious]:checked').parent('label').text();
+	if(suspicious_id && orderid){
+		new Ajax.Request(url, {
+			method: 'Post',
+			parameters: {isAjax: 1, method: 'POST',suspicious_id:suspicious_id,suspicious_value:suspicious_value,orderid:orderid,customerId:customerId,email:emailaddrsss},
+			onComplete: function(transport) {
+				if(jQuery('input[name=suspicious]:checked').val() == 1){
+					jQuery('#suspicious_message').html('data successfully updated');
+					jQuery('#isSuspicious').show();
+				}else{
+					jQuery('#suspicious_message').html('data successfully updated');
+					jQuery('#isSuspicious').hide();
+				}
+			}
+		});
+	}else{
+		alert('Please Select Suspicious');
+	}
+
+ }
+
 
 
 /************ kyc custom code start ***********/

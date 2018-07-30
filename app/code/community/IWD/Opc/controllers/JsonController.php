@@ -650,6 +650,14 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 			}
 			///
 			$this->getOnepage()->saveOrder();
+
+			/* Bpay code */
+				if($data["method"] == 'bpay'){
+					$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+					Mage::helper('bpay')->submitDetails($data,$orderId);
+				}
+			/* Bpay code */
+
 			// if($customer_id == '' && $checkout_method == 'guest') {
 			// 	$this->assignOrders($customer_email);
 			// }
@@ -1067,7 +1075,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
         $this->getResponse()->setBody(json_encode($responce));
 	}
 	public function blackListUserAction(){
-		$quoteData = Mage::getSingleton('checkout/session')->getQuote();
+		/*$quoteData = Mage::getSingleton('checkout/session')->getQuote();
 		$data = $quoteData->getBillingAddress()->getData();
 		$blacklistPhoneno = $this->blackListPhoneNumber($data);
 		$blacklistAddress =  $this->blackListAddress($data);
@@ -1078,7 +1086,7 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		} else {
 			$result['status'] = "NO";
 		}
-		return print_r(json_encode($result));
+		return print_r(json_encode($result));*/
 	}
 	/* check phone number of the black list user */
 	protected function blackListPhoneNumber($data){
@@ -1141,8 +1149,35 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		$billingAddress = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getData();
 			$billing_country_name=Mage::app()->getLocale()->getCountryTranslation($billingAddress['country_id']); 
 		$shippingAddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getData();
-			$shipping_country_name=Mage::app()->getLocale()->getCountryTranslation($shippingAddress['country_id']); 
-		
+			$shipping_country_name=Mage::app()->getLocale()->getCountryTranslation($shippingAddress['country_id']);
+		$blackListAddressses = unserialize(Mage::getStoreConfig('blacklist_section/blacklist/blacklist_address'));
+		$blackListPhoneNumber = unserialize(Mage::getStoreConfig('blacklist_section/blacklist/blacklist_phonenumber'));
+		foreach ($blackListAddressses as $key => $value) {
+			$address_string = $value['address1'].' '.$value['address1'].' '.$value['zipcode'];
+			//billing address check
+			if(preg_match("/\b(".$billingAddress['street'].'|'.$billingAddress['region'].'|'.$billingAddress['postcode'].")\b/", $address_string)){
+			    Mage::getSingleton('core/session')->setBillingAddressSuspicious(true);
+			}else{
+				Mage::getSingleton('core/session')->unsBillingAddressSuspicious();
+			}
+
+			//shipping address check
+			if(preg_match("/\b(".$shippingAddress['street'].'|'.$shippingAddress['region'].'|'.$shippingAddress['postcode'].")\b/", $address_string)){
+			    Mage::getSingleton('core/session')->setShippingAddressSuspicious(true);
+			}else{
+				Mage::getSingleton('core/session')->unsShippingAddressSuspicious();
+			}
+		}
+
+		foreach ($blackListPhoneNumber as $key => $value) {
+			if($value['phonenumber'] == $billingAddress['telephone'] || $value['phonenumber'] == $shippingAddress['telephone']){
+				Mage::getSingleton('core/session')->setPhoneSuspicious(true);
+				break;
+			}else{
+				Mage::getSingleton('core/session')->unsPhoneSuspicious();
+			}
+		}
+
 	    $html .= '<ul class="address1">';
 			$html .= '<div class="billing_address_title">Billing Address: </div>';
 			$html .= '<label>Name</label>'.' <li>: '.$billingAddress['firstname'].' '.$billingAddress['lastname'].'</li>';

@@ -163,3 +163,13 @@
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
 </script>
+<script type="text/javascript">
+//<![CDATA[
+if(Validation) {
+Validation.addAllThese([
+['validate-phoneStrict', 'Please enter a valid phone number. For example (+34)123-456-7890 or 00346297647171.', function(v) {
+            return Validation.get('IsEmpty').test(v) || /^[\s()+-]*([0-9][\s()+-]*){6,20}(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/.test(v);
+  }
+]])};
+//]]>
+</script>

@@ -10,10 +10,12 @@ class Iksula_Bpay_IndexController extends Mage_Core_Controller_Front_Action{
   /**
 	* Handle $_POST submission
 	*/
-  public function submitDetailsAction(){
+  /*public function submitDetailsAction(){
   	$_form_data = array();
   	$store = Mage::app()->getStore();
-    $_form_data['api_key'] = Mage::getStoreConfig('payment/groupName/bpay', $store);
+
+    $_form_data['api_version'] = Mage::getStoreConfig('payment/bpay/apiversion', $store);
+    $_form_data['api_key'] = Mage::getStoreConfig('payment/bpay/apikey', $store);
         
     $_form_data['name'] = $this->getRequest()->getParam('firstname');
     $_form_data['acc_no'] = $this->getRequest()->getParam('acc_no');
@@ -22,7 +24,7 @@ class Iksula_Bpay_IndexController extends Mage_Core_Controller_Front_Action{
     $_form_data['email1'] = $this->getRequest()->getParam('email');
     $_form_data['other'] = $this->getRequest()->getParam('message');
     $_form_data['amount'] = $this->getRequest()->getParam('amount');
-
+    $_form_data['yrn'] = '';//$this->getRequest()->getParam('yrn');
     $pstring = $this->paramString($_form_data);
 
     $remote_url = 'https://www.howtopay.com/Member/api_processPayment';
@@ -35,7 +37,7 @@ class Iksula_Bpay_IndexController extends Mage_Core_Controller_Front_Action{
 	 * Construct post params
 	 * @param type $params
 	 * @return boolean
-	 */
+	 
 	private function paramString($params = array()) {
 	    if (!empty($params)) {
 	        $_parameters = "";
@@ -51,25 +53,25 @@ class Iksula_Bpay_IndexController extends Mage_Core_Controller_Front_Action{
 
 	/**
 	 * Increase timeout limit
-	 */
+	 
 	private function SFD_ini_set_adjust() {
 	    @ini_set('max_execution_time', 300);
 	    @ini_set('memory_limit', '128M');
 	}
 
-	/**
+	*
 	 * Send request to server
 	 * @param type $url
 	 * @param type $postdata
 	 * @param type $_type
 	 * @return boolean
-	 */
+	 
 	private function send_curl_request($url, $postdata, $_type = FALSE) {
 	    $this->SFD_ini_set_adjust();
 
 	    $ch = curl_init();
 
-	    $header[] = "Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5";
+	    $header[] = "Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,;q=0.5";
 	    $header[] = "Cache-Control: max-age=0";
 	    $header[] = "Connection: keep-alive";
 	    $header[] = "Keep-Alive: 300";
@@ -101,5 +103,5 @@ class Iksula_Bpay_IndexController extends Mage_Core_Controller_Front_Action{
 	    } else {
 	        return FALSE;
 	    }
-	}
+	}*/
 }

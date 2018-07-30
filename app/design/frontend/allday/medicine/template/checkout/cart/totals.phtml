@@ -45,4 +45,6 @@
             <?php echo $this->renderTotals(); ?>
         </tbody>
     </table>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('freeshipping')->toHtml(); 
+?> 
 <?php endif; ?>

@@ -124,7 +124,7 @@ span.footer-logo-adc {
 	width: 75%;
 	float: right;
 	display: inline-block;
-	margin-top: 15px;
+	/*margin-top: 15px;*/
 }
 .adc-footer-links ul {
 	background: none;
@@ -9247,9 +9247,6 @@ body.catalog-product-view .nav-right-category ul li.coupon-and-offer a , body.ca
     body.catalog-product-view .product-details-table table.new_product_list th, body.catalog-product-view .review-product-list .product-details-table table.new_product_list{
         padding: 6px 5px;
         font-size: 14px;
-    }
-    body.catalog-product-view .product-details-table table.new_product_list td, body.catalog-product-view .review-product-list .product-details-table table.new_product_list{
-        padding: 7px 7px;
     }
 }
 

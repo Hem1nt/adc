@@ -135,8 +135,8 @@
 	.adc-footer-links {
 		width: 100%;
 		float: none;
-		border-top: 1px solid #C8C8C8;
-	  	padding-top: 15px;
+		/*border-top: 1px solid #C8C8C8;*/
+	  	padding-top: 15px 0;
 	}
 	.adc-footer-links ul {
 		margin-right: 3%;
