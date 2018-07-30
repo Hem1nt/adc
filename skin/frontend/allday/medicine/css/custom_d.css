@@ -478,6 +478,7 @@ input.input-text:focus, select:focus, textarea:focus {
 
 .nav-left-category ul li {
 	float: left;
+	position: relative;
 }
 
 .nav-left-category ul li a {

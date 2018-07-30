@@ -2204,7 +2204,6 @@ ul.men-s-health-subcat {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 99999;
-    margin-top: 5px;
 }
 ul.men-s-health-subcat .subcat_li{
    width: 25%;
@@ -2250,7 +2249,7 @@ ul.men-s-health-subcat li.custom_nav >a:hover{
     bottom: 16px;
     height: 0;
     width: 0;
-    right: 198px;
+    right: 0;
     margin-left: -6px;
 }
 .nav-left-category{
