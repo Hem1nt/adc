@@ -125,70 +125,12 @@
 <script type="text/javascript">
 jQuery(document).ready(function ($) {
     $("ul.topmenu li").hover(function () { //When trigger is hovered...
-        $(this).children("ul.men-s-health-subcat").slideDown('fast');
+        $(this).children("ul.men-s-health-subcat").slideDown(2000);
     }, function () {
-        $(this).children("ul.men-s-health-subcat").slideUp('slow');
+        $(this).children("ul.men-s-health-subcat").slideUp(1000);
     });
 });
 </script>
 <style type="text/css">
-	ul.men-s-health-subcat {
-	    display: none;
-	    position: absolute;
-	    background-color: #fff;
-	    min-width: 160px;
-	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	    z-index: 99999;
-	    margin-top: 5px;
-	}
-	ul.men-s-health-subcat .subcat_li{
-	   width: 25%;
-	   padding-top: 15px;
-	}
-	ul.men-s-health-subcat li>a {
-	    color: black;
-	    padding: 12px 16px;
-	    text-decoration: none;
-	    display: block;
-	}
-	ul.men-s-health-subcat li.custom_nav{
-		width: 100%;
-	    padding-left: 10px;
-	    box-sizing: border-box;
-	}
-	ul.men-s-health-subcat li.custom_nav a span {
-	    padding: 7px 15px 7px 15px;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	    white-space: nowrap;
-	    font-size: 14px;
-	}
-	ul.men-s-health-subcat li.custom_nav >a{
-    	transition: none;
-    	background: url(http://192.168.4.82/adcupdate.com/skin/frontend/allday/medicine/images/cat_nav_icon.png) 0 19px no-repeat;
-    	background-size: 6px!important;
-    	padding: 0;
-    	text-align: left;
-	}
-	ul.men-s-health-subcat li.custom_nav >a:hover{
-		background: url(http://192.168.4.82/adcupdate.com/skin/frontend/allday/medicine/images/cat_nav_icon.png) 0 -33px no-repeat;
-	}
-	.nav-left-category ul li.custom_nav a:hover{
-		color: #000;
-	}
-	.nav-categoty-links.down_arrow:after{
-		content: "";
-	    border-top: 7px solid #fff;
-	    border-left: 7px solid transparent;
-	    border-right: 7px solid transparent;
-	    position: absolute;
-	    bottom: 16px;
-	    height: 0;
-	    width: 0;
-	    right: -2px;
-	    margin-left: -6px;
-	}
-	.nav-left-category{
-		position: relative;
-	}
+
 </style>
