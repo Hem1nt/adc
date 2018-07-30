@@ -104,7 +104,9 @@ Auto add the coupon in quote E*/
             </div>
             <?php echo $this->getChildHtml('user-section') ?>
             <!-- Trigger/Open The Modal -->
-            <div id="customBtn">Click to call</div>
+            <div id="customBtn">Click to call
+                <span class="call-icon"></span>
+            </div>
         </div>
     </div>
 <div class="overlay-header"></div>
@@ -124,7 +126,9 @@ Auto add the coupon in quote E*/
                 <?php $adc_contact = Mage::getStoreConfig('homepage_conf/common_group/mobile_number');?>
                 <span><a href="tel:<?php echo $adc_contact; ?>"><?php echo $adc_contact; ?></a></span>
             </div>
-            <div id="customBtn_mbl">Click to call</div>
+            <div id="customBtn_mbl">Click to call
+                <span class="call-icon"></span>
+            </div>
             <!-- <div class="new_year_img_mob">
                 <img src="<?php //echo $this -> getSkinUrl('images/new_year2.gif')?>">
             </div> -->

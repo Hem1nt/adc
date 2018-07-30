@@ -50,6 +50,17 @@ body, html{
     font-size: 13px;
     text-transform: capitalize;
     cursor: pointer;
+    line-height: 18px;
+    padding: 7px 0;
+}
+#customBtn span.call-icon {
+    width: 14px;
+    height: 17px;
+    background: url(../images/click_to_call.png) 1px 2px no-repeat;
+    float: left;
+    margin-left: 0px;
+    margin-right: 4px;
+    line-height: 25px;
 }
 .close_btn{
     position: absolute;
@@ -89,9 +100,9 @@ body, html{
     box-sizing: border-box;
     border-radius: 5px;
     left: 50%;
-    margin-left: -225px;
     top: 50%;
-    margin-top: -243px;
+    transform: translate(-50%,-50%);
+    overflow-y: auto;
 }
 .click_tocall_wrapper .form-list input.input-text {
     width: 254px;
@@ -934,7 +945,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             width: 100%;
         }
         .click_tocall_wrapper{
-            top: 27%;
+            top: 45%;
         }
 }
 
@@ -974,8 +985,8 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             margin-left: 0;
             background-size: 17px;
         }
-        .header-top-block .h-left ul li a {
-            padding: 0 7px;
+        .header-top-block .h-left ul li a, .header-top-block .h-right ul li a{
+            padding: 0 4px;
         }
         .nav-right-category {
             margin: 0 10px;
@@ -988,6 +999,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         }
         .block .block-title strong.all-categories{
             margin: 4px 0;
+        }
+        #customBtn{
+            font-size: 12px;
         }
         
 }
@@ -1423,6 +1437,15 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         text-transform: capitalize;
         cursor: pointer;
     }
+    #customBtn_mbl span.call-icon {
+        width: 14px;
+        height: 17px;
+        background: url(../images/click_to_call.png) 1px 2px no-repeat;
+        float: left;
+        margin-left: 0px;
+        margin-right: 4px;
+        line-height: 25px;
+    }
     .click_tocall_wrapper{
         top: 45%;
     }
@@ -1469,6 +1492,8 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin-left: 0;
         margin-top: 0;
         left: 0;
+        transform: none;
+        overflow-y: inherit;
     }
     .click_tocall_wrapper .clickform_button{
         margin: 10px 0;

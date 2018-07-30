@@ -9237,6 +9237,10 @@ body.catalog-product-view .nav-right-category ul li.coupon-and-offer a , body.ca
    /* body.catalog-product-view .header .form-search input.input-text {
         width: 62.8%;
     }*/
+    .header-top-block .h-left ul li a, 
+    .header-top-block .h-right ul li a{
+    	padding: 0 8px;
+    }
 }
 
 @media only screen and (max-width: 980px){
@@ -10200,7 +10204,8 @@ span.testimonial-date.testimonial-state {
 	    font-size: 12px;
 	    color: #fff;
 	}
-	.header-top-block .h-left ul li a{
+	.header-top-block .h-left ul li a, 
+    .header-top-block .h-right ul li a{
 		padding: 0 10px;
 		font-size: 12px;
 	}
