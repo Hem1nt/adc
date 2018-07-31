@@ -37,7 +37,8 @@ class Iksula_Dummypayment_Model_Observer
                 ->addBcc($senderEmail)
                 ->sendTransactional($templateId, $sender, $recepientEmail, $recepientName, $vars, $storeId);
                 $translate->setTranslateInline(true); 
-                }   
+                }
+            Mage::log($recepientEmail,true,'block_user.log');   
             /*Email Function E*/
 
         }
