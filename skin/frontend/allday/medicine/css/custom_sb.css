@@ -1486,6 +1486,15 @@ a.product_img[data-src~="http"] {
     padding-right: 21px;
     box-sizing: border-box;
 }
+.extendedreview-index-reviewpage #customer-reviews .review_left_block .verified_user{
+    font-size: 14px;
+    color: #f6770e;
+    box-sizing: border-box;
+    padding-left: 20px;
+    background: url(../images/i_msg-success.gif) 0px 3px no-repeat;
+    margin: 2px 0;
+    font-weight: bold;
+}
 /*more info*/
 .customer-account-edit .col-main .more_info_custom .form-list {
    /* display: flex;
@@ -2195,7 +2204,6 @@ ul.men-s-health-subcat {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 99999;
-    margin-top: 5px;
 }
 ul.men-s-health-subcat .subcat_li{
    width: 25%;
@@ -2241,7 +2249,7 @@ ul.men-s-health-subcat li.custom_nav >a:hover{
     bottom: 16px;
     height: 0;
     width: 0;
-    right: 198px;
+    right: 0;
     margin-left: -6px;
 }
 .nav-left-category{

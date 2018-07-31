@@ -1120,6 +1120,15 @@
 	    text-align: left !important;
 	    margin: 5px 0 0px 0;
 	}
+	.extendedreview-index-reviewpage #customer-reviews .review_left_block .verified_user{
+	    font-size: 13px;
+	    color: #f6770e;
+	    box-sizing: border-box;
+	    padding-left: 20px;
+	    background: url(../images/i_msg-success.gif) 0px 3px no-repeat;
+	    margin: 2px 0;
+	    font-weight: bold;
+	}
 
 	/*review closed*/
 	.catalog-product-view .product-details-table .product-options-bottom .add-to-cart{
