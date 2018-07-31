@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <sections>
+    <clicktoform translate="label" module="clicktoform">
+      <label>Customer Click To Call</label>
+      <tab>systemconfig</tab>
+      <sort_order>1000</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+
+      <groups>
+        <clicktoform_group translate="label" module="clicktoform">
+          <label>Module Visibilty</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1000</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <clicktoform_select translate="label">
+              <label>Status</label>
+              <comment>Source model provider Magento's default Yes/No values</comment>
+              <frontend_type>select</frontend_type>
+              <sort_order>90</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+            </clicktoform_select>
+          </fields>
+        </clicktoform_group>
+        <clicktoform_setting translate="label" module="clicktoform">
+          <label>Module Setting</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1000</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+           <fields>
+          <clicktoform_adminemailaddress translate="label">
+              <label>Email Address for admin</label>
+              <comment>Set admin email address</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>90</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              </clicktoform_adminemailaddress>
+            <clicktoform_customeremail translate="label">
+              <label>Template Id for customer Email </label>
+              <comment>Set teamplate id for sending email to customer</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>90</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </clicktoform_customeremail>  
+              <clicktoform_adminemailtemplate translate="label">
+              <label>Template Id for Admin </label>
+              <comment>Set template id for sending email to admin</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>90</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+             </clicktoform_adminemailtemplate>
+          </fields>
+        </clicktoform_setting>
+      </groups>
+    </clicktoform>
+  </sections>
+</config>

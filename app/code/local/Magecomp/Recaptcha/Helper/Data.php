@@ -121,6 +121,13 @@ class Magecomp_Recaptcha_Helper_Data extends Mage_Core_Helper_Abstract
   			return self::getEnabledPage(8);
 		}
 	}
+	public function showOnClicktocall()
+	{
+		if($this->isEnabled())
+		{
+  			return self::getEnabledPage(9);
+		}
+	}
 
 	public function getTheme()
 	{
