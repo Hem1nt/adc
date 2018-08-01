@@ -2,7 +2,7 @@
 class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 {
     public function SendEmail($customerId){
-
+/*
  	   	$model =  Mage::getModel('clicktoform/clicktoform')->load($customerId);
  	   	$customerEmail = $model->getCustomerEmail();
  	   	$customerName = $model->getCustomerName();
@@ -27,7 +27,7 @@ class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 
 		$transactionalEmail->sendTransactional($templateAdmin, $senderForAdmin, $senderName, 'Admin', $vars, $storeId);
 
-		$transactionalEmail->sendTransactional($templateCustomer, $senderForCustomer, $customerName, $recepientName, $vars, $storeId);
+		$transactionalEmail->sendTransactional($templateCustomer, $senderForCustomer, $customerName, $recepientName, $vars, $storeId);*/
             
     }
 }
