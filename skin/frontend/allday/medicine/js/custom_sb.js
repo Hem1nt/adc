@@ -17,7 +17,7 @@ jQuery(document).ready(function($){
   });
 
   //click to call popup
-  $(".modal-content, .click_tocall_overlay").hide();
+ // $(".modal-content, .click_tocall_overlay").hide();
 
   $("#customBtn").live('click', function(){
     $(".modal-content, .click_tocall_overlay").show();
