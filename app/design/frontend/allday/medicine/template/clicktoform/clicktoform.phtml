@@ -200,7 +200,7 @@
                     data : {username:jQuery('#username').val(),email:jQuery('#email').val(),mobileNumber:jQuery('#mobileNumber').val(),timestamp:jQuery("#prefer_timetocall").val(),comment:jQuery('#comment').val()},
                     dataType: "html",
                     success:function(content){
-                        console.log(content);
+                        //console.log(content);
                         jQuery('#clickform_loading').hide();
                         jQuery('#call_msg').html('<h2 style="text-align:center;">Thank you for providing information!!</h2>');
                         jQuery('#username').val("");
