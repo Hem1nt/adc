@@ -95,14 +95,14 @@ body, html{
     z-index: 10000;
     background: #f5f8fa;
     width: 450px;
-    height: auto;
+    height: 90%;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 5px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 .click_tocall_wrapper .form-list input.input-text {
     width: 254px;
@@ -155,8 +155,21 @@ body, html{
     width: 99%;
     text-align: center;
     display: inline-block;
-    margin-bottom: 10px;
     font-weight: 600;
+}
+#call_msg h2{
+    text-align: center;
+    font-size: 15px;
+    color: #678c05;
+    margin-bottom: 14px;
+    font-weight: bold;
+}
+#call_error_msg{
+    text-align: center;
+    font-size: 15px;
+    color: #ff0;
+    margin-bottom: 14px;
+    font-weight: bold;
 }
 .click_tocall_wrapper .time_to_call {
     width: 100%;
@@ -945,7 +958,8 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             width: 100%;
         }
         .click_tocall_wrapper{
-            top: 45%;
+            top: 50%;
+            height: 95%;
         }
 }
 
@@ -1493,7 +1507,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin-top: 0;
         left: 0;
         transform: none;
-        overflow-y: inherit;
+        overflow-y: scroll;
     }
     .click_tocall_wrapper .clickform_button{
         margin: 10px 0;
@@ -1513,6 +1527,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         float: none;
         margin-bottom: 0;
         clear: inherit;
+    }
+    .click_tocall_wrapper .form-list .input-box #rcode{
+        margin-top: 10px;
     }
     .click_tocall_wrapper .form-list input.input-text{
         width: 98%;
