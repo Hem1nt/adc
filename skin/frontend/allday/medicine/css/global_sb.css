@@ -106,9 +106,15 @@ body, html{
 }
 .click_tocall_wrapper .form-list input.input-text {
     width: 254px;
-    box-shadow: inset 4px 6px 21px -5px rgba(229,229,229,1);
-    border-radius: 5px;
-    height: 25px;
+    padding: 2px;
+    border: 1px solid #DDD !important;
+    border-radius: 5px !important;
+    height: 30px !important;
+    box-sizing: border-box;
+}
+.click_tocall_wrapper .form-list textarea {
+    border: 1px solid #ccc !important;
+    background: #fff;
 }
 .click_tocall_wrapper .form-list label {
     display: inline-block;
@@ -120,7 +126,7 @@ body, html{
 }
 .click_tocall_wrapper .form-list .input-box {
     display: inline-block;
-    width: 65%;
+    width: 65% !important;
     float: right;
     text-align: left;
     margin-bottom: 10px;
@@ -139,6 +145,8 @@ body, html{
 .click_tocall_wrapper .time-from select, .click_tocall_wrapper .time-zone select,
 .click_tocall_wrapper .time-to select{
     width: 100%;
+    background: #fff;
+    padding: 5px 5px;
 }
 .click_tocall_wrapper span.from_to {
     float: left;
@@ -179,8 +187,12 @@ body, html{
     width: 100%;
     display: inline-block;
 }
+.click_tocall_wrapper .form-list label.required em{
+    position: static !important;
+    float: none !important;
+}
 .click_tocall_wrapper .time_to_call .input-box {
-    width: 100%;
+    width: 100% !important;
     display: inline-block;
 }
 .header .quick-access {
@@ -959,7 +971,8 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         }
         .click_tocall_wrapper{
             top: 50%;
-            height: 95%;
+            height: auto;
+            max-height: 95%;
         }
 }
 
@@ -1508,6 +1521,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         left: 0;
         transform: none;
         overflow-y: scroll;
+        max-height: inherit;
     }
     .click_tocall_wrapper .clickform_button{
         margin: 10px 0;
@@ -1523,7 +1537,7 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         margin-bottom: 0;
     }
     .click_tocall_wrapper .form-list .input-box {
-        width: 100%;
+        width: 100% !important;
         float: none;
         margin-bottom: 0;
         clear: inherit;
