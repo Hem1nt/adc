@@ -10,9 +10,9 @@
         <form onsubmit="return false;" method="POST" id="user-custom-form">
         <ul class="form-list">
         <li>  
-            <label for="user-name" class="required"><?php echo $this->__('User Name') ?><em>*</em></label>
+            <label for="user-name" class="required"><?php echo $this->__('Name') ?><em>*</em></label>
             <div class="input-box">
-                <input type="text" name="username" id="username" class="input-text required-entry" title="<?php echo $this->__('User Name') ?>" />
+                <input type="text" name="username" id="username" class="input-text required-entry" title="<?php echo $this->__('Name') ?>" />
             </div>
         </li>
         <li>
@@ -28,7 +28,7 @@
             </div>
         </li>
             <div class="time_to_call">
-            <label for="billing:timetocall" class="required">
+            <label for="clicktoform:timetocall" class="required">
             <?php echo $this->__('Preferable Time to Call') ?><em>*</em></label>
             <div class="input-box" >
                <div class="time-from">
@@ -110,7 +110,7 @@
                         <option value="AEDT" <?php if(isset($timetocallArray[2])=='(AEDT)'){echo $selectedval ='selected=selected';} ?>>AEDT</option>
                     </select> 
                 </div>
-                <input type="hidden" id="prefer_timetocall" name="billing[timetocall]" value="<?php //echo $this->escapeHtml($customer_data->getData('timetocall')) ?>" title="<?php echo $this->__('Preferable Time to Call') ?>" class="input-text" id="timetocall" />
+                <input type="hidden" id="prefer_timetocall" name="billing[timetocall]" title="<?php echo $this->__('Preferable Time to Call') ?>" class="input-text" id="timetocall" />
             </div>             
         </div>       
     
@@ -118,18 +118,7 @@
             <div class="input-box">
                 <textarea type="text" name="comment" class="input-text required-entry" id="comment" title="<?php echo $this->__('Comment') ?>" ></textarea> 
             </div>
-            
-             <?php if($this->helper('recaptcha')->showOnClicktocall()){?>
-                <div class="input-box">                          
-                 <div id="rcode">   
-                        <div class="captcha">
-                               <div class="g-recaptcha" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" style="transform:scale(0.85);-webkit-transform:scale(0.85);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
-                        </div>
-                        <span id="clicktoform-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                </div> 
-                </div> 
-                 <?php } ?>
-            <div id="call_msg"></div>
+           <div id="call_msg"></div>
             <div class="clickform_button">
                 <button type="submit" id="click_form" class="button" title="<?php echo $this->__('Submit') ?>" >
                     <span>
@@ -170,38 +159,18 @@
 
 </script>
 <script type="text/javascript">
-    var new_form = new VarienForm("user-custom-form");
+    var form_click = new VarienForm("user-custom-form");
     jQuery('#click_form').click(function(){
-
-        //var suggestion_captcha_img =jQuery('#suggestion_captcha_code').val();
-        if(new_form.validator.validate()){
-
-            /* google recaptcha */
-            <?php if($this->helper('recaptcha')->showOnClicktocall()){ ?>
-                if (grecaptcha.getResponse() != ""){
-                    document.getElementById("clicktoform-required").style.display = "none";
-                     //return true;
-                } else {
-                    //jQuery('#sugesstionbox_loading').hide();
-                    document.getElementById("clicktoform-required").style.display = "block";
-                    return false;
-                }
-                <?php } else { ?>
-                    return true;
-            <?php } ?>
-            
-                /* google recaptcha */
-                
-
-                jQuery('#clickform_loading').show();
+        if(form_click.validator.validate()){
+            jQuery('#clickform_loading').show();
                 jQuery.ajax({
                     url  : "<?php echo $this->getUrl('clicktoform/index/save');?>",
                     type : "POST",
                     data : {username:jQuery('#username').val(),email:jQuery('#email').val(),mobileNumber:jQuery('#mobileNumber').val(),timestamp:jQuery("#prefer_timetocall").val(),comment:jQuery('#comment').val()},
                     dataType: "html",
                     success:function(content){
-                        //console.log(content);
-                        jQuery('#clickform_loading').hide();
+                        if(content!= 'error'){
+                        jQuery('#clickform_loading').hide();   
                         jQuery('#call_msg').html('<h2 style="text-align:center;">Thank you for providing information!!</h2>');
                         jQuery('#username').val("");
                         jQuery('#email').val("");
@@ -211,14 +180,15 @@
                         jQuery("#timeval1").val();
                         jQuery("#timeval2").val();
                         jQuery("#timezone").val();
+                        }else{
+                        jQuery('#clickform_loading').hide();
+                        jQuery('#call_error_msg').html('<h2 style="text-align:center;color:red">Please fill all fields</h2>');
+                        }
                     }
                 }); 
             }
             
         }); 
     </script>
-
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-
-    </div>
+</div>
     <!-- Popup Div Ends Here -->

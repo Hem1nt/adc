@@ -26,14 +26,17 @@ class Iksula_Clicktoform_IndexController extends Mage_Core_Controller_Front_Acti
 				 		$model = Mage::getModel('clicktoform/clicktoform');
 				 		$model->setData($binds);
 				 		$model->save();
-				 		 Mage::helper("clicktoform")->SendEmail($model->getId());
+				 		//Mage::helper("clicktoform")->SendEmail($model->getId());
+				 		echo $result = 'submit';
+				 		return true;
 						}
 			}else{
-				$result = 'error';
+				echo $result = 'error';
 				return false;
 			}
 		}catch (Exception $e) {
                 return false;
         }
 	}
+	
 }
