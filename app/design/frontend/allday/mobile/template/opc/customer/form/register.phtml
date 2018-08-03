@@ -17,12 +17,12 @@
 
 <div class="account-create">
     <div class="page-title">
-        <h1><?php echo $this->__('Create a new Account') ?></h1>
+        <h1><?php echo $this->__('Cresdfsdate a new Account') ?></h1>
     </div>
     <?php echo $this->getChildHtml('form_fields_before')?>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php echo $this->getChildHtml('paypalauth.register'); ?>
-    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate" onSubmit="return validateRecaptcha()">
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate" >
         <div class="fieldset">
             <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
             <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
@@ -47,19 +47,6 @@
                     <?php if ($_gender->isEnabled()): ?>
                         <li class="gender_field"><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
                     <?php endif ?>
-                    <!-- google reCaptcha start -->
-                       <?php if($this->helper('recaptcha')->showOnRegister()){?>                          
-                         <li id="rcode" class="fields">  
-                            <label for="captcha" class="required"><?php echo $this->__('Captcha') ?><em>*</em></label>
-                            <div class="input-box">  
-                                <div class="captcha">
-                                    <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
-                                </div>
-                            </div>
-                            <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                        </li> 
-                         <?php } ?>
-                    <!-- google reCaptcha end -->
                     <?php if ($this->isNewsletterEnabled()): ?>
                 <li class="control">
                     <div class="is_subscribed_wrap">
@@ -93,32 +80,9 @@
                             <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
                         </div>
                     </div>
-                    <!-- Captcha input -->
-                    <!-- <div class="field">
-                        <label for="register_captcha_code" class="required"><?php //echo $this->__('Captcha') ?><em>*</em></label>                        
-                        <div class="input-box sinput">
-                            <img src="<?php //echo $url_of_website.'register_captcha_file.php?rand='.rand();?>" id='register_captcha_img'/>                            
-                            <br/><br/>
-                            <input id="register_captcha_code" class="input-text required-entry validate_captcha sb_input_field" name="register_captcha_code" type="text">
-                            <small>Click <a href='javascript: register_refresh_Captcha();'>here</a> to refresh Image !</small>
-                            <input type="hidden" id="check-me" />
-                        </div>                        
-                    </div> -->
-                    <!-- Captcha input ends -->
+                    
                 </li>
-                <!-- google reCaptcha start -->
-                       <?php if($this->helper('recaptcha')->showOnRegister()){?>                          
-                         <li id="rcode" class="fields">  
-                            <label for="captcha" class="required"><?php echo $this->__('Captcha') ?><em>*</em></label>
-                            <div class="input-box">  
-                                <div class="captcha">
-                                    <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
-                                </div>
-                            </div>
-                            <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                        </li> 
-                         <?php } ?>
-                    <!-- google reCaptcha end -->
+                
                     <?php if ($this->isNewsletterEnabled()): ?>
                 <li class="control">
                     <div class="is_subscribed_wrap">
@@ -331,7 +295,7 @@
 </script>
 </div>
  <!-- google reCaptcha start -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function validateRecaptcha()
     {
         <?php if($this->helper('recaptcha')->showOnRegister()){ ?>
@@ -348,5 +312,5 @@
     } 
 
 </script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://www.google.com/recaptcha/api.js'></script> -->
  <!-- google reCaptcha end -->
