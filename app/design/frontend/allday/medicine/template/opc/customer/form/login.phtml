@@ -90,15 +90,17 @@
                         </li>
                         
                     <!-- google recaptcha -->
-                        <?php if($this->helper('recaptcha')->showOnLogin()){?>
+                        <!-- <?php if($this->helper('recaptcha')->showOnLogin()){?>
                            <li id="rcode">  
                                     <div class="captcha">
                                             <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
                                     </div>
                                     <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
                             </li> 
-                        <?php } ?>
+                        <?php } ?> -->
                     <!-- google recpatcha -->
+                    <div id="recaptchalogin"></div>
+                    <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
                         <?php echo $this->getChildHtml('persistent.remember.me'); ?>
                     </ul>
                     <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
@@ -128,8 +130,17 @@
 </div>
 <!-- google Recaptcha -->
 <script type="text/javascript">
+  var onloadCallbacklogin = function() {
+       widgetId2 = grecaptcha.render('recaptchalogin', {
+          'sitekey' : '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+          'theme' : '<?php echo $this->helper('recaptcha')->getTheme();?>',
+        });
+  };
+</script>
+<script type="text/javascript">
     function validateRecaptcha(){
                 <?php if($this->helper('recaptcha')->showOnLogin()){ ?>
+                    alert(grecaptcha.getResponse());
                     if (grecaptcha.getResponse() != ""){
                         document.getElementById("captcha-required").style.display = "none";
                          return true;
@@ -142,4 +153,4 @@
                 <?php } ?>
             }
 </script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbacklogin&render=explicit"async defer></script>

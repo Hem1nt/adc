@@ -9,7 +9,7 @@ class Iksula_Clicktoform_IndexController extends Mage_Core_Controller_Front_Acti
 
 	public function saveAction() {
 		$data = $this->getRequest()->getParams();
-		//print_r($data);
+		$this->verifyCaptcha($data['responseCaptcha']);
 		try{
 			if(($data['username'] != '')&&($data['email'] != '')&&($data['mobileNumber'] != '')&&($data['timestamp'] != '')&&($data['comment']))
 			{
@@ -38,4 +38,25 @@ class Iksula_Clicktoform_IndexController extends Mage_Core_Controller_Front_Acti
         }
 	}
 	
+	public function verifyCaptcha($g_response) 
+	{
+		 if(isset($g_response) && !empty($g_response)):
+            if (!(Mage::helper('recaptcha')->Validate_captcha($g_response))):
+                Mage::getSingleton('core/session')->addError('Please click on the reCAPTCHA box.123');
+                $url = Mage::helper('core/http')->getHttpReferer() ? Mage::helper('core/http')->getHttpReferer()  : Mage::getUrl();
+                Mage::app()->getFrontController()->getResponse()->setRedirect($url);
+                Mage::app()->getResponse()->sendResponse();
+                echo $result = 'error';
+				return false;
+            endif;
+        else:
+            $observer->getEvent()->setData(null);
+            Mage::getSingleton('core/session')->addError('Please click on the reCAPTCHA box.456');
+            $url = Mage::helper('core/http')->getHttpReferer() ? Mage::helper('core/http')->getHttpReferer()  : Mage::getUrl();
+            Mage::app()->getFrontController()->getResponse()->setRedirect($url);
+            Mage::app()->getResponse()->sendResponse();
+            echo $result = 'error';
+			return false;
+        endif;
+	}
 }

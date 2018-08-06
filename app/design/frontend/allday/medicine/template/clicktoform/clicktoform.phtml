@@ -118,6 +118,8 @@
             <div class="input-box">
                 <textarea type="text" name="comment" class="input-text required-entry" id="comment" title="<?php echo $this->__('Comment') ?>" ></textarea> 
             </div>
+            <div id="recaptcha1"></div>
+             <span id="captcha-clicktoform-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
            <div id="call_msg"></div>
             <div class="clickform_button">
                 <button type="submit" id="click_form" class="button" title="<?php echo $this->__('Submit') ?>" >
@@ -132,6 +134,17 @@
             </ul>
         </form>
     </div>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"async defer></script>
+<script type="text/javascript">
+  var onloadCallback = function() {
+        // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+        // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+        widgetId1 = grecaptcha.render('recaptcha1', {
+          'sitekey' : '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+          'theme' : '<?php echo $this->helper('recaptcha')->getTheme();?>',
+        });
+  };
+</script>
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery("#timezone,#timeval1,#timeval2").change(function(){
@@ -160,13 +173,20 @@
 </script>
 <script type="text/javascript">
     var form_click = new VarienForm("user-custom-form");
-    jQuery('#click_form').click(function(){
+    jQuery('#click_form').on('click',function(){
         if(form_click.validator.validate()){
-            jQuery('#clickform_loading').show();
+            if (grecaptcha.getResponse() != ""){
+                     jQuery("#captcha-clicktoform-required").css("display",'none');
+                     //return true;
+                } else {
+                    jQuery("#captcha-clicktoform-required").css("display","block");
+                    return false;
+                }
+                jQuery('#clickform_loading').show();
                 jQuery.ajax({
                     url  : "<?php echo $this->getUrl('clicktoform/index/save');?>",
                     type : "POST",
-                    data : {username:jQuery('#username').val(),email:jQuery('#email').val(),mobileNumber:jQuery('#mobileNumber').val(),timestamp:jQuery("#prefer_timetocall").val(),comment:jQuery('#comment').val()},
+                    data : {username:jQuery('#username').val(),email:jQuery('#email').val(),mobileNumber:jQuery('#mobileNumber').val(),timestamp:jQuery("#prefer_timetocall").val(),comment:jQuery('#comment').val(),responseCaptcha:grecaptcha.getResponse()},
                     dataType: "html",
                     success:function(content){
                         if(content!= 'error'){
