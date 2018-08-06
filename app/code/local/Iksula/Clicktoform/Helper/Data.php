@@ -1,8 +1,7 @@
 <?php
 class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 {
-	public function SendEmail($customerId){
-
+	public function sendEmail($customerId){
 		$model =  Mage::getModel('clicktoform/clicktoform')->load($customerId);
 		$customerEmail = $model->getCustomerEmail();
 		$customerName = $model->getCustomerName();
