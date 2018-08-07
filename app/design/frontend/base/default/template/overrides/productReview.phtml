@@ -61,13 +61,16 @@ $m = 1;
 				</li>
 				<!-- google recaptcha -->
                         <?php if($this->helper('recaptcha')->showOnReview()){?>
-                           <li id="rcode">  
+                           <!-- <li id="rcode">  
                                     <div class="captcha">
                                             <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
                                     </div>
                                     <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                            </li> 
-                        <?php } ?>
+                            </li>  -->
+                             <div id="recaptchaproductreview"></div>
+				             <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+				             <input type="hidden" id="qt_hiddenRecaptcha_productreview"/>
+				             <?php } ?>
                     <!-- google recpatcha -->                
 				<div class="buttons-set summary_field_button_div_<?php echo $m;?>" id="summary_field_button_div">
 					<button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button disableButton"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
@@ -124,12 +127,15 @@ if($orderItemDetails->getSize()){
 						</li>
 						<!-- google recaptcha -->
                         <?php if($this->helper('recaptcha')->showOnReview()){?>
-                           <li id="rcode">  
+                          <!--  <li id="rcode">  
                                     <div class="captcha">
                                             <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
                                     </div>
                                     <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                            </li> 
+                            </li> --> 
+                            <div id="recaptchaproductreview"></div>
+				             <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+				             <input type="hidden" id="qt_hiddenRecaptcha_productreview"/>
                         <?php } ?>
                     <!-- google recpatcha -->                   
 						<div class="buttons-set summary_field_button_div_<?php echo $m;?>" id="summary_field_button_div">
@@ -234,9 +240,21 @@ jQuery('.review_lable').mouseleave(function(){
 </script>
 <!-- google Recaptcha -->
 <script type="text/javascript">
+      var onloadCallbackproductreview = function() {
+           widgetId6 = grecaptcha.render('recaptchaproductreview', {
+              'sitekey' : '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+              'theme' : '<?php echo $this->helper('recaptcha')->getTheme();?>',
+              'callback' : correctCaptcha_quoteonproductreview,
+            });
+      };
+      var correctCaptcha_quoteonproductreview = function(response) {
+        document.getElementById("qt_hiddenRecaptcha_productreview").value = response;
+    };
+</script>
+<script type="text/javascript">
     function validateRecaptcha(){
                 <?php if($this->helper('recaptcha')->showOnReview()){ ?>
-                    if (grecaptcha.getResponse() != ""){
+                    if (document.getElementById("qt_hiddenRecaptcha_productreview").value != ""){
                         document.getElementById("captcha-required").style.display = "none";
                          return true;
                     } else {
@@ -248,5 +266,5 @@ jQuery('.review_lable').mouseleave(function(){
                 <?php } ?>
             }
 </script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbackproductreview&render=explicit"async defer></script>
 <!-- google Recaptcha -->

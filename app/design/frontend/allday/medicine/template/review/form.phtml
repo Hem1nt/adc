@@ -304,12 +304,15 @@ $newArray = array_count_values($ratingValue);
                     </li> -->
                     <!-- google recaptcha -->
                         <?php if($this->helper('recaptcha')->showOnReview()){?>
-                           <li id="rcode">  
+                           <!-- <li id="rcode">  
                                     <div class="captcha">
-                                            <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                            <div class="g-recaptcha" data-sitekey="<?php //echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php //echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
                                     </div>
-                                    <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                            </li> 
+                                    <span id="captcha-required" style='display:none; color:#ff0000'><?php //echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                            </li>  -->
+                            <div id="recaptchareview"></div>
+                             <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                             <input type="hidden" id="qt_hiddenRecaptcha_review"/> 
                         <?php } ?>
                     <!-- google recpatcha -->
                 </ul>
@@ -439,19 +442,30 @@ label.css-label {
 </style>
 <!-- google Recaptcha -->
 <script type="text/javascript">
-    function validateRecaptcha(){
-                <?php if($this->helper('recaptcha')->showOnReview()){ ?>
-                    if (grecaptcha.getResponse() != ""){
-                        document.getElementById("captcha-required").style.display = "none";
-                         return true;
-                    } else {
-                        document.getElementById("captcha-required").style.display = "block";
-                        return false;
-                    }
-                <?php } else { ?>
-                    return true;
-                <?php } ?>
+    var onloadCallbackreview = function() {
+           widgetId5 = grecaptcha.render('recaptchareview', {
+              'sitekey' : '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+              'theme' : '<?php echo $this->helper('recaptcha')->getTheme();?>',
+              'callback' : correctCaptcha_quoteonwishlist,
+            });
+      };
+      var correctCaptcha_quoteonwishlist = function(response) {
+        document.getElementById("qt_hiddenRecaptcha_review").value = response;
+    };
+ function validateRecaptcha()
+    {
+        <?php if($this->helper('recaptcha')->showOnShareWishlist()){ ?>
+            if (document.getElementById("qt_hiddenRecaptcha_review").value != ""){
+                document.getElementById("captcha-required").style.display = "none";
+                 return true;
+            } else {
+                document.getElementById("captcha-required").style.display = "block";
+                return false;
             }
-</script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+        <?php } else { ?>
+            return true;
+        <?php } ?>
+    }
+</script>   
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbackreview&render=explicit"async defer></script>
 <!-- google Recaptcha -->

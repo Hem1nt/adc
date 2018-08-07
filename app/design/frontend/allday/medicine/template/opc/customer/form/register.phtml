@@ -49,15 +49,18 @@
                     <?php endif ?>
                 <!-- google reCaptcha start -->
                        <?php if($this->helper('recaptcha')->showOnRegister()){?>                          
-                         <li id="rcode" class="fields">  
-                            <label for="captcha" class="required"><?php echo $this->__('Captcha') ?><em>*</em></label>
+                         <!-- <li id="rcode" class="fields">  
+                            <label for="captcha" class="required"><?php //echo $this->__('Captcha') ?><em>*</em></label>
                             <div class="input-box">  
                                 <div class="captcha">
-                                    <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                    <div class="g-recaptcha" data-sitekey="<?php// echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php //echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
                                 </div>
                             </div>
+                            <span id="captcha-required" style='display:none; color:#ff0000'><?php //echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                        </li> --> 
+                            <div id="recaptcharegistration"></div>
                             <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                        </li> 
+                             <input type="hidden" id="qt_hiddenRecaptcha_registration"/>
                          <?php } ?>
                     <!-- google reCaptcha end -->
                     <?php if ($this->isNewsletterEnabled()): ?>
@@ -303,23 +306,31 @@
     }*/
 </script>
 </div>
- <!-- google reCaptcha start -->
 <script type="text/javascript">
-    function validateRecaptcha()
-    {
-        <?php if($this->helper('recaptcha')->showOnRegister()){ ?>
-            if (grecaptcha.getResponse() != ""){
-                document.getElementById("captcha-required").style.display = "none";
-                 return true;
-            } else {
-                document.getElementById("captcha-required").style.display = "block";
-                return false;
-            }
-        <?php } else { ?>
-            return true;
-        <?php } ?>
-    } 
-
+  var onloadCallbackregistration = function() {
+       widgetId3 = grecaptcha.render('recaptcharegistration', {
+          'sitekey' : '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+          'theme' : '<?php echo $this->helper('recaptcha')->getTheme();?>',
+          'callback' : correctCaptcha_quoteonregistration,
+        });
+  };
+  var correctCaptcha_quoteonregistration = function(response) {
+    document.getElementById("qt_hiddenRecaptcha_registration").value = response;
+};
 </script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
- <!-- google reCaptcha end -->
+<script type="text/javascript">
+    function validateRecaptcha(){
+                <?php if($this->helper('recaptcha')->showOnRegister()){ ?>
+                    if (document.getElementById("qt_hiddenRecaptcha_registration").value != ""){
+                        document.getElementById("captcha-required").style.display = "none";
+                        return true;
+                    } else {
+                        document.getElementById("captcha-required").style.display = "block";
+                        return false;
+                    }
+                <?php } else { ?>
+                    return true;
+                <?php } ?>
+            }
+</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbackregistration&render=explicit"async defer></script> <!-- google reCaptcha end -->
