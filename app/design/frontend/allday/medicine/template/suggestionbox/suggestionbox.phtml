@@ -66,6 +66,7 @@
 		</div>
 	</div>
 </div>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbacksuggestion&render=explicit"async defer></script>
 <script type="text/javascript">
   var onloadCallbacksuggestion = function() {
        widgetId4 = grecaptcha.render('recaptchsuggestion', {
@@ -84,14 +85,14 @@
 
 		//var suggestion_captcha_img =jQuery('#suggestion_captcha_code').val();
 		if(new_form.validator.validate()){
-
+			//alert()
 			/* google recaptcha */
 			<?php if($this->helper('recaptcha')->showOnSuggestionBox()){ ?>
-                    if (document.getElementById("qt_hiddenRecaptcha_suggestion").value != ""){
-                        document.getElementById("suggestioncaptcha-required").style.display = "none";
-                        return true;
+				if (jQuery("#qt_hiddenRecaptcha_suggestion").val() != ""){
+                        jQuery("#suggestioncaptcha-required").css("display",'none');
+                        //return true;
                     } else {
-                        document.getElementById("suggestioncaptcha-required").style.display = "block";
+                    	jQuery("#suggestioncaptcha-required").css("display",'block');
                         return false;
                     }
                 <?php } else { ?>
@@ -106,6 +107,7 @@
 				data : {email:jQuery('#email').val(),suggestion:jQuery('#suggestion').val(),name:jQuery('#name').val()},
 				dataType: "html",
 				success:function(content){
+					console.log(content);
 					jQuery('#sugesstionbox_loading').hide();
 					jQuery('#suggestion_msg').html('<h2 style="text-align:center;">Thanks for the Suggestion!!</h2>');
 					jQuery('#email').val("");
@@ -153,4 +155,3 @@
 	    });
 	}*/
 </script>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbacksuggestion&render=explicit"async defer></script>
