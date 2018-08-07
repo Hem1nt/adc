@@ -188,12 +188,17 @@ body, html{
     margin-bottom: 14px;
     font-weight: bold;
 }
-#call_error_msg{
+#call_error_msg h2{
     text-align: center;
-    font-size: 15px;
-    color: #ff0;
-    margin-bottom: 14px;
+    font-size: 13px;
+    margin-bottom: 6px;
     font-weight: bold;
+}
+#captcha-clicktoform-required {
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 12px;
 }
 .click_tocall_wrapper .time_to_call {
     width: 100%;
