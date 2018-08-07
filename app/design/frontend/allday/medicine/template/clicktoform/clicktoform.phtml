@@ -115,8 +115,8 @@
         </div>       
     
             <label for="Comment" class="required"><?php echo $this->__('Comment') ?><em>*</em></label>
-            <div class="input-box">
-                <textarea type="text" name="comment" class="input-text required-entry" id="comment" title="<?php echo $this->__('Comment') ?>" ></textarea> 
+            <div class="input-box textarea-input">
+                <textarea type="text" name="comment" class="input-text required-entry" id="comment" title="<?php echo $this->__('Comment') ?>" style='height: 70px;' ></textarea> 
             </div>
             <!-- google reCaptcha start -->
             <?php if($this->helper('recaptcha')->showOnClicktocall()){?>              
