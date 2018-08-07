@@ -26,7 +26,7 @@ class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 			'customeremail'=>$model->getCustomerEmail());
 		$translate  = Mage::getSingleton('core/translate');
 			// Send Transactional Email
-		/*Mage::getModel('core/email_template')->sendTransactional($templateAdmin, $sender, $senderEmail, 'Admin', $vars, $storeId);*/
+		Mage::getModel('core/email_template')->sendTransactional($templateAdmin, $sender, $senderEmail, 'Admin', $vars, $storeId);
 		Mage::getModel('core/email_template')
 		->sendTransactional($templateCustomer, $sender, $recepientEmail, $recepientName, $vars, $storeId);
 		$translate->setTranslateInline(true);
