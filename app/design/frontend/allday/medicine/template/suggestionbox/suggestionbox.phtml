@@ -46,7 +46,7 @@
     					</div>
 						<span id="suggestioncaptcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
                 </div>  -->
-                <div id="recaptchsuggestion"></div>
+                <div id="recaptchsuggestion" style="transform:scale(0.85);-webkit-transform:scale(0.85);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
                     <span id="suggestioncaptcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
                      <input type="hidden" id="qt_hiddenRecaptcha_suggestion"/>
                  <?php } ?>
@@ -77,6 +77,15 @@
   };
   var correctCaptcha_quoteonsuggestion = function(response) {
     document.getElementById("qt_hiddenRecaptcha_suggestion").value = response;
+
+    var width = $('#recaptchsuggestion').parent().width();
+	if (width < 302) {
+		var scale = width / 302;
+		$('#recaptchsuggestion').css('transform', 'scale(' + scale + ')');
+		$('#recaptchsuggestion').css('-webkit-transform', 'scale(' + scale + ')');
+		$('#recaptchsuggestion').css('transform-origin', '0 0');
+		$('#recaptchsuggestion').css('-webkit-transform-origin', '0 0');
+	}
 };
 </script>
 <script type="text/javascript">
