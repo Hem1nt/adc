@@ -101,9 +101,10 @@ body, html{
     border-radius: 5px;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
     overflow-y: auto;
-    max-height: 95%;
+    max-height: 93%;
+    margin-left: -250px;
+    margin-top: -280px;
 }
 .click_tocall_wrapper .form-list li{
     width: 100% !important;
