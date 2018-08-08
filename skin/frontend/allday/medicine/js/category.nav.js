@@ -4,9 +4,9 @@
  	var get_category_column_count = $(".all_categories_list #nav ul").size();
  	var get_category_count = $(".all_categories_list #nav ul li").size();
  	var number_categories_exist_per_column = Math.floor(get_category_count / get_category_column_count);
- 	var updated_category_count = Math.floor(get_category_count/4); // For resolution 1024px
+ 	var updated_category_count = Math.floor(get_category_count/5); // For resolution 1024px
 
- 	if((get_category_count%4) >= 1){
+ 	if((get_category_count%5) >= 1){
  		updated_category_count = updated_category_count+1;
  	}
 
