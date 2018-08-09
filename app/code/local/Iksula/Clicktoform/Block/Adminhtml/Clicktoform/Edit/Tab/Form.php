@@ -37,9 +37,12 @@ class Iksula_Clicktoform_Block_Adminhtml_Clicktoform_Edit_Tab_Form extends Mage_
 
 						$fieldset->addField("customer_comment", "textarea", array(
 						"label" => Mage::helper("clicktoform")->__("Customer Comment"),					
-						"class" => "required-entry",
-						"required" => true,
 						"name" => "customer_comment",
+						));
+						
+						$fieldset->addField("admin_comment", "textarea", array(
+						"label" => Mage::helper("clicktoform")->__("Admin Comment"),					
+						"name" => "admin_comment",
 						));
 
 						$fieldset->addField("customer_calling_status", "select", array(
@@ -47,8 +50,8 @@ class Iksula_Clicktoform_Block_Adminhtml_Clicktoform_Edit_Tab_Form extends Mage_
 						"required" => false,
 						"name" => "customer_calling_status",
        				    'values' => array(
-                            array('value'=>'0','label'=>'Disabled'),
-                            array('value'=>'1','label'=>'Enabled'),
+                            array('value'=>'0','label'=>'Pending'),
+                            array('value'=>'1','label'=>'Resolved'),
                        ),
 						));
 						

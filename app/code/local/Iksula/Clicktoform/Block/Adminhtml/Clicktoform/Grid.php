@@ -60,11 +60,17 @@ class Iksula_Clicktoform_Block_Adminhtml_Clicktoform_Grid extends Mage_Adminhtml
 				'index' => 'customer_comment'
 			)
 		);  
+		$this->addColumn('admin_comment',
+			array(
+				'header'=> $this->__('Admin Comment'),
+				'index' => 'admin_comment'
+			)
+		);  
 		$this->addColumn("customer_calling_status", array(
 				"header" => Mage::helper("clicktoform")->__("Status"),
 				"index"  => "customer_calling_status",
 				'type'   => 'options',
-				'options' => array('0' => 'Disabled','1' => 'Enabled')
+				'options' => array('0' => 'Pending','1' => 'Resolved')
 		));    
 		$this->addExportType('*/*/exportCsv', Mage::helper('sales')->__('CSV')); 
 		$this->addExportType('*/*/exportExcel', Mage::helper('sales')->__('Excel'));
