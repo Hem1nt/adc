@@ -25,11 +25,18 @@
  */
 ?>
 <?php if($crumbs && is_array($crumbs)): ?>
-<div class="breadcrumbs">
+<div class="breadcrumbs a">
     <ul>
         <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
             <li class="<?php echo $_crumbName ?>">
-            <?php if($_crumbInfo['link']): ?>
+             <!-- homeimage start -->
+                <?php if($_crumbInfo['first']): ?>
+                <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>">
+                    <!-- <img src="/your/image/path.png"/> -->
+                    <img src='<?php echo $this->getSkinUrl("images/Home_icon_black.png");?>'/>
+                </a>
+                <!-- homeimage end -->
+            <?php elseif($_crumbInfo['link']): ?>
                 <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></a>
             <?php elseif($_crumbInfo['last']): ?>
                 <strong><?php echo $this->htmlEscape($_crumbInfo['label']) ?></strong>

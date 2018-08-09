@@ -234,6 +234,11 @@ a.home_icon {
     background-color: #9fb701;
     text-align: center;
 }
+.breadcrumbs li.home img {
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+}
 body.catalog-product-view a.home_icon {
     line-height: 28px;
     padding: 4px 14px;
