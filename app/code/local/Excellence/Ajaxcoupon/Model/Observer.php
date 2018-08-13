@@ -37,9 +37,13 @@ class Excellence_Ajaxcoupon_Model_Observer
             $orderObject = Mage::getModel('sales/order')->load($orderId);
             $jsonstring = array('suspicious_id' => 1 ,'suspicious_value' => 'Suspicious' );
             $orderObject->setData('suspicious',json_encode($jsonstring))->save();
+            $cartemail = $this->blackListEmail();
+            Mage::log('OrderId : '.$orderObject->getIncrementId().' , EmailId : '.Mage::getSingleton('core/session')->getSuspiciousEmail().' , BillingAddress : '.Mage::getSingleton('core/session')->getBillingAddressSuspicious().' , shippingAddress : '.Mage::getSingleton('core/session')->getShippingAddressSuspicious().' , phoneNumber : '.Mage::getSingleton('core/session')->getPhoneSuspicious(),true,'block_user.log');
             Mage::getSingleton('core/session')->unsSuspicious();
+            Mage::getSingleton('core/session')->unsSuspiciousEmail();
         }else{
             Mage::getSingleton('core/session')->unsSuspicious();
+            Mage::getSingleton('core/session')->unsSuspiciousEmail();
             Mage::getSingleton('core/session')->unsBillingAddressSuspicious();
             Mage::getSingleton('core/session')->unsShippingAddressSuspicious();
             Mage::getSingleton('core/session')->unsPhoneSuspicious();
@@ -55,6 +59,7 @@ class Excellence_Ajaxcoupon_Model_Observer
         }
         foreach (unserialize(Mage::getStoreConfig("blacklist_section/blacklist/blacklist_email")) as $mapping) {
           if($mapping['email'] == $cusemail){
+            Mage::getSingleton('core/session')->setSuspiciousEmail($cusemail);
             return 1;
             break;
           }
