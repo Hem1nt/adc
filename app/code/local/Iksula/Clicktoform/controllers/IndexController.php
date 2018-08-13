@@ -10,8 +10,13 @@ class Iksula_Clicktoform_IndexController extends Mage_Core_Controller_Front_Acti
 	public function saveAction() {
 		$data = $this->getRequest()->getParams();
 		$this->verifyCaptcha($data['responseCaptcha']);
+		if($data['comment'] != ''){
+			$comment = $data['comment'];
+		}else{
+			$comment = '';
+		}
 		try{
-			if(($data['username'] != '')&&($data['email'] != '')&&($data['mobileNumber'] != '')&&($data['timestamp'] != '')&&($data['comment']))
+			if(($data['username'] != '')&&($data['email'] != '')&&($data['mobileNumber'] != '')&&($data['timestamp'] != ''))
 			{
 				 if (filter_var($data['email'], FILTER_VALIDATE_EMAIL) && filter_var($data['mobileNumber'], FILTER_VALIDATE_INT)){
 							$binds = array(
@@ -19,7 +24,7 @@ class Iksula_Clicktoform_IndexController extends Mage_Core_Controller_Front_Acti
 							    'customer_email'   => $data['email'],
 							    'customer_mobileno' => $data['mobileNumber'],
 							    'customer_time'    => $data['timestamp'],
-							    'customer_comment'    => $data['comment'],
+							    'customer_comment'    => $comment,
 							    'customer_calling_status' => '0'
 							);
 				 		$model = Mage::getModel('clicktoform/clicktoform');
