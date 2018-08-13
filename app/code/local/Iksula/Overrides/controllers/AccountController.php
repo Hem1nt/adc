@@ -8,12 +8,16 @@ class  Iksula_Overrides_AccountController extends Mage_Customer_AccountControlle
     public function createPostAction()
     {   
         /*CAPTCHA VALIDATION starts*/
-        $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
-        $captchaInput=$this->getRequest()->getPost('register_captcha_code');
-        if($capValue!=$captchaInput)
-        {
-            $this->_redirect('customer/account/create/');
-            return;
+        $theme_name = Mage::getSingleton('core/design_package')->getTheme('allday');
+       if($theme_name != 'mobile')
+       {
+            $capValue=Mage::getSingleton('core/session')->getCaptchaValue($captchsSessionValue);
+            $captchaInput=$this->getRequest()->getPost('register_captcha_code');
+            if($capValue!=$captchaInput)
+            {
+                $this->_redirect('customer/account/create/');
+                return;
+            }
         }
         /*CAPTCHA VALIDATION ends*/
         

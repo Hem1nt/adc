@@ -5,6 +5,9 @@ class Magecomp_Recaptcha_Model_Observer
 
     public function Customercreate($observer)
     {
+      $theme_name = Mage::getSingleton('core/design_package')->getTheme('allday');
+       if($theme_name != 'mobile')
+       {
         $g_response=Mage::app()->getRequest()->getParam('g-recaptcha-response');
         if(isset($g_response) && !empty($g_response)):
             if (!(Mage::helper('recaptcha')->Validate_captcha($g_response))):
@@ -22,6 +25,7 @@ class Magecomp_Recaptcha_Model_Observer
             Mage::app()->getResponse()->sendResponse();
             exit;
         endif;
+     }
     }
     public function Reviewsubmit(){
         $g_response=Mage::app()->getRequest()->getParam('g-recaptcha-response');
@@ -80,22 +84,26 @@ class Magecomp_Recaptcha_Model_Observer
     }
 
     public function customerLogin(){
+        $theme_name = Mage::getSingleton('core/design_package')->getTheme('allday');
+       if($theme_name != 'mobile')
+       {
         $g_response=Mage::app()->getRequest()->getParam('g-recaptcha-response');
-        if(isset($g_response) && !empty($g_response)):
-            if (!(Mage::helper('recaptcha')->Validate_captcha($g_response))):
-                Mage::getSingleton('core/session')->addError('Please click on the reCAPTCHA box');
+            if(isset($g_response) && !empty($g_response)):
+                if (!(Mage::helper('recaptcha')->Validate_captcha($g_response))):
+                    Mage::getSingleton('core/session')->addError('Please click on the reCAPTCHA box');
+                    $url = Mage::helper('core/http')->getHttpReferer() ? Mage::helper('core/http')->getHttpReferer()  : Mage::getUrl();
+                    Mage::app()->getFrontController()->getResponse()->setRedirect($url);
+                    Mage::app()->getResponse()->sendResponse();
+                    exit;
+                endif;
+            else:
+                Mage::getSingleton('core/session')->addError('Please click on the reCAPTCHA box.');
                 $url = Mage::helper('core/http')->getHttpReferer() ? Mage::helper('core/http')->getHttpReferer()  : Mage::getUrl();
                 Mage::app()->getFrontController()->getResponse()->setRedirect($url);
                 Mage::app()->getResponse()->sendResponse();
                 exit;
             endif;
-        else:
-            Mage::getSingleton('core/session')->addError('Please click on the reCAPTCHA box.');
-            $url = Mage::helper('core/http')->getHttpReferer() ? Mage::helper('core/http')->getHttpReferer()  : Mage::getUrl();
-            Mage::app()->getFrontController()->getResponse()->setRedirect($url);
-            Mage::app()->getResponse()->sendResponse();
-            exit;
-        endif;
+        }
     }
 
     public function trackOrder(){
