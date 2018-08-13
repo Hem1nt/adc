@@ -81,7 +81,7 @@ body, html{
 .click_tocall_overlay {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
@@ -119,13 +119,13 @@ body, html{
 .click_tocall_wrapper .form-list input.input-text {
     width: 230px;
     padding: 2px;
-    border: 1px solid #DDD !important;
+    border: 1px solid #bfbfbf !important;
     border-radius: 5px !important;
     height: 28px !important;
     box-sizing: border-box;
 }
 .click_tocall_wrapper .form-list textarea {
-    border: 1px solid #ccc !important;
+    border: 1px solid #bfbfbf !important;
     background: #fff;
     width: 100% !important;
 
@@ -155,7 +155,7 @@ body, html{
     text-align: center;
 }
 .click_tocall_wrapper .time-from, .click_tocall_wrapper .time-to, .click_tocall_wrapper .time-zone{
-    width: 26%;
+    width: 62px;
     float: left;
     margin-right: 2%;
 }
@@ -164,12 +164,13 @@ body, html{
     width: 100%;
     background: #fff;
     padding: 3px 5px;
+    border: 1px solid #bfbfbf;
 }
 .click_tocall_wrapper span.from_to {
     float: left;
     display: inline-block;
     vertical-align: bottom;
-    padding: 10px;
+    padding: 3px 10px;
     text-transform: lowercase;
 }
 .click_tocall_wrapper h1.popup_title {
@@ -181,6 +182,25 @@ body, html{
     text-align: center;
     display: inline-block;
     font-weight: 600;
+}
+.success-popup{
+    left: 50%;
+    top: 50%;
+    margin-left: -175px;
+    margin-top: -30px;
+    height: 85px;
+    position: fixed;
+    z-index: 100000;
+    background: #f5f8fa;
+    width: 350px;
+    display: none;
+    color: #000;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 14px;
 }
 #call_msg h2{
     text-align: center;
@@ -213,10 +233,10 @@ body, html{
     position: static !important;
     float: none !important;
 }
-.click_tocall_wrapper .time_to_call .input-box {
+/*.click_tocall_wrapper .time_to_call .input-box {
     width: 100% !important;
     display: inline-block;
-}
+}*/
 .header .quick-access {
     width: 70%;
 }
@@ -1001,6 +1021,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             height: auto;
             max-height: 95%;
         }
+        .success-popup{
+            top: 30%;
+        }
 }
 
 @media only screen and (max-width: 900px){
@@ -1697,6 +1720,13 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .catalog-product-view .frequently_bought_wrap .slider_wraper .btn-cart{
         height: auto;
+    }
+    .success-popup {
+        top: 30%;
+        width: 95%;
+        left: 2%;
+        margin-left: 0;
+        font-size: 13px;
     }
 }
 @media only screen and (max-width: 380px){

@@ -209,9 +209,9 @@
                         jQuery("#timezone").val();
                         grecaptcha.reset();
                         jQuery(".modal-content, .click_tocall_overlay").hide();
-                       	jQuery('.success-popup').show();
+                       	jQuery('.success-popup, .click_tocall_overlay').show();
 						setTimeout(function(){
-						  jQuery('.success-popup').hide();
+						  jQuery('.success-popup,.click_tocall_overlay').hide();
 						},5000)
                        	}else{
                         jQuery('#clickform_loading').hide();
