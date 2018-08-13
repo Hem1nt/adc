@@ -16,7 +16,7 @@
             </dummypayment>
         </routers>
         <events>
-            <sales_order_place_after>
+            <!-- <sales_order_place_after>
               <observers>
                 <sales_order_place_after_dummypayment>
                   <type>singleton</type>
@@ -24,7 +24,7 @@
                   <method>sendEmailDummypayment</method>
                 </sales_order_place_after_dummypayment>
               </observers>
-            </sales_order_place_after>
+            </sales_order_place_after> -->
         </events>
     </frontend> 
     <global>
