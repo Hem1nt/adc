@@ -198,7 +198,7 @@
                     success:function(content){
                         if(content!= 'error'){
                         jQuery('#clickform_loading').hide();   
-                        jQuery('#call_msg').html('<h2 style="text-align:center;">Thank you for providing information!!</h2>');
+                        //jQuery('#call_msg').html('<h2 style="text-align:center;">Thank you for providing information!!</h2>');
                         jQuery('#username').val("");
                         jQuery('#email').val("");
                         jQuery('#mobileNumber').val("");
@@ -208,7 +208,12 @@
                         jQuery("#timeval2").val();
                         jQuery("#timezone").val();
                         grecaptcha.reset();
-                        }else{
+                        jQuery(".modal-content, .click_tocall_overlay").hide();
+                       	jQuery('.success-popup').show();
+						setTimeout(function(){
+						  jQuery('.success-popup').hide();
+						},5000)
+                       	}else{
                         jQuery('#clickform_loading').hide();
                         jQuery('#call_error_msg').html('<h2 style="text-align:center;color:red">Please fill all fields</h2>');
                         }
