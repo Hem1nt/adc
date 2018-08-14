@@ -1,5 +1,6 @@
 <head>
 <script type="text/javascript"> window.lpTag=window.lpTag||{};if(typeof window.lpTag._tagCount==='undefined'){window.lpTag={site:'82521976'||'',section:lpTag.section||'',autoStart:lpTag.autoStart===false?false:true,ovr:lpTag.ovr||{},_v:'1.6.0',_tagCount:1,protocol:'https:',events:{bind:function(app,ev,fn){lpTag.defer(function(){lpTag.events.bind(app,ev,fn);},0);},trigger:function(app,ev,json){lpTag.defer(function(){lpTag.events.trigger(app,ev,json);},1);}},defer:function(fn,fnType){if(fnType==0){this._defB=this._defB||[];this._defB.push(fn);}else if(fnType==1){this._defT=this._defT||[];this._defT.push(fn);}else{this._defL=this._defL||[];this._defL.push(fn);}},load:function(src,chr,id){var t=this;setTimeout(function(){t._load(src,chr,id);},0);},_load:function(src,chr,id){var url=src;if(!src){url=this.protocol+'//'+((this.ovr&&this.ovr.domain)?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site;}var s=document.createElement('script');s.setAttribute('charset',chr?chr:'UTF-8');if(id){s.setAttribute('id',id);}s.setAttribute('src',url);document.getElementsByTagName('head').item(0).appendChild(s);},init:function(){this._timing=this._timing||{};this._timing.start=(new Date()).getTime();var that=this;if(window.attachEvent){window.attachEvent('onload',function(){that._domReady('domReady');});}else{window.addEventListener('DOMContentLoaded',function(){that._domReady('contReady');},false);window.addEventListener('load',function(){that._domReady('domReady');},false);}if(typeof(window._lptStop)=='undefined'){this.load();}},start:function(){this.autoStart=true;},_domReady:function(n){if(!this.isDom){this.isDom=true;this.events.trigger('LPT','DOM_READY',{t:n});}this._timing[n]=(new Date()).getTime();},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],ev:lpTag.ev||[]};lpTag.init();}else{window.lpTag._tagCount+=1;} </script>
+</style>
 <!-- TrustBox script -->
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 <!-- End Trustbox script -->
@@ -102,6 +103,10 @@ Auto add the coupon in quote E*/
                 </ul>
             </div>
             <?php echo $this->getChildHtml('user-section') ?>
+            <!-- Trigger/Open The Modal -->
+            <div id="customBtn">Click to call
+                <span class="call-icon"></span>
+            </div>
         </div>
     </div>
 <div class="overlay-header"></div>
@@ -120,6 +125,9 @@ Auto add the coupon in quote E*/
             <div class="mob-new-contact">
                 <?php $adc_contact = Mage::getStoreConfig('homepage_conf/common_group/mobile_number');?>
                 <span><a href="tel:<?php echo $adc_contact; ?>"><?php echo $adc_contact; ?></a></span>
+            </div>
+            <div id="customBtn_mbl">Click to call
+                <span class="call-icon"></span>
             </div>
             <!-- <div class="new_year_img_mob">
                 <img src="<?php //echo $this -> getSkinUrl('images/new_year2.gif')?>">
@@ -158,6 +166,51 @@ Auto add the coupon in quote E*/
             </div> */?>
             <?php echo $this->getChildHtml('miniCart') ?>
             <?php echo $this->getChildHtml('store_language') ?>
+            <!-- Display Popup Button -->
+</style>
+<!-- Success message after submit-->
+<div class="success-popup">Our Customer support team will contact you soon on your preferable time </div>
+<!-- The Modal -->
+
+<div id="customModal" class="modal click_tocall_overlay" style="display: none;">
+</div>
+
+  <!-- Modal content -->
+  <div class="modal-content click_tocall_wrapper" style="display: none;">
+    <!-- <span class="close close_btn">
+        <img src="<?php //echo $this-> getSkinUrl('../images/notify-close.png');?>" alt="">
+    </span>-->
+        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('clicktoform/clicktoform.phtml')->toHtml(); ?>  
+  </div>
+
+
+<!-- <script>
+// Get the modal
+var modal = document.getElementById('customModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("customBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// // When the user clicks the button, open the modal 
+// btn.onclick = function() {
+//     modal.style.display = "block";
+// }
+
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function() {
+//     modal.style.display = "none";
+// }
+
+// When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
+</script> -->
             
         <div class="new_arrival stock-desk">
              <a href="<?php echo $this->getUrl() ?>stock-clearance.html"><img src="<?php echo $this->getSkinUrl().'images/stock_clr_desktop_1.png'; ?>" /></a>               

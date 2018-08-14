@@ -21,12 +21,15 @@
                 </li>
                 <!-- google recaptcha -->
                         <?php if($this->helper('recaptcha')->showOnTrackOrder()){?>
-                           <li id="rcode">  
+                           <!-- <li id="rcode">  
                                     <div class="captcha">
                                             <div class="g-recaptcha" data-sitekey="<?php echo $this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
                                     </div>
                                     <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                            </li> 
+                            </li>  -->
+                             <div id="recaptchatrackorder"></div>
+                            <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                             <input type="hidden" id="qt_hiddenRecaptcha_trackorder"/>
                         <?php } ?>
                     <!-- google recpatcha -->
             </ul>
@@ -49,7 +52,18 @@
     <div id="oderinfo" class="order-info-message"></div>
 
 
-
+    <script type="text/javascript">
+      var onloadCallbacktrackorder = function() {
+           widgetId5 = grecaptcha.render('recaptchatrackorder', {
+              'sitekey' : '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+              'theme' : '<?php echo $this->helper('recaptcha')->getTheme();?>',
+              'callback' : correctCaptcha_quoteontrackorder,
+            });
+      };
+      var correctCaptcha_quoteontrackorder = function(response) {
+        document.getElementById("qt_hiddenRecaptcha_trackorder").value = response;
+    };
+</script>
     <script type="text/javascript">
         var validateForm = new VarienForm('track_order', true);
     </script>           
@@ -99,7 +113,7 @@
 <script type="text/javascript">
     function validateRecaptcha(){
                 <?php if($this->helper('recaptcha')->showOnTrackOrder()){ ?>
-                    if (grecaptcha.getResponse() != ""){
+                    if (document.getElementById("qt_hiddenRecaptcha_trackorder").value != ""){
                         document.getElementById("captcha-required").style.display = "none";
                          return true;
                     } else {
@@ -111,5 +125,5 @@
                 <?php } ?>
             }
 </script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbacktrackorder&render=explicit"async defer></script>
 <!-- google Recaptcha -->

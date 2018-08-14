@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Iksula_Clicktoform>
+      <version>0.1.1</version>
+    </Iksula_Clicktoform>
+  </modules>
+  <frontend>
+    <routers>
+      <clicktoform>
+        <use>standard</use>
+        <args>
+          <module>Iksula_Clicktoform</module>
+          <frontName>clicktoform</frontName>
+        </args>
+      </clicktoform>
+    </routers>
+  </frontend>
+
+
+  <global>
+    <helpers>
+      <clicktoform>
+        <class>Iksula_Clicktoform_Helper</class>
+      </clicktoform>
+    </helpers>
+    <blocks>
+      <clicktoform>
+        <class>Iksula_Clicktoform_Block</class>
+      </clicktoform>
+    </blocks>
+    <models>
+      <clicktoform>
+        <class>Iksula_Clicktoform_Model</class>
+        <resourceModel>clicktoform_mysql4</resourceModel>
+      </clicktoform>
+      <clicktoform_mysql4>
+        <class>Iksula_Clicktoform_Model_Mysql4</class>
+        <entities>      
+          <clicktoform>
+            <table>customerclickinfo</table>
+          </clicktoform>
+        </entities>
+      </clicktoform_mysql4>
+    </models>
+    <resources>
+      <clicktoform_setup>
+        <setup>
+          <module>Iksula_Clicktoform</module>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+      </clicktoform_setup>
+      <clicktoform_write>
+        <connection>
+          <use>core_write</use>
+        </connection>
+      </clicktoform_write>
+      <clicktoform_read>
+        <connection>
+          <use>core_read</use>
+        </connection>
+      </clicktoform_read>
+    </resources>
+  </global>
+  <admin>
+    <routers>
+      <clicktoform>
+        <use>admin</use>
+        <args>
+          <module>Iksula_Clicktoform</module>
+          <frontName>clicktoform</frontName>
+        </args>
+      </clicktoform>
+    </routers>
+  </admin>
+  <adminhtml>
+    <menu>
+      <clicktoform module="clicktoform">
+        <title>Click To Call</title>
+        <sort_order>100</sort_order>
+        <children>
+          <clicktoform module="clicktoform">
+            <title>Manage Click To Call</title>
+            <sort_order>0</sort_order>
+            <action>clicktoform/adminhtml_clicktoform</action>
+          </clicktoform>
+        </children>
+      </clicktoform>
+    </menu>
+    <acl>
+      <resources>
+        <all>
+          <title>Allow Everything</title>
+        </all>
+        <admin>
+          <children>
+            <clicktoform translate="title" module="clicktoform">
+              <title>Customer calling info</title>
+              <sort_order>1000</sort_order>
+              <children>
+                <clicktoform translate="title">
+                  <title>Manage Customer</title>
+                  <sort_order>0</sort_order>
+                </clicktoform>
+              </children>
+            </clicktoform>
+          </children>
+        </admin>
+      </resources>
+    </acl>
+  <layout>
+    <updates>
+    <clicktoform>
+      <file>clicktoform.xml</file>
+    </clicktoform>
+    </updates>
+  </layout>
+</adminhtml> 
+
+</config> 

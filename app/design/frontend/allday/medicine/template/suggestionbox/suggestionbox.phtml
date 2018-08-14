@@ -39,13 +39,16 @@
 		                <input type="hidden" id="check-me" />
 		            </div> -->
 		            <?php if($this->helper('recaptcha')->showOnSuggestionBox()){?>                          
-                 <div id="rcode">	
+                <!--  <div id="rcode">	
          				<div class="captcha">
-   			  					<!-- <div class="g-recaptcha" data-sitekey="<?php //echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php //echo ($this->helper('recaptcha')->getTheme()); ?>"> </div> -->
+   			  					<div class="g-recaptcha" data-sitekey="<?php //echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php //echo ($this->helper('recaptcha')->getTheme()); ?>"> </div> 
    			  					<div class="g-recaptcha" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" style="transform:scale(0.85);-webkit-transform:scale(0.85);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
     					</div>
 						<span id="suggestioncaptcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
-                </div> 
+                </div>  -->
+                <div id="recaptchsuggestion" style="transform:scale(0.85);-webkit-transform:scale(0.85);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+                    <span id="suggestioncaptcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                     <input type="hidden" id="qt_hiddenRecaptcha_suggestion"/>
                  <?php } ?>
 		        <div id="suggestion_msg"></div>
 		        </p>
@@ -63,27 +66,47 @@
 		</div>
 	</div>
 </div>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbacksuggestion&render=explicit"async defer></script>
+<script type="text/javascript">
+  var onloadCallbacksuggestion = function() {
+       widgetId4 = grecaptcha.render('recaptchsuggestion', {
+          'sitekey' : '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+          'theme' : '<?php echo $this->helper('recaptcha')->getTheme();?>',
+          'callback' : correctCaptcha_quoteonsuggestion,
+        });
+  };
+  var correctCaptcha_quoteonsuggestion = function(response) {
+    document.getElementById("qt_hiddenRecaptcha_suggestion").value = response;
 
+    var width = $('#recaptchsuggestion').parent().width();
+	if (width < 302) {
+		var scale = width / 302;
+		$('#recaptchsuggestion').css('transform', 'scale(' + scale + ')');
+		$('#recaptchsuggestion').css('-webkit-transform', 'scale(' + scale + ')');
+		$('#recaptchsuggestion').css('transform-origin', '0 0');
+		$('#recaptchsuggestion').css('-webkit-transform-origin', '0 0');
+	}
+};
+</script>
 <script type="text/javascript">
 	var new_form = new VarienForm("new_suggestion");
 	jQuery('#suggestion_box_form').click(function(){
 
 		//var suggestion_captcha_img =jQuery('#suggestion_captcha_code').val();
 		if(new_form.validator.validate()){
-
+			//alert()
 			/* google recaptcha */
 			<?php if($this->helper('recaptcha')->showOnSuggestionBox()){ ?>
-				if (grecaptcha.getResponse() != ""){
-					document.getElementById("suggestioncaptcha-required").style.display = "none";
-					 //return true;
-				} else {
-					//jQuery('#sugesstionbox_loading').hide();
-					document.getElementById("suggestioncaptcha-required").style.display = "block";
-					return false;
-				}
-				<?php } else { ?>
-					return true;
-			<?php } ?>
+				if (jQuery("#qt_hiddenRecaptcha_suggestion").val() != ""){
+                        jQuery("#suggestioncaptcha-required").css("display",'none');
+                        //return true;
+                    } else {
+                    	jQuery("#suggestioncaptcha-required").css("display",'block');
+                        return false;
+                    }
+                <?php } else { ?>
+                    return true;
+                <?php } ?>
 			/* google recaptcha */
 
 			jQuery('#sugesstionbox_loading').show();
@@ -93,6 +116,7 @@
 				data : {email:jQuery('#email').val(),suggestion:jQuery('#suggestion').val(),name:jQuery('#name').val()},
 				dataType: "html",
 				success:function(content){
+					console.log(content);
 					jQuery('#sugesstionbox_loading').hide();
 					jQuery('#suggestion_msg').html('<h2 style="text-align:center;">Thanks for the Suggestion!!</h2>');
 					jQuery('#email').val("");
@@ -140,4 +164,3 @@
 	    });
 	}*/
 </script>
-<script src='https://www.google.com/recaptcha/api.js'></script>

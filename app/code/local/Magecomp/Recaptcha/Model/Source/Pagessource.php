@@ -11,7 +11,8 @@ class Magecomp_Recaptcha_Model_Source_Pagessource{
 			array('value'=>'5','label'=>'Affliate MyInvitation'),
 			array('value'=>'6','label'=>'Login Form'),
 			array('value'=>'7','label'=>'Share Wishlist'),
-			array('value'=>'8','label'=>'Track Order')
+			array('value'=>'8','label'=>'Track Order'),
+			array('value'=>'9','label'=>'Click to Call')
 		);	
 	}
 }

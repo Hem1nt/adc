@@ -66,12 +66,15 @@
                 </li> -->
             <!-- Captcha input ends -->
             <?php if(Mage::helper('recaptcha')->showOnShareWishlist()){?>                          
-                 <div id="rcode" class="wishlist_captcha_wrap">   
+                <!--  <div id="rcode" class="wishlist_captcha_wrap">   
                         <div class="captcha">
-                                <div class="g-recaptcha" data-sitekey="<?php echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
+                                <div class="g-recaptcha" data-sitekey="<?php //echo$this->helper('recaptcha')->getKey(); ?>" data-theme="<?php //echo ($this->helper('recaptcha')->getTheme()); ?>"> </div>
                         </div>
-                        <div id="captcha-required" style='display:none; color:#ff0000' class="validation-advice"><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></div>
-                </div> 
+                        <div id="captcha-required" style='display:none; color:#ff0000' class="validation-advice"><?php //echo $this->__('Please Fill Recaptcha To Continue'); ?></div>
+                </div> -->
+                <div id="recaptchawishlist"></div>
+                 <span id="captcha-required" style='display:none; color:#ff0000'><?php echo $this->__('Please Fill Recaptcha To Continue'); ?></span>
+                 <input type="hidden" id="qt_hiddenRecaptcha_wishlist"/> 
              <?php } ?>
             <?php if($this->helper('wishlist')->isRssAllow()): ?>
             <li class="control">
@@ -175,10 +178,20 @@ var dataForm = new VarienForm('form-validate', true);
                     }
                 });
     }*/
-    function validateRecaptcha()
+    var onloadCallbackwishlist = function() {
+           widgetId7 = grecaptcha.render('recaptchawishlist', {
+              'sitekey' : '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+              'theme' : '<?php echo $this->helper('recaptcha')->getTheme();?>',
+              'callback' : correctCaptcha_quoteonwishlist,
+            });
+      };
+      var correctCaptcha_quoteonwishlist = function(response) {
+        document.getElementById("qt_hiddenRecaptcha_wishlist").value = response;
+    };
+ function validateRecaptcha()
     {
         <?php if($this->helper('recaptcha')->showOnShareWishlist()){ ?>
-            if (grecaptcha.getResponse() != ""){
+            if (document.getElementById("qt_hiddenRecaptcha_wishlist").value != ""){
                 document.getElementById("captcha-required").style.display = "none";
                  return true;
             } else {
@@ -190,4 +203,4 @@ var dataForm = new VarienForm('form-validate', true);
         <?php } ?>
     }
 </script>   
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallbackwishlist&render=explicit"async defer></script>

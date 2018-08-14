@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <clicktoform_adminhtml_clicktoform_index>
+	<reference name="content">
+	  <block type="clicktoform/adminhtml_clicktoform" name="clicktoform" />
+	</reference>
+  </clicktoform_adminhtml_clicktoform_index>
+</layout>

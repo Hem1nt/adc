@@ -16,7 +16,7 @@ class Iksula_Suggestionbox_IndexController extends Mage_Core_Controller_Front_Ac
 			->setCreatedDate(NOW())
 			->save();
 
-			$storeId = Mage::app()->getStore()->getId();
+			/*$storeId = Mage::app()->getStore()->getId();
 			$templateId = Mage::getStoreConfig('suggestion/general/suggestion_template');
 		
 			$sendername = Mage::getStoreConfig('trans_email/ident_general/name');
@@ -32,7 +32,7 @@ class Iksula_Suggestionbox_IndexController extends Mage_Core_Controller_Front_Ac
             $translate = Mage::getSingleton('core/translate');
             Mage::getModel('core/email_template')
                        ->sendTransactional($templateId, $sender, $info, $emailName, $vars, $storeId);
-                       $translate->setTranslateInline(true);
+                       $translate->setTranslateInline(true);*/
 		}
 	}
 

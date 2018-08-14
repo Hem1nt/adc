@@ -39,14 +39,208 @@ body, html{
     height: 31px;
     line-height: 31px;
 }
-  .header-top-block .h-left ul li a, .header-top-block .h-right ul li a {
+.header-top-block .h-left ul li a, .header-top-block .h-right ul li a {
     color: #506f00;
     font-weight: 600;
 }
-  .header .quick-access {
+#customBtn {
+    float: left;
+    color: #f6770e;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: capitalize;
+    cursor: pointer;
+    line-height: 18px;
+    padding: 7px 0;
+}
+#customBtn span.call-icon {
+    width: 14px;
+    height: 17px;
+    background: url(../images/click_to_call.png) 1px 2px no-repeat;
+    float: left;
+    margin-left: 0px;
+    margin-right: 4px;
+    line-height: 25px;
+}
+.close_btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+#customBtn_mbl{
+    display: none;
+}
+.click_tocall_wrapper button.button:hover > span {
+    font: normal 14px 'Open Sans', sans-serif;
+    background: #849b02;
+    padding: 5px 12px;
+    border: 0;
+    height: auto;
+}
+.click_tocall_overlay {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.7);
+}
+.click_tocall_wrapper {
+    position: fixed;
+    z-index: 10000;
+    background: #f5f8fa;
+    width: 450px;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    left: 50%;
+    top: 50%;
+    overflow-y: auto;
+    max-height: 93%;
+    margin-left: -250px;
+    margin-top: -280px;
+}
+.click_tocall_wrapper .form-list li{
+    width: 100% !important;
+    display: inline-block;
+    margin: 0;
+}
+.click_tocall_wrapper .form-list div#recaptcha1 {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0;
+}
+.click_tocall_wrapper .form-list input.input-text {
+    width: 230px;
+    padding: 2px;
+    border: 1px solid #bfbfbf !important;
+    border-radius: 5px !important;
+    height: 28px !important;
+    box-sizing: border-box;
+}
+.click_tocall_wrapper .form-list textarea {
+    border: 1px solid #bfbfbf !important;
+    background: #fff;
+    width: 100% !important;
+
+}
+.click_tocall_wrapper .form-list .input-box.textarea-input {
+    width: 100% !important;
+}
+.click_tocall_wrapper .form-list label {
+    display: inline-block;
+    width: 40% !important;
+    float: left;
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.click_tocall_wrapper .form-list .input-box {
+    display: inline-block;
+    width: 60% !important;
+    float: right;
+    text-align: left;
+    margin-bottom: 10px;
+    clear: inherit;
+}
+.click_tocall_wrapper .clickform_button {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+.click_tocall_wrapper .time-from, .click_tocall_wrapper .time-to, .click_tocall_wrapper .time-zone{
+    width: 62px;
+    float: left;
+    margin-right: 2%;
+}
+.click_tocall_wrapper .time-from select, .click_tocall_wrapper .time-zone select,
+.click_tocall_wrapper .time-to select{
+    width: 100%;
+    background: #fff;
+    padding: 3px 5px;
+    border: 1px solid #bfbfbf;
+}
+.click_tocall_wrapper span.from_to {
+    float: left;
+    display: inline-block;
+    vertical-align: bottom;
+    padding: 3px 10px;
+    text-transform: lowercase;
+}
+.click_tocall_wrapper h1.popup_title {
+    color: #678c05;
+    font-size: 16px;
+    font-family: arial;
+    padding-bottom: 10px;
+    width: 99%;
+    text-align: center;
+    display: inline-block;
+    font-weight: 600;
+}
+.success-popup{
+    left: 50%;
+    top: 50%;
+    margin-left: -175px;
+    margin-top: -30px;
+    height: 85px;
+    position: fixed;
+    z-index: 100000;
+    background: #f5f8fa;
+    width: 350px;
+    display: none;
+    color: #000;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 14px;
+}
+#call_msg h2{
+    text-align: center;
+    font-size: 15px;
+    color: #678c05;
+    margin-bottom: 14px;
+    font-weight: bold;
+}
+#call_error_msg h2{
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+#captcha-clicktoform-required {
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.click_tocall_wrapper .time_to_call {
+    width: 100%;
+    display: inline-block;
+}
+.click_tocall_wrapper .time_to_call label {
+    width: 100%;
+    display: inline-block;
+}
+.click_tocall_wrapper .form-list label.required em{
+    position: static !important;
+    float: none !important;
+}
+/*.click_tocall_wrapper .time_to_call .input-box {
+    width: 100% !important;
+    display: inline-block;
+}*/
+.header .quick-access {
     width: 70%;
 }
-  .header .form-search input.input-text {
+.header .form-search input.input-text {
     width: 55%;
 }
 #search_autocomplete {
@@ -822,6 +1016,14 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         .header .logo img {
             width: 100%;
         }
+        .click_tocall_wrapper{
+            top: 50%;
+            height: auto;
+            max-height: 95%;
+        }
+        .success-popup{
+            top: 30%;
+        }
 }
 
 @media only screen and (max-width: 900px){
@@ -860,8 +1062,8 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
             margin-left: 0;
             background-size: 17px;
         }
-        .header-top-block .h-left ul li a {
-            padding: 0 7px;
+        .header-top-block .h-left ul li a, .header-top-block .h-right ul li a{
+            padding: 0 4px;
         }
         .nav-right-category {
             margin: 0 10px;
@@ -874,6 +1076,9 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
         }
         .block .block-title strong.all-categories{
             margin: 4px 0;
+        }
+        #customBtn{
+            font-size: 12px;
         }
         
 }
@@ -1298,6 +1503,29 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     .footer-container .social_links{
         margin: 20px 0 0;
     }
+    #customBtn{
+        display: none;
+    }
+    #customBtn_mbl{
+        display: inline-block;
+        color: #f6770e;
+        font-weight: bold;
+        font-size: 13px;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+    #customBtn_mbl span.call-icon {
+        width: 14px;
+        height: 17px;
+        background: url(../images/click_to_call.png) 1px 2px no-repeat;
+        float: left;
+        margin-left: 0px;
+        margin-right: 4px;
+        line-height: 25px;
+    }
+    .click_tocall_wrapper{
+        top: 45%;
+    }
 }
 @media only screen and (max-width: 694px){
     .adc_christmas .header{
@@ -1325,6 +1553,51 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .new_arrival.new_arrival_img {
         right: 10%;
+    }
+}
+@media only screen and (max-width: 480px){
+    .click_tocall_wrapper {
+        top: 0;
+        position: fixed;
+        background: #f5f8fa;
+        width: 100%;
+        height: 100%;
+        padding: 20px 10px;
+        box-sizing: border-box;
+        border-radius: 0;
+        margin: 0 auto;
+        margin-left: 0;
+        margin-top: 0;
+        left: 0;
+        transform: none;
+        overflow-y: scroll;
+        max-height: inherit;
+    }
+    .click_tocall_wrapper .clickform_button{
+        margin: 10px 0;
+    }
+    .click_tocall_wrapper h1.popup_title{
+        padding-bottom: 0;
+    }
+    .click_tocall_wrapper .form-list label {
+        display: inline-block;
+        width: 100% !important;
+        float: none;
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+    .click_tocall_wrapper .form-list .input-box {
+        width: 100% !important;
+        float: none;
+        margin-bottom: 0;
+        clear: inherit;
+    }
+    .click_tocall_wrapper .form-list .input-box #rcode{
+        margin-top: 10px;
+    }
+    .click_tocall_wrapper .form-list input.input-text{
+        width: 98%;
+        height: 20px;
     }
 }
 @media only screen and (max-width: 420px){
@@ -1447,6 +1720,13 @@ button.button.btn-proceed-checkout.btn-checkout span, button.button.btn-proceed-
     }
     .catalog-product-view .frequently_bought_wrap .slider_wraper .btn-cart{
         height: auto;
+    }
+    .success-popup {
+        top: 30%;
+        width: 95%;
+        left: 2%;
+        margin-left: 0;
+        font-size: 13px;
     }
 }
 @media only screen and (max-width: 380px){
