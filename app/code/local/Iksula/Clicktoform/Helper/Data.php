@@ -12,7 +12,6 @@ class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 			'name' => $senderName,
 			'email' => $senderEmail
 		);
-		// Set recepient information
 		$recepientEmail = $customerEmail;
 		$recepientName = $customerName;
 		$templateAdmin = Mage::getStoreConfig('clicktoform/clicktoform_setting/clicktoform_adminemailtemplate');
@@ -21,9 +20,10 @@ class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 		$storeId = Mage::app()->getStore()->getId();
 		// Set variables that can be used in email template
 		$vars = array('customername' => $model->getCustomerName(),
-			'customermoblieno' =>$model->getCustomerMoblieno(),
+			'customermoblieno' =>$model->getCustomerMobileno(),
 			'customertime' =>$model->getCustomerTime(),
 			'customeremail'=>$model->getCustomerEmail());
+		
 		$translate  = Mage::getSingleton('core/translate');
 		// Send Transactional Email
 		Mage::getModel('core/email_template')->sendTransactional($templateAdmin, $sender, $senderEmail, 'Admin', $vars, $storeId);
