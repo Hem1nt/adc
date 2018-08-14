@@ -354,4 +354,12 @@ class Iksula_Frontend_IndexController extends Mage_Core_Controller_Front_Action{
         }
     }
 
+    public function generateSitemapAction(){
+        //First we load the model
+        $model = Mage::getModel('sitemap/observer');
+         
+        //Then execute the task
+        $model->scheduledGenerateSitemaps();
+    }
+
 }
