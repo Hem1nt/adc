@@ -175,6 +175,7 @@ class Iksula_Customerdelete_Adminhtml_CustomerdeletebackendController extends Ma
 			foreach($orders as $order)
 			{ 
 		       	$order->setSuspicious($data)->save();
+    			Mage::log('OrderId : '.$order->getIncrementId().' , EmailId : '.$order->getBillingAddress()->getEmail(),true,'block_user.log');
 		       	
 		    }
 		    foreach ($emaildata as $key => $value) {
