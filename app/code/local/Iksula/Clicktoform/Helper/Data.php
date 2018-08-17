@@ -3,8 +3,8 @@ class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 {
 	public function sendEmail($customerId){
 		$model =  Mage::getModel('clicktoform/clicktoform')->load($customerId);
-		$customerEmail = $model->getCustomerEmail();
-		$customerName = $model->getCustomerName();
+		$recepientEmail = $model->getCustomerEmail();
+		$recepientName = $model->getCustomerName();
 		$senderName = Mage::getStoreConfig('trans_email/ident_support/name');
 		$senderEmail = Mage::getStoreConfig('clicktoform/clicktoform_setting/clicktoform_adminemailaddress');
 		//$senderEmail = Mage::getStoreConfig('trans_email/ident_support/email');
@@ -12,8 +12,6 @@ class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 			'name' => $senderName,
 			'email' => $senderEmail
 		);
-		$recepientEmail = $customerEmail;
-		$recepientName = $customerName;
 		$templateAdmin = Mage::getStoreConfig('clicktoform/clicktoform_setting/clicktoform_adminemailtemplate');
 		$templateCustomer = Mage::getStoreConfig('clicktoform/clicktoform_setting/clicktoform_customeremail');
 		// Get Store ID
@@ -26,7 +24,7 @@ class Iksula_Clicktoform_Helper_Data extends Mage_Core_Helper_Abstract
 		
 		$translate  = Mage::getSingleton('core/translate');
 		// Send Transactional Email
-		Mage::getModel('core/email_template')->sendTransactional($templateAdmin, $sender, $senderEmail, 'Admin', $vars, $storeId);
+		/*Mage::getModel('core/email_template')->sendTransactional($templateAdmin, $sender, $senderEmail, 'Admin', $vars, $storeId);*/
 		Mage::getModel('core/email_template')
 		->sendTransactional($templateCustomer, $sender, $recepientEmail, $recepientName, $vars, $storeId);
 		$translate->setTranslateInline(true);
