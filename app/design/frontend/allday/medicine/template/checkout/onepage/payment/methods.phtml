@@ -70,10 +70,15 @@
         $email =$customer->getEmail();
         $customerSuccess = Mage::helper('frontend/order')->getCustomersOrdersCount($email);
         //if($customerSuccess==0 ){
-    ?>
+        $customergroup = '';
+     if(Mage::getSingleton('customer/session')->isLoggedIn()){
+        $customergroup = Mage::getSingleton('customer/session')->getCustomer()->getGroupId();
+    }?>
      <?php  if(!(($customergroup == 2) || ($customergroup == 6))) {?>
         <div class="checkout_note">
-            <div class="text_2">Use coupan code Flat20 and get 20% dicount on offer only valid for new customer. Maximum discount value is $50.00</div>
+            <div class="text_1">Use Coupon Code: <span>"Flat20"</span> get 20% discount.</div>
+            <div class="text_1">Offer only valid for New customer.</div>
+            <div class="text_1">Maximum discount value is $50.</div>
             </div>
 
        <?php }else{
