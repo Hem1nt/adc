@@ -71,7 +71,14 @@
         $customerSuccess = Mage::helper('frontend/order')->getCustomersOrdersCount($email);
         //if($customerSuccess==0 ){
     ?>
-    <?php if($billingCountry == 'US'){ ?>
+     <?php  if(!(($customergroup == 2) || ($customergroup == 6))) {?>
+        <div class="checkout_note">
+            <div class="text_2">Use coupan code Flat20 and get 20% dicount on offer only valid for new customer. Maximum discount value is $50.00</div>
+            </div>
+
+       <?php }else{
+    
+        if($billingCountry == 'US'){ ?>
         <div class="checkout_note">
             <div class="text_1">"E-CHECK PAYMENTS - THE MOST SECURE WAY OF PAYMENTS"</div>
             <div class="text_2"><?php echo $usCustomerMessage;?></div>
@@ -91,7 +98,7 @@
             <div class="red_note"><?php echo $offerValidMsg;?></div>
             </div>
         <?php } */?>
-   
+<?php } ?>
 <?php endif;?>
 
         
