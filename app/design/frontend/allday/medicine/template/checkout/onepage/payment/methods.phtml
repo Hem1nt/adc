@@ -74,7 +74,7 @@
      if(Mage::getSingleton('customer/session')->isLoggedIn()){
         $customergroup = Mage::getSingleton('customer/session')->getCustomer()->getGroupId();
     }?>
-     <?php  if(!(($customergroup == 2) || ($customergroup == 6))) {?>
+     <?php  if(!(($customergroup == 2) || ($customergroup == 6)|| ($customergroup == 8))) {?>
         <div class="checkout_note">
             <div class="text_1">Use Coupon Code: <span>"Flat20"</span> get 20% discount.</div>
             <div class="text_1">Offer only valid for New customer.</div>
