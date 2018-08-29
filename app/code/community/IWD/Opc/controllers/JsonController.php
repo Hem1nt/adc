@@ -1220,17 +1220,24 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
         }
 			
 		$result = array();
+		$data1 = $this->getRequest()->getPost('payment', array());
 		$data = $this->_getSession()->getQuote()->getPayment()->getMethodInstance()->getTitle();
 		// condition for echeck payment method
-
+		
+		// get section and redirect data
+		$quote = $this->getOnepage()->getQuote();
+		$quote->getPayment()->setMethod('bpay');
+		$quote->setTotalsCollectedFlag(false)->collectTotals();
+		$quote->save();
+		
 		if($data == "Bpay"){
 			$totals = $this->_getSession()->getQuote()->getTotals();
-			$subtotal = round($totals['subtotal']->getValue()); //Subtotal value
 			$grandtotal = $totals['grand_total']->getValue();
 			$fromCur = 'USD'; // currency code to convert from - usually your base currency
 			$toCur = 'AUD'; // currency to convert to
 			$price = Mage::helper('directory')->currencyConvert($grandtotal, $fromCur, $toCur);
 			$converted_final_price = number_format($price, 2, '.', '');
+			echo $converted_final_price;
 		}
 	}
 }

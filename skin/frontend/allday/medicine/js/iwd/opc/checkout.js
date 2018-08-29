@@ -350,9 +350,7 @@ IWD.OPC = {
 
 		prepareBpayResponse: function(response){
  			$j_opc('#bpay_amount').val(response);
-
-
- 		},
+		},
 
 		/** SAVE ORDER **/
 		saveOrder: function(){
