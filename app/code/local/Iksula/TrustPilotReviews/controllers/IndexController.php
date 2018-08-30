@@ -4,7 +4,7 @@ class Iksula_TrustPilotReviews_IndexController extends Mage_Core_Controller_Fron
     public function IndexAction() {
       
 	   $this->loadLayout();   
-	   $this->getLayout()->getBlock("head")->setTitle($this->__("Trustpilot Reviews"));
+	   $this->getLayout()->getBlock("head")->setTitle($this->__("Trustpilot Reviews | AllDayChemist | Indian Online Pharmacy Reviews"));
 	        $breadcrumbs = $this->getLayout()->getBlock("breadcrumbs");
       $breadcrumbs->addCrumb("home", array(
                 "label" => $this->__("Home Page"),
