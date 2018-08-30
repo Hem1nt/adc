@@ -225,6 +225,9 @@ IWD.OPC = {
 			}
 
 			IWD.OPC.Checkout.lockPlaceOrder();
+			if(payment.currentMethod == 'bpay'){
+					IWD.OPC.Checkout.xhr = $j_opc.post(IWD.OPC.Checkout.config.baseUrl + 'onepage/json/getBpayTotal',form, IWD.OPC.prepareBpayResponse,'json');
+			}
 			if (payment.currentMethod != 'stripe') {
 				var form = $j_opc('#co-payment-form').serializeArray();
 
@@ -281,6 +284,7 @@ IWD.OPC = {
 						}
 					}
 				});
+				
 			}
 		},
 
@@ -342,6 +346,10 @@ IWD.OPC = {
 			IWD.OPC.Plugin.dispatch('savePaymentAfter');
 
 
+		},
+
+		prepareBpayResponse: function(response){
+ 			$j_opc('#bpay_amount').val(response);
 		},
 
 		/** SAVE ORDER **/
