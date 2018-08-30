@@ -1222,15 +1222,13 @@ class IWD_Opc_JsonController extends Mage_Core_Controller_Front_Action{
 		$result = array();
 		$data1 = $this->getRequest()->getPost('payment', array());
 		$data = $this->_getSession()->getQuote()->getPayment()->getMethodInstance()->getTitle();
-		// condition for echeck payment method
-		
-		// get section and redirect data
 		$quote = $this->getOnepage()->getQuote();
 		$quote->getPayment()->setMethod('bpay');
 		$quote->setTotalsCollectedFlag(false)->collectTotals();
 		$quote->save();
+		//print_r($quote->getPayment()->getMethod());
 		
-		if($data == "Bpay"){
+		if($quote->getPayment()->getMethod() == "bpay"){
 			$totals = $this->_getSession()->getQuote()->getTotals();
 			$grandtotal = $totals['grand_total']->getValue();
 			$fromCur = 'USD'; // currency code to convert from - usually your base currency
