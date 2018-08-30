@@ -579,7 +579,7 @@ if($count && $OutOfStockCount != '0'){
 
                 },
                 success: function(data) {
-                    jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email">Thank you, for your interest. You will be Notified by Email when it becomes available.</div>' );
+                    jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email" style="color:blue">Thank you, for your interest. You will be Notified by Email when it becomes available.</div>' );
                     jQuery(".subscription_text").hide();
                         // jQuery(".notify_tab").hide();
                         // jQuery(".notify_tab2").hide();
@@ -615,7 +615,7 @@ jQuery('#notify-me-coming').click(function(e) {
 
         },
         success: function(data) {
-            jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email">Thank you, for your interest. You will be Notified by Email when it becomes available.</div>' );
+            jQuery( "div.invalid_email" ).replaceWith( '<div class="invalid_email" style="color:blue">Thank you, for your interest. You will be Notified by Email when it becomes available.</div>' );
             jQuery(".subscription_text").hide();
                         // jQuery(".notify_tab").hide();
                         // jQuery(".notify_tab2").hide();
